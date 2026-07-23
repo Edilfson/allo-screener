@@ -1,6 +1,11 @@
 """
-Binance Futures (USDT-M Perp) EMA Pullback Screener
+Binance Spot USDT EMA Pullback Screener
 -----------------------------------------------------
+(Not: Binance Futures API (fapi.binance.com) GitHub Actions sunucularinda 451/geo-block
+hatasi verdigi icin Binance'in resmi, kisitlamasiz spot veri aynasi kullaniliyor:
+data-api.binance.vision. Coin fiyat hareketleri spot ve futures'ta pratikte hemen hemen
+ayni oldugu icin tarama mantigi ayni sekilde calisir.)
+
 Mantik:
 1) Her coin icin son N muma bakip, bir "swing low -> swing high" hareketi ariyoruz.
 2) Bu hareket >= RALLY_MIN_PCT (%50) ise, coin "guclu yukselis yapmis" sayilir.
@@ -42,20 +47,23 @@ CHART_DIR = "charts"
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
-BASE_URL = "https://fapi.binance.com"
+BASE_URL = "https://data-api.binance.vision"  # Binance'in resmi, geo-block'suz spot veri aynasi
 
 
 def get_perp_usdt_symbols():
-    """Binance Futures'taki tum USDT-M perpetual sembolleri getirir."""
-    r = requests.get(f"{BASE_URL}/fapi/v1/exchangeInfo", timeout=15)
+    """Binance Spot'taki tum USDT paritelerini getirir.
+    (Not: fapi.binance.com bazi bolgelerde/GitHub Actions sunucularinda 451 hatasi verdigi
+    icin geo-block'suz olan spot veri aynasi kullaniliyor. Fiyat hareketleri futures ile
+    neredeyse ayni oldugundan tarama mantigini etkilemez.)"""
+    r = requests.get(f"{BASE_URL}/api/v3/exchangeInfo", timeout=15)
     r.raise_for_status()
     data = r.json()
     symbols = []
     for s in data["symbols"]:
         if (
-            s.get("contractType") == "PERPETUAL"
-            and s.get("quoteAsset") == "USDT"
+            s.get("quoteAsset") == "USDT"
             and s.get("status") == "TRADING"
+            and s.get("isSpotTradingAllowed", True)
         ):
             symbols.append(s["symbol"])
     return sorted(symbols)
@@ -63,7 +71,7 @@ def get_perp_usdt_symbols():
 
 def get_klines(symbol, interval, limit=LOOKBACK_CANDLES):
     params = {"symbol": symbol, "interval": interval, "limit": limit}
-    r = requests.get(f"{BASE_URL}/fapi/v1/klines", params=params, timeout=15)
+    r = requests.get(f"{BASE_URL}/api/v3/klines", params=params, timeout=15)
     if r.status_code != 200:
         return None
     raw = r.json()
