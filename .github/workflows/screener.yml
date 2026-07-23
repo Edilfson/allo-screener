@@ -2,7 +2,7 @@ name: Allo Screener
 
 on:
   schedule:
-    - cron: "5 */4 * * *"   # her 4 saatte bir (UTC) calisir
+    - cron: "5 */4 * * *"   # her 4 saatte bir (UTC)
   workflow_dispatch: {}       # istersen elle de "Run workflow" ile tetikleyebilirsin
 
 permissions:
@@ -27,6 +27,9 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TOPIC_SIGNALS: ${{ secrets.TOPIC_SIGNALS }}
+          TOPIC_RESULTS: ${{ secrets.TOPIC_RESULTS }}
+          TOPIC_SUMMARY: ${{ secrets.TOPIC_SUMMARY }}
         run: python screener.py
 
       - name: State dosyasini geri commit'le
@@ -34,7 +37,7 @@ jobs:
         run: |
           git config user.name "allo-screener-bot"
           git config user.email "actions@github.com"
-          git add screener_state.json
+          git add positions.json
           git diff --quiet --cached || git commit -m "state guncelle [skip ci]"
           # repo bu arada degismis olabilir: once cek (rebase), sonra push et - 3 deneme
           for i in 1 2 3; do
