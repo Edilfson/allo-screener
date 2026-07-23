@@ -81,7 +81,7 @@ def get_klines(symbol, interval, limit=LOOKBACK_CANDLES):
         "open_time", "open", "high", "low", "close", "volume",
         "close_time", "qav", "trades", "tbbav", "tbqav", "ignore"
     ])
-    for col in ["open", "high", "low", "close"]:
+    for col in ["open", "high", "low", "close", "volume"]:
         df[col] = df[col].astype(float)
     df["close_time"] = pd.to_datetime(df["close_time"], unit="ms", utc=True)
     return df
