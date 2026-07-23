@@ -30,9 +30,19 @@ jobs:
         run: python screener.py
 
       - name: State dosyasini geri commit'le
+        continue-on-error: true
         run: |
           git config user.name "allo-screener-bot"
           git config user.email "actions@github.com"
           git add screener_state.json
           git diff --quiet --cached || git commit -m "state guncelle [skip ci]"
-          git push
+          # repo bu arada degismis olabilir: once cek (rebase), sonra push et - 3 deneme
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then
+              echo "Push basarili."
+              exit 0
+            fi
+            echo "Push denemesi $i basarisiz, tekrar deneniyor..."
+            sleep 5
+          done
+          echo "Push yapilamadi (tarama yine de calisti, sinyaller gonderildi)."
