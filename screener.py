@@ -99,7 +99,7 @@ def find_rally_and_check(df):
     yuksek kapanisi bul, yukselis >= RALLY_MIN_PCT mi VE bu yukselis RALLY_MAX_DAYS
     gun icinde mi olmus kontrol et. Sonra son fiyatin zirveden PULLBACK_MIN_PCT
     kadar geri cekilip cekilmedigine bak.
-    Return: (rally_ok, rally_pct, swing_high, pullback_pct, rally_days)
+    Return: (rally_ok, rally_pct, swing_high, swing_low, pullback_pct, rally_days)
     """
     now_ts = df["close_time"].iloc[-1]
     window_start = now_ts - pd.Timedelta(days=RALLY_MAX_DAYS)
@@ -109,12 +109,12 @@ def find_rally_and_check(df):
     times = window_df["close_time"].values
     n = len(closes)
     if n < 5:
-        return False, 0, 0, 0, 0
+        return False, 0, 0, 0, 0, 0
 
     # pencere icindeki en dusuk kapanisi bul, ondan sonraki en yuksek kapanisi bul
     min_idx = int(np.argmin(closes))
     if min_idx >= n - 2:
-        return False, 0, 0, 0, 0
+        return False, 0, 0, 0, 0, 0
     after_min = closes[min_idx:]
     max_idx_rel = int(np.argmax(after_min))
     max_idx = min_idx + max_idx_rel
@@ -123,17 +123,101 @@ def find_rally_and_check(df):
     swing_high = closes[max_idx]
 
     if swing_low <= 0:
-        return False, 0, 0, 0, 0
+        return False, 0, 0, 0, 0, 0
 
     rally_pct = (swing_high - swing_low) / swing_low
     rally_days = (pd.Timestamp(times[max_idx]) - pd.Timestamp(times[min_idx])).total_seconds() / 86400
 
     if rally_pct < RALLY_MIN_PCT:
-        return False, rally_pct, swing_high, 0, rally_days
+        return False, rally_pct, swing_high, swing_low, 0, rally_days
 
     last_close = closes[-1]
     pullback_pct = (swing_high - last_close) / swing_high
-    return True, rally_pct, swing_high, pullback_pct, rally_days
+    return True, rally_pct, swing_high, swing_low, pullback_pct, rally_days
+
+
+# ---------------- TP / STOP HESABI ----------------
+MIN_RR = 3.0                      # her sinyalde garanti edilecek minimum odul/risk orani
+
+def compute_trade_plan(swing_low, swing_high, entry):
+    """
+    Swing low->high hareketinin fib seviyelerine gore 3 TP + 1 stop belirler:
+    - TP1 = orta direnc  (fib 0.382 seviyesi, zirveye daha yakin bolge)
+    - TP2 = en tepe       (onceki swing high, yani B noktasi)
+    - TP3 = tepe sonrasi devam (1.272 fib uzatmasi, B'nin otesi)
+    - Stop = yapisal olarak en mantikli seviye (fib 0.786 ile swing_low'un daha
+      sikisi / yakini), ama TP1'e gore odul/risk orani MIN_RR'nin altindaysa
+      stop otomatik siklastirilir ki HER ZAMAN en az MIN_RR (varsayilan 3R) saglansin.
+    Return: dict veya None (gecerli bir plan kurulamiyorsa)
+    """
+    diff = swing_high - swing_low
+    if diff <= 0 or entry <= 0:
+        return None
+
+    fib_382 = swing_high - diff * 0.382
+    fib_618 = swing_high - diff * 0.618
+    fib_786 = swing_high - diff * 0.786
+
+    tp1 = fib_382
+    tp2 = swing_high
+    tp3 = swing_high + diff * 0.272  # 1.272 fib uzatmasi
+
+    # yapisal stop: 0.786 seviyesi ile swing_low'dan hangisi entry'e daha yakinsa o
+    # (cok derin, anlamsiz bir stop olmasin diye swing_low'u da bir sinir olarak aliyoruz)
+    structural_stop = max(fib_786, swing_low * 0.999)
+
+    # entry zaten yapisal stopun altindaysa (asiri derin pullback) - gecersiz sinyal
+    if structural_stop >= entry:
+        return None
+
+    # en yakin gecerli TP'yi bul (entry'nin ustunde olan)
+    candidate_tps = [tp for tp in (tp1, tp2, tp3) if tp > entry]
+    if not candidate_tps:
+        return None
+    nearest_tp = min(candidate_tps)
+
+    reward_nearest = nearest_tp - entry
+    structural_risk = entry - structural_stop
+
+    # MIN_RR saglaniyor mu kontrol et; saglanmiyorsa stop'u siklastir (entry'e yaklastir)
+    if structural_risk <= 0:
+        return None
+
+    if (reward_nearest / structural_risk) < MIN_RR:
+        # stop'u, en yakin TP'de tam olarak MIN_RR verecek sekilde siklastir
+        tightened_stop = entry - (reward_nearest / MIN_RR)
+        final_stop = max(structural_stop, tightened_stop)
+    else:
+        final_stop = structural_stop
+
+    risk = entry - final_stop
+    if risk <= 0:
+        return None
+
+    return {
+        "entry": entry,
+        "stop": final_stop,
+        "risk": risk,
+        "tp1": tp1, "r1": (tp1 - entry) / risk,
+        "tp2": tp2, "r2": (tp2 - entry) / risk,
+        "tp3": tp3, "r3": (tp3 - entry) / risk,
+    }
+
+
+def format_trade_plan(plan):
+    if not plan:
+        return "⚠️ Bu kurulum icin mantikli bir TP/Stop plani hesaplanamadi (yapi uygun degil)."
+    lines = [f"🛑 Stop: {plan['stop']:.5f}  (Risk: {plan['risk']:.5f})"]
+    tp_defs = [
+        ("TP1 (orta direnc)", plan["tp1"], plan["r1"]),
+        ("TP2 (onceki zirve)", plan["tp2"], plan["r2"]),
+        ("TP3 (uzatma / devam)", plan["tp3"], plan["r3"]),
+    ]
+    for label, tp, r in tp_defs:
+        if tp <= plan["entry"]:
+            continue  # entry'nin altinda kalan TP anlamsiz, gosterme
+        lines.append(f"🎯 {label}: {tp:.5f}  → {r:.1f}R")
+    return "\n".join(lines)
 
 
 def check_ema_touch(df):
@@ -188,8 +272,8 @@ def format_ema_lines(rows):
     return "\n".join(lines)
 
 
-def make_chart(df, symbol, interval, ema_touch_period=None):
-    """Son CHART_CANDLES muma ait mum grafigi + EMA55/EMA99 cizgileriyle PNG olusturur."""
+def make_chart(df, symbol, interval, ema_touch_period=None, plan=None):
+    """Son CHART_CANDLES muma ait mum grafigi + EMA55/EMA99 + (varsa) TP/Stop cizgileriyle PNG olusturur."""
     os.makedirs(CHART_DIR, exist_ok=True)
     plot_df = df.tail(CHART_CANDLES).copy()
     plot_df = plot_df.set_index(pd.DatetimeIndex(plot_df["close_time"]))
@@ -209,6 +293,17 @@ def make_chart(df, symbol, interval, ema_touch_period=None):
     if ema_touch_period:
         title += f"  (EMA{ema_touch_period} temasi)"
 
+    hlines_kwargs = {}
+    if plan:
+        hlines_kwargs = dict(
+            hlines=dict(
+                hlines=[plan["stop"], plan["entry"], plan["tp1"], plan["tp2"], plan["tp3"]],
+                colors=["red", "white", "#90ee90", "#2ecc71", "#f1c40f"],
+                linestyle="--",
+                linewidths=1.0,
+            )
+        )
+
     path = os.path.join(CHART_DIR, f"{symbol}_{interval}.png")
     mpf.plot(
         plot_df,
@@ -218,6 +313,7 @@ def make_chart(df, symbol, interval, ema_touch_period=None):
         volume=True,
         title=title,
         savefig=dict(fname=path, dpi=130, bbox_inches="tight"),
+        **hlines_kwargs,
     )
     return path
 
@@ -276,7 +372,7 @@ def main():
     for symbol in symbols:
         try:
             dfs = {}
-            rally_info = {}  # interval -> (rally_ok, rally_pct, swing_high, pullback_pct, rally_days)
+            rally_info = {}  # interval -> (rally_ok, rally_pct, swing_high, swing_low, pullback_pct, rally_days)
 
             for interval in INTERVALS:
                 df = get_klines(symbol, interval)
@@ -291,7 +387,7 @@ def main():
             # herhangi bir interval'da rally + pullback + EMA temasi var mi?
             triggered_intervals = []
             for interval, info in rally_info.items():
-                rally_ok, rally_pct, swing_high, pullback_pct, rally_days = info
+                rally_ok, rally_pct, swing_high, swing_low, pullback_pct, rally_days = info
                 if not rally_ok or pullback_pct < PULLBACK_MIN_PCT:
                     continue
                 touches = check_ema_touch(dfs[interval])
@@ -313,23 +409,39 @@ def main():
 
             # mesaji olustur: tetikleyen interval(lar)in yukselis bilgisi + 4 EMA noktasinin tamami
             rally_lines = []
+            primary_plan = None       # ilk (en guclu) tetiklenen interval'in plani
+            primary_interval = None
             for interval in triggered_intervals:
-                rally_ok, rally_pct, swing_high, pullback_pct, rally_days = rally_info[interval]
+                rally_ok, rally_pct, swing_high, swing_low, pullback_pct, rally_days = rally_info[interval]
                 last_close = dfs[interval].iloc[-1]["close"]
                 rally_lines.append(
                     f"[{interval}] Yukselis: %{rally_pct*100:.1f} ({rally_days:.1f} gunde) | "
                     f"Zirve: {swing_high:.5f} -> Simdi: {last_close:.5f} "
                     f"(%{pullback_pct*100:.1f} geri cekildi)"
                 )
+                if primary_plan is None:
+                    plan = compute_trade_plan(swing_low, swing_high, last_close)
+                    if plan:
+                        primary_plan = plan
+                        primary_interval = interval
 
             ema_rows = all_ema_distances(dfs)
             ema_lines = format_ema_lines(ema_rows)
+
+            plan_block = ""
+            if primary_plan:
+                plan_block = (
+                    f"\n\n📋 <b>Islem Plani</b> ({primary_interval} yapisina gore, "
+                    f"giris ~{primary_plan['entry']:.5f}):\n"
+                    + format_trade_plan(primary_plan)
+                )
 
             msg = (
                 f"🔔 <b>{symbol}</b>\n"
                 + "\n".join(rally_lines)
                 + "\n\n"
                 + ema_lines
+                + plan_block
             )
             alerts.append(msg)
 
@@ -337,9 +449,13 @@ def main():
             closest_row = min(ema_rows, key=lambda r: r["dist_pct"]) if ema_rows else None
             if closest_row:
                 try:
+                    # plan cizgileri, planin hesaplandigi interval grafigine cizilir
+                    chart_interval = primary_interval if primary_plan else closest_row["interval"]
+                    chart_plan = primary_plan if (primary_plan and chart_interval == primary_interval) else None
                     chart_path = make_chart(
-                        dfs[closest_row["interval"]], symbol,
-                        closest_row["interval"], closest_row["ema_period"]
+                        dfs[chart_interval], symbol,
+                        chart_interval, closest_row["ema_period"],
+                        plan=chart_plan,
                     )
                     ok = send_telegram_photo(chart_path, msg)
                     if not ok:
