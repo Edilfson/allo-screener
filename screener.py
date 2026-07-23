@@ -1,27 +1,4 @@
-"""
-Binance EMA Pullback Screener + Pozisyon Takibi + Performans Ozeti
-===================================================================
-Telegram GRUBUNA (Topics/Konular acik supergroup) 3 ayri bolume mesaj atar:
-  1) SINYALLER  -> yeni kurulumlar (grafik + TP/Stop plani)
-  2) SONUCLAR   -> onceki sinyallerden TP'ye veya Stop'a ulasanlar
-  3) OZET       -> genel istatistik: toplam R, basari orani, EMA/zaman dilimi kirilimlari
 
-Veri kaynagi: Binance'in resmi, kisitlamasiz spot veri aynasi (data-api.binance.vision).
-
-Strateji:
-  - Son RALLY_MAX_DAYS gunde swing low -> swing high arasi >= RALLY_MIN_PCT yukselis
-  - Fiyat zirveden geri cekilmis (>= PULLBACK_MIN_PCT)
-  - EMA55 veya EMA99'a temas etmis/yaklasmis (<= TOUCH_TOLERANCE_PCT)
-  - Fib bazli 3 TP + yapisal stop, minimum MIN_RR risk/odul filtresi
-
-Pozisyon modeli (sonuc hesabinda kullanilan varsayim):
-  - Pozisyon 3 esit parcaya bolunur: 1/3 TP1, 1/3 TP2, 1/3 TP3
-  - TP1 gorulduyse stop giris seviyesine (breakeven) cekilir
-  - Ayni mumda hem stop hem TP goruldüyse KOTUMSER: once stop calisti sayilir
-
-UYARI: Yatirim tavsiyesi degildir. Sonuclar varsayimsal hesaplardir; gercek islem
-sonucu kayma (slippage), komisyon ve emir doldurma farklariyla degisir.
-"""
 
 import json
 import os
