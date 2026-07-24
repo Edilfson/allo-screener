@@ -42,7 +42,7 @@
   "rally_days": 5.166666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.4319387881031678
+  "unrealized_r": -0.07052061846582387
  },
  {
   "symbol": "HEMIUSDT",
@@ -87,7 +87,7 @@
   "rally_days": 1.1666666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.572678050812162
+  "unrealized_r": 0.41649312786339054
  },
  {
   "symbol": "THEUSDT",
@@ -109,7 +109,7 @@
   "rally_days": 1.3333333333333333,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.27726432532347667
+  "unrealized_r": -0.369685767097971
  },
  {
   "symbol": "AGLDUSDT",
@@ -131,7 +131,7 @@
   "rally_days": 1.0,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.10184484665076043
+  "unrealized_r": -0.14549263807251375
  },
  {
   "symbol": "AIGENSYNUSDT",
