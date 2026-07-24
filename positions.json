@@ -41,7 +41,7 @@
   "rally_days": 5.166666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.21156185539746858
+  "unrealized_r": -0.6346855661924149
  },
  {
   "symbol": "HEMIUSDT",
@@ -86,7 +86,7 @@
   "rally_days": 1.1666666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.15618492294877145
+  "unrealized_r": 0.2603082049146191
  },
  {
   "symbol": "THEUSDT",
@@ -108,6 +108,72 @@
   "rally_days": 1.3333333333333333,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.18484288354898232
+  "unrealized_r": 1.6635859519408471
+ },
+ {
+  "symbol": "AGLDUSDT",
+  "interval": "4h",
+  "ema_period": 55,
+  "opened_at": "2026-07-24T05:13:34.614277+00:00",
+  "status": "open",
+  "entry": 0.153,
+  "stop": 0.1461268,
+  "current_stop": 0.1461268,
+  "risk": 0.006873199999999996,
+  "tp1": 0.1890316,
+  "tp2": 0.2296,
+  "tp3": 0.2584864,
+  "r1": 5.2423325379735815,
+  "r2": 11.144736076354544,
+  "r3": 15.347494616772401,
+  "rally_pct": 0.860615883306321,
+  "rally_days": 1.0,
+  "tps_hit": [],
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "AIGENSYNUSDT",
+  "interval": "4h",
+  "ema_period": 99,
+  "opened_at": "2026-07-24T05:13:34.614277+00:00",
+  "status": "open",
+  "entry": 0.02515,
+  "stop": 0.024647,
+  "current_stop": 0.024647,
+  "risk": 0.000503,
+  "tp1": 0.03278346,
+  "tp2": 0.04003,
+  "tp3": 0.04518984,
+  "r1": 15.175864811133204,
+  "r2": 29.582504970178938,
+  "r3": 39.84063618290259,
+  "rally_pct": 0.9007597340930676,
+  "rally_days": 4.333333333333333,
+  "tps_hit": [],
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SKLUSDT",
+  "interval": "4h",
+  "ema_period": 55,
+  "opened_at": "2026-07-24T05:13:34.614277+00:00",
+  "status": "open",
+  "entry": 0.00401,
+  "stop": 0.0039298,
+  "current_stop": 0.0039298,
+  "risk": 8.019999999999989e-05,
+  "tp1": 0.00493646,
+  "tp2": 0.00588,
+  "tp3": 0.00655184,
+  "r1": 11.551870324189547,
+  "r2": 23.316708229426467,
+  "r3": 31.693765586034957,
+  "rally_pct": 0.7243401759530792,
+  "rally_days": 9.166666666666666,
+  "tps_hit": [],
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
