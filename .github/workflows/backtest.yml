@@ -1,0 +1,42 @@
+name: Backtest
+
+on:
+  workflow_dispatch:
+    inputs:
+      interval:
+        description: "Zaman dilimi (4h veya 1d)"
+        default: "4h"
+        required: true
+      symbol_count:
+        description: "Hacme gore ilk kac coin taransin"
+        default: "80"
+        required: true
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Bagimliliklar
+        run: pip install requests pandas numpy
+
+      - name: Backtest calistir
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TOPIC_SUMMARY: ${{ secrets.TOPIC_SUMMARY }}
+          BT_INTERVAL: ${{ github.event.inputs.interval }}
+          BT_SYMBOL_COUNT: ${{ github.event.inputs.symbol_count }}
+        run: python backtest.py
+
+      - name: Sonuc dosyasini artifact olarak sakla
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-results-${{ github.event.inputs.interval }}
+          path: backtest_results.json
