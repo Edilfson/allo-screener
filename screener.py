@@ -1,4 +1,27 @@
+"""
+Binance EMA Pullback Screener + Pozisyon Takibi + Performans Ozeti
+===================================================================
+Telegram GRUBUNA (Topics/Konular acik supergroup) 3 ayri bolume mesaj atar:
+  1) SINYALLER  -> yeni kurulumlar (grafik + TP/Stop plani)
+  2) SONUCLAR   -> onceki sinyallerden TP'ye veya Stop'a ulasanlar
+  3) OZET       -> genel istatistik: toplam R, basari orani, EMA/zaman dilimi kirilimlari
 
+Veri kaynagi: Binance'in resmi, kisitlamasiz spot veri aynasi (data-api.binance.vision).
+
+Strateji:
+  - Son RALLY_MAX_DAYS gunde swing low -> swing high arasi >= RALLY_MIN_PCT yukselis
+  - Fiyat zirveden geri cekilmis (>= PULLBACK_MIN_PCT)
+  - EMA55 veya EMA99'a temas etmis/yaklasmis (<= TOUCH_TOLERANCE_PCT)
+  - Fib bazli 3 TP + yapisal stop, minimum MIN_RR risk/odul filtresi
+
+Pozisyon modeli (sonuc hesabinda kullanilan varsayim):
+  - Pozisyon 3 esit parcaya bolunur: 1/3 TP1, 1/3 TP2, 1/3 TP3
+  - TP1 gorulduyse stop giris seviyesine (breakeven) cekilir
+  - Ayni mumda hem stop hem TP goruldüyse KOTUMSER: once stop calisti sayilir
+
+UYARI: Yatirim tavsiyesi degildir. Sonuclar varsayimsal hesaplardir; gercek islem
+sonucu kayma (slippage), komisyon ve emir doldurma farklariyla degisir.
+"""
 
 import json
 import os
@@ -84,6 +107,72 @@ def add_emas(df):
 
 
 # ==================== STRATEJI ====================
+def calc_rsi(closes, period=14):
+    """Basit RSI hesabi (Wilder)."""
+    if len(closes) < period + 1:
+        return None
+    deltas = np.diff(closes)
+    gains = np.where(deltas > 0, deltas, 0.0)
+    losses = np.where(deltas < 0, -deltas, 0.0)
+    avg_g = gains[:period].mean()
+    avg_l = losses[:period].mean()
+    for i in range(period, len(deltas)):
+        avg_g = (avg_g * (period - 1) + gains[i]) / period
+        avg_l = (avg_l * (period - 1) + losses[i]) / period
+    if avg_l == 0:
+        return 100.0
+    return 100 - 100 / (1 + avg_g / avg_l)
+
+
+def get_btc_regime():
+    """BTC 1D EMA99'a gore piyasa rejimi: 'boga' / 'ayi' / 'bilinmiyor'."""
+    df = get_klines("BTCUSDT", "1d")
+    if df is None:
+        return "bilinmiyor", 0.0
+    df = add_emas(df)
+    last = df.iloc[-1]
+    dist = (last["close"] - last["ema99"]) / last["ema99"]
+    return ("boga" if dist >= 0 else "ayi"), float(dist)
+
+
+def compute_context(df, plan, swing_high, swing_low, btc_regime, btc_dist):
+    """Sinyal aninda piyasa baglamini kaydeder - ileride 'ne ise yariyor' analizi icin."""
+    closes = df["close"].values
+    last = df.iloc[-1]
+
+    # fib derinligi: giris, low-high araliginin neresinde? (0=zirve, 1=dip)
+    diff = swing_high - swing_low
+    fib_depth = (swing_high - plan["entry"]) / diff if diff > 0 else None
+    if fib_depth is not None:
+        if fib_depth < 0.45:
+            fib_zone = "sig(0.382)"
+        elif fib_depth < 0.70:
+            fib_zone = "orta(0.5-0.618)"
+        else:
+            fib_zone = "derin(0.7+)"
+    else:
+        fib_zone = "?"
+
+    # hacim: son mumun hacmi, 20 mum ortalamasina gore
+    vol = df["volume"].values
+    vol_ratio = float(vol[-1] / vol[-21:-1].mean()) if len(vol) > 21 and vol[-21:-1].mean() > 0 else None
+
+    # EMA dizilimi: 55 > 99 mu (saglikli trend) yoksa ters mi
+    ema_align = "duzgun(55>99)" if last["ema55"] > last["ema99"] else "ters(55<99)"
+
+    rsi = calc_rsi(closes)
+
+    return {
+        "rsi14": round(float(rsi), 1) if rsi is not None else None,
+        "vol_ratio": round(float(vol_ratio), 2) if vol_ratio is not None else None,
+        "fib_depth": round(float(fib_depth), 3) if fib_depth is not None else None,
+        "fib_zone": fib_zone,
+        "ema_align": ema_align,
+        "btc_regime": btc_regime,
+        "btc_ema99_dist": round(btc_dist, 4),
+    }
+
+
 def find_rally(df):
     """Return: (ok, rally_pct, swing_high, swing_low, pullback_pct, rally_days)"""
     now_ts = df["close_time"].iloc[-1]
@@ -306,6 +395,73 @@ def build_summary(positions):
     return "\n".join(lines)
 
 
+def build_insights(positions):
+    """Kapanan islemleri baglam boyutlarina gore analiz eder: hangi kosullarda
+    strateji iyi/kotu calisiyor? (Haftalik icgoru raporu)"""
+    closed = [p for p in positions if p["status"] != "open" and p.get("context")]
+    if len(closed) < 5:
+        return (f"🔬 <b>ICGORU RAPORU</b>\n\nHenuz yeterli veri yok "
+                f"({len(closed)} kapanmis islem, en az 5 gerekli).\n"
+                f"Veri biriktikce bu rapor hangi kosullarin ise yaradigini gosterecek.")
+
+    def bucket_stats(items):
+        if not items:
+            return None
+        r = sum(p.get("realized_r", 0) for p in items)
+        w = len([p for p in items if p.get("realized_r", 0) > 0])
+        return f"{len(items)} islem | {r:+.2f}R | ort {r/len(items):+.2f}R | basari %{w/len(items)*100:.0f}"
+
+    lines = ["🔬 <b>ICGORU RAPORU</b>",
+             f"(Toplam {len(closed)} kapanmis islem uzerinden)\n"]
+
+    # 1) Fib bolgesi
+    lines.append("<b>Giris derinligi (fib bolgesi)</b>")
+    for zone in ["sig(0.382)", "orta(0.5-0.618)", "derin(0.7+)"]:
+        s = bucket_stats([p for p in closed if p["context"].get("fib_zone") == zone])
+        if s:
+            lines.append(f"  {zone}: {s}")
+
+    # 2) BTC rejimi
+    lines.append("\n<b>BTC rejimi (1D EMA99)</b>")
+    for reg in ["boga", "ayi"]:
+        s = bucket_stats([p for p in closed if p["context"].get("btc_regime") == reg])
+        if s:
+            lines.append(f"  {reg}: {s}")
+
+    # 3) RSI araligi
+    lines.append("\n<b>Giris ani RSI(14)</b>")
+    for lbl, lo_r, hi_r in [("asiri satim <35", 0, 35), ("notr 35-55", 35, 55),
+                            ("guclu 55+", 55, 101)]:
+        grp = [p for p in closed
+               if p["context"].get("rsi14") is not None and lo_r <= p["context"]["rsi14"] < hi_r]
+        s = bucket_stats(grp)
+        if s:
+            lines.append(f"  {lbl}: {s}")
+
+    # 4) Hacim
+    lines.append("\n<b>Giris mumu hacmi (20 mum ort. gore)</b>")
+    for lbl, lo_v, hi_v in [("dusuk <0.8x", 0, 0.8), ("normal 0.8-1.5x", 0.8, 1.5),
+                            ("yuksek 1.5x+", 1.5, 999)]:
+        grp = [p for p in closed
+               if p["context"].get("vol_ratio") is not None and lo_v <= p["context"]["vol_ratio"] < hi_v]
+        s = bucket_stats(grp)
+        if s:
+            lines.append(f"  {lbl}: {s}")
+
+    # 5) EMA dizilimi
+    lines.append("\n<b>EMA dizilimi</b>")
+    for al in ["duzgun(55>99)", "ters(55<99)"]:
+        s = bucket_stats([p for p in closed if p["context"].get("ema_align") == al])
+        if s:
+            lines.append(f"  {al}: {s}")
+
+    # en belirgin farki isaretle (yeterli ornek varsa)
+    lines.append("\n<i>Not: 20'den az islem iceren gruplar istatistiksel olarak "
+                 "guvenilir degildir - erken sonuc cikarma. Bu rapor oneri degil, "
+                 "gozlem sunar; parametre degisikligine sen karar verirsin.</i>")
+    return "\n".join(lines)
+
+
 # ==================== GRAFIK ====================
 def make_chart(df, symbol, interval, ema_period, plan):
     os.makedirs(CHART_DIR, exist_ok=True)
@@ -397,6 +553,8 @@ def main():
     # ---- 2) YENI SINYALLERI TARA ----
     symbols = get_usdt_symbols()
     print(f"{len(symbols)} sembol taranacak...")
+    btc_regime, btc_dist = get_btc_regime()
+    print(f"BTC rejimi: {btc_regime} (EMA99 mesafe: %{btc_dist*100:.1f})")
     new_count = 0
 
     for symbol in symbols:
@@ -435,12 +593,17 @@ def main():
                 continue
 
             iv, ema_p, rpct, hi, lo, pb, days, plan = trigger
+            ctx = compute_context(dfs[iv], plan, hi, lo, btc_regime, btc_dist)
+
+            ctx_line = (f"\n\n🧭 RSI:{ctx['rsi14']} | Hacim:{ctx['vol_ratio']}x | "
+                        f"Fib:{ctx['fib_zone']} | {ctx['ema_align']} | BTC:{ctx['btc_regime']}")
 
             msg = (f"🔔 <b>{symbol}</b>  [{iv} / EMA{ema_p}]\n"
                    f"Yukselis: %{rpct*100:.1f} ({days:.1f} gunde)\n"
                    f"Zirve {hi:.6g} → simdi {plan['entry']:.6g} (%{pb*100:.1f} geri cekildi)\n\n"
                    + format_ema_lines(ema_distances(dfs))
-                   + "\n\n📋 <b>Islem Plani</b>\n" + format_plan(plan))
+                   + "\n\n📋 <b>Islem Plani</b>\n" + format_plan(plan)
+                   + ctx_line)
 
             sent = False
             try:
@@ -459,6 +622,7 @@ def main():
                 "tp1": plan["tp1"], "tp2": plan["tp2"], "tp3": plan["tp3"],
                 "r1": plan["r1"], "r2": plan["r2"], "r3": plan["r3"],
                 "rally_pct": rpct, "rally_days": days,
+                "context": ctx,
                 "tps_hit": [], "realized_r": 0.0, "unrealized_r": 0.0,
             })
             new_count += 1
@@ -472,6 +636,9 @@ def main():
     # ---- 3) OZET ----
     if SUMMARY_EVERY_RUN or now.hour < 4:
         tg_send(build_summary(positions), TOPIC_SUMMARY)
+        # haftalik icgoru raporu: pazartesi gunleri (veya SUMMARY_EVERY_RUN acikken)
+        if SUMMARY_EVERY_RUN or now.weekday() == 0:
+            tg_send(build_insights(positions), TOPIC_SUMMARY)
 
     save_positions(positions)
     print("Tamamlandi.")
