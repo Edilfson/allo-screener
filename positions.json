@@ -19,7 +19,7 @@
   "rally_days": 1.5,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.5535055350553485
  },
  {
   "symbol": "DODOUSDT",
@@ -41,14 +41,14 @@
   "rally_days": 5.166666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.21156185539746858
  },
  {
   "symbol": "HEMIUSDT",
   "interval": "4h",
   "ema_period": 99,
   "opened_at": "2026-07-23T22:30:39.234049+00:00",
-  "status": "open",
+  "status": "stopped",
   "entry": 0.00483,
   "stop": 0.0047334,
   "current_stop": 0.0047334,
@@ -62,8 +62,9 @@
   "rally_pct": 0.6342042755344417,
   "rally_days": 19.5,
   "tps_hit": [],
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-07-23T23:59:59.999000+00:00"
  },
  {
   "symbol": "PORTOUSDT",
@@ -85,7 +86,7 @@
   "rally_days": 1.1666666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.15618492294877145
  },
  {
   "symbol": "THEUSDT",
@@ -107,6 +108,6 @@
   "rally_days": 1.3333333333333333,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": -0.18484288354898232
  }
 ]
