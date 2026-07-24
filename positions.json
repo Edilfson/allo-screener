@@ -19,7 +19,7 @@
   "rally_days": 1.5,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.5535055350553485
+  "unrealized_r": -0.12300123001229493
  },
  {
   "symbol": "DODOUSDT",
@@ -41,7 +41,7 @@
   "rally_days": 5.166666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.6346855661924149
+  "unrealized_r": -0.4054935561784881
  },
  {
   "symbol": "HEMIUSDT",
@@ -86,7 +86,7 @@
   "rally_days": 1.1666666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.2603082049146191
+  "unrealized_r": 0.5206164098292382
  },
  {
   "symbol": "THEUSDT",
@@ -108,7 +108,7 @@
   "rally_days": 1.3333333333333333,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 1.6635859519408471
+  "unrealized_r": 1.3863216266173706
  },
  {
   "symbol": "AGLDUSDT",
@@ -130,14 +130,14 @@
   "rally_days": 1.0,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.6838153989408154
  },
  {
   "symbol": "AIGENSYNUSDT",
   "interval": "4h",
   "ema_period": 99,
   "opened_at": "2026-07-24T05:13:34.614277+00:00",
-  "status": "open",
+  "status": "stopped",
   "entry": 0.02515,
   "stop": 0.024647,
   "current_stop": 0.024647,
@@ -151,8 +151,9 @@
   "rally_pct": 0.9007597340930676,
   "rally_days": 4.333333333333333,
   "tps_hit": [],
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-07-24T07:59:59.999000+00:00"
  },
  {
   "symbol": "SKLUSDT",
@@ -174,6 +175,6 @@
   "rally_days": 9.166666666666666,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": -0.374064837905233
  }
 ]
