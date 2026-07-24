@@ -4,7 +4,7 @@
   "interval": "4h",
   "ema_period": 99,
   "opened_at": "2026-07-23T22:30:39.234049+00:00",
-  "status": "open",
+  "status": "stopped",
   "entry": 0.0813,
   "stop": 0.079674,
   "current_stop": 0.079674,
@@ -18,8 +18,9 @@
   "rally_pct": 1.2535657686212358,
   "rally_days": 1.5,
   "tps_hit": [],
-  "realized_r": 0.0,
-  "unrealized_r": -0.24600246002459839
+  "realized_r": -1.0,
+  "unrealized_r": -0.24600246002459839,
+  "closed_at": "2026-07-24T15:59:59.999000+00:00"
  },
  {
   "symbol": "DODOUSDT",
@@ -41,7 +42,7 @@
   "rally_days": 5.166666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.24682216463038203
+  "unrealized_r": 0.4319387881031678
  },
  {
   "symbol": "HEMIUSDT",
@@ -108,7 +109,7 @@
   "rally_days": 1.3333333333333333,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.8317929759704236
+  "unrealized_r": -0.27726432532347667
  },
  {
   "symbol": "AGLDUSDT",
@@ -130,7 +131,7 @@
   "rally_days": 1.0,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.39283012279578794
+  "unrealized_r": 0.10184484665076043
  },
  {
   "symbol": "AIGENSYNUSDT",
