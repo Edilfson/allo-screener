@@ -131,7 +131,7 @@
   "rally_days": 1.0,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.2909852761450275
+  "unrealized_r": -0.34918233137403054
  },
  {
   "symbol": "AIGENSYNUSDT",
@@ -208,14 +208,14 @@
   },
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.326797385620909
+  "unrealized_r": -0.653594771241825
  },
  {
   "symbol": "MIRAUSDT",
   "interval": "4h",
   "ema_period": 55,
   "opened_at": "2026-07-25T05:12:40.358876+00:00",
-  "status": "open",
+  "status": "stopped",
   "entry": 0.0447,
   "stop": 0.043806,
   "current_stop": 0.043806,
@@ -238,8 +238,9 @@
    "btc_ema99_dist": -0.0524
   },
   "tps_hit": [],
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-07-25T19:59:59.999000+00:00"
  },
  {
   "symbol": "HEMIUSDT",
@@ -270,14 +271,14 @@
   },
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": -0.2013895881582927
  },
  {
   "symbol": "SXTUSDT",
   "interval": "4h",
   "ema_period": 55,
   "opened_at": "2026-07-25T08:53:35.180077+00:00",
-  "status": "open",
+  "status": "stopped",
   "entry": 0.00721,
   "stop": 0.00704192,
   "current_stop": 0.00704192,
@@ -298,6 +299,69 @@
    "ema_align": "ters(55<99)",
    "btc_regime": "ayi",
    "btc_ema99_dist": -0.0572
+  },
+  "tps_hit": [],
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-07-25T11:59:59.999000+00:00"
+ },
+ {
+  "symbol": "ACEUSDT",
+  "interval": "4h",
+  "ema_period": "55-99",
+  "opened_at": "2026-07-25T16:26:15.850021+00:00",
+  "status": "open",
+  "entry": 0.0859,
+  "stop": 0.0800274,
+  "current_stop": 0.0800274,
+  "risk": 0.005872600000000006,
+  "tp1": 0.1119838,
+  "tp2": 0.1422,
+  "tp3": 0.1637152,
+  "r1": 4.441610189694508,
+  "r2": 9.586895072029414,
+  "r3": 13.250553417566312,
+  "rally_pct": 1.2535657686212358,
+  "rally_days": 1.5,
+  "context": {
+   "rsi14": 45.8,
+   "vol_ratio": 0.11,
+   "fib_depth": 0.712,
+   "fib_zone": "derin(0.7+)",
+   "ema_align": "duzgun(55>99)",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0523
+  },
+  "tps_hit": [],
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ALLOUSDT",
+  "interval": "1d",
+  "ema_period": "55-99",
+  "opened_at": "2026-07-25T16:26:15.850021+00:00",
+  "status": "open",
+  "entry": 0.3177,
+  "stop": 0.2888098,
+  "current_stop": 0.2888098,
+  "risk": 0.028890199999999977,
+  "tp1": 0.40625259999999996,
+  "tp2": 0.5173,
+  "tp3": 0.5963704,
+  "r1": 3.065143197347199,
+  "r2": 6.9089172106804435,
+  "r3": 9.645845303943904,
+  "rally_pct": 1.2828773168578993,
+  "rally_days": 23.0,
+  "context": {
+   "rsi14": 40.8,
+   "vol_ratio": 2.99,
+   "fib_depth": 0.687,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun(55>99)",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0523
   },
   "tps_hit": [],
   "realized_r": 0.0,
