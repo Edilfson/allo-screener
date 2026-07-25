@@ -1,26 +1,20 @@
 """
-Binance EMA Pullback Screener + Pozisyon Takibi + Performans Ozeti
-===================================================================
-Telegram GRUBUNA (Topics/Konular acik supergroup) 3 ayri bolume mesaj atar:
-  1) SINYALLER  -> yeni kurulumlar (grafik + TP/Stop plani)
-  2) SONUCLAR   -> onceki sinyallerden TP'ye veya Stop'a ulasanlar
-  3) OZET       -> genel istatistik: toplam R, basari orani, EMA/zaman dilimi kirilimlari
+Binance Coklu-Strateji Screener v4 + Pozisyon Takibi + Performans Ozeti
+========================================================================
+Stratejiler (backtest v3'un 5-dilimli sonuclarina gore secildi):
+  - ob   [4h, 1d]  : Order Block geri testi  | TP: kosucu | Stop: fib786
+  - fvg  [2h, 4h]  : dolmamis FVG geri testi | TP: kosucu | Stop: fib786
+  - zone5599 [4h,1d]: EMA55-99 bandi temasi  | TP: klasik | Stop: fib786
+Her sinyal strateji etiketiyle kaydedilir -> ozet raporunda strateji bazinda
+canli A/B karsilastirmasi yapilir.
 
-Veri kaynagi: Binance'in resmi, kisitlamasiz spot veri aynasi (data-api.binance.vision).
+TP stilleri:
+  - kosucu: fib382'de %50, onceki zirvede %25, 1.618 uzatmada %25
+  - klasik: fib382 / zirve / 1.272 uzatma, 1/3-1/3-1/3
+Ilk TP sonrasi stop girise (BE) cekilir. Ayni mumda stop+TP: once stop (kotumser).
 
-Strateji:
-  - Son RALLY_MAX_DAYS gunde swing low -> swing high arasi >= RALLY_MIN_PCT yukselis
-  - Fiyat zirveden geri cekilmis (>= PULLBACK_MIN_PCT)
-  - EMA55 veya EMA99'a temas etmis/yaklasmis (<= TOUCH_TOLERANCE_PCT)
-  - Fib bazli 3 TP + yapisal stop, minimum MIN_RR risk/odul filtresi
-
-Pozisyon modeli (sonuc hesabinda kullanilan varsayim):
-  - Pozisyon 3 esit parcaya bolunur: 1/3 TP1, 1/3 TP2, 1/3 TP3
-  - TP1 gorulduyse stop giris seviyesine (breakeven) cekilir
-  - Ayni mumda hem stop hem TP goruldüyse KOTUMSER: once stop calisti sayilir
-
-UYARI: Yatirim tavsiyesi degildir. Sonuclar varsayimsal hesaplardir; gercek islem
-sonucu kayma (slippage), komisyon ve emir doldurma farklariyla degisir.
+Telegram Topics: SINYALLER / SONUCLAR / OZET (+ pazartesi icgoru raporu).
+UYARI: Yatirim tavsiyesi degildir; sonuclar varsayimsaldir (komisyon/kayma yok).
 """
 
 import json
@@ -36,21 +30,24 @@ matplotlib.use("Agg")
 import mplfinance as mpf
 
 # ==================== AYARLAR ====================
-INTERVALS = ["4h", "1d"]
+ALL_INTERVALS = ["2h", "4h", "1d"]
+STRATEGY_ORDER = ["ob", "fvg", "zone5599"]          # oncelik sirasi (OB en guclu)
+STRATEGY_INTERVALS = {"ob": ["4h", "1d"], "fvg": ["2h", "4h"], "zone5599": ["4h", "1d"]}
+TP_STYLE = {"ob": "kosucu", "fvg": "kosucu", "zone5599": "klasik"}
 EMA_PERIODS = [55, 99]
 
-RALLY_MIN_PCT = 0.50          # min %50 yukselis
-RALLY_MAX_DAYS = 30           # yukselis son kac gun icinde olmali
-PULLBACK_MIN_PCT = 0.05       # zirveden min geri cekilme
-TOUCH_TOLERANCE_PCT = 0.015   # EMA'ya bu mesafe = temas
-MIN_RR = 2.0                  # minimum odul/risk orani (backtest v2: RR2 kumesi iki donemde tutarli)
-MIN_STOP_DIST_PCT = 0.02      # stop girise en az bu kadar uzak olmali (gurultu korumasi)
-MOVE_STOP_TO_BE_AFTER_TP1 = True
+RALLY_MIN_PCT = 0.50
+RALLY_MAX_DAYS = 30
+PULLBACK_MIN_PCT = 0.05
+TOUCH_TOLERANCE_PCT = 0.02
+MIN_RR = 2.0
+MIN_STOP_DIST_PCT = 0.02
+MOVE_STOP_TO_BE = True
 
 LOOKBACK_CANDLES = 250
 CHART_CANDLES = 120
 DEDUP_COOLDOWN_HOURS = 20
-POSITION_MAX_DAYS = 45        # bu suredan sonra hala acik pozisyon zaman asimiyla kapanir
+POSITION_MAX_DAYS = 45
 
 STATE_FILE = "positions.json"
 CHART_DIR = "charts"
@@ -64,6 +61,10 @@ TOPIC_SUMMARY = os.environ.get("TOPIC_SUMMARY")
 SUMMARY_EVERY_RUN = os.environ.get("SUMMARY_EVERY_RUN", "0") == "1"
 
 
+def bars_per_day(iv):
+    return {"1h": 24, "2h": 12, "4h": 6, "12h": 2, "1d": 1}.get(iv, 6)
+
+
 # ==================== VERI ====================
 def get_usdt_symbols():
     r = requests.get(f"{BASE_URL}/api/v3/exchangeInfo", timeout=20)
@@ -74,7 +75,7 @@ def get_usdt_symbols():
                 and s.get("isSpotTradingAllowed", True)):
             base = s.get("baseAsset", "")
             if any(base.endswith(x) for x in ("UP", "DOWN", "BULL", "BEAR")):
-                continue  # kaldiracli tokenlar yaniltici
+                continue
             out.append(s["symbol"])
     return sorted(out)
 
@@ -102,13 +103,127 @@ def get_klines(symbol, interval, limit=LOOKBACK_CANDLES):
 
 def add_emas(df):
     for p in EMA_PERIODS:
-        df[f"ema{p}"] = df["close"].ewm(span=p, adjust=False).mean()
+        df[f"ema{p}"] = df["close"].ewm(span=p, adjust=False).mean().values
     return df
 
 
-# ==================== STRATEJI ====================
+# ==================== RALLY + STRATEJI TESPITI ====================
+def find_rally(df):
+    """Return: (ok, rally_pct, hi, lo, pullback_pct, days, hi_idx, lo_idx)"""
+    now_ts = df["close_time"].iloc[-1]
+    mask = df["close_time"] >= now_ts - pd.Timedelta(days=RALLY_MAX_DAYS)
+    start = int(np.argmax(mask.values))
+    closes = df["close"].values[start:]
+    times = df["close_time"].values[start:]
+    n = len(closes)
+    if n < 5:
+        return False, 0, 0, 0, 0, 0, 0, 0
+    mi = int(np.argmin(closes))
+    if mi >= n - 2:
+        return False, 0, 0, 0, 0, 0, 0, 0
+    ma_i = mi + int(np.argmax(closes[mi:]))
+    lo, hi = closes[mi], closes[ma_i]
+    if lo <= 0:
+        return False, 0, 0, 0, 0, 0, 0, 0
+    rpct = (hi - lo) / lo
+    days = (pd.Timestamp(times[ma_i]) - pd.Timestamp(times[mi])).total_seconds() / 86400
+    if rpct < RALLY_MIN_PCT:
+        return False, rpct, hi, lo, 0, days, 0, 0
+    pb = (hi - closes[-1]) / hi
+    return True, rpct, hi, lo, pb, days, start + ma_i, start + mi
+
+
+def detect_zone5599(df, hi_idx, lo_idx):
+    last = df.iloc[-1]
+    a, b = last["ema55"], last["ema99"]
+    zl, zh = min(a, b), max(a, b)
+    ok = zl * (1 - TOUCH_TOLERANCE_PCT) <= last["close"] <= zh * (1 + TOUCH_TOLERANCE_PCT)
+    return ok, (zl, zh)
+
+
+def detect_fvg(df, hi_idx, lo_idx):
+    """Rally bacagindaki dolmamis yukselis FVG'sine (low[j] > high[j-2]) temas."""
+    h = df["high"].values
+    l = df["low"].values
+    c = df["close"].values[-1]
+    i = len(df) - 1
+    if hi_idx <= lo_idx + 2 or i <= hi_idx:
+        return False, None
+    for j in range(hi_idx, lo_idx + 1, -1):
+        if j - 2 < 0:
+            break
+        if l[j] > h[j - 2]:
+            zl, zh = h[j - 2], l[j]
+            if i > hi_idx + 1 and l[hi_idx + 1:i].min() < zl:
+                continue
+            if zl <= c <= zh:
+                return True, (zl, zh)
+    return False, None
+
+
+def detect_ob(df, hi_idx, lo_idx):
+    """Order block: guclu kirilim oncesi son ayi mumunun bolgesine temas."""
+    o = df["open"].values
+    cl = df["close"].values
+    h = df["high"].values
+    l = df["low"].values
+    c = cl[-1]
+    i = len(df) - 1
+    if hi_idx <= lo_idx + 2 or i <= hi_idx:
+        return False, None
+    for j in range(hi_idx - 1, max(lo_idx - 3, 1), -1):
+        if cl[j] < o[j] and j + 1 <= hi_idx and cl[j + 1] > h[j]:
+            zl, zh = l[j], h[j]
+            if i > hi_idx + 1 and l[hi_idx + 1:i].min() < zl:
+                continue
+            if zl <= c <= zh:
+                return True, (zl, zh)
+    return False, None
+
+
+DETECTORS = {"zone5599": detect_zone5599, "fvg": detect_fvg, "ob": detect_ob}
+
+
+# ==================== PLAN (agirlikli TP) ====================
+def compute_trade_plan(swing_low, swing_high, entry, tp_style):
+    diff = swing_high - swing_low
+    if diff <= 0 or entry <= 0:
+        return None
+    stop = max(swing_high - diff * 0.786, swing_low * 0.999)
+    if stop >= entry:
+        return None
+    if (entry - stop) / entry < MIN_STOP_DIST_PCT:
+        stop = entry * (1 - MIN_STOP_DIST_PCT)
+    risk = entry - stop
+
+    fib382 = swing_high - diff * 0.382
+    ext1272 = swing_high + diff * 0.272
+    ext1618 = swing_high + diff * 0.618
+    if tp_style == "kosucu":
+        raw = [(fib382, 0.5), (swing_high, 0.25), (ext1618, 0.25)]
+    else:
+        raw = [(fib382, 1 / 3), (swing_high, 1 / 3), (ext1272, 1 / 3)]
+
+    tps = [(p, w) for p, w in raw if p > entry]
+    if not tps:
+        return None
+    tw = sum(w for _, w in tps)
+    tps = sorted([(p, w / tw) for p, w in tps])
+    if (tps[0][0] - entry) / risk < MIN_RR:
+        return None
+    return {"entry": entry, "stop": stop, "risk": risk,
+            "tps": [{"p": p, "w": w, "r": (p - entry) / risk, "hit": False} for p, w in tps]}
+
+
+def format_plan(plan, tp_style):
+    lines = [f"🛑 Stop: {plan['stop']:.6g}  (risk %{plan['risk']/plan['entry']*100:.2f}) | TP stili: {tp_style}"]
+    for i, tp in enumerate(plan["tps"], 1):
+        lines.append(f"🎯 TP{i} (%{tp['w']*100:.0f} pozisyon): {tp['p']:.6g}  → {tp['r']:.1f}R")
+    return "\n".join(lines)
+
+
+# ==================== BAGLAM ====================
 def calc_rsi(closes, period=14):
-    """Basit RSI hesabi (Wilder)."""
     if len(closes) < period + 1:
         return None
     deltas = np.diff(closes)
@@ -125,7 +240,6 @@ def calc_rsi(closes, period=14):
 
 
 def get_btc_regime():
-    """BTC 1D EMA99'a gore piyasa rejimi: 'boga' / 'ayi' / 'bilinmiyor'."""
     df = get_klines("BTCUSDT", "1d")
     if df is None:
         return "bilinmiyor", 0.0
@@ -136,32 +250,19 @@ def get_btc_regime():
 
 
 def compute_context(df, plan, swing_high, swing_low, btc_regime, btc_dist):
-    """Sinyal aninda piyasa baglamini kaydeder - ileride 'ne ise yariyor' analizi icin."""
     closes = df["close"].values
     last = df.iloc[-1]
-
-    # fib derinligi: giris, low-high araliginin neresinde? (0=zirve, 1=dip)
     diff = swing_high - swing_low
     fib_depth = (swing_high - plan["entry"]) / diff if diff > 0 else None
     if fib_depth is not None:
-        if fib_depth < 0.45:
-            fib_zone = "sig(0.382)"
-        elif fib_depth < 0.70:
-            fib_zone = "orta(0.5-0.618)"
-        else:
-            fib_zone = "derin(0.7+)"
+        fib_zone = ("sig(0.382)" if fib_depth < 0.45
+                    else "orta(0.5-0.618)" if fib_depth < 0.70 else "derin(0.7+)")
     else:
         fib_zone = "?"
-
-    # hacim: son mumun hacmi, 20 mum ortalamasina gore
     vol = df["volume"].values
     vol_ratio = float(vol[-1] / vol[-21:-1].mean()) if len(vol) > 21 and vol[-21:-1].mean() > 0 else None
-
-    # EMA dizilimi: 55 > 99 mu (saglikli trend) yoksa ters mi
     ema_align = "duzgun(55>99)" if last["ema55"] > last["ema99"] else "ters(55<99)"
-
     rsi = calc_rsi(closes)
-
     return {
         "rsi14": round(float(rsi), 1) if rsi is not None else None,
         "vol_ratio": round(float(vol_ratio), 2) if vol_ratio is not None else None,
@@ -173,177 +274,95 @@ def compute_context(df, plan, swing_high, swing_low, btc_regime, btc_dist):
     }
 
 
-def find_rally(df):
-    """Return: (ok, rally_pct, swing_high, swing_low, pullback_pct, rally_days)"""
-    now_ts = df["close_time"].iloc[-1]
-    win = df[df["close_time"] >= now_ts - pd.Timedelta(days=RALLY_MAX_DAYS)].reset_index(drop=True)
-    closes, times = win["close"].values, win["close_time"].values
-    n = len(closes)
-    if n < 5:
-        return False, 0, 0, 0, 0, 0
-
-    min_idx = int(np.argmin(closes))
-    if min_idx >= n - 2:
-        return False, 0, 0, 0, 0, 0
-    max_idx = min_idx + int(np.argmax(closes[min_idx:]))
-    lo, hi = closes[min_idx], closes[max_idx]
-    if lo <= 0:
-        return False, 0, 0, 0, 0, 0
-
-    rally_pct = (hi - lo) / lo
-    days = (pd.Timestamp(times[max_idx]) - pd.Timestamp(times[min_idx])).total_seconds() / 86400
-    if rally_pct < RALLY_MIN_PCT:
-        return False, rally_pct, hi, lo, 0, days
-    return True, rally_pct, hi, lo, (hi - closes[-1]) / hi, days
-
-
-def ema_distances(dfs):
-    rows = []
-    for interval, df in dfs.items():
-        if df is None:
-            continue
-        last = df.iloc[-1]
-        for p in EMA_PERIODS:
-            ema = last[f"ema{p}"]
-            rows.append({"interval": interval, "ema_period": p, "ema_val": ema,
-                         "dist_pct": abs(last["close"] - ema) / ema})
-    return rows
-
-
-def format_ema_lines(rows):
-    if not rows:
-        return ""
-    closest = min(range(len(rows)), key=lambda i: rows[i]["dist_pct"])
-    return "\n".join(
-        f"{'🎯' if i == closest else '📍'} {r['interval']} EMA{r['ema_period']}: "
-        f"{r['ema_val']:.6g} (mesafe %{r['dist_pct']*100:.2f})"
-        for i, r in enumerate(rows))
-
-
-def compute_trade_plan(swing_low, swing_high, entry):
-    """Fib bazli 3 TP + yapisal stop. MIN_RR saglanamiyorsa None -> sinyal atlanir."""
-    diff = swing_high - swing_low
-    if diff <= 0 or entry <= 0:
-        return None
-
-    tp1 = swing_high - diff * 0.382     # orta direnc
-    tp2 = swing_high                    # onceki zirve
-    tp3 = swing_high + diff * 0.272     # devam / uzatma
-    fib_786 = swing_high - diff * 0.786
-
-    stop = max(fib_786, swing_low * 0.999)
-    if stop >= entry:
-        return None
-
-    # stop cok dar kalmasin (gurultuye yem olmasin)
-    if (entry - stop) / entry < MIN_STOP_DIST_PCT:
-        stop = entry * (1 - MIN_STOP_DIST_PCT)
-
-    risk = entry - stop
-    if risk <= 0:
-        return None
-
-    tps = [t for t in (tp1, tp2, tp3) if t > entry]
-    if not tps:
-        return None
-
-    # MIN_RR filtresi: yeterli R yoksa bu kurulumu hic alma
-    if (min(tps) - entry) / risk < MIN_RR:
-        return None
-
-    return {"entry": entry, "stop": stop, "risk": risk,
-            "tp1": tp1, "r1": (tp1 - entry) / risk,
-            "tp2": tp2, "r2": (tp2 - entry) / risk,
-            "tp3": tp3, "r3": (tp3 - entry) / risk}
-
-
-def format_plan(plan):
-    lines = [f"🛑 Stop: {plan['stop']:.6g}  (risk %{plan['risk']/plan['entry']*100:.2f})"]
-    for lbl, tp, r in [("TP1 orta direnc", plan["tp1"], plan["r1"]),
-                       ("TP2 onceki zirve", plan["tp2"], plan["r2"]),
-                       ("TP3 devam", plan["tp3"], plan["r3"])]:
-        if tp > plan["entry"]:
-            lines.append(f"🎯 {lbl}: {tp:.6g}  → {r:.1f}R")
-    return "\n".join(lines)
-
-
 # ==================== POZISYON TAKIBI ====================
+def migrate_position(pos):
+    """Eski (tp1..r3, 1/3'luk) semayi yeni agirlikli tps semasina cevirir."""
+    if "tps" in pos:
+        return pos
+    tps = []
+    for i in (1, 2, 3):
+        if f"tp{i}" in pos:
+            tps.append({"p": pos[f"tp{i}"], "w": 1 / 3, "r": pos.get(f"r{i}", 0.0),
+                        "hit": i in pos.get("tps_hit", [])})
+    pos["tps"] = tps
+    pos.setdefault("strategy", str(pos.get("ema_period", "eski")))
+    return pos
+
+
 def evaluate_position(pos, df):
-    """Acik pozisyonu acilistan sonraki mumlara gore degerlendirir.
-    Return: (pos, events) - events bu turda yeni gerceklesen olaylar."""
     events = []
     opened = pd.Timestamp(pos["opened_at"])
     future = df[df["close_time"] > opened]
     if future.empty:
         return pos, events
 
-    entry = pos["entry"]
+    entry, risk = pos["entry"], pos["risk"]
     stop = pos["current_stop"]
-    hit = set(pos.get("tps_hit", []))
+    tps = pos["tps"]
 
-    for _, c in future.iterrows():
-        # KOTUMSER: ayni mumda ikisi de varsa once stop calisti say
-        if c["low"] <= stop:
-            if not hit:
+    for _, cndl in future.iterrows():
+        if cndl["low"] <= stop:
+            rem = sum(t["w"] for t in tps if not t["hit"])
+            done = sum(t["w"] * t["r"] for t in tps if t["hit"])
+            if not any(t["hit"] for t in tps):
                 pos["realized_r"] = -1.0
                 pos["status"] = "stopped"
                 events.append("🛑 STOP oldu (-1.0R)")
             else:
-                realized = sum(pos[f"r{i}"] for i in hit) / 3.0
-                pos["realized_r"] = realized
-                pos["status"] = "closed_be" if MOVE_STOP_TO_BE_AFTER_TP1 else "stopped"
-                events.append(f"🔒 Kalan kisim "
-                              f"{'BE' if MOVE_STOP_TO_BE_AFTER_TP1 else 'stop'}'ta kapandi "
-                              f"(toplam {realized:+.2f}R)")
-            pos["closed_at"] = c["close_time"].isoformat()
-            pos["tps_hit"] = sorted(hit)
+                pos["realized_r"] = done + rem * (stop - entry) / risk
+                pos["status"] = "closed_be" if stop >= entry else "stopped"
+                events.append(f"🔒 Kalan %{rem*100:.0f} kapandi (toplam {pos['realized_r']:+.2f}R)")
+            pos["closed_at"] = cndl["close_time"].isoformat()
             pos["current_stop"] = stop
             return pos, events
 
-        for i in (1, 2, 3):
-            if i not in hit and c["high"] >= pos[f"tp{i}"]:
-                hit.add(i)
-                events.append(f"✅ TP{i} vuruldu ({pos[f'r{i}']:.1f}R, 1/3 pozisyon)")
-                if i == 1 and MOVE_STOP_TO_BE_AFTER_TP1:
+        for i, t in enumerate(tps, 1):
+            if not t["hit"] and cndl["high"] >= t["p"]:
+                t["hit"] = True
+                events.append(f"✅ TP{i} vuruldu ({t['r']:.1f}R, %{t['w']*100:.0f} pozisyon)")
+                if MOVE_STOP_TO_BE and stop < entry:
                     stop = entry
-                    events.append("🔁 Stop giris seviyesine (BE) cekildi")
+                    events.append("🔁 Stop girise (BE) cekildi")
 
-        if 3 in hit:
-            pos["realized_r"] = sum(pos[f"r{i}"] for i in (1, 2, 3)) / 3.0
+        if all(t["hit"] for t in tps):
+            pos["realized_r"] = sum(t["w"] * t["r"] for t in tps)
             pos["status"] = "target_done"
-            pos["closed_at"] = c["close_time"].isoformat()
-            pos["tps_hit"] = sorted(hit)
+            pos["closed_at"] = cndl["close_time"].isoformat()
             pos["current_stop"] = stop
             events.append(f"🏁 Tum hedefler tamamlandi ({pos['realized_r']:+.2f}R)")
             return pos, events
 
-    pos["tps_hit"] = sorted(hit)
     pos["current_stop"] = stop
-    pos["unrealized_r"] = (float(future["close"].iloc[-1]) - entry) / pos["risk"]
+    done = sum(t["w"] * t["r"] for t in tps if t["hit"])
+    rem = sum(t["w"] for t in tps if not t["hit"])
+    last_close = float(future["close"].iloc[-1])
+    pos["unrealized_r"] = done + rem * (last_close - entry) / risk
 
     age_days = (datetime.now(timezone.utc) - opened.to_pydatetime()).total_seconds() / 86400
     if age_days > POSITION_MAX_DAYS and pos["status"] == "open":
-        realized = sum(pos[f"r{i}"] for i in hit) / 3.0 if hit else pos["unrealized_r"] / 3.0
-        pos["realized_r"] = realized
+        pos["realized_r"] = pos["unrealized_r"]
         pos["status"] = "timeout"
         pos["closed_at"] = datetime.now(timezone.utc).isoformat()
-        events.append(f"⏳ {POSITION_MAX_DAYS} gun doldu, kapatildi ({realized:+.2f}R)")
-
+        events.append(f"⏳ {POSITION_MAX_DAYS} gun doldu, kapatildi ({pos['realized_r']:+.2f}R)")
     return pos, events
+
+
+# ==================== OZET / ICGORU ====================
+def _grp_line(name, grp):
+    r = sum(p.get("realized_r", 0) for p in grp)
+    w = len([p for p in grp if p.get("realized_r", 0) > 0])
+    return f"  {name}: {len(grp)} islem | {r:+.2f}R | basari %{w/len(grp)*100:.0f}"
 
 
 def build_summary(positions):
     closed = [p for p in positions if p["status"] != "open"]
     open_ps = [p for p in positions if p["status"] == "open"]
-
     if not closed:
-        return (f"📊 <b>OZET</b>\n\nHenuz kapanmis pozisyon yok.\n"
-                f"Acik pozisyon: {len(open_ps)}")
+        return f"📊 <b>OZET</b>\n\nHenuz kapanmis pozisyon yok.\nAcik pozisyon: {len(open_ps)}"
 
     total_r = sum(p.get("realized_r", 0) for p in closed)
     wins = [p for p in closed if p.get("realized_r", 0) > 0]
     losses = [p for p in closed if p.get("realized_r", 0) <= 0]
-
     lines = [
         "📊 <b>GENEL OZET</b>",
         f"Kapanan: {len(closed)} islem | Acik: {len(open_ps)}",
@@ -355,28 +374,24 @@ def build_summary(positions):
     if losses:
         lines.append(f"Ort. kayip: {sum(p['realized_r'] for p in losses)/len(losses):+.2f}R")
 
-    lines.append("\n<b>EMA bazinda</b>")
-    for ema in sorted(set(str(p["ema_period"]) for p in closed)):
-        g = [p for p in closed if str(p["ema_period"]) == ema]
+    lines.append("\n<b>Strateji bazinda (canli A/B)</b>")
+    for st in sorted(set(p.get("strategy", str(p.get("ema_period", "?"))) for p in closed)):
+        g = [p for p in closed if p.get("strategy", str(p.get("ema_period", "?"))) == st]
         if g:
-            r = sum(p.get("realized_r", 0) for p in g)
-            w = len([p for p in g if p.get("realized_r", 0) > 0])
-            lines.append(f"  EMA{ema}: {len(g)} islem | {r:+.2f}R | basari %{w/len(g)*100:.0f}")
+            lines.append(_grp_line(st, g))
 
     lines.append("\n<b>Zaman dilimi bazinda</b>")
-    for iv in INTERVALS:
+    for iv in ALL_INTERVALS:
         g = [p for p in closed if p["interval"] == iv]
         if g:
-            r = sum(p.get("realized_r", 0) for p in g)
-            w = len([p for p in g if p.get("realized_r", 0) > 0])
-            lines.append(f"  {iv}: {len(g)} islem | {r:+.2f}R | basari %{w/len(g)*100:.0f}")
+            lines.append(_grp_line(iv, g))
 
     lines.append("\n<b>Kapanis turu</b>")
-    for st, lbl in [("stopped", "🛑 Stop"), ("closed_be", "🔒 BE/kismi"),
-                    ("target_done", "🏁 Tum TP"), ("timeout", "⏳ Zaman asimi")]:
+    for st, lb in [("stopped", "🛑 Stop"), ("closed_be", "🔒 BE/kismi"),
+                   ("target_done", "🏁 Tum TP"), ("timeout", "⏳ Zaman asimi")]:
         g = [p for p in closed if p["status"] == st]
         if g:
-            lines.append(f"  {lbl}: {len(g)} islem | {sum(p.get('realized_r',0) for p in g):+.2f}R")
+            lines.append(f"  {lb}: {len(g)} islem | {sum(p.get('realized_r',0) for p in g):+.2f}R")
 
     best = max(closed, key=lambda p: p.get("realized_r", 0))
     worst = min(closed, key=lambda p: p.get("realized_r", 0))
@@ -386,84 +401,55 @@ def build_summary(positions):
     if open_ps:
         lines.append("\n<b>Acik pozisyonlar</b>")
         for p in sorted(open_ps, key=lambda x: x.get("unrealized_r", 0), reverse=True)[:10]:
-            tps = "".join(f"✅{i}" for i in p.get("tps_hit", [])) or "—"
-            lines.append(f"  {p['symbol']} {p['interval']} EMA{p['ema_period']}: "
-                         f"{p.get('unrealized_r',0):+.2f}R {tps}")
+            hits = "".join(f"✅{i}" for i, t in enumerate(p["tps"], 1) if t["hit"]) or "—"
+            lines.append(f"  {p['symbol']} {p['interval']} {p.get('strategy','?')}: "
+                         f"{p.get('unrealized_r',0):+.2f}R {hits}")
 
-    lines.append("\n<i>Varsayimsal: her TP'de 1/3 kapanis, TP1 sonrasi stop BE. "
+    lines.append("\n<i>Varsayimsal: agirlikli TP kapanislari, ilk TP sonrasi stop BE. "
                  "Komisyon/kayma dahil degil.</i>")
     return "\n".join(lines)
 
 
 def build_insights(positions):
-    """Kapanan islemleri baglam boyutlarina gore analiz eder: hangi kosullarda
-    strateji iyi/kotu calisiyor? (Haftalik icgoru raporu)"""
     closed = [p for p in positions if p["status"] != "open" and p.get("context")]
     if len(closed) < 5:
         return (f"🔬 <b>ICGORU RAPORU</b>\n\nHenuz yeterli veri yok "
-                f"({len(closed)} kapanmis islem, en az 5 gerekli).\n"
-                f"Veri biriktikce bu rapor hangi kosullarin ise yaradigini gosterecek.")
-
-    def bucket_stats(items):
+                f"({len(closed)} kapanmis islem, en az 5 gerekli).")
+    def bstat(items):
         if not items:
             return None
         r = sum(p.get("realized_r", 0) for p in items)
         w = len([p for p in items if p.get("realized_r", 0) > 0])
         return f"{len(items)} islem | {r:+.2f}R | ort {r/len(items):+.2f}R | basari %{w/len(items)*100:.0f}"
-
-    lines = ["🔬 <b>ICGORU RAPORU</b>",
-             f"(Toplam {len(closed)} kapanmis islem uzerinden)\n"]
-
-    # 1) Fib bolgesi
-    lines.append("<b>Giris derinligi (fib bolgesi)</b>")
-    for zone in ["sig(0.382)", "orta(0.5-0.618)", "derin(0.7+)"]:
-        s = bucket_stats([p for p in closed if p["context"].get("fib_zone") == zone])
+    lines = ["🔬 <b>ICGORU RAPORU</b>", f"(Toplam {len(closed)} kapanmis islem)\n"]
+    lines.append("<b>Strateji</b>")
+    for st in sorted(set(p.get("strategy", "?") for p in closed)):
+        s = bstat([p for p in closed if p.get("strategy") == st])
         if s:
-            lines.append(f"  {zone}: {s}")
-
-    # 2) BTC rejimi
-    lines.append("\n<b>BTC rejimi (1D EMA99)</b>")
-    for reg in ["boga", "ayi"]:
-        s = bucket_stats([p for p in closed if p["context"].get("btc_regime") == reg])
+            lines.append(f"  {st}: {s}")
+    lines.append("\n<b>Fib bolgesi</b>")
+    for z in ["sig(0.382)", "orta(0.5-0.618)", "derin(0.7+)"]:
+        s = bstat([p for p in closed if p["context"].get("fib_zone") == z])
         if s:
-            lines.append(f"  {reg}: {s}")
-
-    # 3) RSI araligi
-    lines.append("\n<b>Giris ani RSI(14)</b>")
-    for lbl, lo_r, hi_r in [("asiri satim <35", 0, 35), ("notr 35-55", 35, 55),
-                            ("guclu 55+", 55, 101)]:
-        grp = [p for p in closed
-               if p["context"].get("rsi14") is not None and lo_r <= p["context"]["rsi14"] < hi_r]
-        s = bucket_stats(grp)
+            lines.append(f"  {z}: {s}")
+    lines.append("\n<b>BTC rejimi</b>")
+    for rg in ["boga", "ayi"]:
+        s = bstat([p for p in closed if p["context"].get("btc_regime") == rg])
         if s:
-            lines.append(f"  {lbl}: {s}")
-
-    # 4) Hacim
-    lines.append("\n<b>Giris mumu hacmi (20 mum ort. gore)</b>")
-    for lbl, lo_v, hi_v in [("dusuk <0.8x", 0, 0.8), ("normal 0.8-1.5x", 0.8, 1.5),
-                            ("yuksek 1.5x+", 1.5, 999)]:
-        grp = [p for p in closed
-               if p["context"].get("vol_ratio") is not None and lo_v <= p["context"]["vol_ratio"] < hi_v]
-        s = bucket_stats(grp)
+            lines.append(f"  {rg}: {s}")
+    lines.append("\n<b>RSI(14)</b>")
+    for lb, lo_r, hi_r in [("asiri satim <35", 0, 35), ("notr 35-55", 35, 55), ("guclu 55+", 55, 101)]:
+        g = [p for p in closed if p["context"].get("rsi14") is not None
+             and lo_r <= p["context"]["rsi14"] < hi_r]
+        s = bstat(g)
         if s:
-            lines.append(f"  {lbl}: {s}")
-
-    # 5) EMA dizilimi
-    lines.append("\n<b>EMA dizilimi</b>")
-    for al in ["duzgun(55>99)", "ters(55<99)"]:
-        s = bucket_stats([p for p in closed if p["context"].get("ema_align") == al])
-        if s:
-            lines.append(f"  {al}: {s}")
-
-    # en belirgin farki isaretle (yeterli ornek varsa)
-    lines.append("\n<i>Not: 20'den az islem iceren gruplar istatistiksel olarak "
-                 "guvenilir degildir - erken sonuc cikarma. Bu rapor oneri degil, "
-                 "gozlem sunar; parametre degisikligine sen karar verirsin.</i>")
+            lines.append(f"  {lb}: {s}")
+    lines.append("\n<i>20'den az islemli gruplardan sonuc cikarma; bu rapor oneri degil gozlemdir.</i>")
     return "\n".join(lines)
 
 
 # ==================== GRAFIK ====================
-def make_chart(df, symbol, interval, ema_period, plan):
+def make_chart(df, symbol, interval, strategy, plan):
     os.makedirs(CHART_DIR, exist_ok=True)
     d = df.tail(CHART_CANDLES).copy()
     d = d.set_index(pd.DatetimeIndex(d["close_time"]))
@@ -471,12 +457,12 @@ def make_chart(df, symbol, interval, ema_period, plan):
                           "close": "Close", "volume": "Volume"})
     aps = [mpf.make_addplot(d[f"ema{p}"], color={55: "orange", 99: "purple"}[p], width=1.1)
            for p in EMA_PERIODS]
-    hl = dict(hlines=[plan["stop"], plan["entry"], plan["tp1"], plan["tp2"], plan["tp3"]],
-              colors=["red", "white", "#90ee90", "#2ecc71", "#f1c40f"],
-              linestyle="--", linewidths=1.0)
+    prices = [plan["stop"], plan["entry"]] + [t["p"] for t in plan["tps"]]
+    colors = ["red", "white", "#90ee90", "#2ecc71", "#f1c40f"][:len(prices)]
+    hl = dict(hlines=prices, colors=colors, linestyle="--", linewidths=1.0)
     path = os.path.join(CHART_DIR, f"{symbol}_{interval}.png")
     mpf.plot(d, type="candle", style="binance", addplot=aps, volume=True,
-             title=f"{symbol} - {interval}  (EMA{ema_period} temasi)",
+             title=f"{symbol} - {interval}  [{strategy.upper()}]",
              hlines=hl, savefig=dict(fname=path, dpi=130, bbox_inches="tight"))
     return path
 
@@ -520,7 +506,8 @@ def load_positions():
     if os.path.exists(STATE_FILE):
         try:
             with open(STATE_FILE) as f:
-                return json.load(f)
+                ps = json.load(f)
+            return [migrate_position(p) for p in ps]
         except Exception:
             return []
     return []
@@ -536,7 +523,6 @@ def main():
     positions = load_positions()
     now = datetime.now(timezone.utc)
 
-    # ---- 1) ACIK POZISYONLARI GUNCELLE ----
     open_ps = [p for p in positions if p["status"] == "open"]
     print(f"{len(open_ps)} acik pozisyon kontrol ediliyor...")
     for pos in open_ps:
@@ -545,22 +531,21 @@ def main():
             continue
         _, events = evaluate_position(pos, df)
         if events:
-            head = (f"📌 <b>{pos['symbol']}</b> {pos['interval']} EMA{pos['ema_period']}\n"
+            head = (f"📌 <b>{pos['symbol']}</b> {pos['interval']} [{pos.get('strategy','?')}]\n"
                     f"Giris: {pos['entry']:.6g} | Acilis: {pos['opened_at'][:10]}")
             tg_send(head + "\n" + "\n".join(events), TOPIC_RESULTS)
         time.sleep(0.05)
 
-    # ---- 2) YENI SINYALLERI TARA ----
     symbols = get_usdt_symbols()
     print(f"{len(symbols)} sembol taranacak...")
     btc_regime, btc_dist = get_btc_regime()
-    print(f"BTC rejimi: {btc_regime} (EMA99 mesafe: %{btc_dist*100:.1f})")
+    print(f"BTC rejimi: {btc_regime} (%{btc_dist*100:.1f})")
     new_count = 0
 
     for symbol in symbols:
         try:
             if any(p["symbol"] == symbol and p["status"] == "open" for p in positions):
-                continue  # zaten acik pozisyon var
+                continue
             recent = [p for p in positions if p["symbol"] == symbol]
             if recent:
                 last = max(pd.Timestamp(p["opened_at"]) for p in recent)
@@ -568,7 +553,7 @@ def main():
                     continue
 
             dfs, rallies = {}, {}
-            for iv in INTERVALS:
+            for iv in ALL_INTERVALS:
                 df = get_klines(symbol, iv)
                 dfs[iv] = add_emas(df) if df is not None else None
                 if dfs[iv] is not None:
@@ -576,26 +561,28 @@ def main():
                 time.sleep(0.04)
 
             trigger = None
-            for iv, (ok, rpct, hi, lo, pb, days) in rallies.items():
-                if not ok or pb < PULLBACK_MIN_PCT:
-                    continue
-                last = dfs[iv].iloc[-1]
-                # ZONE5599: fiyat EMA55-EMA99 bandinin (tolerans dahil) icinde mi?
-                band_lo = min(last["ema55"], last["ema99"])
-                band_hi = max(last["ema55"], last["ema99"])
-                in_zone = (band_lo * (1 - TOUCH_TOLERANCE_PCT)
-                           <= last["close"] <= band_hi * (1 + TOUCH_TOLERANCE_PCT))
-                if in_zone:
-                    plan = compute_trade_plan(lo, hi, float(last["close"]))
+            for strat in STRATEGY_ORDER:
+                for iv in STRATEGY_INTERVALS[strat]:
+                    if dfs.get(iv) is None or iv not in rallies:
+                        continue
+                    ok, rpct, hi, lo, pb, days, hi_idx, lo_idx = rallies[iv]
+                    if not ok or pb < PULLBACK_MIN_PCT:
+                        continue
+                    hit, _zone = DETECTORS[strat](dfs[iv], hi_idx, lo_idx)
+                    if not hit:
+                        continue
+                    plan = compute_trade_plan(lo, hi, float(dfs[iv].iloc[-1]["close"]),
+                                              TP_STYLE[strat])
                     if plan:
-                        trigger = (iv, rpct, hi, lo, pb, days, plan)
+                        trigger = (strat, iv, rpct, hi, lo, pb, days, plan)
                         break
+                if trigger:
+                    break
 
             if not trigger:
                 continue
 
-            iv, rpct, hi, lo, pb, days, plan = trigger
-            ema_p = "55-99"
+            strat, iv, rpct, hi, lo, pb, days, plan = trigger
             ctx = compute_context(dfs[iv], plan, hi, lo, btc_regime, btc_dist)
 
             last = dfs[iv].iloc[-1]
@@ -603,20 +590,21 @@ def main():
             lower_wick = min(last["close"], last["open"]) - last["low"]
             q_ok = (body > 0 and lower_wick >= body) or last["close"] >= max(last["ema55"], last["ema99"])
             quality_line = "Kalite: " + ("✅ fitil/band ustu" if q_ok else "⚠️ zayif mum")
+
             ctx_line = (f"\n\n🧭 RSI:{ctx['rsi14']} | Hacim:{ctx['vol_ratio']}x | "
                         f"Fib:{ctx['fib_zone']} | {ctx['ema_align']} | BTC:{ctx['btc_regime']}\n"
                         f"{quality_line} | Onay: sonraki yesil kapanis hafif avantajli (bilgi)")
 
-            msg = (f"🔔 <b>{symbol}</b>  [{iv} / EMA55-99 bolgesi]\n"
+            strat_lbl = {"ob": "ORDER BLOCK", "fvg": "FVG", "zone5599": "EMA55-99 bolgesi"}[strat]
+            msg = (f"🔔 <b>{symbol}</b>  [{iv} / {strat_lbl}]\n"
                    f"Yukselis: %{rpct*100:.1f} ({days:.1f} gunde)\n"
                    f"Zirve {hi:.6g} → simdi {plan['entry']:.6g} (%{pb*100:.1f} geri cekildi)\n\n"
-                   + format_ema_lines(ema_distances(dfs))
-                   + "\n\n📋 <b>Islem Plani</b>\n" + format_plan(plan)
+                   f"📋 <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
                    + ctx_line)
 
             sent = False
             try:
-                chart = make_chart(dfs[iv], symbol, iv, ema_p, plan)
+                chart = make_chart(dfs[iv], symbol, iv, strat, plan)
                 sent = tg_photo(chart, msg, TOPIC_SIGNALS)
             except Exception as e:
                 print(f"{symbol} grafik hatasi: {e}")
@@ -624,15 +612,13 @@ def main():
                 tg_send(msg, TOPIC_SIGNALS)
 
             positions.append({
-                "symbol": symbol, "interval": iv, "ema_period": ema_p,
+                "symbol": symbol, "interval": iv, "strategy": strat,
+                "ema_period": strat,
                 "opened_at": now.isoformat(), "status": "open",
                 "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
-                "risk": plan["risk"],
-                "tp1": plan["tp1"], "tp2": plan["tp2"], "tp3": plan["tp3"],
-                "r1": plan["r1"], "r2": plan["r2"], "r3": plan["r3"],
-                "rally_pct": rpct, "rally_days": days,
-                "context": ctx,
-                "tps_hit": [], "realized_r": 0.0, "unrealized_r": 0.0,
+                "risk": plan["risk"], "tps": plan["tps"],
+                "rally_pct": rpct, "rally_days": days, "context": ctx,
+                "realized_r": 0.0, "unrealized_r": 0.0,
             })
             new_count += 1
 
@@ -642,10 +628,8 @@ def main():
 
     print(f"{new_count} yeni sinyal.")
 
-    # ---- 3) OZET ----
     if SUMMARY_EVERY_RUN or now.hour < 4:
         tg_send(build_summary(positions), TOPIC_SUMMARY)
-        # haftalik icgoru raporu: pazartesi gunleri (veya SUMMARY_EVERY_RUN acikken)
         if SUMMARY_EVERY_RUN or now.weekday() == 0:
             tg_send(build_insights(positions), TOPIC_SUMMARY)
 
