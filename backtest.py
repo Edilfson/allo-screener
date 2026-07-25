@@ -1,62 +1,63 @@
 """
-Backtest v2 - Genisletilmis parametre yarisi
-=============================================
-Yaristirilan boyutlar:
-  - MA turu: EMA21 / EMA55 / EMA99 / EMA144 / EMA200 / SMA200 / ZONE(EMA55-99 bandi)
-  - Temas toleransi: %1.5 / %2.5
-  - Min RR: 2 / 3
-  - Giris modu: temasta (sinyal mumu kapanisi) vs onayda (sonraki 3 mumdaki ilk yesil kapanis)
-  - Stop modu: fib (0.786/swing low) vs atr (giris - 1.5*ATR14)
-  - Kalite filtresi: acik/kapali (uzun alt fitil VEYA MA ustunde kapanis sarti)
-Sabit: rally >= %50 (iki onceki testin ortak bulgusu), pullback >= %5.
-
-Ek: her islem, acildigi andaki BTC rejimiyle (1D EMA99 ustu=boga / alti=ayi)
-etiketlenir; rapor boga/ayi kirilimini gosterir. Rejim sinyal KAPATMAZ, sadece olcum.
-
-Calistirma: Actions > Backtest > Run workflow (interval: 4h veya 1d)
+Backtest v3 - Strateji + TP/Stop cesitliligi yarisi
+====================================================
+Zaman dilimleri (ayri ayri calistir): 1h, 2h, 4h, 12h, 1d
+Giris stratejileri (7):
+  - ema7 / ema21 / ema55 / ema99 pullback temasi
+  - zone5599 (EMA55-99 bandi)
+  - fvg: rally bacagindaki dolmamis yukselis FVG'sine (fair value gap) geri test
+  - ob: order block - guclu yukselisten onceki son ayi mumunun bolgesine geri test
+TP stilleri (4):
+  - klasik: fib382 / onceki zirve / 1.272 uzatma, 1/3-1/3-1/3
+  - r_katlari: +2R / +4R / +6R, 1/3-1/3-1/3
+  - kosucu: fib382 %50 / zirve %25 / 1.618 uzatma %25
+  - tek_hedef: tamami onceki zirvede
+Stop stilleri (3):
+  - fib786: zirve - 0.786*bacak (swing low taban)
+  - atr2: giris - 2*ATR14
+  - yapi: MA stratejilerinde fib786/swing-low; FVG/OB'de bolgenin alti
+Sabit: rally >= %50, pullback >= %5, min RR 2 (en yakin TP), tolerans %2.
+Toplam: 7 x 4 x 3 = 84 kombinasyon / zaman dilimi.
+Sonuc: backtest_results.json + repoya results/bt3_<interval>.json commit edilir.
 
 UYARI: Gecmis performans gelecegi garanti etmez; komisyon/kayma dahil degildir.
-En iyi tek kombinasyona degil, iyi kumelerin ORTAK ozelliklerine bak.
 """
 
 import itertools
 import json
 import os
 import time
-from datetime import datetime, timezone
 
 import numpy as np
 import pandas as pd
 import requests
 
 BASE_URL = "https://data-api.binance.vision"
-
 BT_INTERVAL = os.environ.get("BT_INTERVAL", "4h")
 BT_SYMBOL_COUNT = int(os.environ.get("BT_SYMBOL_COUNT", "60"))
 BT_CANDLES = 1000
-WARMUP = 210
+WARMUP = 120
 COOLDOWN_BARS = 6
 MAX_HOLD_BARS = 270
 
 RALLY_MIN_PCT = 0.50
 PULLBACK_MIN_PCT = 0.05
 RALLY_MAX_DAYS = 30
+TOUCH_TOL = 0.02
+MIN_RR = 2.0
 MIN_STOP_DIST_PCT = 0.02
-MOVE_STOP_TO_BE = True
 
-MA_OPTIONS = ["ema21", "ema55", "ema99", "ema144", "ema200", "sma200", "zone5599"]
-PARAM_GRID = {
-    "ma": MA_OPTIONS,
-    "touch_tol": [0.015, 0.025],
-    "min_rr": [2.0, 3.0],
-    "entry_mode": ["temasta", "onayda"],
-    "stop_mode": ["fib", "atr"],
-    "quality": [False, True],
-}
+STRATEGIES = ["ema7", "ema21", "ema55", "ema99", "zone5599", "fvg", "ob"]
+TP_STYLES = ["klasik", "r_katlari", "kosucu", "tek_hedef"]
+STOP_STYLES = ["fib786", "atr2", "yapi"]
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 TOPIC_SUMMARY = os.environ.get("TOPIC_SUMMARY")
+
+
+def bars_per_day(iv):
+    return {"1h": 24, "2h": 12, "4h": 6, "12h": 2, "1d": 1}.get(iv, 6)
 
 
 def get_top_symbols(n):
@@ -79,23 +80,22 @@ def get_top_symbols(n):
 
 def get_klines(symbol, interval, limit=BT_CANDLES):
     try:
-        r = requests.get(f"{BASE_URL}/api/v3/klines", params={"symbol": symbol, "interval": interval, "limit": limit}, timeout=30)
+        r = requests.get(f"{BASE_URL}/api/v3/klines",
+                         params={"symbol": symbol, "interval": interval, "limit": limit},
+                         timeout=30)
         if r.status_code != 200:
             return None
         raw = r.json()
         if not raw or len(raw) < WARMUP + 60:
             return None
-        df = pd.DataFrame(raw, columns=["open_time", "open", "high", "low", "close", "volume", "close_time", "qav", "trades", "tbbav", "tbqav", "ignore"])
+        df = pd.DataFrame(raw, columns=[
+            "open_time", "open", "high", "low", "close", "volume",
+            "close_time", "qav", "trades", "tbbav", "tbqav", "ignore"])
         for c in ["open", "high", "low", "close", "volume"]:
             df[c] = df[c].astype(float)
-        df["close_time"] = pd.to_datetime(df["close_time"], unit="ms", utc=True)
         return df
     except Exception:
         return None
-
-
-def bars_per_day(interval):
-    return {"1h": 24, "4h": 6, "1d": 1}.get(interval, 6)
 
 
 def calc_atr(highs, lows, closes, period=14):
@@ -110,25 +110,26 @@ def calc_atr(highs, lows, closes, period=14):
     return atr
 
 
-def precompute_symbol(df, interval):
+def precompute(df, iv):
     closes = df["close"].values
     opens = df["open"].values
     highs = df["high"].values
     lows = df["low"].values
-    times = df["close_time"].values.astype("datetime64[s]").astype(np.int64)
     mas = {}
     s = pd.Series(closes)
-    for p in (21, 55, 99, 144, 200):
+    for p in (7, 21, 55, 99):
         mas[f"ema{p}"] = s.ewm(span=p, adjust=False).mean().values
-    mas["sma200"] = s.rolling(200).mean().values
     atr = calc_atr(highs, lows, closes)
-    win = int(RALLY_MAX_DAYS * bars_per_day(interval))
+    win = int(RALLY_MAX_DAYS * bars_per_day(iv))
     n = len(closes)
     rally_ok = np.zeros(n, dtype=bool)
     sw_hi = np.zeros(n)
     sw_lo = np.zeros(n)
+    hi_idx = np.zeros(n, dtype=int)
+    lo_idx = np.zeros(n, dtype=int)
     for i in range(WARMUP, n):
-        seg = closes[max(0, i - win):i + 1]
+        st = max(0, i - win)
+        seg = closes[st:i + 1]
         mi = int(np.argmin(seg))
         if mi >= len(seg) - 2:
             continue
@@ -141,143 +142,151 @@ def precompute_symbol(df, interval):
         rally_ok[i] = True
         sw_hi[i] = hi
         sw_lo[i] = lo
-    return {"closes": closes, "opens": opens, "highs": highs, "lows": lows, "times": times, "mas": mas, "atr": atr, "rally_ok": rally_ok, "sw_hi": sw_hi, "sw_lo": sw_lo}
+        hi_idx[i] = st + ma_i
+        lo_idx[i] = st + mi
+    return {"c": closes, "o": opens, "h": highs, "l": lows, "mas": mas, "atr": atr,
+            "rally_ok": rally_ok, "sw_hi": sw_hi, "sw_lo": sw_lo,
+            "hi_idx": hi_idx, "lo_idx": lo_idx}
 
 
-def get_btc_regime_lookup(interval):
-    df = get_klines("BTCUSDT", "1d")
-    if df is None:
-        return lambda ts: None
-    closes = df["close"].values
-    ema99 = pd.Series(closes).ewm(span=99, adjust=False).mean().values
-    times = df["close_time"].values.astype("datetime64[s]").astype(np.int64)
-    above = closes >= ema99
-    def lookup(ts):
-        idx = np.searchsorted(times, ts, side="right") - 1
-        if idx < 0:
-            return None
-        return bool(above[idx])
-    return lookup
-
-
-def ma_touch(sym, i, p):
-    close = sym["closes"][i]
-    tol = p["touch_tol"]
-    if p["ma"] == "zone5599":
+def entry_check(sym, i, strat):
+    """Return: (ok, zone_lo) - zone_lo 'yapi' stop icin yapisal taban."""
+    c = sym["c"][i]
+    if strat == "zone5599":
         a, b = sym["mas"]["ema55"][i], sym["mas"]["ema99"][i]
-        lo_b, hi_b = min(a, b), max(a, b)
-        return lo_b * (1 - tol) <= close <= hi_b * (1 + tol)
-    ma = sym["mas"][p["ma"]][i]
-    if np.isnan(ma):
-        return False
-    return abs(close - ma) / ma <= tol
+        zl, zh = min(a, b), max(a, b)
+        return (zl * (1 - TOUCH_TOL) <= c <= zh * (1 + TOUCH_TOL)), zl
+    if strat.startswith("ema"):
+        m = sym["mas"][strat][i]
+        if np.isnan(m):
+            return False, 0.0
+        return (abs(c - m) / m <= TOUCH_TOL), m
+    hi_i, lo_i = sym["hi_idx"][i], sym["lo_idx"][i]
+    if hi_i <= lo_i + 2 or i <= hi_i:
+        return False, 0.0
+    h, l = sym["h"], sym["l"]
+    if strat == "fvg":
+        for j in range(hi_i, lo_i + 1, -1):
+            if j - 2 < 0:
+                break
+            if l[j] > h[j - 2]:
+                zl, zh = h[j - 2], l[j]
+                if i > hi_i + 1 and l[hi_i + 1:i].min() < zl:
+                    continue
+                if zl <= c <= zh:
+                    return True, zl
+        return False, 0.0
+    if strat == "ob":
+        o, cl = sym["o"], sym["c"]
+        for j in range(hi_i - 1, max(lo_i - 3, 1), -1):
+            if cl[j] < o[j] and j + 1 <= hi_i and cl[j + 1] > h[j]:
+                zl, zh = l[j], h[j]
+                if i > hi_i + 1 and l[hi_i + 1:i].min() < zl:
+                    continue
+                if zl <= c <= zh:
+                    return True, zl
+        return False, 0.0
+    return False, 0.0
 
 
-def quality_ok(sym, i, p):
-    if not p["quality"]:
-        return True
-    o, c = sym["opens"][i], sym["closes"][i]
-    lo = sym["lows"][i]
-    body = abs(c - o)
-    lower_wick = min(o, c) - lo
-    if body > 0 and lower_wick >= body:
-        return True
-    if p["ma"] == "zone5599":
-        ref = max(sym["mas"]["ema55"][i], sym["mas"]["ema99"][i])
-    else:
-        ref = sym["mas"][p["ma"]][i]
-    return (not np.isnan(ref)) and c >= ref
-
-
-def build_plan(sym, i, entry_i, p):
+def build_plan(sym, i, strat, tp_style, stop_style, zone_lo):
     hi, lo = sym["sw_hi"][i], sym["sw_lo"][i]
-    entry = sym["closes"][entry_i]
+    entry = sym["c"][i]
     diff = hi - lo
     if diff <= 0 or entry <= 0:
         return None
-    tp1 = hi - diff * 0.382
-    tp2 = hi
-    tp3 = hi + diff * 0.272
-    if p["stop_mode"] == "atr":
-        atr = sym["atr"][i]
-        if np.isnan(atr):
-            return None
-        stop = entry - 1.5 * atr
-    else:
+
+    if stop_style == "fib786":
         stop = max(hi - diff * 0.786, lo * 0.999)
+    elif stop_style == "atr2":
+        a = sym["atr"][i]
+        if np.isnan(a):
+            return None
+        stop = entry - 2.0 * a
+    else:
+        if strat in ("fvg", "ob"):
+            stop = zone_lo * 0.998
+        else:
+            stop = max(hi - diff * 0.786, lo * 0.999)
     if stop >= entry:
         return None
     if (entry - stop) / entry < MIN_STOP_DIST_PCT:
         stop = entry * (1 - MIN_STOP_DIST_PCT)
     risk = entry - stop
-    tps = [t for t in (tp1, tp2, tp3) if t > entry]
-    if not tps or (min(tps) - entry) / risk < p["min_rr"]:
+
+    fib382 = hi - diff * 0.382
+    ext1272 = hi + diff * 0.272
+    ext1618 = hi + diff * 0.618
+    if tp_style == "klasik":
+        raw = [(fib382, 1 / 3), (hi, 1 / 3), (ext1272, 1 / 3)]
+    elif tp_style == "r_katlari":
+        raw = [(entry + 2 * risk, 1 / 3), (entry + 4 * risk, 1 / 3), (entry + 6 * risk, 1 / 3)]
+    elif tp_style == "kosucu":
+        raw = [(fib382, 0.5), (hi, 0.25), (ext1618, 0.25)]
+    else:
+        raw = [(hi, 1.0)]
+
+    tps = [(p, w) for p, w in raw if p > entry]
+    if not tps:
         return None
-    return {"entry": entry, "stop": stop, "risk": risk, "tp1": tp1, "tp2": tp2, "tp3": tp3}
+    tw = sum(w for _, w in tps)
+    tps = sorted([(p, w / tw) for p, w in tps])
+    if (tps[0][0] - entry) / risk < MIN_RR:
+        return None
+    return {"entry": entry, "stop": stop, "risk": risk, "tps": tps}
 
 
-def find_entry_bar(sym, i, p):
-    if p["entry_mode"] == "temasta":
-        return i
-    n = len(sym["closes"])
-    for j in range(i + 1, min(i + 4, n)):
-        if sym["closes"][j] > sym["opens"][j]:
-            return j
-    return None
-
-
-def simulate_trade(sym, start_i, plan):
-    highs, lows, closes = sym["highs"], sym["lows"], sym["closes"]
+def simulate(sym, start_i, plan):
+    h, l, c = sym["h"], sym["l"], sym["c"]
     entry, risk = plan["entry"], plan["risk"]
     stop = plan["stop"]
-    hit = set()
-    end = min(len(closes) - 1, start_i + MAX_HOLD_BARS)
+    tps = plan["tps"]
+    hit = [False] * len(tps)
+    realized = 0.0
+    end = min(len(c) - 1, start_i + MAX_HOLD_BARS)
     for j in range(start_i + 1, end + 1):
-        if lows[j] <= stop:
-            if not hit:
-                return -1.0, j
-            return sum((plan[f"tp{k}"] - entry) / risk for k in hit) / 3.0, j
-        for k in (1, 2, 3):
-            if k not in hit and highs[j] >= plan[f"tp{k}"]:
-                hit.add(k)
-                if k == 1 and MOVE_STOP_TO_BE:
-                    stop = entry
-        if 3 in hit:
-            return sum((plan[f"tp{k}"] - entry) / risk for k in (1, 2, 3)) / 3.0, j
-    r = sum((plan[f"tp{k}"] - entry) / risk for k in hit) / 3.0
-    r += ((closes[end] - entry) / risk) * ((3 - len(hit)) / 3.0)
-    return r, end
+        if l[j] <= stop:
+            rem = sum(w for k, (_, w) in enumerate(tps) if not hit[k])
+            if not any(hit):
+                return realized - rem * 1.0, j
+            return realized + rem * (stop - entry) / risk, j
+        for k, (tp, w) in enumerate(tps):
+            if not hit[k] and h[j] >= tp:
+                hit[k] = True
+                realized += w * (tp - entry) / risk
+                stop = max(stop, entry)
+        if all(hit):
+            return realized, j
+    rem = sum(w for k, (_, w) in enumerate(tps) if not hit[k])
+    realized += rem * (c[end] - entry) / risk
+    return realized, end
 
 
-def run_config(data, p, btc_lookup):
+def run_config(data, strat, tp_style, stop_style):
     trades = []
     for sym in data.values():
         idxs = np.where(sym["rally_ok"])[0]
-        n = len(sym["closes"])
-        blocked_until = -1
+        n = len(sym["c"])
+        blocked = -1
         for i in idxs:
-            if i <= blocked_until or i >= n - 2:
+            if i <= blocked or i >= n - 2:
                 continue
-            if not ma_touch(sym, i, p) or not quality_ok(sym, i, p):
+            ok, zone_lo = entry_check(sym, i, strat)
+            if not ok:
                 continue
-            entry_i = find_entry_bar(sym, i, p)
-            if entry_i is None or entry_i >= n - 1:
-                continue
-            plan = build_plan(sym, i, entry_i, p)
+            plan = build_plan(sym, i, strat, tp_style, stop_style, zone_lo)
             if not plan:
                 continue
-            r, end_i = simulate_trade(sym, entry_i, plan)
-            regime = btc_lookup(int(sym["times"][i]))
-            trades.append((r, regime))
-            blocked_until = end_i + COOLDOWN_BARS
+            r, end_i = simulate(sym, i, plan)
+            trades.append(r)
+            blocked = end_i + COOLDOWN_BARS
     if not trades:
-        return {"trades": 0, "total_r": 0.0, "avg_r": 0.0, "win_rate": 0.0, "max_dd": 0.0, "bull_r": 0.0, "bull_n": 0, "bear_r": 0.0, "bear_n": 0}
-    arr = np.array([t[0] for t in trades])
-    equity = np.cumsum(arr)
-    peak = np.maximum.accumulate(equity)
-    bull = [r for r, reg in trades if reg is True]
-    bear = [r for r, reg in trades if reg is False]
-    return {"trades": len(arr), "total_r": float(arr.sum()), "avg_r": float(arr.mean()), "win_rate": float((arr > 0).mean() * 100), "max_dd": float((peak - equity).max()), "bull_r": float(sum(bull)), "bull_n": len(bull), "bear_r": float(sum(bear)), "bear_n": len(bear)}
+        return {"trades": 0, "total_r": 0.0, "avg_r": 0.0, "win_rate": 0.0, "max_dd": 0.0}
+    arr = np.array(trades)
+    eq = np.cumsum(arr)
+    pk = np.maximum.accumulate(eq)
+    return {"trades": len(arr), "total_r": float(arr.sum()), "avg_r": float(arr.mean()),
+            "win_rate": float((arr > 0).mean() * 100), "max_dd": float((pk - eq).max())}
 
 
 def tg_send(text):
@@ -288,57 +297,54 @@ def tg_send(text):
     if TOPIC_SUMMARY:
         data["message_thread_id"] = TOPIC_SUMMARY
     try:
-        requests.post(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage", data=data, timeout=20)
+        requests.post(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
+                      data=data, timeout=20)
     except Exception as e:
         print("TG hata:", e)
 
 
-def cfg_label(r):
-    q = "kalite+" if r["quality"] else "kalite-"
-    return f"{r['ma']} tol%{r['touch_tol']*100:.1f} RR{r['min_rr']:.0f} {r['entry_mode']} {r['stop_mode']} {q}"
-
-
 def main():
-    print(f"Backtest v2: {BT_INTERVAL}, ilk {BT_SYMBOL_COUNT} coin")
+    print(f"Backtest v3: {BT_INTERVAL}, ilk {BT_SYMBOL_COUNT} coin")
     symbols = get_top_symbols(BT_SYMBOL_COUNT)
-    btc_lookup = get_btc_regime_lookup(BT_INTERVAL)
     data = {}
     for s in symbols:
         df = get_klines(s, BT_INTERVAL)
         if df is None:
             continue
-        data[s] = precompute_symbol(df, BT_INTERVAL)
+        data[s] = precompute(df, BT_INTERVAL)
         time.sleep(0.03)
-    print(f"{len(data)} sembol hazir. Kombinasyonlar calisiyor...")
-    keys = list(PARAM_GRID.keys())
-    combos = [dict(zip(keys, v)) for v in itertools.product(*PARAM_GRID.values())]
+    print(f"{len(data)} sembol hazir.")
+
     results = []
-    for idx, p in enumerate(combos):
-        results.append({**p, **run_config(data, p, btc_lookup)})
-        if (idx + 1) % 25 == 0:
+    combos = list(itertools.product(STRATEGIES, TP_STYLES, STOP_STYLES))
+    for idx, (st, tp, sp) in enumerate(combos):
+        res = run_config(data, st, tp, sp)
+        results.append({"interval": BT_INTERVAL, "strategy": st,
+                        "tp_style": tp, "stop_style": sp, **res})
+        if (idx + 1) % 12 == 0:
             print(f"  {idx+1}/{len(combos)}")
+
     with open("backtest_results.json", "w") as f:
         json.dump(results, f, indent=1)
+
     valid = [r for r in results if r["trades"] >= 15]
     pool = sorted(valid if valid else results, key=lambda r: -r["total_r"])
-    period_days = BT_CANDLES / bars_per_day(BT_INTERVAL)
-    L = [f"BACKTEST v2 | ~{period_days:.0f} gun | {BT_INTERVAL} | {len(data)} coin | {len(combos)} komb.\n", "<b>En iyi 8:</b>"]
+    days = BT_CANDLES / bars_per_day(BT_INTERVAL)
+    L = [f"BACKTEST v3 | {BT_INTERVAL} (~{days:.0f} gun) | {len(data)} coin | 84 komb.\n",
+         "<b>En iyi 8:</b>"]
     for r in pool[:8]:
-        L.append(f"{cfg_label(r)}\n  -> {r['total_r']:+.1f}R | {r['trades']}isl | ort {r['avg_r']:+.2f}R | win%{r['win_rate']:.0f} | dd{r['max_dd']:.1f}\n  boga {r['bull_r']:+.1f}R ({r['bull_n']})  ayi {r['bear_r']:+.1f}R ({r['bear_n']})")
-    L.append("\n<b>Boyut etkileri (ort. toplam R):</b>")
-    for param in keys:
+        L.append(f"{r['strategy']} {r['tp_style']} {r['stop_style']}\n"
+                 f"  -> {r['total_r']:+.1f}R | {r['trades']}isl | ort {r['avg_r']:+.2f}R | "
+                 f"win%{r['win_rate']:.0f} | dd{r['max_dd']:.1f}")
+    L.append("\n<b>Boyut etkileri (ort toplam R):</b>")
+    for param, opts in [("strategy", STRATEGIES), ("tp_style", TP_STYLES),
+                        ("stop_style", STOP_STYLES)]:
         vals = []
-        for v in PARAM_GRID[param]:
+        for v in opts:
             g = [r for r in results if r[param] == v]
             vals.append(f"{v}:{np.mean([x['total_r'] for x in g]):+.1f}")
         L.append(f"  {param}: " + " | ".join(vals))
-    tb_r = sum(r["bull_r"] for r in results)
-    tb_n = sum(r["bull_n"] for r in results)
-    ta_r = sum(r["bear_r"] for r in results)
-    ta_n = sum(r["bear_n"] for r in results)
-    if tb_n or ta_n:
-        L.append(f"\n<b>Rejim kirilimi:</b> boga: {tb_n} islem, islem basi {tb_r/max(tb_n,1):+.2f}R | ayi: {ta_n} islem, islem basi {ta_r/max(ta_n,1):+.2f}R")
-    L.append("\n<i>Uyari: tek doneme asiri uyum riski - kumelerin ortak yonune bak, iki zaman diliminde de tutarli olani sec.</i>")
+    L.append("\n<i>Komisyon/kayma dahil degil; tek doneme asiri uyuma dikkat.</i>")
     report = "\n".join(L)
     print(report.replace("<b>", "").replace("</b>", "").replace("<i>", "").replace("</i>", ""))
     tg_send(report)
