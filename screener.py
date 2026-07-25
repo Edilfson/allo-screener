@@ -449,7 +449,7 @@ def build_insights(positions):
 
 
 # ==================== GRAFIK ====================
-def make_chart(df, symbol, interval, strategy, plan):
+def make_chart(df, symbol, interval, strategy, plan, zone=None):
     os.makedirs(CHART_DIR, exist_ok=True)
     d = df.tail(CHART_CANDLES).copy()
     d = d.set_index(pd.DatetimeIndex(d["close_time"]))
@@ -459,6 +459,9 @@ def make_chart(df, symbol, interval, strategy, plan):
            for p in EMA_PERIODS]
     prices = [plan["stop"], plan["entry"]] + [t["p"] for t in plan["tps"]]
     colors = ["red", "white", "#90ee90", "#2ecc71", "#f1c40f"][:len(prices)]
+    if zone:  # OB/FVG bolge sinirlari (mavi)
+        prices = list(prices) + [zone[0], zone[1]]
+        colors = list(colors) + ["#00bcd4", "#00bcd4"]
     hl = dict(hlines=prices, colors=colors, linestyle="--", linewidths=1.0)
     path = os.path.join(CHART_DIR, f"{symbol}_{interval}.png")
     mpf.plot(d, type="candle", style="binance", addplot=aps, volume=True,
@@ -568,13 +571,13 @@ def main():
                     ok, rpct, hi, lo, pb, days, hi_idx, lo_idx = rallies[iv]
                     if not ok or pb < PULLBACK_MIN_PCT:
                         continue
-                    hit, _zone = DETECTORS[strat](dfs[iv], hi_idx, lo_idx)
+                    hit, zone = DETECTORS[strat](dfs[iv], hi_idx, lo_idx)
                     if not hit:
                         continue
                     plan = compute_trade_plan(lo, hi, float(dfs[iv].iloc[-1]["close"]),
                                               TP_STYLE[strat])
                     if plan:
-                        trigger = (strat, iv, rpct, hi, lo, pb, days, plan)
+                        trigger = (strat, iv, rpct, hi, lo, pb, days, plan, zone)
                         break
                 if trigger:
                     break
@@ -582,7 +585,7 @@ def main():
             if not trigger:
                 continue
 
-            strat, iv, rpct, hi, lo, pb, days, plan = trigger
+            strat, iv, rpct, hi, lo, pb, days, plan, zone = trigger
             ctx = compute_context(dfs[iv], plan, hi, lo, btc_regime, btc_dist)
 
             last = dfs[iv].iloc[-1]
@@ -596,15 +599,20 @@ def main():
                         f"{quality_line} | Onay: sonraki yesil kapanis hafif avantajli (bilgi)")
 
             strat_lbl = {"ob": "ORDER BLOCK", "fvg": "FVG", "zone5599": "EMA55-99 bolgesi"}[strat]
+            zone_line = ""
+            if strat in ("ob", "fvg") and zone:
+                zone_line = f"Bolge: {zone[0]:.6g} - {zone[1]:.6g}\n"
             msg = (f"🔔 <b>{symbol}</b>  [{iv} / {strat_lbl}]\n"
                    f"Yukselis: %{rpct*100:.1f} ({days:.1f} gunde)\n"
-                   f"Zirve {hi:.6g} → simdi {plan['entry']:.6g} (%{pb*100:.1f} geri cekildi)\n\n"
+                   f"Zirve {hi:.6g} → simdi {plan['entry']:.6g} (%{pb*100:.1f} geri cekildi)\n"
+                   + zone_line + "\n"
                    f"📋 <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
                    + ctx_line)
 
             sent = False
             try:
-                chart = make_chart(dfs[iv], symbol, iv, strat, plan)
+                chart = make_chart(dfs[iv], symbol, iv, strat, plan,
+                                   zone=zone if strat in ("ob", "fvg") else None)
                 sent = tg_photo(chart, msg, TOPIC_SIGNALS)
             except Exception as e:
                 print(f"{symbol} grafik hatasi: {e}")
