@@ -43,7 +43,7 @@ RALLY_MIN_PCT = 0.50          # min %50 yukselis
 RALLY_MAX_DAYS = 30           # yukselis son kac gun icinde olmali
 PULLBACK_MIN_PCT = 0.05       # zirveden min geri cekilme
 TOUCH_TOLERANCE_PCT = 0.015   # EMA'ya bu mesafe = temas
-MIN_RR = 3.0                  # minimum odul/risk orani
+MIN_RR = 2.0                  # minimum odul/risk orani (backtest v2: RR2 kumesi iki donemde tutarli)
 MIN_STOP_DIST_PCT = 0.02      # stop girise en az bu kadar uzak olmali (gurultu korumasi)
 MOVE_STOP_TO_BE_AFTER_TP1 = True
 
@@ -356,8 +356,8 @@ def build_summary(positions):
         lines.append(f"Ort. kayip: {sum(p['realized_r'] for p in losses)/len(losses):+.2f}R")
 
     lines.append("\n<b>EMA bazinda</b>")
-    for ema in EMA_PERIODS:
-        g = [p for p in closed if p["ema_period"] == ema]
+    for ema in sorted(set(str(p["ema_period"]) for p in closed)):
+        g = [p for p in closed if str(p["ema_period"]) == ema]
         if g:
             r = sum(p.get("realized_r", 0) for p in g)
             w = len([p for p in g if p.get("realized_r", 0) > 0])
@@ -580,25 +580,34 @@ def main():
                 if not ok or pb < PULLBACK_MIN_PCT:
                     continue
                 last = dfs[iv].iloc[-1]
-                for p in EMA_PERIODS:
-                    if abs(last["close"] - last[f"ema{p}"]) / last[f"ema{p}"] <= TOUCH_TOLERANCE_PCT:
-                        plan = compute_trade_plan(lo, hi, float(last["close"]))
-                        if plan:
-                            trigger = (iv, p, rpct, hi, lo, pb, days, plan)
-                            break
-                if trigger:
-                    break
+                # ZONE5599: fiyat EMA55-EMA99 bandinin (tolerans dahil) icinde mi?
+                band_lo = min(last["ema55"], last["ema99"])
+                band_hi = max(last["ema55"], last["ema99"])
+                in_zone = (band_lo * (1 - TOUCH_TOLERANCE_PCT)
+                           <= last["close"] <= band_hi * (1 + TOUCH_TOLERANCE_PCT))
+                if in_zone:
+                    plan = compute_trade_plan(lo, hi, float(last["close"]))
+                    if plan:
+                        trigger = (iv, rpct, hi, lo, pb, days, plan)
+                        break
 
             if not trigger:
                 continue
 
-            iv, ema_p, rpct, hi, lo, pb, days, plan = trigger
+            iv, rpct, hi, lo, pb, days, plan = trigger
+            ema_p = "55-99"
             ctx = compute_context(dfs[iv], plan, hi, lo, btc_regime, btc_dist)
 
+            last = dfs[iv].iloc[-1]
+            body = abs(last["close"] - last["open"])
+            lower_wick = min(last["close"], last["open"]) - last["low"]
+            q_ok = (body > 0 and lower_wick >= body) or last["close"] >= max(last["ema55"], last["ema99"])
+            quality_line = "Kalite: " + ("✅ fitil/band ustu" if q_ok else "⚠️ zayif mum")
             ctx_line = (f"\n\n🧭 RSI:{ctx['rsi14']} | Hacim:{ctx['vol_ratio']}x | "
-                        f"Fib:{ctx['fib_zone']} | {ctx['ema_align']} | BTC:{ctx['btc_regime']}")
+                        f"Fib:{ctx['fib_zone']} | {ctx['ema_align']} | BTC:{ctx['btc_regime']}\n"
+                        f"{quality_line} | Onay: sonraki yesil kapanis hafif avantajli (bilgi)")
 
-            msg = (f"🔔 <b>{symbol}</b>  [{iv} / EMA{ema_p}]\n"
+            msg = (f"🔔 <b>{symbol}</b>  [{iv} / EMA55-99 bolgesi]\n"
                    f"Yukselis: %{rpct*100:.1f} ({days:.1f} gunde)\n"
                    f"Zirve {hi:.6g} → simdi {plan['entry']:.6g} (%{pb*100:.1f} geri cekildi)\n\n"
                    + format_ema_lines(ema_distances(dfs))
