@@ -42,7 +42,7 @@
   "rally_days": 5.166666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.31734278309620595
+  "unrealized_r": 0.34378801502088874
  },
  {
   "symbol": "HEMIUSDT",
@@ -87,7 +87,7 @@
   "rally_days": 1.1666666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.7288629737609306
+  "unrealized_r": 0.572678050812162
  },
  {
   "symbol": "THEUSDT",
@@ -109,7 +109,7 @@
   "rally_days": 1.3333333333333333,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 1.478743068391865
+  "unrealized_r": 0.924214417744918
  },
  {
   "symbol": "AGLDUSDT",
@@ -131,7 +131,7 @@
   "rally_days": 1.0,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.3491823313740346
+  "unrealized_r": -0.2909852761450275
  },
  {
   "symbol": "AIGENSYNUSDT",
@@ -208,7 +208,7 @@
   },
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.6535947712418321
+  "unrealized_r": -0.326797385620909
  },
  {
   "symbol": "MIRAUSDT",
@@ -236,6 +236,68 @@
    "ema_align": "duzgun(55>99)",
    "btc_regime": "ayi",
    "btc_ema99_dist": -0.0524
+  },
+  "tps_hit": [],
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "HEMIUSDT",
+  "interval": "4h",
+  "ema_period": 55,
+  "opened_at": "2026-07-25T08:53:35.180077+00:00",
+  "status": "open",
+  "entry": 0.00498,
+  "stop": 0.00478138,
+  "current_stop": 0.00478138,
+  "risk": 0.00019862000000000005,
+  "tp1": 0.00586006,
+  "tp2": 0.00688,
+  "tp3": 0.00760624,
+  "r1": 4.430873023864666,
+  "r2": 9.566005437518877,
+  "r3": 13.222434800120832,
+  "rally_pct": 0.6342042755344417,
+  "rally_days": 19.5,
+  "context": {
+   "rsi14": 48.5,
+   "vol_ratio": 0.26,
+   "fib_depth": 0.712,
+   "fib_zone": "derin(0.7+)",
+   "ema_align": "duzgun(55>99)",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0572
+  },
+  "tps_hit": [],
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SXTUSDT",
+  "interval": "4h",
+  "ema_period": 55,
+  "opened_at": "2026-07-25T08:53:35.180077+00:00",
+  "status": "open",
+  "entry": 0.00721,
+  "stop": 0.00704192,
+  "current_stop": 0.00704192,
+  "risk": 0.00016808000000000014,
+  "tp1": 0.00836704,
+  "tp2": 0.00962,
+  "tp3": 0.01051216,
+  "r1": 6.883864826273191,
+  "r2": 14.338410280818644,
+  "r3": 19.646358876725348,
+  "rally_pct": 0.5173501577287066,
+  "rally_days": 11.333333333333334,
+  "context": {
+   "rsi14": 57.6,
+   "vol_ratio": 7.78,
+   "fib_depth": 0.735,
+   "fib_zone": "derin(0.7+)",
+   "ema_align": "ters(55<99)",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0572
   },
   "tps_hit": [],
   "realized_r": 0.0,
