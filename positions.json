@@ -42,7 +42,7 @@
   "rally_days": 5.166666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.4495689427196261
+  "unrealized_r": 0.31734278309620595
  },
  {
   "symbol": "HEMIUSDT",
@@ -87,7 +87,7 @@
   "rally_days": 1.1666666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.6768013327780068
+  "unrealized_r": 0.7288629737609306
  },
  {
   "symbol": "THEUSDT",
@@ -109,7 +109,7 @@
   "rally_days": 1.3333333333333333,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.5545286506469469
+  "unrealized_r": 1.478743068391865
  },
  {
   "symbol": "AGLDUSDT",
@@ -131,7 +131,7 @@
   "rally_days": 1.0,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.32008380375953105
+  "unrealized_r": 0.3491823313740346
  },
  {
   "symbol": "AIGENSYNUSDT",
@@ -209,5 +209,36 @@
   "tps_hit": [],
   "realized_r": 0.0,
   "unrealized_r": 0.6535947712418321
+ },
+ {
+  "symbol": "MIRAUSDT",
+  "interval": "4h",
+  "ema_period": 55,
+  "opened_at": "2026-07-25T05:12:40.358876+00:00",
+  "status": "open",
+  "entry": 0.0447,
+  "stop": 0.043806,
+  "current_stop": 0.043806,
+  "risk": 0.000893999999999999,
+  "tp1": 0.0547736,
+  "tp2": 0.0644,
+  "tp3": 0.0712544,
+  "r1": 11.268008948545877,
+  "r2": 22.03579418344522,
+  "r3": 29.702908277404955,
+  "rally_pct": 0.6428571428571429,
+  "rally_days": 2.3333333333333335,
+  "context": {
+   "rsi14": 49.7,
+   "vol_ratio": 0.09,
+   "fib_depth": 0.782,
+   "fib_zone": "derin(0.7+)",
+   "ema_align": "duzgun(55>99)",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0524
+  },
+  "tps_hit": [],
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
