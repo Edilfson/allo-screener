@@ -4,13 +4,18 @@ on:
   workflow_dispatch:
     inputs:
       interval:
-        description: "Zaman dilimi (4h veya 1d)"
+        description: "Zaman dilimi"
+        type: choice
+        options: ["1h", "2h", "4h", "12h", "1d"]
         default: "4h"
         required: true
       symbol_count:
         description: "Hacme gore ilk kac coin taransin"
-        default: "80"
+        default: "60"
         required: true
+
+permissions:
+  contents: write
 
 jobs:
   backtest:
@@ -35,7 +40,23 @@ jobs:
           BT_SYMBOL_COUNT: ${{ github.event.inputs.symbol_count }}
         run: python backtest.py
 
-      - name: Sonuc dosyasini artifact olarak sakla
+      - name: Sonuclari repoya kaydet
+        continue-on-error: true
+        run: |
+          git config user.name "allo-screener-bot"
+          git config user.email "actions@github.com"
+          mkdir -p results
+          cp backtest_results.json "results/bt3_${{ github.event.inputs.interval }}.json"
+          git add "results/bt3_${{ github.event.inputs.interval }}.json"
+          git diff --quiet --cached || git commit -m "bt3 sonuc: ${{ github.event.inputs.interval }} [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep 5
+          done
+
+      - name: Artifact
         uses: actions/upload-artifact@v4
         with:
           name: backtest-results-${{ github.event.inputs.interval }}
