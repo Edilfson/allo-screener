@@ -63,7 +63,7 @@
   "rally_days": 5.166666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.678760952733556,
+  "unrealized_r": -0.722836339274694,
   "tps": [
    {
     "p": 0.02339546,
@@ -150,7 +150,7 @@
   "rally_days": 1.1666666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.46855476884631436,
+  "unrealized_r": 0.7288629737609306,
   "tps": [
    {
     "p": 0.528904,
@@ -193,7 +193,7 @@
   "rally_days": 1.3333333333333333,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.8317929759704236,
+  "unrealized_r": 0.7393715341959293,
   "tps": [
    {
     "p": 0.0649366,
@@ -236,7 +236,7 @@
   "rally_days": 1.0,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.4946749694465443,
+  "unrealized_r": -0.6256183437118082,
   "tps": [
    {
     "p": 0.1890316,
@@ -376,7 +376,7 @@
   },
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": -0.653594771241825,
   "tps": [
    {
     "p": 0.00189238,
@@ -481,7 +481,7 @@
   },
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.05034739703957536,
+  "unrealized_r": 0.35243177927701,
   "tps": [
    {
     "p": 0.00586006,
@@ -586,7 +586,7 @@
   },
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.3916493546299755,
+  "unrealized_r": 0.17028232809998978,
   "tps": [
    {
     "p": 0.1119838,
@@ -614,7 +614,7 @@
   "interval": "1d",
   "ema_period": "55-99",
   "opened_at": "2026-07-25T16:26:15.850021+00:00",
-  "status": "open",
+  "status": "closed_be",
   "entry": 0.3177,
   "stop": 0.2888098,
   "current_stop": 0.3177,
@@ -637,7 +637,7 @@
    "btc_ema99_dist": -0.0523
   },
   "tps_hit": [],
-  "realized_r": 0.0,
+  "realized_r": 3.3246868026758802,
   "unrealized_r": 3.5254469220243103,
   "tps": [
    {
@@ -659,7 +659,8 @@
     "hit": false
    }
   ],
-  "strategy": "55-99"
+  "strategy": "55-99",
+  "closed_at": "2026-07-25T23:59:59.999000+00:00"
  },
  {
   "symbol": "RIFUSDT",
@@ -670,14 +671,14 @@
   "status": "open",
   "entry": 0.0847,
   "stop": 0.0766986,
-  "current_stop": 0.0766986,
+  "current_stop": 0.0847,
   "risk": 0.008001399999999992,
   "tps": [
    {
     "p": 0.10897820000000001,
     "w": 0.3333333333333333,
     "r": 3.0342440072987276,
-    "hit": false
+    "hit": true
    },
    {
     "p": 0.1395,
@@ -704,7 +705,7 @@
    "btc_ema99_dist": -0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.9697552928237573
  },
  {
   "symbol": "TLMUSDT",
@@ -749,7 +750,7 @@
    "btc_ema99_dist": -0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.06493675160393785
  },
  {
   "symbol": "VANRYUSDT",
@@ -794,6 +795,6 @@
    "btc_ema99_dist": -0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": -0.005131082042581816
  }
 ]
