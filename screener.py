@@ -292,7 +292,12 @@ def migrate_position(pos):
 def evaluate_position(pos, df):
     events = []
     opened = pd.Timestamp(pos["opened_at"])
-    future = df[df["close_time"] > opened]
+    # BUG FIX: sadece giristen SONRA ACILAN mumlari degerlendir.
+    # Sinyal mumunun kendisi giris oncesi dip/tepe fitillerini icerir;
+    # onlari saymak sahte stop/TP uretiyordu.
+    iv_td = pd.Timedelta({"1h": "1h", "2h": "2h", "4h": "4h",
+                          "12h": "12h", "1d": "1d"}.get(pos.get("interval", "4h"), "4h"))
+    future = df[df["close_time"] >= opened + iv_td]
     if future.empty:
         return pos, events
 
