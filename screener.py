@@ -43,6 +43,13 @@ TOUCH_TOLERANCE_PCT = 0.02
 MIN_RR = 2.0
 MIN_STOP_DIST_PCT = 0.02
 MOVE_STOP_TO_BE = True
+# --- bolge kalitesi (OB/FVG) ---
+MAX_ZONE_WIDTH_PCT = 0.08     # bolge genisligi fiyatin %8i uzeriyse ele (belirsiz stop)
+MIN_FVG_GAP_PCT = 0.005       # %0.5ten kucuk FVG gurultu
+# --- iz suren stop ---
+TRAIL_AFTER_FIRST_TP = True
+TRAIL_EMA = 21
+TRAIL_BUFFER = 0.01
 
 LOOKBACK_CANDLES = 250
 # dilim basina mum: 30 gunluk rally penceresi + EMA99 isinmasi sigmali
@@ -112,6 +119,7 @@ def get_klines(symbol, interval, limit=None, closed_only=False):
 
 
 def add_emas(df):
+    df[f"ema{TRAIL_EMA}"] = df["close"].ewm(span=TRAIL_EMA, adjust=False).mean().values
     for p in EMA_PERIODS:
         df[f"ema{p}"] = df["close"].ewm(span=p, adjust=False).mean().values
     return df
@@ -164,6 +172,9 @@ def detect_fvg(df, hi_idx, lo_idx):
             break
         if l[j] > h[j - 2]:
             zl, zh = h[j - 2], l[j]
+            gap = (zh - zl) / zl if zl > 0 else 0
+            if gap < MIN_FVG_GAP_PCT or gap > MAX_ZONE_WIDTH_PCT:
+                continue  # KALITE: cok kucuk/cok genis bosluk
             if i > hi_idx + 1 and l[hi_idx + 1:i].min() < zl:
                 continue
             if zl <= c <= zh:
@@ -181,14 +192,23 @@ def detect_ob(df, hi_idx, lo_idx):
     i = len(df) - 1
     if hi_idx <= lo_idx + 2 or i <= hi_idx:
         return False, None
+    vol = df["volume"].values
+    adaylar = []
     for j in range(hi_idx - 1, max(lo_idx - 3, 1), -1):
         if cl[j] < o[j] and j + 1 <= hi_idx and cl[j + 1] > h[j]:
             zl, zh = l[j], h[j]
+            if zl <= 0 or (zh - zl) / zl > MAX_ZONE_WIDTH_PCT:
+                continue  # KALITE: asiri genis bolge
             if i > hi_idx + 1 and l[hi_idx + 1:i].min() < zl:
                 continue
             if zl <= c <= zh:
-                return True, (zl, zh)
-    return False, None
+                adaylar.append((j, zl, zh))
+    if not adaylar:
+        return False, None
+    # KALITE: hacmi en yuksek OB = en guclu iz
+    ref = vol[max(0, hi_idx - 50):hi_idx + 1].mean() or 1.0
+    j, zl, zh = max(adaylar, key=lambda a: vol[a[0]] / ref)
+    return True, (zl, zh)
 
 
 DETECTORS = {"zone5599": detect_zone5599, "fvg": detect_fvg, "ob": detect_ob}
@@ -349,7 +369,10 @@ def evaluate_position(pos, df):
             else:
                 pos["realized_r"] = done + rem * (stop - entry) / risk
                 pos["status"] = "closed_be" if stop >= entry else "stopped"
-                events.append(f"🔒 Kalan %{rem*100:.0f} kapandi (toplam {pos['realized_r']:+.2f}R)")
+                nasil = ("iz suren stop" if pos.get("_trailed")
+                         else ("BE" if stop >= entry else "stop"))
+                events.append(f"🔒 Kalan %{rem*100:.0f} {nasil} ile kapandi "
+                              f"(toplam {pos['realized_r']:+.2f}R)")
             pos["closed_at"] = cndl["close_time"].isoformat()
             pos["current_stop"] = stop
             return pos, events
@@ -361,6 +384,15 @@ def evaluate_position(pos, df):
                 if MOVE_STOP_TO_BE and stop < entry:
                     stop = entry
                     events.append("🔁 Stop girise (BE) cekildi")
+
+        # IZ SUREN STOP: ilk TP sonrasi kalani EMA21 ile takip et (sadece yukari)
+        if TRAIL_AFTER_FIRST_TP and any(t["hit"] for t in tps):
+            tcol = f"ema{TRAIL_EMA}"
+            if tcol in cndl.index and not pd.isna(cndl[tcol]):
+                yeni = float(cndl[tcol]) * (1 - TRAIL_BUFFER)
+                if yeni > stop:
+                    stop = yeni
+                    pos["_trailed"] = True
 
         if all(t["hit"] for t in tps):
             pos["realized_r"] = sum(t["w"] * t["r"] for t in tps)
@@ -492,7 +524,8 @@ def build_insights(positions):
 
 
 # ==================== GRAFIK ====================
-def make_chart(df, symbol, interval, strategy, plan, zone=None):
+def make_chart(df, symbol, interval, strategy, plan, zone=None, rally=None):
+    """Zengin grafik: golgeli bolge + rally bacagi + R etiketli seviyeler."""
     os.makedirs(CHART_DIR, exist_ok=True)
     d = df.tail(CHART_CANDLES).copy()
     d = d.set_index(pd.DatetimeIndex(d["close_time"]))
@@ -500,16 +533,43 @@ def make_chart(df, symbol, interval, strategy, plan, zone=None):
                           "close": "Close", "volume": "Volume"})
     aps = [mpf.make_addplot(d[f"ema{p}"], color={55: "orange", 99: "purple"}[p], width=1.1)
            for p in EMA_PERIODS]
+
     prices = [plan["stop"], plan["entry"]] + [t["p"] for t in plan["tps"]]
-    colors = ["red", "white", "#90ee90", "#2ecc71", "#f1c40f"][:len(prices)]
-    if zone:  # OB/FVG bolge sinirlari (mavi)
-        prices = list(prices) + [zone[0], zone[1]]
-        colors = list(colors) + ["#00bcd4", "#00bcd4"]
-    hl = dict(hlines=prices, colors=colors, linestyle="--", linewidths=1.0)
+    colors = ["#ff5252", "#ffffff", "#90ee90", "#2ecc71", "#f1c40f"][:len(prices)]
+    kw = {}
+    if zone:
+        kw["fill_between"] = dict(y1=float(zone[0]), y2=float(zone[1]),
+                                  alpha=0.18, color="#00bcd4")
+    if rally:
+        lo_t, lo_p, hi_t, hi_p = rally
+        if d.index[0] <= lo_t <= d.index[-1] and d.index[0] <= hi_t <= d.index[-1]:
+            kw["alines"] = dict(alines=[[(lo_t, lo_p), (hi_t, hi_p)]],
+                                colors=["#8e9aaf"], linestyle="-.", linewidths=1.0)
+
     path = os.path.join(CHART_DIR, f"{symbol}_{interval}.png")
-    mpf.plot(d, type="candle", style="binance", addplot=aps, volume=True,
-             title=f"{symbol} - {interval}  [{strategy.upper()}]",
-             hlines=hl, savefig=dict(fname=path, dpi=130, bbox_inches="tight"))
+    fig, axes = mpf.plot(
+        d, type="candle", style="binance", addplot=aps, volume=True,
+        title=f"{symbol} - {interval}  [{strategy.upper()}]",
+        hlines=dict(hlines=prices, colors=colors, linestyle="--", linewidths=1.1),
+        returnfig=True, figsize=(12, 7), **kw)
+
+    ax = axes[0]
+    etiket = [("STOP", plan["stop"], colors[0]), ("GIRIS", plan["entry"], colors[1])]
+    for i, tp in enumerate(plan["tps"]):
+        etiket.append((f"TP{i+1} %{tp['w']*100:.0f} ({tp['r']:.1f}R)", tp["p"], colors[2 + i]))
+    xmax = len(d) - 1
+    for lbl, y, col in etiket:
+        ax.text(xmax * 1.005, y, f" {lbl} {y:.6g}", color=col, fontsize=8,
+                va="center", ha="left", family="monospace")
+    if zone:
+        ax.text(xmax * 1.005, (zone[0] + zone[1]) / 2, " BOLGE", color="#00bcd4",
+                fontsize=8, va="center", ha="left", family="monospace")
+    fig.savefig(path, dpi=130, bbox_inches="tight")
+    try:
+        import matplotlib.pyplot as plt
+        plt.close(fig)
+    except Exception:
+        pass
     return path
 
 
@@ -575,6 +635,7 @@ def main():
         df = get_klines(pos["symbol"], pos["interval"])
         if df is None:
             continue
+        df = add_emas(df)          # iz suren stop EMA21e ihtiyac duyar
         _, events = evaluate_position(pos, df)
         if events:
             head = (f"\U0001F4CC <b>{pos['symbol']}</b> {pos['interval']} [{pos.get('strategy','?')}]\n"
@@ -640,13 +701,13 @@ def main():
                     if not plan:
                         diag_plan_red[strat] += 1
                         continue
-                    trig = (iv, rpct, hi, lo, pb, days, plan, zone)
+                    trig = (iv, rpct, hi, lo, pb, days, plan, zone, hi_idx, lo_idx)
                     break
 
                 if not trig:
                     continue
 
-                iv, rpct, hi, lo, pb, days, plan, zone = trig
+                iv, rpct, hi, lo, pb, days, plan, zone, hi_idx, lo_idx = trig
                 c_trend, c_dist = coin_daily_trend(dfs.get("1d"))
                 ctx = compute_context(dfs[iv], plan, hi, lo, btc_regime, btc_dist,
                                       c_trend, c_dist)
@@ -676,8 +737,13 @@ def main():
 
                 sent = False
                 try:
-                    chart = make_chart(dfs[iv], symbol, iv, strat, plan,
-                                       zone=zone if strat in ("ob", "fvg") else None)
+                    _d = dfs[iv]
+                    rally_ln = (_d["close_time"].iloc[lo_idx], float(lo),
+                                _d["close_time"].iloc[hi_idx], float(hi)) \
+                        if 0 <= lo_idx < len(_d) and 0 <= hi_idx < len(_d) else None
+                    chart = make_chart(_d, symbol, iv, strat, plan,
+                                       zone=zone if strat in ("ob", "fvg") else None,
+                                       rally=rally_ln)
                     sent = tg_photo(chart, msg, TOPIC_SIGNALS)
                 except Exception as e:
                     print(f"{symbol} grafik hatasi: {e}")
