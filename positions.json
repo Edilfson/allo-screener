@@ -48,7 +48,7 @@
   "interval": "4h",
   "ema_period": 99,
   "opened_at": "2026-07-23T22:30:39.234049+00:00",
-  "status": "open",
+  "status": "stopped",
   "entry": 0.01929,
   "stop": 0.018155579999999998,
   "current_stop": 0.018155579999999998,
@@ -62,7 +62,7 @@
   "rally_pct": 0.8433029908972692,
   "rally_days": 5.166666666666667,
   "tps_hit": [],
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.5465347931101359,
   "tps": [
    {
@@ -84,7 +84,8 @@
     "hit": false
    }
   ],
-  "strategy": "99"
+  "strategy": "99",
+  "closed_at": "2026-07-26T03:59:59.999000+00:00"
  },
  {
   "symbol": "HEMIUSDT",
@@ -150,7 +151,7 @@
   "rally_days": 1.1666666666666667,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.7288629737609306,
+  "unrealized_r": 0.8329862557267782,
   "tps": [
    {
     "p": 0.528904,
@@ -193,7 +194,7 @@
   "rally_days": 1.3333333333333333,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 1.0166358595194058,
+  "unrealized_r": 0.7393715341959293,
   "tps": [
    {
     "p": 0.0649366,
@@ -236,7 +237,7 @@
   "rally_days": 1.0,
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.5092242332537981,
+  "unrealized_r": -0.30553453995227725,
   "tps": [
    {
     "p": 0.1890316,
@@ -376,7 +377,7 @@
   },
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": -0.326797385620909,
+  "unrealized_r": 0.0,
   "tps": [
    {
     "p": 0.00189238,
@@ -481,7 +482,7 @@
   },
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.8055583526331664,
+  "unrealized_r": 0.2013895881582927,
   "tps": [
    {
     "p": 0.00586006,
@@ -586,7 +587,7 @@
   },
   "tps_hit": [],
   "realized_r": 0.0,
-  "unrealized_r": 0.17028232809998978,
+  "unrealized_r": -0.2383952593399852,
   "tps": [
    {
     "p": 0.1119838,
@@ -751,7 +752,7 @@
    "btc_ema99_dist": -0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.11363931530689053
+  "unrealized_r": -0.019481025481181073
  },
  {
   "symbol": "VANRYUSDT",
@@ -796,6 +797,51 @@
    "btc_ema99_dist": -0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.20524328170324593
+  "unrealized_r": -0.46692846587488446
+ },
+ {
+  "symbol": "ERAUSDT",
+  "interval": "2h",
+  "strategy": "fvg",
+  "ema_period": "fvg",
+  "opened_at": "2026-07-26T05:16:39.607325+00:00",
+  "status": "open",
+  "entry": 0.0792,
+  "stop": 0.0724494,
+  "current_stop": 0.0724494,
+  "risk": 0.006750600000000009,
+  "tps": [
+   {
+    "p": 0.09349779999999999,
+    "w": 0.5,
+    "r": 2.1180043255414285,
+    "hit": false
+   },
+   {
+    "p": 0.1134,
+    "w": 0.25,
+    "r": 5.0662163363256525,
+    "hit": false
+   },
+   {
+    "p": 0.1455978,
+    "w": 0.25,
+    "r": 9.835836814505363,
+    "hit": false
+   }
+  ],
+  "rally_pct": 0.8499184339314845,
+  "rally_days": 2.9166666666666665,
+  "context": {
+   "rsi14": 26.1,
+   "vol_ratio": 0.42,
+   "fib_depth": 0.656,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun(55>99)",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0461
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
