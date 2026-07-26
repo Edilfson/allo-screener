@@ -759,6 +759,17 @@ def main():
                     "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
                     "risk": plan["risk"], "tps": plan["tps"],
                     "entry_bar_close": dfs[iv].iloc[-1]["close_time"].isoformat(),
+                    # --- analiz icin ek alanlar ---
+                    "tp_style": TP_STYLE[strat],
+                    "zone_low": float(zone[0]) if zone else None,
+                    "zone_high": float(zone[1]) if zone else None,
+                    "zone_width_pct": (round((zone[1] - zone[0]) / zone[0], 4)
+                                       if zone and zone[0] else None),
+                    "quality_ok": bool(q_ok),
+                    "swing_high": float(hi), "swing_low": float(lo),
+                    "stop_dist_pct": round(plan["risk"] / plan["entry"], 4),
+                    "nearest_tp_r": round(min(t["r"] for t in plan["tps"]), 2),
+                    "scan_version": "v5",
                     "rally_pct": rpct, "rally_days": days, "context": ctx,
                     "realized_r": 0.0, "unrealized_r": 0.0,
                 })
