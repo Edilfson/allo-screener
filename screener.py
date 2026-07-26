@@ -45,6 +45,8 @@ MIN_STOP_DIST_PCT = 0.02
 MOVE_STOP_TO_BE = True
 
 LOOKBACK_CANDLES = 250
+# dilim basina mum: 30 gunluk rally penceresi + EMA99 isinmasi sigmali
+LOOKBACK_BY_IV = {"2h": 560, "4h": 320, "1d": 250}
 CHART_CANDLES = 120
 DEDUP_COOLDOWN_HOURS = 20
 POSITION_MAX_DAYS = 45
@@ -80,7 +82,10 @@ def get_usdt_symbols():
     return sorted(out)
 
 
-def get_klines(symbol, interval, limit=LOOKBACK_CANDLES):
+def get_klines(symbol, interval, limit=None, closed_only=False):
+    """closed_only=True ise KAPANMAMIS son mum atilir (backtest ile ayni davranis)."""
+    if limit is None:
+        limit = LOOKBACK_BY_IV.get(interval, LOOKBACK_CANDLES)
     try:
         r = requests.get(f"{BASE_URL}/api/v3/klines",
                          params={"symbol": symbol, "interval": interval, "limit": limit},
@@ -96,6 +101,11 @@ def get_klines(symbol, interval, limit=LOOKBACK_CANDLES):
         for c in ["open", "high", "low", "close", "volume"]:
             df[c] = df[c].astype(float)
         df["close_time"] = pd.to_datetime(df["close_time"], unit="ms", utc=True)
+        if closed_only:
+            now = pd.Timestamp.now(tz="UTC")
+            df = df[df["close_time"] <= now].reset_index(drop=True)
+            if len(df) < 60:
+                return None
         return df
     except Exception:
         return None
@@ -249,7 +259,23 @@ def get_btc_regime():
     return ("boga" if dist >= 0 else "ayi"), float(dist)
 
 
-def compute_context(df, plan, swing_high, swing_low, btc_regime, btc_dist):
+def coin_daily_trend(df_1d):
+    """Coinin KENDI gunluk trendi: fiyat 1D EMA55/EMA99 gore nerede?"""
+    if df_1d is None or len(df_1d) < 100:
+        return "bilinmiyor", 0.0
+    last = df_1d.iloc[-1]
+    d99 = (last["close"] - last["ema99"]) / last["ema99"]
+    if last["close"] >= last["ema55"] and last["close"] >= last["ema99"]:
+        t = "yukselis"
+    elif last["close"] < last["ema55"] and last["close"] < last["ema99"]:
+        t = "dusus"
+    else:
+        t = "kararsiz"
+    return t, float(d99)
+
+
+def compute_context(df, plan, swing_high, swing_low, btc_regime, btc_dist,
+                    coin_trend="bilinmiyor", coin_trend_dist=0.0):
     closes = df["close"].values
     last = df.iloc[-1]
     diff = swing_high - swing_low
@@ -271,6 +297,8 @@ def compute_context(df, plan, swing_high, swing_low, btc_regime, btc_dist):
         "ema_align": ema_align,
         "btc_regime": btc_regime,
         "btc_ema99_dist": round(btc_dist, 4),
+        "coin_1d_trend": coin_trend,
+        "coin_1d_ema99_dist": round(coin_trend_dist, 4),
     }
 
 
@@ -295,9 +323,14 @@ def evaluate_position(pos, df):
     # BUG FIX: sadece giristen SONRA ACILAN mumlari degerlendir.
     # Sinyal mumunun kendisi giris oncesi dip/tepe fitillerini icerir;
     # onlari saymak sahte stop/TP uretiyordu.
-    iv_td = pd.Timedelta({"1h": "1h", "2h": "2h", "4h": "4h",
-                          "12h": "12h", "1d": "1d"}.get(pos.get("interval", "4h"), "4h"))
-    future = df[df["close_time"] >= opened + iv_td]
+    ebc = pos.get("entry_bar_close")
+    if ebc:
+        # yeni pozisyonlar: giris mumunun kapanisindan SONRAKI mumlar (backtest paritesi)
+        future = df[df["close_time"] > pd.Timestamp(ebc)]
+    else:
+        iv_td = pd.Timedelta({"1h": "1h", "2h": "2h", "4h": "4h",
+                              "12h": "12h", "1d": "1d"}.get(pos.get("interval", "4h"), "4h"))
+        future = df[df["close_time"] >= opened + iv_td]
     if future.empty:
         return pos, events
 
@@ -437,6 +470,11 @@ def build_insights(positions):
         s = bstat([p for p in closed if p["context"].get("fib_zone") == z])
         if s:
             lines.append(f"  {z}: {s}")
+    lines.append("\n<b>Coinin 1D trendi</b>")
+    for tr in ["yukselis", "kararsiz", "dusus"]:
+        s2 = bstat([p for p in closed if p["context"].get("coin_1d_trend") == tr])
+        if s2:
+            lines.append(f"  {tr}: {s2}")
     lines.append("\n<b>BTC rejimi</b>")
     for rg in ["boga", "ayi"]:
         s = bstat([p for p in closed if p["context"].get("btc_regime") == rg])
@@ -570,7 +608,7 @@ def main():
 
             dfs, rallies = {}, {}
             for iv in ALL_INTERVALS:
-                df = get_klines(symbol, iv)
+                df = get_klines(symbol, iv, closed_only=True)   # sadece KAPANMIS mumlar
                 dfs[iv] = add_emas(df) if df is not None else None
                 if dfs[iv] is not None:
                     rallies[iv] = find_rally(dfs[iv])
@@ -609,7 +647,9 @@ def main():
                     continue
 
                 iv, rpct, hi, lo, pb, days, plan, zone = trig
-                ctx = compute_context(dfs[iv], plan, hi, lo, btc_regime, btc_dist)
+                c_trend, c_dist = coin_daily_trend(dfs.get("1d"))
+                ctx = compute_context(dfs[iv], plan, hi, lo, btc_regime, btc_dist,
+                                      c_trend, c_dist)
 
                 last = dfs[iv].iloc[-1]
                 body = abs(last["close"] - last["open"])
@@ -619,6 +659,8 @@ def main():
 
                 ctx_line = (f"\n\n\U0001F9ED RSI:{ctx['rsi14']} | Hacim:{ctx['vol_ratio']}x | "
                             f"Fib:{ctx['fib_zone']} | {ctx['ema_align']} | BTC:{ctx['btc_regime']}\n"
+                            f"1D trend: {ctx['coin_1d_trend']}"
+                            + (" \u26A0\uFE0F gunluk dususte - karsi yonde islem" if ctx['coin_1d_trend'] == 'dusus' else "") + "\n"
                             f"{quality_line} | Onay: sonraki yesil kapanis hafif avantajli (bilgi)")
 
                 strat_lbl = {"ob": "ORDER BLOCK", "fvg": "FVG", "zone5599": "EMA55-99 bolgesi"}[strat]
@@ -648,6 +690,7 @@ def main():
                     "opened_at": now.isoformat(), "status": "open",
                     "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
                     "risk": plan["risk"], "tps": plan["tps"],
+                    "entry_bar_close": dfs[iv].iloc[-1]["close_time"].isoformat(),
                     "rally_pct": rpct, "rally_days": days, "context": ctx,
                     "realized_r": 0.0, "unrealized_r": 0.0,
                 })
