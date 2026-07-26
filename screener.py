@@ -32,7 +32,7 @@ import mplfinance as mpf
 # ==================== AYARLAR ====================
 ALL_INTERVALS = ["2h", "4h", "1d"]
 STRATEGY_ORDER = ["ob", "fvg", "zone5599"]          # oncelik sirasi (OB en guclu)
-STRATEGY_INTERVALS = {"ob": ["4h", "1d"], "fvg": ["2h", "4h"], "zone5599": ["4h", "1d"]}
+STRATEGY_INTERVALS = {"ob": ["4h", "1d"], "fvg": ["2h", "4h", "1d"], "zone5599": ["4h", "1d"]}
 TP_STYLE = {"ob": "kosucu", "fvg": "kosucu", "zone5599": "klasik"}
 EMA_PERIODS = [55, 99]
 
@@ -48,6 +48,7 @@ MAX_ZONE_WIDTH_PCT = 0.08     # bolge genisligi fiyatin %8i uzeriyse ele (belirs
 MIN_FVG_GAP_PCT = 0.005       # %0.5ten kucuk FVG gurultu
 # --- iz suren stop ---
 TRAIL_AFTER_FIRST_TP = True
+TRAIL_INTERVALS = {"1d"}      # v4 backtest: trailing 2h/4h zarar, 1d fayda
 TRAIL_EMA = 21
 TRAIL_BUFFER = 0.01
 
@@ -386,7 +387,8 @@ def evaluate_position(pos, df):
                     events.append("🔁 Stop girise (BE) cekildi")
 
         # IZ SUREN STOP: ilk TP sonrasi kalani EMA21 ile takip et (sadece yukari)
-        if TRAIL_AFTER_FIRST_TP and any(t["hit"] for t in tps):
+        if (TRAIL_AFTER_FIRST_TP and pos.get("interval") in TRAIL_INTERVALS
+                and any(t["hit"] for t in tps)):
             tcol = f"ema{TRAIL_EMA}"
             if tcol in cndl.index and not pd.isna(cndl[tcol]):
                 yeni = float(cndl[tcol]) * (1 - TRAIL_BUFFER)
