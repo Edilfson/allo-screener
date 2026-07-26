@@ -2,7 +2,7 @@ name: Allo Screener
 
 on:
   schedule:
-    - cron: "5 */4 * * *"   # her 4 saatte bir (UTC)
+    - cron: "5 */2 * * *"   # her 4 saatte bir (UTC)
   workflow_dispatch: {}       # istersen elle de "Run workflow" ile tetikleyebilirsin
 
 permissions:
