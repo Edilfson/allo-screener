@@ -216,13 +216,23 @@ DETECTORS = {"zone5599": detect_zone5599, "fvg": detect_fvg, "ob": detect_ob}
 
 
 # ==================== PLAN (agirlikli TP) ====================
-def compute_trade_plan(swing_low, swing_high, entry, tp_style):
+def compute_trade_plan(swing_low, swing_high, entry, tp_style, zone=None):
+    """Stop: girisin ALTINDA kalan en sıkı yapisal seviye.
+    Adaylar: OB/FVG bolgesinin alti -> fib786 -> swing dip.
+    (Onceki surum sadece fib786 kullaniyordu; derin geri cekilmelerde stop
+     girisin ustune dustugu icin TUM sinyaller reddediliyordu.)"""
     diff = swing_high - swing_low
     if diff <= 0 or entry <= 0:
         return None
-    stop = max(swing_high - diff * 0.786, swing_low * 0.999)
-    if stop >= entry:
+    adaylar = []
+    if zone and zone[0] > 0:
+        adaylar.append(zone[0] * 0.998)
+    adaylar.append(swing_high - diff * 0.786)
+    adaylar.append(swing_low * 0.999)
+    gecerli = [a for a in adaylar if a < entry]
+    if not gecerli:
         return None
+    stop = max(gecerli)
     if (entry - stop) / entry < MIN_STOP_DIST_PCT:
         stop = entry * (1 - MIN_STOP_DIST_PCT)
     risk = entry - stop
@@ -699,7 +709,7 @@ def main():
                         continue
                     diag_detect[strat] += 1
                     plan = compute_trade_plan(lo, hi, float(dfs[iv].iloc[-1]["close"]),
-                                              TP_STYLE[strat])
+                                              TP_STYLE[strat], zone=zone)
                     if not plan:
                         diag_plan_red[strat] += 1
                         continue
