@@ -1,5 +1,5 @@
 """
-Backtest v3 - Strateji + TP/Stop cesitliligi yarisi
+Backtest v4 - Strateji + HTF + bolge kalitesi + trailing yarisi
 ====================================================
 Zaman dilimleri (ayri ayri calistir): 1h, 2h, 4h, 12h, 1d
 Giris stratejileri (7):
@@ -47,9 +47,17 @@ TOUCH_TOL = 0.02
 MIN_RR = 2.0
 MIN_STOP_DIST_PCT = 0.02
 
-STRATEGIES = ["ema7", "ema21", "ema55", "ema99", "zone5599", "fvg", "ob"]
-TP_STYLES = ["klasik", "r_katlari", "kosucu", "tek_hedef"]
-STOP_STYLES = ["fib786", "atr2", "yapi"]
+STRATEGIES = ["ema21", "ema55", "ema99", "zone5599", "fvg", "ob"]
+TP_STYLES = ["klasik", "kosucu"]          # r_katlari/tek_hedef elendi
+STOP_STYLES = ["fib786"]                  # ATR elendi
+HTF_MODES = ["yok", "1d_dususte_alma"]    # coinin KENDI gunluk trend filtresi
+ZONE_QUALITY = [False, True]              # OB/FVG bolge kalitesi
+TRAIL_MODES = ["yok", "ema21"]            # ilk TP sonrasi iz suren stop
+# 6 x 2 x 1 x 2 x 2 x 2 = 96 kombinasyon
+
+MAX_ZONE_WIDTH_PCT = 0.08
+MIN_FVG_GAP_PCT = 0.005
+TRAIL_BUFFER = 0.01
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
@@ -93,6 +101,7 @@ def get_klines(symbol, interval, limit=BT_CANDLES):
             "close_time", "qav", "trades", "tbbav", "tbqav", "ignore"])
         for c in ["open", "high", "low", "close", "volume"]:
             df[c] = df[c].astype(float)
+        df["close_time"] = pd.to_datetime(df["close_time"], unit="ms", utc=True)
         return df
     except Exception:
         return None
@@ -117,7 +126,7 @@ def precompute(df, iv):
     lows = df["low"].values
     mas = {}
     s = pd.Series(closes)
-    for p in (7, 21, 55, 99):
+    for p in (21, 55, 99):
         mas[f"ema{p}"] = s.ewm(span=p, adjust=False).mean().values
     atr = calc_atr(highs, lows, closes)
     win = int(RALLY_MAX_DAYS * bars_per_day(iv))
@@ -144,12 +153,36 @@ def precompute(df, iv):
         sw_lo[i] = lo
         hi_idx[i] = st + ma_i
         lo_idx[i] = st + mi
-    return {"c": closes, "o": opens, "h": highs, "l": lows, "mas": mas, "atr": atr,
+    times = df["close_time"].values.astype("datetime64[s]").astype(np.int64) \
+        if "close_time" in df.columns else np.arange(n)
+    return {"c": closes, "o": opens, "h": highs, "l": lows, "v": df["volume"].values,
+            "mas": mas, "atr": atr, "times": times,
             "rally_ok": rally_ok, "sw_hi": sw_hi, "sw_lo": sw_lo,
             "hi_idx": hi_idx, "lo_idx": lo_idx}
 
 
-def entry_check(sym, i, strat):
+def daily_trend_map(symbol):
+    """Coinin KENDI 1D trendi haritasi."""
+    d = get_klines(symbol, "1d", 400)
+    if d is None:
+        return None
+    c = d["close"].values
+    e55 = pd.Series(c).ewm(span=55, adjust=False).mean().values
+    e99 = pd.Series(c).ewm(span=99, adjust=False).mean().values
+    t = d["close_time"].values.astype("datetime64[s]").astype(np.int64)
+    return {"t": t, "dn": (c < e55) & (c < e99)}
+
+
+def htf_ok(dmap, ts, mode):
+    if mode == "yok" or dmap is None:
+        return True
+    idx = np.searchsorted(dmap["t"], ts, side="right") - 1
+    if idx < 0:
+        return True
+    return not bool(dmap["dn"][idx])      # gunluk dususteyse alma
+
+
+def entry_check(sym, i, strat, zq=False):
     """Return: (ok, zone_lo) - zone_lo 'yapi' stop icin yapisal taban."""
     c = sym["c"][i]
     if strat == "zone5599":
@@ -171,21 +204,34 @@ def entry_check(sym, i, strat):
                 break
             if l[j] > h[j - 2]:
                 zl, zh = h[j - 2], l[j]
+                if zq and zl > 0:
+                    gap = (zh - zl) / zl
+                    if gap < MIN_FVG_GAP_PCT or gap > MAX_ZONE_WIDTH_PCT:
+                        continue
                 if i > hi_i + 1 and l[hi_i + 1:i].min() < zl:
                     continue
                 if zl <= c <= zh:
                     return True, zl
         return False, 0.0
     if strat == "ob":
-        o, cl = sym["o"], sym["c"]
+        o, cl, v = sym["o"], sym["c"], sym["v"]
+        adaylar = []
         for j in range(hi_i - 1, max(lo_i - 3, 1), -1):
             if cl[j] < o[j] and j + 1 <= hi_i and cl[j + 1] > h[j]:
                 zl, zh = l[j], h[j]
+                if zq and (zl <= 0 or (zh - zl) / zl > MAX_ZONE_WIDTH_PCT):
+                    continue
                 if i > hi_i + 1 and l[hi_i + 1:i].min() < zl:
                     continue
                 if zl <= c <= zh:
-                    return True, zl
-        return False, 0.0
+                    adaylar.append((j, zl))
+        if not adaylar:
+            return False, 0.0
+        if zq:
+            ref = v[max(0, hi_i - 50):hi_i + 1].mean() or 1.0
+            j, zl = max(adaylar, key=lambda a: v[a[0]] / ref)
+            return True, zl
+        return True, adaylar[0][1]
     return False, 0.0
 
 
@@ -236,7 +282,7 @@ def build_plan(sym, i, strat, tp_style, stop_style, zone_lo):
     return {"entry": entry, "stop": stop, "risk": risk, "tps": tps}
 
 
-def simulate(sym, start_i, plan):
+def simulate(sym, start_i, plan, trail="yok"):
     h, l, c = sym["h"], sym["l"], sym["c"]
     entry, risk = plan["entry"], plan["risk"]
     stop = plan["stop"]
@@ -255,6 +301,10 @@ def simulate(sym, start_i, plan):
                 hit[k] = True
                 realized += w * (tp - entry) / risk
                 stop = max(stop, entry)
+        if trail == "ema21" and any(hit):
+            e = sym["mas"]["ema21"][j]
+            if not np.isnan(e):
+                stop = max(stop, e * (1 - TRAIL_BUFFER))
         if all(hit):
             return realized, j
     rem = sum(w for k, (_, w) in enumerate(tps) if not hit[k])
@@ -262,22 +312,24 @@ def simulate(sym, start_i, plan):
     return realized, end
 
 
-def run_config(data, strat, tp_style, stop_style):
+def run_config(data, dmaps, strat, tp_style, stop_style, htf, zq, trail):
     trades = []
-    for sym in data.values():
+    for name, sym in data.items():
         idxs = np.where(sym["rally_ok"])[0]
         n = len(sym["c"])
         blocked = -1
         for i in idxs:
             if i <= blocked or i >= n - 2:
                 continue
-            ok, zone_lo = entry_check(sym, i, strat)
+            if not htf_ok(dmaps.get(name), int(sym["times"][i]), htf):
+                continue
+            ok, zone_lo = entry_check(sym, i, strat, zq)
             if not ok:
                 continue
             plan = build_plan(sym, i, strat, tp_style, stop_style, zone_lo)
             if not plan:
                 continue
-            r, end_i = simulate(sym, i, plan)
+            r, end_i = simulate(sym, i, plan, trail)
             trades.append(r)
             blocked = end_i + COOLDOWN_BARS
     if not trades:
@@ -315,12 +367,20 @@ def main():
         time.sleep(0.03)
     print(f"{len(data)} sembol hazir.")
 
+    dmaps = {}
+    print("Gunluk trend haritalari cekiliyor...")
+    for s in data:
+        dmaps[s] = daily_trend_map(s)
+        time.sleep(0.03)
+
     results = []
-    combos = list(itertools.product(STRATEGIES, TP_STYLES, STOP_STYLES))
-    for idx, (st, tp, sp) in enumerate(combos):
-        res = run_config(data, st, tp, sp)
-        results.append({"interval": BT_INTERVAL, "strategy": st,
-                        "tp_style": tp, "stop_style": sp, **res})
+    combos = list(itertools.product(STRATEGIES, TP_STYLES, STOP_STYLES,
+                                    HTF_MODES, ZONE_QUALITY, TRAIL_MODES))
+    for idx, (st, tp, sp, htf, zq, tr) in enumerate(combos):
+        res = run_config(data, dmaps, st, tp, sp, htf, zq, tr)
+        results.append({"interval": BT_INTERVAL, "strategy": st, "tp_style": tp,
+                        "stop_style": sp, "htf": htf, "zone_kalite": zq,
+                        "trail": tr, **res})
         if (idx + 1) % 12 == 0:
             print(f"  {idx+1}/{len(combos)}")
 
@@ -330,15 +390,17 @@ def main():
     valid = [r for r in results if r["trades"] >= 15]
     pool = sorted(valid if valid else results, key=lambda r: -r["total_r"])
     days = BT_CANDLES / bars_per_day(BT_INTERVAL)
-    L = [f"BACKTEST v3 | {BT_INTERVAL} (~{days:.0f} gun) | {len(data)} coin | 84 komb.\n",
+    L = [f"BACKTEST v4 | {BT_INTERVAL} (~{days:.0f} gun) | {len(data)} coin | {len(combos)} komb.\n",
          "<b>En iyi 8:</b>"]
     for r in pool[:8]:
-        L.append(f"{r['strategy']} {r['tp_style']} {r['stop_style']}\n"
+        L.append(f"{r['strategy']} {r['tp_style']} htf:{r['htf']} "
+                 f"kalite:{'+' if r['zone_kalite'] else '-'} trail:{r['trail']}\n"
                  f"  -> {r['total_r']:+.1f}R | {r['trades']}isl | ort {r['avg_r']:+.2f}R | "
                  f"win%{r['win_rate']:.0f} | dd{r['max_dd']:.1f}")
     L.append("\n<b>Boyut etkileri (ort toplam R):</b>")
     for param, opts in [("strategy", STRATEGIES), ("tp_style", TP_STYLES),
-                        ("stop_style", STOP_STYLES)]:
+                        ("htf", HTF_MODES), ("zone_kalite", ZONE_QUALITY),
+                        ("trail", TRAIL_MODES)]:
         vals = []
         for v in opts:
             g = [r for r in results if r[param] == v]
