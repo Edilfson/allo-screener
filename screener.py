@@ -539,7 +539,7 @@ def main():
             continue
         _, events = evaluate_position(pos, df)
         if events:
-            head = (f"📌 <b>{pos['symbol']}</b> {pos['interval']} [{pos.get('strategy','?')}]\n"
+            head = (f"\U0001F4CC <b>{pos['symbol']}</b> {pos['interval']} [{pos.get('strategy','?')}]\n"
                     f"Giris: {pos['entry']:.6g} | Acilis: {pos['opened_at'][:10]}")
             tg_send(head + "\n" + "\n".join(events), TOPIC_RESULTS)
         time.sleep(0.05)
@@ -550,15 +550,23 @@ def main():
     print(f"BTC rejimi: {btc_regime} (%{btc_dist*100:.1f})")
     new_count = 0
 
+    # tani sayaclari: OB/FVG nicin gelmiyor sorusuna log'dan cevap
+    diag_rally = {iv: 0 for iv in ALL_INTERVALS}
+    diag_detect = {st: 0 for st in STRATEGY_ORDER}
+    diag_plan_red = {st: 0 for st in STRATEGY_ORDER}
+
     for symbol in symbols:
         try:
-            if any(p["symbol"] == symbol and p["status"] == "open" for p in positions):
-                continue
-            recent = [p for p in positions if p["symbol"] == symbol]
-            if recent:
-                last = max(pd.Timestamp(p["opened_at"]) for p in recent)
-                if (now - last.to_pydatetime()).total_seconds() / 3600 < DEDUP_COOLDOWN_HOURS:
-                    continue
+            # strateji BASINA acik pozisyon / cooldown (gercek A/B icin bagimsiz)
+            open_strats = {p.get("strategy") for p in positions
+                           if p["symbol"] == symbol and p["status"] == "open"}
+            last_by_strat = {}
+            for p in positions:
+                if p["symbol"] == symbol:
+                    st = p.get("strategy", "?")
+                    ts = pd.Timestamp(p["opened_at"])
+                    if st not in last_by_strat or ts > last_by_strat[st]:
+                        last_by_strat[st] = ts
 
             dfs, rallies = {}, {}
             for iv in ALL_INTERVALS:
@@ -566,10 +574,19 @@ def main():
                 dfs[iv] = add_emas(df) if df is not None else None
                 if dfs[iv] is not None:
                     rallies[iv] = find_rally(dfs[iv])
+                    ok, _, _, _, pb, _, _, _ = rallies[iv]
+                    if ok and pb >= PULLBACK_MIN_PCT:
+                        diag_rally[iv] += 1
                 time.sleep(0.04)
 
-            trigger = None
             for strat in STRATEGY_ORDER:
+                if strat in open_strats:
+                    continue
+                lb = last_by_strat.get(strat)
+                if lb is not None and (now - lb.to_pydatetime()).total_seconds() / 3600 < DEDUP_COOLDOWN_HOURS:
+                    continue
+
+                trig = None
                 for iv in STRATEGY_INTERVALS[strat]:
                     if dfs.get(iv) is None or iv not in rallies:
                         continue
@@ -579,67 +596,70 @@ def main():
                     hit, zone = DETECTORS[strat](dfs[iv], hi_idx, lo_idx)
                     if not hit:
                         continue
+                    diag_detect[strat] += 1
                     plan = compute_trade_plan(lo, hi, float(dfs[iv].iloc[-1]["close"]),
                                               TP_STYLE[strat])
-                    if plan:
-                        trigger = (strat, iv, rpct, hi, lo, pb, days, plan, zone)
-                        break
-                if trigger:
+                    if not plan:
+                        diag_plan_red[strat] += 1
+                        continue
+                    trig = (iv, rpct, hi, lo, pb, days, plan, zone)
                     break
 
-            if not trigger:
-                continue
+                if not trig:
+                    continue
 
-            strat, iv, rpct, hi, lo, pb, days, plan, zone = trigger
-            ctx = compute_context(dfs[iv], plan, hi, lo, btc_regime, btc_dist)
+                iv, rpct, hi, lo, pb, days, plan, zone = trig
+                ctx = compute_context(dfs[iv], plan, hi, lo, btc_regime, btc_dist)
 
-            last = dfs[iv].iloc[-1]
-            body = abs(last["close"] - last["open"])
-            lower_wick = min(last["close"], last["open"]) - last["low"]
-            q_ok = (body > 0 and lower_wick >= body) or last["close"] >= max(last["ema55"], last["ema99"])
-            quality_line = "Kalite: " + ("✅ fitil/band ustu" if q_ok else "⚠️ zayif mum")
+                last = dfs[iv].iloc[-1]
+                body = abs(last["close"] - last["open"])
+                lower_wick = min(last["close"], last["open"]) - last["low"]
+                q_ok = (body > 0 and lower_wick >= body) or last["close"] >= max(last["ema55"], last["ema99"])
+                quality_line = "Kalite: " + ("\u2705 fitil/band ustu" if q_ok else "\u26A0\uFE0F zayif mum")
 
-            ctx_line = (f"\n\n🧭 RSI:{ctx['rsi14']} | Hacim:{ctx['vol_ratio']}x | "
-                        f"Fib:{ctx['fib_zone']} | {ctx['ema_align']} | BTC:{ctx['btc_regime']}\n"
-                        f"{quality_line} | Onay: sonraki yesil kapanis hafif avantajli (bilgi)")
+                ctx_line = (f"\n\n\U0001F9ED RSI:{ctx['rsi14']} | Hacim:{ctx['vol_ratio']}x | "
+                            f"Fib:{ctx['fib_zone']} | {ctx['ema_align']} | BTC:{ctx['btc_regime']}\n"
+                            f"{quality_line} | Onay: sonraki yesil kapanis hafif avantajli (bilgi)")
 
-            strat_lbl = {"ob": "ORDER BLOCK", "fvg": "FVG", "zone5599": "EMA55-99 bolgesi"}[strat]
-            zone_line = ""
-            if strat in ("ob", "fvg") and zone:
-                zone_line = f"Bolge: {zone[0]:.6g} - {zone[1]:.6g}\n"
-            msg = (f"🔔 <b>{symbol}</b>  [{iv} / {strat_lbl}]\n"
-                   f"Yukselis: %{rpct*100:.1f} ({days:.1f} gunde)\n"
-                   f"Zirve {hi:.6g} → simdi {plan['entry']:.6g} (%{pb*100:.1f} geri cekildi)\n"
-                   + zone_line + "\n"
-                   f"📋 <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
-                   + ctx_line)
+                strat_lbl = {"ob": "ORDER BLOCK", "fvg": "FVG", "zone5599": "EMA55-99 bolgesi"}[strat]
+                zone_line = ""
+                if strat in ("ob", "fvg") and zone:
+                    zone_line = f"Bolge: {zone[0]:.6g} - {zone[1]:.6g}\n"
+                msg = (f"\U0001F514 <b>{symbol}</b>  [{iv} / {strat_lbl}]\n"
+                       f"Yukselis: %{rpct*100:.1f} ({days:.1f} gunde)\n"
+                       f"Zirve {hi:.6g} \u2192 simdi {plan['entry']:.6g} (%{pb*100:.1f} geri cekildi)\n"
+                       + zone_line + "\n"
+                       f"\U0001F4CB <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
+                       + ctx_line)
 
-            sent = False
-            try:
-                chart = make_chart(dfs[iv], symbol, iv, strat, plan,
-                                   zone=zone if strat in ("ob", "fvg") else None)
-                sent = tg_photo(chart, msg, TOPIC_SIGNALS)
-            except Exception as e:
-                print(f"{symbol} grafik hatasi: {e}")
-            if not sent:
-                tg_send(msg, TOPIC_SIGNALS)
+                sent = False
+                try:
+                    chart = make_chart(dfs[iv], symbol, iv, strat, plan,
+                                       zone=zone if strat in ("ob", "fvg") else None)
+                    sent = tg_photo(chart, msg, TOPIC_SIGNALS)
+                except Exception as e:
+                    print(f"{symbol} grafik hatasi: {e}")
+                if not sent:
+                    tg_send(msg, TOPIC_SIGNALS)
 
-            positions.append({
-                "symbol": symbol, "interval": iv, "strategy": strat,
-                "ema_period": strat,
-                "opened_at": now.isoformat(), "status": "open",
-                "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
-                "risk": plan["risk"], "tps": plan["tps"],
-                "rally_pct": rpct, "rally_days": days, "context": ctx,
-                "realized_r": 0.0, "unrealized_r": 0.0,
-            })
-            new_count += 1
+                positions.append({
+                    "symbol": symbol, "interval": iv, "strategy": strat,
+                    "ema_period": strat,
+                    "opened_at": now.isoformat(), "status": "open",
+                    "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
+                    "risk": plan["risk"], "tps": plan["tps"],
+                    "rally_pct": rpct, "rally_days": days, "context": ctx,
+                    "realized_r": 0.0, "unrealized_r": 0.0,
+                })
+                new_count += 1
 
         except Exception as e:
             print(f"{symbol} hata: {e}")
             continue
 
     print(f"{new_count} yeni sinyal.")
+    print(f"TANI | rally gecen (sembol/dilim): {diag_rally}")
+    print(f"TANI | bolge tespiti: {diag_detect} | plan reddi (RR/stop): {diag_plan_red}")
 
     if SUMMARY_EVERY_RUN or now.hour < 4:
         tg_send(build_summary(positions), TOPIC_SUMMARY)
