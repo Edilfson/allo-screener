@@ -758,7 +758,7 @@
    "btc_ema99_dist": -0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.5227408504116987
+  "unrealized_r": -0.3766331593028385
  },
  {
   "symbol": "VANRYUSDT",
@@ -1330,7 +1330,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.619213800391047
+  "unrealized_r": -0.5586385373093141
  },
  {
   "symbol": "ALLOUSDT",
@@ -1447,7 +1447,7 @@
    "coin_1d_ema99_dist": -0.0917
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.3145266374106965
+  "unrealized_r": -0.3444815552593356
  },
  {
   "symbol": "BREVUSDT",
@@ -1853,7 +1853,7 @@
    "coin_1d_ema99_dist": -0.2435
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.7815635495659148
+  "unrealized_r": -0.7393168712110003
  },
  {
   "symbol": "TUSDT",
@@ -3462,7 +3462,7 @@
    "coin_1d_ema99_dist": -0.0921
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4975124378109439
+  "unrealized_r": 0.37313432835820254
  },
  {
   "symbol": "DIAUSDT",
@@ -4163,7 +4163,7 @@
    "coin_1d_ema99_dist": -0.181
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.4068106048579141
+  "unrealized_r": -0.5357993332274964
  },
  {
   "symbol": "BLURUSDT",
@@ -5380,7 +5380,7 @@
   "strategy": "zone5599",
   "ema_period": "zone5599",
   "opened_at": "2026-07-28T12:48:09.954825+00:00",
-  "status": "open",
+  "status": "stopped",
   "entry": 0.004605,
   "stop": 0.004084328,
   "current_stop": 0.004084328,
@@ -5429,8 +5429,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1688
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.9410915125069145
+  "realized_r": -1.0,
+  "unrealized_r": -0.9410915125069145,
+  "closed_at": "2026-07-30T11:59:59.999000+00:00"
  },
  {
   "symbol": "XNOUSDT",
@@ -6390,7 +6391,7 @@
    "coin_1d_ema99_dist": -0.1834
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.26109660574412596
+  "unrealized_r": 0.0
  },
  {
   "symbol": "QIUSDT",
@@ -6501,7 +6502,7 @@
    "coin_1d_ema99_dist": 0.2311
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.08744073741484631
+  "unrealized_r": 0.6558055306113373
  },
  {
   "symbol": "ETHFIUSDT",
@@ -6559,7 +6560,7 @@
    "coin_1d_ema99_dist": 0.0139
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6174395161290344
+  "unrealized_r": 1.0710685483870979
  },
  {
   "symbol": "ETHFIUSDT",
@@ -6617,7 +6618,7 @@
    "coin_1d_ema99_dist": 0.0139
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6300403225806458
+  "unrealized_r": 1.0710685483870979
  },
  {
   "symbol": "HEMIUSDT",
@@ -6793,7 +6794,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.4685612958880463
+  "unrealized_r": 3.2049745998274686
  },
  {
   "symbol": "SKLUSDT",
@@ -6851,7 +6852,7 @@
    "coin_1d_ema99_dist": -0.2414
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.8403361344537763
+  "unrealized_r": -0.5602240896358489
  },
  {
   "symbol": "SKLUSDT",
@@ -6909,7 +6910,7 @@
    "coin_1d_ema99_dist": -0.2414
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.8403361344537763
+  "unrealized_r": -0.5602240896358489
  },
  {
   "symbol": "THEUSDT",
@@ -7026,7 +7027,7 @@
    "coin_1d_ema99_dist": 0.0041
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.1396495553403247
+  "unrealized_r": 2.3157523994012528
  },
  {
   "symbol": "ACEUSDT",
@@ -7143,7 +7144,7 @@
    "coin_1d_ema99_dist": -0.0807
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.2542372881355971
+  "unrealized_r": 0.3389830508474532
  },
  {
   "symbol": "DIAUSDT",
@@ -7537,7 +7538,7 @@
    "coin_1d_ema99_dist": 0.1469
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.11038745998454606
+  "unrealized_r": 0.662324759907274
  },
  {
   "symbol": "RPLUSDT",
@@ -7647,7 +7648,7 @@
    "coin_1d_ema99_dist": 0.1013
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.312805208412314
+  "unrealized_r": 1.050244166729852
  },
  {
   "symbol": "TUSDT",
@@ -7870,7 +7871,7 @@
    "coin_1d_ema99_dist": 0.1117
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6668558456299635
+  "unrealized_r": 1.7451759364358734
  },
  {
   "symbol": "RIFUSDT",
@@ -8099,7 +8100,7 @@
    "coin_1d_ema99_dist": -0.139
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.1677893418364303
+  "unrealized_r": 2.1477035755063034
  },
  {
   "symbol": "REUSDT",
@@ -8269,7 +8270,7 @@
    "coin_1d_ema99_dist": -0.2836
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7878151260504273
+  "unrealized_r": 0.7002801120448208
  },
  {
   "symbol": "THEUSDT",
@@ -8385,7 +8386,7 @@
    "coin_1d_ema99_dist": -0.1512
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.43289397083190234
+  "unrealized_r": -0.34332970100461274
  },
  {
   "symbol": "EULUSDT",
@@ -8443,7 +8444,7 @@
    "coin_1d_ema99_dist": 0.39
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3011534146746545
+  "unrealized_r": -0.09104638118070849
  },
  {
   "symbol": "LDOUSDT",
@@ -8548,7 +8549,7 @@
    "coin_1d_ema99_dist": 0.0861
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.20680460473992826
+  "unrealized_r": 1.0684904578229557
  },
  {
   "symbol": "XECUSDT",
@@ -8606,7 +8607,7 @@
    "coin_1d_ema99_dist": -0.0837
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.2282410225197795
+  "unrealized_r": 0.7608034083992714
  },
  {
   "symbol": "ALLOUSDT",
@@ -8723,7 +8724,7 @@
    "coin_1d_ema99_dist": -0.4512
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6910069177555775
+  "unrealized_r": 0.6149116064565697
  },
  {
   "symbol": "ACEUSDT",
