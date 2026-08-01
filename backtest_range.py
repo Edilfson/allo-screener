@@ -109,6 +109,7 @@ DEFAULTS = dict(
     fee_pct=0.0005,
     funding_8h=0.0001,
     risk_frac=0.01,
+    min_stop_pct=0.01,      # FIX: stop girise en az %1 uzakta (funding/fee patlamasini onler)
 )
 
 
@@ -229,6 +230,11 @@ def run_backtest(df: pd.DataFrame, tf_hours: float, p: dict):
                 rej["bad_levels"] += 1
                 continue
 
+            # FIX: cok dar stop -> maliyet R cinsinden patlar (fee/funding)
+            if risk / entry < p.get("min_stop_pct", 0.0):
+                rej["stop_dar"] = rej.get("stop_dar", 0) + 1
+                continue
+
             # --- R7 teyit maliyeti ---
             struct_h = abs(s_px - target)
             conf_cost = abs(s_px - entry) / struct_h if struct_h > 0 else 9.9
@@ -289,6 +295,7 @@ def print_funnel(rej):
              ("no_swing", "Swing yok"), ("not_struct", "Yapi yok (LH/HL)"),
              ("not_zone", "Range bolgesinde degil"), ("no_confirm", "Teyit yok"),
              ("bad_levels", "Gecersiz seviye"), ("conf_cost", "Teyit maliyeti yuksek (R7)"),
+             ("stop_dar", "Stop cok dar (<%1)"),
              ("rr", "R:R yetersiz (R6)"), ("PASS", ">>> ISLEME GIRDI")]
     print("\n  ELEME HUNISI (aday bar basina)")
     print("  " + "-" * 44)
@@ -363,11 +370,29 @@ def top_symbols(n=30):
         base = s[:-4]
         if any(base.endswith(x) for x in ("UP", "DOWN", "BULL", "BEAR")):
             continue
-        if base in ("USDC", "FDUSD", "TUSD", "DAI", "EUR", "TRY", "BUSD", "USDP"):
+        if base in ("USDC", "FDUSD", "TUSD", "DAI", "EUR", "TRY", "BUSD", "USDP",
+                    "USD1", "RLUSD", "USDE", "PYUSD", "EURI", "AEUR", "XUSD",
+                    "USDD", "FRAX", "LUSD", "GUSD", "USDS", "SUSD"):
+            continue
+        if "USD" in base and len(base) <= 6:      # USD iceren kisa isimler supheli
             continue
         rows.append((s, float(t.get("quoteVolume", 0))))
     rows.sort(key=lambda x: -x[1])
     return [s for s, _ in rows[:n]]
+
+
+MIN_ANNUAL_VOL = 0.25        # yillik oynakligi %25 altindaki pariteler = stablecoin
+
+
+def is_stablecoin(df):
+    """Oynaklik cok dusukse stablecoin/peg'li varliktir -> taranmamali."""
+    if len(df) < 50:
+        return True
+    ret = df["close"].pct_change().dropna()
+    if len(ret) < 30:
+        return True
+    ann = float(ret.std() * np.sqrt(6 * 365))
+    return ann < MIN_ANNUAL_VOL
 
 
 def run_multi(symbols, tf, days, tfh, p, oos=False):
@@ -382,6 +407,9 @@ def run_multi(symbols, tf, days, tfh, p, oos=False):
         df = fetch_binance(sym, tf, days)
         if df.empty or len(df) < p["lookback"] * 3:
             print("veri yetersiz")
+            continue
+        if is_stablecoin(df):
+            print("stablecoin/dusuk oynaklik - atlandi")
             continue
         tr, rej = run_backtest(df, tfh, p)
         for kk, vv in rej.items():
@@ -440,6 +468,7 @@ def main():
     ap.add_argument("--oos", action="store_true", help="veriyi ikiye bol, IS/OOS karsilastir")
     ap.add_argument("--symbols", help="virgulle ayrilmis: BTCUSDT,ETHUSDT")
     ap.add_argument("--top", type=int, default=0, help="hacme gore ilk N coin")
+    ap.add_argument("--tfs", help="birden fazla dilim: 1h,2h,4h")
     ap.add_argument("--save-json", default="results/range_backtest.json")
     ap.add_argument("--save")
     args = ap.parse_args()
@@ -452,6 +481,64 @@ def main():
     p = dict(DEFAULTS)
     p.update(min_rr=args.min_rr, lookback=args.lookback, risk_frac=args.risk,
              htf_mult=args.htf, max_conf_cost=args.max_conf_cost, side=args.side)
+
+    # ---------- COKLU ZAMAN DILIMI MODU ----------
+    if args.tfs:
+        tf_list = [x.strip() for x in args.tfs.split(",")]
+        syms = ([x.strip().upper().replace("/", "") for x in args.symbols.split(",")]
+                if args.symbols else top_symbols(args.top or 100))
+        birlesik = []
+        for tf in tf_list:
+            if tf not in tf_hours:
+                print(f"  ! {tf} desteklenmiyor, atlandi")
+                continue
+            print("\n" + "#" * 62)
+            print(f"#  ZAMAN DILIMI: {tf}")
+            print("#" * 62)
+            tr, rej, is_tr, oos_tr, per_sym = run_multi(syms, tf, args.days,
+                                                        tf_hours[tf], p, args.oos)
+            report(tr, p, f"{tf} HAVUZ ({len(syms)} coin)", rej)
+            if args.oos:
+                s1 = report(is_tr, p, f"{tf} IN-SAMPLE")
+                s2 = report(oos_tr, p, f"{tf} OUT-OF-SAMPLE")
+                if s1 and s2:
+                    print(f"  {tf} TUTARLILIK: IS {s1['exp_net']:+.3f}R (n={s1['n']}) | OOS {s2['exp_net']:+.3f}R (n={s2['n']})")
+                    if s1["exp_net"] > 0 and s2["exp_net"] > 0:
+                        print("  -> iki yari da POZITIF")
+                    elif s1["exp_net"] > 0 > s2["exp_net"]:
+                        print("  -> IS+ / OOS- : OVERFIT isareti")
+                    else:
+                        print("  -> dogrulanmadi")
+            if not tr.empty:
+                tr = tr.copy()
+                tr["tf"] = tf
+                birlesik.append(tr)
+            save_results(tr, p, dict(symbols=syms, tf=tf, days=args.days,
+                                     side=args.side, mode="multi",
+                                     generated=str(pd.Timestamp.now(tz="UTC"))),
+                         f"results/range_{tf}_top{len(syms)}.json")
+        if birlesik:
+            allt = pd.concat(birlesik, ignore_index=True)
+            print("\n" + "#" * 62)
+            print("#  TUM DILIMLER BIRLESIK")
+            print("#" * 62)
+            report(allt, p, f"TUM DILIMLER ({len(syms)} coin)")
+            print("\n  DILIM BAZINDA")
+            for tf in tf_list:
+                g = allt[allt.tf == tf]
+                if len(g):
+                    print(f"    {tf:>4}: {len(g):>4} islem | {g.net_R.sum():+7.1f}R | ort {g.net_R.mean():+.3f}R | win %{(g.net_R>0).mean()*100:.0f}")
+            print("\n  YON BAZINDA (tum dilimler)")
+            for sd in ("LONG", "SHORT"):
+                g = allt[allt.side == sd]
+                if len(g):
+                    print(f"    {sd:>5}: {len(g):>4} islem | {g.net_R.sum():+7.1f}R | ort {g.net_R.mean():+.3f}R | win %{(g.net_R>0).mean()*100:.0f}")
+            save_results(allt, p, dict(symbols=syms, tfs=tf_list, days=args.days,
+                                       side=args.side, mode="multi_tf",
+                                       generated=str(pd.Timestamp.now(tz="UTC"))),
+                         "results/range_ALL.json")
+        print("\nUYARI: Kayma dahil degil; gecmis performans gelecegi garanti etmez.")
+        return
 
     # ---------- COKLU SEMBOL MODU ----------
     if args.symbols or args.top:
