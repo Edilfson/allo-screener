@@ -70,6 +70,7 @@ DEDUP_COOLDOWN_HOURS = 20
 POSITION_MAX_DAYS = 45
 
 STATE_FILE = "positions.json"
+LOG_FILE = "signals_log.json"     # TUM sinyaller + sonuclar tek yerde
 CHART_DIR = "charts"
 BASE_URL = "https://data-api.binance.vision"
 
@@ -657,6 +658,17 @@ def tg_photo(path, caption, topic=None):
 
 
 # ==================== STATE ====================
+def log_ekle(kayit):
+    """Her sinyali ve her sonucu merkezi log dosyasina yazar."""
+    try:
+        kayitlar = json.load(open(LOG_FILE)) if os.path.exists(LOG_FILE) else []
+    except Exception:
+        kayitlar = []
+    kayit["zaman"] = datetime.now(timezone.utc).isoformat()
+    kayitlar.append(kayit)
+    json.dump(kayitlar[-5000:], open(LOG_FILE, "w"), indent=1, default=str)
+
+
 def load_positions():
     if os.path.exists(STATE_FILE):
         try:
@@ -690,6 +702,11 @@ def main():
             head = (f"\U0001F4CC <b>{pos['symbol']}</b> {pos['interval']} [{pos.get('strategy','?')}]\n"
                     f"Giris: {pos['entry']:.6g} | Acilis: {pos['opened_at'][:10]}")
             tg_send(head + "\n" + "\n".join(events), TOPIC_RESULTS)
+            log_ekle({"tur": "SONUC", "kaynak": "screener", "sembol": pos["symbol"],
+                      "strateji": pos.get("strategy"), "dilim": pos["interval"],
+                      "durum": pos["status"], "gerceklesen_r": pos.get("realized_r"),
+                      "olaylar": events, "giris": pos["entry"],
+                      "acilis": pos["opened_at"]})
         time.sleep(0.05)
 
     symbols = get_usdt_symbols()
@@ -707,8 +724,11 @@ def main():
     for symbol in symbols:
         try:
             # strateji BASINA acik pozisyon / cooldown (gercek A/B icin bagimsiz)
-            open_strats = {p.get("strategy") for p in positions
-                           if p["symbol"] == symbol and p["status"] == "open"}
+            # SEMBOL KILIDI: bu coinde ACIK pozisyon varsa hicbir strateji
+            # yeni pozisyon ACMAZ (ayni coinde ust uste islem birikmesin).
+            if any(p["symbol"] == symbol and p["status"] == "open" for p in positions):
+                continue
+            open_strats = set()
             last_by_strat = {}
             for p in positions:
                 if p["symbol"] == symbol:
@@ -857,6 +877,13 @@ def main():
                     "realized_r": 0.0, "unrealized_r": 0.0,
                 })
                 new_count += 1
+                log_ekle({"tur": "SINYAL", "kaynak": "screener", "sembol": symbol,
+                          "strateji": strat, "dilim": iv,
+                          "yon": "LONG" if side == 1 else "SHORT",
+                          "giris": plan["entry"], "stop": plan["stop"],
+                          "hedefler": [x["p"] for x in plan["tps"]],
+                          "r_degerleri": [round(x["r"], 2) for x in plan["tps"]],
+                          "baglam": ctx})
 
         except Exception as e:
             print(f"{symbol} hata: {e}")
