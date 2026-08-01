@@ -6,16 +6,19 @@ on:
       mode:
         description: "Tarama modu"
         type: choice
-        options: ["top30", "top50", "liste", "tek"]
-        default: "top30"
+        options: ["top100_multi_tf", "top100", "top50", "top30", "liste", "tek"]
+        default: "top100_multi_tf"
+      tfs:
+        description: "multi_tf modunda dilimler"
+        default: "1h,2h,4h"
       symbols:
-        description: "mode=liste ise: BTCUSDT,ETHUSDT,SOLUSDT"
+        description: "mode=liste ise"
         default: "BTCUSDT,ETHUSDT,SOLUSDT,BNBUSDT"
       symbol:
-        description: "mode=tek ise sembol"
+        description: "mode=tek ise"
         default: "BTCUSDT"
       tf:
-        description: "Zaman dilimi"
+        description: "tek dilim modlarinda"
         type: choice
         options: ["1h", "2h", "4h", "12h", "1d"]
         default: "4h"
@@ -25,10 +28,10 @@ on:
       side:
         description: "Yon"
         type: choice
-        options: ["both", "short", "long"]
+        options: ["both", "long", "short"]
         default: "both"
       max_conf_cost:
-        description: "R7 teyit maliyeti tavani (0.25=1:3, 0.33=1:2, 1.0=kapali)"
+        description: "R7 tavani (0.25=1:3, 0.33=1:2, 1.0=kapali)"
         default: "0.25"
       min_rr:
         description: "Minimum R:R"
@@ -40,6 +43,7 @@ permissions:
 jobs:
   range-backtest:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -51,17 +55,16 @@ jobs:
       - name: Backtest calistir
         run: |
           M="${{ github.event.inputs.mode }}"
-          OUT="results/range_${{ github.event.inputs.tf }}_${{ github.event.inputs.mode }}.json"
-          COMMON="--tf ${{ github.event.inputs.tf }} --days ${{ github.event.inputs.days }} --side ${{ github.event.inputs.side }} --max-conf-cost ${{ github.event.inputs.max_conf_cost }} --min-rr ${{ github.event.inputs.min_rr }} --oos --save-json $OUT"
-          if [ "$M" = "top30" ]; then
-            python backtest_range.py --top 30 $COMMON
-          elif [ "$M" = "top50" ]; then
-            python backtest_range.py --top 50 $COMMON
-          elif [ "$M" = "liste" ]; then
-            python backtest_range.py --symbols "${{ github.event.inputs.symbols }}" $COMMON
-          else
-            python backtest_range.py --symbol "${{ github.event.inputs.symbol }}" $COMMON
-          fi
+          C="--days ${{ github.event.inputs.days }} --side ${{ github.event.inputs.side }} --max-conf-cost ${{ github.event.inputs.max_conf_cost }} --min-rr ${{ github.event.inputs.min_rr }} --oos"
+          T="--tf ${{ github.event.inputs.tf }} --save-json results/range_${{ github.event.inputs.tf }}_$M.json"
+          case "$M" in
+            top100_multi_tf) python backtest_range.py --top 100 --tfs "${{ github.event.inputs.tfs }}" $C ;;
+            top100) python backtest_range.py --top 100 $C $T ;;
+            top50)  python backtest_range.py --top 50  $C $T ;;
+            top30)  python backtest_range.py --top 30  $C $T ;;
+            liste)  python backtest_range.py --symbols "${{ github.event.inputs.symbols }}" $C $T ;;
+            *)      python backtest_range.py --symbol "${{ github.event.inputs.symbol }}" $C $T ;;
+          esac
 
       - name: Sonuclari repoya kaydet
         continue-on-error: true
