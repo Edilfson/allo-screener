@@ -41,19 +41,21 @@ RALLY_MAX_DAYS = 30
 PULLBACK_MIN_PCT = 0.05
 TOUCH_TOLERANCE_PCT = 0.02
 MIN_RR = 2.0
-MIN_STOP_DIST_PCT = 0.02
+MIN_STOP_DIST_PCT = 0.02      # mutlak alt sinir
+MIN_STOP_ATR_MULT = 1.5       # stop en az 1.5*ATR14 uzakta (volatiliteye gore)
+MAX_ENTRY_ZONE_POS = 0.60     # bolgenin ust %40indan giris YAPMA (0=dip,1=tepe)
 MOVE_STOP_TO_BE = True
 # --- bolge kalitesi (OB/FVG) ---
-MAX_ZONE_WIDTH_PCT = 0.08     # bolge genisligi fiyatin %8i uzeriyse ele (belirsiz stop)
-MIN_FVG_GAP_PCT = 0.005       # %0.5ten kucuk FVG gurultu
-# --- iz suren stop ---
+MAX_ZONE_WIDTH_PCT = 0.08     # bolge genisligi fiyatin %8'inden buyukse ele (belirsiz stop)
+MIN_FVG_GAP_PCT = 0.005       # %0.5'ten kucuk FVG anlamsiz (gurultu)
+# --- iz suren stop (trailing) ---
 TRAIL_AFTER_FIRST_TP = True
-TRAIL_INTERVALS = {"1d"}      # v4 backtest: trailing 2h/4h zarar, 1d fayda
+TRAIL_INTERVALS = {"1d"}      # v4 backtest: trailing 2h/4h'de zarar, 1d'de fayda saglıyor   # ilk TP sonrasi kalan kismi EMA21 ile takip et
 TRAIL_EMA = 21
-TRAIL_BUFFER = 0.01
+TRAIL_BUFFER = 0.01           # EMA21'in %1 altina koy (fitil payi)
 
 LOOKBACK_CANDLES = 250
-# dilim basina mum: 30 gunluk rally penceresi + EMA99 isinmasi sigmali
+# dilim basina mum sayisi: 30 gunluk rally penceresi + EMA99 isinmasi sigmali
 LOOKBACK_BY_IV = {"2h": 560, "4h": 320, "1d": 250}
 CHART_CANDLES = 120
 DEDUP_COOLDOWN_HOURS = 20
@@ -91,7 +93,7 @@ def get_usdt_symbols():
 
 
 def get_klines(symbol, interval, limit=None, closed_only=False):
-    """closed_only=True ise KAPANMAMIS son mum atilir (backtest ile ayni davranis)."""
+    """closed_only=True ise henuz KAPANMAMIS son mum atilir (backtest ile ayni davranis)."""
     if limit is None:
         limit = LOOKBACK_BY_IV.get(interval, LOOKBACK_CANDLES)
     try:
@@ -128,7 +130,8 @@ def add_emas(df):
 
 # ==================== RALLY + STRATEJI TESPITI ====================
 def find_rally(df):
-    """Return: (ok, rally_pct, hi, lo, pullback_pct, days, hi_idx, lo_idx)"""
+    """Return: (ok, rally_pct, hi, lo, pullback_pct, days, hi_idx, lo_idx)
+    hi_idx/lo_idx: df icindeki mutlak konumlar."""
     now_ts = df["close_time"].iloc[-1]
     mask = df["close_time"] >= now_ts - pd.Timedelta(days=RALLY_MAX_DAYS)
     start = int(np.argmax(mask.values))
@@ -173,11 +176,8 @@ def detect_fvg(df, hi_idx, lo_idx):
             break
         if l[j] > h[j - 2]:
             zl, zh = h[j - 2], l[j]
-            gap = (zh - zl) / zl if zl > 0 else 0
-            if gap < MIN_FVG_GAP_PCT or gap > MAX_ZONE_WIDTH_PCT:
-                continue  # KALITE: cok kucuk/cok genis bosluk
             if i > hi_idx + 1 and l[hi_idx + 1:i].min() < zl:
-                continue
+                continue  # bolge zaten dolmus
             if zl <= c <= zh:
                 return True, (zl, zh)
     return False, None
@@ -199,14 +199,14 @@ def detect_ob(df, hi_idx, lo_idx):
         if cl[j] < o[j] and j + 1 <= hi_idx and cl[j + 1] > h[j]:
             zl, zh = l[j], h[j]
             if zl <= 0 or (zh - zl) / zl > MAX_ZONE_WIDTH_PCT:
-                continue  # KALITE: asiri genis bolge
+                continue  # KALITE: asiri genis bolge -> belirsiz stop
             if i > hi_idx + 1 and l[hi_idx + 1:i].min() < zl:
                 continue
             if zl <= c <= zh:
                 adaylar.append((j, zl, zh))
     if not adaylar:
         return False, None
-    # KALITE: hacmi en yuksek OB = en guclu iz
+    # KALITE: hacmi en yuksek OB en guclu kurumsal iz -> onu sec
     ref = vol[max(0, hi_idx - 50):hi_idx + 1].mean() or 1.0
     j, zl, zh = max(adaylar, key=lambda a: vol[a[0]] / ref)
     return True, (zl, zh)
@@ -216,25 +216,32 @@ DETECTORS = {"zone5599": detect_zone5599, "fvg": detect_fvg, "ob": detect_ob}
 
 
 # ==================== PLAN (agirlikli TP) ====================
-def compute_trade_plan(swing_low, swing_high, entry, tp_style, zone=None):
-    """Stop: girisin ALTINDA kalan en sıkı yapisal seviye.
-    Adaylar: OB/FVG bolgesinin alti -> fib786 -> swing dip.
-    (Onceki surum sadece fib786 kullaniyordu; derin geri cekilmelerde stop
-     girisin ustune dustugu icin TUM sinyaller reddediliyordu.)"""
+def compute_trade_plan(swing_low, swing_high, entry, tp_style, zone=None, atr=None):
+    """Stop (backtest paritesi + volatilite tabani):
+    1) Oncelik fib786 - backtest'te kazanan, genis ve yapisal seviye
+    2) fib786 girisin ustundeyse (derin cekilme): bolge alti, sonra swing dip
+    3) Her durumda min genislik: max(1.5*ATR14, %2) -> gurultu stoplarini onler"""
     diff = swing_high - swing_low
     if diff <= 0 or entry <= 0:
         return None
-    adaylar = []
+    fib786 = swing_high - diff * 0.786
+    adaylar = [fib786]                             # 1. tercih: backtest'in kazanan seviyesi
     if zone and zone[0] > 0:
-        adaylar.append(zone[0] * 0.998)
-    adaylar.append(swing_high - diff * 0.786)
-    adaylar.append(swing_low * 0.999)
+        adaylar.append(zone[0] * 0.998)            # 2. tercih: bolgenin alti
+    adaylar.append(swing_low * 0.999)              # 3. tercih: swing dip
     gecerli = [a for a in adaylar if a < entry]
     if not gecerli:
         return None
-    stop = max(gecerli)
-    if (entry - stop) / entry < MIN_STOP_DIST_PCT:
-        stop = entry * (1 - MIN_STOP_DIST_PCT)
+    stop = gecerli[0]                              # oncelik sirasindaki ILK gecerli seviye
+
+    # VOLATILITE TABANI: gurultuye yem olmayacak genislik
+    # (onceki surum sabit %2'ye eziyordu -> stoplarin %56'si tabana yapisip
+    #  medyan 6.8 saatte yeniyordu; canli sonuc 152/166 stop)
+    min_dist = entry * MIN_STOP_DIST_PCT
+    if atr:
+        min_dist = max(min_dist, atr * MIN_STOP_ATR_MULT)
+    if entry - stop < min_dist:
+        stop = entry - min_dist
     risk = entry - stop
 
     fib382 = swing_high - diff * 0.382
@@ -242,7 +249,7 @@ def compute_trade_plan(swing_low, swing_high, entry, tp_style, zone=None):
     ext1618 = swing_high + diff * 0.618
     if tp_style == "kosucu":
         raw = [(fib382, 0.5), (swing_high, 0.25), (ext1618, 0.25)]
-    else:
+    else:  # klasik
         raw = [(fib382, 1 / 3), (swing_high, 1 / 3), (ext1272, 1 / 3)]
 
     tps = [(p, w) for p, w in raw if p > entry]
@@ -264,6 +271,17 @@ def format_plan(plan, tp_style):
 
 
 # ==================== BAGLAM ====================
+def calc_atr(df, period=14):
+    h, l, c = df["high"].values, df["low"].values, df["close"].values
+    if len(c) < period + 2:
+        return None
+    tr = np.maximum(h[1:], c[:-1]) - np.minimum(l[1:], c[:-1])
+    a = tr[:period].mean()
+    for i in range(period, len(tr)):
+        a = (a * (period - 1) + tr[i]) / period
+    return float(a)
+
+
 def calc_rsi(closes, period=14):
     if len(closes) < period + 1:
         return None
@@ -291,7 +309,7 @@ def get_btc_regime():
 
 
 def coin_daily_trend(df_1d):
-    """Coinin KENDI gunluk trendi: fiyat 1D EMA55/EMA99 gore nerede?"""
+    """Coinin KENDI gunluk trendi: fiyat 1D EMA55/EMA99'a gore nerede?"""
     if df_1d is None or len(df_1d) < 100:
         return "bilinmiyor", 0.0
     last = df_1d.iloc[-1]
@@ -349,16 +367,18 @@ def migrate_position(pos):
 
 
 def evaluate_position(pos, df):
+    """Acik pozisyonu acilistan sonraki mumlara gore degerlendirir."""
     events = []
     opened = pd.Timestamp(pos["opened_at"])
     # BUG FIX: sadece giristen SONRA ACILAN mumlari degerlendir.
-    # Sinyal mumunun kendisi giris oncesi dip/tepe fitillerini icerir;
-    # onlari saymak sahte stop/TP uretiyordu.
+    # Sinyal mumunun kendisi (close_time > opened olsa da) giris oncesi
+    # dip/tepe fitillerini icerir; onlari saymak sahte stop/TP uretiyordu.
     ebc = pos.get("entry_bar_close")
     if ebc:
-        # yeni pozisyonlar: giris mumunun kapanisindan SONRAKI mumlar (backtest paritesi)
+        # yeni pozisyonlar: giris mumunun kapanisindan SONRAKI mumlar (backtest ile ayni)
         future = df[df["close_time"] > pd.Timestamp(ebc)]
     else:
+        # eski kayitlar icin geri uyumluluk
         iv_td = pd.Timedelta({"1h": "1h", "2h": "2h", "4h": "4h",
                               "12h": "12h", "1d": "1d"}.get(pos.get("interval", "4h"), "4h"))
         future = df[df["close_time"] >= opened + iv_td]
@@ -370,7 +390,7 @@ def evaluate_position(pos, df):
     tps = pos["tps"]
 
     for _, cndl in future.iterrows():
-        if cndl["low"] <= stop:
+        if cndl["low"] <= stop:  # kotumser: once stop
             rem = sum(t["w"] for t in tps if not t["hit"])
             done = sum(t["w"] * t["r"] for t in tps if t["hit"])
             if not any(t["hit"] for t in tps):
@@ -396,7 +416,7 @@ def evaluate_position(pos, df):
                     stop = entry
                     events.append("🔁 Stop girise (BE) cekildi")
 
-        # IZ SUREN STOP: ilk TP sonrasi kalani EMA21 ile takip et (sadece yukari)
+        # IZ SUREN STOP: ilk TP sonrasi kalan kismi EMA21 ile takip et (sadece yukari)
         if (TRAIL_AFTER_FIRST_TP and pos.get("interval") in TRAIL_INTERVALS
                 and any(t["hit"] for t in tps)):
             tcol = f"ema{TRAIL_EMA}"
@@ -536,8 +556,9 @@ def build_insights(positions):
 
 
 # ==================== GRAFIK ====================
-def make_chart(df, symbol, interval, strategy, plan, zone=None, rally=None):
-    """Zengin grafik: golgeli bolge + rally bacagi + R etiketli seviyeler."""
+def make_chart(df, symbol, interval, strategy, plan, zone=None,
+               rally=None):
+    """Zenginlestirilmis grafik: golgeli bolge + rally bacagi + R etiketli seviyeler."""
     os.makedirs(CHART_DIR, exist_ok=True)
     d = df.tail(CHART_CANDLES).copy()
     d = d.set_index(pd.DatetimeIndex(d["close_time"]))
@@ -549,9 +570,10 @@ def make_chart(df, symbol, interval, strategy, plan, zone=None, rally=None):
     prices = [plan["stop"], plan["entry"]] + [t["p"] for t in plan["tps"]]
     colors = ["#ff5252", "#ffffff", "#90ee90", "#2ecc71", "#f1c40f"][:len(prices)]
     kw = {}
-    if zone:
+    if zone:  # OB/FVG bolgesi: golgeli dikdortgen
         kw["fill_between"] = dict(y1=float(zone[0]), y2=float(zone[1]),
                                   alpha=0.18, color="#00bcd4")
+    # rally bacagi: dip -> zirve cizgisi
     if rally:
         lo_t, lo_p, hi_t, hi_p = rally
         if d.index[0] <= lo_t <= d.index[-1] and d.index[0] <= hi_t <= d.index[-1]:
@@ -566,11 +588,11 @@ def make_chart(df, symbol, interval, strategy, plan, zone=None, rally=None):
         returnfig=True, figsize=(12, 7), **kw)
 
     ax = axes[0]
-    etiket = [("STOP", plan["stop"], colors[0]), ("GIRIS", plan["entry"], colors[1])]
-    for i, tp in enumerate(plan["tps"]):
-        etiket.append((f"TP{i+1} %{tp['w']*100:.0f} ({tp['r']:.1f}R)", tp["p"], colors[2 + i]))
+    etiketler = [("STOP", plan["stop"], colors[0]), ("GIRIS", plan["entry"], colors[1])]
+    for i, t in enumerate(plan["tps"]):
+        etiketler.append((f"TP{i+1} %{t['w']*100:.0f} ({t['r']:.1f}R)", t["p"], colors[2 + i]))
     xmax = len(d) - 1
-    for lbl, y, col in etiket:
+    for lbl, y, col in etiketler:
         ax.text(xmax * 1.005, y, f" {lbl} {y:.6g}", color=col, fontsize=8,
                 va="center", ha="left", family="monospace")
     if zone:
@@ -647,7 +669,7 @@ def main():
         df = get_klines(pos["symbol"], pos["interval"])
         if df is None:
             continue
-        df = add_emas(df)          # iz suren stop EMA21e ihtiyac duyar
+        df = add_emas(df)          # iz suren stop EMA21'e ihtiyac duyar
         _, events = evaluate_position(pos, df)
         if events:
             head = (f"\U0001F4CC <b>{pos['symbol']}</b> {pos['interval']} [{pos.get('strategy','?')}]\n"
@@ -665,6 +687,7 @@ def main():
     diag_rally = {iv: 0 for iv in ALL_INTERVALS}
     diag_detect = {st: 0 for st in STRATEGY_ORDER}
     diag_plan_red = {st: 0 for st in STRATEGY_ORDER}
+    diag_konum = {st: 0 for st in STRATEGY_ORDER}
 
     for symbol in symbols:
         try:
@@ -708,8 +731,15 @@ def main():
                     if not hit:
                         continue
                     diag_detect[strat] += 1
+                    # GIRIS KONUMU: bolgenin ust kismindan girme (kotu fiyat + dar stop)
+                    if strat in ("ob", "fvg") and zone and zone[1] > zone[0]:
+                        konum = (float(dfs[iv].iloc[-1]["close"]) - zone[0]) / (zone[1] - zone[0])
+                        if konum > MAX_ENTRY_ZONE_POS:
+                            diag_konum[strat] += 1
+                            continue
                     plan = compute_trade_plan(lo, hi, float(dfs[iv].iloc[-1]["close"]),
-                                              TP_STYLE[strat], zone=zone)
+                                              TP_STYLE[strat], zone=zone,
+                                              atr=calc_atr(dfs[iv]))
                     if not plan:
                         diag_plan_red[strat] += 1
                         continue
@@ -769,7 +799,7 @@ def main():
                     "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
                     "risk": plan["risk"], "tps": plan["tps"],
                     "entry_bar_close": dfs[iv].iloc[-1]["close_time"].isoformat(),
-                    # --- analiz icin ek alanlar ---
+                    # --- analiz icin ek alanlar (sonradan iyilestirme yapabilmek icin) ---
                     "tp_style": TP_STYLE[strat],
                     "zone_low": float(zone[0]) if zone else None,
                     "zone_high": float(zone[1]) if zone else None,
@@ -779,7 +809,7 @@ def main():
                     "swing_high": float(hi), "swing_low": float(lo),
                     "stop_dist_pct": round(plan["risk"] / plan["entry"], 4),
                     "nearest_tp_r": round(min(t["r"] for t in plan["tps"]), 2),
-                    "scan_version": "v5",
+                    "scan_version": "v6",
                     "rally_pct": rpct, "rally_days": days, "context": ctx,
                     "realized_r": 0.0, "unrealized_r": 0.0,
                 })
@@ -791,7 +821,7 @@ def main():
 
     print(f"{new_count} yeni sinyal.")
     print(f"TANI | rally gecen (sembol/dilim): {diag_rally}")
-    print(f"TANI | bolge tespiti: {diag_detect} | plan reddi (RR/stop): {diag_plan_red}")
+    print(f"TANI | bolge tespiti: {diag_detect} | konum reddi: {diag_konum} | plan reddi: {diag_plan_red}")
 
     if SUMMARY_EVERY_RUN or now.hour < 4:
         tg_send(build_summary(positions), TOPIC_SUMMARY)
