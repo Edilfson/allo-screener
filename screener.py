@@ -32,7 +32,9 @@ import range_setup
 
 # ==================== AYARLAR ====================
 ALL_INTERVALS = ["4h", "1d"]
-STRATEGY_ORDER = ["range_lh", "range_hl", "ob", "fvg", "zone5599"]          # oncelik sirasi (OB en guclu)
+# backtest v3/v4 sonucu: OB tek tutarli strateji (5 dilimin 4unde pozitif).
+# range_lh/range_hl (-16.5R, 164 islem) ve zone5599 (zayif) devre disi birakildi.
+STRATEGY_ORDER = ["ob"]          # oncelik sirasi (OB en guclu)
 STRATEGY_INTERVALS = {"range_lh": ["4h"], "range_hl": ["4h"],
                       "ob": ["4h", "1d"], "fvg": ["4h", "1d"],
                       "zone5599": ["4h", "1d"]}
