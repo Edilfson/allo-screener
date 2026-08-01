@@ -200,6 +200,38 @@ def main():
         eq, n = trend_following(btc, ma)
         sonuc.append(yaz(f"BTC trend MA{ma}", eq.dropna(), a.capital, n))
 
+    print("\n  --- 1b) TREND TAKIBI HER COINDE (MA50) ---")
+    print("      Not: MA50 daha once SADECE BTCde test edilmisti. Bu bolum")
+    print("      altcoinlerde de calisip calismadigini olcer.")
+    tf_sonuc, kotu, iyi = [], 0, 0
+    for sym in fiyat.columns:
+        px = fiyat[sym].dropna()
+        if len(px) < 250:
+            continue
+        eq, _ = trend_following(px, 50)
+        eq = eq.dropna()
+        if len(eq) < 100:
+            continue
+        m_tf, m_bh = olcut(eq), olcut(al_tut(px))
+        if not m_tf or not m_bh:
+            continue
+        fark = m_tf["toplam"] - m_bh["toplam"]
+        tf_sonuc.append((sym, m_tf, m_bh, fark))
+        iyi += fark > 0
+        kotu += fark <= 0
+    if tf_sonuc:
+        o_tf = np.mean([x[1]["toplam"] for x in tf_sonuc])
+        o_bh = np.mean([x[2]["toplam"] for x in tf_sonuc])
+        d_tf = np.mean([x[1]["max_dusus"] for x in tf_sonuc])
+        d_bh = np.mean([x[2]["max_dusus"] for x in tf_sonuc])
+        print(f"      {len(tf_sonuc)} coin | MA50 al-tutu {iyi} coinde GECTI, "
+              f"{kotu} coinde GECEMEDI (%{iyi/len(tf_sonuc)*100:.0f})")
+        print(f"      ort getiri : MA50 {o_tf*100:+.0f}%  vs  al-tut {o_bh*100:+.0f}%")
+        print(f"      ort dusus  : MA50 -{d_tf*100:.0f}%  vs  al-tut -{d_bh*100:.0f}%")
+        print("      -> MA50nin asil faydasi DUSUSU AZALTMAK; getiri farki ikincildir.")
+        tf_sonuc.sort(key=lambda x: -x[3])
+        print("      en iyi 5:", ", ".join(f"{x[0][:-4]}({x[3]*100:+.0f}%)" for x in tf_sonuc[:5]))
+        print("      en kotu 5:", ", ".join(f"{x[0][:-4]}({x[3]*100:+.0f}%)" for x in tf_sonuc[-5:]))
     print("\n  --- 2) KESITSEL MOMENTUM (en cok yukselen N coin) ---")
     for geri, tut, yenile in ((30, 10, 7), (30, 5, 7), (90, 10, 30), (14, 10, 7)):
         eq, n = cross_sectional(fiyat, geri, tut, yenile)
