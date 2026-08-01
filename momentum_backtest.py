@@ -35,6 +35,7 @@ import pandas as pd
 import requests
 
 BASE = "https://data-api.binance.vision"
+TF_RAPOR = None       # MA50 altcoin karsilastirmasi (JSONa yazilir)
 FEE = 0.001          # gidis-donus komisyon (%0.1)
 
 
@@ -203,6 +204,7 @@ def main():
     print("\n  --- 1b) TREND TAKIBI HER COINDE (MA50) ---")
     print("      Not: MA50 daha once SADECE BTCde test edilmisti. Bu bolum")
     print("      altcoinlerde de calisip calismadigini olcer.")
+    global TF_RAPOR
     tf_sonuc, kotu, iyi = [], 0, 0
     for sym in fiyat.columns:
         px = fiyat[sym].dropna()
@@ -232,6 +234,17 @@ def main():
         tf_sonuc.sort(key=lambda x: -x[3])
         print("      en iyi 5:", ", ".join(f"{x[0][:-4]}({x[3]*100:+.0f}%)" for x in tf_sonuc[:5]))
         print("      en kotu 5:", ", ".join(f"{x[0][:-4]}({x[3]*100:+.0f}%)" for x in tf_sonuc[-5:]))
+        TF_RAPOR = {"coin_sayisi": len(tf_sonuc), "gecti": int(iyi), "gecemedi": int(kotu),
+                    "gecme_orani": round(iyi / len(tf_sonuc), 3),
+                    "ort_getiri_ma50": round(float(o_tf), 4),
+                    "ort_getiri_altut": round(float(o_bh), 4),
+                    "ort_dusus_ma50": round(float(d_tf), 4),
+                    "ort_dusus_altut": round(float(d_bh), 4),
+                    "coinler": [{"sembol": x[0], "ma50_getiri": round(float(x[1]["toplam"]), 4),
+                                 "altut_getiri": round(float(x[2]["toplam"]), 4),
+                                 "ma50_dusus": round(float(x[1]["max_dusus"]), 4),
+                                 "altut_dusus": round(float(x[2]["max_dusus"]), 4),
+                                 "fark": round(float(x[3]), 4)} for x in tf_sonuc]}
     print("\n  --- 2) KESITSEL MOMENTUM (en cok yukselen N coin) ---")
     for geri, tut, yenile in ((30, 10, 7), (30, 5, 7), (90, 10, 30), (14, 10, 7)):
         eq, n = cross_sectional(fiyat, geri, tut, yenile)
@@ -259,7 +272,8 @@ def main():
 
     os.makedirs(os.path.dirname(a.save_json) or ".", exist_ok=True)
     with open(a.save_json, "w") as f:
-        json.dump({"meta": {"coin": len(fiyat.columns), "gun": a.days,
+        json.dump({"ma50_altcoin_testi": TF_RAPOR,
+                   "meta": {"coin": len(fiyat.columns), "gun": a.days,
                             "sermaye": a.capital,
                             "baslangic": str(fiyat.index[0].date()),
                             "bitis": str(fiyat.index[-1].date())},
