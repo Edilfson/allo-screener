@@ -1,84 +1,764 @@
-name: Range Backtest
+#!/usr/bin/env python3
+"""
+LOWER HIGH + RANGE USTU + LIKIDITE HEDEFI  --  SHORT KURULUMU BACKTEST
+=======================================================================
 
-on:
-  workflow_dispatch:
-    inputs:
-      mode:
-        description: "Tarama modu"
-        type: choice
-        options: ["top100_multi_tf", "top100", "top50", "top30", "liste", "tek"]
-        default: "top100_multi_tf"
-      tfs:
-        description: "multi_tf modunda dilimler"
-        default: "1h,2h,4h"
-      symbols:
-        description: "mode=liste ise"
-        default: "BTCUSDT,ETHUSDT,SOLUSDT,BNBUSDT"
-      symbol:
-        description: "mode=tek ise"
-        default: "BTCUSDT"
-      tf:
-        description: "tek dilim modlarinda"
-        type: choice
-        options: ["1h", "2h", "4h", "12h", "1d"]
-        default: "4h"
-      days:
-        description: "Kac gunluk veri"
-        default: "730"
-      side:
-        description: "Yon"
-        type: choice
-        options: ["both", "long", "short"]
-        default: "both"
-      max_conf_cost:
-        description: "R7 tavani (0.25=1:3, 0.33=1:2, 1.0=kapali)"
-        default: "0.25"
-      min_rr:
-        description: "Minimum R:R"
-        default: "3.0"
+Ekran goruntusundeki kurulumun kurallastirilmis hali.
+Minimum R:R = 3.0 filtresi ile.
 
-permissions:
-  contents: write
+KULLANIM
+--------
+    pip install ccxt pandas numpy
+    python lower_high_range_short_backtest.py --days 730 --tf 1h
 
-jobs:
-  range-backtest:
-    runs-on: ubuntu-latest
-    timeout-minutes: 120
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: "pip"
-      - run: pip install requests pandas numpy
+    # Internet yoksa / kendi verinizle:
+    python lower_high_range_short_backtest.py --csv btc_1h.csv
+    # CSV kolonlari: timestamp,open,high,low,close,volume
 
-      - name: Backtest calistir
-        run: |
-          M="${{ github.event.inputs.mode }}"
-          C="--days ${{ github.event.inputs.days }} --side ${{ github.event.inputs.side }} --max-conf-cost ${{ github.event.inputs.max_conf_cost }} --min-rr ${{ github.event.inputs.min_rr }} --oos"
-          T="--tf ${{ github.event.inputs.tf }} --save-json results/range_${{ github.event.inputs.tf }}_$M.json"
-          case "$M" in
-            top100_multi_tf) python backtest_range.py --top 100 --tfs "${{ github.event.inputs.tfs }}" $C ;;
-            top100) python backtest_range.py --top 100 $C $T ;;
-            top50)  python backtest_range.py --top 50  $C $T ;;
-            top30)  python backtest_range.py --top 30  $C $T ;;
-            liste)  python backtest_range.py --symbols "${{ github.event.inputs.symbols }}" $C $T ;;
-            *)      python backtest_range.py --symbol "${{ github.event.inputs.symbol }}" $C $T ;;
-          esac
+PARAMETRE TARAMASI
+------------------
+    python lower_high_range_short_backtest.py --days 730 --tf 4h --min-rr 3.0
+    python lower_high_range_short_backtest.py --days 730 --tf 1h --sweep
 
-      - name: Sonuclari repoya kaydet
-        continue-on-error: true
-        run: |
-          git config user.name "allo-screener-bot"
-          git config user.email "actions@github.com"
-          git add results/*.json
-          git diff --quiet --cached || git commit -m "range backtest sonuc [skip ci]"
-          for i in 1 2 3; do
-            if git pull --rebase --autostash origin main && git push origin HEAD:main; then exit 0; fi
-            sleep 5
-          done
+NOT: --sweep parametre optimizasyonu yapar. Cikan en iyi sonuc GERCEK
+beklentiniz DEGILDIR (overfit). Optimizasyondan sonra mutlaka
+--oos ile veriyi ikiye bolup ikinci yarida dogrulayin.
+"""
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: range-results
-          path: results/*.json
+import argparse
+import sys
+import numpy as np
+import pandas as pd
+
+
+# ----------------------------------------------------------------------
+# 1) VERI
+# ----------------------------------------------------------------------
+
+BINANCE_VISION = "https://data-api.binance.vision"
+
+
+def fetch_binance(symbol: str, timeframe: str, days: int) -> pd.DataFrame:
+    """Binance'in kisitlamasiz veri aynasindan mum ceker (ccxt gerekmez).
+    GitHub Actions sunucularinda fapi 451 verdigi icin bu ayna kullanilir."""
+    import requests
+    tf_ms = {"1h": 3600, "2h": 7200, "4h": 14400, "12h": 43200,
+             "1d": 86400}[timeframe] * 1000
+    since = int(pd.Timestamp.utcnow().timestamp() * 1000) - days * 86_400_000
+    rows = []
+    while True:
+        r = requests.get(f"{BINANCE_VISION}/api/v3/klines",
+                         params={"symbol": symbol, "interval": timeframe,
+                                 "startTime": since, "limit": 1000}, timeout=30)
+        if r.status_code != 200:
+            break
+        batch = r.json()
+        if not batch:
+            break
+        rows.extend([b[:6] for b in batch])
+        since = batch[-1][0] + tf_ms
+        if len(batch) < 1000:
+            break
+    if not rows:
+        return pd.DataFrame()
+    df = pd.DataFrame(rows, columns=["ts", "open", "high", "low", "close", "volume"])
+    for c in ("open", "high", "low", "close", "volume"):
+        df[c] = df[c].astype(float)
+    df = df.drop_duplicates("ts").sort_values("ts").reset_index(drop=True)
+    df["dt"] = pd.to_datetime(df["ts"], unit="ms", utc=True)
+    return df
+
+
+def fetch_ohlcv(exchange_id: str, symbol: str, timeframe: str, days: int) -> pd.DataFrame:
+    try:
+        import ccxt
+    except ImportError:
+        sys.exit("ccxt kurulu degil.  ->  pip install ccxt   (veya --csv kullanin)")
+
+    ex = getattr(ccxt, exchange_id)({"enableRateLimit": True})
+    tf_ms = ex.parse_timeframe(timeframe) * 1000
+    since = ex.milliseconds() - days * 86_400_000
+    rows = []
+
+    while True:
+        batch = ex.fetch_ohlcv(symbol, timeframe, since=since, limit=1000)
+        if not batch:
+            break
+        rows.extend(batch)
+        since = batch[-1][0] + tf_ms
+        print(f"  ...{len(rows)} mum indirildi", end="\r", flush=True)
+        if len(batch) < 1000:
+            break
+
+    print()
+    df = pd.DataFrame(rows, columns=["ts", "open", "high", "low", "close", "volume"])
+    df = df.drop_duplicates("ts").sort_values("ts").reset_index(drop=True)
+    df["dt"] = pd.to_datetime(df["ts"], unit="ms", utc=True)
+    return df
+
+
+def load_csv(path: str) -> pd.DataFrame:
+    df = pd.read_csv(path)
+    df.columns = [c.strip().lower() for c in df.columns]
+    tcol = next((c for c in ("timestamp", "ts", "time", "date", "datetime") if c in df.columns), None)
+    if tcol is None:
+        sys.exit("CSV'de zaman kolonu bulunamadi (timestamp/time/date).")
+    for c in ("open", "high", "low", "close"):
+        if c not in df.columns:
+            sys.exit(f"CSV'de '{c}' kolonu yok.")
+    col = df[tcol]
+    if pd.api.types.is_numeric_dtype(col):
+        unit = "ms" if float(col.iloc[0]) > 1e11 else "s"
+        df["dt"] = pd.to_datetime(col, unit=unit, utc=True)
+    else:
+        df["dt"] = pd.to_datetime(col, utc=True, format="mixed")
+    if "volume" not in df.columns:
+        df["volume"] = np.nan
+    return df.sort_values("dt").reset_index(drop=True)
+
+
+# ----------------------------------------------------------------------
+# 2) SWING NOKTALARI (fraktal)
+#    Bir swing high, k bar SONRA teyit edilir. Backtest bunu respekt eder.
+# ----------------------------------------------------------------------
+
+def swing_flags(high: np.ndarray, low: np.ndarray, k: int):
+    n = len(high)
+    sh = np.zeros(n, dtype=bool)
+    sl = np.zeros(n, dtype=bool)
+    for i in range(k, n - k):
+        win_h = high[i - k:i + k + 1]
+        if high[i] == win_h.max() and win_h.argmax() == k:
+            sh[i] = True
+        win_l = low[i - k:i + k + 1]
+        if low[i] == win_l.min() and win_l.argmin() == k:
+            sl[i] = True
+    return sh, sl
+
+
+# ----------------------------------------------------------------------
+# 3) KURAL SETI
+# ----------------------------------------------------------------------
+"""
+GIRIS KOSULLARI (hepsi ayni anda saglanmali)
+
+R1  RANGE VAR MI
+    Son `lookback` barda:  range_high = max(high), range_low = min(low)
+    range_pct = (range_high - range_low) / range_low
+    min_range_pct <= range_pct <= max_range_pct
+    -> Cok dar = gurultu.  Cok genis = trend, range degil.
+
+R2  TREND FILTRESI
+    |close[i] - close[i-lookback]| / close[i-lookback] < trend_max
+    -> Guclu trendde mean-reversion shortu almiyoruz.
+
+R3  LOWER HIGH
+    Son iki TEYITLI swing high: SH_prev (eski), SH_last (yeni)
+    SH_last.price < SH_prev.price          (daha dusuk tepe)
+    SH_last.price >= range_high - upper_zone * range_height
+    -> Yeni tepe range'in ust bolgesinde ve oncekini alamamis.
+
+R4  TEYIT
+    close[i] < SH_last barinin low'u
+    -> Reddedilme onaylandi. Bu bar kapanisinda giriyoruz.
+
+R5  SEVIYELER
+    entry  = close[i]
+    stop   = max(SH_prev.price, SH_last.price) * (1 + stop_buf)
+    target = range_low * (1 + target_buf)     <- likidite havuzunun HEMEN USTU
+    risk   = stop - entry
+    reward = entry - target
+    rr     = reward / risk
+
+R6  R:R FILTRESI
+    rr >= min_rr   (varsayilan 3.0)
+    -> Bu filtre isaretlerin buyuk kismini eleyecektir. Normal.
+
+CIKIS
+    Once stop kontrol edilir (ayni barda ikisi de deginirse KAYIP sayilir
+    -- muhafazakar varsayim).  max_hold bar sonunda kapanista cikilir.
+
+MALIYET
+    fee_R     = 2 * fee_pct / stop_dist_pct
+    funding_R = funding_8h * (holding_hours/8) / stop_dist_pct
+    Not: stop ne kadar DAR ise maliyet R cinsinden o kadar BUYUK.
+"""
+
+DEFAULTS = dict(
+    swing_k=3,
+    htf_mult=1,          # 1 = tek zaman dilimi. 4 = yapi 4x buyuk TF'te, giris bu TF'te
+    side="both",         # "short" | "long" | "both"
+    max_conf_cost=1.0,   # teyit maliyeti / yapi yuksekligi ust siniri (1.0 = kapali)
+    lookback=120,
+    min_range_pct=0.03,
+    max_range_pct=0.15,
+    trend_max=0.06,
+    upper_zone=0.40,
+    stop_buf=0.002,
+    target_buf=0.002,
+    min_rr=3.0,
+    max_hold=200,
+    fee_pct=0.0005,
+    funding_8h=0.0001,
+    risk_frac=0.01,
+    min_stop_pct=0.01,      # FIX: stop girise en az %1 uzakta (funding/fee patlamasini onler)
+    max_hold_hours=0,       # 0 = kapali. >0 ise pozisyon bu sureden sonra kapanir
+)
+
+
+def build_htf(df: pd.DataFrame, m: int):
+    """LTF barlari m'lik bloklara toplar. Blok b, LTF index htf_end[b]'de TAMAMLANIR."""
+    n = len(df)
+    nb = n // m
+    hi = df["high"].values[:nb * m].reshape(nb, m).max(axis=1)
+    lo = df["low"].values[:nb * m].reshape(nb, m).min(axis=1)
+    cl = df["close"].values[:nb * m].reshape(nb, m)[:, -1]
+    htf_end = np.arange(nb) * m + (m - 1)          # her blogun bittigi LTF index
+    return hi, lo, cl, htf_end
+
+
+def run_backtest(df: pd.DataFrame, tf_hours: float, p: dict, verbose=False):
+    high = df["high"].values
+    low = df["low"].values
+    close = df["close"].values
+    n = len(df)
+    m = max(1, int(p["htf_mult"]))
+
+    # --- yapi (range + swingler) HTF'te, giris LTF'te ---
+    H_hi, H_lo, H_cl, htf_end = build_htf(df, m)
+    sh, sl = swing_flags(H_hi, H_lo, p["swing_k"])
+    sh_blk, sl_blk = np.flatnonzero(sh), np.flatnonzero(sl)
+
+    sides = []
+    if p["side"] in ("short", "both"):
+        sides.append(-1)
+    if p["side"] in ("long", "both"):
+        sides.append(+1)
+
+    rej = dict(range=0, trend=0, no_swing=0, not_struct=0, not_zone=0,
+               no_confirm=0, bad_levels=0, conf_cost=0, rr=0, PASS=0)
+
+    trades = []
+    busy_until = -1
+    lb = p["lookback"]
+
+    start = (lb + p["swing_k"] + 2) * m
+    for i in range(start, n - 1):
+        if i <= busy_until:
+            continue
+
+        b_last = (i // m) - 1
+        if b_last < lb + p["swing_k"] + 1:
+            continue
+
+        # --- R1 range (HTF) ---
+        range_high = H_hi[b_last - lb:b_last + 1].max()
+        range_low = H_lo[b_last - lb:b_last + 1].min()
+        rng = range_high - range_low
+        if rng <= 0:
+            continue
+        if not (p["min_range_pct"] <= rng / range_low <= p["max_range_pct"]):
+            rej["range"] += 1
+            continue
+
+        # --- R2 trend filtresi ---
+        drift = abs(H_cl[b_last] - H_cl[b_last - lb]) / H_cl[b_last - lb]
+        if drift > p["trend_max"]:
+            rej["trend"] += 1
+            continue
+
+        for side in sides:                       # -1 = SHORT, +1 = LONG
+            if i <= busy_until:
+                break
+
+            # --- R3 yapi: lower high (short) / higher low (long) ---
+            blks = sh_blk if side == -1 else sl_blk
+            px   = H_hi   if side == -1 else H_lo
+            conf = blks[blks <= b_last - p["swing_k"]]
+            if len(conf) < 2:
+                rej["no_swing"] += 1
+                continue
+            b_s, b_prev = conf[-1], conf[-2]
+            if b_s < b_last - lb:
+                rej["no_swing"] += 1
+                continue
+
+            # short: yeni tepe daha DUSUK | long: yeni dip daha YUKSEK
+            if side * (px[b_s] - px[b_prev]) <= 0:
+                rej["not_struct"] += 1
+                continue
+
+            # short: range'in ust bolgesinde | long: alt bolgesinde
+            if side == -1:
+                in_zone = px[b_s] >= range_high - p["upper_zone"] * rng
+            else:
+                in_zone = px[b_s] <= range_low + p["upper_zone"] * rng
+            if not in_zone:
+                rej["not_zone"] += 1
+                continue
+
+            # --- R4 TEYIT: yapi barinin ters ucunu kapanisla kir ---
+            trig = H_lo[b_s] if side == -1 else H_hi[b_s]
+            broke_now  = side * (close[i] - trig) < 0 if side == -1 else close[i] > trig
+            broke_prev = side * (close[i-1] - trig) < 0 if side == -1 else close[i-1] > trig
+            if not (broke_now and not broke_prev):
+                rej["no_confirm"] += 1
+                continue
+
+            # --- R5 seviyeler ---
+            entry = close[i]
+            if side == -1:
+                s_px   = max(H_hi[b_prev], H_hi[b_s])
+                stop   = s_px * (1 + p["stop_buf"])
+                target = range_low * (1 + p["target_buf"])
+            else:
+                s_px   = min(H_lo[b_prev], H_lo[b_s])
+                stop   = s_px * (1 - p["stop_buf"])
+                target = range_high * (1 - p["target_buf"])
+
+            risk   = side * (entry - stop)
+            reward = side * (target - entry)
+            if risk <= 0 or reward <= 0:
+                rej["bad_levels"] += 1
+                continue
+
+            # FIX: cok dar stop -> maliyet R cinsinden patlar (funding/fee)
+            if risk / entry < p.get("min_stop_pct", 0.0):
+                rej["stop_dar"] = rej.get("stop_dar", 0) + 1
+                continue
+
+            # --- R7 teyit maliyeti ---
+            struct_h = abs(s_px - target)
+            conf_cost = abs(s_px - entry) / struct_h if struct_h > 0 else 9.9
+            if conf_cost > p["max_conf_cost"]:
+                rej["conf_cost"] += 1
+                continue
+
+            # --- R6 R:R ---
+            rr = reward / risk
+            if rr < p["min_rr"]:
+                rej["rr"] += 1
+                continue
+            rej["PASS"] += 1
+
+            # --- simulasyon (ayni bar stop+hedef -> KAYIP) ---
+            outcome, bars_held, exit_px = "open", 0, None
+            for j in range(i + 1, min(i + 1 + p["max_hold"], n)):
+                bars_held = j - i
+                hit_stop = high[j] >= stop if side == -1 else low[j] <= stop
+                if hit_stop:
+                    outcome, exit_px = "loss", stop
+                    break
+                hit_tgt = low[j] <= target if side == -1 else high[j] >= target
+                if hit_tgt:
+                    outcome, exit_px = "win", target
+                    break
+            if outcome == "open":
+                j = min(i + p["max_hold"], n - 1)
+                bars_held = j - i
+                outcome, exit_px = "timeout", close[j]
+
+            gross_R = side * (exit_px - entry) / risk
+
+            stop_dist_pct = risk / entry
+            fee_R = 2 * p["fee_pct"] / stop_dist_pct
+            hours = bars_held * tf_hours
+            funding_R = p["funding_8h"] * (hours / 8.0) / stop_dist_pct
+            net_R = gross_R - fee_R - funding_R
+            # NOT: maliyet giriste BILINEMEZ (tutma suresine bagli) - burada
+            # eleme yapmak ILERIYE BAKMA olurdu. Maliyet kontrolu min_stop_pct
+            # ile giriste yapilir; asiri maliyet yalnizca raporda gosterilir.
+
+            trades.append(dict(
+                dt=df["dt"].iloc[i], side="SHORT" if side == -1 else "LONG",
+                entry=entry, stop=stop, target=target,
+                rr=rr, conf_cost=conf_cost, outcome=outcome, bars=bars_held,
+                gross_R=gross_R, cost_R=fee_R + funding_R, net_R=net_R,
+            ))
+            busy_until = i + bars_held
+
+    return pd.DataFrame(trades), rej
+
+
+# ----------------------------------------------------------------------
+# 4) ISTATISTIK
+# ----------------------------------------------------------------------
+
+def print_funnel(rej):
+    if not rej:
+        return
+    order = [("range", "Range filtresi"), ("trend", "Trend filtresi"),
+             ("no_swing", "Swing yok"), ("not_struct", "Yapi yok (LH/HL)"),
+             ("not_zone", "Range bolgesinde degil"), ("no_confirm", "Teyit yok"),
+             ("bad_levels", "Gecersiz seviye"), ("conf_cost", "Teyit maliyeti yuksek"),
+             ("stop_dar", "Stop cok dar (<%1)"),
+             ("rr", "R:R yetersiz"), ("PASS", ">>> ISLEME GIRDI")]
+    print(f"\n  ELEME HUNISI (aday bar basina)")
+    print(f"  {'-'*44}")
+    for k, name in order:
+        if k in rej:
+            print(f"  {name:<26} {rej[k]:>8,}")
+
+
+def report(tr: pd.DataFrame, p: dict, label="", rej=None):
+    if tr.empty:
+        print(f"\n{label}  ->  HIC ISLEM URETILMEDI.")
+        print_funnel(rej)
+        print("  Filtreler cok sikiysa: --min-rr dusurun, --lookback degistirin,")
+        print("  veya daha kucuk timeframe deneyin.")
+        return None
+
+    n = len(tr)
+    wins = (tr.net_R > 0).sum()
+    wr = wins / n
+    exp_gross = tr.gross_R.mean()
+    exp_net = tr.net_R.mean()
+    avg_rr = tr.rr.mean()
+
+    gains = tr.loc[tr.net_R > 0, "net_R"].sum()
+    losses = -tr.loc[tr.net_R <= 0, "net_R"].sum()
+    pf = gains / losses if losses > 0 else float("inf")
+
+    eq = [1.0]
+    for r in tr.net_R:
+        eq.append(eq[-1] * (1 + p["risk_frac"] * r))
+    eq = np.array(eq)
+    dd = (eq / np.maximum.accumulate(eq) - 1).min()
+
+    be_wr = (1 + tr.cost_R.mean()) / (1 + avg_rr)
+
+    print(f"\n{'='*62}")
+    print(f"  {label}")
+    print(f"{'='*62}")
+    print(f"  Islem sayisi          : {n}")
+    print(f"  Kazanan / Kaybeden    : {wins} / {n - wins}")
+    print(f"  KAZANMA ORANI         : {wr:.1%}")
+    print(f"  Ortalama R:R          : 1:{avg_rr:.2f}")
+    print(f"  Basabas kazanma orani : {be_wr:.1%}")
+    print(f"  {'-'*58}")
+    print(f"  Beklenti (brut)       : {exp_gross:+.3f}R")
+    print(f"  Ortalama maliyet      : {tr.cost_R.mean():.3f}R")
+    print(f"  BEKLENTI (NET)        : {exp_net:+.3f}R")
+    print(f"  {'-'*58}")
+    print(f"  Profit factor         : {pf:.2f}")
+    print(f"  Toplam getiri (%{p['risk_frac']*100:.0f} risk) : {(eq[-1]-1):+.1%}")
+    print(f"  Maks. dusus (DD)      : {dd:.1%}")
+    print(f"  Ort. tutma suresi     : {tr.bars.mean():.0f} bar")
+    print(f"  Timeout orani         : {(tr.outcome=='timeout').mean():.1%}")
+    print(f"  Ort. teyit maliyeti   : {tr.conf_cost.mean():.1%} (yapi yuksekliginin)")
+    if "side" in tr.columns and tr.side.nunique() > 1:
+        print(f"  {'-'*58}")
+        for sd, g in tr.groupby("side"):
+            print(f"  {sd:<6} n={len(g):<4} win={(g.net_R>0).mean():>6.1%}  netR={g.net_R.mean():>+7.3f}")
+    print_funnel(rej)
+
+    if n < 100:
+        print(f"\n  !! UYARI: {n} islem istatistiksel olarak YETERSIZ.")
+        print(f"     %95 guven araligi kabaca +/- {1.96*np.sqrt(wr*(1-wr)/n):.1%}")
+        print(f"     Daha uzun donem veya daha kucuk timeframe deneyin.")
+    return dict(n=n, wr=wr, exp_net=exp_net, pf=pf, dd=dd)
+
+
+def sensitivity_table(min_rr: float, cost_R: float, risk_frac: float):
+    print(f"\n{'='*62}")
+    print(f"  HASSASIYET TABLOSU  (R:R = 1:{min_rr:.1f}, maliyet {cost_R:.3f}R)")
+    print(f"{'='*62}")
+    print(f"  {'Win%':>6} {'Beklenti':>11} {'100 islem':>12} {'10.000$':>12}")
+    print(f"  {'-'*44}")
+    for wr in [0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50]:
+        e = wr * min_rr - (1 - wr) - cost_R
+        eq = (1 + risk_frac * e) ** 100
+        print(f"  {wr:>5.0%} {e:>+10.3f}R {(eq-1):>+11.1%} {10000*(eq-1):>+11,.0f}$")
+    be = (1 + cost_R) / (1 + min_rr)
+    print(f"  {'-'*44}")
+    print(f"  Basabas noktasi: %{be*100:.1f}")
+
+
+# ----------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
+# 5) COKLU SEMBOL TARAMASI
+# ----------------------------------------------------------------------
+
+def top_symbols(n=30):
+    """24s hacme gore ilk n USDT paritesi (stabil ve kaldiracli tokenlar haric)."""
+    import requests
+    r = requests.get(f"{BINANCE_VISION}/api/v3/ticker/24hr", timeout=30)
+    r.raise_for_status()
+    rows = []
+    for t in r.json():
+        s = t["symbol"]
+        if not s.endswith("USDT"):
+            continue
+        base = s[:-4]
+        if any(base.endswith(x) for x in ("UP", "DOWN", "BULL", "BEAR")):
+            continue
+        # isim bazli on eleme (asil filtre run_multi icindeki volatilite testi)
+        if base in ("USDC", "FDUSD", "TUSD", "DAI", "EUR", "TRY", "BUSD", "USDP",
+                    "USD1", "RLUSD", "USDE", "PYUSD", "EURI", "AEUR", "XUSD",
+                    "USDD", "FRAX", "LUSD", "GUSD", "USDS", "SUSD"):
+            continue
+        if "USD" in base and len(base) <= 6:      # USD iceren kisa isimler supheli
+            continue
+        rows.append((s, float(t.get("quoteVolume", 0))))
+    rows.sort(key=lambda x: -x[1])
+    return [s for s, _ in rows[:n]]
+
+
+MIN_ANNUAL_VOL = 0.25        # FIX: yillik oynakligi %25 altindaki pariteler = stablecoin
+
+
+def is_stablecoin(df):
+    """Fiyat oynakligi cok dusukse stablecoin/peg'li varliktir -> taranmamali."""
+    if len(df) < 50:
+        return True
+    ret = df["close"].pct_change().dropna()
+    if len(ret) < 30:
+        return True
+    ann = float(ret.std() * np.sqrt(6 * 365))    # 4h bazinda yilliklastirma
+    return ann < MIN_ANNUAL_VOL
+
+
+def run_multi(symbols, tf, days, tfh, p, oos=False):
+    """Cok sembolde calistirir, islemleri BIRLESTIRIR (havuzlanmis istatistik).
+    Her sembol kendi icinde bagimsiz; pozisyon cakismasi sembol bazinda onlenir."""
+    import time as _t
+    all_tr, all_rej = [], {}
+    is_tr, oos_tr = [], []
+    per_symbol = {}
+
+    for k, sym in enumerate(symbols, 1):
+        print(f"  [{k}/{len(symbols)}] {sym} ...", end=" ", flush=True)
+        df = fetch_binance(sym, tf, days)
+        if df.empty or len(df) < p["lookback"] * 3:
+            print("veri yetersiz")
+            continue
+        if is_stablecoin(df):
+            print("stablecoin/dusuk oynaklik - atlandi")
+            continue
+        tr, rej = run_backtest(df, tfh, p)
+        for kk, vv in rej.items():
+            all_rej[kk] = all_rej.get(kk, 0) + vv
+        if not tr.empty:
+            tr = tr.copy()
+            tr["symbol"] = sym
+            all_tr.append(tr)
+            per_symbol[sym] = dict(n=len(tr), net=float(tr.net_R.sum()),
+                                   wr=float((tr.net_R > 0).mean()))
+        if oos:
+            half = len(df) // 2
+            t1, _ = run_backtest(df.iloc[:half].reset_index(drop=True), tfh, p)
+            t2, _ = run_backtest(df.iloc[half:].reset_index(drop=True), tfh, p)
+            if not t1.empty:
+                t1 = t1.copy(); t1["symbol"] = sym; is_tr.append(t1)
+            if not t2.empty:
+                t2 = t2.copy(); t2["symbol"] = sym; oos_tr.append(t2)
+        print(f"{len(tr)} islem")
+        _t.sleep(0.05)
+
+    cat = lambda L: pd.concat(L, ignore_index=True) if L else pd.DataFrame()
+    return cat(all_tr), all_rej, cat(is_tr), cat(oos_tr), per_symbol
+
+
+def save_results(tr, p, meta, path="results/range_backtest.json"):
+    """Sonuclari JSON olarak kaydeder (analiz icin)."""
+    import json, os
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    recs = []
+    if not tr.empty:
+        for _, r in tr.iterrows():
+            recs.append({k: (str(v) if k == "dt" else
+                             (float(v) if isinstance(v, (int, float, np.floating)) else v))
+                         for k, v in r.items()})
+    with open(path, "w") as f:
+        json.dump({"meta": meta, "params": {k: v for k, v in p.items()},
+                   "trades": recs}, f, indent=1, default=str)
+    print(f"\nSonuclar kaydedildi: {path}  ({len(recs)} islem)")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--exchange", default="binance_vision",
+                    help="binance_vision (ccxt gerekmez) veya ccxt borsa adi")
+    ap.add_argument("--symbol", default="BTC/USDT")
+    ap.add_argument("--tf", default="1h")
+    ap.add_argument("--days", type=int, default=730)
+    ap.add_argument("--csv")
+    ap.add_argument("--min-rr", type=float, default=DEFAULTS["min_rr"])
+    ap.add_argument("--lookback", type=int, default=DEFAULTS["lookback"])
+    ap.add_argument("--risk", type=float, default=DEFAULTS["risk_frac"])
+    ap.add_argument("--side", default="both", choices=["short","long","both"])
+    ap.add_argument("--htf", type=int, default=1,
+                    help="yapi kac kat buyuk TF'te olsun (1=kapali, 4=4x)")
+    ap.add_argument("--max-conf-cost", type=float, default=1.0,
+                    help="teyit maliyeti / yapi yuksekligi ust siniri, or. 0.25")
+    ap.add_argument("--sweep", action="store_true", help="parametre taramasi")
+    ap.add_argument("--oos", action="store_true", help="veriyi ikiye bol, IS/OOS karsilastir")
+    ap.add_argument("--symbols", help="virgulle ayrilmis liste: BTCUSDT,ETHUSDT,SOLUSDT")
+    ap.add_argument("--top", type=int, default=0,
+                    help="hacme gore ilk N coini otomatik tara (orn. 30)")
+    ap.add_argument("--save-json", default="results/range_backtest.json",
+                    help="sonuc JSON yolu")
+    ap.add_argument("--save")
+    args = ap.parse_args()
+
+    tf_hours = {"15m": .25, "30m": .5, "1h": 1, "2h": 2, "4h": 4, "6h": 6, "12h": 12, "1d": 24}
+    if args.tf not in tf_hours:
+        sys.exit(f"Desteklenmeyen timeframe: {args.tf}")
+    tfh = tf_hours[args.tf]
+
+    p = dict(DEFAULTS)
+    p.update(min_rr=args.min_rr, lookback=args.lookback, risk_frac=args.risk,
+             htf_mult=args.htf, max_conf_cost=args.max_conf_cost, side=args.side)
+
+    # ---------- COKLU ZAMAN DILIMI MODU ----------
+    if args.tfs:
+        tf_list = [x.strip() for x in args.tfs.split(",")]
+        syms = ([x.strip().upper().replace("/", "") for x in args.symbols.split(",")]
+                if args.symbols else top_symbols(args.top or 100))
+        birlesik = []
+        for tf in tf_list:
+            if tf not in tf_hours:
+                print(f"  ! {tf} desteklenmiyor, atlandi")
+                continue
+            print(f"\n{'#' * 62}\n#  ZAMAN DILIMI: {tf}\n{'#' * 62}")
+            tr, rej, is_tr, oos_tr, per_sym = run_multi(syms, tf, args.days,
+                                                        tf_hours[tf], p, args.oos)
+            report(tr, p, f"{tf} HAVUZ ({len(syms)} coin)", rej)
+            if args.oos:
+                s1 = report(is_tr, p, f"{tf} IN-SAMPLE")
+                s2 = report(oos_tr, p, f"{tf} OUT-OF-SAMPLE")
+                if s1 and s2:
+                    print(f"\n  {tf} TUTARLILIK: IS {s1['exp_net']:+.3f}R (n={s1['n']}) | "
+                          f"OOS {s2['exp_net']:+.3f}R (n={s2['n']})")
+                    if s1["exp_net"] > 0 and s2["exp_net"] > 0:
+                        print("  -> iki yari da POZITIF")
+                    elif s1["exp_net"] > 0 > s2["exp_net"]:
+                        print("  -> IS+ / OOS- : OVERFIT isareti")
+                    else:
+                        print("  -> dogrulanmadi")
+            if not tr.empty:
+                tr = tr.copy(); tr["tf"] = tf
+                birlesik.append(tr)
+            save_results(tr, p, dict(symbols=syms, tf=tf, days=args.days,
+                                     side=args.side, mode="multi",
+                                     generated=str(pd.Timestamp.now(tz="UTC"))),
+                         f"results/range_{tf}_top{len(syms)}.json")
+        if birlesik:
+            allt = pd.concat(birlesik, ignore_index=True)
+            print(f"\n{'#' * 62}\n#  TUM DILIMLER BIRLESIK\n{'#' * 62}")
+            report(allt, p, f"TUM DILIMLER ({','.join(tf_list)}, {len(syms)} coin)")
+            print("\n  DILIM BAZINDA")
+            for tf in tf_list:
+                g = allt[allt.tf == tf]
+                if len(g):
+                    print(f"    {tf:>4}: {len(g):>4} islem | {g.net_R.sum():+7.1f}R | "
+                          f"ort {g.net_R.mean():+.3f}R | win %{(g.net_R>0).mean()*100:.0f}")
+            print("\n  YON BAZINDA (tum dilimler)")
+            for sd in ("LONG", "SHORT"):
+                g = allt[allt.side == sd]
+                if len(g):
+                    print(f"    {sd:>5}: {len(g):>4} islem | {g.net_R.sum():+7.1f}R | "
+                          f"ort {g.net_R.mean():+.3f}R | win %{(g.net_R>0).mean()*100:.0f}")
+            save_results(allt, p, dict(symbols=syms, tfs=tf_list, days=args.days,
+                                       side=args.side, mode="multi_tf",
+                                       generated=str(pd.Timestamp.now(tz="UTC"))),
+                         "results/range_ALL.json")
+        print("\nUYARI: Kayma dahil degil; gecmis performans gelecegi garanti etmez.")
+        return
+
+    # ---------- COKLU SEMBOL MODU ----------
+    if args.symbols or args.top:
+        syms = ([x.strip().upper().replace("/", "") for x in args.symbols.split(",")]
+                if args.symbols else top_symbols(args.top))
+        print(f"Coklu sembol taramasi: {len(syms)} coin | {args.tf} | {args.days} gun")
+        tr, rej, is_tr, oos_tr, per_sym = run_multi(syms, args.tf, args.days, tfh, p, args.oos)
+
+        label = f"HAVUZLANMIS ({len(syms)} coin, {args.tf}, R:R>={p['min_rr']}, side={p['side']})"
+        stats = report(tr, p, label, rej)
+
+        if per_sym:
+            print("\n  SEMBOL BAZINDA")
+            print("  " + "-" * 44)
+            for sym, d in sorted(per_sym.items(), key=lambda x: -x[1]["net"]):
+                print(f"  {sym:<12} {d['n']:>3} islem | {d['net']:+7.1f}R | win %{d['wr']*100:.0f}")
+
+        if args.oos:
+            s1 = report(is_tr, p, "IN-SAMPLE (tum coinler, ilk yari)")
+            s2 = report(oos_tr, p, "OUT-OF-SAMPLE (tum coinler, ikinci yari)")
+            print(f"\n{'=' * 62}\n  TUTARLILIK DEGERLENDIRMESI\n{'=' * 62}")
+            if s1 and s2:
+                print(f"  IS  beklenti: {s1['exp_net']:+.3f}R  (n={s1['n']})")
+                print(f"  OOS beklenti: {s2['exp_net']:+.3f}R  (n={s2['n']})")
+                if s1["exp_net"] > 0 and s2["exp_net"] > 0:
+                    print("  -> Iki yari da POZITIF. Umut verici.")
+                elif s1["exp_net"] > 0 > s2["exp_net"]:
+                    print("  -> IS pozitif, OOS NEGATIF: tipik OVERFIT isareti.")
+                else:
+                    print("  -> En az bir yari negatif. Kurulum dogrulanmadi.")
+            else:
+                print("  Yarilardan birinde islem uretilmedi.")
+
+        save_results(tr, p, dict(symbols=syms, tf=args.tf, days=args.days,
+                                 side=args.side, mode="multi",
+                                 generated=str(pd.Timestamp.now(tz="UTC"))),
+                     args.save_json)
+        print("\nUYARI: Sonuclar kayma icermez; gecmis performans gelecegi garanti etmez.")
+        return
+
+    # ---------- TEK SEMBOL MODU ----------
+    if args.csv:
+        df = load_csv(args.csv)
+    else:
+        sym = args.symbol.replace("/", "")
+        print(f"Veri indiriliyor: {sym} {args.tf} ({args.days} gun)")
+        df = fetch_binance(sym, args.tf, args.days)
+    if df.empty:
+        sys.exit("Veri alinamadi.")
+    print(f"Veri: {len(df)} mum | {df.dt.iloc[0].date()} -> {df.dt.iloc[-1].date()}")
+
+    sensitivity_table(args.min_rr, 0.05, args.risk)
+
+    if args.sweep:
+        print(f"\n{'='*62}\n  PARAMETRE TARAMASI\n{'='*62}")
+        print(f"  {'lookback':>9} {'upper':>7} {'stopbuf':>8} {'n':>5} {'win%':>7} {'netR':>8}")
+        rows = []
+        for lb in (80, 120, 160, 200):
+            for uz in (0.30, 0.40, 0.50):
+                for sb in (0.001, 0.003, 0.006):
+                    pp = dict(p, lookback=lb, upper_zone=uz, stop_buf=sb)
+                    t, _ = run_backtest(df, tfh, pp)
+                    if t.empty:
+                        continue
+                    wr = (t.net_R > 0).mean()
+                    print(f"  {lb:>9} {uz:>7.2f} {sb:>8.3f} {len(t):>5} {wr:>6.1%} {t.net_R.mean():>+8.3f}")
+                    rows.append((lb, uz, sb, len(t), wr, t.net_R.mean()))
+        if rows:
+            best = max(rows, key=lambda r: r[5])
+            print(f"\n  En iyi: lookback={best[0]} upper={best[1]} stopbuf={best[2]}")
+            print(f"  !! Bu OVERFIT'tir. --oos ile dogrulayin.")
+        return
+
+    if args.oos:
+        mid = len(df) // 2
+        a, ra = run_backtest(df.iloc[:mid].reset_index(drop=True), tfh, p)
+        b, rb = run_backtest(df.iloc[mid:].reset_index(drop=True), tfh, p)
+        report(a, p, "IN-SAMPLE (ilk yari)", ra)
+        report(b, p, "OUT-OF-SAMPLE (ikinci yari)", rb)
+        print("\n  Iki yari arasinda buyuk fark varsa kurulum saglam degildir.")
+        return
+
+    tr, rej = run_backtest(df, tfh, p)
+    report(tr, p, f"SONUC  |  {args.symbol} {args.tf}  |  min R:R 1:{args.min_rr}", rej)
+    save_results(tr, p, dict(symbols=[args.symbol], tf=args.tf, days=args.days,
+                             side=args.side, mode="single",
+                             generated=str(pd.Timestamp.now(tz="UTC"))),
+                 args.save_json)
+
+    if args.save and not tr.empty:
+        tr.to_csv(args.save, index=False)
+        print(f"\n  Islemler kaydedildi: {args.save}")
+
+
+if __name__ == "__main__":
+    main()
