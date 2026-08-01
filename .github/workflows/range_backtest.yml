@@ -3,8 +3,16 @@ name: Range Backtest
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: "Tarama modu"
+        type: choice
+        options: ["top30", "top50", "liste", "tek"]
+        default: "top30"
+      symbols:
+        description: "mode=liste ise: BTCUSDT,ETHUSDT,SOLUSDT"
+        default: "BTCUSDT,ETHUSDT,SOLUSDT,BNBUSDT"
       symbol:
-        description: "Sembol (orn. BTCUSDT)"
+        description: "mode=tek ise sembol"
         default: "BTCUSDT"
       tf:
         description: "Zaman dilimi"
@@ -19,12 +27,15 @@ on:
         type: choice
         options: ["both", "short", "long"]
         default: "both"
-      htf:
-        description: "Yapi carpani (1=tek TF, 4=yapi 4x buyuk TFte)"
-        default: "1"
       max_conf_cost:
-        description: "R7 teyit maliyeti ust siniri (0.25 = 1:3 icin)"
+        description: "R7 teyit maliyeti tavani (0.25=1:3, 0.33=1:2, 1.0=kapali)"
         default: "0.25"
+      min_rr:
+        description: "Minimum R:R"
+        default: "3.0"
+
+permissions:
+  contents: write
 
 jobs:
   range-backtest:
@@ -36,14 +47,35 @@ jobs:
           python-version: "3.11"
           cache: "pip"
       - run: pip install requests pandas numpy
-      - name: Backtest (out-of-sample dogrulamali)
+
+      - name: Backtest calistir
         run: |
-          python backtest_range.py \
-            --exchange binance_vision \
-            --symbol "${{ github.event.inputs.symbol }}" \
-            --tf "${{ github.event.inputs.tf }}" \
-            --days "${{ github.event.inputs.days }}" \
-            --side "${{ github.event.inputs.side }}" \
-            --htf "${{ github.event.inputs.htf }}" \
-            --max-conf-cost "${{ github.event.inputs.max_conf_cost }}" \
-            --oos
+          M="${{ github.event.inputs.mode }}"
+          OUT="results/range_${{ github.event.inputs.tf }}_${{ github.event.inputs.mode }}.json"
+          COMMON="--tf ${{ github.event.inputs.tf }} --days ${{ github.event.inputs.days }} --side ${{ github.event.inputs.side }} --max-conf-cost ${{ github.event.inputs.max_conf_cost }} --min-rr ${{ github.event.inputs.min_rr }} --oos --save-json $OUT"
+          if [ "$M" = "top30" ]; then
+            python backtest_range.py --top 30 $COMMON
+          elif [ "$M" = "top50" ]; then
+            python backtest_range.py --top 50 $COMMON
+          elif [ "$M" = "liste" ]; then
+            python backtest_range.py --symbols "${{ github.event.inputs.symbols }}" $COMMON
+          else
+            python backtest_range.py --symbol "${{ github.event.inputs.symbol }}" $COMMON
+          fi
+
+      - name: Sonuclari repoya kaydet
+        continue-on-error: true
+        run: |
+          git config user.name "allo-screener-bot"
+          git config user.email "actions@github.com"
+          git add results/*.json
+          git diff --quiet --cached || git commit -m "range backtest sonuc [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: range-results
+          path: results/*.json
