@@ -33,10 +33,22 @@ TOP_N = int(os.environ.get("TREND_TOP", "50"))     # hacme gore ilk N coin
 SYMBOL = os.environ.get("TREND_SYMBOL", "")        # dolu ise sadece o coin
 MA_DAYS = int(os.environ.get("TREND_MA", "50"))
 STATE_FILE = "trend_state.json"
+LOG_FILE = "signals_log.json"     # screener ile ORTAK merkezi kayit
 
 TG_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TG_CHAT = os.environ.get("TELEGRAM_CHAT_ID")
 TOPIC = os.environ.get("TOPIC_SIGNALS")
+
+
+def log_ekle(kayit):
+    """Sinyalleri screener ile AYNI merkezi dosyaya yazar."""
+    try:
+        kayitlar = json.load(open(LOG_FILE)) if os.path.exists(LOG_FILE) else []
+    except Exception:
+        kayitlar = []
+    kayit["zaman"] = datetime.now(timezone.utc).isoformat()
+    kayitlar.append(kayit)
+    json.dump(kayitlar[-5000:], open(LOG_FILE, "w"), indent=1, default=str)
 
 
 def top_symbols(n):
@@ -125,7 +137,16 @@ def cizim(df, ma, durum, sym):
     for s in ax.spines.values():
         s.set_color("#2b3139")
     ax.grid(color="#2b3139", lw=0.5, alpha=0.6)
-    ax.legend(facecolor="#161a25", edgecolor="#2b3139", labelcolor="#b7bdc6", fontsize=9)
+    ax.legend(facecolor="#161a25", edgecolor="#2b3139", labelcolor="#b7bdc6",
+              fontsize=9, loc="upper left")
+    aciklama = (f"Yesil alan = fiyat MA{MA_DAYS} USTUNDE (yatirimda kal)\n"
+                f"Beyaz alan = fiyat MA{MA_DAYS} ALTINDA (nakitte bekle)\n"
+                "Yesil ucgen = AL sinyali   Kirmizi ucgen = SAT sinyali\n"
+                "Amac kar degil, buyuk dususlerden kacmaktir.")
+    ax.text(0.015, 0.03, aciklama, transform=ax.transAxes, fontsize=8.5,
+            color="#b7bdc6", va="bottom", ha="left", linespacing=1.6,
+            bbox=dict(boxstyle="round,pad=0.6", facecolor="#0d1017",
+                      edgecolor="#2b3139", alpha=0.92))
     os.makedirs("charts", exist_ok=True)
     path = f"charts/trend_{sym}.png"
     fig.savefig(path, dpi=130, bbox_inches="tight", facecolor="#161a25")
@@ -167,6 +188,11 @@ def tek_coin(sym, durumlar):
                      f"Fiyat: {fiyat:,.4f}\nMA{MA_DAYS}: {ma_now:,.4f}  ({fark:+.1f}%)\n"
                      f"Tarih: {df['dt'].iloc[-1].date()}\n\n"
                      f"Yapilacak: pozisyondan cik, nakitte bekle.")
+        log_ekle({"tur": "SINYAL", "kaynak": "trend_bot", "sembol": sym,
+                  "strateji": f"MA{MA_DAYS}",
+                  "yon": "AL" if yatirimda else "SAT",
+                  "fiyat": round(fiyat, 6), "ma": round(ma_now, 6),
+                  "fark_yuzde": round(fark, 2)})
         try:
             p = cizim(df, ma, durum, sym)
             if not tg_photo(p, mesaj):
