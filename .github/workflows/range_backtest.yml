@@ -1,0 +1,49 @@
+name: Range Backtest
+
+on:
+  workflow_dispatch:
+    inputs:
+      symbol:
+        description: "Sembol (orn. BTCUSDT)"
+        default: "BTCUSDT"
+      tf:
+        description: "Zaman dilimi"
+        type: choice
+        options: ["1h", "2h", "4h", "12h", "1d"]
+        default: "4h"
+      days:
+        description: "Kac gunluk veri"
+        default: "730"
+      side:
+        description: "Yon"
+        type: choice
+        options: ["both", "short", "long"]
+        default: "both"
+      htf:
+        description: "Yapi carpani (1=tek TF, 4=yapi 4x buyuk TFte)"
+        default: "1"
+      max_conf_cost:
+        description: "R7 teyit maliyeti ust siniri (0.25 = 1:3 icin)"
+        default: "0.25"
+
+jobs:
+  range-backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: pip install requests pandas numpy
+      - name: Backtest (out-of-sample dogrulamali)
+        run: |
+          python backtest_range.py \
+            --exchange binance_vision \
+            --symbol "${{ github.event.inputs.symbol }}" \
+            --tf "${{ github.event.inputs.tf }}" \
+            --days "${{ github.event.inputs.days }}" \
+            --side "${{ github.event.inputs.side }}" \
+            --htf "${{ github.event.inputs.htf }}" \
+            --max-conf-cost "${{ github.event.inputs.max_conf_cost }}" \
+            --oos
