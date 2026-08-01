@@ -28,12 +28,18 @@ import requests
 import matplotlib
 matplotlib.use("Agg")
 import mplfinance as mpf
+import range_setup
 
 # ==================== AYARLAR ====================
 ALL_INTERVALS = ["2h", "4h", "1d"]
-STRATEGY_ORDER = ["ob", "fvg", "zone5599"]          # oncelik sirasi (OB en guclu)
-STRATEGY_INTERVALS = {"ob": ["4h", "1d"], "fvg": ["2h", "4h", "1d"], "zone5599": ["4h", "1d"]}
-TP_STYLE = {"ob": "kosucu", "fvg": "kosucu", "zone5599": "klasik"}
+STRATEGY_ORDER = ["range_lh", "range_hl", "ob", "fvg", "zone5599"]          # oncelik sirasi (OB en guclu)
+STRATEGY_INTERVALS = {"range_lh": ["4h"], "range_hl": ["4h"],
+                      "ob": ["4h", "1d"], "fvg": ["2h", "4h", "1d"],
+                      "zone5599": ["4h", "1d"]}
+# range_lh = SHORT (lower high), range_hl = LONG (higher low) - spesifikasyon R1-R7
+SIDE_OF = {"range_lh": -1, "range_hl": 1, "ob": 1, "fvg": 1, "zone5599": 1}
+TP_STYLE = {"range_lh": "tek_hedef", "range_hl": "tek_hedef",
+            "ob": "kosucu", "fvg": "kosucu", "zone5599": "klasik"}
 EMA_PERIODS = [55, 99]
 
 RALLY_MIN_PCT = 0.50
@@ -264,7 +270,8 @@ def compute_trade_plan(swing_low, swing_high, entry, tp_style, zone=None, atr=No
 
 
 def format_plan(plan, tp_style):
-    lines = [f"🛑 Stop: {plan['stop']:.6g}  (risk %{plan['risk']/plan['entry']*100:.2f}) | TP stili: {tp_style}"]
+    yon_not = " [SHORT]" if plan.get("side", 1) == -1 else ""
+    lines = [f"\uD83D\uDED1 Stop: {plan['stop']:.6g} (risk %{abs(plan['risk'])/plan['entry']*100:.2f}){yon_not} | TP: {tp_style}"]
     for i, tp in enumerate(plan["tps"], 1):
         lines.append(f"🎯 TP{i} (%{tp['w']*100:.0f} pozisyon): {tp['p']:.6g}  → {tp['r']:.1f}R")
     return "\n".join(lines)
@@ -388,9 +395,11 @@ def evaluate_position(pos, df):
     entry, risk = pos["entry"], pos["risk"]
     stop = pos["current_stop"]
     tps = pos["tps"]
+    side = pos.get("side", 1)          # +1 LONG, -1 SHORT
 
     for _, cndl in future.iterrows():
-        if cndl["low"] <= stop:  # kotumser: once stop
+        stop_vuruldu = (cndl["low"] <= stop) if side == 1 else (cndl["high"] >= stop)
+        if stop_vuruldu:  # kotumser: once stop
             rem = sum(t["w"] for t in tps if not t["hit"])
             done = sum(t["w"] * t["r"] for t in tps if t["hit"])
             if not any(t["hit"] for t in tps):
@@ -398,8 +407,8 @@ def evaluate_position(pos, df):
                 pos["status"] = "stopped"
                 events.append("🛑 STOP oldu (-1.0R)")
             else:
-                pos["realized_r"] = done + rem * (stop - entry) / risk
-                pos["status"] = "closed_be" if stop >= entry else "stopped"
+                pos["realized_r"] = done + rem * side * (stop - entry) / risk
+                pos["status"] = ("closed_be" if side * (stop - entry) >= 0 else "stopped")
                 nasil = ("iz suren stop" if pos.get("_trailed")
                          else ("BE" if stop >= entry else "stop"))
                 events.append(f"🔒 Kalan %{rem*100:.0f} {nasil} ile kapandi "
@@ -409,15 +418,16 @@ def evaluate_position(pos, df):
             return pos, events
 
         for i, t in enumerate(tps, 1):
-            if not t["hit"] and cndl["high"] >= t["p"]:
+            tp_vuruldu = (cndl["high"] >= t["p"]) if side == 1 else (cndl["low"] <= t["p"])
+            if not t["hit"] and tp_vuruldu:
                 t["hit"] = True
                 events.append(f"✅ TP{i} vuruldu ({t['r']:.1f}R, %{t['w']*100:.0f} pozisyon)")
-                if MOVE_STOP_TO_BE and stop < entry:
+                if MOVE_STOP_TO_BE and side * (stop - entry) < 0:
                     stop = entry
                     events.append("🔁 Stop girise (BE) cekildi")
 
         # IZ SUREN STOP: ilk TP sonrasi kalan kismi EMA21 ile takip et (sadece yukari)
-        if (TRAIL_AFTER_FIRST_TP and pos.get("interval") in TRAIL_INTERVALS
+        if (TRAIL_AFTER_FIRST_TP and side == 1 and pos.get("interval") in TRAIL_INTERVALS
                 and any(t["hit"] for t in tps)):
             tcol = f"ema{TRAIL_EMA}"
             if tcol in cndl.index and not pd.isna(cndl[tcol]):
@@ -438,7 +448,7 @@ def evaluate_position(pos, df):
     done = sum(t["w"] * t["r"] for t in tps if t["hit"])
     rem = sum(t["w"] for t in tps if not t["hit"])
     last_close = float(future["close"].iloc[-1])
-    pos["unrealized_r"] = done + rem * (last_close - entry) / risk
+    pos["unrealized_r"] = done + rem * side * (last_close - entry) / risk
 
     age_days = (datetime.now(timezone.utc) - opened.to_pydatetime()).total_seconds() / 86400
     if age_days > POSITION_MAX_DAYS and pos["status"] == "open":
@@ -725,8 +735,20 @@ def main():
                     if dfs.get(iv) is None or iv not in rallies:
                         continue
                     ok, rpct, hi, lo, pb, days, hi_idx, lo_idx = rallies[iv]
-                    if not ok or pb < PULLBACK_MIN_PCT:
+                    # range kurulumlari rally sartina bagli DEGIL (kendi R1-R2 filtreleri var)
+                    if strat not in ("range_lh", "range_hl") and (not ok or pb < PULLBACK_MIN_PCT):
                         continue
+
+                    # --- RANGE kurulumlari (R1-R7, cift yonlu) ---
+                    if strat in ("range_lh", "range_hl"):
+                        rplan, sebep = range_setup.detect_range_setup(dfs[iv], SIDE_OF[strat])
+                        if not rplan:
+                            diag_plan_red[strat] += 1
+                            continue
+                        diag_detect[strat] += 1
+                        trig = (iv, 0.0, rplan["range_high"], rplan["range_low"],
+                                0.0, 0.0, rplan, None, hi_idx, lo_idx)
+                        break
                     hit, zone = DETECTORS[strat](dfs[iv], hi_idx, lo_idx)
                     if not hit:
                         continue
@@ -766,15 +788,28 @@ def main():
                             + (" \u26A0\uFE0F gunluk dususte - karsi yonde islem" if ctx['coin_1d_trend'] == 'dusus' else "") + "\n"
                             f"{quality_line} | Onay: sonraki yesil kapanis hafif avantajli (bilgi)")
 
-                strat_lbl = {"ob": "ORDER BLOCK", "fvg": "FVG", "zone5599": "EMA55-99 bolgesi"}[strat]
-                zone_line = ""
-                if strat in ("ob", "fvg") and zone:
-                    zone_line = f"Bolge: {zone[0]:.6g} - {zone[1]:.6g}\n"
-                msg = (f"\U0001F514 <b>{symbol}</b>  [{iv} / {strat_lbl}]\n"
-                       f"Yukselis: %{rpct*100:.1f} ({days:.1f} gunde)\n"
-                       f"Zirve {hi:.6g} \u2192 simdi {plan['entry']:.6g} (%{pb*100:.1f} geri cekildi)\n"
-                       + zone_line + "\n"
-                       f"\U0001F4CB <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
+                strat_lbl = {"ob": "ORDER BLOCK", "fvg": "FVG",
+                             "zone5599": "EMA55-99 bolgesi",
+                             "range_lh": "RANGE / LOWER HIGH",
+                             "range_hl": "RANGE / HIGHER LOW"}[strat]
+                side = SIDE_OF[strat]
+                yon = "\uD83D\uDD34 SHORT" if side == -1 else "\uD83D\uDFE2 LONG"
+
+                if strat in ("range_lh", "range_hl"):
+                    detay = (f"Range: {plan['range_low']:.6g} - {plan['range_high']:.6g} "
+                             f"(%{plan['range_pct']*100:.1f})\n"
+                             f"Yapi: {plan['struct_price']:.6g} | teyit maliyeti "
+                             f"%{plan['conf_cost']*100:.0f} | drift %{plan['drift']*100:.1f}\n")
+                else:
+                    detay = (f"Yukselis: %{rpct*100:.1f} ({days:.1f} gunde)\n"
+                             f"Zirve {hi:.6g} \u2192 simdi {plan['entry']:.6g} "
+                             f"(%{pb*100:.1f} geri cekildi)\n")
+                    if zone:
+                        detay += f"Bolge: {zone[0]:.6g} - {zone[1]:.6g}\n"
+
+                msg = (f"\uD83D\uDD14 <b>{symbol}</b>  {yon}  [{iv} / {strat_lbl}]\n"
+                       + detay + "\n"
+                       f"\uD83D\uDCCB <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
                        + ctx_line)
 
                 sent = False
@@ -794,6 +829,7 @@ def main():
 
                 positions.append({
                     "symbol": symbol, "interval": iv, "strategy": strat,
+                    "side": SIDE_OF[strat],
                     "ema_period": strat,
                     "opened_at": now.isoformat(), "status": "open",
                     "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
