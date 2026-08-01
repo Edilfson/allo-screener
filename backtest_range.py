@@ -346,6 +346,84 @@ def report(tr: pd.DataFrame, p: dict, label="", rej=None):
     return dict(n=n, wr=wr, exp_net=exp_net, pf=pf, dd=dd)
 
 
+# ----------------------------------------------------------------------
+# 5) COKLU SEMBOL TARAMASI
+# ----------------------------------------------------------------------
+
+def top_symbols(n=30):
+    """24s hacme gore ilk n USDT paritesi (stabil/kaldiracli tokenlar haric)."""
+    import requests
+    r = requests.get(f"{BINANCE_VISION}/api/v3/ticker/24hr", timeout=30)
+    r.raise_for_status()
+    rows = []
+    for t in r.json():
+        s = t["symbol"]
+        if not s.endswith("USDT"):
+            continue
+        base = s[:-4]
+        if any(base.endswith(x) for x in ("UP", "DOWN", "BULL", "BEAR")):
+            continue
+        if base in ("USDC", "FDUSD", "TUSD", "DAI", "EUR", "TRY", "BUSD", "USDP"):
+            continue
+        rows.append((s, float(t.get("quoteVolume", 0))))
+    rows.sort(key=lambda x: -x[1])
+    return [s for s, _ in rows[:n]]
+
+
+def run_multi(symbols, tf, days, tfh, p, oos=False):
+    """Cok sembolde calistirir ve islemleri HAVUZLAR (birlesik istatistik)."""
+    import time as _t
+    all_tr, all_rej = [], {}
+    is_tr, oos_tr = [], []
+    per_symbol = {}
+
+    for k, sym in enumerate(symbols, 1):
+        print(f"  [{k}/{len(symbols)}] {sym} ...", end=" ", flush=True)
+        df = fetch_binance(sym, tf, days)
+        if df.empty or len(df) < p["lookback"] * 3:
+            print("veri yetersiz")
+            continue
+        tr, rej = run_backtest(df, tfh, p)
+        for kk, vv in rej.items():
+            all_rej[kk] = all_rej.get(kk, 0) + vv
+        if not tr.empty:
+            tr = tr.copy()
+            tr["symbol"] = sym
+            all_tr.append(tr)
+            per_symbol[sym] = dict(n=len(tr), net=float(tr.net_R.sum()),
+                                   wr=float((tr.net_R > 0).mean()))
+        if oos:
+            half = len(df) // 2
+            t1, _ = run_backtest(df.iloc[:half].reset_index(drop=True), tfh, p)
+            t2, _ = run_backtest(df.iloc[half:].reset_index(drop=True), tfh, p)
+            if not t1.empty:
+                t1 = t1.copy(); t1["symbol"] = sym; is_tr.append(t1)
+            if not t2.empty:
+                t2 = t2.copy(); t2["symbol"] = sym; oos_tr.append(t2)
+        print(f"{len(tr)} islem")
+        _t.sleep(0.05)
+
+    cat = lambda L: pd.concat(L, ignore_index=True) if L else pd.DataFrame()
+    return cat(all_tr), all_rej, cat(is_tr), cat(oos_tr), per_symbol
+
+
+def save_results(tr, p, meta, path="results/range_backtest.json"):
+    """Sonuclari JSON olarak kaydeder (sonradan analiz icin)."""
+    import json, os
+    d = os.path.dirname(path)
+    if d:
+        os.makedirs(d, exist_ok=True)
+    recs = []
+    if not tr.empty:
+        for _, r in tr.iterrows():
+            recs.append({k: (str(v) if k == "dt" else
+                             (float(v) if isinstance(v, (int, float, np.floating)) else v))
+                         for k, v in r.items()})
+    with open(path, "w") as f:
+        json.dump({"meta": meta, "params": p, "trades": recs}, f, indent=1, default=str)
+    print(f"\nSonuclar kaydedildi: {path}  ({len(recs)} islem)")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--exchange", default="binance_vision")
@@ -360,6 +438,9 @@ def main():
     ap.add_argument("--htf", type=int, default=1)
     ap.add_argument("--max-conf-cost", type=float, default=1.0)
     ap.add_argument("--oos", action="store_true", help="veriyi ikiye bol, IS/OOS karsilastir")
+    ap.add_argument("--symbols", help="virgulle ayrilmis: BTCUSDT,ETHUSDT")
+    ap.add_argument("--top", type=int, default=0, help="hacme gore ilk N coin")
+    ap.add_argument("--save-json", default="results/range_backtest.json")
     ap.add_argument("--save")
     args = ap.parse_args()
 
@@ -368,6 +449,49 @@ def main():
         sys.exit(f"Desteklenmeyen timeframe: {args.tf}")
     tfh = tf_hours[args.tf]
 
+    p = dict(DEFAULTS)
+    p.update(min_rr=args.min_rr, lookback=args.lookback, risk_frac=args.risk,
+             htf_mult=args.htf, max_conf_cost=args.max_conf_cost, side=args.side)
+
+    # ---------- COKLU SEMBOL MODU ----------
+    if args.symbols or args.top:
+        syms = ([x.strip().upper().replace("/", "") for x in args.symbols.split(",")]
+                if args.symbols else top_symbols(args.top))
+        print(f"Coklu tarama: {len(syms)} coin | {args.tf} | {args.days} gun")
+        tr, rej, is_tr, oos_tr, per_sym = run_multi(syms, args.tf, args.days, tfh, p, args.oos)
+
+        report(tr, p, f"HAVUZLANMIS ({len(syms)} coin, {args.tf}, R:R>={p['min_rr']}, side={p['side']})", rej)
+
+        if per_sym:
+            print("\n  SEMBOL BAZINDA")
+            print("  " + "-" * 44)
+            for sym2, d in sorted(per_sym.items(), key=lambda x: -x[1]["net"]):
+                print(f"  {sym2:<12} {d['n']:>3} islem | {d['net']:+7.1f}R | win %{d['wr']*100:.0f}")
+
+        if args.oos:
+            s1 = report(is_tr, p, "IN-SAMPLE (tum coinler, ilk yari)")
+            s2 = report(oos_tr, p, "OUT-OF-SAMPLE (tum coinler, ikinci yari)")
+            print(f"\n{'=' * 62}\n  TUTARLILIK DEGERLENDIRMESI\n{'=' * 62}")
+            if s1 and s2:
+                print(f"  IS  beklenti: {s1['exp_net']:+.3f}R  (n={s1['n']})")
+                print(f"  OOS beklenti: {s2['exp_net']:+.3f}R  (n={s2['n']})")
+                if s1["exp_net"] > 0 and s2["exp_net"] > 0:
+                    print("  -> Iki yari da POZITIF. Umut verici.")
+                elif s1["exp_net"] > 0 > s2["exp_net"]:
+                    print("  -> IS pozitif, OOS NEGATIF: tipik OVERFIT isareti.")
+                else:
+                    print("  -> En az bir yari negatif. Kurulum dogrulanmadi.")
+            else:
+                print("  Yarilardan birinde islem uretilmedi.")
+
+        save_results(tr, p, dict(symbols=syms, tf=args.tf, days=args.days,
+                                 side=args.side, mode="multi",
+                                 generated=str(pd.Timestamp.now(tz="UTC"))),
+                     args.save_json)
+        print("\nUYARI: Kayma dahil degil; gecmis performans gelecegi garanti etmez.")
+        return
+
+    # ---------- TEK SEMBOL MODU ----------
     if args.csv:
         df = load_csv(args.csv)
     else:
@@ -377,10 +501,6 @@ def main():
     if df.empty:
         sys.exit("Veri alinamadi.")
     print(f"Veri: {len(df)} mum | {df.dt.iloc[0].date()} -> {df.dt.iloc[-1].date()}")
-
-    p = dict(DEFAULTS)
-    p.update(min_rr=args.min_rr, lookback=args.lookback, risk_frac=args.risk,
-             htf_mult=args.htf, max_conf_cost=args.max_conf_cost, side=args.side)
 
     tr, rej = run_backtest(df, tfh, p)
     report(tr, p, f"TUM VERI  ({args.symbol} {args.tf}, R:R>={p['min_rr']}, side={p['side']})", rej)
@@ -409,6 +529,11 @@ def main():
 
     print("\nUYARI: Sonuclar kayma (slippage) icermez ve gecmis performans\n"
           "gelecegi garanti etmez. Bu bir yatirim tavsiyesi degildir.")
+
+    save_results(tr, p, dict(symbols=[args.symbol], tf=args.tf, days=args.days,
+                             side=args.side, mode="single",
+                             generated=str(pd.Timestamp.now(tz="UTC"))),
+                 args.save_json)
 
     if args.save and not tr.empty:
         tr.to_csv(args.save, index=False)
