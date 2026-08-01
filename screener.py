@@ -31,10 +31,10 @@ import mplfinance as mpf
 import range_setup
 
 # ==================== AYARLAR ====================
-ALL_INTERVALS = ["2h", "4h", "1d"]
+ALL_INTERVALS = ["4h", "1d"]
 STRATEGY_ORDER = ["range_lh", "range_hl", "ob", "fvg", "zone5599"]          # oncelik sirasi (OB en guclu)
 STRATEGY_INTERVALS = {"range_lh": ["4h"], "range_hl": ["4h"],
-                      "ob": ["4h", "1d"], "fvg": ["2h", "4h", "1d"],
+                      "ob": ["4h", "1d"], "fvg": ["4h", "1d"],
                       "zone5599": ["4h", "1d"]}
 # range_lh = SHORT (lower high), range_hl = LONG (higher low) - spesifikasyon R1-R7
 SIDE_OF = {"range_lh": -1, "range_hl": 1, "ob": 1, "fvg": 1, "zone5599": 1}
@@ -567,7 +567,7 @@ def build_insights(positions):
 
 # ==================== GRAFIK ====================
 def make_chart(df, symbol, interval, strategy, plan, zone=None,
-               rally=None):
+               rally=None, rng=None):
     """Zenginlestirilmis grafik: golgeli bolge + rally bacagi + R etiketli seviyeler."""
     os.makedirs(CHART_DIR, exist_ok=True)
     d = df.tail(CHART_CANDLES).copy()
@@ -583,6 +583,9 @@ def make_chart(df, symbol, interval, strategy, plan, zone=None,
     if zone:  # OB/FVG bolgesi: golgeli dikdortgen
         kw["fill_between"] = dict(y1=float(zone[0]), y2=float(zone[1]),
                                   alpha=0.18, color="#00bcd4")
+    elif rng:  # RANGE kurulumu: bandin tamamini golgele
+        kw["fill_between"] = dict(y1=float(rng[0]), y2=float(rng[1]),
+                                  alpha=0.10, color="#8e9aaf")
     # rally bacagi: dip -> zirve cizgisi
     if rally:
         lo_t, lo_p, hi_t, hi_p = rally
@@ -820,7 +823,9 @@ def main():
                         if 0 <= lo_idx < len(_d) and 0 <= hi_idx < len(_d) else None
                     chart = make_chart(_d, symbol, iv, strat, plan,
                                        zone=zone if strat in ("ob", "fvg") else None,
-                                       rally=rally_ln)
+                                       rally=rally_ln,
+                                       rng=((plan["range_low"], plan["range_high"])
+                                            if strat in ("range_lh", "range_hl") else None))
                     sent = tg_photo(chart, msg, TOPIC_SIGNALS)
                 except Exception as e:
                     print(f"{symbol} grafik hatasi: {e}")
