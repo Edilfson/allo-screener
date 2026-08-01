@@ -1,0 +1,51 @@
+name: Momentum Backtest
+
+on:
+  workflow_dispatch:
+    inputs:
+      top:
+        description: "Kac coin taransin"
+        default: "100"
+      days:
+        description: "Kac gunluk gecmis"
+        default: "1460"
+      capital:
+        description: "Baslangic sermayesi (TL)"
+        default: "4000000"
+
+permissions:
+  contents: write
+
+jobs:
+  momentum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: pip install requests pandas numpy
+      - name: Backtest
+        run: |
+          python momentum_backtest.py \
+            --top ${{ github.event.inputs.top }} \
+            --days ${{ github.event.inputs.days }} \
+            --capital ${{ github.event.inputs.capital }} \
+            --save-json results/momentum.json
+      - name: Sonucu kaydet
+        continue-on-error: true
+        run: |
+          git config user.name "allo-screener-bot"
+          git config user.email "actions@github.com"
+          git add results/momentum.json
+          git diff --quiet --cached || git commit -m "momentum sonuc [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: momentum-results
+          path: results/momentum.json
