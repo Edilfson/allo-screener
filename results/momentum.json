@@ -1,301 +1,285 @@
 {
  "ma50_altcoin_testi": {
-  "coin_sayisi": 83,
-  "gecti": 70,
+  "coin_sayisi": 80,
+  "gecti": 67,
   "gecemedi": 13,
-  "gecme_orani": 0.843,
-  "ort_getiri_ma50": 0.6419,
-  "ort_getiri_altut": -0.1552,
-  "ort_dusus_ma50": 0.6474,
-  "ort_dusus_altut": 0.8556,
+  "gecme_orani": 0.838,
+  "ort_getiri_ma50": 0.653,
+  "ort_getiri_altut": -0.1693,
+  "ort_dusus_ma50": 0.6553,
+  "ort_dusus_altut": 0.8593,
   "coinler": [
    {
     "sembol": "FETUSDT",
     "ma50_getiri": 9.4872,
-    "altut_getiri": 0.4508,
+    "altut_getiri": 0.4741,
     "ma50_dusus": 0.6254,
     "altut_dusus": 0.9578,
-    "fark": 9.0363
+    "fark": 9.0131
    },
    {
     "sembol": "WLDUSDT",
     "ma50_getiri": 6.0062,
-    "altut_getiri": -0.8587,
+    "altut_getiri": -0.8534,
     "ma50_dusus": 0.6186,
     "altut_dusus": 0.98,
-    "fark": 6.8649
+    "fark": 6.8596
    },
    {
     "sembol": "SUIUSDT",
     "ma50_getiri": 5.7182,
-    "altut_getiri": -0.5143,
+    "altut_getiri": -0.5094,
     "ma50_dusus": 0.5677,
-    "altut_dusus": 0.8713,
-    "fark": 6.2325
+    "altut_dusus": 0.8723,
+    "fark": 6.2276
    },
    {
     "sembol": "CFXUSDT",
     "ma50_getiri": 5.3025,
-    "altut_getiri": -0.2141,
+    "altut_getiri": -0.271,
     "ma50_dusus": 0.6578,
     "altut_dusus": 0.9205,
-    "fark": 5.5166
+    "fark": 5.5735
    },
    {
     "sembol": "PEPEUSDT",
-    "ma50_getiri": 4.4164,
-    "altut_getiri": -0.2574,
+    "ma50_getiri": 4.6707,
+    "altut_getiri": -0.2225,
     "ma50_dusus": 0.6643,
     "altut_dusus": 0.912,
-    "fark": 4.6738
+    "fark": 4.8932
    },
    {
     "sembol": "HBARUSDT",
     "ma50_getiri": 2.6075,
-    "altut_getiri": -0.0167,
+    "altut_getiri": -0.0287,
     "ma50_dusus": 0.5541,
     "altut_dusus": 0.824,
-    "fark": 2.6242
+    "fark": 2.6363
    },
    {
     "sembol": "SYNUSDT",
     "ma50_getiri": 1.2667,
-    "altut_getiri": -0.9454,
+    "altut_getiri": -0.9438,
     "ma50_dusus": 0.7494,
     "altut_dusus": 0.985,
-    "fark": 2.2121
+    "fark": 2.2105
+   },
+   {
+    "sembol": "SHIBUSDT",
+    "ma50_getiri": 1.4113,
+    "altut_getiri": -0.5794,
+    "ma50_dusus": 0.5964,
+    "altut_dusus": 0.8855,
+    "fark": 1.9907
    },
    {
     "sembol": "SOLUSDT",
     "ma50_getiri": 2.8561,
-    "altut_getiri": 0.8677,
+    "altut_getiri": 0.8859,
     "ma50_dusus": 0.59,
     "altut_dusus": 0.7931,
-    "fark": 1.9885
-   },
-   {
-    "sembol": "SHIBUSDT",
-    "ma50_getiri": 1.392,
-    "altut_getiri": -0.5828,
-    "ma50_dusus": 0.5964,
-    "altut_dusus": 0.8855,
-    "fark": 1.9747
+    "fark": 1.9702
    },
    {
     "sembol": "ETHUSDT",
-    "ma50_getiri": 2.1131,
-    "altut_getiri": 0.1512,
+    "ma50_getiri": 2.1205,
+    "altut_getiri": 0.1613,
     "ma50_dusus": 0.3747,
     "altut_dusus": 0.6755,
-    "fark": 1.9618
+    "fark": 1.9592
    },
    {
     "sembol": "ENAUSDT",
     "ma50_getiri": 0.7895,
-    "altut_getiri": -0.8955,
+    "altut_getiri": -0.8852,
     "ma50_dusus": 0.5271,
     "altut_dusus": 0.9511,
-    "fark": 1.685
+    "fark": 1.6747
    },
    {
     "sembol": "ENSOUSDT",
-    "ma50_getiri": 0.9609,
-    "altut_getiri": -0.6989,
+    "ma50_getiri": 0.8903,
+    "altut_getiri": -0.7097,
     "ma50_dusus": 0.5692,
     "altut_dusus": 0.8265,
-    "fark": 1.6598
+    "fark": 1.6
    },
    {
     "sembol": "NEARUSDT",
     "ma50_getiri": 0.9072,
-    "altut_getiri": -0.6303,
+    "altut_getiri": -0.613,
     "ma50_dusus": 0.7917,
     "altut_dusus": 0.8914,
-    "fark": 1.5375
+    "fark": 1.5202
    },
    {
     "sembol": "EPICUSDT",
-    "ma50_getiri": 1.0307,
-    "altut_getiri": -0.4133,
+    "ma50_getiri": 1.0031,
+    "altut_getiri": -0.4213,
     "ma50_dusus": 0.5703,
     "altut_dusus": 0.9354,
-    "fark": 1.444
+    "fark": 1.4244
    },
    {
     "sembol": "EULUSDT",
-    "ma50_getiri": 0.4571,
-    "altut_getiri": -0.8412,
+    "ma50_getiri": 0.4299,
+    "altut_getiri": -0.8442,
     "ma50_dusus": 0.4078,
     "altut_dusus": 0.9225,
-    "fark": 1.2983
+    "fark": 1.2741
    },
    {
     "sembol": "BONKUSDT",
     "ma50_getiri": 0.3591,
-    "altut_getiri": -0.8841,
+    "altut_getiri": -0.8769,
     "ma50_dusus": 0.6865,
-    "altut_dusus": 0.9488,
-    "fark": 1.2432
+    "altut_dusus": 0.9486,
+    "fark": 1.2361
+   },
+   {
+    "sembol": "AAVEUSDT",
+    "ma50_getiri": 1.1296,
+    "altut_getiri": -0.0433,
+    "ma50_dusus": 0.5529,
+    "altut_dusus": 0.8411,
+    "fark": 1.1729
    },
    {
     "sembol": "PENGUUSDT",
     "ma50_getiri": 0.3692,
-    "altut_getiri": -0.7935,
+    "altut_getiri": -0.7884,
     "ma50_dusus": 0.7118,
     "altut_dusus": 0.9101,
-    "fark": 1.1627
-   },
-   {
-    "sembol": "AAVEUSDT",
-    "ma50_getiri": 1.1188,
-    "altut_getiri": -0.0331,
-    "ma50_dusus": 0.5529,
-    "altut_dusus": 0.8411,
-    "fark": 1.1519
+    "fark": 1.1576
    },
    {
     "sembol": "ARBUSDT",
     "ma50_getiri": 0.1564,
-    "altut_getiri": -0.9409,
+    "altut_getiri": -0.9381,
     "ma50_dusus": 0.5294,
     "altut_dusus": 0.9675,
-    "fark": 1.0973
-   },
-   {
-    "sembol": "HOMEUSDT",
-    "ma50_getiri": 0.2193,
-    "altut_getiri": -0.8009,
-    "ma50_dusus": 0.5697,
-    "altut_dusus": 0.9117,
-    "fark": 1.0202
+    "fark": 1.0945
    },
    {
     "sembol": "GIGGLEUSDT",
-    "ma50_getiri": 0.1663,
-    "altut_getiri": -0.8277,
+    "ma50_getiri": 0.254,
+    "altut_getiri": -0.8147,
     "ma50_dusus": 0.4923,
     "altut_dusus": 0.9178,
-    "fark": 0.994
+    "fark": 1.0688
    },
    {
     "sembol": "AVAXUSDT",
     "ma50_getiri": 0.2561,
-    "altut_getiri": -0.7253,
+    "altut_getiri": -0.7178,
     "ma50_dusus": 0.7667,
     "altut_dusus": 0.9028,
-    "fark": 0.9813
+    "fark": 0.9738
+   },
+   {
+    "sembol": "KAITOUSDT",
+    "ma50_getiri": 0.6825,
+    "altut_getiri": -0.2654,
+    "ma50_dusus": 0.7169,
+    "altut_dusus": 0.8809,
+    "fark": 0.9479
+   },
+   {
+    "sembol": "HOMEUSDT",
+    "ma50_getiri": 0.2193,
+    "altut_getiri": -0.7253,
+    "ma50_dusus": 0.5697,
+    "altut_dusus": 0.9117,
+    "fark": 0.9446
    },
    {
     "sembol": "BTCUSDT",
     "ma50_getiri": 2.732,
-    "altut_getiri": 1.7526,
+    "altut_getiri": 1.7916,
     "ma50_dusus": 0.2646,
     "altut_dusus": 0.5297,
-    "fark": 0.9794
-   },
-   {
-    "sembol": "KAITOUSDT",
-    "ma50_getiri": 0.6563,
-    "altut_getiri": -0.2768,
-    "ma50_dusus": 0.7169,
-    "altut_dusus": 0.8809,
-    "fark": 0.9332
+    "fark": 0.9404
    },
    {
     "sembol": "MMTUSDT",
-    "ma50_getiri": 0.003,
-    "altut_getiri": -0.9283,
+    "ma50_getiri": -0.0808,
+    "altut_getiri": -0.9343,
     "ma50_dusus": 0.3447,
     "altut_dusus": 0.9614,
-    "fark": 0.9313
-   },
-   {
-    "sembol": "VANRYUSDT",
-    "ma50_getiri": -0.0827,
-    "altut_getiri": -0.9423,
-    "ma50_dusus": 0.833,
-    "altut_dusus": 0.9913,
-    "fark": 0.8596
-   },
-   {
-    "sembol": "UNIUSDT",
-    "ma50_getiri": 0.2763,
-    "altut_getiri": -0.542,
-    "ma50_dusus": 0.6098,
-    "altut_dusus": 0.8712,
-    "fark": 0.8182
+    "fark": 0.8535
    },
    {
     "sembol": "ALLOUSDT",
     "ma50_getiri": 0.402,
-    "altut_getiri": -0.4065,
+    "altut_getiri": -0.4406,
     "ma50_dusus": 0.4828,
     "altut_dusus": 0.8894,
-    "fark": 0.8086
+    "fark": 0.8426
    },
    {
-    "sembol": "POLUSDT",
-    "ma50_getiri": -0.0194,
-    "altut_getiri": -0.8236,
-    "ma50_dusus": 0.4967,
-    "altut_dusus": 0.9039,
-    "fark": 0.8042
-   },
-   {
-    "sembol": "APTUSDT",
-    "ma50_getiri": -0.1888,
-    "altut_getiri": -0.9243,
-    "ma50_dusus": 0.7882,
-    "altut_dusus": 0.9699,
-    "fark": 0.7355
-   },
-   {
-    "sembol": "WLFIUSDT",
-    "ma50_getiri": -0.0382,
-    "altut_getiri": -0.7662,
-    "ma50_dusus": 0.1923,
-    "altut_dusus": 0.7763,
-    "fark": 0.728
-   },
-   {
-    "sembol": "DIAUSDT",
-    "ma50_getiri": -0.0387,
-    "altut_getiri": -0.7606,
-    "ma50_dusus": 0.7068,
-    "altut_dusus": 0.9158,
-    "fark": 0.7219
-   },
-   {
-    "sembol": "DEXEUSDT",
-    "ma50_getiri": 0.2778,
-    "altut_getiri": -0.3828,
-    "ma50_dusus": 0.8707,
-    "altut_dusus": 0.9652,
-    "fark": 0.6607
-   },
-   {
-    "sembol": "DOGEUSDT",
-    "ma50_getiri": 0.6801,
-    "altut_getiri": 0.0532,
-    "ma50_dusus": 0.7486,
-    "altut_dusus": 0.8516,
-    "fark": 0.627
-   },
-   {
-    "sembol": "MIRAUSDT",
-    "ma50_getiri": -0.3702,
-    "altut_getiri": -0.9705,
-    "ma50_dusus": 0.3702,
-    "altut_dusus": 0.973,
-    "fark": 0.6003
+    "sembol": "UNIUSDT",
+    "ma50_getiri": 0.3147,
+    "altut_getiri": -0.5234,
+    "ma50_dusus": 0.6098,
+    "altut_dusus": 0.8712,
+    "fark": 0.8381
    },
    {
     "sembol": "INJUSDT",
     "ma50_getiri": 2.9752,
-    "altut_getiri": 2.3808,
+    "altut_getiri": 2.2032,
     "ma50_dusus": 0.7663,
     "altut_dusus": 0.9471,
-    "fark": 0.5945
+    "fark": 0.772
+   },
+   {
+    "sembol": "APTUSDT",
+    "ma50_getiri": -0.1888,
+    "altut_getiri": -0.923,
+    "ma50_dusus": 0.7882,
+    "altut_dusus": 0.97,
+    "fark": 0.7342
+   },
+   {
+    "sembol": "WLFIUSDT",
+    "ma50_getiri": -0.0382,
+    "altut_getiri": -0.7606,
+    "ma50_dusus": 0.1923,
+    "altut_dusus": 0.7763,
+    "fark": 0.7224
+   },
+   {
+    "sembol": "DEXEUSDT",
+    "ma50_getiri": 0.2778,
+    "altut_getiri": -0.4199,
+    "ma50_dusus": 0.8707,
+    "altut_dusus": 0.9652,
+    "fark": 0.6977
+   },
+   {
+    "sembol": "DOGEUSDT",
+    "ma50_getiri": 0.6801,
+    "altut_getiri": 0.0404,
+    "ma50_dusus": 0.7486,
+    "altut_dusus": 0.8517,
+    "fark": 0.6397
+   },
+   {
+    "sembol": "ICPUSDT",
+    "ma50_getiri": -0.1301,
+    "altut_getiri": -0.7424,
+    "ma50_dusus": 0.8453,
+    "altut_dusus": 0.8936,
+    "fark": 0.6122
+   },
+   {
+    "sembol": "MIRAUSDT",
+    "ma50_getiri": -0.3702,
+    "altut_getiri": -0.9713,
+    "ma50_dusus": 0.3702,
+    "altut_dusus": 0.973,
+    "fark": 0.6011
    },
    {
     "sembol": "TONUSDT",
@@ -306,52 +290,44 @@
     "fark": 0.5432
    },
    {
-    "sembol": "FLOWUSDT",
-    "ma50_getiri": -0.4446,
-    "altut_getiri": -0.9842,
-    "ma50_dusus": 0.7063,
-    "altut_dusus": 0.9922,
-    "fark": 0.5395
-   },
-   {
-    "sembol": "XECUSDT",
-    "ma50_getiri": -0.3087,
-    "altut_getiri": -0.8379,
-    "ma50_dusus": 0.6577,
-    "altut_dusus": 0.9385,
-    "fark": 0.5292
+    "sembol": "ADAUSDT",
+    "ma50_getiri": -0.0972,
+    "altut_getiri": -0.6248,
+    "ma50_dusus": 0.7555,
+    "altut_dusus": 0.8829,
+    "fark": 0.5276
    },
    {
     "sembol": "ERAUSDT",
     "ma50_getiri": -0.4585,
-    "altut_getiri": -0.9607,
+    "altut_getiri": -0.9614,
     "ma50_dusus": 0.4787,
     "altut_dusus": 0.9632,
-    "fark": 0.5022
+    "fark": 0.503
    },
    {
     "sembol": "ROSEUSDT",
     "ma50_getiri": -0.443,
-    "altut_getiri": -0.9334,
+    "altut_getiri": -0.9305,
     "ma50_dusus": 0.78,
     "altut_dusus": 0.9719,
-    "fark": 0.4904
+    "fark": 0.4875
    },
    {
-    "sembol": "ADAUSDT",
-    "ma50_getiri": -0.1665,
-    "altut_getiri": -0.6541,
-    "ma50_dusus": 0.7555,
-    "altut_dusus": 0.8829,
-    "fark": 0.4876
+    "sembol": "KSMUSDT",
+    "ma50_getiri": -0.4925,
+    "altut_getiri": -0.9498,
+    "ma50_dusus": 0.8342,
+    "altut_dusus": 0.9565,
+    "fark": 0.4573
    },
    {
     "sembol": "XPLUSDT",
     "ma50_getiri": -0.4837,
-    "altut_getiri": -0.9415,
+    "altut_getiri": -0.9402,
     "ma50_dusus": 0.5175,
     "altut_dusus": 0.9624,
-    "fark": 0.4579
+    "fark": 0.4565
    },
    {
     "sembol": "DUSDT",
@@ -362,188 +338,188 @@
     "fark": 0.442
    },
    {
-    "sembol": "NEIROUSDT",
-    "ma50_getiri": -0.4106,
-    "altut_getiri": -0.8303,
-    "ma50_dusus": 0.6485,
-    "altut_dusus": 0.9801,
-    "fark": 0.4197
-   },
-   {
     "sembol": "LRCUSDT",
     "ma50_getiri": -0.5565,
-    "altut_getiri": -0.9532,
+    "altut_getiri": -0.9548,
     "ma50_dusus": 0.7596,
     "altut_dusus": 0.9651,
-    "fark": 0.3967
+    "fark": 0.3983
    },
    {
     "sembol": "TUTUSDT",
-    "ma50_getiri": -0.2413,
-    "altut_getiri": -0.6332,
+    "ma50_getiri": -0.2369,
+    "altut_getiri": -0.6311,
     "ma50_dusus": 0.7651,
     "altut_dusus": 0.9309,
-    "fark": 0.392
+    "fark": 0.3942
    },
    {
     "sembol": "UTKUSDT",
     "ma50_getiri": -0.5796,
-    "altut_getiri": -0.9452,
+    "altut_getiri": -0.9441,
     "ma50_dusus": 0.7503,
     "altut_dusus": 0.9606,
-    "fark": 0.3657
+    "fark": 0.3645
    },
    {
     "sembol": "TRUMPUSDT",
     "ma50_getiri": -0.609,
-    "altut_getiri": -0.9693,
+    "altut_getiri": -0.9689,
     "ma50_dusus": 0.6668,
     "altut_dusus": 0.9695,
-    "fark": 0.3603
+    "fark": 0.3599
    },
    {
     "sembol": "KITEUSDT",
     "ma50_getiri": 0.5508,
-    "altut_getiri": 0.2093,
+    "altut_getiri": 0.2222,
     "ma50_dusus": 0.4189,
-    "altut_dusus": 0.6885,
-    "fark": 0.3415
+    "altut_dusus": 0.6879,
+    "fark": 0.3286
+   },
+   {
+    "sembol": "ONDOUSDT",
+    "ma50_getiri": -0.2415,
+    "altut_getiri": -0.5676,
+    "ma50_dusus": 0.5407,
+    "altut_dusus": 0.8031,
+    "fark": 0.3261
    },
    {
     "sembol": "DOTUSDT",
     "ma50_getiri": -0.5781,
-    "altut_getiri": -0.9031,
+    "altut_getiri": -0.9017,
     "ma50_dusus": 0.8283,
     "altut_dusus": 0.9343,
-    "fark": 0.325
-   },
-   {
-    "sembol": "ONDOUSDT",
-    "ma50_getiri": -0.2442,
-    "altut_getiri": -0.5691,
-    "ma50_dusus": 0.5407,
-    "altut_dusus": 0.8031,
-    "fark": 0.3249
+    "fark": 0.3236
    },
    {
     "sembol": "TAOUSDT",
     "ma50_getiri": -0.3719,
-    "altut_getiri": -0.692,
+    "altut_getiri": -0.691,
     "ma50_dusus": 0.6089,
     "altut_dusus": 0.7953,
-    "fark": 0.3201
+    "fark": 0.3191
    },
    {
-    "sembol": "AEVOUSDT",
-    "ma50_getiri": -0.7754,
-    "altut_getiri": -0.9933,
-    "ma50_dusus": 0.8108,
-    "altut_dusus": 0.9954,
-    "fark": 0.2179
-   },
-   {
-    "sembol": "COTIUSDT",
-    "ma50_getiri": -0.663,
-    "altut_getiri": -0.8647,
-    "ma50_dusus": 0.9026,
-    "altut_dusus": 0.9731,
-    "fark": 0.2017
-   },
-   {
-    "sembol": "TLMUSDT",
-    "ma50_getiri": -0.7534,
-    "altut_getiri": -0.9468,
-    "ma50_dusus": 0.9068,
-    "altut_dusus": 0.975,
-    "fark": 0.1934
+    "sembol": "SAHARAUSDT",
+    "ma50_getiri": -0.6555,
+    "altut_getiri": -0.9171,
+    "ma50_dusus": 0.6801,
+    "altut_dusus": 0.9487,
+    "fark": 0.2616
    },
    {
     "sembol": "PUMPUSDT",
-    "ma50_getiri": -0.4517,
-    "altut_getiri": -0.6442,
+    "ma50_getiri": -0.437,
+    "altut_getiri": -0.6347,
     "ma50_dusus": 0.572,
     "altut_dusus": 0.8608,
-    "fark": 0.1925
+    "fark": 0.1976
    },
    {
-    "sembol": "XLMUSDT",
-    "ma50_getiri": 0.6692,
-    "altut_getiri": 0.493,
-    "ma50_dusus": 0.6838,
-    "altut_dusus": 0.7441,
-    "fark": 0.1762
+    "sembol": "TLMUSDT",
+    "ma50_getiri": -0.7499,
+    "altut_getiri": -0.9466,
+    "ma50_dusus": 0.9056,
+    "altut_dusus": 0.975,
+    "fark": 0.1967
+   },
+   {
+    "sembol": "AEVOUSDT",
+    "ma50_getiri": -0.7982,
+    "altut_getiri": -0.994,
+    "ma50_dusus": 0.8108,
+    "altut_dusus": 0.9954,
+    "fark": 0.1957
+   },
+   {
+    "sembol": "HYPERUSDT",
+    "ma50_getiri": -0.5645,
+    "altut_getiri": -0.7544,
+    "ma50_dusus": 0.6144,
+    "altut_dusus": 0.9036,
+    "fark": 0.1899
+   },
+   {
+    "sembol": "BNBUSDT",
+    "ma50_getiri": 1.0525,
+    "altut_getiri": 0.872,
+    "ma50_dusus": 0.3283,
+    "altut_dusus": 0.582,
+    "fark": 0.1805
+   },
+   {
+    "sembol": "COTIUSDT",
+    "ma50_getiri": -0.6979,
+    "altut_getiri": -0.877,
+    "ma50_dusus": 0.9026,
+    "altut_dusus": 0.9731,
+    "fark": 0.1791
    },
    {
     "sembol": "FILUSDT",
     "ma50_getiri": -0.7429,
-    "altut_getiri": -0.9125,
+    "altut_getiri": -0.9118,
     "ma50_dusus": 0.8691,
     "altut_dusus": 0.9407,
-    "fark": 0.1696
+    "fark": 0.1689
    },
    {
-    "sembol": "BABYUSDT",
-    "ma50_getiri": -0.7074,
-    "altut_getiri": -0.8585,
-    "ma50_dusus": 0.7204,
-    "altut_dusus": 0.9218,
-    "fark": 0.151
+    "sembol": "HEIUSDT",
+    "ma50_getiri": -0.7269,
+    "altut_getiri": -0.8936,
+    "ma50_dusus": 0.8391,
+    "altut_dusus": 0.9284,
+    "fark": 0.1667
    },
    {
-    "sembol": "ETHFIUSDT",
-    "ma50_getiri": -0.7435,
-    "altut_getiri": -0.8722,
-    "ma50_dusus": 0.7593,
-    "altut_dusus": 0.9638,
-    "fark": 0.1286
+    "sembol": "ACEUSDT",
+    "ma50_getiri": -0.841,
+    "altut_getiri": -0.9953,
+    "ma50_dusus": 0.8899,
+    "altut_dusus": 0.9959,
+    "fark": 0.1543
+   },
+   {
+    "sembol": "XLMUSDT",
+    "ma50_getiri": 0.6692,
+    "altut_getiri": 0.5373,
+    "ma50_dusus": 0.6838,
+    "altut_dusus": 0.7441,
+    "fark": 0.1319
    },
    {
     "sembol": "BROCCOLI714USDT",
-    "ma50_getiri": -0.6657,
-    "altut_getiri": -0.7906,
-    "ma50_dusus": 0.7585,
+    "ma50_getiri": -0.693,
+    "altut_getiri": -0.8077,
+    "ma50_dusus": 0.7782,
     "altut_dusus": 0.8414,
-    "fark": 0.125
+    "fark": 0.1147
    },
    {
-    "sembol": "BNBUSDT",
-    "ma50_getiri": 1.0622,
-    "altut_getiri": 0.9404,
-    "ma50_dusus": 0.3283,
-    "altut_dusus": 0.582,
-    "fark": 0.1218
-   },
-   {
-    "sembol": "MUBARAKUSDT",
-    "ma50_getiri": -0.7908,
-    "altut_getiri": -0.8802,
-    "ma50_dusus": 0.8567,
-    "altut_dusus": 0.9081,
-    "fark": 0.0895
-   },
-   {
-    "sembol": "TSTUSDT",
-    "ma50_getiri": -0.8598,
-    "altut_getiri": -0.9493,
-    "ma50_dusus": 0.8954,
-    "altut_dusus": 0.9649,
-    "fark": 0.0895
+    "sembol": "LAZIOUSDT",
+    "ma50_getiri": -0.7861,
+    "altut_getiri": -0.8927,
+    "ma50_dusus": 0.8338,
+    "altut_dusus": 0.9613,
+    "fark": 0.1067
    },
    {
     "sembol": "DASHUSDT",
     "ma50_getiri": -0.2894,
-    "altut_getiri": -0.3631,
+    "altut_getiri": -0.3619,
     "ma50_dusus": 0.7256,
     "altut_dusus": 0.755,
-    "fark": 0.0738
+    "fark": 0.0725
    },
    {
     "sembol": "LDOUSDT",
-    "ma50_getiri": -0.8094,
-    "altut_getiri": -0.8746,
+    "ma50_getiri": -0.809,
+    "altut_getiri": -0.8661,
     "ma50_dusus": 0.9299,
     "altut_dusus": 0.9367,
-    "fark": 0.0652
+    "fark": 0.0571
    },
    {
     "sembol": "1000SATSUSDT",
@@ -564,140 +540,140 @@
    {
     "sembol": "OGNUSDT",
     "ma50_getiri": -0.9036,
-    "altut_getiri": -0.9234,
+    "altut_getiri": -0.9315,
     "ma50_dusus": 0.9157,
     "altut_dusus": 0.9433,
-    "fark": 0.0197
-   },
-   {
-    "sembol": "ORDIUSDT",
-    "ma50_getiri": -0.8257,
-    "altut_getiri": -0.732,
-    "ma50_dusus": 0.8741,
-    "altut_dusus": 0.9753,
-    "fark": -0.0938
-   },
-   {
-    "sembol": "LINKUSDT",
-    "ma50_getiri": -0.0235,
-    "altut_getiri": 0.1071,
-    "ma50_dusus": 0.5479,
-    "altut_dusus": 0.7539,
-    "fark": -0.1305
-   },
-   {
-    "sembol": "EURUSDT",
-    "ma50_getiri": -0.0426,
-    "altut_getiri": 0.1366,
-    "ma50_dusus": 0.1118,
-    "altut_dusus": 0.0879,
-    "fark": -0.1792
+    "fark": 0.0279
    },
    {
     "sembol": "ZECUSDT",
     "ma50_getiri": 6.2739,
-    "altut_getiri": 6.5787,
+    "altut_getiri": 6.3651,
     "ma50_dusus": 0.6371,
     "altut_dusus": 0.7707,
-    "fark": -0.3048
+    "fark": -0.0912
+   },
+   {
+    "sembol": "ORDIUSDT",
+    "ma50_getiri": -0.8284,
+    "altut_getiri": -0.7361,
+    "ma50_dusus": 0.8741,
+    "altut_dusus": 0.9753,
+    "fark": -0.0923
+   },
+   {
+    "sembol": "LINKUSDT",
+    "ma50_getiri": 0.0069,
+    "altut_getiri": 0.1291,
+    "ma50_dusus": 0.5479,
+    "altut_dusus": 0.7539,
+    "fark": -0.1222
+   },
+   {
+    "sembol": "EURUSDT",
+    "ma50_getiri": -0.0421,
+    "altut_getiri": 0.129,
+    "ma50_dusus": 0.1118,
+    "altut_dusus": 0.0879,
+    "fark": -0.171
    },
    {
     "sembol": "BANKUSDT",
     "ma50_getiri": -0.3248,
-    "altut_getiri": -0.0074,
+    "altut_getiri": -0.1234,
     "ma50_dusus": 0.8319,
-    "altut_dusus": 0.858,
-    "fark": -0.3174
+    "altut_dusus": 0.8746,
+    "fark": -0.2014
    },
    {
     "sembol": "PAXGUSDT",
     "ma50_getiri": 0.8518,
-    "altut_getiri": 1.298,
+    "altut_getiri": 1.2706,
     "ma50_dusus": 0.1519,
     "altut_dusus": 0.2807,
-    "fark": -0.4461
+    "fark": -0.4188
    },
    {
     "sembol": "LTCUSDT",
     "ma50_getiri": -0.8189,
-    "altut_getiri": -0.238,
+    "altut_getiri": -0.25,
     "ma50_dusus": 0.8707,
     "altut_dusus": 0.7014,
-    "fark": -0.5809
+    "fark": -0.569
+   },
+   {
+    "sembol": "RIFUSDT",
+    "ma50_getiri": -0.3676,
+    "altut_getiri": 0.2265,
+    "ma50_dusus": 0.7934,
+    "altut_dusus": 0.9062,
+    "fark": -0.594
    },
    {
     "sembol": "BCHUSDT",
     "ma50_getiri": -0.2412,
-    "altut_getiri": 0.5527,
+    "altut_getiri": 0.58,
     "ma50_dusus": 0.6857,
     "altut_dusus": 0.7256,
-    "fark": -0.7939
+    "fark": -0.8213
    },
    {
-    "sembol": "COCOSUSDT",
-    "ma50_getiri": 0.019,
-    "altut_getiri": 1.284,
-    "ma50_dusus": 0.5673,
-    "altut_dusus": 0.5399,
-    "fark": -1.265
+    "sembol": "VIRTUALUSDT",
+    "ma50_getiri": -0.7725,
+    "altut_getiri": 0.0657,
+    "ma50_dusus": 0.7913,
+    "altut_dusus": 0.788,
+    "fark": -0.8382
    },
    {
     "sembol": "XRPUSDT",
-    "ma50_getiri": 0.1768,
-    "altut_getiri": 1.8644,
+    "ma50_getiri": -0.0475,
+    "altut_getiri": 1.9111,
     "ma50_dusus": 0.6409,
     "altut_dusus": 0.707,
-    "fark": -1.6876
+    "fark": -1.9585
    },
    {
     "sembol": "RNDRUSDT",
     "ma50_getiri": 7.1798,
-    "altut_getiri": 8.9434,
+    "altut_getiri": 9.2778,
     "ma50_dusus": 0.6033,
     "altut_dusus": 0.5615,
-    "fark": -1.7636
-   },
-   {
-    "sembol": "JSTUSDT",
-    "ma50_getiri": 0.1174,
-    "altut_getiri": 2.1585,
-    "ma50_dusus": 0.5964,
-    "altut_dusus": 0.5533,
-    "fark": -2.0411
+    "fark": -2.098
    },
    {
     "sembol": "TRXUSDT",
-    "ma50_getiri": 1.0921,
-    "altut_getiri": 3.8474,
+    "ma50_getiri": 1.0774,
+    "altut_getiri": 3.7381,
     "ma50_dusus": 0.5905,
     "altut_dusus": 0.5111,
-    "fark": -2.7554
+    "fark": -2.6606
    }
   ]
  },
  "meta": {
-  "coin": 86,
+  "coin": 84,
   "gun": 1460,
   "sermaye": 4000000.0,
-  "baslangic": "2022-08-03",
-  "bitis": "2026-08-01"
+  "baslangic": "2022-08-04",
+  "bitis": "2026-08-02"
  },
  "sonuclar": [
   {
-   "toplam": 5.929056413661341,
-   "yillik": 0.638995096194205,
-   "max_dusus": 0.640467644507807,
-   "sharpe": 0.9949366022265538,
-   "son_para": 27716225.654645365,
+   "toplam": 4.370131750999801,
+   "yillik": 0.5357652183098931,
+   "max_dusus": 0.7326675423035591,
+   "sharpe": 0.9238796245889662,
+   "son_para": 21480527.003999203,
    "ad": "Momentum 30g/ilk5/7g"
   },
   {
-   "toplam": 4.486312711207678,
-   "yillik": 0.5441784421805116,
-   "max_dusus": 0.6091536397628334,
-   "sharpe": 0.9555301149791304,
-   "son_para": 21945250.844830714,
-   "ad": "Momentum 30g/ilk10/7g"
+   "toplam": 2.9341947156863264,
+   "yillik": 0.4130378449471619,
+   "max_dusus": 0.6429969913056854,
+   "sharpe": 0.8353005081808567,
+   "son_para": 15736778.862745306,
+   "ad": "Momentum 14g/ilk10/7g"
   },
   {
    "toplam": 2.731987907135631,
@@ -708,51 +684,51 @@
    "ad": "BTC trend MA50"
   },
   {
+   "toplam": 2.576274677874556,
+   "yillik": 0.3843959699112891,
+   "max_dusus": 0.6740681333288401,
+   "sharpe": 0.810250146519264,
+   "son_para": 14305098.711498225,
+   "ad": "Momentum 30g/ilk10/7g"
+  },
+  {
    "toplam": 1.9089258102137707,
    "yillik": 0.30596988145198734,
    "max_dusus": 0.3613446276953528,
-   "sharpe": 0.9640695237429128,
+   "sharpe": 0.9640695237429129,
    "son_para": 11635703.240855083,
    "ad": "BTC trend MA100"
   },
   {
-   "toplam": 1.7525923192585622,
-   "yillik": 0.288058160461089,
-   "max_dusus": 0.5297176591351063,
-   "sharpe": 0.7700577682783541,
-   "son_para": 11010369.27703425,
+   "toplam": 1.791586696359189,
+   "yillik": 0.29259591770607174,
+   "max_dusus": 0.529717659135106,
+   "sharpe": 0.7774811517255092,
+   "son_para": 11166346.785436757,
    "ad": "BTC al-tut"
   },
   {
-   "toplam": 1.3692899523993116,
-   "yillik": 0.24066506431785673,
-   "max_dusus": 0.3167058880871131,
-   "sharpe": 0.7951824850470812,
-   "son_para": 9477159.809597246,
+   "toplam": 1.404540916774116,
+   "yillik": 0.24525427945070355,
+   "max_dusus": 0.31670588808711375,
+   "sharpe": 0.8060144273278917,
+   "son_para": 9618163.667096464,
    "ad": "BTC trend MA200"
   },
   {
-   "toplam": 0.7550690401095408,
-   "yillik": 0.15256348983885615,
-   "max_dusus": 0.6653629129888083,
-   "sharpe": 0.5623238453455128,
-   "son_para": 7020276.160438163,
-   "ad": "Momentum 14g/ilk10/7g"
-  },
-  {
-   "toplam": 0.44426338290133094,
-   "yillik": 0.09625503266295454,
-   "max_dusus": 0.586563028499649,
-   "sharpe": 0.43035533877412696,
-   "son_para": 5777053.531605324,
+   "toplam": 0.45430489340907876,
+   "yillik": 0.09815556402934678,
+   "max_dusus": 0.5859478428061633,
+   "sharpe": 0.4345098030798107,
+   "son_para": 5817219.573636315,
    "ad": "BTC DCA (haftalik alim)"
   },
   {
-   "toplam": 0.2294534548870335,
-   "yillik": 0.05657759395866968,
-   "max_dusus": 0.7817765290187251,
-   "sharpe": 0.43955336294647923,
-   "son_para": 4917813.819548134,
+   "toplam": 0.042465214056943035,
+   "yillik": 0.011141707820082836,
+   "max_dusus": 0.8159958053670521,
+   "sharpe": 0.38645552756280904,
+   "son_para": 4169860.8562277723,
    "ad": "Momentum 90g/ilk10/30g"
   }
  ]
