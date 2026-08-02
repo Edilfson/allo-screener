@@ -3,14 +3,19 @@ name: ICT Testi
 on:
   workflow_dispatch:
     inputs:
-      top:
-        description: "Kac coin"
-        default: "100"
+      hedef:
+        description: "Hangi coinler"
+        type: choice
+        options: ["btc_eth", "ilk10", "ilk30", "ilk100", "ozel"]
+        default: "ilk10"
+      symbols:
+        description: "hedef=ozel ise"
+        default: "BTCUSDT,ETHUSDT,SOLUSDT"
       tf:
         description: "Zaman dilimi"
         type: choice
-        options: ["15m", "1h", "4h", "1d"]
-        default: "4h"
+        options: ["1h", "2h", "4h", "1d"]
+        default: "1h"
       days:
         description: "Kac gunluk gecmis"
         default: "1460"
@@ -29,16 +34,24 @@ jobs:
           python-version: "3.11"
           cache: "pip"
       - run: pip install requests pandas numpy
-      - name: ICT kanonik test
+      - name: ICT testi
         run: |
-          python ict_test.py --top ${{ github.event.inputs.top }} --tf ${{ github.event.inputs.tf }} --days ${{ github.event.inputs.days }} --save-json results/ict_${{ github.event.inputs.tf }}.json
+          H="${{ github.event.inputs.hedef }}"
+          C="--tf ${{ github.event.inputs.tf }} --days ${{ github.event.inputs.days }} --save-json results/ict_${{ github.event.inputs.tf }}_$H.json"
+          case "$H" in
+            btc_eth) python ict_test.py --symbols "BTCUSDT,ETHUSDT" $C ;;
+            ilk10)   python ict_test.py --top 10  $C ;;
+            ilk30)   python ict_test.py --top 30  $C ;;
+            ilk100)  python ict_test.py --top 100 $C ;;
+            *)       python ict_test.py --symbols "${{ github.event.inputs.symbols }}" $C ;;
+          esac
       - name: Sonucu kaydet
         continue-on-error: true
         run: |
           git config user.name "allo-screener-bot"
           git config user.email "actions@github.com"
           git add results/ict_*.json
-          git diff --quiet --cached || git commit -m "ict test sonuc [skip ci]"
+          git diff --quiet --cached || git commit -m "ict sonuc [skip ci]"
           for i in 1 2 3; do
             if git pull --rebase --autostash origin main && git push origin HEAD:main; then exit 0; fi
             sleep 5
