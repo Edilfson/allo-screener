@@ -66,7 +66,7 @@ def top_symbols(n):
 
 
 def klines(symbol, interval, days):
-    tf_ms = {"15m": 900, "1h": 3600, "4h": 14400, "1d": 86400}[interval] * 1000
+    tf_ms = {"15m": 900, "1h": 3600, "2h": 7200, "4h": 14400, "1d": 86400}[interval] * 1000
     since = int(pd.Timestamp.now(tz="UTC").timestamp() * 1000) - days * 86_400_000
     rows = []
     while True:
@@ -283,6 +283,17 @@ def calistir(data, side, p, giris_model, tp_model, max_hold, tfh, donem="tum"):
     return np.array(sonuc)
 
 
+def sembol_bazinda(data, side, p, gm, tp, max_hold, tfh):
+    """Her sembol icin AYRI sonuc - likit coinlerde farkli mi?"""
+    out = {}
+    for sym, d in data.items():
+        arr = calistir({sym: d}, side, p, gm, tp, max_hold, tfh)
+        if len(arr) >= 15:
+            out[sym] = dict(n=len(arr), win=float((arr > 0).mean()),
+                            beklenti=float(arr.mean()), toplam=float(arr.sum()))
+    return out
+
+
 def rapor(arr):
     if len(arr) < 20:
         return None
@@ -297,11 +308,18 @@ def main():
     ap.add_argument("--top", type=int, default=100)
     ap.add_argument("--tf", default="4h")
     ap.add_argument("--days", type=int, default=1460)
+    ap.add_argument("--symbols", help="virgulle: BTCUSDT,ETHUSDT (bossa --top kullanilir)")
+    ap.add_argument("--tfs", help="birden fazla dilim: 1h,2h,4h")
+    ap.add_argument("--per-symbol", action="store_true", default=True,
+                    help="sembol bazinda ayri rapor")
     ap.add_argument("--save-json", default="results/ict_test.json")
     a = ap.parse_args()
-    tfh = {"15m": 0.25, "1h": 1, "4h": 4, "1d": 24}[a.tf]
+    tfh = {"15m": 0.25, "1h": 1, "2h": 2, "4h": 4, "1d": 24}[a.tf]
 
-    syms = top_symbols(a.top)
+    if a.symbols:
+        syms = [x.strip().upper().replace("/", "") for x in a.symbols.split(",")]
+    else:
+        syms = top_symbols(a.top)
     print(f"{len(syms)} coin, {a.tf}, {a.days} gun indiriliyor...")
     data = {}
     for i, s in enumerate(syms, 1):
@@ -365,6 +383,40 @@ def main():
                     tum.append(r)
                     print(f"  tp={tp:<9} {gm:<9} {yon} {r['n']:>5} isl | win %{r['win']*100:>5.1f} | "
                           f"beklenti {r['beklenti']:>+7.3f}R | toplam {r['toplam']:>+8.1f}R")
+
+    # ---------- SEMBOL BAZINDA (likit coinler farkli mi?) ----------
+    if a.per_symbol:
+        print("=" * 100)
+        print("  SEMBOL BAZINDA  (hipotez: likit coinlerde daha iyi calisir)")
+        print("=" * 100)
+        for gm, tp in (("ob50", "3"), ("ob50", "5")):
+            for side in (1, -1):
+                yon = "LONG" if side == 1 else "SHORT"
+                ps = sembol_bazinda(data, side, tam, gm, tp, 48, tfh)
+                if not ps:
+                    continue
+                sirali = sorted(ps.items(), key=lambda x: -x[1]["beklenti"])
+                print(f"\n  --- {gm} tp={tp} {yon} ---")
+                for sym, r in sirali[:8]:
+                    print(f"    {sym:<12} {r['n']:>4} isl | win %{r['win']*100:>5.1f} | "
+                          f"beklenti {r['beklenti']:>+7.3f}R | toplam {r['toplam']:>+7.1f}R")
+                if len(sirali) > 8:
+                    print(f"    ... ve {len(sirali)-8} sembol daha")
+                # BTC/ETH ozel
+                for ozel in ("BTCUSDT", "ETHUSDT"):
+                    if ozel in ps:
+                        r = ps[ozel]
+                        print(f"    >>> {ozel}: {r['n']} isl | win %{r['win']*100:.1f} | "
+                              f"beklenti {r['beklenti']:+.3f}R")
+                ort = np.mean([v["beklenti"] for v in ps.values()])
+                med = np.median([v["beklenti"] for v in ps.values()])
+                poz = sum(1 for v in ps.values() if v["beklenti"] > 0)
+                print(f"    TOPLAM: {len(ps)} sembol | ort {ort:+.3f}R | medyan {med:+.3f}R | "
+                      f"pozitif {poz}/{len(ps)}")
+                tum.append(dict(ad=f"sembolbazi_{gm}_tp{tp}_{yon}", n=sum(v["n"] for v in ps.values()),
+                                win=float(np.mean([v["win"] for v in ps.values()])),
+                                beklenti=float(ort), toplam=float(sum(v["toplam"] for v in ps.values())),
+                                dusus=0.0, giris=gm, tp=tp, sembol_detay=ps))
 
     # ---------- OUT-OF-SAMPLE DOGRULAMA ----------
     print("=" * 100)
