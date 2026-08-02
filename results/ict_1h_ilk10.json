@@ -1,0 +1,761 @@
+{
+ "meta": {
+  "coin": 10,
+  "tf": "1h",
+  "days": 1460
+ },
+ "sonuclar": [
+  {
+   "n": 165,
+   "win": 0.26666666666666666,
+   "beklenti": 0.23252733028374475,
+   "toplam": 38.367009496817886,
+   "dusus": 17.967528405939433,
+   "ad": "tp=5/kapanis/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "5"
+  },
+  {
+   "n": 293,
+   "win": 0.23890784982935154,
+   "beklenti": 0.21916028036500187,
+   "toplam": 64.21396214694555,
+   "dusus": 33.35645291085832,
+   "ad": "OOS_ob50_tp5_LONG",
+   "giris": "ob50",
+   "tp": "5",
+   "donem": "oos",
+   "is_beklenti": 0.006078950401602483,
+   "is_n": 293
+  },
+  {
+   "n": 166,
+   "win": 0.3192771084337349,
+   "beklenti": 0.1159508844712254,
+   "toplam": 19.247846822223416,
+   "dusus": 15.869950131637871,
+   "ad": "+ BOS + disp + FVG esligi [SHORT]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 166,
+   "win": 0.3192771084337349,
+   "beklenti": 0.1159508844712254,
+   "toplam": 19.247846822223416,
+   "dusus": 15.869950131637871,
+   "ad": "giris=kapanis [SHORT]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 166,
+   "win": 0.3192771084337349,
+   "beklenti": 0.1159508844712254,
+   "toplam": 19.247846822223416,
+   "dusus": 15.869950131637871,
+   "ad": "tp=3/kapanis/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 586,
+   "win": 0.22184300341296928,
+   "beklenti": 0.11261961538330216,
+   "toplam": 65.99509461461507,
+   "dusus": 35.41903886177528,
+   "ad": "tp=5/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "5"
+  },
+  {
+   "n": 295,
+   "win": 0.31864406779661014,
+   "beklenti": 0.09496026867908786,
+   "toplam": 28.01327926033092,
+   "dusus": 27.52256444125398,
+   "ad": "OOS_ob50_tp3_LONG",
+   "giris": "ob50",
+   "tp": "3",
+   "donem": "oos",
+   "is_beklenti": -0.05643510678206255,
+   "is_n": 295
+  },
+  {
+   "ad": "sembolbazi_ob50_tp5_LONG",
+   "n": 573,
+   "win": 0.21421095679028676,
+   "beklenti": 0.07704887929377485,
+   "toplam": 69.09054444149885,
+   "dusus": 0.0,
+   "giris": "ob50",
+   "tp": "5",
+   "sembol_detay": {
+    "BTCUSDT": {
+     "n": 75,
+     "win": 0.2,
+     "beklenti": -0.10388749986541664,
+     "toplam": -7.791562489906248
+    },
+    "ETHUSDT": {
+     "n": 84,
+     "win": 0.27380952380952384,
+     "beklenti": 0.36542581464609036,
+     "toplam": 30.695768430271592
+    },
+    "ERAUSDT": {
+     "n": 31,
+     "win": 0.16129032258064516,
+     "beklenti": -0.19324962281779245,
+     "toplam": -5.990738307351566
+    },
+    "SOLUSDT": {
+     "n": 76,
+     "win": 0.19736842105263158,
+     "beklenti": 0.018227218967611564,
+     "toplam": 1.385268641538479
+    },
+    "BNBUSDT": {
+     "n": 71,
+     "win": 0.2535211267605634,
+     "beklenti": 0.21233840643430352,
+     "toplam": 15.07602685683555
+    },
+    "ADAUSDT": {
+     "n": 74,
+     "win": 0.22972972972972974,
+     "beklenti": 0.20662975518186702,
+     "toplam": 15.290601883458159
+    },
+    "XRPUSDT": {
+     "n": 72,
+     "win": 0.20833333333333334,
+     "beklenti": 0.057875988955052145,
+     "toplam": 4.167071204763754
+    },
+    "ZECUSDT": {
+     "n": 64,
+     "win": 0.25,
+     "beklenti": 0.3388429491102745,
+     "toplam": 21.68594874305757
+    },
+    "HOMEUSDT": {
+     "n": 26,
+     "win": 0.15384615384615385,
+     "beklenti": -0.20876309696801643,
+     "toplam": -5.427840521168427
+    }
+   }
+  },
+  {
+   "n": 233,
+   "win": 0.31759656652360513,
+   "beklenti": 0.053782201025241824,
+   "toplam": 12.531252838881345,
+   "dusus": 28.92999999999996,
+   "ad": "OOS_ob_uzak_tp3_LONG",
+   "giris": "ob_uzak",
+   "tp": "3",
+   "donem": "oos",
+   "is_beklenti": -0.1294401359966514,
+   "is_n": 231
+  },
+  {
+   "ad": "sembolbazi_ob50_tp5_SHORT",
+   "n": 552,
+   "win": 0.21084460286774453,
+   "beklenti": 0.031065110419684017,
+   "toplam": -8.605273574091113,
+   "dusus": 0.0,
+   "giris": "ob50",
+   "tp": "5",
+   "sembol_detay": {
+    "BTCUSDT": {
+     "n": 69,
+     "win": 0.21739130434782608,
+     "beklenti": -0.056603394312626204,
+     "toplam": -3.9056342075712083
+    },
+    "ETHUSDT": {
+     "n": 92,
+     "win": 0.1956521739130435,
+     "beklenti": -0.06022946702458102,
+     "toplam": -5.541110966261454
+    },
+    "ERAUSDT": {
+     "n": 15,
+     "win": 0.26666666666666666,
+     "beklenti": 0.41554135441382467,
+     "toplam": 6.23312031620737
+    },
+    "SOLUSDT": {
+     "n": 80,
+     "win": 0.2,
+     "beklenti": 0.03519109953071124,
+     "toplam": 2.8152879624568996
+    },
+    "BNBUSDT": {
+     "n": 93,
+     "win": 0.20430107526881722,
+     "beklenti": -0.12623127059958406,
+     "toplam": -11.739508165761318
+    },
+    "ADAUSDT": {
+     "n": 74,
+     "win": 0.22972972972972974,
+     "beklenti": 0.1369408903684448,
+     "toplam": 10.133625887264916
+    },
+    "XRPUSDT": {
+     "n": 66,
+     "win": 0.16666666666666666,
+     "beklenti": -0.18249655741570908,
+     "toplam": -12.044772789436799
+    },
+    "ZECUSDT": {
+     "n": 63,
+     "win": 0.20634920634920634,
+     "beklenti": 0.08640822839699173,
+     "toplam": 5.443718389010479
+    }
+   }
+  },
+  {
+   "ad": "sembolbazi_ob50_tp3_LONG",
+   "n": 577,
+   "win": 0.30109855966266613,
+   "beklenti": 0.029215787351043687,
+   "toplam": 10.447818792910493,
+   "dusus": 0.0,
+   "giris": "ob50",
+   "tp": "3",
+   "sembol_detay": {
+    "BTCUSDT": {
+     "n": 75,
+     "win": 0.26666666666666666,
+     "beklenti": -0.14239068047727924,
+     "toplam": -10.679301035795943
+    },
+    "ETHUSDT": {
+     "n": 86,
+     "win": 0.3488372093023256,
+     "beklenti": 0.1956879932619402,
+     "toplam": 16.829167420526858
+    },
+    "ERAUSDT": {
+     "n": 32,
+     "win": 0.28125,
+     "beklenti": -0.030632173563141296,
+     "toplam": -0.9802295540205215
+    },
+    "SOLUSDT": {
+     "n": 76,
+     "win": 0.2894736842105263,
+     "beklenti": -0.004675618585977987,
+     "toplam": -0.355347012534327
+    },
+    "BNBUSDT": {
+     "n": 72,
+     "win": 0.3333333333333333,
+     "beklenti": 0.12657112690004757,
+     "toplam": 9.113121136803425
+    },
+    "ADAUSDT": {
+     "n": 74,
+     "win": 0.2972972972972973,
+     "beklenti": 0.021771295555379676,
+     "toplam": 1.6110758710980961
+    },
+    "XRPUSDT": {
+     "n": 72,
+     "win": 0.25,
+     "beklenti": -0.18861168763466749,
+     "toplam": -13.58004150969606
+    },
+    "ZECUSDT": {
+     "n": 64,
+     "win": 0.296875,
+     "beklenti": 0.02825278626969941,
+     "toplam": 1.8081783212607623
+    },
+    "HOMEUSDT": {
+     "n": 26,
+     "win": 0.34615384615384615,
+     "beklenti": 0.25696904443339236,
+     "toplam": 6.681195155268202
+    }
+   }
+  },
+  {
+   "n": 590,
+   "win": 0.3,
+   "beklenti": 0.01926258094851264,
+   "toplam": 11.36492275962246,
+   "dusus": 39.299893269028274,
+   "ad": "giris=ob50 [LONG]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "3"
+  },
+  {
+   "n": 590,
+   "win": 0.3,
+   "beklenti": 0.01926258094851264,
+   "toplam": 11.36492275962246,
+   "dusus": 39.299893269028274,
+   "ad": "tp=3/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "3"
+  },
+  {
+   "n": 310,
+   "win": 0.2064516129032258,
+   "beklenti": 0.002641144373883903,
+   "toplam": 0.8187547559040098,
+   "dusus": 36.37217650131728,
+   "ad": "OOS_ob50_tp5_SHORT",
+   "giris": "ob50",
+   "tp": "5",
+   "donem": "oos",
+   "is_beklenti": -0.06582849195871598,
+   "is_n": 264
+  },
+  {
+   "n": 900,
+   "win": 0.30777777777777776,
+   "beklenti": -0.014633878595949962,
+   "toplam": -13.170490736354965,
+   "dusus": 42.239492816087,
+   "ad": "giris=fvg50 [LONG]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "fvg50",
+   "tp": "3"
+  },
+  {
+   "n": 574,
+   "win": 0.20209059233449478,
+   "beklenti": -0.028850116935883297,
+   "toplam": -16.559967121197012,
+   "dusus": 53.58220404520577,
+   "ad": "tp=5/ob50/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "5"
+  },
+  {
+   "n": 891,
+   "win": 0.29854096520763185,
+   "beklenti": -0.031060005313223425,
+   "toplam": -27.674464734082072,
+   "dusus": 57.12286713994834,
+   "ad": "giris=fvg50 [SHORT]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "fvg50",
+   "tp": "3"
+  },
+  {
+   "n": 464,
+   "win": 0.29310344827586204,
+   "beklenti": -0.03743409175936451,
+   "toplam": -17.369418576345133,
+   "dusus": 38.602499999999964,
+   "ad": "giris=ob_uzak [LONG]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob_uzak",
+   "tp": "3"
+  },
+  {
+   "n": 212,
+   "win": 0.2783018867924528,
+   "beklenti": -0.04220687785881637,
+   "toplam": -8.94785810606907,
+   "dusus": 39.88358833896823,
+   "ad": "+ BOS + displacement [SHORT]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 167,
+   "win": 0.3652694610778443,
+   "beklenti": -0.04673434769194862,
+   "toplam": -7.804636064555419,
+   "dusus": 20.184054569326822,
+   "ad": "tp=2/kapanis/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "2"
+  },
+  {
+   "n": 99,
+   "win": 0.3838383838383838,
+   "beklenti": -0.058834054712427676,
+   "toplam": -5.82457141653034,
+   "dusus": 19.428863107063858,
+   "ad": "tp=likidite/kapanis/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "likidite"
+  },
+  {
+   "n": 311,
+   "win": 0.2765273311897106,
+   "beklenti": -0.07049084464188232,
+   "toplam": -21.9226526836254,
+   "dusus": 58.148028633211695,
+   "ad": "OOS_ob50_tp3_SHORT",
+   "giris": "ob50",
+   "tp": "3",
+   "donem": "oos",
+   "is_beklenti": -0.1713975100019297,
+   "is_n": 266
+  },
+  {
+   "n": 451,
+   "win": 0.3458980044345898,
+   "beklenti": -0.07594802714572023,
+   "toplam": -34.252560242719824,
+   "dusus": 48.27355636087103,
+   "ad": "tp=likidite/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "likidite"
+  },
+  {
+   "ad": "sembolbazi_ob50_tp3_SHORT",
+   "n": 555,
+   "win": 0.2711028259341809,
+   "beklenti": -0.09939561412444821,
+   "toplam": -57.5665464306292,
+   "dusus": 0.0,
+   "giris": "ob50",
+   "tp": "3",
+   "sembol_detay": {
+    "BTCUSDT": {
+     "n": 69,
+     "win": 0.2463768115942029,
+     "beklenti": -0.24925887520532997,
+     "toplam": -17.19886238916777
+    },
+    "ETHUSDT": {
+     "n": 92,
+     "win": 0.2391304347826087,
+     "beklenti": -0.23324509974299346,
+     "toplam": -21.458549176355397
+    },
+    "ERAUSDT": {
+     "n": 15,
+     "win": 0.26666666666666666,
+     "beklenti": -0.11520372931527936,
+     "toplam": -1.7280559397291904
+    },
+    "SOLUSDT": {
+     "n": 82,
+     "win": 0.25609756097560976,
+     "beklenti": -0.1393837433029191,
+     "toplam": -11.429466950839368
+    },
+    "BNBUSDT": {
+     "n": 93,
+     "win": 0.27956989247311825,
+     "beklenti": -0.08307835873811407,
+     "toplam": -7.72628736264461
+    },
+    "ADAUSDT": {
+     "n": 75,
+     "win": 0.30666666666666664,
+     "beklenti": 0.055106183161920654,
+     "toplam": 4.132963737144049
+    },
+    "XRPUSDT": {
+     "n": 66,
+     "win": 0.2727272727272727,
+     "beklenti": -0.08730236276869727,
+     "toplam": -5.761955942734019
+    },
+    "ZECUSDT": {
+     "n": 63,
+     "win": 0.30158730158730157,
+     "beklenti": 0.057201072915826885,
+     "toplam": 3.603667593697094
+    }
+   }
+  },
+  {
+   "n": 590,
+   "win": 0.3593220338983051,
+   "beklenti": -0.1005291332622851,
+   "toplam": -59.31218862474821,
+   "dusus": 67.93582513067764,
+   "ad": "tp=2/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "2"
+  },
+  {
+   "n": 435,
+   "win": 0.27586206896551724,
+   "beklenti": -0.11107148056952675,
+   "toplam": -48.31609404774414,
+   "dusus": 68.60907354811665,
+   "ad": "giris=ob_uzak [SHORT]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob_uzak",
+   "tp": "3"
+  },
+  {
+   "n": 4334,
+   "win": 0.27711121365943703,
+   "beklenti": -0.1157842076638553,
+   "toplam": -501.8087560151489,
+   "dusus": 508.10651685299615,
+   "ad": "HICBIR KURAL (eski testimiz) [SHORT]",
+   "kurallar": "{'bos': False, 'displacement': False, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 577,
+   "win": 0.2668977469670711,
+   "beklenti": -0.1170093420175714,
+   "toplam": -67.5143903441387,
+   "dusus": 95.1729422592807,
+   "ad": "giris=ob50 [SHORT]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "3"
+  },
+  {
+   "n": 577,
+   "win": 0.2668977469670711,
+   "beklenti": -0.1170093420175714,
+   "toplam": -67.5143903441387,
+   "dusus": 95.1729422592807,
+   "ad": "tp=3/ob50/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "3"
+  },
+  {
+   "n": 234,
+   "win": 0.32905982905982906,
+   "beklenti": -0.12057082552473306,
+   "toplam": -28.213573172787534,
+   "dusus": 42.45253754286369,
+   "ad": "OOS_ob50_tplikidite_LONG",
+   "giris": "ob50",
+   "tp": "likidite",
+   "donem": "oos",
+   "is_beklenti": -0.027829433501992122,
+   "is_n": 217
+  },
+  {
+   "n": 238,
+   "win": 0.27310924369747897,
+   "beklenti": -0.12364294327574604,
+   "toplam": -29.42702049962756,
+   "dusus": 45.887500000000415,
+   "ad": "OOS_ob_uzak_tp3_SHORT",
+   "giris": "ob_uzak",
+   "tp": "3",
+   "donem": "oos",
+   "is_beklenti": -0.09588362207165778,
+   "is_n": 197
+  },
+  {
+   "n": 2451,
+   "win": 0.2631578947368421,
+   "beklenti": -0.13609954513873737,
+   "toplam": -333.57998513504526,
+   "dusus": 335.1374851350448,
+   "ad": "+ BOS [SHORT]",
+   "kurallar": "{'bos': True, 'displacement': False, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 577,
+   "win": 0.341421143847487,
+   "beklenti": -0.15529935581467297,
+   "toplam": -89.6077283050663,
+   "dusus": 104.93585729815278,
+   "ad": "tp=2/ob50/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "2"
+  },
+  {
+   "n": 250,
+   "win": 0.26,
+   "beklenti": -0.15871708528173195,
+   "toplam": -39.67927132043299,
+   "dusus": 61.35594553854021,
+   "ad": "+ BOS + displacement [LONG]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 4396,
+   "win": 0.25978161965423113,
+   "beklenti": -0.19148586838679008,
+   "toplam": -841.7718774283292,
+   "dusus": 854.6817839771628,
+   "ad": "HICBIR KURAL (eski testimiz) [LONG]",
+   "kurallar": "{'bos': False, 'displacement': False, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 169,
+   "win": 0.46745562130177515,
+   "beklenti": -0.20394304309348998,
+   "toplam": -34.466374282799805,
+   "dusus": 39.96769347349393,
+   "ad": "tp=1/kapanis/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "1"
+  },
+  {
+   "n": 170,
+   "win": 0.3176470588235294,
+   "beklenti": -0.21022531426538318,
+   "toplam": -35.73830342511514,
+   "dusus": 43.66402034252192,
+   "ad": "tp=2/kapanis/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "2"
+  },
+  {
+   "n": 170,
+   "win": 0.24705882352941178,
+   "beklenti": -0.21532703202885464,
+   "toplam": -36.60559544490529,
+   "dusus": 51.80490351540345,
+   "ad": "+ BOS + disp + FVG esligi [LONG]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 170,
+   "win": 0.24705882352941178,
+   "beklenti": -0.21532703202885464,
+   "toplam": -36.60559544490529,
+   "dusus": 51.80490351540345,
+   "ad": "giris=kapanis [LONG]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 170,
+   "win": 0.24705882352941178,
+   "beklenti": -0.21532703202885464,
+   "toplam": -36.60559544490529,
+   "dusus": 51.80490351540345,
+   "ad": "tp=3/kapanis/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 169,
+   "win": 0.1834319526627219,
+   "beklenti": -0.216732406561784,
+   "toplam": -36.6277767089415,
+   "dusus": 60.10670468912815,
+   "ad": "tp=5/kapanis/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "5"
+  },
+  {
+   "n": 470,
+   "win": 0.32340425531914896,
+   "beklenti": -0.23049497488476006,
+   "toplam": -108.33263819583723,
+   "dusus": 118.28842360731801,
+   "ad": "tp=likidite/ob50/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "likidite"
+  },
+  {
+   "n": 590,
+   "win": 0.46440677966101696,
+   "beklenti": -0.24732539774376752,
+   "toplam": -145.92198466882283,
+   "dusus": 145.811516757737,
+   "ad": "tp=1/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "1"
+  },
+  {
+   "n": 2548,
+   "win": 0.23430141287284145,
+   "beklenti": -0.24985223532886988,
+   "toplam": -636.6234956179604,
+   "dusus": 654.9734787508527,
+   "ad": "+ BOS [LONG]",
+   "kurallar": "{'bos': True, 'displacement': False, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 252,
+   "win": 0.32142857142857145,
+   "beklenti": -0.2535604495715859,
+   "toplam": -63.89723329203965,
+   "dusus": 75.10860091477272,
+   "ad": "OOS_ob50_tplikidite_SHORT",
+   "giris": "ob50",
+   "tp": "likidite",
+   "donem": "oos",
+   "is_beklenti": -0.20383213258622748,
+   "is_n": 218
+  },
+  {
+   "n": 578,
+   "win": 0.458477508650519,
+   "beklenti": -0.2577556787595095,
+   "toplam": -148.98278232299648,
+   "dusus": 156.8357626115594,
+   "ad": "tp=1/ob50/S",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "1"
+  },
+  {
+   "n": 110,
+   "win": 0.2909090909090909,
+   "beklenti": -0.2992982386712843,
+   "toplam": -32.92280625384127,
+   "dusus": 37.32811875662911,
+   "ad": "tp=likidite/kapanis/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "likidite"
+  },
+  {
+   "n": 170,
+   "win": 0.4,
+   "beklenti": -0.34833488578433697,
+   "toplam": -59.21693058333729,
+   "dusus": 61.35578861394513,
+   "ad": "tp=1/kapanis/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "1"
+  }
+ ]
+}
