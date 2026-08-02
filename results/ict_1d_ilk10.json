@@ -1,0 +1,141 @@
+{
+ "meta": {
+  "coin": 8,
+  "tf": "1d",
+  "days": 1460
+ },
+ "sonuclar": [
+  {
+   "n": 22,
+   "win": 0.5,
+   "beklenti": 0.7345454545454543,
+   "toplam": 16.159999999999993,
+   "dusus": 3.780000000000003,
+   "ad": "giris=ob_uzak [LONG]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob_uzak",
+   "tp": "3"
+  },
+  {
+   "n": 31,
+   "win": 0.2903225806451613,
+   "beklenti": 0.642909778852624,
+   "toplam": 19.930203144431346,
+   "dusus": 10.193321492175073,
+   "ad": "tp=5/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "5"
+  },
+  {
+   "n": 31,
+   "win": 0.3870967741935484,
+   "beklenti": 0.4643735054603975,
+   "toplam": 14.395578669272323,
+   "dusus": 9.04584632698426,
+   "ad": "giris=ob50 [LONG]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "3"
+  },
+  {
+   "n": 31,
+   "win": 0.3870967741935484,
+   "beklenti": 0.4643735054603975,
+   "toplam": 14.395578669272323,
+   "dusus": 9.04584632698426,
+   "ad": "tp=3/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "3"
+  },
+  {
+   "n": 31,
+   "win": 0.3870967741935484,
+   "beklenti": 0.46065139305855535,
+   "toplam": 14.280193184815216,
+   "dusus": 7.124600716141838,
+   "ad": "tp=likidite/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "likidite"
+  },
+  {
+   "n": 31,
+   "win": 0.45161290322580644,
+   "beklenti": 0.27511899770410975,
+   "toplam": 8.528688928827401,
+   "dusus": 5.981138247691055,
+   "ad": "tp=2/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "2"
+  },
+  {
+   "n": 31,
+   "win": 0.4838709677419355,
+   "beklenti": -0.10798912747183134,
+   "toplam": -3.3476629516267717,
+   "dusus": 4.906602662006925,
+   "ad": "tp=1/ob50/L",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "ob50",
+   "tp": "1"
+  },
+  {
+   "n": 177,
+   "win": 0.2542372881355932,
+   "beklenti": -0.15998829565988143,
+   "toplam": -28.317928331799013,
+   "dusus": 33.62791077398564,
+   "ad": "HICBIR KURAL (eski testimiz) [SHORT]",
+   "kurallar": "{'bos': False, 'displacement': False, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 98,
+   "win": 0.23469387755102042,
+   "beklenti": -0.19262791789600964,
+   "toplam": -18.877535953808945,
+   "dusus": 24.805646810133553,
+   "ad": "+ BOS [SHORT]",
+   "kurallar": "{'bos': True, 'displacement': False, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 37,
+   "win": 0.21621621621621623,
+   "beklenti": -0.1972265449973358,
+   "toplam": -7.297382164901425,
+   "dusus": 10.808283998781766,
+   "ad": "giris=fvg50 [LONG]",
+   "kurallar": "{'bos': True, 'displacement': True, 'fvg_esligi': True, 'disp_mult': 1.5}",
+   "giris": "fvg50",
+   "tp": "3"
+  },
+  {
+   "n": 91,
+   "win": 0.18681318681318682,
+   "beklenti": -0.3521203970788257,
+   "toplam": -32.04295613417314,
+   "dusus": 36.78942281618707,
+   "ad": "+ BOS [LONG]",
+   "kurallar": "{'bos': True, 'displacement': False, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  },
+  {
+   "n": 179,
+   "win": 0.18435754189944134,
+   "beklenti": -0.3923066817353589,
+   "toplam": -70.22289603062924,
+   "dusus": 74.20260146060463,
+   "ad": "HICBIR KURAL (eski testimiz) [LONG]",
+   "kurallar": "{'bos': False, 'displacement': False, 'fvg_esligi': False, 'disp_mult': 1.5}",
+   "giris": "kapanis",
+   "tp": "3"
+  }
+ ]
+}
