@@ -1,0 +1,50 @@
+name: ICT Testi
+
+on:
+  workflow_dispatch:
+    inputs:
+      top:
+        description: "Kac coin"
+        default: "100"
+      tf:
+        description: "Zaman dilimi"
+        type: choice
+        options: ["15m", "1h", "4h", "1d"]
+        default: "4h"
+      days:
+        description: "Kac gunluk gecmis"
+        default: "1460"
+
+permissions:
+  contents: write
+
+jobs:
+  ict:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: pip install requests pandas numpy
+      - name: ICT kanonik test
+        run: |
+          python ict_test.py --top ${{ github.event.inputs.top }} --tf ${{ github.event.inputs.tf }} --days ${{ github.event.inputs.days }} --save-json results/ict_${{ github.event.inputs.tf }}.json
+      - name: Sonucu kaydet
+        continue-on-error: true
+        run: |
+          git config user.name "allo-screener-bot"
+          git config user.email "actions@github.com"
+          git add results/ict_*.json
+          git diff --quiet --cached || git commit -m "ict test sonuc [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ict-results
+          path: results/ict_*.json
