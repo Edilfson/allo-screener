@@ -116,7 +116,7 @@
    "coin_1d_ema99_dist": -0.1074
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6252605252188381
+  "unrealized_r": 0.5557871335278528
  },
  {
   "symbol": "DIAUSDT",
@@ -175,7 +175,7 @@
    "coin_1d_ema99_dist": -0.1383
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.07300229227197737
+  "unrealized_r": -0.1387043553167568
  },
  {
   "symbol": "DODOUSDT",
@@ -294,7 +294,7 @@
    "coin_1d_ema99_dist": 0.128
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.2931569744608433
+  "unrealized_r": 2.839970234856141
  },
  {
   "symbol": "HEMIUSDT",
@@ -353,7 +353,7 @@
    "coin_1d_ema99_dist": -0.2251
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.2803458438707486
+  "unrealized_r": -0.40049406267250054
  },
  {
   "symbol": "PORTOUSDT",
@@ -530,7 +530,7 @@
    "coin_1d_ema99_dist": -0.232
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.032957616505174384
+  "unrealized_r": 0.032957616505172954
  },
  {
   "symbol": "THEUSDT",
@@ -589,7 +589,7 @@
    "coin_1d_ema99_dist": -0.3453
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0941796948577881
+  "unrealized_r": -0.023544923714447843
  },
  {
   "symbol": "XECUSDT",
@@ -707,7 +707,7 @@
    "coin_1d_ema99_dist": -0.088
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.665543386689132
+  "unrealized_r": 0.46335299073294
  },
  {
   "symbol": "EULUSDT",
@@ -766,7 +766,7 @@
    "coin_1d_ema99_dist": 0.128
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3583264942549647
+  "unrealized_r": 1.1202134833098711
  },
  {
   "symbol": "SUNUSDT",
@@ -813,6 +813,6 @@
    "coin_1d_ema99_dist": -0.0145
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.18162005085361999
+  "unrealized_r": 0.25426807119506295
  }
 ]
