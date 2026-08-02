@@ -29,23 +29,21 @@ import matplotlib
 matplotlib.use("Agg")
 import mplfinance as mpf
 import range_setup
+import ict_setup
 
 # ==================== AYARLAR ====================
-ALL_INTERVALS = ["4h", "1d"]
+ALL_INTERVALS = ["2h", "4h"]   # backtest: 2h en iyi, 1h negatif
 # backtest v3/v4 sonucu: OB tek tutarli strateji (5 dilimin 4unde pozitif).
 # range_lh/range_hl (-16.5R, 164 islem) ve zone5599 (zayif) devre disi birakildi.
 # Aktif stratejiler (backtest v3/v4 bulgulari):
 #   ob       - 5 dilimin 4unde pozitif, en tutarli (oncelikli)
 #   fvg      - 3 dilimde pozitif, bolge kalitesi filtresiyle; daha sik tetiklenir
 #   zone5599 - EMA55-99 bandi; zayif ama sinyal akisi icin acik, A/B kontrol grubu
-STRATEGY_ORDER = ["ob", "fvg", "zone5599"]          # oncelik sirasi (OB en guclu)
-STRATEGY_INTERVALS = {"range_lh": ["4h"], "range_hl": ["4h"],
-                      "ob": ["4h", "1d"], "fvg": ["4h", "1d"],
-                      "zone5599": ["4h", "1d"]}
+STRATEGY_ORDER = ["ict_short", "ict_long"]          # oncelik sirasi (OB en guclu)
+STRATEGY_INTERVALS = {"ict_short": ["2h", "4h"], "ict_long": ["2h", "4h"]}
 # range_lh = SHORT (lower high), range_hl = LONG (higher low) - spesifikasyon R1-R7
-SIDE_OF = {"range_lh": -1, "range_hl": 1, "ob": 1, "fvg": 1, "zone5599": 1}
-TP_STYLE = {"range_lh": "tek_hedef", "range_hl": "tek_hedef",
-            "ob": "kosucu", "fvg": "kosucu", "zone5599": "klasik"}
+SIDE_OF = {"ict_short": -1, "ict_long": 1}
+TP_STYLE = {"ict_short": "tek_hedef", "ict_long": "tek_hedef"}
 EMA_PERIODS = [55, 99]
 
 RALLY_MIN_PCT = 0.50
@@ -91,7 +89,33 @@ def bars_per_day(iv):
 
 
 # ==================== VERI ====================
+TOP_N = 50          # sadece en hacimli N coin
+
+
 def get_usdt_symbols():
+    """Hacme gore ilk TOP_N USDT paritesi."""
+    try:
+        r = requests.get(f"{BASE_URL}/api/v3/ticker/24hr", timeout=30)
+        r.raise_for_status()
+        rows = []
+        for tk in r.json():
+            sym = tk["symbol"]
+            if not sym.endswith("USDT"):
+                continue
+            b = sym[:-4]
+            if any(b.endswith(x) for x in ("UP", "DOWN", "BULL", "BEAR")):
+                continue
+            if "USD" in b and len(b) <= 6:
+                continue
+            rows.append((sym, float(tk.get("quoteVolume", 0))))
+        rows.sort(key=lambda x: -x[1])
+        return [x[0] for x in rows[:TOP_N]]
+    except Exception as e:
+        print("sembol listesi hatasi:", e)
+        return []
+
+
+def _eski_get_usdt_symbols():
     r = requests.get(f"{BASE_URL}/api/v3/exchangeInfo", timeout=20)
     r.raise_for_status()
     out = []
@@ -761,40 +785,15 @@ def main():
 
                 trig = None
                 for iv in STRATEGY_INTERVALS[strat]:
-                    if dfs.get(iv) is None or iv not in rallies:
+                    if dfs.get(iv) is None:
                         continue
-                    ok, rpct, hi, lo, pb, days, hi_idx, lo_idx = rallies[iv]
-                    # range kurulumlari rally sartina bagli DEGIL (kendi R1-R2 filtreleri var)
-                    if strat not in ("range_lh", "range_hl") and (not ok or pb < PULLBACK_MIN_PCT):
-                        continue
-
-                    # --- RANGE kurulumlari (R1-R7, cift yonlu) ---
-                    if strat in ("range_lh", "range_hl"):
-                        rplan, sebep = range_setup.detect_range_setup(dfs[iv], SIDE_OF[strat])
-                        if not rplan:
-                            diag_plan_red[strat] += 1
-                            continue
-                        diag_detect[strat] += 1
-                        trig = (iv, 0.0, rplan["range_high"], rplan["range_low"],
-                                0.0, 0.0, rplan, None, hi_idx, lo_idx)
-                        break
-                    hit, zone = DETECTORS[strat](dfs[iv], hi_idx, lo_idx)
-                    if not hit:
-                        continue
-                    diag_detect[strat] += 1
-                    # GIRIS KONUMU: bolgenin ust kismindan girme (kotu fiyat + dar stop)
-                    if strat in ("ob", "fvg") and zone and zone[1] > zone[0]:
-                        konum = (float(dfs[iv].iloc[-1]["close"]) - zone[0]) / (zone[1] - zone[0])
-                        if konum > MAX_ENTRY_ZONE_POS:
-                            diag_konum[strat] += 1
-                            continue
-                    plan = compute_trade_plan(lo, hi, float(dfs[iv].iloc[-1]["close"]),
-                                              TP_STYLE[strat], zone=zone,
-                                              atr=calc_atr(dfs[iv]))
+                    plan, sebep = ict_setup.detect_ict(dfs[iv], SIDE_OF[strat])
                     if not plan:
-                        diag_plan_red[strat] += 1
+                        diag_plan_red[strat] = diag_plan_red.get(strat, 0) + 1
                         continue
-                    trig = (iv, rpct, hi, lo, pb, days, plan, zone, hi_idx, lo_idx)
+                    diag_detect[strat] = diag_detect.get(strat, 0) + 1
+                    trig = (iv, 0.0, plan["ob_high"], plan["ob_low"], 0.0, 0.0,
+                            plan, (plan["ob_low"], plan["ob_high"]), 0, 0)
                     break
 
                 if not trig:
@@ -817,24 +816,16 @@ def main():
                             + (" \u26A0\uFE0F gunluk dususte - karsi yonde islem" if ctx['coin_1d_trend'] == 'dusus' else "") + "\n"
                             f"{quality_line} | Onay: sonraki yesil kapanis hafif avantajli (bilgi)")
 
-                strat_lbl = {"ob": "ORDER BLOCK", "fvg": "FVG",
-                             "zone5599": "EMA55-99 bolgesi",
-                             "range_lh": "RANGE / LOWER HIGH",
-                             "range_hl": "RANGE / HIGHER LOW"}[strat]
+                strat_lbl = {"ict_short": "ICT / ORDER BLOCK",
+                             "ict_long": "ICT / ORDER BLOCK"}[strat]
                 side = SIDE_OF[strat]
                 yon = "\uD83D\uDD34 SHORT" if side == -1 else "\uD83D\uDFE2 LONG"
 
-                if strat in ("range_lh", "range_hl"):
-                    detay = (f"Range: {plan['range_low']:.6g} - {plan['range_high']:.6g} "
-                             f"(%{plan['range_pct']*100:.1f})\n"
-                             f"Yapi: {plan['struct_price']:.6g} | teyit maliyeti "
-                             f"%{plan['conf_cost']*100:.0f} | drift %{plan['drift']*100:.1f}\n")
-                else:
-                    detay = (f"Yukselis: %{rpct*100:.1f} ({days:.1f} gunde)\n"
-                             f"Zirve {hi:.6g} \u2192 simdi {plan['entry']:.6g} "
-                             f"(%{pb*100:.1f} geri cekildi)\n")
-                    if zone:
-                        detay += f"Bolge: {zone[0]:.6g} - {zone[1]:.6g}\n"
+                detay = (f"LIMIT giris: {plan['entry']:.6g} "
+                         f"(su an {plan['son_fiyat']:.6g}, %{plan['limit_mesafe_pct']:+.2f})\n"
+                         f"Order Block: {plan['ob_low']:.6g} - {plan['ob_high']:.6g}\n"
+                         f"FVG: {plan['fvg_low']:.6g} - {plan['fvg_high']:.6g}\n"
+                         f"Kirilan yapi: {plan['swing']:.6g}\n")
 
                 msg = (f"\uD83D\uDD14 <b>{symbol}</b>  {yon}  [{iv} / {strat_lbl}]\n"
                        + detay + "\n"
