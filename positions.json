@@ -175,7 +175,7 @@
    "coin_1d_ema99_dist": -0.1383
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.2628082521791177
+  "unrealized_r": -0.07300229227197737
  },
  {
   "symbol": "DODOUSDT",
@@ -294,7 +294,7 @@
    "coin_1d_ema99_dist": 0.128
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5509057310916525
+  "unrealized_r": 1.3696310352497711
  },
  {
   "symbol": "HEMIUSDT",
@@ -353,7 +353,7 @@
    "coin_1d_ema99_dist": -0.2251
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": -0.1601976250690002
  },
  {
   "symbol": "PORTOUSDT",
@@ -412,7 +412,7 @@
    "coin_1d_ema99_dist": -0.251
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.7693885925318016
+  "unrealized_r": -0.9232663110381618
  },
  {
   "symbol": "PORTOUSDT",
@@ -471,7 +471,7 @@
    "coin_1d_ema99_dist": -0.251
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.7917656373713386
+  "unrealized_r": -0.9402216943784646
  },
  {
   "symbol": "SKLUSDT",
@@ -530,7 +530,7 @@
    "coin_1d_ema99_dist": -0.232
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.032957616505172954
+  "unrealized_r": 0.06591523301034734
  },
  {
   "symbol": "THEUSDT",
@@ -648,7 +648,7 @@
    "coin_1d_ema99_dist": 0.0245
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.417666265206376
+  "unrealized_r": 0.6104353106862414
  },
  {
   "symbol": "YFIUSDT",
@@ -707,7 +707,7 @@
    "coin_1d_ema99_dist": -0.088
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5391743892165121
+  "unrealized_r": 0.328559393428812
  },
  {
   "symbol": "EULUSDT",
@@ -766,7 +766,7 @@
    "coin_1d_ema99_dist": 0.128
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.42210942849357486
+  "unrealized_r": 0.3355228790589954
  },
  {
   "symbol": "SUNUSDT",
@@ -813,7 +813,7 @@
    "coin_1d_ema99_dist": -0.0145
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.25426807119506295
+  "unrealized_r": 0.21794406102434147
  },
  {
   "symbol": "DODOUSDT",
@@ -872,7 +872,7 @@
    "coin_1d_ema99_dist": 0.0024
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.17656920632105944
+  "unrealized_r": -0.27287968249618527
  },
  {
   "symbol": "TLMUSDT",
@@ -931,6 +931,6 @@
    "coin_1d_ema99_dist": -0.0118
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.2532193480909909
+  "unrealized_r": 0.08440644936366404
  }
 ]
