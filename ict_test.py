@@ -43,6 +43,8 @@ FEE = 0.0005
 FUNDING_8H = 0.0001
 SWING_K = 3               # fraktal teyit gecikmesi (ileriye bakma korumasi)
 MIN_STOP_PCT = 0.005
+FILL_BUFFER = 0.0005      # limit emrin dolmasi icin fiyat seviyeyi bu kadar GECMELI
+                          # (sadece dokunmak yetmez - ters secilim/kuyruk riski)
 
 
 def top_symbols(n):
@@ -198,12 +200,19 @@ def giris_seviyesi(k, side, model):
     return None      # "kapanis" modeli: bar kapanisinda gir
 
 
-def calistir(data, side, p, giris_model, tp_model, max_hold, tfh):
+def calistir(data, side, p, giris_model, tp_model, max_hold, tfh, donem="tum"):
+    """donem: 'tum' | 'is' (ilk yari) | 'oos' (ikinci yari)"""
     sonuc = []
     for d in data.values():
         o, h, l, c, n = d["o"], d["h"], d["l"], d["c"], d["n"]
+        yari = n // 2
+        bas, bit = (60, n - 2)
+        if donem == "is":
+            bit = yari
+        elif donem == "oos":
+            bas = max(60, yari)
         blok = -1
-        for i in range(60, n - 2):
+        for i in range(bas, bit):
             if i <= blok:
                 continue
             k = kurulum_ara(d, i, side, p)
@@ -356,6 +365,26 @@ def main():
                     tum.append(r)
                     print(f"  tp={tp:<9} {gm:<9} {yon} {r['n']:>5} isl | win %{r['win']*100:>5.1f} | "
                           f"beklenti {r['beklenti']:>+7.3f}R | toplam {r['toplam']:>+8.1f}R")
+
+    # ---------- OUT-OF-SAMPLE DOGRULAMA ----------
+    print("=" * 100)
+    print("  OUT-OF-SAMPLE DOGRULAMA (veri ikiye bolundu)")
+    print("  Ilk yari = IS (in-sample), ikinci yari = OOS. Ikisi de pozitifse guclu bulgu.")
+    print("=" * 100)
+    oos_test = [("ob50", "3"), ("ob50", "5"), ("ob_uzak", "3"), ("ob50", "likidite")]
+    for gm, tp in oos_test:
+        for side in (1, -1):
+            yon = "LONG" if side == 1 else "SHORT"
+            r_is = rapor(calistir(data, side, tam, gm, tp, 48, tfh, "is"))
+            r_oos = rapor(calistir(data, side, tam, gm, tp, 48, tfh, "oos"))
+            if r_is and r_oos:
+                tutarli = "TUTARLI" if (r_is["beklenti"] > 0) == (r_oos["beklenti"] > 0) else "TUTARSIZ"
+                if r_is["beklenti"] > 0 and r_oos["beklenti"] > 0:
+                    tutarli = ">>> IKISI DE POZITIF <<<"
+                print(f"  {gm:<9} tp={tp:<9} {yon:<5} | IS {r_is['n']:>4} isl {r_is['beklenti']:>+7.3f}R | "
+                      f"OOS {r_oos['n']:>4} isl {r_oos['beklenti']:>+7.3f}R | {tutarli}")
+                tum.append(dict(r_oos, ad=f"OOS_{gm}_tp{tp}_{yon}", giris=gm, tp=tp,
+                                donem="oos", is_beklenti=r_is["beklenti"], is_n=r_is["n"]))
 
     if tum:
         tum.sort(key=lambda x: -x["beklenti"])
