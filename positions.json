@@ -116,7 +116,7 @@
    "coin_1d_ema99_dist": -0.1074
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0768375712102218
+  "unrealized_r": 1.2505210504376763
  },
  {
   "symbol": "DIAUSDT",
@@ -175,7 +175,7 @@
    "coin_1d_ema99_dist": -0.1383
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.10220320918076811
  },
  {
   "symbol": "DODOUSDT",
@@ -294,7 +294,7 @@
    "coin_1d_ema99_dist": 0.128
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.38269102455508314
+  "unrealized_r": 0.30212449306980244
  },
  {
   "symbol": "HEMIUSDT",
@@ -413,7 +413,7 @@
    "coin_1d_ema99_dist": -0.251
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5129257283545343
+  "unrealized_r": 0.6155108740254412
  },
  {
   "symbol": "PORTOUSDT",
@@ -472,7 +472,7 @@
    "coin_1d_ema99_dist": -0.251
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.445368171021378
+  "unrealized_r": 0.5443388756927953
  },
  {
   "symbol": "SKLUSDT",
@@ -590,7 +590,7 @@
    "coin_1d_ema99_dist": -0.3453
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.49444339800339
+  "unrealized_r": 0.37671877943115406
  },
  {
   "symbol": "XECUSDT",
@@ -649,7 +649,7 @@
    "coin_1d_ema99_dist": 0.0245
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.08032043561661135
+  "unrealized_r": -0.33734582958976606
  },
  {
   "symbol": "YFIUSDT",
@@ -708,7 +708,7 @@
    "coin_1d_ema99_dist": -0.088
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.143218197135636
+  "unrealized_r": 0.151642796967144
  },
  {
   "symbol": "EULUSDT",
@@ -767,7 +767,7 @@
    "coin_1d_ema99_dist": 0.128
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.20023139556746442
+  "unrealized_r": -0.24352467028475414
  },
  {
   "symbol": "SUNUSDT",
@@ -814,7 +814,7 @@
    "coin_1d_ema99_dist": -0.0145
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.29059208136578446
+  "unrealized_r": 0.43588812204868294
  },
  {
   "symbol": "DODOUSDT",
@@ -933,7 +933,7 @@
    "coin_1d_ema99_dist": -0.0118
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.21382967172128076
+  "unrealized_r": 0.2532193480909909
  },
  {
   "symbol": "HOMEUSDT",
@@ -1076,7 +1076,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.6327482781604052
+  "unrealized_r": 2.554987780493224
  },
  {
   "symbol": "UTKUSDT",
@@ -1314,7 +1314,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3379695827375346
+  "unrealized_r": 0.30330603579009713
  },
  {
   "symbol": "MIRAUSDT",
@@ -2993,7 +2993,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6262836677264925
+  "unrealized_r": 2.64956327888024
  },
  {
   "symbol": "DEXEUSDT",
@@ -3674,17 +3674,17 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-06T05:12:38.767151+00:00",
-  "status": "open",
+  "status": "target_done",
   "entry": 4071.7250000000004,
   "stop": 4051.3663750000005,
-  "current_stop": 4051.3663750000005,
+  "current_stop": 4071.7250000000004,
   "risk": 20.358624999999847,
   "tps": [
    {
     "p": 4173.518125,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-06T03:59:59.999000+00:00",
@@ -3711,8 +3711,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": 5.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-06T07:59:59.999000+00:00"
  },
  {
   "symbol": "HFTUSDT",
@@ -3721,17 +3722,17 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-06T05:12:38.767151+00:00",
-  "status": "open",
+  "status": "target_done",
   "entry": 0.009433500000000001,
   "stop": 0.009018972,
-  "current_stop": 0.009018972,
+  "current_stop": 0.009433500000000001,
   "risk": 0.0004145280000000008,
   "tps": [
    {
     "p": 0.011506140000000005,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-06T03:59:59.999000+00:00",
@@ -3758,7 +3759,8 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": 5.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-06T07:59:59.999000+00:00"
  }
 ]
