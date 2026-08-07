@@ -32,13 +32,7 @@ import range_setup
 import ict_setup
 
 # ==================== AYARLAR ====================
-ALL_INTERVALS = ["2h", "4h"]   # backtest: 2h en iyi, 1h negatif
-# backtest v3/v4 sonucu: OB tek tutarli strateji (5 dilimin 4unde pozitif).
-# range_lh/range_hl (-16.5R, 164 islem) ve zone5599 (zayif) devre disi birakildi.
-# Aktif stratejiler (backtest v3/v4 bulgulari):
-#   ob       - 5 dilimin 4unde pozitif, en tutarli (oncelikli)
-#   fvg      - 3 dilimde pozitif, bolge kalitesi filtresiyle; daha sik tetiklenir
-#   zone5599 - EMA55-99 bandi; zayif ama sinyal akisi icin acik, A/B kontrol grubu
+ALL_INTERVALS = ["2h", "4h"]   # backtest: 2h en iyi, 4h ikinci, 1h negatif
 STRATEGY_ORDER = ["ict_short", "ict_long"]          # oncelik sirasi (OB en guclu)
 STRATEGY_INTERVALS = {"ict_short": ["2h", "4h"], "ict_long": ["2h", "4h"]}
 # range_lh = SHORT (lower high), range_hl = LONG (higher low) - spesifikasyon R1-R7
@@ -89,7 +83,7 @@ def bars_per_day(iv):
 
 
 # ==================== VERI ====================
-TOP_N = 50          # sadece en hacimli N coin
+TOP_N = 50          # sadece en hacimli N coin (kaldiracli islem gorenler)
 
 
 def get_usdt_symbols():
@@ -98,8 +92,8 @@ def get_usdt_symbols():
         r = requests.get(f"{BASE_URL}/api/v3/ticker/24hr", timeout=30)
         r.raise_for_status()
         rows = []
-        for tk in r.json():
-            sym = tk["symbol"]
+        for t in r.json():
+            sym = t["symbol"]
             if not sym.endswith("USDT"):
                 continue
             b = sym[:-4]
@@ -107,7 +101,7 @@ def get_usdt_symbols():
                 continue
             if "USD" in b and len(b) <= 6:
                 continue
-            rows.append((sym, float(tk.get("quoteVolume", 0))))
+            rows.append((sym, float(t.get("quoteVolume", 0))))
         rows.sort(key=lambda x: -x[1])
         return [x[0] for x in rows[:TOP_N]]
     except Exception as e:
@@ -301,8 +295,7 @@ def compute_trade_plan(swing_low, swing_high, entry, tp_style, zone=None, atr=No
 
 
 def format_plan(plan, tp_style):
-    yon_not = " [SHORT]" if plan.get("side", 1) == -1 else ""
-    lines = [f"\uD83D\uDED1 Stop: {plan['stop']:.6g} (risk %{abs(plan['risk'])/plan['entry']*100:.2f}){yon_not} | TP: {tp_style}"]
+    lines = [f"🛑 Stop: {plan['stop']:.6g}  (risk %{plan['risk']/plan['entry']*100:.2f}) | TP stili: {tp_style}"]
     for i, tp in enumerate(plan["tps"], 1):
         lines.append(f"🎯 TP{i} (%{tp['w']*100:.0f} pozisyon): {tp['p']:.6g}  → {tp['r']:.1f}R")
     return "\n".join(lines)
@@ -662,7 +655,8 @@ def tg_send(text, topic=None):
         r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
                           data=data, timeout=20)
         if r.status_code != 200:
-            print("TG hata:", r.text[:200])
+            print("TG hata:", r.text[:300])
+            globals()["_SON_TG_HATA"] = f"sendMessage topic={topic}: {r.text[:200]}"
         return r.status_code == 200
     except Exception as e:
         print("TG hata:", e); return False
@@ -679,7 +673,8 @@ def tg_photo(path, caption, topic=None):
             r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendPhoto",
                               data=data, files={"photo": f}, timeout=45)
         if r.status_code != 200:
-            print("TG foto hata:", r.text[:200])
+            print("TG foto hata:", r.text[:300])
+            globals()["_SON_TG_HATA"] = f"sendPhoto topic={topic}: {r.text[:200]}"
         return r.status_code == 200
     except Exception as e:
         print("TG foto hata:", e); return False
@@ -752,8 +747,8 @@ def main():
     for symbol in symbols:
         try:
             # strateji BASINA acik pozisyon / cooldown (gercek A/B icin bagimsiz)
-            # SEMBOL KILIDI: bu coinde ACIK pozisyon varsa hicbir strateji
-            # yeni pozisyon ACMAZ (ayni coinde ust uste islem birikmesin).
+            # SEMBOL KILIDI: bu coinde ACIK pozisyon varsa (hangi strateji olursa
+            # olsun) yeni pozisyon ACILMAZ. Ayni coinde ust uste islem birikmesin.
             if any(p["symbol"] == symbol and p["status"] == "open" for p in positions):
                 continue
             open_strats = set()
@@ -819,7 +814,7 @@ def main():
                 strat_lbl = {"ict_short": "ICT / ORDER BLOCK",
                              "ict_long": "ICT / ORDER BLOCK"}[strat]
                 side = SIDE_OF[strat]
-                yon = "\uD83D\uDD34 SHORT" if side == -1 else "\uD83D\uDFE2 LONG"
+                yon = "\U0001F534 SHORT" if side == -1 else "\U0001F7E2 LONG"
 
                 detay = (f"LIMIT giris: {plan['entry']:.6g} "
                          f"(su an {plan['son_fiyat']:.6g}, %{plan['limit_mesafe_pct']:+.2f})\n"
@@ -827,9 +822,9 @@ def main():
                          f"FVG: {plan['fvg_low']:.6g} - {plan['fvg_high']:.6g}\n"
                          f"Kirilan yapi: {plan['swing']:.6g}\n")
 
-                msg = (f"\uD83D\uDD14 <b>{symbol}</b>  {yon}  [{iv} / {strat_lbl}]\n"
+                msg = (f"\U0001F514 <b>{symbol}</b>  {yon}  [{iv} / {strat_lbl}]\n"
                        + detay + "\n"
-                       f"\uD83D\uDCCB <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
+                       f"\U0001F4CB <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
                        + ctx_line)
 
                 sent = False
@@ -838,16 +833,21 @@ def main():
                     rally_ln = (_d["close_time"].iloc[lo_idx], float(lo),
                                 _d["close_time"].iloc[hi_idx], float(hi)) \
                         if 0 <= lo_idx < len(_d) and 0 <= hi_idx < len(_d) else None
-                    chart = make_chart(_d, symbol, iv, strat, plan,
-                                       zone=zone if strat in ("ob", "fvg") else None,
-                                       rally=rally_ln,
-                                       rng=((plan["range_low"], plan["range_high"])
-                                            if strat in ("range_lh", "range_hl") else None))
+                    chart = make_chart(dfs[iv], symbol, iv, strat, plan,
+                                       zone=zone)   # ICT: OB bolgesi golgelenir
                     sent = tg_photo(chart, msg, TOPIC_SIGNALS)
                 except Exception as e:
                     print(f"{symbol} grafik hatasi: {e}")
                 if not sent:
-                    tg_send(msg, TOPIC_SIGNALS)
+                    sent = tg_send(msg, TOPIC_SIGNALS)
+                if not sent:
+                    # YEDEK 1: konu belirtmeden (grubun General konusu)
+                    sent = tg_send("\u26A0\uFE0F [Sinyaller konusuna gonderilemedi]\n\n" + msg, None)
+                if not sent:
+                    # YEDEK 2: calisan Sonuclar konusuna
+                    sent = tg_send("\u26A0\uFE0F [SINYAL - yedek kanal]\n\n" + msg, TOPIC_RESULTS)
+                if not sent:
+                    print("SINYAL HIC GONDERILEMEDI:", globals().get("_SON_TG_HATA"))
 
                 positions.append({
                     "symbol": symbol, "interval": iv, "strategy": strat,
@@ -873,11 +873,10 @@ def main():
                 })
                 new_count += 1
                 log_ekle({"tur": "SINYAL", "kaynak": "screener", "sembol": symbol,
-                          "strateji": strat, "dilim": iv,
-                          "yon": "LONG" if side == 1 else "SHORT",
+                          "strateji": strat, "dilim": iv, "yon": "LONG" if side == 1 else "SHORT",
                           "giris": plan["entry"], "stop": plan["stop"],
-                          "hedefler": [x["p"] for x in plan["tps"]],
-                          "r_degerleri": [round(x["r"], 2) for x in plan["tps"]],
+                          "hedefler": [t["p"] for t in plan["tps"]],
+                          "r_degerleri": [round(t["r"], 2) for t in plan["tps"]],
                           "baglam": ctx})
 
         except Exception as e:
@@ -892,6 +891,13 @@ def main():
         tg_send(build_summary(positions), TOPIC_SUMMARY)
         if SUMMARY_EVERY_RUN or now.weekday() == 0:
             tg_send(build_insights(positions), TOPIC_SUMMARY)
+
+    # TANI: sinyal gonderimi sorunluysa calisan konuya bildir
+    if new_count > 0 and globals().get("_SON_TG_HATA"):
+        tg_send(f"\U0001F527 <b>TANI</b>\nBu turda {new_count} sinyal uretildi.\n"
+                f"TOPIC_SIGNALS deger: {TOPIC_SIGNALS!r}\n"
+                f"Son Telegram hatasi: <code>{globals()['_SON_TG_HATA']}</code>",
+                TOPIC_RESULTS)
 
     save_positions(positions)
     print("Tamamlandi.")
