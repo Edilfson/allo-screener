@@ -367,7 +367,7 @@ def compute_context(df, plan, swing_high, swing_low, btc_regime, btc_dist,
         fib_zone = "?"
     vol = df["volume"].values
     vol_ratio = float(vol[-1] / vol[-21:-1].mean()) if len(vol) > 21 and vol[-21:-1].mean() > 0 else None
-    ema_align = "duzgun(55>99)" if last["ema55"] > last["ema99"] else "ters(55<99)"
+    ema_align = "duzgun 55ust99" if last["ema55"] > last["ema99"] else "ters 55alt99"
     rsi = calc_rsi(closes)
     return {
         "rsi14": round(float(rsi), 1) if rsi is not None else None,
@@ -645,10 +645,22 @@ def make_chart(df, symbol, interval, strategy, plan, zone=None,
 
 
 # ==================== TELEGRAM ====================
+def _html_guvenli(s):
+    """Telegram HTML modunda < > isaretleri etiket sanilir; kacir."""
+    korunan = {"<b>": "\x01", "</b>": "\x02", "<i>": "\x03", "</i>": "\x04",
+               "<code>": "\x05", "</code>": "\x06"}
+    for k, v in korunan.items():
+        s = s.replace(k, v)
+    s = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    for k, v in korunan.items():
+        s = s.replace(v, k)
+    return s
+
+
 def tg_send(text, topic=None):
     if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
         print("[TG yok]", text[:300]); return False
-    data = {"chat_id": TELEGRAM_CHAT_ID, "text": text[:4090], "parse_mode": "HTML"}
+    data = {"chat_id": TELEGRAM_CHAT_ID, "text": _html_guvenli(text)[:4090], "parse_mode": "HTML"}
     if topic:
         data["message_thread_id"] = topic
     try:
@@ -665,7 +677,7 @@ def tg_send(text, topic=None):
 def tg_photo(path, caption, topic=None):
     if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
         print("[TG yok - foto]", path); return False
-    data = {"chat_id": TELEGRAM_CHAT_ID, "caption": caption[:1000], "parse_mode": "HTML"}
+    data = {"chat_id": TELEGRAM_CHAT_ID, "caption": _html_guvenli(caption)[:1000], "parse_mode": "HTML"}
     if topic:
         data["message_thread_id"] = topic
     try:
