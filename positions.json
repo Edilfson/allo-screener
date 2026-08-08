@@ -46,5 +46,53 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SYNUSDT",
+  "interval": "2h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-08T18:09:11.960649+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-08T17:59:59.999000+00:00",
+  "entry": 0.10605999999999999,
+  "stop": 0.10153836,
+  "current_stop": 0.10153836,
+  "risk": 0.0045216399999999934,
+  "tps": [
+   {
+    "p": 0.12866819999999995,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-08T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.10164,
+  "zone_high": 0.11048,
+  "zone_width_pct": 0.087,
+  "quality_ok": false,
+  "swing_high": 0.11048,
+  "swing_low": 0.10164,
+  "stop_dist_pct": 0.0426,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 45.7,
+   "vol_ratio": 0.98,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0255,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
