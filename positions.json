@@ -1,1 +1,50 @@
-[]
+[
+ {
+  "symbol": "EPICUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-08T09:19:37.296515+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-08T07:59:59.999000+00:00",
+  "entry": 1.0649000000000002,
+  "stop": 0.9543447,
+  "current_stop": 0.9543447,
+  "risk": 0.11055530000000013,
+  "tps": [
+   {
+    "p": 1.6176765000000008,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-08T07:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.9553,
+  "zone_high": 1.1745,
+  "zone_width_pct": 0.2295,
+  "quality_ok": true,
+  "swing_high": 1.1745,
+  "swing_low": 0.9553,
+  "stop_dist_pct": 0.1038,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 57.6,
+   "vol_ratio": 1.52,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0269,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ }
+]
