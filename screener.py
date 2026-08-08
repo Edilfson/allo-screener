@@ -64,6 +64,7 @@ LOOKBACK_BY_IV = {"2h": 560, "4h": 320, "1d": 250}
 CHART_CANDLES = 120
 DEDUP_COOLDOWN_HOURS = 20
 POSITION_MAX_DAYS = 45
+PENDING_MAX_HOURS = 24   # limit emir bu sure icinde dolmazsa IPTAL
 
 STATE_FILE = "positions.json"
 LOG_FILE = "signals_log.json"     # TUM sinyaller + sonuclar tek yerde
@@ -401,6 +402,38 @@ def evaluate_position(pos, df):
     """Acik pozisyonu acilistan sonraki mumlara gore degerlendirir."""
     events = []
     opened = pd.Timestamp(pos["opened_at"])
+    _side = pos.get("side", 1)
+
+    # ---- LIMIT EMIR DOGRULAMASI ----
+    # Pozisyon ancak fiyat limit seviyesine DEGINCE aktif olur.
+    # (Onceki surumde bu kontrol yoktu: emir hic dolmadan TP vuruldu sayiliyordu.)
+    if pos.get("status") == "pending":
+        _ebc = pos.get("signal_bar_close") or pos["opened_at"]
+        _fut = df[df["close_time"] > pd.Timestamp(_ebc)]
+        if _fut.empty:
+            return pos, events
+        _e, _st = pos["entry"], pos["stop"]
+        for _, _c in _fut.iterrows():
+            _gecti = (_c["low"] <= _st) if _side == 1 else (_c["high"] >= _st)
+            _doldu = (_c["low"] <= _e) if _side == 1 else (_c["high"] >= _e)
+            if _doldu:
+                pos["status"] = "open"
+                pos["entry_bar_close"] = _c["close_time"].isoformat()
+                events.append(f"\u2705 LIMIT EMIR DOLDU: {_e:.6g}")
+                return pos, events
+            if _gecti:
+                pos["status"] = "cancelled"
+                pos["closed_at"] = _c["close_time"].isoformat()
+                pos["realized_r"] = 0.0
+                events.append("\u274C Bolge kirildi, emir IPTAL (islem acilmadi)")
+                return pos, events
+        _yas = (datetime.now(timezone.utc) - pd.Timestamp(_ebc).to_pydatetime()).total_seconds() / 3600
+        if _yas > PENDING_MAX_HOURS:
+            pos["status"] = "cancelled"
+            pos["closed_at"] = datetime.now(timezone.utc).isoformat()
+            pos["realized_r"] = 0.0
+            events.append(f"\u23F3 {PENDING_MAX_HOURS} saat doldu, emir IPTAL (dolmadi)")
+        return pos, events
     # BUG FIX: sadece giristen SONRA ACILAN mumlari degerlendir.
     # Sinyal mumunun kendisi (close_time > opened olsa da) giris oncesi
     # dip/tepe fitillerini icerir; onlari saymak sahte stop/TP uretiyordu.
@@ -491,8 +524,8 @@ def _grp_line(name, grp):
 
 
 def build_summary(positions):
-    closed = [p for p in positions if p["status"] != "open"]
-    open_ps = [p for p in positions if p["status"] == "open"]
+    closed = [p for p in positions if p["status"] not in ("open", "pending", "cancelled")]
+    open_ps = [p for p in positions if p["status"] in ("open", "pending")]
     if not closed:
         return f"📊 <b>OZET</b>\n\nHenuz kapanmis pozisyon yok.\nAcik pozisyon: {len(open_ps)}"
 
@@ -725,7 +758,7 @@ def main():
     positions = load_positions()
     now = datetime.now(timezone.utc)
 
-    open_ps = [p for p in positions if p["status"] == "open"]
+    open_ps = [p for p in positions if p["status"] in ("open", "pending")]
     print(f"{len(open_ps)} acik pozisyon kontrol ediliyor...")
     for pos in open_ps:
         df = get_klines(pos["symbol"], pos["interval"])
@@ -761,7 +794,8 @@ def main():
             # strateji BASINA acik pozisyon / cooldown (gercek A/B icin bagimsiz)
             # SEMBOL KILIDI: bu coinde ACIK pozisyon varsa (hangi strateji olursa
             # olsun) yeni pozisyon ACILMAZ. Ayni coinde ust uste islem birikmesin.
-            if any(p["symbol"] == symbol and p["status"] == "open" for p in positions):
+            if any(p["symbol"] == symbol and p["status"] in ("open", "pending")
+                   for p in positions):
                 continue
             open_strats = set()
             last_by_strat = {}
@@ -836,6 +870,7 @@ def main():
 
                 msg = (f"\U0001F514 <b>{symbol}</b>  {yon}  [{iv} / {strat_lbl}]\n"
                        + detay + "\n"
+                       f"\u23F3 <b>BEKLEYEN LIMIT EMIR</b> - fiyat girise gelmeden islem ACILMAZ\n"
                        f"\U0001F4CB <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
                        + ctx_line)
 
@@ -865,7 +900,8 @@ def main():
                     "symbol": symbol, "interval": iv, "strategy": strat,
                     "side": SIDE_OF[strat],
                     "ema_period": strat,
-                    "opened_at": now.isoformat(), "status": "open",
+                    "opened_at": now.isoformat(), "status": "pending",
+                    "signal_bar_close": dfs[iv].iloc[-1]["close_time"].isoformat(),
                     "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
                     "risk": plan["risk"], "tps": plan["tps"],
                     "entry_bar_close": dfs[iv].iloc[-1]["close_time"].isoformat(),
