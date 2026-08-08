@@ -13,6 +13,10 @@ MIN_STOP_PCT = 0.005
 TP_R = 5.0
 LOOKBACK_BOS = 40
 OB_ARAMA = 12
+MAX_ENTRY_DIST_R = 1.5   # fiyat limit girise en fazla bu kadar RISK uzakta olabilir
+                         # (backtestte limit 10 mum icinde doluyordu; canli taramada
+                         #  bolge eski olabilir ve fiyat cok uzaklasmis olabilir)
+MAX_BOS_YAS = 20         # BOS bu kadar mumdan eskiyse kurulum bayat sayilir
 
 
 def _atr(h, l, c, period=14):
@@ -121,6 +125,22 @@ def detect_ict(df, side):
 
     tp = entry + side * TP_R * risk
     son_fiyat = float(c[i])
+
+    # TAZELIK 1: BOS cok eskiyse kurulum bayat
+    if (i - bos_i) > MAX_BOS_YAS:
+        return None, "bayat_kurulum"
+
+    # TAZELIK 2: fiyat limit girise cok uzaksa emir yakin zamanda dolmaz
+    mesafe_r = abs(entry - son_fiyat) / risk
+    if mesafe_r > MAX_ENTRY_DIST_R:
+        return None, "giris_cok_uzak"
+
+    # YON: long ise fiyat girisin USTUNDE olmali (bolgeye inmesi beklenir)
+    #      short ise fiyat girisin ALTINDA olmali (bolgeye cikmasi beklenir)
+    if side == 1 and son_fiyat < entry:
+        return None, "bolge_gecilmis"
+    if side == -1 and son_fiyat > entry:
+        return None, "bolge_gecilmis"
     if side == 1 and son_fiyat < stop:
         return None, "kacirilmis"
     if side == -1 and son_fiyat > stop:
