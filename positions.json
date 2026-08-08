@@ -54,7 +54,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-08T18:09:11.960649+00:00",
-  "status": "pending",
+  "status": "open",
   "signal_bar_close": "2026-08-08T17:59:59.999000+00:00",
   "entry": 0.10605999999999999,
   "stop": 0.10153836,
@@ -68,7 +68,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-08T17:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-08T23:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.10164,
   "zone_high": 0.11048,
