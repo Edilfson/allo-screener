@@ -6,7 +6,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-08T09:19:37.296515+00:00",
-  "status": "open",
+  "status": "stopped",
   "signal_bar_close": "2026-08-08T07:59:59.999000+00:00",
   "entry": 1.0649000000000002,
   "stop": 0.9543447,
@@ -44,8 +44,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.9144744756696429
+  "realized_r": -1.0,
+  "unrealized_r": -0.9144744756696429,
+  "closed_at": "2026-08-09T11:59:59.999000+00:00"
  },
  {
   "symbol": "SYNUSDT",
@@ -93,6 +94,6 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5108765846020492
+  "unrealized_r": 0.35164232446634636
  }
 ]
