@@ -45,7 +45,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.18723661371277667
+  "unrealized_r": -0.12482440914185244
  },
  {
   "symbol": "SYNUSDT",
@@ -93,6 +93,6 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.2742367813448264
+  "unrealized_r": 0.7276121053423138
  }
 ]
