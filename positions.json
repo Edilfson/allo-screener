@@ -94,7 +94,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.6126095841331872
+  "unrealized_r": -0.40693199812457365
  },
  {
   "symbol": "BANKUSDT",
@@ -234,6 +234,54 @@
    "ema_align": "duzgun 55ust99",
    "btc_regime": "ayi",
    "btc_ema99_dist": -0.0261,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "PAXGUSDT",
+  "interval": "2h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-10T06:32:20.560324+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-10T05:59:59.999000+00:00",
+  "entry": 4354.86,
+  "stop": 4376.634299999999,
+  "current_stop": 4376.634299999999,
+  "risk": 21.77429999999913,
+  "tps": [
+   {
+    "p": 4245.988500000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-10T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 4351.82,
+  "zone_high": 4357.9,
+  "zone_width_pct": 0.0014,
+  "quality_ok": true,
+  "swing_high": 4357.9,
+  "swing_low": 4351.82,
+  "stop_dist_pct": 0.005,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 54.8,
+   "vol_ratio": 0.87,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0234,
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
