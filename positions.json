@@ -152,7 +152,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-10T00:21:00.862672+00:00",
-  "status": "pending",
+  "status": "open",
   "signal_bar_close": "2026-08-09T23:59:59.999000+00:00",
   "entry": 75.91499999999999,
   "stop": 75.53542499999999,
@@ -166,7 +166,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-09T23:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-10T15:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 75.73,
   "zone_high": 76.1,
@@ -239,7 +239,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6565083388541619
+  "unrealized_r": 0.4113258634098673
  },
  {
   "symbol": "PAXGUSDT",
@@ -287,7 +287,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7435371056704577
+  "unrealized_r": 0.5230937389491223
  },
  {
   "symbol": "DOGEUSDT",
