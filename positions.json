@@ -104,7 +104,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-09T20:09:08.021817+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "signal_bar_close": "2026-08-09T19:59:59.999000+00:00",
   "entry": 0.03755,
   "stop": 0.0358641,
@@ -143,7 +143,8 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-10T20:14:59.618975+00:00"
  },
  {
   "symbol": "SOLUSDT",
@@ -191,7 +192,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7244945004281202
+  "unrealized_r": 0.9352565369162918
  },
  {
   "symbol": "XAUTUSDT",
