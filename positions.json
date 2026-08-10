@@ -55,7 +55,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-08T18:09:11.960649+00:00",
-  "status": "open",
+  "status": "stopped",
   "signal_bar_close": "2026-08-08T17:59:59.999000+00:00",
   "entry": 0.10605999999999999,
   "stop": 0.10153836,
@@ -93,8 +93,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.7254005183959793
+  "realized_r": -1.0,
+  "unrealized_r": -0.7254005183959793,
+  "closed_at": "2026-08-10T07:59:59.999000+00:00"
  },
  {
   "symbol": "BANKUSDT",
@@ -238,7 +239,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.46294322666129556
  },
  {
   "symbol": "PAXGUSDT",
@@ -247,7 +248,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-10T06:32:20.560324+00:00",
-  "status": "pending",
+  "status": "open",
   "signal_bar_close": "2026-08-10T05:59:59.999000+00:00",
   "entry": 4354.86,
   "stop": 4376.634299999999,
@@ -261,7 +262,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-10T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-10T07:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 4351.82,
   "zone_high": 4357.9,
@@ -282,6 +283,54 @@
    "ema_align": "duzgun 55ust99",
    "btc_regime": "ayi",
    "btc_ema99_dist": -0.0234,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "DOGEUSDT",
+  "interval": "4h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-10T08:34:44.128525+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-10T07:59:59.999000+00:00",
+  "entry": 0.07042999999999999,
+  "stop": 0.07083075999999999,
+  "current_stop": 0.07083075999999999,
+  "risk": 0.00040076,
+  "tps": [
+   {
+    "p": 0.06842619999999999,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-10T07:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0701,
+  "zone_high": 0.07076,
+  "zone_width_pct": 0.0094,
+  "quality_ok": false,
+  "swing_high": 0.07076,
+  "swing_low": 0.0701,
+  "stop_dist_pct": 0.0057,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 50.0,
+   "vol_ratio": 0.39,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.022,
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
