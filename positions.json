@@ -191,7 +191,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.5927682276229803
+  "unrealized_r": 0.09220839096360549
  },
  {
   "symbol": "XAUTUSDT",
@@ -239,7 +239,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.26937811446842913
+  "unrealized_r": 0.17812599014890923
  },
  {
   "symbol": "PAXGUSDT",
@@ -287,7 +287,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.34306498946003516
+  "unrealized_r": 0.23376182012737215
  },
  {
   "symbol": "DOGEUSDT",
