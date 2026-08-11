@@ -436,5 +436,53 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
+ },
+ {
+  "symbol": "PAXGUSDT",
+  "interval": "2h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-11T06:21:46.591591+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-11T05:59:59.999000+00:00",
+  "entry": 4350.96,
+  "stop": 4329.2052,
+  "current_stop": 4329.2052,
+  "risk": 21.754799999999705,
+  "tps": [
+   {
+    "p": 4459.733999999999,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-11T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 4343.92,
+  "zone_high": 4358.0,
+  "zone_width_pct": 0.0032,
+  "quality_ok": true,
+  "swing_high": 4358.0,
+  "swing_low": 4343.92,
+  "stop_dist_pct": 0.005,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 54.5,
+   "vol_ratio": 2.0,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0396,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
