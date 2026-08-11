@@ -486,5 +486,101 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ETHUSDT",
+  "interval": "2h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-11T20:15:51.985466+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-11T19:59:59.999000+00:00",
+  "entry": 1889.13,
+  "stop": 1898.57565,
+  "current_stop": 1898.57565,
+  "risk": 9.445649999999887,
+  "tps": [
+   {
+    "p": 1841.9017500000007,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-11T19:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 1882.66,
+  "zone_high": 1895.6,
+  "zone_width_pct": 0.0069,
+  "quality_ok": false,
+  "swing_high": 1895.6,
+  "swing_low": 1882.66,
+  "stop_dist_pct": 0.005,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 45.6,
+   "vol_ratio": 1.01,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0448,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SOLUSDT",
+  "interval": "2h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-11T20:15:51.985466+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-11T19:59:59.999000+00:00",
+  "entry": 76.07,
+  "stop": 76.45034999999999,
+  "current_stop": 76.45034999999999,
+  "risk": 0.38034999999999286,
+  "tps": [
+   {
+    "p": 74.16825000000003,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-11T19:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 75.77,
+  "zone_high": 76.37,
+  "zone_width_pct": 0.0079,
+  "quality_ok": true,
+  "swing_high": 76.37,
+  "swing_low": 75.77,
+  "stop_dist_pct": 0.005,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 46.8,
+   "vol_ratio": 0.8,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0448,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
