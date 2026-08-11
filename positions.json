@@ -153,7 +153,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-10T00:21:00.862672+00:00",
-  "status": "open",
+  "status": "stopped",
   "signal_bar_close": "2026-08-09T23:59:59.999000+00:00",
   "entry": 75.91499999999999,
   "stop": 75.53542499999999,
@@ -191,8 +191,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.3556609365737732
+  "realized_r": -1.0,
+  "unrealized_r": -0.3556609365737732,
+  "closed_at": "2026-08-11T07:59:59.999000+00:00"
  },
  {
   "symbol": "XAUTUSDT",
