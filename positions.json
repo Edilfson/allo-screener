@@ -300,7 +300,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-10T08:34:44.128525+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "signal_bar_close": "2026-08-10T07:59:59.999000+00:00",
   "entry": 0.07042999999999999,
   "stop": 0.07083075999999999,
@@ -339,7 +339,8 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-11T08:27:29.805150+00:00"
  },
  {
   "symbol": "ROBOUSDT",
