@@ -633,7 +633,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3111888111887924
+  "unrealized_r": 2.185314685314654
  },
  {
   "symbol": "BTCUSDT",
@@ -681,7 +681,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8668320503949276
+  "unrealized_r": 1.4025021814832483
  },
  {
   "symbol": "LINKUSDT",
@@ -725,6 +725,54 @@
    "ema_align": "duzgun 55ust99",
    "btc_regime": "ayi",
    "btc_ema99_dist": -0.0427,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ZECUSDT",
+  "interval": "2h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-12T14:27:49.400273+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-12T13:59:59.999000+00:00",
+  "entry": 481.39,
+  "stop": 476.01351,
+  "current_stop": 476.01351,
+  "risk": 5.37648999999999,
+  "tps": [
+   {
+    "p": 508.27244999999994,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-12T13:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 476.49,
+  "zone_high": 486.29,
+  "zone_width_pct": 0.0206,
+  "quality_ok": false,
+  "swing_high": 486.29,
+  "swing_low": 476.49,
+  "stop_dist_pct": 0.0112,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 50.0,
+   "vol_ratio": 1.89,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0423,
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
