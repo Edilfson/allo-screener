@@ -594,18 +594,18 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-12T00:24:31.080985+00:00",
-  "status": "open",
+  "status": "target_done",
   "signal_bar_close": "2026-08-11T23:59:59.999000+00:00",
   "entry": 2.8599999999999997e-06,
   "stop": 2.88288e-06,
-  "current_stop": 2.88288e-06,
+  "current_stop": 2.8599999999999997e-06,
   "risk": 2.288000000000011e-08,
   "tps": [
    {
     "p": 2.745599999999999e-06,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-12T03:59:59.999000+00:00",
@@ -632,8 +632,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": 3.059440559440534
+  "realized_r": 5.0,
+  "unrealized_r": 3.059440559440534,
+  "closed_at": "2026-08-12T23:59:59.999000+00:00"
  },
  {
   "symbol": "BTCUSDT",
@@ -681,7 +682,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.000455915976989
+  "unrealized_r": 2.1049366606895674
  },
  {
   "symbol": "LINKUSDT",
@@ -825,7 +826,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9423579584537038
+  "unrealized_r": 0.6397028477094482
  },
  {
   "symbol": "ALLOUSDT",
