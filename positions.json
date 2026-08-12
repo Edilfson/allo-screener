@@ -584,5 +584,53 @@
   "realized_r": -1.0,
   "unrealized_r": 0.0,
   "closed_at": "2026-08-11T23:59:59.999000+00:00"
+ },
+ {
+  "symbol": "PEPEUSDT",
+  "interval": "4h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-12T00:24:31.080985+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-11T23:59:59.999000+00:00",
+  "entry": 2.8599999999999997e-06,
+  "stop": 2.88288e-06,
+  "current_stop": 2.88288e-06,
+  "risk": 2.288000000000011e-08,
+  "tps": [
+   {
+    "p": 2.745599999999999e-06,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-11T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 2.84e-06,
+  "zone_high": 2.88e-06,
+  "zone_width_pct": 0.0141,
+  "quality_ok": false,
+  "swing_high": 2.88e-06,
+  "swing_low": 2.84e-06,
+  "stop_dist_pct": 0.008,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 46.8,
+   "vol_ratio": 0.98,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0438,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
