@@ -682,7 +682,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9612539931575433
+  "unrealized_r": 1.3024124308107403
  },
  {
   "symbol": "LINKUSDT",
@@ -827,7 +827,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.35080478745357196
+  "unrealized_r": -0.4746182418489492
  },
  {
   "symbol": "ALLOUSDT",
@@ -1028,7 +1028,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-13T04:37:36.389932+00:00",
-  "status": "pending",
+  "status": "open",
   "signal_bar_close": "2026-08-13T03:59:59.999000+00:00",
   "entry": 0.070625,
   "stop": 0.07105098,
@@ -1042,7 +1042,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-13T03:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-13T05:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.07027,
   "zone_high": 0.07098,
