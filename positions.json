@@ -682,7 +682,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3931907827741443
+  "unrealized_r": 1.65786495544547
  },
  {
   "symbol": "LINKUSDT",
@@ -827,7 +827,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.8735727060118327
+  "unrealized_r": -0.6672169486862024
  },
  {
   "symbol": "ALLOUSDT",
@@ -1067,6 +1067,6 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.22301516503121377
+  "unrealized_r": 0.45776797032720773
  }
 ]
