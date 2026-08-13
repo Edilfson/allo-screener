@@ -682,7 +682,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.65786495544547
+  "unrealized_r": 1.4523602060092933
  },
  {
   "symbol": "LINKUSDT",
@@ -788,7 +788,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-12T16:20:33.516219+00:00",
-  "status": "open",
+  "status": "stopped",
   "signal_bar_close": "2026-08-12T15:59:59.999000+00:00",
   "entry": 0.012615000000000001,
   "stop": 0.0118881,
@@ -826,8 +826,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.6672169486862024
+  "realized_r": -1.0,
+  "unrealized_r": -0.6672169486862024,
+  "closed_at": "2026-08-13T11:59:59.999000+00:00"
  },
  {
   "symbol": "ALLOUSDT",
@@ -1067,6 +1068,6 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.45776797032720773
+  "unrealized_r": 0.3638668482088036
  }
 ]
