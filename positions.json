@@ -682,7 +682,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.824598161761782
+  "unrealized_r": 1.6391798744238442
  },
  {
   "symbol": "LINKUSDT",
@@ -691,7 +691,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-12T04:36:21.690382+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "signal_bar_close": "2026-08-12T03:59:59.999000+00:00",
   "entry": 8.591000000000001,
   "stop": 8.488503,
@@ -730,7 +730,8 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-13T04:37:37.746467+00:00"
  },
  {
   "symbol": "ZECUSDT",
@@ -826,7 +827,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.29577658550007074
+  "unrealized_r": -0.46086119136057446
  },
  {
   "symbol": "ALLOUSDT",
@@ -1014,6 +1015,54 @@
    "ema_align": "duzgun 55ust99",
    "btc_regime": "ayi",
    "btc_ema99_dist": -0.047,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "DOGEUSDT",
+  "interval": "2h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-13T04:37:36.389932+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-13T03:59:59.999000+00:00",
+  "entry": 0.070625,
+  "stop": 0.07105098,
+  "current_stop": 0.07105098,
+  "risk": 0.00042598000000000635,
+  "tps": [
+   {
+    "p": 0.06849509999999996,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-13T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.07027,
+  "zone_high": 0.07098,
+  "zone_width_pct": 0.0101,
+  "quality_ok": false,
+  "swing_high": 0.07098,
+  "swing_low": 0.07027,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 44.5,
+   "vol_ratio": 0.47,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0426,
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
