@@ -682,7 +682,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.685040537283367
+  "unrealized_r": 4.510391707810308
  },
  {
   "symbol": "LINKUSDT",
@@ -975,7 +975,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.00865538581380265
+  "unrealized_r": -0.12983078720734725
  },
  {
   "symbol": "EURUSDT",
@@ -1072,7 +1072,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.101037607399361
+  "unrealized_r": 2.265364571106576
  },
  {
   "symbol": "TRXUSDT",
