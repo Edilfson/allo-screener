@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.33756004673911055
+  "unrealized_r": -0.5452893062708738
  },
  {
   "symbol": "EURUSDT",
@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.828771303817033
+  "unrealized_r": 2.922672425935437
  },
  {
   "symbol": "TRXUSDT",
@@ -1082,7 +1082,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-13T14:28:56.971176+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "signal_bar_close": "2026-08-13T13:59:59.999000+00:00",
   "entry": 0.33665,
   "stop": 0.33833325,
@@ -1121,7 +1121,8 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-14T14:02:36.271429+00:00"
  },
  {
   "symbol": "NBISBUSDT",
@@ -1218,6 +1219,6 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.37021113977261827
+  "unrealized_r": 0.542710954003588
  }
 ]
