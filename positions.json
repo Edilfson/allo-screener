@@ -682,7 +682,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.4007526350636255
+  "unrealized_r": 2.212313592960521
  },
  {
   "symbol": "LINKUSDT",
@@ -975,7 +975,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.26831696022849716
+  "unrealized_r": 0.23369541697320967
  },
  {
   "symbol": "EURUSDT",
@@ -1072,7 +1072,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1150758251560688
+  "unrealized_r": 0.9507488614488536
  },
  {
   "symbol": "TRXUSDT",
@@ -1129,18 +1129,18 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-13T18:21:03.897973+00:00",
-  "status": "open",
+  "status": "target_done",
   "signal_bar_close": "2026-08-13T17:59:59.999000+00:00",
   "entry": 248.45499999999998,
   "stop": 245.56419,
-  "current_stop": 245.56419,
+  "current_stop": 248.45499999999998,
   "risk": 2.8908099999999877,
   "tps": [
    {
     "p": 262.9090499999999,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-13T19:59:59.999000+00:00",
@@ -1167,7 +1167,8 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": 3.530152448621696
+  "realized_r": 5.0,
+  "unrealized_r": 3.530152448621696,
+  "closed_at": "2026-08-14T01:59:59.999000+00:00"
  }
 ]
