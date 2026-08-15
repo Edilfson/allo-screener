@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.33756004673911055
+  "unrealized_r": -0.35487081836675427
  },
  {
   "symbol": "EURUSDT",
@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4437297525704995
+  "unrealized_r": 1.561106155218529
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.245979427406771
+  "unrealized_r": 1.249960192350563
  },
  {
   "symbol": "UUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.19036791951995266
+  "unrealized_r": -0.2010928727323421
  },
  {
   "symbol": "XPLUSDT",
@@ -1324,7 +1324,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-14T22:06:18.696243+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "signal_bar_close": "2026-08-14T21:59:59.999000+00:00",
   "entry": 0.07509,
   "stop": 0.07451541,
@@ -1363,7 +1363,8 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-15T22:04:36.519953+00:00"
  },
  {
   "symbol": "DOLOUSDT",
@@ -1421,7 +1422,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-15T20:04:57.871420+00:00",
-  "status": "pending",
+  "status": "open",
   "signal_bar_close": "2026-08-15T19:59:59.999000+00:00",
   "entry": 0.794,
   "stop": 0.765234,
@@ -1435,7 +1436,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-15T19:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-15T23:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.766,
   "zone_high": 0.822,
