@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3733039109816882
+  "unrealized_r": 1.4672050331000923
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8704606010424301
+  "unrealized_r": 0.8479029330276104
  },
  {
   "symbol": "UUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.2225427791571286
+  "unrealized_r": -0.1796429663075632
  },
  {
   "symbol": "XPLUSDT",
