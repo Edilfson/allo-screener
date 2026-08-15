@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3028780693929096
+  "unrealized_r": 1.2324522278040984
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.078787299767524
+  "unrealized_r": 1.09338343789476
  },
  {
   "symbol": "UUSDT",
@@ -1267,7 +1267,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.01999400179945799
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.10993077042701277
+  "unrealized_r": -0.12065572363940984
  },
  {
   "symbol": "XPLUSDT",
@@ -1359,6 +1359,54 @@
    "ema_align": "ters 55alt99",
    "btc_regime": "ayi",
    "btc_ema99_dist": -0.0529,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "DOLOUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-15T08:07:14.987792+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-15T07:59:59.999000+00:00",
+  "entry": 0.02156,
+  "stop": 0.02136861,
+  "current_stop": 0.02136861,
+  "risk": 0.00019138999999999962,
+  "tps": [
+   {
+    "p": 0.022516949999999997,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-15T07:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.02139,
+  "zone_high": 0.02173,
+  "zone_width_pct": 0.0159,
+  "quality_ok": false,
+  "swing_high": 0.02173,
+  "swing_low": 0.02139,
+  "stop_dist_pct": 0.0089,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 44.2,
+   "vol_ratio": 2.86,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0502,
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
