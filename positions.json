@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.3202492751114668
+  "unrealized_r": -0.30293850348382306
  },
  {
   "symbol": "EURUSDT",
@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2324522278040984
+  "unrealized_r": 1.4672050331000923
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.09338343789476
+  "unrealized_r": 1.1106334193178566
  },
  {
   "symbol": "UUSDT",
@@ -1372,7 +1372,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-15T08:07:14.987792+00:00",
-  "status": "pending",
+  "status": "open",
   "signal_bar_close": "2026-08-15T07:59:59.999000+00:00",
   "entry": 0.02156,
   "stop": 0.02136861,
@@ -1386,7 +1386,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-15T07:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-15T11:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.02139,
   "zone_high": 0.02173,
