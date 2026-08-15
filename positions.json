@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.35487081836675427
+  "unrealized_r": -0.372181589994398
  },
  {
   "symbol": "EURUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2950755283802011
+  "unrealized_r": 1.2897678417884784
  },
  {
   "symbol": "UUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.09920581721462332
+  "unrealized_r": -0.08311838739603535
  },
  {
   "symbol": "XPLUSDT",
