@@ -9,7 +9,8 @@ import numpy as np
 
 SWING_K = 3
 DISP_MULT = 1.5
-MIN_STOP_PCT = 0.005
+MIN_STOP_PCT = 0.006   # canli veri: %0.5 tabanindaki 6 islem 0.0R verdi (gurultu)
+MAX_STOP_PCT = 0.05    # canli veri: %5+ stoplu 2 islem de kaybetti (bolge belirsiz)
 TP_R = 5.0
 LOOKBACK_BOS = 40
 OB_ARAMA = 12
@@ -122,6 +123,13 @@ def detect_ict(df, side):
         risk = stop - entry
     if risk <= 0:
         return None, "seviye_gecersiz"
+
+    # STOP BANDI: canli sonuclara gore kazanan bant %0.6 - %5
+    stop_pct = risk / entry
+    if stop_pct < MIN_STOP_PCT:
+        return None, "stop_cok_dar"
+    if stop_pct > MAX_STOP_PCT:
+        return None, "stop_cok_genis"
 
     tp = entry + side * TP_R * risk
     son_fiyat = float(c[i])
