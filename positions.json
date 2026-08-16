@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5141555941593108
+  "unrealized_r": 1.3498286304520954
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.310998588155367
+  "unrealized_r": 1.3229408829867417
  },
  {
   "symbol": "UUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.19573039612614357
+  "unrealized_r": 0.25471763879429693
  },
  {
   "symbol": "XPLUSDT",
@@ -1659,7 +1659,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.383067314365118
+  "unrealized_r": 4.077029840388717
  },
  {
   "symbol": "GPSUSDT",
@@ -1804,6 +1804,55 @@
    "btc_ema99_dist": -0.0478,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0487
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "UNIUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-16T19:07:50.834580+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-16T18:59:59.999000+00:00",
+  "entry": 3.2725,
+  "stop": 3.252865,
+  "current_stop": 3.252865,
+  "risk": 0.01963500000000007,
+  "tps": [
+   {
+    "p": 3.3706750000000003,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-16T18:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 3.265,
+  "zone_high": 3.28,
+  "zone_width_pct": 0.0046,
+  "quality_ok": false,
+  "swing_high": 3.28,
+  "swing_low": 3.265,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.6,
+   "vol_ratio": 0.49,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0478,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0812
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
