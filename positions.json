@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.30293850348382306
+  "unrealized_r": -0.2856277318561793
  },
  {
   "symbol": "EURUSDT",
@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.3592656932249803
+  "unrealized_r": 2.5705432179914136
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2857870768446873
+  "unrealized_r": 1.2725178603653817
  },
  {
   "symbol": "UUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.19573039612615117
+  "unrealized_r": -0.13138067685179927
  },
  {
   "symbol": "XPLUSDT",
@@ -1422,7 +1422,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-15T20:04:57.871420+00:00",
-  "status": "open",
+  "status": "stopped",
   "signal_bar_close": "2026-08-15T19:59:59.999000+00:00",
   "entry": 0.794,
   "stop": 0.765234,
@@ -1460,7 +1460,8 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-16T03:59:59.999000+00:00"
  }
 ]
