@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.30293850348382306
+  "unrealized_r": -0.2856277318561793
  },
  {
   "symbol": "EURUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3229408829867417
+  "unrealized_r": 1.352133159241214
  },
  {
   "symbol": "UUSDT",
@@ -1267,7 +1267,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.01999400179945799
+  "unrealized_r": 0.0
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.25471763879429693
+  "unrealized_r": 0.38341707734299313
  },
  {
   "symbol": "XPLUSDT",
@@ -1619,19 +1619,19 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-16T14:06:47.471717+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-16T13:59:59.999000+00:00",
   "entry": 0.4554,
   "stop": 0.45885839999999994,
-  "current_stop": 0.45885839999999994,
+  "current_stop": 0.4554,
   "risk": 0.003458399999999917,
   "tps": [
    {
     "p": 0.43810800000000044,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-16T14:59:59.999000+00:00",
@@ -1658,8 +1658,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": 4.077029840388717
+  "realized_r": 5.0,
+  "unrealized_r": 4.077029840388717,
+  "closed_at": "2026-08-16T19:59:59.999000+00:00"
  },
  {
   "symbol": "GPSUSDT",
