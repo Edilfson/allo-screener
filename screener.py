@@ -87,7 +87,7 @@ def bars_per_day(iv):
 
 
 # ==================== VERI ====================
-TOP_N = 50          # sadece en hacimli N coin (kaldiracli islem gorenler)
+TOP_N = 100          # sadece en hacimli N coin (kaldiracli islem gorenler)
 
 
 def get_usdt_symbols():
