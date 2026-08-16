@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.30293850348382306
+  "unrealized_r": -0.2856277318561793
  },
  {
   "symbol": "EURUSDT",
@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3733039109816882
+  "unrealized_r": 1.4437297525704995
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2857870768446873
+  "unrealized_r": 1.2924216850843402
  },
  {
   "symbol": "UUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.33515478788723685
+  "unrealized_r": 0.2868924984314729
  },
  {
   "symbol": "XPLUSDT",
@@ -1659,7 +1659,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.7927365255610073
+  "unrealized_r": 2.3132084200787064
  },
  {
   "symbol": "GPSUSDT",
@@ -1706,6 +1706,104 @@
    "btc_ema99_dist": -0.0482,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1721
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "BTCUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-16T18:05:43.126822+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-16T17:59:59.999000+00:00",
+  "entry": 63020.44,
+  "stop": 62642.31736,
+  "current_stop": 62642.31736,
+  "risk": 378.1226400000014,
+  "tps": [
+   {
+    "p": 64911.05320000001,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-16T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 62968.45,
+  "zone_high": 63072.43,
+  "zone_width_pct": 0.0017,
+  "quality_ok": false,
+  "swing_high": 63072.43,
+  "swing_low": 62968.45,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.1,
+   "vol_ratio": 1.1,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0478,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0499
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "WBTCUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-16T18:05:43.126822+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-16T17:59:59.999000+00:00",
+  "entry": 63041.75,
+  "stop": 62663.4995,
+  "current_stop": 62663.4995,
+  "risk": 378.2505000000019,
+  "tps": [
+   {
+    "p": 64933.00250000001,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-16T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 63027.89,
+  "zone_high": 63055.61,
+  "zone_width_pct": 0.0004,
+  "quality_ok": false,
+  "swing_high": 63055.61,
+  "swing_low": 63027.89,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.5,
+   "vol_ratio": 0.63,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0478,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
