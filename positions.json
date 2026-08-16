@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.2856277318561793
+  "unrealized_r": -0.30293850348382306
  },
  {
   "symbol": "EURUSDT",
@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.8897600826329597
+  "unrealized_r": 1.9367106436921455
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3853062004394776
+  "unrealized_r": 1.3680562190163799
  },
  {
   "symbol": "UUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.1206557236394022
+  "unrealized_r": 0.19573039612614357
  },
  {
   "symbol": "XPLUSDT",
@@ -1463,5 +1463,53 @@
   "realized_r": -1.0,
   "unrealized_r": 0.0,
   "closed_at": "2026-08-16T03:59:59.999000+00:00"
+ },
+ {
+  "symbol": "HEMIUSDT",
+  "interval": "2h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-16T12:06:46.783650+00:00",
+  "status": "pending",
+  "signal_bar_close": "2026-08-16T11:59:59.999000+00:00",
+  "entry": 0.0066300000000000005,
+  "stop": 0.00598401,
+  "current_stop": 0.00598401,
+  "risk": 0.0006459900000000008,
+  "tps": [
+   {
+    "p": 0.009859950000000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-16T11:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.00599,
+  "zone_high": 0.00727,
+  "zone_width_pct": 0.2137,
+  "quality_ok": true,
+  "swing_high": 0.00727,
+  "swing_low": 0.00599,
+  "stop_dist_pct": 0.0974,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 53.0,
+   "vol_ratio": 2.93,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0499,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
