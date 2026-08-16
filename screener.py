@@ -32,9 +32,12 @@ import range_setup
 import ict_setup
 
 # ==================== AYARLAR ====================
-ALL_INTERVALS = ["2h", "4h"]   # backtest: 2h en iyi, 4h ikinci, 1h negatif
+ALL_INTERVALS = ["1h", "2h", "4h", "6h", "12h", "1d"]   # backtest: 2h en iyi, 4h ikinci, 1h negatif
 STRATEGY_ORDER = ["ict_short", "ict_long"]          # oncelik sirasi (OB en guclu)
-STRATEGY_INTERVALS = {"ict_short": ["2h", "4h"], "ict_long": ["2h", "4h"]}
+STRATEGY_INTERVALS = {"ict_short": ["1h", "2h", "4h", "6h", "12h", "1d"],
+                      "ict_long":  ["1h", "2h", "4h", "6h", "12h", "1d"]}
+# SADECE bu dilimlerin sinyali Telegrama gonderilir; digerleri sessizce kaydedilir
+SIGNAL_INTERVALS = {"4h"}
 # range_lh = SHORT (lower high), range_hl = LONG (higher low) - spesifikasyon R1-R7
 SIDE_OF = {"ict_short": -1, "ict_long": 1}
 TP_STYLE = {"ict_short": "tek_hedef", "ict_long": "tek_hedef"}
@@ -104,6 +107,9 @@ def get_usdt_symbols():
                 continue
             rows.append((sym, float(t.get("quoteVolume", 0))))
         rows.sort(key=lambda x: -x[1])
+        # ALTIN/EMTIA tokenlari eleniyor (PAXG, XAUT ayni gun ayni sekilde stop oldu)
+        haric = ("PAXG", "XAUT", "XAU", "TGOLD", "KAU", "AUX", "XAG", "WPAXG")
+        rows = [r for r in rows if r[0][:-4] not in haric]
         return [x[0] for x in rows[:TOP_N]]
     except Exception as e:
         print("sembol listesi hatasi:", e)
@@ -769,7 +775,8 @@ def main():
         if events:
             head = (f"\U0001F4CC <b>{pos['symbol']}</b> {pos['interval']} [{pos.get('strategy','?')}]\n"
                     f"Giris: {pos['entry']:.6g} | Acilis: {pos['opened_at'][:10]}")
-            tg_send(head + "\n" + "\n".join(events), TOPIC_RESULTS)
+            if pos.get("sinyal_gonderildi", True):
+                tg_send(head + "\n" + "\n".join(events), TOPIC_RESULTS)
             log_ekle({"tur": "SONUC", "kaynak": "screener", "sembol": pos["symbol"],
                       "strateji": pos.get("strategy"), "dilim": pos["interval"],
                       "durum": pos["status"], "gerceklesen_r": pos.get("realized_r"),
@@ -874,8 +881,13 @@ def main():
                        f"\U0001F4CB <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
                        + ctx_line)
 
-                sent = False
+                sessiz = iv not in SIGNAL_INTERVALS   # arka plan dilimi mi?
+                sent = True if sessiz else False
+                if sessiz:
+                    print(f"  [sessiz kayit] {symbol} {iv} {strat}")
                 try:
+                    if sessiz:
+                        raise StopIteration
                     _d = dfs[iv]
                     rally_ln = (_d["close_time"].iloc[lo_idx], float(lo),
                                 _d["close_time"].iloc[hi_idx], float(hi)) \
@@ -883,17 +895,19 @@ def main():
                     chart = make_chart(dfs[iv], symbol, iv, strat, plan,
                                        zone=zone)   # ICT: OB bolgesi golgelenir
                     sent = tg_photo(chart, msg, TOPIC_SIGNALS)
+                except StopIteration:
+                    pass
                 except Exception as e:
                     print(f"{symbol} grafik hatasi: {e}")
-                if not sent:
+                if not sent and not sessiz:
                     sent = tg_send(msg, TOPIC_SIGNALS)
-                if not sent:
+                if not sent and not sessiz:
                     # YEDEK 1: konu belirtmeden (grubun General konusu)
                     sent = tg_send("\u26A0\uFE0F [Sinyaller konusuna gonderilemedi]\n\n" + msg, None)
-                if not sent:
+                if not sent and not sessiz:
                     # YEDEK 2: calisan Sonuclar konusuna
                     sent = tg_send("\u26A0\uFE0F [SINYAL - yedek kanal]\n\n" + msg, TOPIC_RESULTS)
-                if not sent:
+                if not sent and not sessiz:
                     print("SINYAL HIC GONDERILEMEDI:", globals().get("_SON_TG_HATA"))
 
                 positions.append({
@@ -901,6 +915,7 @@ def main():
                     "side": SIDE_OF[strat],
                     "ema_period": strat,
                     "opened_at": now.isoformat(), "status": "pending",
+                    "sinyal_gonderildi": not sessiz,
                     "signal_bar_close": dfs[iv].iloc[-1]["close_time"].isoformat(),
                     "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
                     "risk": plan["risk"], "tps": plan["tps"],
