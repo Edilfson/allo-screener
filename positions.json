@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5516690924456443
+  "unrealized_r": 0.6690454950936413
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2074986996167858
+  "unrealized_r": 1.2592486438860768
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5577994540998774
+  "unrealized_r": 1.4130125857325857
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.294936267238573
+  "unrealized_r": 3.437271039893285
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.264344660482912
+  "unrealized_r": 3.4536900810441598
  },
  {
   "symbol": "UNIUSDT",
@@ -1958,7 +1958,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.1683690649904633
+  "unrealized_r": -0.01870767388781153
  },
  {
   "symbol": "NEARUSDT",
@@ -2156,7 +2156,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.426632316684667
+  "unrealized_r": 1.6205435053602533
  },
  {
   "symbol": "ENAUSDT",
@@ -2205,7 +2205,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1818468326505172
+  "unrealized_r": 1.4970059880239972
  },
  {
   "symbol": "ONTUSDT",
@@ -2501,6 +2501,55 @@
    "btc_ema99_dist": -0.0323,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0433
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "CRVUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-17T18:09:59.545461+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-17T17:59:59.999000+00:00",
+  "entry": 0.24425,
+  "stop": 0.2425572,
+  "current_stop": 0.2425572,
+  "risk": 0.0016927999999999943,
+  "tps": [
+   {
+    "p": 0.252714,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-17T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.2428,
+  "zone_high": 0.2457,
+  "zone_width_pct": 0.0119,
+  "quality_ok": false,
+  "swing_high": 0.2457,
+  "swing_low": 0.2428,
+  "stop_dist_pct": 0.0069,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 48.5,
+   "vol_ratio": 2.38,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0298,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1101
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
