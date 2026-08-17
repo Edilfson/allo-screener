@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.091600544626476
+  "unrealized_r": 0.997699422508072
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0588834750485656
+  "unrealized_r": 1.1106334193178566
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.45054992197596
+  "unrealized_r": 1.2682257173653013
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.611143939966136
+  "unrealized_r": 1.5692792158649775
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5151070520726175
+  "unrealized_r": 1.6175259517171785
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3076858179363835
+  "unrealized_r": 1.5607862988273042
  },
  {
   "symbol": "LTCUSDT",
@@ -2106,7 +2106,7 @@
    "coin_1d_ema99_dist": -0.0583
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.1919680565154108
+  "unrealized_r": -0.6526913921523476
  },
  {
   "symbol": "PENGUUSDT",
@@ -2155,7 +2155,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.706390758746782
+  "unrealized_r": 1.2050195296268507
  },
  {
   "symbol": "ENAUSDT",
@@ -2402,7 +2402,7 @@
    "coin_1d_ema99_dist": -0.2877
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.13978194017334272
  },
  {
   "symbol": "SPCXBUSDT",
