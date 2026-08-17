@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.10456829382081423
+  "unrealized_r": 0.13138067685179167
  },
  {
   "symbol": "XPLUSDT",
@@ -1759,7 +1759,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3079089895278257
+  "unrealized_r": 1.3476315514987354
  },
  {
   "symbol": "WBTCUSDT",
@@ -1808,7 +1808,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3208442553281439
+  "unrealized_r": 1.370044454666943
  },
  {
   "symbol": "UNIUSDT",
@@ -1857,7 +1857,7 @@
    "coin_1d_ema99_dist": -0.0812
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6875477463712768
+  "unrealized_r": -0.0763941940412555
  },
  {
   "symbol": "TAOUSDT",
@@ -1906,7 +1906,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.12655024044546034
+  "unrealized_r": 0.21091706740909258
  },
  {
   "symbol": "LTCUSDT",
@@ -2103,7 +2103,7 @@
    "coin_1d_ema99_dist": -0.0583
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.09598402825771904
+  "unrealized_r": 0.134377639560763
  },
  {
   "symbol": "PENGUUSDT",
@@ -2248,6 +2248,55 @@
    "btc_ema99_dist": -0.0422,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1661
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "KAITOUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-17T05:15:37.358795+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-17T04:59:59.999000+00:00",
+  "entry": 0.3508,
+  "stop": 0.3545542,
+  "current_stop": 0.3545542,
+  "risk": 0.0037541999999999853,
+  "tps": [
+   {
+    "p": 0.3320290000000001,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-17T04:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.3474,
+  "zone_high": 0.3542,
+  "zone_width_pct": 0.0196,
+  "quality_ok": false,
+  "swing_high": 0.3542,
+  "swing_low": 0.3474,
+  "stop_dist_pct": 0.0107,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 43.7,
+   "vol_ratio": 0.93,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0415,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.4732
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
