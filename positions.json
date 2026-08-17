@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.5972216211538051
+  "unrealized_r": -0.6318431644090925
  },
  {
   "symbol": "EURUSDT",
@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2324522278040984
+  "unrealized_r": 0.9037983003896679
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3163062747470897
+  "unrealized_r": 1.2592486438860768
  },
  {
   "symbol": "UUSDT",
@@ -1267,7 +1267,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.01999400179945799
+  "unrealized_r": 0.0
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.13138067685179167
+  "unrealized_r": 0.13674315345799018
  },
  {
   "symbol": "XPLUSDT",
@@ -1759,7 +1759,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8530565638703794
+  "unrealized_r": 1.2182026445176508
  },
  {
   "symbol": "WBTCUSDT",
@@ -1808,7 +1808,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9549227297782693
+  "unrealized_r": 1.2263566075920593
  },
  {
   "symbol": "UNIUSDT",
@@ -1857,7 +1857,7 @@
    "coin_1d_ema99_dist": -0.0812
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.1273236567354183
+  "unrealized_r": 0.48382989559460304
  },
  {
   "symbol": "TAOUSDT",
@@ -1906,7 +1906,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.46401754830001324
+  "unrealized_r": -0.04218341348180413
  },
  {
   "symbol": "LTCUSDT",
@@ -2103,7 +2103,7 @@
    "coin_1d_ema99_dist": -0.0583
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3263456960761465
+  "unrealized_r": -0.019196805651549263
  },
  {
   "symbol": "PENGUUSDT",
@@ -2150,6 +2150,104 @@
    "btc_ema99_dist": -0.0438,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1197
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ENAUSDT",
+  "interval": "2h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-17T04:17:07.564744+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-17T03:59:59.999000+00:00",
+  "entry": 0.08405,
+  "stop": 0.08468459999999998,
+  "current_stop": 0.08468459999999998,
+  "risk": 0.0006345999999999852,
+  "tps": [
+   {
+    "p": 0.08087700000000007,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-17T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0835,
+  "zone_high": 0.0846,
+  "zone_width_pct": 0.0132,
+  "quality_ok": false,
+  "swing_high": 0.0846,
+  "swing_low": 0.0835,
+  "stop_dist_pct": 0.0076,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 45.9,
+   "vol_ratio": 2.36,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0422,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0967
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ONTUSDT",
+  "interval": "2h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-17T04:17:07.564744+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-17T03:59:59.999000+00:00",
+  "entry": 0.03877,
+  "stop": 0.03809187,
+  "current_stop": 0.03809187,
+  "risk": 0.000678129999999999,
+  "tps": [
+   {
+    "p": 0.042160649999999994,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-17T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.03813,
+  "zone_high": 0.03941,
+  "zone_width_pct": 0.0336,
+  "quality_ok": true,
+  "swing_high": 0.03941,
+  "swing_low": 0.03813,
+  "stop_dist_pct": 0.0175,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 61.7,
+   "vol_ratio": 0.9,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0422,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.1661
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
