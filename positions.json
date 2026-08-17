@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.997699422508072
+  "unrealized_r": 0.48124325085683317
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1106334193178566
+  "unrealized_r": 1.0840949863592462
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2682257173653013
+  "unrealized_r": 1.4612748751883495
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5692792158649775
+  "unrealized_r": 2.3948843687328383
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6175259517171785
+  "unrealized_r": 2.4270159590006943
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5607862988273042
+  "unrealized_r": 0.7171180291909339
  },
  {
   "symbol": "LTCUSDT",
@@ -2066,7 +2066,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-17T02:28:59.692220+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T01:59:59.999000+00:00",
   "entry": 86.82,
@@ -2105,8 +2105,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0583
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.6526913921523476
+  "realized_r": -1.0,
+  "unrealized_r": -0.6526913921523476,
+  "closed_at": "2026-08-17T14:59:59.999000+00:00"
  },
  {
   "symbol": "PENGUUSDT",
@@ -2155,7 +2156,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2050195296268507
+  "unrealized_r": 0.5678827668356559
  },
  {
   "symbol": "ENAUSDT",
@@ -2204,7 +2205,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7091080995903191
+  "unrealized_r": 0.07878978884335906
  },
  {
   "symbol": "ONTUSDT",
@@ -2402,7 +2403,7 @@
    "coin_1d_ema99_dist": -0.2877
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.13978194017334272
+  "unrealized_r": -0.5125337806355469
  },
  {
   "symbol": "SPCXBUSDT",
