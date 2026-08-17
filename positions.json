@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5986196535048302
+  "unrealized_r": 0.5751443729752372
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2565948005902159
+  "unrealized_r": 1.2910947634364094
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.01999400179945799
+  "unrealized_r": 0.0
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.12601820024560073
+  "unrealized_r": 0.23326773236951806
  },
  {
   "symbol": "XPLUSDT",
@@ -1760,7 +1760,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4408288273878433
+  "unrealized_r": 1.6852997746974305
  },
  {
   "symbol": "WBTCUSDT",
@@ -1809,7 +1809,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4677046031664218
+  "unrealized_r": 1.7543929221507841
  },
  {
   "symbol": "UNIUSDT",
@@ -1908,7 +1908,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5607862988273042
+  "unrealized_r": 0.46401754830001324
  },
  {
   "symbol": "LTCUSDT",
@@ -2105,7 +2105,7 @@
    "coin_1d_ema99_dist": -0.0583
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6526913921523203
+  "unrealized_r": 0.11518083390921374
  },
  {
   "symbol": "PENGUUSDT",
@@ -2154,7 +2154,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.7590514972713795
+  "unrealized_r": 1.2604227263913108
  },
  {
   "symbol": "ENAUSDT",
@@ -2203,7 +2203,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7091080995903191
+  "unrealized_r": 0.551528521903579
  },
  {
   "symbol": "ONTUSDT",
@@ -2252,7 +2252,7 @@
    "coin_1d_ema99_dist": -0.1661
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.6488431421703753
+  "unrealized_r": -0.8552932328609529
  },
  {
   "symbol": "KAITOUSDT",
