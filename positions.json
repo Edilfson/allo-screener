@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5751443729752372
+  "unrealized_r": 0.7864218977416383
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2910947634364094
+  "unrealized_r": 1.248633270702632
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.01999400179945799
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.23326773236951806
+  "unrealized_r": 0.19573039612614357
  },
  {
   "symbol": "XPLUSDT",
@@ -1760,7 +1760,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6852997746974305
+  "unrealized_r": 1.7765664600246953
  },
  {
   "symbol": "WBTCUSDT",
@@ -1809,7 +1809,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.7543929221507841
+  "unrealized_r": 1.7550802973161892
  },
  {
   "symbol": "UNIUSDT",
@@ -1908,7 +1908,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.46401754830001324
+  "unrealized_r": 0.8858516831181984
  },
  {
   "symbol": "LTCUSDT",
@@ -2105,7 +2105,7 @@
    "coin_1d_ema99_dist": -0.0583
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.11518083390921374
+  "unrealized_r": 0.09598402825769176
  },
  {
   "symbol": "PENGUUSDT",
@@ -2154,7 +2154,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2604227263913108
+  "unrealized_r": 1.0942131360979546
  },
  {
   "symbol": "ENAUSDT",
@@ -2212,7 +2212,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-17T04:17:07.564744+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T03:59:59.999000+00:00",
   "entry": 0.03877,
@@ -2251,8 +2251,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1661
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.8552932328609529
+  "realized_r": -1.0,
+  "unrealized_r": -0.8552932328609529,
+  "closed_at": "2026-08-17T11:59:59.999000+00:00"
  },
  {
   "symbol": "KAITOUSDT",
