@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7629466172120455
+  "unrealized_r": 1.0446499835672578
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.139825695572328
+  "unrealized_r": 1.1185949492054394
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.01999400179945799
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.13674315345799018
+  "unrealized_r": 0.0777559107898368
  },
  {
   "symbol": "XPLUSDT",
@@ -1760,7 +1760,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3846565759722764
+  "unrealized_r": 1.066928973097191
  },
  {
   "symbol": "WBTCUSDT",
@@ -1809,7 +1809,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3917232098833856
+  "unrealized_r": 1.0689476947155383
  },
  {
   "symbol": "UNIUSDT",
@@ -1908,7 +1908,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.12655024044543636
+  "unrealized_r": 1.1389521640091191
  },
  {
   "symbol": "LTCUSDT",
@@ -2105,7 +2105,7 @@
    "coin_1d_ema99_dist": -0.0583
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8830530599708024
+  "unrealized_r": 1.8044997312447033
  },
  {
   "symbol": "PENGUUSDT",
@@ -2114,7 +2114,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-17T03:21:06.485240+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T02:59:59.999000+00:00",
   "entry": 0.0060165,
@@ -2129,7 +2129,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-17T02:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-17T07:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.005999,
   "zone_high": 0.006034,
@@ -2203,7 +2203,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.8666876772770372
  },
  {
   "symbol": "ONTUSDT",
@@ -2252,7 +2252,7 @@
    "coin_1d_ema99_dist": -0.1661
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.05898574019730499
  },
  {
   "symbol": "KAITOUSDT",
