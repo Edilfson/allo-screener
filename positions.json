@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5751443729752372
+  "unrealized_r": 0.6455702145640485
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2910947634364094
+  "unrealized_r": 1.2871139984926174
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6328741265866187
+  "unrealized_r": 1.6704114628299855
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.615810997193916
+  "unrealized_r": 3.6645517972687087
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.557298668474982
+  "unrealized_r": 3.5770474857270247
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8014848561545661
+  "unrealized_r": 0.7171180291909339
  },
  {
   "symbol": "LTCUSDT",
@@ -1958,7 +1958,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.01870767388781153
+  "unrealized_r": -0.1683690649904633
  },
  {
   "symbol": "NEARUSDT",
@@ -2156,7 +2156,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7340923571290121
+  "unrealized_r": -0.04155239757333305
  },
  {
   "symbol": "ENAUSDT",
@@ -2205,7 +2205,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7091080995903191
+  "unrealized_r": 0.551528521903579
  },
  {
   "symbol": "ONTUSDT",
@@ -2552,7 +2552,7 @@
    "coin_1d_ema99_dist": 0.1101
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.324905482041586
+  "unrealized_r": 0.324905482041586
  },
  {
   "symbol": "SKHYBUSDT",
@@ -2601,6 +2601,6 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.8417997097242395
+  "unrealized_r": -0.619254958877585
  }
 ]
