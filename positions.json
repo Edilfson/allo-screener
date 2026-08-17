@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7629466172120455
+  "unrealized_r": 0.7159960561528597
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.245979427406771
+  "unrealized_r": 1.2725178603653817
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.8634606206530338
+  "unrealized_r": 1.8527356674406443
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.5426601274126104
+  "unrealized_r": 3.687507312442305
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.53736478867839
+  "unrealized_r": 3.619268183386383
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3076858179363835
+  "unrealized_r": 0.8014848561545661
  },
  {
   "symbol": "LTCUSDT",
@@ -1958,7 +1958,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.13095371721478707
+  "unrealized_r": -0.01870767388781153
  },
  {
   "symbol": "NEARUSDT",
@@ -2156,7 +2156,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1773179312446207
+  "unrealized_r": 0.9834067425690344
  },
  {
   "symbol": "ENAUSDT",
@@ -2205,7 +2205,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1818468326505172
+  "unrealized_r": 0.8666876772770372
  },
  {
   "symbol": "ONTUSDT",
@@ -2552,7 +2552,7 @@
    "coin_1d_ema99_dist": 0.1101
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.08861058601133269
+  "unrealized_r": 0.44305293005671265
  },
  {
   "symbol": "SKHYBUSDT",
@@ -2561,7 +2561,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-17T19:13:22.673341+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T18:59:59.999000+00:00",
   "entry": 172.25,
@@ -2576,7 +2576,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-17T18:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-17T19:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 171.6,
   "zone_high": 172.9,
