@@ -976,7 +976,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.6837754792920238
+  "unrealized_r": -0.7530185658025986
  },
  {
   "symbol": "EURUSDT",
@@ -1073,7 +1073,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.091600544626476
+  "unrealized_r": 0.8568477393304496
  },
  {
   "symbol": "TRXUSDT",
@@ -1219,7 +1219,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2061717779688548
+  "unrealized_r": 1.2313832892795353
  },
  {
   "symbol": "UUSDT",
@@ -1267,7 +1267,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.01999400179945799
+  "unrealized_r": 0.0
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1315,7 +1315,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.1206557236394022
+  "unrealized_r": 0.13138067685179167
  },
  {
   "symbol": "XPLUSDT",
@@ -1759,7 +1759,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.162347750454702
+  "unrealized_r": 1.4648686468495833
  },
  {
   "symbol": "WBTCUSDT",
@@ -1808,7 +1808,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1561385906958364
+  "unrealized_r": 1.5000112359401891
  },
  {
   "symbol": "UNIUSDT",
@@ -1817,7 +1817,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-16T19:07:50.834580+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-16T18:59:59.999000+00:00",
   "entry": 3.2725,
@@ -1856,8 +1856,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0812
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.025464731347092703
+  "realized_r": -1.0,
+  "unrealized_r": -0.025464731347092703,
+  "closed_at": "2026-08-17T05:59:59.999000+00:00"
  },
  {
   "symbol": "TAOUSDT",
@@ -1906,7 +1907,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7171180291909339
+  "unrealized_r": 0.8014848561545661
  },
  {
   "symbol": "LTCUSDT",
@@ -2103,7 +2104,7 @@
    "coin_1d_ema99_dist": -0.0583
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3455425017276958
+  "unrealized_r": 0.8638562543192531
  },
  {
   "symbol": "PENGUUSDT",
@@ -2210,7 +2211,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-17T04:17:07.564744+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T03:59:59.999000+00:00",
   "entry": 0.03877,
@@ -2225,7 +2226,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-17T03:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-17T07:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.03813,
   "zone_high": 0.03941,
