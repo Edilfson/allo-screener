@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.48124325085683317
+  "unrealized_r": 0.5516690924456443
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3255947262826036
+  "unrealized_r": 1.300383214971923
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.01999400179945799
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6704114628299855
+  "unrealized_r": 1.7025863224671616
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.4754597079931244
+  "unrealized_r": 3.5265277953205714
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.354205744605749
+  "unrealized_r": 3.513253782876672
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6327512022272777
+  "unrealized_r": 1.1389521640091191
  },
  {
   "symbol": "LTCUSDT",
@@ -1958,7 +1958,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.1683690649904633
+  "unrealized_r": -0.09353836943913742
  },
  {
   "symbol": "NEARUSDT",
@@ -2156,7 +2156,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.09695559433779315
+  "unrealized_r": 0.4570763733067357
  },
  {
   "symbol": "ENAUSDT",
@@ -2205,7 +2205,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.551528521903579
+  "unrealized_r": 1.0242672549637772
  },
  {
   "symbol": "ONTUSDT",
@@ -2552,7 +2552,7 @@
    "coin_1d_ema99_dist": 0.1101
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.5021266540642678
+  "unrealized_r": -0.7974952741020762
  },
  {
   "symbol": "SKHYBUSDT",
@@ -2601,6 +2601,55 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.1064344460571004
+  "unrealized_r": 0.6869859700048432
+ },
+ {
+  "symbol": "EDENUSDT",
+  "interval": "2h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-17T22:06:26.359065+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-17T21:59:59.999000+00:00",
+  "entry": 0.045994999999999994,
+  "stop": 0.04488507,
+  "current_stop": 0.04488507,
+  "risk": 0.001109929999999995,
+  "tps": [
+   {
+    "p": 0.05154464999999997,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-17T21:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.04493,
+  "zone_high": 0.04706,
+  "zone_width_pct": 0.0474,
+  "quality_ok": false,
+  "swing_high": 0.04706,
+  "swing_low": 0.04493,
+  "stop_dist_pct": 0.0241,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 48.3,
+   "vol_ratio": 1.06,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0292,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0122
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
