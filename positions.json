@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.45776797032720773
+  "unrealized_r": 0.5751443729752372
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1743256584185224
+  "unrealized_r": 1.1836141099540363
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6704114628299855
+  "unrealized_r": 1.7508486119229254
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.9422729091280986
+  "unrealized_r": 2.7909727912615616
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.9468830840937366
+  "unrealized_r": 2.745931598239781
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7171180291909339
+  "unrealized_r": 0.8858516831181984
  },
  {
   "symbol": "LTCUSDT",
@@ -1918,7 +1918,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-17T00:14:13.740598+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-16T23:59:59.999000+00:00",
   "entry": 44.545,
@@ -1933,7 +1933,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-16T23:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-17T16:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 44.49,
   "zone_high": 44.6,
@@ -2205,7 +2205,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0242672549637772
+  "unrealized_r": 1.8121651433974553
  },
  {
   "symbol": "ONTUSDT",
