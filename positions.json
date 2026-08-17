@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.48124325085683317
+  "unrealized_r": 0.34039156767921075
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0840949863592462
+  "unrealized_r": 1.1159411059095785
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.03998800359891598
+  "unrealized_r": 0.01999400179945799
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4612748751883495
+  "unrealized_r": 1.45054992197596
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.3948843687328383
+  "unrealized_r": 2.7598717707038007
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.4270159590006943
+  "unrealized_r": 2.7282713439902815
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7171180291909339
+  "unrealized_r": 0.46401754830001324
  },
  {
   "symbol": "LTCUSDT",
@@ -2156,7 +2156,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5678827668356559
+  "unrealized_r": 0.6232859636000919
  },
  {
   "symbol": "ENAUSDT",
@@ -2205,7 +2205,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.07878978884335906
+  "unrealized_r": 1.0242672549637772
  },
  {
   "symbol": "ONTUSDT",
@@ -2363,7 +2363,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-17T12:08:20.567130+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T11:59:59.999000+00:00",
   "entry": 0.12215000000000001,
@@ -2402,8 +2402,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.2877
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.5125337806355469
+  "realized_r": -1.0,
+  "unrealized_r": -0.5125337806355469,
+  "closed_at": "2026-08-17T15:59:59.999000+00:00"
  },
  {
   "symbol": "SPCXBUSDT",
