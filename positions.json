@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7159960561528597
+  "unrealized_r": 0.9742241419784791
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2725178603653817
+  "unrealized_r": 1.2871139984926174
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.03998800359891598
+  "unrealized_r": 0.01999400179945799
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.8527356674406443
+  "unrealized_r": 1.6704114628299855
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.687507312442305
+  "unrealized_r": 3.294063534518835
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.619268183386383
+  "unrealized_r": 3.296334043180353
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8014848561545661
+  "unrealized_r": 1.2233189909727513
  },
  {
   "symbol": "LTCUSDT",
@@ -1958,7 +1958,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.01870767388781153
+  "unrealized_r": 0.3180304560930885
  },
  {
   "symbol": "NEARUSDT",
@@ -2156,7 +2156,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9834067425690344
+  "unrealized_r": 1.6205435053602533
  },
  {
   "symbol": "ENAUSDT",
@@ -2205,7 +2205,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8666876772770372
+  "unrealized_r": 1.0242672549637772
  },
  {
   "symbol": "ONTUSDT",
@@ -2552,7 +2552,7 @@
    "coin_1d_ema99_dist": 0.1101
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.44305293005671265
+  "unrealized_r": -0.44305293005671265
  },
  {
   "symbol": "SKHYBUSDT",
@@ -2601,6 +2601,6 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": -0.4160619254958929
  }
 ]
