@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6690454950936413
+  "unrealized_r": 0.48124325085683317
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2592486438860768
+  "unrealized_r": 1.2274025243357434
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4130125857325857
+  "unrealized_r": 1.6650489862237872
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.437271039893285
+  "unrealized_r": 3.7308001446303027
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.4536900810441598
+  "unrealized_r": 3.6687856328015274
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.476419471863648
+  "unrealized_r": 1.0545853370454628
  },
  {
   "symbol": "LTCUSDT",
@@ -1958,7 +1958,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.01870767388781153
+  "unrealized_r": -0.35544580386873814
  },
  {
   "symbol": "NEARUSDT",
@@ -2156,7 +2156,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6205435053602533
+  "unrealized_r": 0.650987561982322
  },
  {
   "symbol": "ENAUSDT",
@@ -2205,7 +2205,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4970059880239972
+  "unrealized_r": 1.339426410337257
  },
  {
   "symbol": "ONTUSDT",
@@ -2512,7 +2512,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-17T18:09:59.545461+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T17:59:59.999000+00:00",
   "entry": 0.24425,
@@ -2527,7 +2527,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-17T17:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-17T18:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.2428,
   "zone_high": 0.2457,
