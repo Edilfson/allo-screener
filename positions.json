@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.795858960514523
+  "unrealized_r": 2.171463448988172
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5923059775166408
+  "unrealized_r": 1.6015944290521544
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1395262788166052
+  "unrealized_r": 0.7480654865643105
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.2468037354229584
+  "unrealized_r": 2.923178575078169
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.1932542058767734
+  "unrealized_r": 2.8570748749836334
  },
  {
   "symbol": "UNIUSDT",
@@ -1959,7 +1959,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.01870767388781153
+  "unrealized_r": 0.2806151083174388
  },
  {
   "symbol": "NEARUSDT",
@@ -2208,7 +2208,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.4424834541443934
+  "unrealized_r": 3.0728017648913313
  },
  {
   "symbol": "ONTUSDT",
@@ -2911,7 +2911,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T04:14:39.942602+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-18T03:59:59.999000+00:00",
   "entry": 144.735,
@@ -2950,8 +2950,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-18T11:59:59.999000+00:00"
  },
  {
   "symbol": "DRAMBUSDT",
@@ -2960,7 +2961,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T06:11:04.110130+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-18T05:59:59.999000+00:00",
   "entry": 57.635,
@@ -2975,7 +2976,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-18T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-18T11:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 57.41,
   "zone_high": 57.86,
