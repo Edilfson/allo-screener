@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8333724588008566
+  "unrealized_r": 1.561106155218529
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3282485695784645
+  "unrealized_r": 1.4052100251584352
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.643599079799008
+  "unrealized_r": 1.1502512320289946
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.5013507786785527
+  "unrealized_r": 3.0454933880711175
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.4623615831307366
+  "unrealized_r": 2.965838776154945
  },
  {
   "symbol": "UNIUSDT",
@@ -1869,19 +1869,19 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-16T23:05:14.032759+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-16T22:59:59.999000+00:00",
   "entry": 197.55,
   "stop": 198.73530000000002,
-  "current_stop": 198.73530000000002,
+  "current_stop": 197.55,
   "risk": 1.1853000000000122,
   "tps": [
    {
     "p": 191.62349999999995,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-17T02:59:59.999000+00:00",
@@ -1908,8 +1908,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0965
   },
-  "realized_r": 0.0,
-  "unrealized_r": 1.2233189909727513
+  "realized_r": 5.0,
+  "unrealized_r": 1.2233189909727513,
+  "closed_at": "2026-08-18T01:59:59.999000+00:00"
  },
  {
   "symbol": "LTCUSDT",
@@ -1958,7 +1959,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.05612302166348777
+  "unrealized_r": 0.8044299771766402
  },
  {
   "symbol": "NEARUSDT",
@@ -2207,7 +2208,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1818468326505172
+  "unrealized_r": 2.4424834541443934
  },
  {
   "symbol": "ONTUSDT",
