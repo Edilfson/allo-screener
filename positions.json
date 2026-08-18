@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4342926897976148
+  "unrealized_r": 0.6220949340344231
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.305690901563645
+  "unrealized_r": 1.3415177860577694
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.842010714228255
+  "unrealized_r": 1.825923284409667
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.9177500717756386
+  "unrealized_r": 3.727758803334258
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.867331305576575
+  "unrealized_r": 3.7072786420639012
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1389521640091191
+  "unrealized_r": 1.2233189909727513
  },
  {
   "symbol": "LTCUSDT",
@@ -1958,7 +1958,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.018707673887838117
+  "unrealized_r": -0.09353836943913742
  },
  {
   "symbol": "NEARUSDT",
@@ -2017,7 +2017,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-17T00:14:13.740598+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-16T23:59:59.999000+00:00",
   "entry": 1.1574,
@@ -2057,7 +2057,8 @@
    "coin_1d_ema99_dist": 0.0048
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-18T00:13:45.280933+00:00"
  },
  {
   "symbol": "AAVEUSDT",
@@ -2156,7 +2157,7 @@
    "coin_1d_ema99_dist": -0.1197
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.12465719272002318
+  "unrealized_r": -0.013850799191103009
  },
  {
   "symbol": "ENAUSDT",
@@ -2205,7 +2206,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6545855657107154
+  "unrealized_r": 1.339426410337257
  },
  {
   "symbol": "ONTUSDT",
@@ -2562,7 +2563,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-17T19:13:22.673341+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T18:59:59.999000+00:00",
   "entry": 172.25,
@@ -2601,8 +2602,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.0677310111272307
+  "realized_r": -1.0,
+  "unrealized_r": -0.0677310111272307,
+  "closed_at": "2026-08-17T23:59:59.999000+00:00"
  },
  {
   "symbol": "EDENUSDT",
@@ -2698,6 +2700,104 @@
    "btc_ema99_dist": -0.03,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1017
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "EURUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-18T00:13:38.498779+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-17T23:59:59.999000+00:00",
+  "entry": 1.1574499999999999,
+  "stop": 1.1505052999999998,
+  "current_stop": 1.1505052999999998,
+  "risk": 0.006944700000000026,
+  "tps": [
+   {
+    "p": 1.1921735,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-17T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 1.1573,
+  "zone_high": 1.1576,
+  "zone_width_pct": 0.0003,
+  "quality_ok": true,
+  "swing_high": 1.1576,
+  "swing_low": 1.1573,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 58.7,
+   "vol_ratio": 0.55,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0274,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0055
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "DIAUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-18T00:13:38.498779+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-17T23:59:59.999000+00:00",
+  "entry": 0.124,
+  "stop": 0.1220778,
+  "current_stop": 0.1220778,
+  "risk": 0.001922199999999999,
+  "tps": [
+   {
+    "p": 0.13361099999999998,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-17T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.1222,
+  "zone_high": 0.1258,
+  "zone_width_pct": 0.0295,
+  "quality_ok": true,
+  "swing_high": 0.1258,
+  "swing_low": 0.1222,
+  "stop_dist_pct": 0.0155,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 48.4,
+   "vol_ratio": 0.52,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0274,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": -0.0409
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
