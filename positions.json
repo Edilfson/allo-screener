@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8568477393304496
+  "unrealized_r": 0.7159960561528597
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5432098765432107
+  "unrealized_r": 1.4888060889780586
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6086410948032172
+  "unrealized_r": 0.6247285246218052
  },
  {
   "symbol": "XPLUSDT",
@@ -2470,7 +2470,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-17T16:06:41.207334+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-17T15:59:59.999000+00:00",
   "entry": 0.05105,
@@ -2510,7 +2510,8 @@
    "coin_1d_ema99_dist": 0.0433
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-18T16:08:31.303511+00:00"
  },
  {
   "symbol": "CRVUSDT",
@@ -3054,7 +3055,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.652883569096832
+  "unrealized_r": 0.4352557127312087
  },
  {
   "symbol": "SHIBUSDT",
