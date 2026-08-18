@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.7254331189257444
+  "unrealized_r": 1.8193342410441484
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5432098765432107
+  "unrealized_r": 1.531267581711836
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6837157672899585
+  "unrealized_r": 0.5818287117722398
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.215570482634927
+  "unrealized_r": 2.97406153728323
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.1693547001259526
+  "unrealized_r": 2.9453232712183963
  },
  {
   "symbol": "UNIUSDT",
@@ -1959,7 +1959,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.20578441276611295
+  "unrealized_r": 0.05612302166348777
  },
  {
   "symbol": "NEARUSDT",
@@ -2208,7 +2208,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.1273242987709353
+  "unrealized_r": 1.9697447210841952
  },
  {
   "symbol": "ONTUSDT",
@@ -3010,7 +3010,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T09:11:39.113359+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-18T08:59:59.999000+00:00",
   "entry": 0.011980000000000001,
@@ -3025,7 +3025,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-18T08:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-18T09:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.0119,
   "zone_high": 0.01206,
