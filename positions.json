@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.795858960514523
+  "unrealized_r": 1.8428095215737412
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4397099880046296
+  "unrealized_r": 1.4543061261318653
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0269142700864893
+  "unrealized_r": 1.0537266531174667
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.09833338728406
+  "unrealized_r": 3.18018513781665
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.0298175415498276
+  "unrealized_r": 3.105772497326497
  },
  {
   "symbol": "UNIUSDT",
@@ -2762,7 +2762,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T00:13:38.498779+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-17T23:59:59.999000+00:00",
   "entry": 0.124,
@@ -2801,8 +2801,9 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.0409
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.41618978254083633
+  "realized_r": -1.0,
+  "unrealized_r": -0.41618978254083633,
+  "closed_at": "2026-08-18T07:59:59.999000+00:00"
  },
  {
   "symbol": "SPYBUSDT",
@@ -2909,7 +2910,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T04:14:39.942602+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-18T03:59:59.999000+00:00",
   "entry": 144.735,
@@ -2924,7 +2925,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-18T03:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-18T07:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 144.29,
   "zone_high": 145.18,
@@ -2945,6 +2946,55 @@
    "ema_align": "duzgun 55ust99",
    "btc_regime": "ayi",
    "btc_ema99_dist": -0.0316,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "DRAMBUSDT",
+  "interval": "6h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-18T06:11:04.110130+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-18T05:59:59.999000+00:00",
+  "entry": 57.635,
+  "stop": 57.28919,
+  "current_stop": 57.28919,
+  "risk": 0.3458100000000002,
+  "tps": [
+   {
+    "p": 59.36405,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-18T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 57.41,
+  "zone_high": 57.86,
+  "zone_width_pct": 0.0078,
+  "quality_ok": true,
+  "swing_high": 57.86,
+  "swing_low": 57.41,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 54.3,
+   "vol_ratio": 2.66,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0305,
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
