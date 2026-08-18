@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6220949340344231
+  "unrealized_r": 0.7864218977416383
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3415177860577694
+  "unrealized_r": 1.3216139613388118
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.01999400179945799
+  "unrealized_r": 0.0
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.727758803334258
+  "unrealized_r": 3.600868755174233
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.7072786420639012
+  "unrealized_r": 3.5433661026224472
  },
  {
   "symbol": "UNIUSDT",
@@ -1909,7 +1909,7 @@
    "coin_1d_ema99_dist": -0.0965
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2233189909727513
+  "unrealized_r": 1.0545853370454628
  },
  {
   "symbol": "LTCUSDT",
@@ -1958,7 +1958,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.09353836943913742
+  "unrealized_r": -0.28061510831741227
  },
  {
   "symbol": "NEARUSDT",
@@ -2117,7 +2117,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-17T03:21:06.485240+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T02:59:59.999000+00:00",
   "entry": 0.0060165,
@@ -2156,8 +2156,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1197
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.013850799191103009
+  "realized_r": -1.0,
+  "unrealized_r": -0.013850799191103009,
+  "closed_at": "2026-08-18T00:59:59.999000+00:00"
  },
  {
   "symbol": "ENAUSDT",
@@ -2206,7 +2207,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.339426410337257
+  "unrealized_r": 1.1818468326505172
  },
  {
   "symbol": "ONTUSDT",
