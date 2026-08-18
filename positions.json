@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7159960561528597
+  "unrealized_r": 0.9272735809192607
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.571075231149752
+  "unrealized_r": 1.5657675445580301
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.061668480971256455
+  "unrealized_r": -0.07775591078984444
  },
  {
   "symbol": "XPLUSDT",
@@ -1961,7 +1961,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.01870767388781153
+  "unrealized_r": -0.2431997605417626
  },
  {
   "symbol": "NEARUSDT",
@@ -3104,7 +3104,7 @@
    "coin_1d_ema99_dist": -0.0819
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.8642803877703011
+  "unrealized_r": 2.2371364653243613
  },
  {
   "symbol": "HEIUSDT",
