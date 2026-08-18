@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.8428095215737412
+  "unrealized_r": 1.0446499835672578
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6002675074042236
+  "unrealized_r": 1.5670944662059603
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.31370488146245035
+  "unrealized_r": 0.8285026356572504
  },
  {
   "symbol": "XPLUSDT",
@@ -1721,19 +1721,19 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-16T18:05:43.126822+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-16T17:59:59.999000+00:00",
   "entry": 63020.44,
   "stop": 62642.31736,
-  "current_stop": 62642.31736,
+  "current_stop": 63020.44,
   "risk": 378.1226400000014,
   "tps": [
    {
     "p": 64911.05320000001,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-16T21:59:59.999000+00:00",
@@ -1760,8 +1760,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0499
   },
-  "realized_r": 0.0,
-  "unrealized_r": 3.310037187934565
+  "realized_r": 5.0,
+  "unrealized_r": 3.310037187934565,
+  "closed_at": "2026-08-18T14:59:59.999000+00:00"
  },
  {
   "symbol": "WBTCUSDT",
@@ -1770,19 +1771,19 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-16T18:05:43.126822+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-16T17:59:59.999000+00:00",
   "entry": 63041.75,
   "stop": 62663.4995,
-  "current_stop": 62663.4995,
+  "current_stop": 63041.75,
   "risk": 378.2505000000019,
   "tps": [
    {
     "p": 64933.00250000001,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-16T21:59:59.999000+00:00",
@@ -1809,8 +1810,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0487
   },
-  "realized_r": 0.0,
-  "unrealized_r": 3.27272534999953
+  "realized_r": 5.0,
+  "unrealized_r": 3.27272534999953,
+  "closed_at": "2026-08-18T14:59:59.999000+00:00"
  },
  {
   "symbol": "UNIUSDT",
@@ -1959,7 +1961,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.2806151083174388
+  "unrealized_r": 0.09353836943913742
  },
  {
   "symbol": "NEARUSDT",
@@ -2168,7 +2170,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-17T04:17:07.564744+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-17T03:59:59.999000+00:00",
   "entry": 0.08405,
@@ -2207,8 +2209,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0967
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.551528521903579
+  "realized_r": -1.0,
+  "unrealized_r": 0.551528521903579,
+  "closed_at": "2026-08-18T15:59:59.999000+00:00"
  },
  {
   "symbol": "ONTUSDT",
@@ -3051,7 +3054,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.32644178454840656
+  "unrealized_r": 0.4352557127312087
  },
  {
   "symbol": "SHIBUSDT",
