@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5986196535048302
+  "unrealized_r": 0.6925207756232342
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5299406600639058
+  "unrealized_r": 1.5166714435846
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.01999400179945799
+  "unrealized_r": -0.03998800359891598
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5711037585598503
+  "unrealized_r": 0.36196717091821423
  },
  {
   "symbol": "XPLUSDT",
@@ -1961,7 +1961,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8792606727279395
+  "unrealized_r": 0.8418453249522899
  },
  {
   "symbol": "NEARUSDT",
@@ -3055,7 +3055,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7616974972796342
+  "unrealized_r": 1.305767138193664
  },
  {
   "symbol": "SHIBUSDT",
@@ -3064,7 +3064,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-18T10:08:27.429923+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-18T09:59:59.999000+00:00",
   "entry": 4.4699999999999996e-06,
@@ -3079,7 +3079,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-18T09:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-18T17:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 4.45e-06,
   "zone_high": 4.49e-06,
