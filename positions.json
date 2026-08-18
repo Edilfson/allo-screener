@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.9367106436921455
+  "unrealized_r": 1.8428095215737412
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5657675445580301
+  "unrealized_r": 1.577709839389405
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5711037585598503
+  "unrealized_r": 0.2654425920066864
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.9636680839845857
+  "unrealized_r": 3.1109218956050695
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.9396392073506648
+  "unrealized_r": 3.049672108827338
  },
  {
   "symbol": "UNIUSDT",
@@ -2208,7 +2208,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.551528521903579
+  "unrealized_r": 0.8666876772770372
  },
  {
   "symbol": "ONTUSDT",
@@ -3051,7 +3051,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8705114254624363
+  "unrealized_r": 0.4352557127312087
  },
  {
   "symbol": "SHIBUSDT",
