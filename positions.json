@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.795858960514523
+  "unrealized_r": 1.7254331189257444
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.418479241637741
+  "unrealized_r": 1.3892869653832685
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0751765595422533
+  "unrealized_r": 1.064451606329864
  },
  {
   "symbol": "XPLUSDT",
@@ -1761,7 +1761,7 @@
    "coin_1d_ema99_dist": -0.0499
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.987284760309495
+  "unrealized_r": 2.982021917545047
  },
  {
   "symbol": "WBTCUSDT",
@@ -1810,7 +1810,7 @@
    "coin_1d_ema99_dist": -0.0487
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.940590957579681
+  "unrealized_r": 2.981013904806455
  },
  {
   "symbol": "UNIUSDT",
@@ -1959,7 +1959,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.991506716054915
+  "unrealized_r": 0.8044299771766402
  },
  {
   "symbol": "NEARUSDT",
@@ -2208,7 +2208,7 @@
    "coin_1d_ema99_dist": -0.0967
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.0728017648913313
+  "unrealized_r": 2.4424834541443934
  },
  {
   "symbol": "ONTUSDT",
@@ -2802,7 +2802,7 @@
    "coin_1d_ema99_dist": -0.0409
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.6763083966288609
  },
  {
   "symbol": "SPYBUSDT",
@@ -2842,6 +2842,104 @@
   "context": {
    "rsi14": 34.7,
    "vol_ratio": 0.28,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0316,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ETHUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-18T04:14:39.942602+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-18T03:59:59.999000+00:00",
+  "entry": 1878.375,
+  "stop": 1867.10475,
+  "current_stop": 1867.10475,
+  "risk": 11.270250000000033,
+  "tps": [
+   {
+    "p": 1934.7262500000002,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-18T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 1869.17,
+  "zone_high": 1887.58,
+  "zone_width_pct": 0.0098,
+  "quality_ok": true,
+  "swing_high": 1887.58,
+  "swing_low": 1869.17,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 51.2,
+   "vol_ratio": 1.74,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0316,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": -0.0005
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SOXLBUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-18T04:14:39.942602+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-18T03:59:59.999000+00:00",
+  "entry": 144.735,
+  "stop": 143.86659,
+  "current_stop": 143.86659,
+  "risk": 0.8684100000000115,
+  "tps": [
+   {
+    "p": 149.07705000000007,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-18T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 144.29,
+  "zone_high": 145.18,
+  "zone_width_pct": 0.0062,
+  "quality_ok": true,
+  "swing_high": 145.18,
+  "swing_low": 144.29,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 48.2,
+   "vol_ratio": 2.21,
    "fib_depth": 0.5,
    "fib_zone": "orta(0.5-0.618)",
    "ema_align": "duzgun 55ust99",
