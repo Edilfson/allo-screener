@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.247306349054702
+  "unrealized_r": 1.301710136619854
  },
  {
   "symbol": "UUSDT",
@@ -1269,7 +1269,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.03998800359891598
+  "unrealized_r": -0.07997600719783196
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1317,7 +1317,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 4.898622379759849
+  "unrealized_r": 4.78601037102974
  },
  {
   "symbol": "XPLUSDT",
@@ -3062,7 +3062,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.373231773667
+  "unrealized_r": 2.3939064200217426
  },
  {
   "symbol": "SHIBUSDT",
@@ -3458,7 +3458,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4793605344786407
+  "unrealized_r": 1.2884753042233328
  },
  {
   "symbol": "HOMEUSDT",
@@ -3507,7 +3507,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6201487591133321
+  "unrealized_r": 1.1046468812136367
  },
  {
   "symbol": "ALICEUSDT",
@@ -3604,6 +3604,55 @@
    "btc_ema99_dist": -0.0259,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.5541
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "GOOGLBUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-19T16:08:27.542580+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-19T15:59:59.999000+00:00",
+  "entry": 342.83500000000004,
+  "stop": 340.76889,
+  "current_stop": 340.76889,
+  "risk": 2.0661100000000374,
+  "tps": [
+   {
+    "p": 353.1655500000002,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-19T15:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 341.11,
+  "zone_high": 344.56,
+  "zone_width_pct": 0.0101,
+  "quality_ok": false,
+  "swing_high": 344.56,
+  "swing_low": 341.11,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 59.4,
+   "vol_ratio": 2.1,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0367,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
