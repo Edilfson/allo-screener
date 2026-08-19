@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.15258932344240256
+  "unrealized_r": 0.05868820132399848
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4742099508508228
+  "unrealized_r": 1.4489984395401434
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.05998200539837398
+  "unrealized_r": -0.03998800359891598
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.490870383577942
+  "unrealized_r": 2.3246336087858714
  },
  {
   "symbol": "XPLUSDT",
@@ -3061,7 +3061,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.21762785636562323
+  "unrealized_r": 0.32644178454840656
  },
  {
   "symbol": "SHIBUSDT",
@@ -3457,7 +3457,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.47721307563827287
+  "unrealized_r": 0.38177046051061564
  },
  {
   "symbol": "HOMEUSDT",
@@ -3506,7 +3506,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.22092937624273115
+  "unrealized_r": -0.14728625082848532
  },
  {
   "symbol": "ALICEUSDT",
@@ -3555,7 +3555,7 @@
    "coin_1d_ema99_dist": 0.0968
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 1.7675651789659643
  },
  {
   "symbol": "PUMPUSDT",
