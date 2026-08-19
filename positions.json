@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.1291140429128097
+  "unrealized_r": -0.08216348185362395
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5047291487532253
+  "unrealized_r": 1.4980945405135724
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.03998800359891598
+  "unrealized_r": -0.05998200539837398
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6729908140775691
+  "unrealized_r": 0.9035773081439917
  },
  {
   "symbol": "XPLUSDT",
@@ -3457,7 +3457,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5249343832020948
+  "unrealized_r": 0.19088523025530782
  },
  {
   "symbol": "HOMEUSDT",
@@ -3506,7 +3506,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.07364312541424585
+  "unrealized_r": 0.3682156270712101
  },
  {
   "symbol": "ALICEUSDT",
@@ -3515,7 +3515,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-19T09:12:26.470875+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-19T08:59:59.999000+00:00",
   "entry": 0.1325,
@@ -3530,7 +3530,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-19T08:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-19T13:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.1315,
   "zone_high": 0.1335,
