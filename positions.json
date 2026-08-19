@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4437297525704995
+  "unrealized_r": 0.7629466172120455
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5485175631349326
+  "unrealized_r": 1.5458637198390717
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.01999400179945799
+  "unrealized_r": -0.03998800359891598
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.04558105115266848
+  "unrealized_r": 0.16891801309516613
  },
  {
   "symbol": "XPLUSDT",
@@ -1921,7 +1921,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-17T00:14:13.740598+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-16T23:59:59.999000+00:00",
   "entry": 44.545,
@@ -1960,8 +1960,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0685
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.05612302166348777
+  "realized_r": -1.0,
+  "unrealized_r": -0.05612302166348777,
+  "closed_at": "2026-08-19T08:59:59.999000+00:00"
  },
  {
   "symbol": "NEARUSDT",
@@ -3060,7 +3061,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.305767138193664
+  "unrealized_r": 1.5233949945592873
  },
  {
   "symbol": "SHIBUSDT",
@@ -3355,7 +3356,7 @@
    "coin_1d_ema99_dist": -0.1158
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.05903884756168867
+  "unrealized_r": -0.2951942378084696
  },
  {
   "symbol": "PROMUSDT",
@@ -3364,19 +3365,19 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-19T06:11:43.293369+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-19T05:59:59.999000+00:00",
   "entry": 1.9129999999999998,
   "stop": 1.88811,
-  "current_stop": 1.88811,
+  "current_stop": 1.9129999999999998,
   "risk": 0.024889999999999857,
   "tps": [
    {
     "p": 2.037449999999999,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-19T06:59:59.999000+00:00",
@@ -3403,8 +3404,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1113
   },
-  "realized_r": 0.0,
-  "unrealized_r": 2.8927280032141702
+  "realized_r": 5.0,
+  "unrealized_r": 2.8927280032141702,
+  "closed_at": "2026-08-19T08:59:59.999000+00:00"
  },
  {
   "symbol": "OPGUSDT",
