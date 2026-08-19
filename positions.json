@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9540566648620535
+  "unrealized_r": 0.8120760485334861
  },
  {
   "symbol": "UUSDT",
@@ -1269,7 +1269,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.13995801259620594
+  "unrealized_r": -0.11996401079674796
  },
  {
   "symbol": "CRCLBUSDT",
@@ -3023,19 +3023,19 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T09:11:39.113359+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-18T08:59:59.999000+00:00",
   "entry": 0.011980000000000001,
   "stop": 0.0118881,
-  "current_stop": 0.0118881,
+  "current_stop": 0.011980000000000001,
   "risk": 9.190000000000066e-05,
   "tps": [
    {
     "p": 0.012439500000000004,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-18T09:59:59.999000+00:00",
@@ -3062,8 +3062,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0857
   },
-  "realized_r": 0.0,
-  "unrealized_r": 3.9173014145810297
+  "realized_r": 5.0,
+  "unrealized_r": 3.9173014145810297,
+  "closed_at": "2026-08-19T20:59:59.999000+00:00"
  },
  {
   "symbol": "SHIBUSDT",
@@ -3262,7 +3263,7 @@
    "coin_1d_ema99_dist": 0.0104
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.2007427481682549
+  "unrealized_r": 0.7527853056308584
  },
  {
   "symbol": "GRAMUSDT",
@@ -3461,7 +3462,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5748031496062977
+  "unrealized_r": 2.76783583870198
  },
  {
   "symbol": "HOMEUSDT",
@@ -3510,7 +3511,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8837175049709118
+  "unrealized_r": 1.7674350099418175
  },
  {
   "symbol": "ALICEUSDT",
