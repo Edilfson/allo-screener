@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7629466172120455
+  "unrealized_r": 1.1385511056856943
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5458637198390717
+  "unrealized_r": 1.5697483095018212
  },
  {
   "symbol": "UUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.16891801309516613
+  "unrealized_r": -0.06703095757744737
  },
  {
   "symbol": "XPLUSDT",
@@ -3061,7 +3061,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5233949945592873
+  "unrealized_r": 1.305767138193664
  },
  {
   "symbol": "SHIBUSDT",
@@ -3356,7 +3356,7 @@
    "coin_1d_ema99_dist": -0.1158
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.2951942378084696
+  "unrealized_r": -0.5313496280552505
  },
  {
   "symbol": "PROMUSDT",
@@ -3502,6 +3502,55 @@
    "btc_ema99_dist": -0.0292,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.5897
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ALICEUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-19T09:12:26.470875+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-19T08:59:59.999000+00:00",
+  "entry": 0.1325,
+  "stop": 0.1313685,
+  "current_stop": 0.1313685,
+  "risk": 0.0011315000000000075,
+  "tps": [
+   {
+    "p": 0.13815750000000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-19T08:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.1315,
+  "zone_high": 0.1335,
+  "zone_width_pct": 0.0152,
+  "quality_ok": true,
+  "swing_high": 0.1335,
+  "swing_low": 0.1315,
+  "stop_dist_pct": 0.0085,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 48.4,
+   "vol_ratio": 0.56,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0269,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0968
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
