@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4202544720409067
+  "unrealized_r": 1.3967791915113137
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5949598208125018
+  "unrealized_r": 1.5962867424604326
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.03998800359891598
+  "unrealized_r": -0.01999400179945799
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.21181782594473916
+  "unrealized_r": -0.10456829382082185
  },
  {
   "symbol": "XPLUSDT",
@@ -3316,7 +3316,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T22:05:33.263371+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-18T21:59:59.999000+00:00",
   "entry": 1.4115,
@@ -3355,8 +3355,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1158
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.6494273231786541
+  "realized_r": -1.0,
+  "unrealized_r": -0.6494273231786541,
+  "closed_at": "2026-08-19T10:59:59.999000+00:00"
  },
  {
   "symbol": "PROMUSDT",
@@ -3415,7 +3416,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-19T06:11:43.293369+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-19T05:59:59.999000+00:00",
   "entry": 0.0975,
@@ -3430,7 +3431,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-19T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-19T11:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.0955,
   "zone_high": 0.0995,
