@@ -1074,7 +1074,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3263533499225026
+  "unrealized_r": 1.3967791915113137
  },
  {
   "symbol": "TRXUSDT",
@@ -1220,7 +1220,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.6029213507000846
+  "unrealized_r": 1.5923059775166408
  },
  {
   "symbol": "UUSDT",
@@ -1268,7 +1268,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.01999400179945799
+  "unrealized_r": 0.0
  },
  {
   "symbol": "CRCLBUSDT",
@@ -1316,7 +1316,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.33515478788723685
+  "unrealized_r": -0.23326773236951806
  },
  {
   "symbol": "XPLUSDT",
@@ -1961,7 +1961,7 @@
    "coin_1d_ema99_dist": -0.0685
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.13095371721481364
+  "unrealized_r": 0.018707673887838117
  },
  {
   "symbol": "NEARUSDT",
@@ -3060,7 +3060,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4145810663764662
+  "unrealized_r": 1.6322089227420893
  },
  {
   "symbol": "SHIBUSDT",
@@ -3404,7 +3404,7 @@
    "coin_1d_ema99_dist": 0.1113
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.2141422257935215
+  "unrealized_r": 3.816793893129801
  },
  {
   "symbol": "OPGUSDT",
