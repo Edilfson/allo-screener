@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3401908644098393
+  "unrealized_r": 1.247306349054702
  },
  {
   "symbol": "UUSDT",
@@ -1317,7 +1317,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.8261270585206906
+  "unrealized_r": 4.898622379759849
  },
  {
   "symbol": "XPLUSDT",
@@ -3062,7 +3062,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.2850924918389213
+  "unrealized_r": 3.373231773667
  },
  {
   "symbol": "SHIBUSDT",
@@ -3458,7 +3458,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1930326890956822
+  "unrealized_r": 1.4793605344786407
  },
  {
   "symbol": "HOMEUSDT",
@@ -3507,7 +3507,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5891450033139413
+  "unrealized_r": 1.6201487591133321
  },
  {
   "symbol": "ALICEUSDT",
@@ -3516,19 +3516,19 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-19T09:12:26.470875+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-19T08:59:59.999000+00:00",
   "entry": 0.1325,
   "stop": 0.1313685,
-  "current_stop": 0.1313685,
+  "current_stop": 0.1325,
   "risk": 0.0011315000000000075,
   "tps": [
    {
     "p": 0.13815750000000004,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-19T13:59:59.999000+00:00",
@@ -3555,8 +3555,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0968
   },
-  "realized_r": 0.0,
-  "unrealized_r": 3.5351303579319286
+  "realized_r": 5.0,
+  "unrealized_r": 3.5351303579319286,
+  "closed_at": "2026-08-19T15:59:59.999000+00:00"
  },
  {
   "symbol": "PUMPUSDT",
