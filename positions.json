@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.24332558411091
+  "unrealized_r": 1.14380646051612
  },
  {
   "symbol": "UUSDT",
@@ -3063,7 +3063,7 @@
    "coin_1d_ema99_dist": -0.0857
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.373231773667
+  "unrealized_r": 3.1556039173013763
  },
  {
   "symbol": "SHIBUSDT",
@@ -3172,7 +3172,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T18:09:02.556648+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-18T17:59:59.999000+00:00",
   "entry": 64155.925,
@@ -3212,7 +3212,8 @@
    "coin_1d_ema99_dist": -0.0264
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-19T18:08:18.599001+00:00"
  },
  {
   "symbol": "TRXUSDT",
@@ -3221,7 +3222,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T18:09:02.556648+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-18T17:59:59.999000+00:00",
   "entry": 0.33209999999999995,
@@ -3236,7 +3237,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-18T17:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-19T18:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.3313,
   "zone_high": 0.3329,
@@ -3459,7 +3460,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4793605344786407
+  "unrealized_r": 1.0975900739680249
  },
  {
   "symbol": "HOMEUSDT",
@@ -3508,7 +3509,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5155018778996954
+  "unrealized_r": 0.14728625082848532
  },
  {
   "symbol": "ALICEUSDT",
