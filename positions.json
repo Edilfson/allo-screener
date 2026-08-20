@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7191915331783488
+  "unrealized_r": 0.6953069435155993
  },
  {
   "symbol": "UUSDT",
@@ -3263,7 +3263,7 @@
    "coin_1d_ema99_dist": 0.0104
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.4628124059018544
+  "unrealized_r": 2.8605841613971728
  },
  {
   "symbol": "GRAMUSDT",
@@ -3462,7 +3462,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2407539966595043
+  "unrealized_r": 1.1453113815318536
  },
  {
   "symbol": "HOMEUSDT",
@@ -3511,7 +3511,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.356580013255759
+  "unrealized_r": 4.197658148611822
  },
  {
   "symbol": "ALICEUSDT",
@@ -3660,7 +3660,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4477012356553803
+  "unrealized_r": 0.27830076811010945
  },
  {
   "symbol": "PLUMEUSDT",
@@ -3951,6 +3951,55 @@
    "ema_align": "ters 55alt99",
    "btc_regime": "boga",
    "btc_ema99_dist": 0.0842,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SPYBUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-20T13:47:20.610925+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-20T12:59:59.999000+00:00",
+  "entry": 769.24,
+  "stop": 773.85544,
+  "current_stop": 773.85544,
+  "risk": 4.615440000000035,
+  "tps": [
+   {
+    "p": 746.1627999999998,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-20T12:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 768.89,
+  "zone_high": 769.59,
+  "zone_width_pct": 0.0009,
+  "quality_ok": false,
+  "swing_high": 769.59,
+  "swing_low": 768.89,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 32.6,
+   "vol_ratio": 6.23,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0778,
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
