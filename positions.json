@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.062365317452734874
+  "unrealized_r": 0.10748065348237304
  },
  {
   "symbol": "UUSDT",
@@ -3263,7 +3263,7 @@
    "coin_1d_ema99_dist": 0.0104
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.964669276322408
+  "unrealized_r": 4.115226337448557
  },
  {
   "symbol": "GRAMUSDT",
@@ -3422,19 +3422,19 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-19T06:11:43.293369+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-19T05:59:59.999000+00:00",
   "entry": 0.0975,
   "stop": 0.0954045,
-  "current_stop": 0.0954045,
+  "current_stop": 0.0975,
   "risk": 0.0020955,
   "tps": [
    {
     "p": 0.1079775,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-19T11:59:59.999000+00:00",
@@ -3461,8 +3461,9 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": 4.24719637318062
+  "realized_r": 5.0,
+  "unrealized_r": 4.24719637318062,
+  "closed_at": "2026-08-21T17:59:59.999000+00:00"
  },
  {
   "symbol": "HOMEUSDT",
