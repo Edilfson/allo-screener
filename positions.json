@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.34499962846193866
+  "unrealized_r": 0.3012112140802305
  },
  {
   "symbol": "UUSDT",
@@ -3263,7 +3263,7 @@
    "coin_1d_ema99_dist": 0.0104
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.964669276322408
+  "unrealized_r": 4.7174545819532385
  },
  {
   "symbol": "GRAMUSDT",
@@ -3462,7 +3462,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.815557146265809
+  "unrealized_r": 3.483655452159389
  },
  {
   "symbol": "HOMEUSDT",
@@ -3511,7 +3511,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.7984387657412144
+  "unrealized_r": 3.093011267398185
  },
  {
   "symbol": "ALICEUSDT",
@@ -3818,7 +3818,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-20T12:10:06.721288+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-20T11:59:59.999000+00:00",
   "entry": 0.06185,
@@ -3857,8 +3857,9 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.0105
   },
-  "realized_r": 0.0,
-  "unrealized_r": 1.3879817112998434
+  "realized_r": -1.0,
+  "unrealized_r": 1.3879817112998434,
+  "closed_at": "2026-08-21T09:59:59.999000+00:00"
  },
  {
   "symbol": "PLUMEUSDT",
