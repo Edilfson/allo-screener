@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.14994214621615026
+  "unrealized_r": 0.06634608239652585
  },
  {
   "symbol": "UUSDT",
@@ -1269,7 +1269,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.09997000899728996
+  "unrealized_r": -0.07997600719783196
  },
  {
   "symbol": "CRCLBUSDT",
@@ -3263,7 +3263,7 @@
    "coin_1d_ema99_dist": 0.0104
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.814112215196231
+  "unrealized_r": 4.065040650406507
  },
  {
   "symbol": "GRAMUSDT",
@@ -3462,7 +3462,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.960868527797662
+  "unrealized_r": 4.628966833691243
  },
  {
   "symbol": "HOMEUSDT",
@@ -4404,6 +4404,55 @@
    "btc_ema99_dist": 0.1519,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0101
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SPCXBUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-21T15:11:14.357872+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-21T14:59:59.999000+00:00",
+  "entry": 135.815,
+  "stop": 136.84671,
+  "current_stop": 136.84671,
+  "risk": 1.031710000000004,
+  "tps": [
+   {
+    "p": 130.65644999999998,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-21T14:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 134.92,
+  "zone_high": 136.71,
+  "zone_width_pct": 0.0133,
+  "quality_ok": false,
+  "swing_high": 136.71,
+  "swing_low": 134.92,
+  "stop_dist_pct": 0.0076,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 49.3,
+   "vol_ratio": 4.8,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1655,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
