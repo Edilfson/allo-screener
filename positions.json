@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5652686220184067
+  "unrealized_r": 0.6170185662876977
  },
  {
   "symbol": "UUSDT",
@@ -1269,7 +1269,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.05998200539837398
+  "unrealized_r": -0.03998800359891598
  },
  {
   "symbol": "CRCLBUSDT",
@@ -3263,7 +3263,7 @@
    "coin_1d_ema99_dist": 0.0104
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.8605841613971728
+  "unrealized_r": 3.211883970691577
  },
  {
   "symbol": "GRAMUSDT",
@@ -3462,7 +3462,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.76783583870198
+  "unrealized_r": 2.481507993319015
  },
  {
   "symbol": "HOMEUSDT",
@@ -3511,7 +3511,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.2092937624272735
+  "unrealized_r": 1.4728625082848468
  },
  {
   "symbol": "ALICEUSDT",
@@ -3858,7 +3858,7 @@
    "coin_1d_ema99_dist": -0.0105
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.8576094056173154
+  "unrealized_r": 3.020901371652595
  },
  {
   "symbol": "PLUMEUSDT",
