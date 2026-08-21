@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.15392291115994122
+  "unrealized_r": 0.2587497213464533
  },
  {
   "symbol": "UUSDT",
@@ -3263,7 +3263,7 @@
    "coin_1d_ema99_dist": 0.0104
   },
   "realized_r": 0.0,
-  "unrealized_r": 4.165412024490607
+  "unrealized_r": 4.215597711532685
  },
  {
   "symbol": "GRAMUSDT",
@@ -3462,7 +3462,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 4.867573371510379
+  "unrealized_r": 4.342638988308278
  },
  {
   "symbol": "HOMEUSDT",
@@ -3511,7 +3511,7 @@
    "coin_1d_ema99_dist": -0.5897
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.534870019883641
+  "unrealized_r": 3.6085131452978807
  },
  {
   "symbol": "ALICEUSDT",
@@ -3870,7 +3870,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-20T13:20:36.327856+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-20T12:59:59.999000+00:00",
   "entry": 0.012825,
@@ -3910,7 +3910,8 @@
    "coin_1d_ema99_dist": 0.1356
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-21T13:20:42.776562+00:00"
  },
  {
   "symbol": "QQQBUSDT",
@@ -3919,7 +3920,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-20T13:20:36.327856+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-20T12:59:59.999000+00:00",
   "entry": 717.45,
@@ -3959,7 +3960,8 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-21T13:20:43.443112+00:00"
  },
  {
   "symbol": "SPYBUSDT",
@@ -3968,7 +3970,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-20T13:47:20.610925+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-20T12:59:59.999000+00:00",
   "entry": 769.24,
@@ -4008,7 +4010,8 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-21T13:20:44.103897+00:00"
  },
  {
   "symbol": "TAOUSDT",
