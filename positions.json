@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3012112140802305
+  "unrealized_r": 0.34367270681400774
  },
  {
   "symbol": "UUSDT",
@@ -1269,7 +1269,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.05998200539837398
+  "unrealized_r": -0.07997600719783196
  },
  {
   "symbol": "CRCLBUSDT",
@@ -3263,7 +3263,7 @@
    "coin_1d_ema99_dist": 0.0104
   },
   "realized_r": 0.0,
-  "unrealized_r": 4.7174545819532385
+  "unrealized_r": 4.366154772658835
  },
  {
   "symbol": "GRAMUSDT",
@@ -3462,7 +3462,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.483655452159389
+  "unrealized_r": 4.008589835361485
  },
  {
   "symbol": "HOMEUSDT",
@@ -3720,7 +3720,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-20T10:09:53.190413+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-20T09:59:59.999000+00:00",
   "entry": 351.615,
@@ -3760,7 +3760,8 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-21T10:09:39.431792+00:00"
  },
  {
   "symbol": "EURUSDT",
