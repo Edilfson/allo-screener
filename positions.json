@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0849229854675535
+  "unrealized_r": 0.0809422205237616
  },
  {
   "symbol": "UUSDT",
@@ -1269,7 +1269,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.11996401079674796
+  "unrealized_r": -0.13995801259620594
  },
  {
   "symbol": "CRCLBUSDT",
@@ -3263,7 +3263,7 @@
    "coin_1d_ema99_dist": 0.0104
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.964669276322408
+  "unrealized_r": 4.014854963364457
  },
  {
   "symbol": "GRAMUSDT",
