@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.030519197902402425
+  "unrealized_r": 0.0026538432958609606
  },
  {
   "symbol": "UUSDT",
@@ -1269,7 +1269,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.13995801259620594
+  "unrealized_r": -0.15995201439566392
  },
  {
   "symbol": "CRCLBUSDT",
@@ -3223,19 +3223,19 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T18:09:02.556648+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-18T17:59:59.999000+00:00",
   "entry": 0.33209999999999995,
   "stop": 0.33010739999999994,
-  "current_stop": 0.33010739999999994,
+  "current_stop": 0.33209999999999995,
   "risk": 0.001992600000000011,
   "tps": [
    {
     "p": 0.342063,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-19T18:59:59.999000+00:00",
@@ -3262,8 +3262,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0104
   },
-  "realized_r": 0.0,
-  "unrealized_r": 4.968383017163515
+  "realized_r": 5.0,
+  "unrealized_r": 4.968383017163515,
+  "closed_at": "2026-08-21T22:59:59.999000+00:00"
  },
  {
   "symbol": "GRAMUSDT",
