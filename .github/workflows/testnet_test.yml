@@ -1,0 +1,60 @@
+name: Testnet Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      sembol:
+        description: "Test edilecek coin"
+        default: "BTCUSDT"
+      yon:
+        description: "Yon"
+        type: choice
+        options: ["LONG", "SHORT"]
+        default: "LONG"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Testnet baglanti + deneme emri
+        env:
+          TESTNET_API_KEY: ${{ secrets.TESTNET_API_KEY }}
+          TESTNET_API_SECRET: ${{ secrets.TESTNET_API_SECRET }}
+          TESTNET_RISK_USDT: "50"
+          TESTNET_LEVERAGE: "5"
+          SEMBOL: ${{ github.event.inputs.sembol }}
+          YON: ${{ github.event.inputs.yon }}
+        run: |
+          python - <<'PY'
+          import os, requests, testnet_trader as T
+          sym = os.environ.get("SEMBOL", "BTCUSDT")
+          yon = os.environ.get("YON", "LONG")
+          side = 1 if yon == "LONG" else -1
+          print("="*55)
+          b = T.bakiye()
+          print("1) BAGLANTI:", "OK" if b is not None else "BASARISIZ")
+          if b is None:
+              print("   API anahtarlarini kontrol et."); raise SystemExit(1)
+          print(f"   Bakiye: {b:,.2f} USDT")
+          r = requests.get(f"{T.BASE}/fapi/v1/ticker/price", params={"symbol": sym}, timeout=20)
+          fiyat = float(r.json()["price"])
+          print(f"2) {sym} fiyat: {fiyat}")
+          # DENEME: fiyattan %3 uzaga limit emir (hemen dolmasin, gorunur olsun)
+          giris = fiyat * (0.97 if side == 1 else 1.03)
+          stop  = giris * (0.98 if side == 1 else 1.02)
+          tp    = giris + side * 5 * abs(giris - stop)
+          plan = {"side": side, "entry": giris, "stop": stop,
+                  "tps": [{"p": tp, "w": 1.0, "r": 5.0, "hit": False}]}
+          print(f"3) DENEME EMRI: {yon} giris={giris:.2f} stop={stop:.2f} tp={tp:.2f}")
+          ok, sonuc = T.emir_ac(plan, sym)
+          print("4) SONUC:", "EMIR ACILDI" if ok else "HATA")
+          print("  ", sonuc)
+          print("="*55)
+          if ok:
+              print("testnet.binancefuture.com -> Open Orders bolumunde gorunmeli.")
+          PY
