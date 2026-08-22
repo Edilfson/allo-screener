@@ -775,6 +775,11 @@ def main():
             p["closed_at"] = datetime.now(timezone.utc).isoformat()
             p.setdefault("realized_r", 0.0)
             print(f"  [temizlik] {p['symbol']} {p['interval']} - dilim artik taranmiyor, kapatildi")
+            if testnet_trader and p.get("sinyal_gonderildi"):
+                try:
+                    testnet_trader.iptal_et(p["symbol"], "kapali_dilim")
+                except Exception as e:
+                    print(f"  [testnet iptal hatasi] {p['symbol']}: {e}")
 
     open_ps = [p for p in positions if p["status"] in ("open", "pending")]
     print(f"{len(open_ps)} acik pozisyon kontrol ediliyor...")
@@ -783,7 +788,19 @@ def main():
         if df is None:
             continue
         df = add_emas(df)          # iz suren stop EMA21'e ihtiyac duyar
+        _onceki_durum = pos.get("status")
         _, events = evaluate_position(pos, df)
+
+        # TESTNET SENKRONU: pozisyon iptal/zaman asimi ile kapandiysa
+        # testnet'teki DOLMAMIS bekleyen emirleri de temizle
+        if (testnet_trader and pos.get("sinyal_gonderildi")
+                and _onceki_durum in ("pending", "open")
+                and pos.get("status") not in ("pending", "open")):
+            try:
+                testnet_trader.iptal_et(pos["symbol"], pos.get("status", ""))
+            except Exception as e:
+                print(f"  [testnet iptal hatasi] {pos['symbol']}: {e}")
+
         if events:
             # TEKRAR ONLEME: ayni olay dizisi daha once bildirildiyse gonderme
             # (canli: acik pozisyonlar her taramada ayni mesaji uretiyordu)
