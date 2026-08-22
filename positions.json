@@ -1182,7 +1182,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-14T11:46:55.107482+00:00",
-  "status": "open",
+  "status": "timeout",
   "signal_bar_close": "2026-08-14T07:59:59.999000+00:00",
   "entry": 0.058769999999999996,
   "stop": 0.06630623999999999,
@@ -1220,8 +1220,10 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.017249981423097624
+  "realized_r": 0.003980764943790981,
+  "unrealized_r": 0.003980764943790981,
+  "closed_at": "2026-08-22T16:40:15.570962+00:00",
+  "son_bildirim": "\u23f3 7 gun doldu, kapatildi (+0.00R)"
  },
  {
   "symbol": "UUSDT",
@@ -1230,7 +1232,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-14T16:18:34.336979+00:00",
-  "status": "open",
+  "status": "timeout",
   "signal_bar_close": "2026-08-14T15:59:59.999000+00:00",
   "entry": 1.0003,
   "stop": 0.9952985,
@@ -1268,8 +1270,10 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.13995801259620594
+  "realized_r": -0.11996401079674796,
+  "unrealized_r": -0.11996401079674796,
+  "closed_at": "2026-08-22T16:40:16.682108+00:00",
+  "son_bildirim": "\u23f3 7 gun doldu, kapatildi (-0.12R)"
  },
  {
   "symbol": "CRCLBUSDT",
@@ -4373,7 +4377,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-21T12:10:12.550926+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-21T11:59:59.999000+00:00",
   "entry": 0.082095,
@@ -4413,7 +4417,9 @@
    "coin_1d_ema99_dist": 0.0101
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-22T16:40:17.735851+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "SPCXBUSDT",
@@ -4522,7 +4528,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-21T20:06:14.597949+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-21T19:59:59.999000+00:00",
   "entry": 4.2010000000000005,
@@ -4561,8 +4567,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1784
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.2623453675862256
+  "realized_r": -1.0,
+  "unrealized_r": -0.2623453675862256,
+  "closed_at": "2026-08-22T11:59:59.999000+00:00",
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)"
  },
  {
   "symbol": "ETHUSDT",
@@ -4571,7 +4579,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-22T06:09:28.606278+00:00",
-  "status": "open",
+  "status": "closed_kapali_dilim",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
   "entry": 2414.12,
@@ -4611,7 +4619,8 @@
    "coin_1d_ema99_dist": 0.2968
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.2850786075170655
+  "unrealized_r": 0.2850786075170655,
+  "closed_at": "2026-08-22T16:40:14.631874+00:00"
  },
  {
   "symbol": "GIGGLEUSDT",
@@ -4670,7 +4679,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-22T06:09:28.606278+00:00",
-  "status": "open",
+  "status": "closed_kapali_dilim",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
   "entry": 0.36345,
@@ -4710,7 +4719,8 @@
    "coin_1d_ema99_dist": 0.1454
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-22T16:40:14.631892+00:00"
  },
  {
   "symbol": "CAKEUSDT",

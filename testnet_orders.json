@@ -1,0 +1,13 @@
+[
+ {
+  "zaman": "2026-08-22T16:40:19",
+  "sembol": "ORDIUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "code": 200,
+   "msg": "The operation of cancel all open order is done."
+  }
+ }
+]
