@@ -134,8 +134,58 @@ def sinyali_isle(plan, sembol, dilim, strateji):
     print(f"  [testnet] {sembol} {dilim}: {'emir acildi' if ok else 'HATA'} {sonuc}")
 
 
+def acik_emirler(sembol=None):
+    """Testnet'teki bekleyen emirleri listeler."""
+    p = {"symbol": sembol} if sembol else {}
+    ok, c = _imzali("/fapi/v1/openOrders", p)
+    return c if ok else []
+
+
+def emirleri_iptal(sembol):
+    """Bir sembolun TUM bekleyen emirlerini iptal eder (giris + stop + tp)."""
+    ok, c = _imzali("/fapi/v1/allOpenOrders", {"symbol": sembol}, "DELETE")
+    return ok, c
+
+
+def pozisyon_var_mi(sembol):
+    """Testnet'te o sembolde ACIK pozisyon var mi? (limit doldu mu)"""
+    ok, c = _imzali("/fapi/v2/positionRisk", {"symbol": sembol})
+    if not ok:
+        return None
+    for x in (c if isinstance(c, list) else []):
+        if x.get("symbol") == sembol:
+            miktar = float(x.get("positionAmt", 0))
+            if abs(miktar) > 0:
+                return {"miktar": miktar,
+                        "giris": float(x.get("entryPrice", 0)),
+                        "kar": float(x.get("unRealizedProfit", 0))}
+    return None
+
+
+def iptal_et(sembol, sebep=""):
+    """screener.py bir pozisyonu iptal/zaman asimi ile kapattiginda cagirir.
+    Testnet'te pozisyon ACIKSA dokunmaz (stop/TP calissin);
+    sadece DOLMAMIS bekleyen emirleri temizler."""
+    if not KEY or not SECRET:
+        return
+    poz = pozisyon_var_mi(sembol)
+    if poz:
+        print(f"  [testnet] {sembol}: pozisyon acik (miktar {poz['miktar']}), "
+              f"emirlere dokunulmadi")
+        return
+    ok, c = emirleri_iptal(sembol)
+    kaydet({"zaman": time.strftime("%Y-%m-%dT%H:%M:%S"), "sembol": sembol,
+            "tur": "IPTAL", "sebep": sebep, "basarili": ok, "sonuc": c})
+    print(f"  [testnet] {sembol}: bekleyen emirler iptal edildi ({sebep})"
+          if ok else f"  [testnet] {sembol}: iptal HATASI {c}")
+
+
 if __name__ == "__main__":
     b = bakiye()
     print("Testnet baglantisi:", "OK" if b is not None else "BASARISIZ")
     if b is not None:
         print(f"Bakiye: {b:,.2f} USDT | risk: {RISK_USDT} USDT | kaldirac: {LEVERAGE}x")
+        ae = acik_emirler()
+        print(f"Bekleyen emir sayisi: {len(ae)}")
+        for e in ae[:10]:
+            print(f"  {e.get('symbol')} {e.get('side')} {e.get('type')} @ {e.get('price')}")
