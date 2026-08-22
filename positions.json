@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.09553835865099826
+  "unrealized_r": 0.03449996284619341
  },
  {
   "symbol": "UUSDT",
@@ -4472,7 +4472,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-21T20:06:14.597949+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-21T19:59:59.999000+00:00",
   "entry": 2.3,
@@ -4511,8 +4511,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1909
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-22T07:59:59.999000+00:00"
  },
  {
   "symbol": "ORDIUSDT",
@@ -4559,6 +4560,202 @@
    "btc_ema99_dist": 0.1552,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1784
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ETHUSDT",
+  "interval": "2h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-22T06:09:28.606278+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "entry": 2414.12,
+  "stop": 2393.49411,
+  "current_stop": 2393.49411,
+  "risk": 20.6258899999998,
+  "tps": [
+   {
+    "p": 2517.249449999999,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 2395.89,
+  "zone_high": 2432.35,
+  "zone_width_pct": 0.0152,
+  "quality_ok": true,
+  "swing_high": 2432.35,
+  "swing_low": 2395.89,
+  "stop_dist_pct": 0.0085,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 63.1,
+   "vol_ratio": 2.34,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1565,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.2968
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "GIGGLEUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-22T06:09:28.606278+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "entry": 37.785,
+  "stop": 37.232730000000004,
+  "current_stop": 37.232730000000004,
+  "risk": 0.5522699999999929,
+  "tps": [
+   {
+    "p": 40.54634999999996,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 37.27,
+  "zone_high": 38.3,
+  "zone_width_pct": 0.0276,
+  "quality_ok": true,
+  "swing_high": 38.3,
+  "swing_low": 37.27,
+  "stop_dist_pct": 0.0146,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 49.6,
+   "vol_ratio": 7.99,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1565,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.2169
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "LDOUSDT",
+  "interval": "2h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-22T06:09:28.606278+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "entry": 0.36345,
+  "stop": 0.3567429,
+  "current_stop": 0.3567429,
+  "risk": 0.006707100000000021,
+  "tps": [
+   {
+    "p": 0.3969855000000001,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.3571,
+  "zone_high": 0.3698,
+  "zone_width_pct": 0.0356,
+  "quality_ok": true,
+  "swing_high": 0.3698,
+  "swing_low": 0.3571,
+  "stop_dist_pct": 0.0185,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 59.8,
+   "vol_ratio": 5.13,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1565,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1454
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "CAKEUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-22T06:09:28.606278+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "entry": 1.7705,
+  "stop": 1.754244,
+  "current_stop": 1.754244,
+  "risk": 0.016256000000000048,
+  "tps": [
+   {
+    "p": 1.8517800000000002,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 1.756,
+  "zone_high": 1.785,
+  "zone_width_pct": 0.0165,
+  "quality_ok": true,
+  "swing_high": 1.785,
+  "swing_low": 1.756,
+  "stop_dist_pct": 0.0092,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 55.8,
+   "vol_ratio": 4.04,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1565,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.2271
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
