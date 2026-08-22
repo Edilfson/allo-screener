@@ -101,6 +101,8 @@ def emir_ac(plan, sembol):
         return False, giris_emri
 
     # KORUMA EMIRLERI - sonuclari MUTLAKA kontrol edilir
+    # (onceki surumde sonuc yok sayiliyordu; stop reddedilse bile
+    #  "emir acildi" deniyordu -> pozisyon korumasiz kaliyordu)
     ok_stop, c_stop = _imzali("/fapi/v1/order", {
         "symbol": sembol, "side": ters, "type": "STOP_MARKET",
         "stopPrice": stop, "closePosition": "true",
