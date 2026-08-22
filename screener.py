@@ -30,12 +30,16 @@ matplotlib.use("Agg")
 import mplfinance as mpf
 import range_setup
 import ict_setup
+try:
+    import testnet_trader
+except Exception:
+    testnet_trader = None
 
 # ==================== AYARLAR ====================
-ALL_INTERVALS = ["1h", "2h", "4h", "6h", "12h", "1d"]   # backtest: 2h en iyi, 4h ikinci, 1h negatif
+ALL_INTERVALS = ["1h", "4h", "6h", "12h", "1d"]   # backtest: 2h en iyi, 4h ikinci, 1h negatif
 STRATEGY_ORDER = ["ict_short", "ict_long"]          # oncelik sirasi (OB en guclu)
-STRATEGY_INTERVALS = {"ict_short": ["1h", "2h", "4h", "6h", "12h", "1d"],
-                      "ict_long":  ["1h", "2h", "4h", "6h", "12h", "1d"]}
+STRATEGY_INTERVALS = {"ict_short": ["1h", "4h", "6h", "12h", "1d"],
+                      "ict_long":  ["1h", "4h", "6h", "12h", "1d"]}
 # SADECE bu dilimlerin sinyali Telegrama gonderilir; digerleri sessizce kaydedilir
 SIGNAL_INTERVALS = {"4h"}
 # range_lh = SHORT (lower high), range_hl = LONG (higher low) - spesifikasyon R1-R7
@@ -935,6 +939,13 @@ def main():
                     "realized_r": 0.0, "unrealized_r": 0.0,
                 })
                 new_count += 1
+
+                # TESTNET: sinyal gonderilen dilimde gercek limit emir de ac
+                if testnet_trader and not sessiz:
+                    try:
+                        testnet_trader.sinyali_isle(plan, symbol, iv, strat)
+                    except Exception as e:
+                        print(f"  [testnet hata] {symbol}: {e}")
                 log_ekle({"tur": "SINYAL", "kaynak": "screener", "sembol": symbol,
                           "strateji": strat, "dilim": iv, "yon": "LONG" if side == 1 else "SHORT",
                           "giris": plan["entry"], "stop": plan["stop"],
