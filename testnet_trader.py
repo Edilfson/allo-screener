@@ -108,12 +108,12 @@ def emir_ac(plan, sembol):
     # (onceki surumde sonuc yok sayiliyordu; stop reddedilse bile
     #  "emir acildi" deniyordu -> pozisyon korumasiz kaliyordu)
     ok_stop, c_stop = _imzali("/fapi/v1/algoOrder", {
-        "symbol": sembol, "side": ters, "algoType": "STOP", "type": "STOP_MARKET",
-        "stopPrice": stop, "quantity": miktar, "reduceOnly": "true",
+        "symbol": sembol, "side": ters, "algoType": "CONDITIONAL", "orderType": "STOP_MARKET",
+        "triggerPrice": stop, "quantity": miktar, "reduceOnly": "true",
         "workingType": "MARK_PRICE"}, "POST")
     ok_tp, c_tp = _imzali("/fapi/v1/algoOrder", {
-        "symbol": sembol, "side": ters, "algoType": "TAKE_PROFIT", "type": "TAKE_PROFIT_MARKET",
-        "stopPrice": tp, "quantity": miktar, "reduceOnly": "true",
+        "symbol": sembol, "side": ters, "algoType": "CONDITIONAL", "orderType": "TAKE_PROFIT_MARKET",
+        "triggerPrice": tp, "quantity": miktar, "reduceOnly": "true",
         "workingType": "MARK_PRICE"}, "POST")
 
     if not ok_stop:
