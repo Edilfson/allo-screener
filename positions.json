@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.03449996284619341
+  "unrealized_r": -0.11146141842616586
  },
  {
   "symbol": "UUSDT",
@@ -1269,7 +1269,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.13995801259620594
+  "unrealized_r": -0.15995201439566392
  },
  {
   "symbol": "CRCLBUSDT",
@@ -4571,7 +4571,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-22T06:09:28.606278+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
   "entry": 2414.12,
@@ -4586,7 +4586,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-22T07:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 2395.89,
   "zone_high": 2432.35,
@@ -4620,7 +4620,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-22T06:09:28.606278+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
   "entry": 37.785,
@@ -4635,7 +4635,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-22T06:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 37.27,
   "zone_high": 38.3,
@@ -4718,7 +4718,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-22T06:09:28.606278+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
   "entry": 1.7705,
@@ -4733,7 +4733,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-22T06:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 1.756,
   "zone_high": 1.785,
