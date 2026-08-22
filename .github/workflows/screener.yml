@@ -30,6 +30,10 @@ jobs:
           TOPIC_SIGNALS: ${{ secrets.TOPIC_SIGNALS }}
           TOPIC_RESULTS: ${{ secrets.TOPIC_RESULTS }}
           TOPIC_SUMMARY: ${{ secrets.TOPIC_SUMMARY }}
+          TESTNET_API_KEY: ${{ secrets.TESTNET_API_KEY }}
+          TESTNET_API_SECRET: ${{ secrets.TESTNET_API_SECRET }}
+          TESTNET_RISK_USDT: "50"
+          TESTNET_LEVERAGE: "5"
         run: python screener.py
 
       - name: State dosyasini geri commit'le
@@ -40,7 +44,7 @@ jobs:
           # kalp atisi: gunde bir kez degisir -> repo aktif kalir,
           # GitHub 60 gun hareketsizlik kuralindan dolayi cron'u durdurmaz
           date -u +"son calisma: %Y-%m-%d" > last_run.txt
-          git add positions.json last_run.txt
+          git add positions.json testnet_orders.json last_run.txt
           git diff --quiet --cached || git commit -m "state guncelle [skip ci]"
           # repo bu arada degismis olabilir: once cek (rebase), sonra push et - 3 deneme
           for i in 1 2 3; do
