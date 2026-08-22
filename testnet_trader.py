@@ -100,15 +100,30 @@ def emir_ac(plan, sembol):
     if not ok:
         return False, giris_emri
 
-    _imzali("/fapi/v1/order", {
+    # KORUMA EMIRLERI - sonuclari MUTLAKA kontrol edilir
+    ok_stop, c_stop = _imzali("/fapi/v1/order", {
         "symbol": sembol, "side": ters, "type": "STOP_MARKET",
-        "stopPrice": stop, "closePosition": "true"}, "POST")
-    _imzali("/fapi/v1/order", {
+        "stopPrice": stop, "closePosition": "true",
+        "workingType": "MARK_PRICE"}, "POST")
+    ok_tp, c_tp = _imzali("/fapi/v1/order", {
         "symbol": sembol, "side": ters, "type": "TAKE_PROFIT_MARKET",
-        "stopPrice": tp, "closePosition": "true"}, "POST")
+        "stopPrice": tp, "closePosition": "true",
+        "workingType": "MARK_PRICE"}, "POST")
+
+    if not ok_stop:
+        print(f"  [!] {sembol} STOP EMRI REDDEDILDI: {c_stop}")
+    if not ok_tp:
+        print(f"  [!] {sembol} TP EMRI REDDEDILDI: {c_tp}")
+
+    # STOP yoksa pozisyon KORUMASIZ - giris emrini iptal et
+    if not ok_stop:
+        _imzali("/fapi/v1/allOpenOrders", {"symbol": sembol}, "DELETE")
+        return False, {"hata": "stop emri reddedildi, giris iptal edildi",
+                       "stop_hatasi": c_stop}
 
     return True, {"orderId": giris_emri.get("orderId"), "miktar": miktar,
-                  "giris": giris, "stop": stop, "tp": tp}
+                  "giris": giris, "stop": stop, "tp": tp,
+                  "stop_ok": ok_stop, "tp_ok": ok_tp}
 
 
 def kaydet(kayit):
