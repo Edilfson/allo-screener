@@ -2,6 +2,10 @@
 BINANCE FUTURES TESTNET ISLEMCISI
 screener.py sinyal urettiginde testnet e gercek limit emir acar.
 positions.json takibi AYNEN devam eder - bu EK bir katman.
+NOT: Binance Aralik 2025 degisikligi - kosullu emirler (STOP_MARKET,
+TAKE_PROFIT_MARKET) artik /fapi/v1/algoOrder uc noktasindan gonderilir.
+Eski /fapi/v1/order -4120 hatasi veriyordu.
+
 UYARI: Testnet likiditesi gercek piyasadan farklidir; emirler kolay dolar,
 kayma gerceklci degildir. Sonuclari karsilastirma amacli kullan.
 Secret: TESTNET_API_KEY, TESTNET_API_SECRET
@@ -103,11 +107,11 @@ def emir_ac(plan, sembol):
     # KORUMA EMIRLERI - sonuclari MUTLAKA kontrol edilir
     # (onceki surumde sonuc yok sayiliyordu; stop reddedilse bile
     #  "emir acildi" deniyordu -> pozisyon korumasiz kaliyordu)
-    ok_stop, c_stop = _imzali("/fapi/v1/order", {
+    ok_stop, c_stop = _imzali("/fapi/v1/algoOrder", {
         "symbol": sembol, "side": ters, "type": "STOP_MARKET",
         "stopPrice": stop, "quantity": miktar, "reduceOnly": "true",
         "workingType": "MARK_PRICE"}, "POST")
-    ok_tp, c_tp = _imzali("/fapi/v1/order", {
+    ok_tp, c_tp = _imzali("/fapi/v1/algoOrder", {
         "symbol": sembol, "side": ters, "type": "TAKE_PROFIT_MARKET",
         "stopPrice": tp, "quantity": miktar, "reduceOnly": "true",
         "workingType": "MARK_PRICE"}, "POST")
