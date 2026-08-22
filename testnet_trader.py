@@ -156,16 +156,29 @@ def sinyali_isle(plan, sembol, dilim, strateji):
 
 
 def acik_emirler(sembol=None):
-    """Testnet'teki bekleyen emirleri listeler."""
+    """Bekleyen emirler: NORMAL + ALGO (kosullu) emirler birlikte.
+    Binance Aralik 2025'ten sonra stop/TP emirleri ayri listede tutuluyor."""
     p = {"symbol": sembol} if sembol else {}
+    liste = []
     ok, c = _imzali("/fapi/v1/openOrders", p)
-    return c if ok else []
+    if ok and isinstance(c, list):
+        liste += c
+    # ALGO (kosullu) emirler ayri uc noktada
+    ok2, c2 = _imzali("/fapi/v1/openAlgoOrders", p)
+    if ok2 and isinstance(c2, list):
+        for a in c2:
+            a["_algo"] = True
+            a.setdefault("type", a.get("orderType", "ALGO"))
+            a.setdefault("stopPrice", a.get("triggerPrice"))
+        liste += c2
+    return liste
 
 
 def emirleri_iptal(sembol):
-    """Bir sembolun TUM bekleyen emirlerini iptal eder (giris + stop + tp)."""
+    """Bir sembolun TUM bekleyen emirlerini iptal eder: normal + algo (stop/tp)."""
     ok, c = _imzali("/fapi/v1/allOpenOrders", {"symbol": sembol}, "DELETE")
-    return ok, c
+    ok2, c2 = _imzali("/fapi/v1/allOpenAlgoOrders", {"symbol": sembol}, "DELETE")
+    return (ok or ok2), {"normal": c, "algo": c2}
 
 
 def pozisyon_var_mi(sembol):
