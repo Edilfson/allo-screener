@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.1817882657664836
+  "unrealized_r": -0.017249981423097624
  },
  {
   "symbol": "UUSDT",
@@ -4562,7 +4562,7 @@
    "coin_1d_ema99_dist": 0.1784
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7365850705305321
+  "unrealized_r": -0.2623453675862256
  },
  {
   "symbol": "ETHUSDT",
@@ -4611,7 +4611,7 @@
    "coin_1d_ema99_dist": 0.2968
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8397213405094438
+  "unrealized_r": 0.2850786075170655
  },
  {
   "symbol": "GIGGLEUSDT",
@@ -4670,7 +4670,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-22T06:09:28.606278+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
   "entry": 0.36345,
@@ -4685,7 +4685,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-22T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-22T09:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.3571,
   "zone_high": 0.3698,
