@@ -41,7 +41,7 @@ STRATEGY_ORDER = ["ict_short", "ict_long"]          # oncelik sirasi (OB en gucl
 STRATEGY_INTERVALS = {"ict_short": ["1h", "4h", "6h", "12h", "1d"],
                       "ict_long":  ["1h", "4h", "6h", "12h", "1d"]}
 # SADECE bu dilimlerin sinyali Telegrama gonderilir; digerleri sessizce kaydedilir
-SIGNAL_INTERVALS = {"4h"}
+SIGNAL_INTERVALS = {"1h", "4h"}
 # range_lh = SHORT (lower high), range_hl = LONG (higher low) - spesifikasyon R1-R7
 SIDE_OF = {"ict_short": -1, "ict_long": 1}
 TP_STYLE = {"ict_short": "tek_hedef", "ict_long": "tek_hedef"}
