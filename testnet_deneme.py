@@ -45,12 +45,12 @@ elif mod == "market":
         ters = "SELL" if side == 1 else "BUY"
         ok2, c2 = T._imzali("/fapi/v1/order", {
             "symbol": sym, "side": ters, "type": "STOP_MARKET",
-            "stopPrice": stop, "closePosition": "true",
+            "stopPrice": stop, "quantity": miktar, "reduceOnly": "true",
             "workingType": "MARK_PRICE"}, "POST")
         print("   STOP:", "OK" if ok2 else "REDDEDILDI", "" if ok2 else c2)
         ok3, c3 = T._imzali("/fapi/v1/order", {
             "symbol": sym, "side": ters, "type": "TAKE_PROFIT_MARKET",
-            "stopPrice": tp, "closePosition": "true",
+            "stopPrice": tp, "quantity": miktar, "reduceOnly": "true",
             "workingType": "MARK_PRICE"}, "POST")
         print("   TP  :", "OK" if ok3 else "REDDEDILDI", "" if ok3 else c3)
         if not ok2:
