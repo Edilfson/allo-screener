@@ -44,13 +44,13 @@ elif mod == "market":
     if ok:
         ters = "SELL" if side == 1 else "BUY"
         ok2, c2 = T._imzali("/fapi/v1/algoOrder", {
-            "symbol": sym, "side": ters, "algoType": "STOP", "type": "STOP_MARKET",
-            "stopPrice": stop, "quantity": miktar, "reduceOnly": "true",
+            "symbol": sym, "side": ters, "algoType": "CONDITIONAL", "orderType": "STOP_MARKET",
+            "triggerPrice": stop, "quantity": miktar, "reduceOnly": "true",
             "workingType": "MARK_PRICE"}, "POST")
         print("   STOP:", "OK" if ok2 else "REDDEDILDI", "" if ok2 else c2)
         ok3, c3 = T._imzali("/fapi/v1/algoOrder", {
-            "symbol": sym, "side": ters, "algoType": "TAKE_PROFIT", "type": "TAKE_PROFIT_MARKET",
-            "stopPrice": tp, "quantity": miktar, "reduceOnly": "true",
+            "symbol": sym, "side": ters, "algoType": "CONDITIONAL", "orderType": "TAKE_PROFIT_MARKET",
+            "triggerPrice": tp, "quantity": miktar, "reduceOnly": "true",
             "workingType": "MARK_PRICE"}, "POST")
         print("   TP  :", "OK" if ok3 else "REDDEDILDI", "" if ok3 else c3)
         if not ok2:
