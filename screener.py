@@ -70,7 +70,7 @@ LOOKBACK_CANDLES = 250
 LOOKBACK_BY_IV = {"2h": 560, "4h": 320, "1d": 250}
 CHART_CANDLES = 120
 DEDUP_COOLDOWN_HOURS = 20
-POSITION_MAX_DAYS = 45
+POSITION_MAX_DAYS = 7   # canli: 11 gunluk takili pozisyonlar olustu
 PENDING_MAX_HOURS = 24   # limit emir bu sure icinde dolmazsa IPTAL
 
 STATE_FILE = "positions.json"
@@ -768,6 +768,14 @@ def main():
     positions = load_positions()
     now = datetime.now(timezone.utc)
 
+    # ARTIK TARANMAYAN dilimlerden kalan acik pozisyonlari kapat
+    for p in positions:
+        if p["status"] in ("open", "pending") and p.get("interval") not in ALL_INTERVALS:
+            p["status"] = "closed_kapali_dilim"
+            p["closed_at"] = datetime.now(timezone.utc).isoformat()
+            p.setdefault("realized_r", 0.0)
+            print(f"  [temizlik] {p['symbol']} {p['interval']} - dilim artik taranmiyor, kapatildi")
+
     open_ps = [p for p in positions if p["status"] in ("open", "pending")]
     print(f"{len(open_ps)} acik pozisyon kontrol ediliyor...")
     for pos in open_ps:
@@ -777,6 +785,13 @@ def main():
         df = add_emas(df)          # iz suren stop EMA21'e ihtiyac duyar
         _, events = evaluate_position(pos, df)
         if events:
+            # TEKRAR ONLEME: ayni olay dizisi daha once bildirildiyse gonderme
+            # (canli: acik pozisyonlar her taramada ayni mesaji uretiyordu)
+            imza = "|".join(events)
+            if pos.get("son_bildirim") == imza:
+                continue
+            pos["son_bildirim"] = imza
+            
             head = (f"\U0001F4CC <b>{pos['symbol']}</b> {pos['interval']} [{pos.get('strategy','?')}]\n"
                     f"Giris: {pos['entry']:.6g} | Acilis: {pos['opened_at'][:10]}")
             if pos.get("sinyal_gonderildi", True):
