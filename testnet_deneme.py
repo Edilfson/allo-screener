@@ -43,12 +43,12 @@ elif mod == "market":
     print("   giris:", "ACILDI" if ok else "HATA", "" if ok else c)
     if ok:
         ters = "SELL" if side == 1 else "BUY"
-        ok2, c2 = T._imzali("/fapi/v1/order", {
+        ok2, c2 = T._imzali("/fapi/v1/algoOrder", {
             "symbol": sym, "side": ters, "type": "STOP_MARKET",
             "stopPrice": stop, "quantity": miktar, "reduceOnly": "true",
             "workingType": "MARK_PRICE"}, "POST")
         print("   STOP:", "OK" if ok2 else "REDDEDILDI", "" if ok2 else c2)
-        ok3, c3 = T._imzali("/fapi/v1/order", {
+        ok3, c3 = T._imzali("/fapi/v1/algoOrder", {
             "symbol": sym, "side": ters, "type": "TAKE_PROFIT_MARKET",
             "stopPrice": tp, "quantity": miktar, "reduceOnly": "true",
             "workingType": "MARK_PRICE"}, "POST")
