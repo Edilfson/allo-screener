@@ -940,7 +940,6 @@ def main():
                 })
                 new_count += 1
 
-                # TESTNET: sinyal gonderilen dilimde gercek limit emir de ac
                 if testnet_trader and not sessiz:
                     try:
                         testnet_trader.sinyali_isle(plan, symbol, iv, strat)
