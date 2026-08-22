@@ -14,8 +14,8 @@ on:
       mod:
         description: "limit = beklesin | market = HEMEN acilsin"
         type: choice
-        options: ["market", "limit"]
-        default: "market"
+        options: ["durum", "market", "limit"]
+        default: "durum"
 
 jobs:
   test:
@@ -48,7 +48,9 @@ jobs:
           f=float(requests.get(f"{T.BASE}/fapi/v1/ticker/price",params={"symbol":sym},timeout=20).json()["price"])
           print(f"2) {sym} fiyat: {f}")
           tick,adim,qp,pp=T.sembol_bilgi(sym)
-          if mod=="market":
+          if mod=="durum":
+              print("3) SADECE DURUM RAPORU - emir acilmayacak")
+          elif mod=="market":
               stop=T._yuvarla(f*(0.98 if side==1 else 1.02),tick,pp)
               tp=T._yuvarla(f+side*5*abs(f-stop),tick,pp)
               mik=T._yuvarla(T.RISK_USDT/abs(f-stop),adim,qp)
