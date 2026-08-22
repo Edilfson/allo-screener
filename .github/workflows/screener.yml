@@ -3,7 +3,7 @@ name: Allo Screener
 on:
   schedule:
     - cron: "*/30 * * * *"   # her 30 dakikada bir
-  workflow_dispatch: {}       # istersen elle de "Run workflow" ile tetikleyebilirsin
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -41,12 +41,9 @@ jobs:
         run: |
           git config user.name "allo-screener-bot"
           git config user.email "actions@github.com"
-          # kalp atisi: gunde bir kez degisir -> repo aktif kalir,
-          # GitHub 60 gun hareketsizlik kuralindan dolayi cron'u durdurmaz
           date -u +"son calisma: %Y-%m-%d" > last_run.txt
           git add positions.json testnet_orders.json last_run.txt
           git diff --quiet --cached || git commit -m "state guncelle [skip ci]"
-          # repo bu arada degismis olabilir: once cek (rebase), sonra push et - 3 deneme
           for i in 1 2 3; do
             if git pull --rebase --autostash origin main && git push origin HEAD:main; then
               echo "Push basarili."
@@ -55,4 +52,4 @@ jobs:
             echo "Push denemesi $i basarisiz, tekrar deneniyor..."
             sleep 5
           done
-          echo "Push yapilamadi (tarama yine de calisti, sinyaller gonderildi)."
+          echo "Push yapilamadi (tarama yine de calisti)."
