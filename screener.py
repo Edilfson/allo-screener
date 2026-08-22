@@ -992,6 +992,31 @@ def main():
     print(f"TANI | rally gecen (sembol/dilim): {diag_rally}")
     print(f"TANI | bolge tespiti: {diag_detect} | konum reddi: {diag_konum} | plan reddi: {diag_plan_red}")
 
+    # ---- TELEGRAM BILGILENDIRME: her taramada ozet durum ----
+    try:
+        acik_say = len([p for p in positions if p["status"] == "open"])
+        bekleyen = len([p for p in positions if p["status"] == "pending"])
+        det_top = sum(diag_detect.values())
+        red_top = sum(diag_plan_red.values()) + sum(diag_konum.values())
+        satirlar = [
+            f"\u2699\uFE0F <b>TARAMA RAPORU</b>",
+            f"{len(symbols)} coin | {', '.join(ALL_INTERVALS)} | BTC: {btc_regime}",
+            "",
+            f"\U0001F50E Kurulum bulundu: <b>{det_top}</b>",
+            f"   \u2022 LONG: {diag_detect.get('ict_long', 0)} | SHORT: {diag_detect.get('ict_short', 0)}",
+            f"\u274C Filtreden elenen: {red_top}",
+            f"   \u2022 konum: {sum(diag_konum.values())} | plan/stop/RR: {sum(diag_plan_red.values())}",
+            "",
+            f"\U0001F195 Yeni sinyal: <b>{new_count}</b>",
+            f"\u23F3 Bekleyen emir: {bekleyen} | \U0001F4C2 Acik islem: {acik_say}",
+        ]
+        if new_count == 0 and det_top == 0:
+            satirlar.append("")
+            satirlar.append("<i>Kurulum sarti saglayan coin yok - normal.</i>")
+        tg_send("\n".join(satirlar), TOPIC_SUMMARY)
+    except Exception as e:
+        print("tarama raporu hatasi:", e)
+
     if SUMMARY_EVERY_RUN or now.hour < 4:
         tg_send(build_summary(positions), TOPIC_SUMMARY)
         if SUMMARY_EVERY_RUN or now.weekday() == 0:
