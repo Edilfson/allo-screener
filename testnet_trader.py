@@ -105,11 +105,11 @@ def emir_ac(plan, sembol):
     #  "emir acildi" deniyordu -> pozisyon korumasiz kaliyordu)
     ok_stop, c_stop = _imzali("/fapi/v1/order", {
         "symbol": sembol, "side": ters, "type": "STOP_MARKET",
-        "stopPrice": stop, "closePosition": "true",
+        "stopPrice": stop, "quantity": miktar, "reduceOnly": "true",
         "workingType": "MARK_PRICE"}, "POST")
     ok_tp, c_tp = _imzali("/fapi/v1/order", {
         "symbol": sembol, "side": ters, "type": "TAKE_PROFIT_MARKET",
-        "stopPrice": tp, "closePosition": "true",
+        "stopPrice": tp, "quantity": miktar, "reduceOnly": "true",
         "workingType": "MARK_PRICE"}, "POST")
 
     if not ok_stop:
