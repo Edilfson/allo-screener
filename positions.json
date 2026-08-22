@@ -1221,7 +1221,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.13136524314512352
+  "unrealized_r": -0.1817882657664836
  },
  {
   "symbol": "UUSDT",
@@ -1269,7 +1269,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.11996401079674796
+  "unrealized_r": -0.13995801259620594
  },
  {
   "symbol": "CRCLBUSDT",
@@ -4562,7 +4562,7 @@
    "coin_1d_ema99_dist": 0.1784
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.7365850705305321
  },
  {
   "symbol": "ETHUSDT",
@@ -4611,7 +4611,7 @@
    "coin_1d_ema99_dist": 0.2968
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.8397213405094438
  },
  {
   "symbol": "GIGGLEUSDT",
@@ -4719,7 +4719,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-22T06:09:28.606278+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
   "entry": 1.7705,
@@ -4758,7 +4758,8 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2271
   },
-  "realized_r": 0.0,
-  "unrealized_r": -0.2153051181102392
+  "realized_r": -1.0,
+  "unrealized_r": -0.2153051181102392,
+  "closed_at": "2026-08-22T08:59:59.999000+00:00"
  }
 ]
