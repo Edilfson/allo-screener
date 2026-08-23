@@ -177,7 +177,7 @@ def acik_emirler(sembol=None):
 def emirleri_iptal(sembol):
     """Bir sembolun TUM bekleyen emirlerini iptal eder: normal + algo (stop/tp)."""
     ok, c = _imzali("/fapi/v1/allOpenOrders", {"symbol": sembol}, "DELETE")
-    ok2, c2 = _imzali("/fapi/v1/allOpenAlgoOrders", {"symbol": sembol}, "DELETE")
+    ok2, c2 = _imzali("/fapi/v1/algoOpenOrders", {"symbol": sembol}, "DELETE")
     return (ok or ok2), {"normal": c, "algo": c2}
 
 
