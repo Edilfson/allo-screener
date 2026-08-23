@@ -26,5 +26,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-08-23T05:10:48",
+  "sembol": "SOLUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": -5000,
+    "msg": "Path /fapi/v1/allOpenAlgoOrders, Method DELETE is invalid"
+   }
+  }
  }
 ]
