@@ -55,5 +55,22 @@
    "code": -1121,
    "msg": "Invalid symbol."
   }
+ },
+ {
+  "zaman": "2026-08-23T17:42:33",
+  "sembol": "MSTRBUSDT",
+  "tur": "IPTAL",
+  "sebep": "kapali_coin",
+  "basarili": false,
+  "sonuc": {
+   "normal": {
+    "code": -1121,
+    "msg": "Invalid symbol."
+   },
+   "algo": {
+    "code": -1121,
+    "msg": "Invalid symbol."
+   }
+  }
  }
 ]

@@ -4830,7 +4830,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-23T12:08:02.046583+00:00",
-  "status": "pending",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-23T11:59:59.999000+00:00",
   "entry": 1.1687500000000002,
@@ -4870,7 +4870,8 @@
    "coin_1d_ema99_dist": 0.026
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-23T17:42:32.467717+00:00"
  },
  {
   "symbol": "MSTRBUSDT",
@@ -4879,7 +4880,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-23T12:08:02.046583+00:00",
-  "status": "open",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-23T11:59:59.999000+00:00",
   "entry": 120.18,
@@ -4920,6 +4921,7 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.9568979863538184,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 120.18"
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 120.18",
+  "closed_at": "2026-08-23T17:42:32.467742+00:00"
  }
 ]
