@@ -43,5 +43,17 @@
     "msg": "Path /fapi/v1/allOpenAlgoOrders, Method DELETE is invalid"
    }
   }
+ },
+ {
+  "zaman": "2026-08-23T12:13:47",
+  "sembol": "MSTRBUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": false,
+  "sonuc": {
+   "code": -1121,
+   "msg": "Invalid symbol."
+  }
  }
 ]
