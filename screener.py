@@ -810,6 +810,23 @@ def main():
                 except Exception as e:
                     print(f"  [testnet iptal hatasi] {p['symbol']}: {e}")
 
+    # ARTIK TARANMAYAN COINLERDEN kalan acik pozisyonlari kapat
+    # (vadeli filtresi / doviz-emtia elemesi sonrasi listeden cikan coinler)
+    _tarananlar = set(get_usdt_symbols())
+    if _tarananlar:
+        for p in positions:
+            if (p["status"] in ("open", "pending")
+                    and p["symbol"] not in _tarananlar):
+                p["status"] = "closed_kapali_coin"
+                p["closed_at"] = datetime.now(timezone.utc).isoformat()
+                p.setdefault("realized_r", 0.0)
+                print(f"  [temizlik] {p['symbol']} - coin artik taranmiyor, kapatildi")
+                if testnet_trader and p.get("sinyal_gonderildi"):
+                    try:
+                        testnet_trader.iptal_et(p["symbol"], "kapali_coin")
+                    except Exception as e:
+                        print(f"  [testnet iptal hatasi] {p['symbol']}: {e}")
+
     open_ps = [p for p in positions if p["status"] in ("open", "pending")]
     print(f"{len(open_ps)} acik pozisyon kontrol ediliyor...")
     for pos in open_ps:
@@ -849,7 +866,7 @@ def main():
                       "acilis": pos["opened_at"]})
         time.sleep(0.05)
 
-    symbols = get_usdt_symbols()
+    symbols = list(_tarananlar) if _tarananlar else get_usdt_symbols()
     print(f"{len(symbols)} sembol taranacak...")
     btc_regime, btc_dist = get_btc_regime()
     print(f"BTC rejimi: {btc_regime} (%{btc_dist*100:.1f})")
