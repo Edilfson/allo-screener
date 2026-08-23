@@ -94,6 +94,25 @@ def bars_per_day(iv):
 TOP_N = 100          # sadece en hacimli N coin (kaldiracli islem gorenler)
 
 
+def _vadeli_semboller():
+    """Binance VADELI (futures) piyasasinda aktif islem goren USDT pariteleri.
+    Testnet ve gercek vadeli ayni sembol listesini kullanir; boylece
+    'Invalid symbol' hatasi veren hisse-tokenlar bastan elenir."""
+    try:
+        r = requests.get("https://fapi.binance.com/fapi/v1/exchangeInfo", timeout=25)
+        if r.status_code != 200:
+            r = requests.get("https://testnet.binancefuture.com/fapi/v1/exchangeInfo",
+                             timeout=25)
+        if r.status_code != 200:
+            return None
+        return {x["symbol"] for x in r.json().get("symbols", [])
+                if x.get("status") == "TRADING" and x.get("quoteAsset") == "USDT"
+                and x.get("contractType") == "PERPETUAL"}
+    except Exception as e:
+        print("  vadeli sembol listesi alinamadi:", e)
+        return None
+
+
 def get_usdt_symbols():
     """Hacme gore ilk TOP_N USDT paritesi."""
     try:
@@ -111,9 +130,19 @@ def get_usdt_symbols():
                 continue
             rows.append((sym, float(t.get("quoteVolume", 0))))
         rows.sort(key=lambda x: -x[1])
-        # ALTIN/EMTIA tokenlari eleniyor (PAXG, XAUT ayni gun ayni sekilde stop oldu)
-        haric = ("PAXG", "XAUT", "XAU", "TGOLD", "KAU", "AUX", "XAG", "WPAXG")
+        # ALTIN/EMTIA/STABLE tokenlari eleniyor
+        haric = ("PAXG", "XAUT", "XAU", "TGOLD", "KAU", "AUX", "XAG", "WPAXG",
+                 "EURI", "AEUR", "EUR", "TRY", "BRL", "ARS", "ZAR", "JPY")
         rows = [r for r in rows if r[0][:-4] not in haric]
+
+        # KOK COZUM: sadece VADELI piyasada islem goren coinler
+        # (MSTRB, SPCXB, SOXLB gibi hisse-tokenlar vadelide YOK -> "Invalid symbol")
+        vadeli = _vadeli_semboller()
+        if vadeli:
+            oncesi = len(rows)
+            rows = [r for r in rows if r[0] in vadeli]
+            print(f"  vadeli filtresi: {oncesi} -> {len(rows)} sembol")
+
         return [x[0] for x in rows[:TOP_N]]
     except Exception as e:
         print("sembol listesi hatasi:", e)
