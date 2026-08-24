@@ -138,5 +138,20 @@
     "msg": "The operation of cancel all open order is done."
    }
   }
+ },
+ {
+  "zaman": "2026-08-24T22:08:38",
+  "sembol": "AIUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": false,
+  "sonuc": {
+   "hata": "stop emri reddedildi, giris iptal edildi",
+   "stop_hatasi": {
+    "code": -4005,
+    "msg": "Quantity greater than max quantity."
+   }
+  }
  }
 ]
