@@ -72,5 +72,22 @@
     "msg": "Invalid symbol."
    }
   }
+ },
+ {
+  "zaman": "2026-08-24T14:19:24",
+  "sembol": "LTCUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 1573331962,
+   "miktar": 138.889,
+   "giris": 51.92,
+   "stop": 51.56,
+   "tp": 53.73,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
