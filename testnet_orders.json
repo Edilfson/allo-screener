@@ -89,5 +89,20 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-08-24T15:20:50",
+  "sembol": "PORTALUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": false,
+  "sonuc": {
+   "hata": "stop emri reddedildi, giris iptal edildi",
+   "stop_hatasi": {
+    "code": -4005,
+    "msg": "Quantity greater than max quantity."
+   }
+  }
  }
 ]
