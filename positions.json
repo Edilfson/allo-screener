@@ -4971,7 +4971,7 @@
    "coin_1d_ema99_dist": 0.6946
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.039234149403644024,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1539"
  },
  {
@@ -5021,7 +5021,7 @@
    "coin_1d_ema99_dist": 0.0994
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.13827051243051164,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 51.92"
  },
  {
@@ -5069,6 +5069,55 @@
    "btc_ema99_dist": 0.1818,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1227
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "MINAUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-24T18:10:51.023217+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-24T17:59:59.999000+00:00",
+  "entry": 0.0581,
+  "stop": 0.057242699999999994,
+  "current_stop": 0.057242699999999994,
+  "risk": 0.0008573000000000053,
+  "tps": [
+   {
+    "p": 0.062386500000000025,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-24T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0573,
+  "zone_high": 0.0589,
+  "zone_width_pct": 0.0279,
+  "quality_ok": true,
+  "swing_high": 0.0589,
+  "swing_low": 0.0573,
+  "stop_dist_pct": 0.0148,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 55.0,
+   "vol_ratio": 1.05,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1717,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.261
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
