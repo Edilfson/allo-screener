@@ -4971,7 +4971,7 @@
    "coin_1d_ema99_dist": 0.6946
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.31387319522912677,
+  "unrealized_r": -0.4446536932412638,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1539"
  },
  {
@@ -5032,7 +5032,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-24T15:16:50.361476+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-24T14:59:59.999000+00:00",
   "entry": 0.015645,
@@ -5071,9 +5071,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1227
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.775744188492693,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.015645"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-08-25T09:59:59.999000+00:00"
  },
  {
   "symbol": "MINAUSDT",
