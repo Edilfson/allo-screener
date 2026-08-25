@@ -5225,7 +5225,7 @@
    "coin_1d_ema99_dist": 0.0429
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7267441860464903,
+  "unrealized_r": 2.4224806201550124,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0688"
  },
  {
@@ -5235,7 +5235,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-25T16:14:23.779073+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-25T15:59:59.999000+00:00",
   "entry": 0.20140000000000002,
@@ -5250,7 +5250,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-25T15:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-25T19:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.1975,
   "zone_high": 0.2053,
@@ -5275,6 +5275,7 @@
    "coin_1d_ema99_dist": 0.2221
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.2014"
  }
 ]
