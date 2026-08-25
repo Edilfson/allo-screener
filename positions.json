@@ -4931,7 +4931,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-23T18:06:54.605138+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-23T17:59:59.999000+00:00",
   "entry": 0.15389999999999998,
@@ -4970,9 +4970,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.6946
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.8239171374764591,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1539"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-08-25T17:59:59.999000+00:00"
  },
  {
   "symbol": "LTCUSDT",
