@@ -255,5 +255,22 @@
     "msg": "The operation of cancel all open order is done."
    }
   }
+ },
+ {
+  "zaman": "2026-08-25T18:16:04",
+  "sembol": "POLUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 239762656,
+   "miktar": 28571.0,
+   "giris": 0.11954,
+   "stop": 0.11779,
+   "tp": 0.12825,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
