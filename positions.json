@@ -5084,7 +5084,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-24T18:10:51.023217+00:00",
-  "status": "pending",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-24T17:59:59.999000+00:00",
   "entry": 0.0581,
@@ -5124,7 +5124,8 @@
    "coin_1d_ema99_dist": 0.261
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-25T14:47:45.369604+00:00"
  },
  {
   "symbol": "AIUSDT",
