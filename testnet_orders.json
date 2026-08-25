@@ -272,5 +272,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-08-25T19:15:27",
+  "sembol": "DEXEUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 383267572,
+   "miktar": 4545.45,
+   "giris": 1.886,
+   "stop": 1.875,
+   "tp": 1.943,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]

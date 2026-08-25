@@ -5326,7 +5326,56 @@
    "coin_1d_ema99_dist": 0.4086
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.9839865512275413,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.119535"
+ },
+ {
+  "symbol": "DEXEUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-25T19:14:33.409599+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-25T18:59:59.999000+00:00",
+  "entry": 1.8860000000000001,
+  "stop": 1.874684,
+  "current_stop": 1.874684,
+  "risk": 0.011316000000000104,
+  "tps": [
+   {
+    "p": 1.9425800000000006,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-25T18:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 1.881,
+  "zone_high": 1.891,
+  "zone_width_pct": 0.0053,
+  "quality_ok": true,
+  "swing_high": 1.891,
+  "swing_low": 1.881,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 53.0,
+   "vol_ratio": 1.18,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1715,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.8355
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
