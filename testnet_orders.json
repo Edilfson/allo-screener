@@ -425,5 +425,39 @@
     "msg": "The operation of cancel all open order is done."
    }
   }
+ },
+ {
+  "zaman": "2026-08-26T18:01:48",
+  "sembol": "WIFUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 315351984,
+   "miktar": 17241.4,
+   "giris": 0.2028,
+   "stop": 0.2057,
+   "tp": 0.1886,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-08-26T18:03:47",
+  "sembol": "CATIUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 201481844,
+   "miktar": 84746.0,
+   "giris": 0.04843,
+   "stop": 0.04784,
+   "tp": 0.05137,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
