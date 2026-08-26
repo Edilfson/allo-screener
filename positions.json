@@ -5429,7 +5429,7 @@
    "coin_1d_ema99_dist": 0.15
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8126451151991478,
+  "unrealized_r": 0.5447401321664601,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.4355"
  },
  {
@@ -5541,7 +5541,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-26T17:58:32.370123+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-26T17:59:59.999000+00:00",
   "entry": 0.20284999999999997,
@@ -5556,7 +5556,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-26T17:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-26T21:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.2002,
   "zone_high": 0.2055,
@@ -5581,7 +5581,8 @@
    "coin_1d_ema99_dist": 0.1813
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.20285"
  },
  {
   "symbol": "CATIUSDT",
@@ -5630,7 +5631,7 @@
    "coin_1d_ema99_dist": 0.036
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.602527683750353,
+  "unrealized_r": 3.7932266240282937,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.04843"
  }
 ]
