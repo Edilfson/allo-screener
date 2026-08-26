@@ -5429,7 +5429,7 @@
    "coin_1d_ema99_dist": 0.15
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5447401321664601,
+  "unrealized_r": 0.18753348812287907,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.4355"
  },
  {
@@ -5541,7 +5541,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-26T17:58:32.370123+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-26T17:59:59.999000+00:00",
   "entry": 0.20284999999999997,
@@ -5580,9 +5580,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1813
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.20285"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-08-26T22:59:59.999000+00:00"
  },
  {
   "symbol": "CATIUSDT",
@@ -5631,7 +5632,7 @@
    "coin_1d_ema99_dist": 0.036
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.7932266240282937,
+  "unrealized_r": 2.7386075626392667,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.04843"
  }
 ]
