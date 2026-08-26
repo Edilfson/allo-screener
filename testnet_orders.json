@@ -374,5 +374,39 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-08-26T13:24:17",
+  "sembol": "PYTHUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
+ },
+ {
+  "zaman": "2026-08-26T13:26:18",
+  "sembol": "MORPHOUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 249899555,
+   "miktar": 1754.4,
+   "giris": 2.511,
+   "stop": 2.4825,
+   "tp": 2.6534,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
