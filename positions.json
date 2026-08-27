@@ -5429,7 +5429,7 @@
    "coin_1d_ema99_dist": 0.15
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.02679049830326957,
+  "unrealized_r": -0.3125558135381344,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.4355"
  },
  {
@@ -5592,19 +5592,19 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-26T17:58:32.370123+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-26T17:59:59.999000+00:00",
   "entry": 0.04843,
   "stop": 0.04784211,
-  "current_stop": 0.04784211,
+  "current_stop": 0.04843,
   "risk": 0.0005878900000000006,
   "tps": [
    {
     "p": 0.051369450000000004,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-08-26T18:59:59.999000+00:00",
@@ -5631,8 +5631,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.036
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 4.558675942778409,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.04843"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-08-27T01:59:59.999000+00:00"
  }
 ]
