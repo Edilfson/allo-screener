@@ -5429,7 +5429,7 @@
    "coin_1d_ema99_dist": 0.15
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.11609215931416285,
+  "unrealized_r": -0.43757813895338576,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.4355"
  },
  {
@@ -5635,5 +5635,54 @@
   "unrealized_r": 4.558675942778409,
   "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
   "closed_at": "2026-08-27T01:59:59.999000+00:00"
+ },
+ {
+  "symbol": "SUSDT",
+  "interval": "6h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-27T07:35:43.276493+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-27T05:59:59.999000+00:00",
+  "entry": 0.028835,
+  "stop": 0.02744253,
+  "current_stop": 0.02744253,
+  "risk": 0.0013924699999999998,
+  "tps": [
+   {
+    "p": 0.03579735,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-27T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.02747,
+  "zone_high": 0.0302,
+  "zone_width_pct": 0.0994,
+  "quality_ok": true,
+  "swing_high": 0.0302,
+  "swing_low": 0.02747,
+  "stop_dist_pct": 0.0483,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 64.7,
+   "vol_ratio": 0.72,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1595,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1108
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
