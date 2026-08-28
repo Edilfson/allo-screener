@@ -527,5 +527,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-08-28T04:49:44",
+  "sembol": "WLFIUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 366825590,
+   "miktar": 62500.0,
+   "giris": 0.0596,
+   "stop": 0.0588,
+   "tp": 0.0634,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
