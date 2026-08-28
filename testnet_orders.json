@@ -593,5 +593,90 @@
     "msg": "The operation of cancel all open order is done."
    }
   }
+ },
+ {
+  "zaman": "2026-08-28T20:25:10",
+  "sembol": "HBARUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 302583424,
+   "miktar": 45455.0,
+   "giris": 0.07717,
+   "stop": 0.07827,
+   "tp": 0.07168,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-08-28T20:26:16",
+  "sembol": "RENDERUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 261910510,
+   "miktar": 1851.9,
+   "giris": 1.481,
+   "stop": 1.508,
+   "tp": 1.345,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-08-28T20:26:44",
+  "sembol": "ADAUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 1300379938,
+   "miktar": 12500.0,
+   "giris": 0.2076,
+   "stop": 0.2116,
+   "tp": 0.1875,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-08-28T20:27:46",
+  "sembol": "ETCUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 648209316,
+   "miktar": 462.96,
+   "giris": 7.64,
+   "stop": 7.748,
+   "tp": 7.101,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-08-28T20:28:37",
+  "sembol": "SEIUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 285637256,
+   "miktar": 83333.0,
+   "giris": 0.0467,
+   "stop": 0.0473,
+   "tp": 0.0437,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
