@@ -5746,7 +5746,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-28T01:44:09.265548+00:00",
-  "status": "open",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-27T23:59:59.999000+00:00",
   "entry": 0.061549999999999994,
@@ -5787,7 +5787,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.6736633101687748,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06155"
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06155",
+  "closed_at": "2026-08-28T16:13:29.385314+00:00"
  },
  {
   "symbol": "WLFIUSDT",
