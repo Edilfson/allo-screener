@@ -544,5 +544,37 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-08-28T07:38:42",
+  "sembol": "APTUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
+ },
+ {
+  "zaman": "2026-08-28T07:42:18",
+  "sembol": "TIAUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": false,
+  "sonuc": {
+   "hata": "stop emri reddedildi, giris iptal edildi",
+   "stop_hatasi": {
+    "code": -4005,
+    "msg": "Quantity greater than max quantity."
+   }
+  }
  }
 ]
