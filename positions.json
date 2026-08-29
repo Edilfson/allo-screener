@@ -6183,7 +6183,7 @@
    "coin_1d_ema99_dist": 0.3248
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5282940933498637,
+  "unrealized_r": 1.776125567947134,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06165"
  },
  {
@@ -6292,7 +6292,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-29T05:11:17.999611+00:00",
-  "status": "pending",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-28T23:59:59.999000+00:00",
   "entry": 0.004175,
@@ -6332,6 +6332,7 @@
    "coin_1d_ema99_dist": -0.3817
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-29T05:35:11.608273+00:00"
  }
 ]
