@@ -5848,7 +5848,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-28T07:38:37.125688+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-28T06:59:59.999000+00:00",
   "entry": 0.35845,
@@ -5888,7 +5888,9 @@
    "coin_1d_ema99_dist": 0.0041
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-29T07:11:45.652669+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "HBARUSDT",
@@ -6183,7 +6185,7 @@
    "coin_1d_ema99_dist": 0.3248
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.8587360594795612,
+  "unrealized_r": 1.610904584882291,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06165"
  },
  {
