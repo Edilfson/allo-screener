@@ -5899,7 +5899,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-28T20:24:46.119185+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-28T19:59:59.999000+00:00",
   "entry": 0.07716999999999999,
@@ -5939,7 +5939,9 @@
    "coin_1d_ema99_dist": 0.042
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-29T20:11:30.213754+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "RENDERUSDT",
@@ -5948,7 +5950,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-28T20:24:46.119185+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-28T19:59:59.999000+00:00",
   "entry": 1.4805000000000001,
@@ -5988,7 +5990,9 @@
    "coin_1d_ema99_dist": 0.0058
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-29T20:11:32.070709+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "ADAUSDT",
@@ -5997,7 +6001,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-28T20:24:46.119185+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-28T19:59:59.999000+00:00",
   "entry": 0.2076,
@@ -6037,7 +6041,9 @@
    "coin_1d_ema99_dist": 0.0915
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-29T20:11:33.896304+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "ETCUSDT",
@@ -6186,7 +6192,7 @@
    "coin_1d_ema99_dist": 0.3248
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.776125567947134,
+  "unrealized_r": 1.5282940933498637,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06165"
  },
  {
@@ -6286,7 +6292,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6756575954617235,
+  "unrealized_r": 0.755933745417571,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
