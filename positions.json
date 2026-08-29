@@ -6182,7 +6182,7 @@
    "coin_1d_ema99_dist": 0.3248
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.610904584882291,
+  "unrealized_r": 1.6935150764147182,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06165"
  },
  {
@@ -6192,7 +6192,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-29T00:31:38.297950+00:00",
-  "status": "pending",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-28T23:59:59.999000+00:00",
   "entry": 1.2425,
@@ -6232,7 +6232,8 @@
    "coin_1d_ema99_dist": 0.1148
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-29T01:13:02.402303+00:00"
  },
  {
   "symbol": "TAOUSDT",
