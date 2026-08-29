@@ -6046,7 +6046,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-28T20:24:46.119185+00:00",
-  "status": "pending",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-28T19:59:59.999000+00:00",
   "entry": 7.640000000000001,
@@ -6086,7 +6086,8 @@
    "coin_1d_ema99_dist": 0.0749
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-29T16:35:05.694656+00:00"
  },
  {
   "symbol": "SEIUSDT",
@@ -6185,7 +6186,7 @@
    "coin_1d_ema99_dist": 0.3248
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.4370095002065404,
+  "unrealized_r": 2.1065675340768313,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06165"
  },
  {
