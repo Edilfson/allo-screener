@@ -6293,7 +6293,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4348291455941775,
+  "unrealized_r": 0.6756575954617235,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
@@ -6546,7 +6546,7 @@
    "coin_1d_ema99_dist": 0.1539
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8020085082641772,
+  "unrealized_r": 0.7671385731222556,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0706"
  },
  {
@@ -6657,7 +6657,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-30T20:11:27.211923+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-30T19:59:59.999000+00:00",
   "entry": 0.1588,
@@ -6696,9 +6696,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.5685
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.44195639363581546,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1588"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-08-30T21:59:59.999000+00:00"
  },
  {
   "symbol": "WIFUSDT",
