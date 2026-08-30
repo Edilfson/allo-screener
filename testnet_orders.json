@@ -895,5 +895,34 @@
     "msg": "Quantity greater than max quantity."
    }
   }
+ },
+ {
+  "zaman": "2026-08-30T20:14:39",
+  "sembol": "ENAUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 500834858,
+   "miktar": 35714.0,
+   "giris": 0.1588,
+   "stop": 0.1574,
+   "tp": 0.1656,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-08-30T20:14:56",
+  "sembol": "WIFUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": false,
+  "sonuc": {
+   "code": -2019,
+   "msg": "Margin is insufficient."
+  }
  }
 ]
