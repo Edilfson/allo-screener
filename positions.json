@@ -6293,7 +6293,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.729175028765623,
+  "unrealized_r": 0.8362098953734183,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
@@ -6404,7 +6404,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-29T08:14:54.308750+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-29T07:59:59.999000+00:00",
   "entry": 0.0348,
@@ -6444,7 +6444,9 @@
    "coin_1d_ema99_dist": -0.4557
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-30T08:15:12.014184+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "SCRUSDT",
