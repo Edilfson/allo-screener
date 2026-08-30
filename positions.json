@@ -6152,7 +6152,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-28T22:03:31.719511+00:00",
-  "status": "open",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-28T11:59:59.999000+00:00",
   "entry": 0.061649999999999996,
@@ -6193,7 +6193,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.9500206526228846,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06165"
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06165",
+  "closed_at": "2026-08-30T00:38:00.425856+00:00"
  },
  {
   "symbol": "GASUSDT",
@@ -6292,7 +6293,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5151052955500287,
+  "unrealized_r": 0.4348291455941775,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
@@ -6490,7 +6491,7 @@
    "coin_1d_ema99_dist": -0.173
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.47152702212548575,
+  "unrealized_r": 0.9067827348566917,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.022975"
  }
 ]
