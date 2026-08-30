@@ -6293,7 +6293,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1171764202188899,
+  "unrealized_r": 1.0502796285890164,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
@@ -6546,7 +6546,7 @@
    "coin_1d_ema99_dist": 0.1539
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0460980542576186,
+  "unrealized_r": 0.8717483785480156,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0706"
  },
  {
@@ -6594,6 +6594,55 @@
    "btc_ema99_dist": 0.1493,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1182
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "EIGENUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-30T18:13:48.302908+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-30T17:59:59.999000+00:00",
+  "entry": 0.19675,
+  "stop": 0.1955695,
+  "current_stop": 0.1955695,
+  "risk": 0.001180500000000001,
+  "tps": [
+   {
+    "p": 0.2026525,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-30T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.1962,
+  "zone_high": 0.1973,
+  "zone_width_pct": 0.0056,
+  "quality_ok": false,
+  "swing_high": 0.1973,
+  "swing_low": 0.1962,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 58.5,
+   "vol_ratio": 15.11,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1485,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.05
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
