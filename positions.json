@@ -7206,5 +7206,54 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
+ },
+ {
+  "symbol": "EIGENUSDT",
+  "interval": "6h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-31T22:11:38.887569+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-08-31T17:59:59.999000+00:00",
+  "entry": 0.20155,
+  "stop": 0.20780759999999998,
+  "current_stop": 0.20780759999999998,
+  "risk": 0.006257599999999974,
+  "tps": [
+   {
+    "p": 0.17026200000000014,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-31T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.1955,
+  "zone_high": 0.2076,
+  "zone_width_pct": 0.0619,
+  "quality_ok": true,
+  "swing_high": 0.2076,
+  "swing_low": 0.1955,
+  "stop_dist_pct": 0.031,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 44.0,
+   "vol_ratio": 0.91,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1474,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.093
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
