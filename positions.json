@@ -6293,7 +6293,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.2207594123785794,
+  "unrealized_r": -0.23413877070455713,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
@@ -6850,7 +6850,7 @@
    "coin_1d_ema99_dist": 0.1755
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.18277822908204602,
+  "unrealized_r": 0.23964256701868597,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.54825"
  },
  {
@@ -7000,7 +7000,7 @@
    "coin_1d_ema99_dist": -0.092
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.35835871707579586,
+  "unrealized_r": 0.17917935853789171,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0576"
  },
  {
@@ -7010,7 +7010,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-31T08:20:39.209663+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-31T07:59:59.999000+00:00",
   "entry": 0.00918,
@@ -7049,9 +7049,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.1334
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00918"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-08-31T09:59:59.999000+00:00"
  },
  {
   "symbol": "BBUSDT",
@@ -7060,7 +7061,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-31T09:18:14.999230+00:00",
-  "status": "pending",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-31T07:59:59.999000+00:00",
   "entry": 0.009309999999999999,
@@ -7100,6 +7101,7 @@
    "coin_1d_ema99_dist": -0.5099
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-31T09:40:53.158253+00:00"
  }
 ]
