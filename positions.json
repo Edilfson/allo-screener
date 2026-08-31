@@ -6293,7 +6293,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.2876562040084529,
+  "unrealized_r": -0.501725937224051,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
@@ -6850,7 +6850,7 @@
    "coin_1d_ema99_dist": 0.1755
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.30463038180341606,
+  "unrealized_r": 0.06904955320877515,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.54825"
  },
  {
@@ -7000,7 +7000,56 @@
    "coin_1d_ema99_dist": -0.092
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.35835871707579586,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0576"
+ },
+ {
+  "symbol": "ZKUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-31T08:20:39.209663+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-31T07:59:59.999000+00:00",
+  "entry": 0.00918,
+  "stop": 0.00902097,
+  "current_stop": 0.00902097,
+  "risk": 0.00015903000000000098,
+  "tps": [
+   {
+    "p": 0.009975150000000006,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-31T07:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.00903,
+  "zone_high": 0.00933,
+  "zone_width_pct": 0.0332,
+  "quality_ok": true,
+  "swing_high": 0.00933,
+  "swing_low": 0.00903,
+  "stop_dist_pct": 0.0173,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 52.3,
+   "vol_ratio": 0.43,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1336,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": -0.1334
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
