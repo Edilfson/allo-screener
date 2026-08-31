@@ -6293,7 +6293,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.5953814455058724,
+  "unrealized_r": -0.5151052955500249,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
@@ -6897,6 +6897,55 @@
    "btc_ema99_dist": 0.1288,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1488
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "AXLUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-08-31T03:41:23.855945+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-30T23:59:59.999000+00:00",
+  "entry": 0.04005,
+  "stop": 0.0397602,
+  "current_stop": 0.0397602,
+  "risk": 0.0002897999999999998,
+  "tps": [
+   {
+    "p": 0.041499,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-30T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0398,
+  "zone_high": 0.0403,
+  "zone_width_pct": 0.0126,
+  "quality_ok": false,
+  "swing_high": 0.0403,
+  "swing_low": 0.0398,
+  "stop_dist_pct": 0.0072,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 45.8,
+   "vol_ratio": 2.88,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.13,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0707
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
