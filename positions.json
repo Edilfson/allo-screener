@@ -6293,7 +6293,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.5151052955500249,
+  "unrealized_r": -0.501725937224051,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
@@ -6908,7 +6908,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-31T03:41:23.855945+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-30T23:59:59.999000+00:00",
   "entry": 0.04005,
@@ -6923,7 +6923,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-08-30T23:59:59.999000+00:00",
+  "entry_bar_close": "2026-08-31T03:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.0398,
   "zone_high": 0.0403,
@@ -6946,6 +6946,56 @@
    "btc_ema99_dist": 0.13,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0707
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.04005"
+ },
+ {
+  "symbol": "WLFIUSDT",
+  "interval": "4h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-31T04:16:40.552758+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-31T03:59:59.999000+00:00",
+  "entry": 0.0576,
+  "stop": 0.05815809999999999,
+  "current_stop": 0.05815809999999999,
+  "risk": 0.0005580999999999919,
+  "tps": [
+   {
+    "p": 0.05480950000000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-31T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0571,
+  "zone_high": 0.0581,
+  "zone_width_pct": 0.0175,
+  "quality_ok": false,
+  "swing_high": 0.0581,
+  "swing_low": 0.0571,
+  "stop_dist_pct": 0.0097,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 47.4,
+   "vol_ratio": 1.16,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1276,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.092
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
