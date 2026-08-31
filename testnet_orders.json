@@ -992,5 +992,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-08-31T01:30:16",
+  "sembol": "ETHFIUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 204305481,
+   "miktar": 4032.3,
+   "giris": 0.5482,
+   "stop": 0.5606,
+   "tp": 0.4867,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]

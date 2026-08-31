@@ -6293,7 +6293,7 @@
    "coin_1d_ema99_dist": 0.0823
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.3277942789863785,
+  "unrealized_r": -0.5284846538759989,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 231.45"
  },
  {
@@ -6546,7 +6546,7 @@
    "coin_1d_ema99_dist": 0.1539
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.1743496757096031,
+  "unrealized_r": -0.45330915684496614,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0706"
  },
  {
@@ -6798,6 +6798,55 @@
    "btc_ema99_dist": 0.1344,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1115
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ETHFIUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-08-31T01:27:40.217872+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-08-31T00:59:59.999000+00:00",
+  "entry": 0.54825,
+  "stop": 0.56056,
+  "current_stop": 0.56056,
+  "risk": 0.012309999999999932,
+  "tps": [
+   {
+    "p": 0.48670000000000035,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-08-31T00:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.5365,
+  "zone_high": 0.56,
+  "zone_width_pct": 0.0438,
+  "quality_ok": false,
+  "swing_high": 0.56,
+  "swing_low": 0.5365,
+  "stop_dist_pct": 0.0225,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 44.2,
+   "vol_ratio": 1.31,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1307,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1755
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
