@@ -6863,7 +6863,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-31T03:16:44.607020+00:00",
-  "status": "pending",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-31T02:59:59.999000+00:00",
   "entry": 0.14105,
@@ -6903,7 +6903,8 @@
    "coin_1d_ema99_dist": 0.1488
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-08-31T20:36:07.496084+00:00"
  },
  {
   "symbol": "AXLUSDT",
