@@ -1107,5 +1107,20 @@
     "msg": "Quantity greater than max quantity."
    }
   }
+ },
+ {
+  "zaman": "2026-08-31T09:21:49",
+  "sembol": "BBUSDT",
+  "dilim": "4h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": false,
+  "sonuc": {
+   "hata": "stop emri reddedildi, giris iptal edildi",
+   "stop_hatasi": {
+    "code": -4005,
+    "msg": "Quantity greater than max quantity."
+   }
+  }
  }
 ]
