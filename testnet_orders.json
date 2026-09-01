@@ -1241,5 +1241,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-01T07:18:17",
+  "sembol": "BCHUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 2571117095,
+   "miktar": 33.557,
+   "giris": 247.5,
+   "stop": 246.01,
+   "tp": 254.93,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
