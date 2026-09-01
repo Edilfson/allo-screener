@@ -7313,7 +7313,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-01T04:15:26.445900+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-01T03:59:59.999000+00:00",
   "entry": 0.045704999999999996,
@@ -7328,7 +7328,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-01T03:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-01T06:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.04543,
   "zone_high": 0.04598,
@@ -7353,7 +7353,8 @@
    "coin_1d_ema99_dist": -0.0994
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.045705"
  },
  {
   "symbol": "WLDUSDT",
@@ -7411,7 +7412,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-01T06:23:14.251329+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-01T05:59:59.999000+00:00",
   "entry": 4.101e-05,
@@ -7426,7 +7427,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-01T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-01T11:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 3.978e-05,
   "zone_high": 4.224e-05,
@@ -7451,6 +7452,7 @@
    "coin_1d_ema99_dist": 0.1185
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.101e-05"
  }
 ]
