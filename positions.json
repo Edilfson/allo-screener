@@ -7305,5 +7305,54 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
+ },
+ {
+  "symbol": "MIRAUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-01T04:15:26.445900+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-01T03:59:59.999000+00:00",
+  "entry": 0.045704999999999996,
+  "stop": 0.04538457,
+  "current_stop": 0.04538457,
+  "risk": 0.00032042999999999655,
+  "tps": [
+   {
+    "p": 0.04730714999999998,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-01T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.04543,
+  "zone_high": 0.04598,
+  "zone_width_pct": 0.0121,
+  "quality_ok": true,
+  "swing_high": 0.04598,
+  "swing_low": 0.04543,
+  "stop_dist_pct": 0.007,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 53.6,
+   "vol_ratio": 0.41,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1402,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": -0.0994
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
