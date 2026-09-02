@@ -1389,5 +1389,22 @@
     "msg": "The operation of cancel all open order is done."
    }
   }
+ },
+ {
+  "zaman": "2026-09-02T13:13:18",
+  "sembol": "ZROUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
  }
 ]
