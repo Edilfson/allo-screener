@@ -7769,5 +7769,54 @@
   "unrealized_r": -0.2857551078725589,
   "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
   "closed_at": "2026-09-02T12:59:59.999000+00:00"
+ },
+ {
+  "symbol": "COTIUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-02T17:11:32.003254+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-02T16:59:59.999000+00:00",
+  "entry": 0.013085,
+  "stop": 0.01299699,
+  "current_stop": 0.01299699,
+  "risk": 8.800999999999948e-05,
+  "tps": [
+   {
+    "p": 0.013525049999999997,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-02T16:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.01301,
+  "zone_high": 0.01316,
+  "zone_width_pct": 0.0115,
+  "quality_ok": true,
+  "swing_high": 0.01316,
+  "swing_low": 0.01301,
+  "stop_dist_pct": 0.0067,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 54.1,
+   "vol_ratio": 1.15,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1158,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1219
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
