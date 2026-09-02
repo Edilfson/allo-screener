@@ -7572,19 +7572,19 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-01T12:19:49.470394+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-01T11:59:59.999000+00:00",
   "entry": 250.15,
   "stop": 251.6509,
-  "current_stop": 251.6509,
+  "current_stop": 250.15,
   "risk": 1.5009000000000015,
   "tps": [
    {
     "p": 242.6455,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-09-02T03:59:59.999000+00:00",
@@ -7611,9 +7611,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.0489
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 4.164168165767203,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 250.15"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-09-02T10:59:59.999000+00:00"
  },
  {
   "symbol": "ENSUSDT",
@@ -7713,7 +7714,7 @@
    "coin_1d_ema99_dist": -0.5332
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.3869699522605905,
+  "unrealized_r": 1.8253299634933915,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.005935"
  },
  {
