@@ -7370,7 +7370,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-01T06:23:14.251329+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-01T05:59:59.999000+00:00",
   "entry": 0.38225,
@@ -7410,7 +7410,9 @@
    "coin_1d_ema99_dist": -0.0256
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-02T06:27:02.385203+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "DOGSUSDT",
@@ -7610,7 +7612,7 @@
    "coin_1d_ema99_dist": -0.0489
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8328336331534405,
+  "unrealized_r": 1.4324738490239213,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 250.15"
  },
  {
