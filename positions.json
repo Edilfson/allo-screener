@@ -7523,7 +7523,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-01T12:19:49.470394+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-01T11:59:59.999000+00:00",
   "entry": 2.4205,
@@ -7563,7 +7563,9 @@
    "coin_1d_ema99_dist": 0.2503
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-02T12:20:20.635758+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "BCHUSDT",
@@ -7714,7 +7716,7 @@
    "coin_1d_ema99_dist": -0.5332
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5445099691097797,
+  "unrealized_r": 1.2636899747261923,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.005935"
  },
  {
@@ -7764,7 +7766,7 @@
    "coin_1d_ema99_dist": 0.0169
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.2857551078725589,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.005"
  }
 ]
