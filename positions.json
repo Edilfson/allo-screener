@@ -7612,7 +7612,7 @@
    "coin_1d_ema99_dist": -0.0489
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.2980211872876355,
+  "unrealized_r": 3.6311546405490116,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 250.15"
  },
  {
@@ -7713,7 +7713,56 @@
    "coin_1d_ema99_dist": -0.5332
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9828699803425804,
+  "unrealized_r": 1.5445099691097797,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.005935"
+ },
+ {
+  "symbol": "ZROUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-02T09:15:26.799331+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-02T08:59:59.999000+00:00",
+  "entry": 1.005,
+  "stop": 0.998001,
+  "current_stop": 0.998001,
+  "risk": 0.0069989999999998664,
+  "tps": [
+   {
+    "p": 1.0399949999999993,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-02T08:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.999,
+  "zone_high": 1.011,
+  "zone_width_pct": 0.012,
+  "quality_ok": false,
+  "swing_high": 1.011,
+  "swing_low": 0.999,
+  "stop_dist_pct": 0.007,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 47.2,
+   "vol_ratio": 0.5,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1129,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0169
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]

@@ -1355,5 +1355,22 @@
    "code": -2019,
    "msg": "Margin is insufficient."
   }
+ },
+ {
+  "zaman": "2026-09-02T09:18:53",
+  "sembol": "ZROUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 248679308,
+   "miktar": 7142.9,
+   "giris": 1.005,
+   "stop": 0.998,
+   "tp": 1.04,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
