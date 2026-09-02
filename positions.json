@@ -7419,7 +7419,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-01T06:23:14.251329+00:00",
-  "status": "open",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-01T05:59:59.999000+00:00",
   "entry": 4.101e-05,
@@ -7460,7 +7460,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.1811337397029379,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.101e-05"
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.101e-05",
+  "closed_at": "2026-09-02T05:12:59.803191+00:00"
  },
  {
   "symbol": "BCHUSDT",
@@ -7609,7 +7610,7 @@
    "coin_1d_ema99_dist": -0.0489
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.43307348923979283,
+  "unrealized_r": 1.2992204677193784,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 250.15"
  },
  {
@@ -7710,7 +7711,7 @@
    "coin_1d_ema99_dist": -0.5332
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.14040999719179373,
+  "unrealized_r": 1.8253299634933915,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.005935"
  }
 ]
