@@ -1343,5 +1343,17 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-02T03:19:06",
+  "sembol": "HOMEUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": false,
+  "sonuc": {
+   "code": -2019,
+   "msg": "Margin is insufficient."
+  }
  }
 ]
