@@ -1455,5 +1455,22 @@
     "msg": "Quantity greater than max quantity."
    }
   }
+ },
+ {
+  "zaman": "2026-09-03T09:15:03",
+  "sembol": "HOMEUSDT",
+  "tur": "IPTAL",
+  "sebep": "kapali_coin",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
  }
 ]
