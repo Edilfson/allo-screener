@@ -8033,7 +8033,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-04T06:21:48.979422+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-04T05:59:59.999000+00:00",
   "entry": 0.4253,
@@ -8072,9 +8072,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.178
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.4253"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-04T23:59:59.999000+00:00"
  },
  {
   "symbol": "NEIROUSDT",
@@ -8278,5 +8279,54 @@
   "unrealized_r": 0.18392012611665048,
   "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
   "closed_at": "2026-09-04T17:59:59.999000+00:00"
+ },
+ {
+  "symbol": "SOLUSDT",
+  "interval": "6h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-04T18:15:03.211343+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "signal_bar_close": "2026-09-04T17:59:59.999000+00:00",
+  "entry": 100.66,
+  "stop": 99.83007,
+  "current_stop": 99.83007,
+  "risk": 0.8299299999999903,
+  "tps": [
+   {
+    "p": 104.80964999999995,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-04T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 99.93,
+  "zone_high": 101.39,
+  "zone_width_pct": 0.0146,
+  "quality_ok": true,
+  "swing_high": 101.39,
+  "swing_low": 99.93,
+  "stop_dist_pct": 0.0082,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 47.9,
+   "vol_ratio": 1.67,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1427,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.242
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
