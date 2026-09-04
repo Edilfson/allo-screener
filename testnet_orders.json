@@ -1555,5 +1555,39 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-04T10:13:52",
+  "sembol": "DASHUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 1300928880,
+   "miktar": 35.211,
+   "giris": 50.96,
+   "stop": 49.54,
+   "tp": 58.09,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-09-04T10:16:45",
+  "sembol": "\u5e01\u5b89\u4eba\u751fUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 878610222,
+   "miktar": 16779.0,
+   "giris": 0.49745,
+   "stop": 0.50043,
+   "tp": 0.48253,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
