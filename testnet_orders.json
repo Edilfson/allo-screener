@@ -1504,5 +1504,22 @@
     "msg": "Quantity greater than max quantity."
    }
   }
+ },
+ {
+  "zaman": "2026-09-04T01:19:36",
+  "sembol": "TRUMPUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
  }
 ]
