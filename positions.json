@@ -8033,7 +8033,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-04T06:21:48.979422+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-04T05:59:59.999000+00:00",
   "entry": 0.4253,
@@ -8048,7 +8048,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-04T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-04T17:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.4206,
   "zone_high": 0.43,
@@ -8073,7 +8073,8 @@
    "coin_1d_ema99_dist": -0.178
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.4253"
  },
  {
   "symbol": "NEIROUSDT",
@@ -8172,7 +8173,7 @@
    "coin_1d_ema99_dist": 0.315
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.8145571708351105,
+  "unrealized_r": -0.2842923227033747,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 50.965"
  },
  {
@@ -8182,19 +8183,19 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-04T10:13:05.402895+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-04T09:59:59.999000+00:00",
   "entry": 0.49745,
   "stop": 0.5004347,
-  "current_stop": 0.5004347,
+  "current_stop": 0.49745,
   "risk": 0.002984700000000007,
   "tps": [
    {
     "p": 0.48252649999999997,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-09-04T11:59:59.999000+00:00",
@@ -8221,8 +8222,9 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0733
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 0.251281535832756,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.49745"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-09-04T12:59:59.999000+00:00"
  }
 ]
