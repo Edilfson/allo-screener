@@ -8425,7 +8425,7 @@
    "coin_1d_ema99_dist": -0.3613
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.258610954263121,
+  "unrealized_r": 2.9361942405420733,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.01726"
  },
  {
@@ -8473,6 +8473,55 @@
    "btc_ema99_dist": 0.1394,
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.0981
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "TUTUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-05T09:11:52.913961+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-05T08:59:59.999000+00:00",
+  "entry": 0.02451,
+  "stop": 0.02382615,
+  "current_stop": 0.02382615,
+  "risk": 0.0006838499999999997,
+  "tps": [
+   {
+    "p": 0.02792925,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-05T08:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.02385,
+  "zone_high": 0.02517,
+  "zone_width_pct": 0.0553,
+  "quality_ok": true,
+  "swing_high": 0.02517,
+  "swing_low": 0.02385,
+  "stop_dist_pct": 0.0279,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 59.7,
+   "vol_ratio": 1.17,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1418,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.1803
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0

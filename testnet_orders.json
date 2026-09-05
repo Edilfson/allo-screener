@@ -1721,5 +1721,22 @@
     "msg": "Quantity greater than max quantity."
    }
   }
+ },
+ {
+  "zaman": "2026-09-05T09:17:01",
+  "sembol": "TUTUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 239249537,
+   "miktar": 73529.4,
+   "giris": 0.02451,
+   "stop": 0.02383,
+   "tp": 0.02793,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
