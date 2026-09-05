@@ -8287,7 +8287,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-04T18:15:03.211343+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-04T17:59:59.999000+00:00",
   "entry": 100.66,
@@ -8327,7 +8327,9 @@
    "coin_1d_ema99_dist": 0.242
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-05T18:13:51.747235+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "PORTALUSDT",
