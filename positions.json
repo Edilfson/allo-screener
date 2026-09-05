@@ -8436,7 +8436,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-05T04:13:58.366878+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-05T03:59:59.999000+00:00",
   "entry": 0.06770000000000001,
@@ -8475,9 +8475,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.0981
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.2998051266676729,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0677"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-05T16:59:59.999000+00:00"
  },
  {
   "symbol": "TUTUSDT",
