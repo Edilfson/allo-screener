@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1259570635039886,
+  "unrealized_r": 1.2260421358154696,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -8783,7 +8783,56 @@
    "coin_1d_ema99_dist": 0.2358
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.0762517225539994,
+  "unrealized_r": 1.4147909967845758,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.05474"
+ },
+ {
+  "symbol": "PENDLEUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-06T13:10:28.442135+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-06T12:59:59.999000+00:00",
+  "entry": 2.0455,
+  "stop": 2.021976,
+  "current_stop": 2.021976,
+  "risk": 0.0235240000000001,
+  "tps": [
+   {
+    "p": 2.1631200000000006,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-06T12:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 2.024,
+  "zone_high": 2.067,
+  "zone_width_pct": 0.0212,
+  "quality_ok": true,
+  "swing_high": 2.067,
+  "swing_low": 2.024,
+  "stop_dist_pct": 0.0115,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.9,
+   "vol_ratio": 1.77,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1418,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.312
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
