@@ -1847,5 +1847,39 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-06T09:12:03",
+  "sembol": "TUTUSDT",
+  "tur": "IPTAL",
+  "sebep": "cancelled",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
+ },
+ {
+  "zaman": "2026-09-06T09:12:05",
+  "sembol": "AAVEUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
  }
 ]

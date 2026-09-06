@@ -8491,7 +8491,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-05T09:11:52.913961+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-05T08:59:59.999000+00:00",
   "entry": 0.02451,
@@ -8531,7 +8531,9 @@
    "coin_1d_ema99_dist": -0.1803
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-06T09:12:02.595674+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "TRXUSDT",
@@ -8580,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4253615573237321,
+  "unrealized_r": 0.47540409347948653,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -8641,7 +8643,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-06T03:15:21.142697+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-06T02:59:59.999000+00:00",
   "entry": 134.95,
@@ -8680,9 +8682,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.326
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.8446923237138682,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 134.95"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-06T08:59:59.999000+00:00"
  },
  {
   "symbol": "LINKUSDT",
@@ -8780,7 +8783,7 @@
    "coin_1d_ema99_dist": 0.2358
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6247129076711115,
+  "unrealized_r": 0.44097381717961565,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.05474"
  }
 ]
