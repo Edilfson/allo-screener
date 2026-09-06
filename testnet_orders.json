@@ -1932,5 +1932,56 @@
     "msg": "The operation of cancel all open order is done."
    }
   }
+ },
+ {
+  "zaman": "2026-09-06T17:09:34",
+  "sembol": "PNUTUSDT",
+  "tur": "IPTAL",
+  "sebep": "kapali_coin",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
+ },
+ {
+  "zaman": "2026-09-06T17:09:42",
+  "sembol": "PENGUUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 338490226,
+   "miktar": 595238.0,
+   "giris": 0.008743,
+   "stop": 0.008827,
+   "tp": 0.008324,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-09-06T17:14:07",
+  "sembol": "WOOUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 202867802,
+   "miktar": 138889.0,
+   "giris": 0.01175,
+   "stop": 0.01139,
+   "tp": 0.01359,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
