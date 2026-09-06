@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9257869188810541,
+  "unrealized_r": 1.4262122804383761,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -8834,7 +8834,7 @@
    "coin_1d_ema99_dist": 0.312
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.7641557558238359,
+  "unrealized_r": 1.9767046420676666,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.0455"
  },
  {
@@ -8895,7 +8895,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-06T17:09:31.723645+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-06T16:59:59.999000+00:00",
   "entry": 0.008743,
@@ -8910,7 +8910,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-06T16:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-06T20:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.008668,
   "zone_high": 0.008818,
@@ -8935,7 +8935,8 @@
    "coin_1d_ema99_dist": 0.1776
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.008743"
  },
  {
   "symbol": "WOOUSDT",
