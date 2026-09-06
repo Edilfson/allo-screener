@@ -1789,5 +1789,34 @@
     "msg": "The operation of cancel all open order is done."
    }
   }
+ },
+ {
+  "zaman": "2026-09-06T03:16:32",
+  "sembol": "RENDERUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 265839651,
+   "miktar": 5555.6,
+   "giris": 1.47,
+   "stop": 1.461,
+   "tp": 1.514,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-09-06T03:20:57",
+  "sembol": "AAVEUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": false,
+  "sonuc": {
+   "code": -2019,
+   "msg": "Margin is insufficient."
+  }
  }
 ]

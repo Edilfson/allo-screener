@@ -8581,5 +8581,103 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
+ },
+ {
+  "symbol": "RENDERUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-06T03:15:21.142697+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-06T02:59:59.999000+00:00",
+  "entry": 1.4700000000000002,
+  "stop": 1.4611800000000001,
+  "current_stop": 1.4611800000000001,
+  "risk": 0.00882000000000005,
+  "tps": [
+   {
+    "p": 1.5141000000000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-06T02:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 1.463,
+  "zone_high": 1.477,
+  "zone_width_pct": 0.0096,
+  "quality_ok": true,
+  "swing_high": 1.477,
+  "swing_low": 1.463,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 55.9,
+   "vol_ratio": 0.94,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1418,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": -0.0295
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "AAVEUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-06T03:15:21.142697+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-06T02:59:59.999000+00:00",
+  "entry": 134.95,
+  "stop": 134.08578,
+  "current_stop": 134.08578,
+  "risk": 0.8642199999999889,
+  "tps": [
+   {
+    "p": 139.27109999999993,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-06T02:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 134.22,
+  "zone_high": 135.68,
+  "zone_width_pct": 0.0109,
+  "quality_ok": true,
+  "swing_high": 135.68,
+  "swing_low": 134.22,
+  "stop_dist_pct": 0.0064,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.5,
+   "vol_ratio": 1.72,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1418,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.326
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
