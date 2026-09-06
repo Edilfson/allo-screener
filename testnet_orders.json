@@ -1898,5 +1898,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-06T13:40:18",
+  "sembol": "PNUTUSDT",
+  "dilim": "4h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 233543222,
+   "miktar": 71429.0,
+   "giris": 0.05075,
+   "stop": 0.05005,
+   "tp": 0.05425,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
