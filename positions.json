@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1759995996597152,
+  "unrealized_r": 1.2760846719711962,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -8834,7 +8834,7 @@
    "coin_1d_ema99_dist": 0.312
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.509097092331224,
+  "unrealized_r": 0.5738819928583578,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.0455"
  },
  {
@@ -8996,7 +8996,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-07T01:26:47.407768+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-07T00:59:59.999000+00:00",
   "entry": 0.5483,
@@ -9035,9 +9035,10 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.2127788923338902,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.5483"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-07T03:59:59.999000+00:00"
  },
  {
   "symbol": "SUIUSDT",
@@ -9086,7 +9087,7 @@
    "coin_1d_ema99_dist": 0.048
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9837163548076487,
+  "unrealized_r": -0.5023232450081482,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.7963"
  },
  {
@@ -9096,7 +9097,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-07T02:19:11.059472+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-07T01:59:59.999000+00:00",
   "entry": 0.975,
@@ -9111,7 +9112,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-07T01:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-07T03:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.966,
   "zone_high": 0.984,
@@ -9136,6 +9137,7 @@
    "coin_1d_ema99_dist": 0.0603
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.975"
  }
 ]
