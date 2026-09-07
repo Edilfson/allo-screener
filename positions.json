@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.9266376419956983,
+  "unrealized_r": 1.7264674973727916,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -8836,7 +8836,7 @@
    "coin_1d_ema99_dist": 0.312
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.891685087570123,
+  "unrealized_r": 0.4463526611120519,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.0455"
  },
  {
@@ -9049,7 +9049,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-07T02:19:11.059472+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-07T01:59:59.999000+00:00",
   "entry": 0.7963,
@@ -9088,9 +9088,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.048
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.5441835154255132,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.7963"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-07T07:59:59.999000+00:00"
  },
  {
   "symbol": "DOTUSDT",
@@ -9099,7 +9100,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-07T02:19:11.059472+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-07T01:59:59.999000+00:00",
   "entry": 0.975,
@@ -9138,9 +9139,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0603
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.40136463977523495,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.975"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-07T07:59:59.999000+00:00"
  },
  {
   "symbol": "LDOUSDT",
