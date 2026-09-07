@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7756593104138741,
+  "unrealized_r": 0.6255317019466665,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -9152,7 +9152,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-07T04:16:08.224137+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-07T03:59:59.999000+00:00",
   "entry": 0.40164999999999995,
@@ -9191,9 +9191,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2341
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.2589259471791032,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.40165"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-07T23:59:59.999000+00:00"
  },
  {
   "symbol": "VIRTUALUSDT",
