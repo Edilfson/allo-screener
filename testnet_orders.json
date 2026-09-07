@@ -2092,5 +2092,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-07T05:13:34",
+  "sembol": "LINKUSDT",
+  "tur": "IPTAL",
+  "sebep": "cancelled",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
  }
 ]
