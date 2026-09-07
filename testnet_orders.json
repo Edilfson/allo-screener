@@ -2204,5 +2204,29 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-07T17:11:26",
+  "sembol": "POLUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": false,
+  "sonuc": {
+   "code": -2019,
+   "msg": "Margin is insufficient."
+  }
+ },
+ {
+  "zaman": "2026-09-07T17:16:13",
+  "sembol": "JTOUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": false,
+  "sonuc": {
+   "code": -2019,
+   "msg": "Margin is insufficient."
+  }
  }
 ]
