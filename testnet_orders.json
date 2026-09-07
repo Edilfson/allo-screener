@@ -1983,5 +1983,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-07T01:28:43",
+  "sembol": "AEROUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 176232518,
+   "miktar": 15151.5,
+   "giris": 0.5483,
+   "stop": 0.545,
+   "tp": 0.5647,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
