@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.7273182204874358,
+  "unrealized_r": 2.877445828954616,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -9544,7 +9544,7 @@
    "coin_1d_ema99_dist": 0.1704
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.8751203290452454,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.05064"
  },
  {
@@ -9695,5 +9695,54 @@
   "unrealized_r": 0.0,
   "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
   "closed_at": "2026-09-08T10:59:59.999000+00:00"
+ },
+ {
+  "symbol": "AVNTUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-08T12:19:41.862883+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-08T11:59:59.999000+00:00",
+  "entry": 0.1076,
+  "stop": 0.1063935,
+  "current_stop": 0.1063935,
+  "risk": 0.0012064999999999992,
+  "tps": [
+   {
+    "p": 0.1136325,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-08T11:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.1065,
+  "zone_high": 0.1087,
+  "zone_width_pct": 0.0207,
+  "quality_ok": true,
+  "swing_high": 0.1087,
+  "swing_low": 0.1065,
+  "stop_dist_pct": 0.0112,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 57.2,
+   "vol_ratio": 2.24,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1121,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0086
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
