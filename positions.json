@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.577190612020228,
+  "unrealized_r": 2.827403292798889,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -9548,7 +9548,7 @@
    "coin_1d_ema99_dist": 0.1704
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.012501718986355817,
+  "unrealized_r": 0.27503781769994073,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.05064"
  },
  {
@@ -9708,7 +9708,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-08T12:19:41.862883+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-08T11:59:59.999000+00:00",
   "entry": 0.1076,
@@ -9747,9 +9747,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0086
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.7459593866556142,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1076"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-08T23:59:59.999000+00:00"
  },
  {
   "symbol": "AVAXUSDT",
@@ -9847,7 +9848,7 @@
    "coin_1d_ema99_dist": 0.176
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.16477297150143827,
+  "unrealized_r": -0.22208530941498922,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.3585"
  },
  {
@@ -9897,7 +9898,7 @@
    "coin_1d_ema99_dist": -0.0012
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.1393182692690438,
+  "unrealized_r": 0.03317101649262553,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.049375"
  },
  {
