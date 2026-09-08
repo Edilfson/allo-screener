@@ -2410,5 +2410,39 @@
    "code": -2019,
    "msg": "Margin is insufficient."
   }
+ },
+ {
+  "zaman": "2026-09-08T17:13:20",
+  "sembol": "ORDIUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 268506646,
+   "miktar": 724.6,
+   "giris": 4.358,
+   "stop": 4.289,
+   "tp": 4.707,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-09-08T17:16:34",
+  "sembol": "SEIUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 292017813,
+   "miktar": 62500.0,
+   "giris": 0.0494,
+   "stop": 0.0486,
+   "tp": 0.0531,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
