@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.1777010458890036,
+  "unrealized_r": 3.1276585097332767,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -9548,7 +9548,7 @@
    "coin_1d_ema99_dist": 0.1704
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.28753953668629656,
+  "unrealized_r": 0.08751203290452542,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.05064"
  },
  {
@@ -9558,7 +9558,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-08T04:14:58.588309+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-08T03:59:59.999000+00:00",
   "entry": 2.1165000000000003,
@@ -9573,7 +9573,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-08T03:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-09T03:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 2.068,
   "zone_high": 2.165,
@@ -9598,7 +9598,8 @@
    "coin_1d_ema99_dist": 0.4255
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1165"
  },
  {
   "symbol": "STXUSDT",
@@ -9848,7 +9849,7 @@
    "coin_1d_ema99_dist": 0.176
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.07880446463111823,
+  "unrealized_r": -0.1934291404582201,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.3585"
  },
  {
@@ -9898,7 +9899,7 @@
    "coin_1d_ema99_dist": -0.0012
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.04643942308968127,
+  "unrealized_r": -0.04643942308968127,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.049375"
  },
  {
