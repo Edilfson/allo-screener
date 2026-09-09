@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.2777861182004844,
+  "unrealized_r": 2.877445828954616,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -9508,7 +9508,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-08T00:35:14.491234+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-07T23:59:59.999000+00:00",
   "entry": 0.05064,
@@ -9547,9 +9547,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1704
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 2.1627973846403976,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.05064"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-09T23:59:59.999000+00:00"
  },
  {
   "symbol": "PENDLEUSDT",
@@ -10016,7 +10017,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-09T04:15:07.274847+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-09T03:59:59.999000+00:00",
   "entry": 4.763e-05,
@@ -10055,9 +10056,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2604
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.12188147495335078,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.763e-05"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-09T23:59:59.999000+00:00"
  },
  {
   "symbol": "STRKUSDT",
@@ -10066,7 +10068,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-09T20:12:43.683997+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-09T19:59:59.999000+00:00",
   "entry": 0.031215,
@@ -10081,7 +10083,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-09T19:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-09T21:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.03061,
   "zone_high": 0.03182,
@@ -10106,6 +10108,7 @@
    "coin_1d_ema99_dist": 0.021
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.031215"
  }
 ]
