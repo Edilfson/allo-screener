@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.9274883651103423,
+  "unrealized_r": 2.9775309012660967,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -9548,7 +9548,7 @@
    "coin_1d_ema99_dist": 0.1704
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7125979822225591,
+  "unrealized_r": 0.8626186100588896,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.05064"
  },
  {
@@ -9558,7 +9558,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-08T04:14:58.588309+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-08T03:59:59.999000+00:00",
   "entry": 2.1165000000000003,
@@ -9597,9 +9597,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.4255
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.4844961240310099,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1165"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-09T11:59:59.999000+00:00"
  },
  {
   "symbol": "STXUSDT",
@@ -9900,7 +9901,7 @@
    "coin_1d_ema99_dist": -0.0012
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4179548078071222,
+  "unrealized_r": 0.19239189565724835,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.049375"
  },
  {
@@ -9950,7 +9951,7 @@
    "coin_1d_ema99_dist": 0.1104
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4013961605584579,
+  "unrealized_r": 0.19197207678882852,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.21765"
  },
  {
@@ -10051,7 +10052,7 @@
    "coin_1d_ema99_dist": 0.2604
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0969332745802078,
+  "unrealized_r": 0.8625458227468302,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.763e-05"
  }
 ]
