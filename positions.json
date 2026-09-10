@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.227743582044758,
+  "unrealized_r": 3.2777861182004844,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -10221,7 +10221,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-10T08:17:28.778686+00:00",
-  "status": "open",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-10T07:59:59.999000+00:00",
   "entry": 0.0256,
@@ -10262,7 +10262,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 1.3330794134450552,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0256"
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0256",
+  "closed_at": "2026-09-10T19:09:15.503795+00:00"
  },
  {
   "symbol": "ANIMEUSDT",
@@ -10511,7 +10512,7 @@
    "coin_1d_ema99_dist": 0.0757
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 1.169265033407575,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.4885"
  }
 ]
