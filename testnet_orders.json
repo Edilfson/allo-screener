@@ -2809,5 +2809,34 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-10T16:15:53",
+  "sembol": "REZUSDT",
+  "dilim": "4h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 236005791,
+   "miktar": 442478.0,
+   "giris": 0.00314,
+   "stop": 0.003027,
+   "tp": 0.003705,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-09-10T16:18:10",
+  "sembol": "CKBUSDT",
+  "dilim": "4h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": false,
+  "sonuc": {
+   "code": -2019,
+   "msg": "Margin is insufficient."
+  }
  }
 ]
