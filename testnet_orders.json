@@ -2692,5 +2692,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-10T01:22:44",
+  "sembol": "SAHARAUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 309258879,
+   "miktar": 227273.0,
+   "giris": 0.00998,
+   "stop": 0.00976,
+   "tp": 0.01111,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]

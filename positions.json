@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.0275734374218235,
+  "unrealized_r": 3.1777010458890036,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -10157,6 +10157,55 @@
    "btc_ema99_dist": 0.1063,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0685
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SAHARAUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-10T01:21:28.696387+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-10T00:59:59.999000+00:00",
+  "entry": 0.009985,
+  "stop": 0.00976023,
+  "current_stop": 0.00976023,
+  "risk": 0.00022477000000000087,
+  "tps": [
+   {
+    "p": 0.011108850000000005,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-10T00:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.00977,
+  "zone_high": 0.0102,
+  "zone_width_pct": 0.044,
+  "quality_ok": true,
+  "swing_high": 0.0102,
+  "swing_low": 0.00977,
+  "stop_dist_pct": 0.0225,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 54.1,
+   "vol_ratio": 0.92,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1061,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": -0.1431
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
