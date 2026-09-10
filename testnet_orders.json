@@ -2675,5 +2675,22 @@
     "msg": "The operation of cancel all open order is done."
    }
   }
+ },
+ {
+  "zaman": "2026-09-10T00:34:47",
+  "sembol": "AVAXUSDT",
+  "dilim": "1h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 527857698,
+   "miktar": 1064.0,
+   "giris": 7.858,
+   "stop": 7.905,
+   "tp": 7.622,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
