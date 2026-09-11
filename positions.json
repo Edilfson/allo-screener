@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.827403292798889,
+  "unrealized_r": 3.0275734374218235,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -10474,19 +10474,19 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-10T18:14:55.807033+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-10T17:59:59.999000+00:00",
   "entry": 0.4885,
   "stop": 0.47952,
-  "current_stop": 0.47952,
+  "current_stop": 0.4885,
   "risk": 0.008979999999999988,
   "tps": [
    {
     "p": 0.5333999999999999,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-09-10T18:59:59.999000+00:00",
@@ -10513,9 +10513,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0757
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 4.398663697104687,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.4885"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-09-11T05:59:59.999000+00:00"
  },
  {
   "symbol": "TAOUSDT",
