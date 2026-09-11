@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.826552569684245,
+  "unrealized_r": 1.6764249612170372,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -10715,7 +10715,7 @@
    "coin_1d_ema99_dist": -0.0837
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.882924245099784,
+  "unrealized_r": 2.648772735299352,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0658"
  },
  {
@@ -10878,7 +10878,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-11T18:14:59.277902+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-11T17:59:59.999000+00:00",
   "entry": 0.19119999999999998,
@@ -10917,9 +10917,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0749
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1912"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-11T19:59:59.999000+00:00"
  },
  {
   "symbol": "UNIUSDT",
@@ -10928,7 +10929,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-11T18:14:59.277902+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-11T17:59:59.999000+00:00",
   "entry": 6.005,
@@ -10943,7 +10944,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-11T17:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-11T18:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 5.943,
   "zone_high": 6.067,
@@ -10966,6 +10967,105 @@
    "btc_ema99_dist": 0.0886,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.408
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 6.005"
+ },
+ {
+  "symbol": "SKYUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-11T19:10:08.908535+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-11T18:59:59.999000+00:00",
+  "entry": 0.060135,
+  "stop": 0.05939055,
+  "current_stop": 0.05939055,
+  "risk": 0.0007444500000000007,
+  "tps": [
+   {
+    "p": 0.06385725,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-11T18:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.05945,
+  "zone_high": 0.06082,
+  "zone_width_pct": 0.023,
+  "quality_ok": false,
+  "swing_high": 0.06082,
+  "swing_low": 0.05945,
+  "stop_dist_pct": 0.0124,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 52.0,
+   "vol_ratio": 1.35,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0895,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0456
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "BCHUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-11T19:10:08.908535+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-11T18:59:59.999000+00:00",
+  "entry": 225.5,
+  "stop": 224.147,
+  "current_stop": 224.147,
+  "risk": 1.3530000000000086,
+  "tps": [
+   {
+    "p": 232.26500000000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-11T18:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 224.7,
+  "zone_high": 226.3,
+  "zone_width_pct": 0.0071,
+  "quality_ok": false,
+  "swing_high": 226.3,
+  "swing_low": 224.7,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 40.7,
+   "vol_ratio": 2.63,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0895,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.1342
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0

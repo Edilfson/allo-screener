@@ -3074,5 +3074,56 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-11T19:10:18",
+  "sembol": "WIFUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
+ },
+ {
+  "zaman": "2026-09-11T19:11:55",
+  "sembol": "SKYUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 164056694,
+   "miktar": 66667.0,
+   "giris": 0.06014,
+   "stop": 0.05939,
+   "tp": 0.06386,
+   "stop_ok": true,
+   "tp_ok": true
+  }
+ },
+ {
+  "zaman": "2026-09-11T19:12:43",
+  "sembol": "BCHUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 2576744044,
+   "miktar": 37.037,
+   "giris": 225.5,
+   "stop": 224.15,
+   "tp": 232.27,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
