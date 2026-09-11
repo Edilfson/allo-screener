@@ -8582,7 +8582,7 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.8765951058399717,
+  "unrealized_r": 2.126807786618633,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33305"
  },
  {
@@ -10715,7 +10715,7 @@
    "coin_1d_ema99_dist": -0.0837
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.4721878862793902,
+  "unrealized_r": 0.882924245099784,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0658"
  },
  {
@@ -10969,7 +10969,7 @@
    "coin_1d_ema99_dist": 0.408
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.000838938521996,
+  "unrealized_r": 1.3099215518890794,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 6.005"
  },
  {
@@ -11066,6 +11066,55 @@
    "btc_ema99_dist": 0.0895,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1342
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "BLURUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-11T20:12:25.823058+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": true,
+  "signal_bar_close": "2026-09-11T19:59:59.999000+00:00",
+  "entry": 0.017235,
+  "stop": 0.01661337,
+  "current_stop": 0.01661337,
+  "risk": 0.0006216300000000015,
+  "tps": [
+   {
+    "p": 0.020343150000000008,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-11T19:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.01663,
+  "zone_high": 0.01784,
+  "zone_width_pct": 0.0728,
+  "quality_ok": true,
+  "swing_high": 0.01784,
+  "swing_low": 0.01663,
+  "stop_dist_pct": 0.0361,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 51.4,
+   "vol_ratio": 7.05,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0938,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0

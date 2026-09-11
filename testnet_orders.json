@@ -3125,5 +3125,22 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-11T20:17:45",
+  "sembol": "BLURUSDT",
+  "dilim": "4h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 216516375,
+   "miktar": 79365.0,
+   "giris": 0.01724,
+   "stop": 0.01661,
+   "tp": 0.02034,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
