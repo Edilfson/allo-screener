@@ -287,6 +287,18 @@ def main():
         eski = json.load(open(STATE_FILE)) if os.path.exists(STATE_FILE) else {}
         yeni_state["portfoy"] = eski.get("portfoy", {})
         yeni_state, pmsg = trend_portfoy.calistir(yeni_state)
+        # TESTNET ESLEME (opsiyonel, TREND_TESTNET=1): b3 sepetinin hedef agirliklarini
+        # 1x kaldiracla Binance Futures testnetinde gercek pozisyona cevirir.
+        # Kagit takip etkilenmez; hata olsa bile bot akisi bozulmaz.
+        if os.environ.get("TREND_TESTNET") == "1":
+            try:
+                import trend_testnet
+                oz = trend_testnet.esle(yeni_state["portfoy"]["b3"]["w"])
+                pmsg += (f"\n\U0001F9EA Testnet esleme{' (kuru)' if oz['kuru'] else ''}: "
+                         f"{oz['emir']} emir, {oz['atlanan']} atlandi, {oz['hata']} hata")
+            except Exception as e:
+                print("testnet esleme hatasi:", e)
+                pmsg += f"\n\U0001F9EA Testnet esleme HATASI: {e}"
         tg_send(pmsg)
     except Exception as e:
         print("portfoy katmani hatasi:", e)
