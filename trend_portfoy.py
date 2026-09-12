@@ -79,7 +79,8 @@ def yuruyen_sepet(onceki, n=3):
     return {"ay": ay, "liste": [s for _, s in skor[:n]], "secim_gunu": str(bugun.date())}
 
 
-def agirliklar(gost, liste):
+def agirliklar(gost, liste, tavan=None):
+    """tavan: tek-coin agirlik ust siniri (H5: 0.20; fazlasi nakde, yeniden dagitim yok)"""
     K = len([s for s in liste if s in gost])
     w = {}
     for s in liste:
@@ -90,6 +91,8 @@ def agirliklar(gost, liste):
     brut = sum(w.values())
     if brut > 1.0:
         w = {k: v / brut for k, v in w.items()}
+    if tavan:
+        w = {k: min(v, tavan) for k, v in w.items()}
     return {k: round(v, 4) for k, v in w.items()}
 
 
@@ -120,7 +123,10 @@ def calistir(state):
     pf = state.setdefault("portfoy", {})
     ys = yuruyen_sepet(pf.get("yuruyen_sepet"))
     pf["yuruyen_sepet"] = ys
-    semboller = sorted(set(B3) | set(ys["liste"]))
+    # H5 (kesif_tavan, 2026-09-13): yuruyen top-5 + tek-coin tavani 0.20 -> gap riski icin genislik + kuyruk emniyeti
+    ys5 = yuruyen_sepet(pf.get("yuruyen_sepet5"), n=5)
+    pf["yuruyen_sepet5"] = ys5
+    semboller = sorted(set(B3) | set(ys["liste"]) | set(ys5["liste"]))
     gost = {}
     for s in semboller:
         try:
@@ -132,9 +138,10 @@ def calistir(state):
     gun = max(g["gun"] for g in gost.values())
     satirlar = [f"\U0001F4BC <b>TREND PORTFOYU</b> (MA{MA}, hedef vol %{HEDEF_VOL*100:.0f}, kaldirac yok, kagit)",
                 f"Gun: {gun} | islem saati 01:10 UTC"]
-    for ad, liste in (("b3 BTC/ETH/BNB", B3), (f"yuruyen top-3 ({ys['ay']})", ys["liste"])):
-        w = agirliklar(gost, liste)
-        key = "b3" if ad.startswith("b3") else "yuruyen3"
+    for ad, liste, key, tavan in (("b3 BTC/ETH/BNB", B3, "b3", None),
+                                  (f"yuruyen top-3 ({ys['ay']})", ys["liste"], "yuruyen3", None),
+                                  (f"H5 yuruyen top-5 + tavan %20 ({ys5['ay']})", ys5["liste"], "yuruyen5_tavan", 0.20)):
+        w = agirliklar(gost, liste, tavan)
         p = kagit_ilerlet(pf.setdefault(key, {"equity": 1.0, "altut": 1.0, "w": {}, "son_fiyat": None}), gost, w, gun)
         satirlar.append(f"\n<b>{ad}</b>  brut %{sum(w.values())*100:.0f}")
         for s in liste:

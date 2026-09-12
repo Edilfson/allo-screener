@@ -71,3 +71,11 @@ Brut-eslenmis al-tut: A2 Sharpe 0.94 vs -0.27 (DD 14.7 vs 20.0); Y 1.10 vs 0.47 
 KARAR: 4/4 aday olcutu gecti (Sharpe VE maxDD kiyastan iyi). Beklenti araligi (0.7-1.35) icinde.
 Canli: trend_portfoy.py (vt20 cap1.0) + trend_testnet.py. Bundan sonra holdout verisi KAPALI; yeni
 karar ancak canli kagit/testnet verisiyle (H3 esigi: 12 ay).
+
+## H5 - Yuruyen top-5 + tek-coin tavani %20 (on kayit 2026-09-13, kesif_tavan)
+**Kesif (gelistirme bolumu, holdout KULLANILMADI):** tavan tek basina olcek kucultme (gross-esit maxDD daha kotu);
+gap riskini asil dusuren sepet genisligi (top-3 -> top-5: -90% sok kumulatif kayip 0.73 -> 0.51); top-5'te %20
+tavan neredeyse bedava (-0.02 Sharpe). Ters kanit: 2024-25'te genislik zarar ettirdi (top3 +0.30 vs top5 +0.15).
+**Canli test:** trend_portfoy.py 3. kagit portfoy `yuruyen5_tavan` (MA50 + vt20 + tavan 0.20).
+**Karar esigi (12 ay):** H5 maxDD < Y maxDD VE Sharpe farki > -0.20 ise kalici; gercek -%40+ gecelik gap
+yasanirsa o olaydaki darbe farki tek basina belirleyici. Beklenen: Sharpe ~ayni, maxDD 0.27 -> 0.24.
