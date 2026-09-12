@@ -40,6 +40,28 @@ for ad, sepet, kw, acik_ad in ADAYLAR + KIYAS:
                   f"maxDD={x['maxdd']*100:5.1f}% Sharpe={x['sharpe']:5.2f} ciro/yil={x.get('ciro_yil')}")
         else:
             print(f"  {b:<8} veri yok ({x})")
+# BRUT-ESLENMIS KIYAS (kirmizi takim 6B): strateji ort brut ~0.26 ile kosuyor; al-tutu ayni brute
+# olcekleyince maxDD farki buyuk olcude kayboluyor. Adil DD kiyasi icin A2 ve Y'nin her bolumdeki
+# ortalama brutuyle olceklenmis al-tut.
+print("\n== BRUT-ESLENMIS AL-TUT KIYASI ==")
+P = T2.T.panel(); b = P["bas"]
+for ad, sepet, kw, _ in ADAYLAR:
+    if kw.get("hedef") is None:
+        continue
+    cfg = T2.sepet_cfg(sepet, **kw); cfg["ad"] = ad
+    r = T2.kos2(cfg, bolumler=bolumler, kaydet=False)
+    ka = T2.sepet_cfg(sepet, altut=True); ka["ad"] = "K_" + ad
+    Wk = T2.agirliklar2(ka)
+    for bl in bolumler:
+        g = r[bl].get("ort_gross")
+        if not g:
+            continue
+        eq, gg = H.sim_portfoy(P["O"][b:], P["C"][b:], Wk[b:] * g, maliyet=T2.MALIYET_VARSAYILAN)
+        rk = H.portfoy_rapor(eq, gg, P["gun"][b:], bl)
+        if "sharpe" in rk:
+            print(f"  {ad:<24} {bl:<8} strateji Sharpe={r[bl]['sharpe']:.2f} maxDD={r[bl]['maxdd']*100:.1f}%  |  "
+                  f"al-tut@brut{g:.2f} Sharpe={rk['sharpe']:.2f} maxDD={rk['maxdd']*100:.1f}%")
+            sonuc.setdefault(ad, {})[f"kiyas_brut_esli_{bl}"] = rk
 if acik:
     json.dump(sonuc, open(os.path.join(H.LAB, "sonuc_holdout.json"), "w"), indent=1, default=str)
     print("\nKaydedildi: sonuc_holdout.json")
