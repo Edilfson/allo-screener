@@ -25,6 +25,12 @@ gorunen" degil, **yeni veride de calisan**. Uydurma sonuc uretmek basarisizlikti
    dusenler (kisa), ogrenilen (3-5 madde), oneri (bir sonraki ajan icin).
 7. Ajan kodunu `araclar/lab/<aile>.py` olarak birakir; tekrar calistirilabilir olmali.
 
+## Zorunlu ilk adim: rastgele-giris kontrolu (ict2 ajanindan, 2026-09-13)
+Islem bazli her yeni aile once KONTROL kosar: ayni stop/TP/giris mekanigi, ayni barlar, RASTGELE yon
+(veya rastgele bar). Sinyal kumesi kontrolden bootstrap ile anlamli farkli degilse (p>0.05) aile kapanir.
+Hedef brut kenar > 0.15R; altinda maliyet yer (1h/4h'te islem basi maliyet 0.03-0.12R).
+Kanit: ICT 1h p=0.71 (fark yok), 4h ICT rastgeleden -0.50R KOTU (p=0.006).
+
 ## Coklu test uyarisi
 Defterdeki toplam test sayisi N ise, N test arasinda en iyisinin sansla GA99'u gecme
 olasiligi kucuk degildir. Bu yuzden VALID tek sefer ve HOLDOUT tek sefer. Aile icinde

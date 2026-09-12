@@ -1,0 +1,51 @@
+{
+  "aile": "kirilim",
+  "kaynak": "1h (harness.veri_1h + resample), dilimler 1h ve 4h, rapor(kaynak='1h'): TRAIN < 2025-07-01, VALID 2025-07..12",
+  "coin": 98,
+  "denenen": 93,
+  "sonuc": "NEGATIF - 3 adayin ucu de VALID'de maliyet sonrasi negatif. Aileden kabul edilen strateji YOK.",
+  "en_iyi_3": [
+    {
+      "ad": "donchian_1h_N55_M27_k2.0_tp5R_short",
+      "params": {"tip": "donchian", "tf": "1h", "N": 55, "M": 27, "k": 2.0, "tp": 5, "yon": "short", "cikis": "kanal", "giris": "piyasa t+1 acilis"},
+      "train": {"n": 5053, "ort_brut": 0.2674, "ort_net": 0.2138, "ga99": [0.1394, 0.2874], "win": 0.318, "yari1": 0.1983, "yari2": 0.2292},
+      "valid": {"n": 4015, "ort_brut": 0.0442, "ort_net": -0.0135, "ga99": [-0.0789, 0.0554], "win": 0.306, "yari1": -0.2014, "yari2": 0.1681},
+      "komsular": "Genis pozitif bolge, TRAIN'de tamami pozitif: k=1.5/2.0/3.0 -> 0.161/0.145/0.119 (TP'siz); N=40/55/80 -> 0.115/0.145/0.072; M=13/27/40/55 -> 0.118/0.145/0.140/0.078; TP: yok/3R/5R -> 0.145/0.125/0.214 (monotonik degil, 5R secimi biraz sansa acik); ATR iz suren cikis (ktrail=3) 0.159. Komsu kontrolu GECTI, VALID KALDI.",
+      "karar": "RED (valid ort_net<0)"
+    },
+    {
+      "ad": "donchian_4h_N20_M10_k2.0_long_rej",
+      "params": {"tip": "donchian", "tf": "4h", "N": 20, "M": 10, "k": 2.0, "yon": "long", "rejim": "BTC gunluk MA50 (harness.rejim_at), sadece rejim yonunde"},
+      "train": {"n": 2130, "ort_brut": 0.2700, "ort_net": 0.2392, "ga99": [0.0974, 0.4316], "win": 0.321, "yari1": 0.4360, "yari2": 0.0424},
+      "valid": {"n": 1007, "ort_brut": 0.0137, "ort_net": -0.0215, "ga99": [-0.1702, 0.1748], "win": 0.293, "yari1": 0.3771, "yari2": -0.4192},
+      "komsular": "TRAIN'de tamami pozitif: k=1.5/2.0/3.0 -> 0.287/0.239/0.166; N=20/30/40 (k=2) -> 0.239/0.349/0.365; M=5/10/20 -> 0.125/0.239/0.342; TP 3R -> 0.103. Komsu kontrolu GECTI ama TRAIN'in ikinci yarisi zaten cok zayif (0.436 -> 0.042).",
+      "karar": "RED (valid ort_net<0; VALID icinde de yari1 +0.38 / yari2 -0.42, tam cokme)"
+    },
+    {
+      "ad": "donchian_1h_N80_M40_k1.5_long_rej",
+      "params": {"tip": "donchian", "tf": "1h", "N": 80, "M": 40, "k": 1.5, "yon": "long", "rejim": "BTC gunluk MA50"},
+      "train": {"n": 2752, "ort_brut": 0.4196, "ort_net": 0.3408, "ga99": [0.0573, 0.7091], "win": 0.210, "yari1": 0.4912, "yari2": 0.1912},
+      "valid": {"n": 1316, "ort_brut": 0.0530, "ort_net": -0.0380, "ga99": [-0.2824, 0.2517], "win": 0.166, "yari1": 0.5800, "yari2": -0.6431},
+      "komsular": "TRAIN'de tamami pozitif: k=1.5/2.0/3.0 -> 0.341/0.297/0.233; N=40/55/80 (k=1.5) -> 0.105/0.198/0.341. TRAIN'de iki yari da pozitifti (tek 1h long konfigu). Komsu kontrolu GECTI, VALID KALDI.",
+      "karar": "RED (valid ort_net<0, win %16.6, maliyet 0.091 R/islem)"
+    }
+  ],
+  "dusenler": [
+    "H2 volatilite kirilimi (c > onceki_c + f*ATR ve hacim > 20-bar ort*1.5): 12 konfigurasyonun HICBIRI GA99 alt siniri>0 degil. 1h dilim tamamen negatif (f=0.5/1.0 -> -0.03..-0.06 R). Aile olarak RED, tekrar denenmesin.",
+    "1h Donchian N=20: her k'de negatif (-0.026..-0.057 R). En kisa geri bakis her yerde en kotu; islem basi maliyet (dar stop) yiyor.",
+    "4h Donchian N=40/N=55 yonsuz (overlay'siz): net ~0.02-0.08 ama GA99 alt siniri negatif, yari2 hep negatif.",
+    "Sadece-long overlay'siz (1h N55): 0.061, GA99 alt -0.039 -> zayif. Long tarafi tek basina rejim filtresi olmadan tasimiyor.",
+    "short + BTC rejim filtresi (rejim=-1'de short): -0.042, TRAIN yari1 -0.47 -> rejim filtresi short tarafinda tam tersi etki yapiyor.",
+    "M=N (cikis kanali = giris kanali, cok gec cikis): 1h 0.069, 4h 0.003 -> gec cikis kotu; M ~ N/2 en iyi bolge.",
+    "ATR iz suren stop (ktrail=2/3) trend kanal cikisina belirgin bir ustunluk saglamadi (1h short'ta 0.159 vs 0.145; 4h'te ktrail=3 -> 0.019, cok kotu)."
+  ],
+  "ogrenilen": [
+    "Kirilim edge'i BRUT olarak var ama MALIYETE dayanmiyor: uc adayin da VALID brut ortalamasi pozitif (+0.014 / +0.044 / +0.053 R) iken net negatif. Islem basi maliyet 0.031-0.091 R (=0.0015/sp; sp=k*ATR14/fiyat). 1h/4h dilimde stop mesafesi %1.5-2 civari oldugundan maliyet, kalan edge'in tamamini yiyor. Bu aile icin belirleyici kisit maliyettir, sinyal kalitesi degil.",
+    "TRAIN (2024-09..2025-06) tek rejim: 93 konfigurasyonun 85'i TRAIN'de pozitif, 53'unun GA99 alt siniri>0. Bu kadar genis bir 'pozitif bolge' beceri degil, donem etkisi. Neredeyse tum long konfiglerinde yari1 >> yari2 (orn. 4h N40 long_rej: 0.877 -> -0.091). Bu kaynak icin TRAIN penceresi tek basina trend stratejisi dogrulamaya YETMIYOR.",
+    "BTC gunluk MA50 rejim overlay'i TRAIN'de long performansini 2-3 katina cikariyor (1h N55: 0.061 -> 0.170; 4h N20: 0.116 -> 0.239) ama VALID'de tersine doner (4h: yari1 +0.38 / yari2 -0.42). Overlay yeni bilgi eklemiyor, sadece 2024 sonu boga donemini secip alarak TRAIN'i sisiriyor.",
+    "Tek gercekten donem-bagimsiz gorunen sey 1h SHORT kirilimi: TRAIN'de N/M/k/TP'nin tum komsularinda pozitif ve iki yarisi da pozitif (0.198/0.229) - 93 konfig icinde bu ozelligi tasiyan tek grup. VALID'de yine de -0.0135; ama VALID icinde yari1 -0.20 / yari2 +0.17, yani 2025 Q4'te tekrar pozitife donuyor. Olen sey 'short edge' degil, dayaniksizligi.",
+    "Geri bakis uzunlugu tek yonlu etki ediyor: N>=40 gerekli (N=20 1h'te negatif), N=55-80 en iyi bolge; cikis kanali M ~ N/2. k (ATR stop carpani) etkisi zayif ve ters: dar stop (k=1.5) brut olarak iyi ama maliyet/R'yi buyuttugu icin net avantaji erir.",
+    "Sabit TP vs trend cikisi (H4) net bir kazanan uretmedi: 5R > TP yok > 3R (monotonik olmayan siralama = gurultu). 3R hedefi trend takibinde kazanan kuyrugu kesiyor, 5R ise pratikte 'TP yok'a yakin."
+  ],
+  "oneri": "Bu ailede 1h/4h piyasa girisi (taker+kayma, 0.03-0.09 R/islem) ile devam etmenin anlami yok; brut edge var ama maliyet marji yok. Sonraki ajan icin somut uc yol: (1) MALIYETI DUSURMEDEN sp'yi buyut - ayni Donchian kuralini 12h/1d diliminde kos: stop mesafesi %4-6'ya cikar, maliyet 0.02 R'nin altina duser, ayni brut edge net pozitife gecebilir. (2) Giris tipini degistir: kirilim sonrasi geri cekilmeye LIMIT emir (entry=fiyat, maker fee, pending_h ~ 6-12 bar) - hem maker ucreti hem daha iyi fiyat; sim_islem bunu destekliyor (dolmayan sinyal 'cancelled' olarak raporlanir, dolma oranini izle). (3) Islem bazli yerine PORTFOY bazli test: 1h N55 short sinyallerini gunluk agirlik matrisine cevirip sim_portfoy ile BTC al-tut'a karsi Sharpe/maxDD kiyasla - dusuk win-rate/yuksek kuyruk profili portfoy seviyesinde farkli gorunebilir. Ayrica: 1h kaynakli TRAIN penceresi (2024-09..2025-06) tek rejim oldugundan trend/kirilim hipotezlerini bu kaynakta gelistirmek yaniltici; ayni kurallari veri_1d ile 2017'den beri kosmak (TRAIN<2025) cok daha bilgilendirici olur."
+}

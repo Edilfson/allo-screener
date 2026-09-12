@@ -1,0 +1,78 @@
+{
+ "aile": "kesitsel",
+ "denenen": 108,
+ "sonuc": "NEGATIF - aday yok. Hicbir konfigurasyon VALID'de (2025) BTC al-tut kiyasini Sharpe VE maxDD'de gecemedi; ucu de mutlak olarak zararda.",
+ "kiyaslar": {
+  "KIYAS_btc": {
+   "train": {"sharpe": 0.95, "cagr": 0.517, "maxdd": 0.832, "turnover_yil": 0.1},
+   "valid": {"sharpe": 0.05, "cagr": -0.065, "maxdd": 0.32, "turnover_yil": 0.0}
+  },
+  "KIYAS_ew30": {
+   "train": {"sharpe": 0.41, "cagr": -0.038, "maxdd": 0.916, "turnover_yil": 14.2},
+   "valid": {"sharpe": -0.82, "cagr": -0.627, "maxdd": 0.681, "turnover_yil": 14.9}
+  },
+  "KIYAS_ew50": {
+   "train": {"sharpe": 0.43, "cagr": -0.024, "maxdd": 0.91, "turnover_yil": 14.2},
+   "valid": {"sharpe": -1.15, "cagr": -0.731, "maxdd": 0.768, "turnover_yil": 15.6}
+  },
+  "KIYAS_ew100": {
+   "train": {"sharpe": 0.55, "cagr": 0.083, "maxdd": 0.881, "turnover_yil": 13.3},
+   "valid": {"sharpe": -1.34, "cagr": -0.783, "maxdd": 0.813, "turnover_yil": 15.9}
+  },
+  "not": "Kiyas esigi BTC al-tut: train sharpe>0.95 & maxdd<0.832, valid sharpe>0.05 & maxdd<0.320."
+ },
+ "en_iyi_3": [
+  {
+   "ad": "H1_K14_U30_L20_REJVOL",
+   "params": {"K": 14, "skip": 7, "U": 30, "L": 20, "rebal": 7, "mod": "long", "rejim": true,
+              "voltgt": true, "min_hist": 120, "maliyet": 0.0007, "funding": 0.0},
+   "train": {"gun": 2694, "toplam": 17.68, "cagr": 0.487, "maxdd": 0.595, "sharpe": 1.06,
+             "turnover_gun": 0.0821, "turnover_yil": 30.0,
+             "yillar": {"2019": -0.423, "2020": 2.018, "2021": 6.122, "2022": -0.444, "2023": 1.885, "2024": -0.061}},
+   "valid": {"gun": 363, "toplam": -0.238, "cagr": -0.239, "maxdd": 0.384, "sharpe": -0.32,
+             "turnover_gun": 0.1192, "turnover_yil": 43.5, "yillar": {"2025": -0.238}},
+   "karar": "RED - valid sharpe<0 ve maxDD 0.384 > BTC 0.320",
+   "komsular": "L20+REJVOL ailesinin 12 hucresinin TAMAMI train'de sharpe 0.91-1.12, maxdd 0.60-0.74. Bolge genis ve tutarli pozitif; tek hucre sansi degil. K±1 adim (14->30) sharpe 1.06->1.00 (U30,L20), U±1 adim (30->50) 1.06->0.99."
+  },
+  {
+   "ad": "H1_K14_U50_L10_REJVOL",
+   "params": {"K": 14, "skip": 7, "U": 50, "L": 10, "rebal": 7, "mod": "long", "rejim": true,
+              "voltgt": true, "min_hist": 120, "maliyet": 0.0007, "funding": 0.0},
+   "train": {"gun": 2694, "toplam": 37.818, "cagr": 0.642, "maxdd": 0.676, "sharpe": 1.13,
+             "turnover_gun": 0.1274, "turnover_yil": 46.5,
+             "yillar": {"2018": -0.127, "2019": 0.388, "2020": 3.162, "2021": 7.774, "2022": -0.542, "2023": 1.191, "2024": -0.125}},
+   "valid": {"gun": 363, "toplam": -0.305, "cagr": -0.306, "maxdd": 0.447, "sharpe": -0.35,
+             "turnover_gun": 0.1662, "turnover_yil": 60.7, "yillar": {"2025": -0.305}},
+   "karar": "RED - valid sharpe<0, maxDD 0.447 > BTC 0.320",
+   "komsular": "Grid tepesi. L10+REJVOL ailesi 0.82-1.13 (12 hucre, hepsi pozitif) ama L20'den daha oynak. U 30/50/100 -> 1.11/1.13/1.04; K 14/30/60/90 (U50,L10) -> 1.13/0.88/0.90/0.82: K=14 net ustun, K arttikca duser."
+  },
+  {
+   "ad": "H1_K30_U50_L20_REJVOL",
+   "params": {"K": 30, "skip": 7, "U": 50, "L": 20, "rebal": 7, "mod": "long", "rejim": true,
+              "voltgt": true, "min_hist": 120, "maliyet": 0.0007, "funding": 0.0},
+   "train": {"gun": 2694, "toplam": 13.291, "cagr": 0.434, "maxdd": 0.667, "sharpe": 0.95,
+             "turnover_gun": 0.0898, "turnover_yil": 32.8,
+             "yillar": {"2019": -0.449, "2020": 3.036, "2021": 7.287, "2022": -0.529, "2023": 1.751, "2024": -0.401}},
+   "valid": {"gun": 363, "toplam": -0.458, "cagr": -0.46, "maxdd": 0.49, "sharpe": -0.92,
+             "turnover_gun": 0.1241, "turnover_yil": 45.3, "yillar": {"2025": -0.458}},
+   "karar": "RED - valid en kotu aday; train'de de BTC'yi Sharpe'ta gecemiyor (0.95 = esit)",
+   "komsular": "Gridin merkez hucresi, bilerek secildi. Komsulari (K14/K60, U30/U100, L10) 0.88-1.06 arasi."
+  }
+ ],
+ "dusenler": [
+  "H2 long-short (en iyi 10 LONG / en kotu 10 SHORT, funding 0.0003/gun): 8 konfigurasyonun TAMAMI train'de negatif, sharpe -0.25..-0.73, CAGR -9%..-20%. Kripto kesitinde short bacagi kaybettiriyor (en kotu performans gosterenler siklikla siddetli sekilde geri sicriyor). Valid'e goturulmedi.",
+  "H1 saf (rejim/vol yok, 24 hucre): train sharpe sadece 0.36-0.65, maxdd 0.91-0.96. Esit-agirlik evren al-tutunu (0.41-0.55) zar zor geciyor, BTC'yi (0.95) hicbir hucrede gecmiyor. Tek basina kesitsel momentum kiyasa uzak.",
+  "H4 saf vol-hedefleme (24 hucre): sharpe +0.08..+0.13 iyilesme (0.48-0.75), ama maxDD neredeyse hic dusmuyor (0.88-0.95). Tek basina yeterli degil; sadece rejim filtresiyle birlikte anlamli.",
+  "K=60 ve K=90 (uzun formasyon donemi) her U/L kombinasyonunda K=14'ten kotu. Jegadeesh-Titman'in 3-12 ay momentumu gunluk kriptoda calismiyor; sinyal 2 haftalik.",
+  "L=10 vs L=20: L10 tepe Sharpe'i daha yuksek ama varyansi ve turnover'i (46-61%/yil) fazla; L20 daha dusuk maxDD ve daha genis pozitif bolge.",
+  "Uc adayin da valid maxDD'si (0.38/0.45/0.49) BTC'nin 0.32'sinden kotu -> maxDD sartini da kaciriyorlar, sadece Sharpe'i degil."
+ ],
+ "ogrenilen": [
+  "BTC MA50 rejim filtresi (H3) tek basina en guclu bilesen ve TUM parametre gridinde tutarli: 24 hucrenin 24'unde Sharpe ~+0.35 (0.36-0.65 -> 0.68-1.04) ve maxDD ~-0.20 (0.91-0.96 -> 0.62-0.81). Bu parametre secimine bagli bir tesadufi degil, sistematik bir etki. Vol-hedefleme ustune ~+0.10 Sharpe daha ekliyor (REJVOL: 0.82-1.13).",
+  "Momentum alfasi tek bir doneme sikismis: 2020 (+202%) ve 2021 (+612%) ile 2023 (+189%). 2019 (-42%), 2022 (-44%), 2024 (-6%) ve 2025 (-24%) negatif. Yani strateji 'altseason' bagimli; genis boga piyasasi disinda maliyet sonrasi kaybediyor. 2024'ten itibaren BTC her yil onu yeniyor (2024: BTC +114% vs strateji -6%).",
+  "2025 altcoin kesiti mutlak felaket: evren esit-agirlik al-tut -63% (U30) / -73% (U50) / -78% (U100), Sharpe -0.8..-1.3. Momentum+rejim+vol bu kaybi -24%'e indirdi (kaybin ~2/3'unu kesti), yani goreli olarak alt sepetine karsi calisti; ama BTC (-6.5%, maxDD 0.32) yaninda hala yenildi. Alt evrenine long kalmak 2025'te dogru soru degildi.",
+  "Turnover: haftalik dengeleme + gunluk rejim anahtari L20'de ~30-33%/gun*365 (yillik ~30x devir), L10'da 46-61x. Tek yon 0.0007 maliyetle bu yilda ~4-9% getiri yakiyor. Gunluk rejim anahtarlamasi turnover'in ciddi kismini uretiyor (valid'de turnover train'in ~1.4 kati -> 2025'te cok whipsaw).",
+  "Long-short momentum kriptoda calismiyor (H2). Short bacagi hem train'de negatif hem funding maliyeti tasiyor. Kripto kesitinde 'kaybeden' portfoyu shortlamak sistematik olarak zarar."
+ ],
+ "oneri": "Bu haliyle kesitsel momentum ailesi kapatilmali - VALID'de RED. Ancak rejim filtresi bulgusu (24/24 hucrede tutarli iyilesme) tasinabilir bir bilesen; PROTOKOL'deki 'BTC/ETH/BNB gunluk MA50 saglam' notuyla ortusuyor. Bir sonraki ajan icin somut oneri: (1) Kesitsel siralamayi BIRAK, rejim/trend bilesenini merkeze al - evren long yerine BTC-agirlikli, sadece rejim iyi iken alt'a yayilan bir 'BTC-cekirdek + alt-uydu' portfoyu test edilsin (or. rejim ON iken %70 BTC + %30 top-momentum alt, OFF iken nakit); kiyas yine BTC al-tut. (2) Rejim anahtarlama turnover'ini dusur: gunluk yerine haftalik rejim kontrolu veya MA50'ye histerezis bandi (+/-%2) ekle - 2025'te turnover %40 artmis, whipsaw maliyeti gercek. (3) Kesitsel sinyal denenecekse yon TERS deneme degeri var: 2022/2024/2025'te en yuksek 14g getirili altlar sonradan kaybediyor; ama once TRAIN'de kesitsel tersine-donusun genis parametre bolgesinde pozitif olup olmadigi kontrol edilmeli (bu ailede test EDILMEDI). (4) HOLDOUT 2026'ya bu aileden hicbir konfigurasyon goturulmemeli."
+}
