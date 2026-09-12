@@ -52,3 +52,10 @@ varyantinin hicbiri IS+OOS pozitif degil. ICT parametreyle kurtarilamaz.
 - "4h +1.40R" (devir dokumani): yeniden oynatmada -0.40R. Olcum hatasiydi.
 - "SHORT daha iyi" / "LONG daha iyi": her ikisi de yarilar arasinda ters dondu.
 - "BTC ayi rejimi +1.14R": tamamen 1. yaridan; zamanla karisik, anlamsiz.
+
+## H4 - HOLDOUT ON KAYDI (2026-09-13, lab programi)
+Holdout (2026-01-01..bugun) adaylari, degerlendirmeden ONCE ilan: A1_b3_ma50, A2_b3_ma50_vt30 (ana),
+Y_yuruyen3_ma50_vt30, Y_yuruyen3_ma50. Kiyaslar: b3 al-tut, BTC al-tut, yuruyen top-3 al-tut.
+Basari olcutu: holdout'ta Sharpe VE maxDD, kendi kiyasindan iyi. Beklenti (tsmom2): Sharpe 0.7-1.0 bile basari.
+Sonradan aday EKLENMEZ. Betik: araclar/lab/holdout_degerlendir.py (LAB_HOLDOUT ile).
+Elenen aileler (lab, 2026-09-13): kesitsel momentum, intraday kirilim, ict2 (rastgele kontrol), rejim/MR/sikisma.
