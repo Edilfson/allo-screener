@@ -1,0 +1,2160 @@
+{
+ "aile": "kirmizi_takim",
+ "tarih": "2026-09-12T22:56:37.127232+00:00",
+ "hedef": "A2 (b3 MA50+vt30) ve Y (yuruyen top-3 MA50+vt30) adaylarini sisiren her seyi bulmak",
+ "holdout": "DOKUNULMADI (LAB_HOLDOUT ayarlanmadi, veri 2026-01-01'de fiziksel kesik)",
+ "ozet": {
+  "karar": "Kod duzeyinde ADAYLAR AYAKTA. 6 denetim basliginin 4'u tamamen temiz (ileriye bakma, panel hizalamasi, maliyet, vol hedefleme). Iki gercek indirim var ve ikisi de KOD DEGIL METODOLOJI: (i) maxDD ustunlugu buyuk olcude pozisyon buyuklugu farkindan geliyor, (ii) sepet secimi (A2) ve hayatta-kalma yanliligi (Y) Sharpe'i sisiriyor.",
+  "kod_hatalari": [
+   "min_gun=200 (harness.gunluk_panel) ileriye bakan evren filtresi - SADECE Y'yi etkiler; duzeltince Y train 1.19 -> 1.36 (yani sizinti aleyhte calisiyormus)",
+   "sim_portfoy'da O[t+2] nan maskesi teknik olarak ileriye bakma - bu iki adayda ETKISI SIFIR (etkilenen hucre yok), ama baska bir evrende sessizce sisirir",
+   "tsmom2.akis() ciroyu suruklenmemis w_prev ile hesapliyor -> raporlanan ciro/yil abartili (maliyet hesabi dogru, Sharpe etkilenmiyor)"
+  ],
+  "sonuc_tablosu": {
+   "A2": {
+    "onceki": {
+     "train": {
+      "sharpe": 1.59,
+      "maxdd": 0.275,
+      "cagr": 0.361,
+      "gun": 2467,
+      "gross": 0.261,
+      "ciro_yil": 13.34
+     },
+     "valid": {
+      "sharpe": 1.39,
+      "maxdd": 0.085,
+      "cagr": 0.27,
+      "gun": 363,
+      "gross": 0.327,
+      "ciro_yil": 18.09
+     }
+    },
+    "duzeltilmis": {
+     "train": {
+      "sharpe": 1.57,
+      "maxdd": 0.276,
+      "cagr": 0.352,
+      "gun": 2467,
+      "gross": 0.26,
+      "ciro_yil": 13.02
+     },
+     "valid": {
+      "sharpe": 1.31,
+      "maxdd": 0.085,
+      "cagr": 0.245,
+      "gun": 363,
+      "gross": 0.317,
+      "ciro_yil": 16.96
+     }
+    },
+    "gross_esit_kiyas": {
+     "train": {
+      "sharpe": 1.07,
+      "maxdd": 0.308,
+      "cagr": 0.202,
+      "gun": 2467,
+      "gross": 0.26,
+      "ciro_yil": 0.06
+     },
+     "valid": {
+      "sharpe": 0.32,
+      "maxdd": 0.135,
+      "cagr": 0.04,
+      "gun": 363,
+      "gross": 0.317,
+      "ciro_yil": 0.0
+     }
+    }
+   },
+   "Y": {
+    "onceki": {
+     "train": {
+      "sharpe": 1.19,
+      "maxdd": 0.273,
+      "cagr": 0.243,
+      "gun": 2467,
+      "gross": 0.231,
+      "ciro_yil": 13.31
+     },
+     "valid": {
+      "sharpe": 1.54,
+      "maxdd": 0.083,
+      "cagr": 0.306,
+      "gun": 363,
+      "gross": 0.319,
+      "ciro_yil": 16.62
+     }
+    },
+    "duzeltilmis": {
+     "train": {
+      "sharpe": 1.36,
+      "maxdd": 0.273,
+      "cagr": 0.294,
+      "gun": 2467,
+      "gross": 0.238,
+      "ciro_yil": 12.82
+     },
+     "valid": {
+      "sharpe": 1.47,
+      "maxdd": 0.08,
+      "cagr": 0.28,
+      "gun": 363,
+      "gross": 0.309,
+      "ciro_yil": 15.48
+     }
+    },
+    "gross_esit_kiyas": {
+     "train": {
+      "sharpe": 0.75,
+      "maxdd": 0.311,
+      "cagr": 0.127,
+      "gun": 2467,
+      "gross": 0.238,
+      "ciro_yil": 0.34
+     },
+     "valid": {
+      "sharpe": 0.2,
+      "maxdd": 0.173,
+      "cagr": 0.019,
+      "gun": 363,
+      "gross": 0.309,
+      "ciro_yil": 0.62
+     }
+    }
+   }
+  },
+  "durust_beklenti": {
+   "A2": "train Sharpe 1.57 (duzeltilmis). Sepet secim yanliligini dusunce (tsmom2: 7 sepet medyani 1.37, ileriye bakmayan yuruyen sepet 1.36) durust train beklentisi ~1.35. maxDD ustunlugu gross-esit kiyasa gore yalnizca 0.276 vs 0.308 -> IHMAL EDILEBILIR. Gercek edge Sharpe'ta: gross-esit al-tuta karsi train +0.50, valid +0.99.",
+   "Y": "train Sharpe 1.36 (min_gun duzeltmesi dahil). Hayatta-kalma yanliligi icin -0.1..-0.45 indirim -> durust train beklentisi ~0.9-1.25. valid 1.47. Y, A2'den daha DURUST bir aday (sepet secimi kuralin parcasi) ama tek temiz olmayan yani survivorship."
+  },
+  "olculmemis_riskler": [
+   "1h veriyle olculen uygulama gecikmesi penceresi tek yil ve tek rejim (2024-11..2025-12).",
+   "Sepet coinlerinden birinin GECELIK -%90 cokusu: A2'de tek-coin agirlik p95 ~0.37, MA50 ve vol hedefleme bu riske karsi HICBIR koruma saglamiyor.",
+   "En kotu dusus 731 gun su altinda (tsmom2 olcumu) - Sharpe bunu gostermiyor.",
+   "valid = tek yil (363 gun), tek gozlem gibi davranilmali; defterdeki toplam test sayisi yuksek."
+  ]
+ },
+ "bulgular": [
+  {
+   "kod": "1A",
+   "siddet": "ORTA",
+   "sorun": "sim_portfoy'un 'sinyal t kapanisinda -> islem t+1 acilista' semantigi bir GECIKME DEGIL: gunluk barda close[t] ile open[t+1] AYNI ANDIR (00:00 UTC) ve veride pratikte AYNI fiyattir. Yani model SIFIR gecikme varsayiyor.",
+   "kanit": "BTCUSDT 3058 gun: |close[t]/open[t+1]-1| birebir 0 olan oran 0.388, 1bp icinde 0.8502, medyan 1.7e-07, p99 2.52e-03. Yani open[t+1]->open[t+2] getirisi = close[t]->close[t+1] getirisi.",
+   "etki": "'t+1 acilista islem' bir guvenlik payi DEGIL. Model 00:00:00 UTC'de tam kapanis fiyatindan islem varsayiyor. Ileriye bakma degil ama tsmom2'nin gecikme1 testinin (valid 1.39->1.09) neden bu kadar sert oldugunu aciklar: 0 ile 24 saat arasinda ara olcum yok. Gercekci gecikme (kapanis + dakikalar/saatler) 1h veriyle asagida olculuyor (1F)."
+  },
+  {
+   "kod": "1B",
+   "siddet": "TEMIZ",
+   "sorun": "Shift sondasi ile ileriye bakma ARANDI, BULUNMADI.",
+   "kanit": "A2: shift=-1 (yarinin sinyali) train Sharpe 3.86 vs shift=0 1.59 (+2.27); shift=+1 1.55 (-0.04). Y: -1 vs 0 = +2.43, 0 vs +1 = -0.02.",
+   "etki": "Gelecege kaydirmak sonucu IYILESTIRIYOR, gecikme KOTULESTIRIYOR -> sinyal zamanlamasi tutarli, kod t+1 bilgisini kullanmiyor. (Eger kod zaten gelecegi kullansaydi shift=-1 ek fayda vermezdi.)"
+  },
+  {
+   "kod": "1C",
+   "siddet": "TEMIZ",
+   "sorun": "ffill / roll_mean / roll_std / volat / oylar / hyst / _ay_indeks / agirliklar2 zincirinde GELECEK SIZINTISI YOK (A2 icin tam temiz).",
+   "kanit": "Veri 3 ayri gunde (idx 1200=2020-11-29, 2000=2023-02-07, 2600=2024-09-29) FIZIKSEL kesilip tum zincir sifirdan yeniden hesaplandi (T._P/_OY/T2._AY temizlendi). Kesim oncesi matrislerin max mutlak farki: Cf=0.0e+00, dv=0.0e+00, vol30=0.0e+00, frac_ma50=0.0e+00, W_A2=0.0e+00; nan uyusmazligi 0. Yani MA50, vol30, 90g dolar hacmi ve A2 agirliklari t gununde yalnizca t ve oncesini kullaniyor.",
+   "etki": "A2 tarafinda ileriye bakma yok; sonucu sisiren sey sizinti degil."
+  },
+  {
+   "kod": "1E",
+   "siddet": "ORTA",
+   "sorun": "GERCEK ILERIYE BAKMA BULUNDU (yalniz yuruyen sepet / Y adayini etkiler): harness.gunluk_panel(min_gun=200) bir coini panele almak icin TUM VERI SETINDEKI toplam gun sayisina bakiyor. Yani 2020-11'de daha 90 gunluk olan bir coin panelde var CUNKU ILERIDE 200+ gune ulasacagini biliyoruz. Yuruyen top-3 bu coinleri secebiliyor.",
+   "kanit": "Kesme testi: veri 2020-11-29'da kesildiginde panelden 304 coin dusuyor ve bunlarin tam-panel W_Y agirligi 0.048'e kadar cikiyor -> kesim ONCESI W_Y max fark 0.20 (Cf/dv/vol30/frac/W_A2 farki tam olarak 0.0). Ayrica: Y sepeti 174 gun boyunca secim aninda 200 gunden genc bir coin tutuyor (toplam agirligin %2.0'i).",
+   "etki": "'>=200 gun gecmis' sarti NEDENSEL uygulandiginda Y: train Sharpe 1.19 -> 1.38, maxDD 0.273 -> 0.273; valid Sharpe 1.54 -> 1.54, maxDD 0.083 -> 0.083."
+  },
+  {
+   "kod": "1F",
+   "siddet": "TEMIZ",
+   "sorun": "tsmom2'nin 'sinyal gecikmesine cok duyarli' uyarisi YANLIS TESHIS. 1h veriyle 0-18 saat arasi gecikme neredeyse etkisiz; kayip yalnizca TAM 24 saatte ortaya cikiyor - yani sorun 'gec islem yapmak' degil, 'bir gunluk sinyali kacirmak'.",
+   "kanit": "BTC/ETH/BNB MA50+vt30, 1h kaynakli 418 gun: Sharpe L=0h:1.62 L=1h:1.63 L=2h:1.52 L=3h:1.59 L=4h:1.62 L=6h:1.6 L=8h:1.64 L=12h:1.74 L=18h:1.58 L=24h:1.34. 1 saatlik gecikmenin bedeli -0.01, 4 saatlik +0.00, 24 saatlik +0.28 Sharpe.",
+   "etki": "Uygulanabilirlik acisindan IYI haber: 00:00 UTC'de saniyesinde islem yapma zorunlulugu yok, gun icinde birkac saatlik pencere yeterli. UYARI: pencere kisa (tek yil, valid ile ortusuyor, tek boga rejimi) -> kesin sayi degil yon gostergesi."
+  },
+  {
+   "kod": "1D",
+   "siddet": "DUSUK",
+   "sorun": "harness.sim_portfoy satir 202: `w[np.isnan(O[t+1]) | np.isnan(O[t+2])] = 0` -> O[t+2] t gununde BILINEMEZ. Yarindan sonraki gunun acilisi eksikse pozisyon bugunden sifirlaniyor: kucuk ama GERCEK bir ileriye bakma.",
+   "kanit": "Etkilenen (t,coin) hucre sayisi: A2 0, Y 0 (toplam mutlak agirlik A2 0.0, Y 0.0). Maskesiz (duzeltilmis, open ffill ile) sonuc: A2 train 1.59->1.59, valid 1.39->1.39; Y train 1.19->1.19, valid 1.54->1.54.",
+   "etki": "b3 sepetinde eksik gun yok -> A2 etkilenmiyor. Yuruyen sepette etkileniyorsa buyuklugu yukarida."
+  },
+  {
+   "kod": "2A",
+   "siddet": "TEMIZ",
+   "sorun": "ffill kaynakli sahte 0-getiri gunu ADAYLARI ETKILEMIYOR (ffill'in kendisi nedensel: np.maximum.accumulate ile yalniz gecmis indeks, listeleme oncesi nan korunuyor).",
+   "kanit": "Panel genelinde 13340 dolgu hucresi var ama A2'nin ve Y'nin pozisyon tuttugu hucrelerde 0 dolgu. b3 (BTC/ETH/BNB) listeleme sonrasi hic eksik gun icermiyor (ilk gunler: 2017-08-17/2017-08-17/2017-11-06); Y'nin kullandigi 7 coinde de 0 eksik gun.",
+   "etki": "Vol tahmini bu yoldan bozulmuyor; sahte 0-getiri kaynakli kaldirac sismesi YOK."
+  },
+  {
+   "kod": "2B",
+   "siddet": "TEMIZ",
+   "sorun": "Listeleme oncesi nan'lar agirligi BOZMUYOR: evren maskesi K=um.sum(1) ile birlikte 1/K olceklenir, coin canli degilse hem paydadan hem paydan cikar.",
+   "kanit": "A2 evren boyu gun dagilimi {3: 2832}; 3 coin ilk kez 2018-04-01. Al-tut kiyasi AYNI maskeyi kullaniyor (tsmom2.agirliklar2 altut kolu) -> kiyas da ayni gunlerde 2 coinli.",
+   "etki": "Hizalama tarafinda sisirme yok."
+  },
+  {
+   "kod": "2C",
+   "siddet": "TEMIZ",
+   "sorun": "Getiri kirpmasi np.clip(-0.95, 5.0): kirpma HER ZAMAN strateji lehinedir (asagida -%95'te durur, yukarida +%500'e kadar serbest) - asimetrik. Kirpmasiz kosuldu.",
+   "kanit": "Kirpilan hucre sayisi: A2 0, Y 0, al-tut kiyaslarinda 0/0. Kirpmasiz train Sharpe farki: A2 +0.000, Y +0.000.",
+   "etki": "Kirpma binmiyorsa etki yok; biniyorsa yukaridaki fark kadar sisirme var."
+  },
+  {
+   "kod": "3A",
+   "siddet": "ORTA",
+   "sorun": "HAYATTA-KALMA YANLILIGI: data1d_all bugunun vadeli listesi (372 coin). Yuruyen top-3 yalnizca HAYATTA KALANLAR arasindan seciyor; 2018-2025 arasi hacim siralamasinda ilk-3'e girip sonra delist olan/coken coinler (ornek sinifi: algoritmik stablecoin ekosistemleri, borsa tokenleri) sepette HIC gorunmuyor.",
+   "kanit": "Havuz 372 coin; yuruyen top-3 93 ay boyunca yalnizca 7 farkli coin secmis (BCH, BNB, BTC, ETH, LTC, SOL, YFI) - hepsi bugun hala listede. Delist olmus tek bir sembol bile havuzda yok. Hayalet-coin Monte Carlo (60 tekrar): 2 olay/8yil -> train Sharpe 1.19 -> 1.084 (maxDD 0.273 -> 0.299); 5 olay -> 0.972; 9 olay -> 0.738 (maxDD 0.378); 1 olay -> 1.124.",
+   "etki": "UST SINIR TAHMINI (train Sharpe): tarihsel olarak makul 1-2 olay senaryosunda ~0.07...0.11 puan; agresif (9 olay) senaryoda 0.45 puana kadar. Yani Y'nin train Sharpe'i 1.19 yerine ~1.084 (makul) .. 0.738 (kotumser) beklenmeli. Mekanizma: tek-coin agirlik ort 0.194 (p95 0.365) -> tek gunluk -%90 sok portfoyde ~%17 kayip; MA50 trend filtresi bir GECELIK cokuse karsi hicbir koruma saglamaz ve vol hedefleme de sadece 30 gunluk GECMIS vole bakar."
+  },
+  {
+   "kod": "3B",
+   "siddet": "ORTA",
+   "sorun": "A2 icin hayatta-kalma yanliligi YOK ama yerine daha buyugu var: sepet (BTC/ETH/BNB) 2026'dan geriye bakarak secildi. tsmom2 bunu zaten olcmus.",
+   "kanit": "tsmom2 sonuc_tsmom2.json: 7 sepette train Sharpe vt30 medyan ~1.37, b3 = en iyisi (1.59). Yuruyen (ileriye bakmayan) sepet train 1.19. BNB ilk kez 2022-12'de hacim ilk-3'une giriyor.",
+   "etki": "A2'nin train Sharpe'inin ~0.2-0.4'u sepet secimi. Kirmizi takim bunu DOGRULUYOR; ustune yuruyen sepetin kendi survivorship yanliligi (3A) biniyor - yani Y de tamamen temiz degil."
+  },
+  {
+   "kod": "4A",
+   "siddet": "TEMIZ",
+   "sorun": "cap=1.5 SPOT ICIN SORUN DEGIL: tsmom2.agirliklar2 satir 127-128 vol olceklemesinden SONRA gross>1 ise normalize ediyor, yani toplam pozisyon hicbir gun 1.0'i asmiyor.",
+   "kanit": "A2 gross max 1.0, Y gross max 1.0; gross>1 olan gun sayisi 0/0. En buyuk tek-coin agirligi A2 0.4716, Y 0.4716.",
+   "etki": "Kaldirac iddiasi cursuz; cap yalnizca coinler arasi GORECELI agirligi degistiriyor."
+  },
+  {
+   "kod": "4B",
+   "siddet": "TEMIZ",
+   "sorun": "cap=1.0 (kesin spot) ile yeniden kosuldu.",
+   "kanit": "A2 cap1.0 train S=1.57 dd=0.276 valid S=1.31 (cap1.5: 1.59/1.39); Y cap1.0 train 1.17 valid 1.47 (cap1.5: 1.19/1.54).",
+   "etki": "cap degisimi train Sharpe'i A2'de -0.02, Y'de -0.02 degistiriyor."
+  },
+  {
+   "kod": "4C",
+   "siddet": "TEMIZ",
+   "sorun": "Vol olceklemesi t gununun (kapanista bilinen) vol30'unu kullanip t+1 acilisinda uyguluyor - dogru.",
+   "kanit": "Ek 1 gun gecikmeyle (vol[t-1]) sonuc neredeyse ayni: A2 train 1.59->1.59, Y train 1.19->1.19.",
+   "etki": "Vol tahmini gelecege bagimli degil; sonuc vol'un tam gunune duyarli degil."
+  },
+  {
+   "kod": "5A",
+   "siddet": "TEMIZ",
+   "sorun": "Maliyet formulu elle dogrulandi: maliyet = sum|w_t - w_prev_drifted| * 0.0007, tek yon.",
+   "kanit": "5 ornek gunde elle hesap ile sim_portfoy ciktisi arasindaki max fark 0.00e+00. w_prev, onceki gunun getirisiyle SURUKLENMIS agirliktir (w*(1+r)/(1+x)) -> yalnizca gercekten islem goren fark ucretlendiriliyor; bu DOGRU (fazla maliyet yazilmiyor, eksik de yazilmiyor).",
+   "etki": "Maliyet muhasebesi dogru. Tek yon 7bp = alis+satis toplamda 14bp; Binance spot taker 10bp (BNB indirimsiz) + kayma dusunulurse 7bp iyimser olabilir -> asagida duyarlilik."
+  },
+  {
+   "kod": "5B",
+   "siddet": "TEMIZ",
+   "sorun": "Maliyet dayanikliligi: ciro yuksek (A2 ~13-18/yil) ama basabas maliyet cok uzakta.",
+   "kanit": "Train CAGR'i sifira indiren tek-yon maliyet: A2 230.0bp, Y 166.1bp (varsayilan 7bp). 50bp'de bile: A2 valid S=0.96, Y valid S=1.14.",
+   "etki": "Maliyet varsayimi sonucu sisirmiyor."
+  },
+  {
+   "kod": "5C",
+   "siddet": "DUSUK",
+   "sorun": "DIKKAT (metodoloji, sisirme degil): tsmom2.akis() ciroyu w_prev=W[t-1] (SURUKLENMEMIS) ile hesapliyor, sim_portfoy ise suruklenmis w_prev ile. Rapordaki 'ciro_yil' gercek islem hacmini OLDUGUNDAN BUYUK gosteriyor; maliyet hesabi (sim_portfoy) dogru olan.",
+   "kanit": "tsmom2.akis satir 181-183: prev = vstack([0, Wb[:-1]]) - fiyat surukleniminden gelen agirlik degisimi islem sayilmiyor ama sonraki gun farki islem gibi gorunuyor.",
+   "etki": "Raporlanan ciro/yil biraz yuksek (kotumser yonde); maliyet dogru hesaplandigi icin Sharpe etkilenmiyor."
+  },
+  {
+   "kod": "6A",
+   "siddet": "TEMIZ",
+   "sorun": "Al-tut kiyasi AYNI maliyet (0.0007), AYNI evren maskesi, AYNI gun penceresi ve AYNI getiri/kirpma mekanigi ile kosuluyor.",
+   "kanit": "tsmom2.agirliklar2'nin altut kolu ayni evren_maske2'yi kullaniyor; kos2 ayni maliyeti sim_portfoy'a veriyor; her ikisi de P['bas'] (2018-04-01) indeksinden basliyor ve raporlanan gun sayisi ayni (train 2467 vs 2467, valid 363 vs 363). Ilk POZISYON gunu A2 2018-04-01 = al-tut 2018-04-01; Y 2018-04-19 vs al-tut 2018-04-01 - bu fark haksizlik DEGIL, Y'nin ilk 18 gun MA50 altinda olup nakitte beklemesi (ayni pencerede, sadece pozisyon yok).",
+   "etki": "Maliyet/evren/pencere ekseninde haksizlik yok. Haksizlik OLCEKTE (bkz. 6B)."
+  },
+  {
+   "kod": "6C",
+   "siddet": "DUSUK",
+   "sorun": "LATENT HATA (bugun sonucu etkilemiyor): tsmom2._AY onbellek anahtari ('aylik', N, volwin) MA listesini icermiyor, ama onbelleklenen M matrisi dongude canli[src] uzerinden 'tam'a (yani MA penceresine) bagimli. Ayni oturumda once MA200'lu, sonra MA50'li bir yuruyen konfig kosulursa ikincisi BIRINCININ secimlerini kullanir.",
+   "kanit": "tsmom2.py satir 60-83: `k = ('aylik', N, cfg.get('volwin', 30)); if k in _AY: return _AY[k] & canli` - fakat satir 78 `sk = np.where(canli[src] & ...)` ve canli = tam & ... . Bugun tum yuruyen konfigler ma=[50] kullandigi icin fark yaratmiyor.",
+   "etki": "A2/Y sonuclarini bugun etkilemiyor; ileride sessiz yanlis sonuc uretebilir."
+  },
+  {
+   "kod": "6B",
+   "siddet": "YUKSEK",
+   "sorun": "EN BUYUK KIYAS SORUNU: 'maxDD al-tutun yarisi' iddiasi buyuk olcude POZISYON BUYUKLUGU farkindan geliyor, sinyalden degil. Strateji ortalama gross ~0.261 iken al-tut 1.0.",
+   "kanit": "A2 train: strateji maxDD 0.275 (gross 0.261) vs ham al-tut 0.772 (gross 1.0); AYNI ortalama gross'a olceklenmis al-tut maxDD = 0.296. Y train: strateji 0.273 vs gross-esit al-tut 0.317.",
+   "etki": "maxDD ustunlugunun buyuk kismi 'daha az yatirim yapmak'. Gercek sinyal katkisi Sharpe farkinda (olcekten bagimsiz) gorulur; DD karsilastirmasi gross-esitlenmis kiyasa gore yapilmali. AYRICA: nakit %70-80 oraninda ve model nakde %0 faiz yaziyor - bu strateji ALEYHINE (muhafazakar)."
+  },
+  {
+   "kod": "7A",
+   "siddet": "ORTA",
+   "sorun": "TOPLAM: duzeltmelerden sonra adaylarin Sharpe'i pratikte AYNI kaliyor; sisen sey Sharpe degil, 'maxDD ustunlugu' anlatisi ve sepet secimi.",
+   "kanit": "A2 train 1.59->1.57 (dd 0.275->0.276), valid 1.39->1.31 (dd 0.085->0.085); Y train 1.19->1.36, valid 1.54->1.47. Gross-esit al-tut karsisinda A2 train Sharpe farki +0.50, maxDD farki -0.032.",
+   "etki": "Kod duzeyinde sisirme kucuk. Asil indirim kalemleri: sepet secim yanliligi (~-0.2..-0.4 Sharpe), yuruyen sepetin survivorship'i (~-0.1..-0.4), ve maxDD ustunlugunun buyuk kisminin sahte olmasi."
+  }
+ ],
+ "olcumler": {
+  "t1_ileriye_bakma": {
+   "1a_close_t_vs_open_t1": {
+    "n": 3058,
+    "birebir_esit": 0.3882,
+    "bir_bp_icinde": 0.8502,
+    "medyan_fark": 1.72006228649213e-07,
+    "p99_fark": 0.002522193026739174,
+    "max_fark": 0.00807938017080323
+   },
+   "1b_shift": {
+    "A2": {
+     "-2": {
+      "train": {
+       "sharpe": 3.79,
+       "maxdd": 0.076,
+       "cagr": 0.997,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.38
+      },
+      "valid": {
+       "sharpe": 3.38,
+       "maxdd": 0.079,
+       "cagr": 0.743,
+       "gun": 363,
+       "gross": 0.326,
+       "ciro_yil": 17.82
+      }
+     },
+     "-1": {
+      "train": {
+       "sharpe": 3.86,
+       "maxdd": 0.081,
+       "cagr": 1.013,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 3.69,
+       "maxdd": 0.08,
+       "cagr": 0.829,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "0": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "1": {
+      "train": {
+       "sharpe": 1.55,
+       "maxdd": 0.299,
+       "cagr": 0.359,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.09,
+       "maxdd": 0.104,
+       "cagr": 0.21,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "2": {
+      "train": {
+       "sharpe": 1.47,
+       "maxdd": 0.294,
+       "cagr": 0.341,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.06,
+       "maxdd": 0.103,
+       "cagr": 0.202,
+       "gun": 363,
+       "gross": 0.328,
+       "ciro_yil": 18.09
+      }
+     },
+     "_tani": {
+      "shift_m1_eksi_0_train": 2.27,
+      "shift_0_eksi_p1_train": 0.04
+     }
+    },
+    "Y": {
+     "-2": {
+      "train": {
+       "sharpe": 3.43,
+       "maxdd": 0.076,
+       "cagr": 0.819,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.37
+      },
+      "valid": {
+       "sharpe": 3.32,
+       "maxdd": 0.079,
+       "cagr": 0.727,
+       "gun": 363,
+       "gross": 0.318,
+       "ciro_yil": 16.21
+      }
+     },
+     "-1": {
+      "train": {
+       "sharpe": 3.62,
+       "maxdd": 0.081,
+       "cagr": 0.877,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.33
+      },
+      "valid": {
+       "sharpe": 3.59,
+       "maxdd": 0.08,
+       "cagr": 0.797,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.48
+      }
+     },
+     "0": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "1": {
+      "train": {
+       "sharpe": 1.17,
+       "maxdd": 0.302,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.33,
+       "maxdd": 0.104,
+       "cagr": 0.267,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "2": {
+      "train": {
+       "sharpe": 1.17,
+       "maxdd": 0.306,
+       "cagr": 0.246,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.07,
+       "maxdd": 0.103,
+       "cagr": 0.203,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "_tani": {
+      "shift_m1_eksi_0_train": 2.43,
+      "shift_0_eksi_p1_train": 0.02
+     }
+    }
+   },
+   "1c_truncation": {
+    "1200": {
+     "Cf": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "dv": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "vol30": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "frac_ma50": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "W_A2": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "W_Y": {
+      "max_fark": 0.198518431494628,
+      "nan_uyusmaz": 0
+     },
+     "dusen_coin_sayisi": 304,
+     "dusen_coinlerde_W_Y_max": 0.048004280936746385
+    },
+    "2000": {
+     "Cf": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "dv": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "vol30": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "frac_ma50": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "W_A2": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "W_Y": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "dusen_coin_sayisi": 154,
+     "dusen_coinlerde_W_Y_max": 0.0
+    },
+    "2600": {
+     "Cf": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "dv": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "vol30": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "frac_ma50": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "W_A2": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "W_Y": {
+      "max_fark": 0.0,
+      "nan_uyusmaz": 0
+     },
+     "dusen_coin_sayisi": 93,
+     "dusen_coinlerde_W_Y_max": 0.0
+    }
+   },
+   "1c_ozet": {
+    "max_fark": 0.198518431494628,
+    "nan_uyusmaz": 0,
+    "dusen_coinlerde_W_Y_max": 0.048004280936746385,
+    "matris_bazinda_max_fark": {
+     "Cf": 0.0,
+     "dv": 0.0,
+     "vol30": 0.0,
+     "frac_ma50": 0.0,
+     "W_A2": 0.0,
+     "W_Y": 0.198518431494628
+    }
+   },
+   "1e_min_gun": {
+    "genc_secim_gun": 174,
+    "genc_agirlik_payi": 0.0205,
+    "onceki": {
+     "train": {
+      "sharpe": 1.19,
+      "maxdd": 0.273,
+      "cagr": 0.243,
+      "gun": 2467,
+      "gross": 0.231,
+      "ciro_yil": 13.31
+     },
+     "valid": {
+      "sharpe": 1.54,
+      "maxdd": 0.083,
+      "cagr": 0.306,
+      "gun": 363,
+      "gross": 0.319,
+      "ciro_yil": 16.62
+     }
+    },
+    "duzeltilmis": {
+     "train": {
+      "sharpe": 1.38,
+      "maxdd": 0.273,
+      "cagr": 0.303,
+      "gun": 2467,
+      "gross": 0.24,
+      "ciro_yil": 13.12
+     },
+     "valid": {
+      "sharpe": 1.54,
+      "maxdd": 0.083,
+      "cagr": 0.306,
+      "gun": 363,
+      "gross": 0.319,
+      "ciro_yil": 16.62
+     }
+    }
+   },
+   "1d_o_t2_maskesi": {
+    "A2": {
+     "hucre": 0,
+     "toplam_agirlik": 0.0
+    },
+    "Y": {
+     "hucre": 0,
+     "toplam_agirlik": 0.0
+    }
+   },
+   "1d_etki": {
+    "A2": {
+     "orijinal": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "duzeltilmis": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     }
+    },
+    "Y": {
+     "orijinal": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "duzeltilmis": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     }
+    }
+   },
+   "1f_saatlik_gecikme": {
+    "0": {
+     "sharpe": 1.62,
+     "maxdd": 0.128,
+     "toplam": 0.407,
+     "gun": 418
+    },
+    "1": {
+     "sharpe": 1.63,
+     "maxdd": 0.125,
+     "toplam": 0.407,
+     "gun": 418
+    },
+    "2": {
+     "sharpe": 1.52,
+     "maxdd": 0.134,
+     "toplam": 0.381,
+     "gun": 418
+    },
+    "3": {
+     "sharpe": 1.59,
+     "maxdd": 0.126,
+     "toplam": 0.394,
+     "gun": 418
+    },
+    "4": {
+     "sharpe": 1.62,
+     "maxdd": 0.129,
+     "toplam": 0.402,
+     "gun": 418
+    },
+    "6": {
+     "sharpe": 1.6,
+     "maxdd": 0.129,
+     "toplam": 0.415,
+     "gun": 418
+    },
+    "8": {
+     "sharpe": 1.64,
+     "maxdd": 0.124,
+     "toplam": 0.428,
+     "gun": 418
+    },
+    "12": {
+     "sharpe": 1.74,
+     "maxdd": 0.121,
+     "toplam": 0.456,
+     "gun": 418
+    },
+    "18": {
+     "sharpe": 1.58,
+     "maxdd": 0.132,
+     "toplam": 0.377,
+     "gun": 418
+    },
+    "24": {
+     "sharpe": 1.34,
+     "maxdd": 0.12,
+     "toplam": 0.333,
+     "gun": 418
+    }
+   }
+  },
+  "t2_panel": {
+   "2a_b3_delik": {
+    "BTCUSDT": {
+     "ilk_gun": "2017-08-17",
+     "ic_eksik_gun": 0,
+     "toplam_gun": 3059
+    },
+    "ETHUSDT": {
+     "ilk_gun": "2017-08-17",
+     "ic_eksik_gun": 0,
+     "toplam_gun": 3059
+    },
+    "BNBUSDT": {
+     "ilk_gun": "2017-11-06",
+     "ic_eksik_gun": 0,
+     "toplam_gun": 2978
+    }
+   },
+   "2a_Y_delik": {
+    "kullanilan_coin": 7,
+    "ic_eksik_gun": 0,
+    "toplam_gun": 18202
+   },
+   "2a_ffill_sahte_gun": {
+    "panel_geneli": 13340,
+    "pozisyonlu_hucre": {
+     "A2": 0,
+     "Y": 0
+    },
+    "b3_ic_eksik": 0
+   },
+   "2b_A2_evren_boyu": {
+    "3": 2832
+   },
+   "2b_A2_3coin_baslangic": "2018-04-01",
+   "2c_clip": {
+    "A2": {
+     "kirpilan_hucre": 0,
+     "kirpmali": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "kirpmasiz": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     }
+    },
+    "Y": {
+     "kirpilan_hucre": 0,
+     "kirpmali": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "kirpmasiz": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     }
+    },
+    "A2_altut": {
+     "kirpilan_hucre": 0,
+     "kirpmali": {
+      "train": {
+       "sharpe": 1.06,
+       "maxdd": 0.772,
+       "cagr": 0.652,
+       "gun": 2467,
+       "gross": 1.0,
+       "ciro_yil": 0.15
+      },
+      "valid": {
+       "sharpe": 0.33,
+       "maxdd": 0.384,
+       "cagr": 0.037,
+       "gun": 363,
+       "gross": 1.0,
+       "ciro_yil": 0.0
+      }
+     },
+     "kirpmasiz": {
+      "train": {
+       "sharpe": 1.06,
+       "maxdd": 0.772,
+       "cagr": 0.652,
+       "gun": 2467,
+       "gross": 1.0,
+       "ciro_yil": 0.15
+      },
+      "valid": {
+       "sharpe": 0.33,
+       "maxdd": 0.384,
+       "cagr": 0.037,
+       "gun": 363,
+       "gross": 1.0,
+       "ciro_yil": 0.0
+      }
+     }
+    },
+    "Y_altut": {
+     "kirpilan_hucre": 0,
+     "kirpmali": {
+      "train": {
+       "sharpe": 0.64,
+       "maxdd": 0.833,
+       "cagr": 0.208,
+       "gun": 2467,
+       "gross": 1.0,
+       "ciro_yil": 1.13
+      },
+      "valid": {
+       "sharpe": 0.2,
+       "maxdd": 0.484,
+       "cagr": -0.048,
+       "gun": 363,
+       "gross": 1.0,
+       "ciro_yil": 2.01
+      }
+     },
+     "kirpmasiz": {
+      "train": {
+       "sharpe": 0.64,
+       "maxdd": 0.833,
+       "cagr": 0.208,
+       "gun": 2467,
+       "gross": 1.0,
+       "ciro_yil": 1.13
+      },
+      "valid": {
+       "sharpe": 0.2,
+       "maxdd": 0.484,
+       "cagr": -0.048,
+       "gun": 363,
+       "gross": 1.0,
+       "ciro_yil": 2.01
+      }
+     }
+    }
+   }
+  },
+  "t3_survivorship": {
+   "3a_sepet_tarihce": [
+    [
+     "2018-04",
+     [
+      "BTC",
+      "ETH",
+      "LTC"
+     ]
+    ],
+    [
+     "2020-02",
+     [
+      "BCH",
+      "BTC",
+      "ETH"
+     ]
+    ],
+    [
+     "2020-10",
+     [
+      "BTC",
+      "ETH",
+      "YFI"
+     ]
+    ],
+    [
+     "2022-12",
+     [
+      "BNB",
+      "BTC",
+      "ETH"
+     ]
+    ],
+    [
+     "2023-03",
+     [
+      "BTC",
+      "ETH",
+      "YFI"
+     ]
+    ],
+    [
+     "2023-07",
+     [
+      "BNB",
+      "BTC",
+      "ETH"
+     ]
+    ],
+    [
+     "2023-12",
+     [
+      "BTC",
+      "ETH",
+      "YFI"
+     ]
+    ],
+    [
+     "2024-03",
+     [
+      "BNB",
+      "BTC",
+      "ETH"
+     ]
+    ],
+    [
+     "2024-10",
+     [
+      "BTC",
+      "ETH",
+      "SOL"
+     ]
+    ],
+    [
+     "2024-11",
+     [
+      "BNB",
+      "BTC",
+      "ETH"
+     ]
+    ],
+    [
+     "2024-12",
+     [
+      "BTC",
+      "ETH",
+      "SOL"
+     ]
+    ],
+    [
+     "2025-01",
+     [
+      "BNB",
+      "BTC",
+      "ETH"
+     ]
+    ],
+    [
+     "2025-02",
+     [
+      "BTC",
+      "ETH",
+      "SOL"
+     ]
+    ],
+    [
+     "2025-05",
+     [
+      "BNB",
+      "BTC",
+      "ETH"
+     ]
+    ]
+   ],
+   "3a_secilen_coinler": [
+    "BCH",
+    "BNB",
+    "BTC",
+    "ETH",
+    "LTC",
+    "SOL",
+    "YFI"
+   ],
+   "3a_havuz": 372,
+   "3b_agirlik": {
+    "ort_max_coin_agirlik": 0.1944,
+    "p95": 0.3652,
+    "mutlak_max": 0.4716,
+    "ort_gross": 0.2424
+   },
+   "3c_taban": {
+    "train": {
+     "sharpe": 1.19,
+     "maxdd": 0.273,
+     "cagr": 0.243,
+     "gun": 2467,
+     "gross": 0.231,
+     "ciro_yil": 13.31
+    },
+    "valid": {
+     "sharpe": 1.54,
+     "maxdd": 0.083,
+     "cagr": 0.306,
+     "gun": 363,
+     "gross": 0.319,
+     "ciro_yil": 16.62
+    }
+   },
+   "3c_mc": {
+    "p1_c90": {
+     "train_sharpe": 1.124,
+     "train_sharpe_p10": 0.997,
+     "train_maxdd": 0.286,
+     "valid_sharpe": 1.419,
+     "valid_maxdd": 0.099,
+     "beklenen_olay": 0.9
+    },
+    "p2_c90": {
+     "train_sharpe": 1.084,
+     "train_sharpe_p10": 0.91,
+     "train_maxdd": 0.299,
+     "valid_sharpe": 1.494,
+     "valid_maxdd": 0.09,
+     "beklenen_olay": 1.9
+    },
+    "p5_c90": {
+     "train_sharpe": 0.972,
+     "train_sharpe_p10": 0.726,
+     "train_maxdd": 0.313,
+     "valid_sharpe": 1.234,
+     "valid_maxdd": 0.123,
+     "beklenen_olay": 4.7
+    },
+    "p10_c90": {
+     "train_sharpe": 0.738,
+     "train_sharpe_p10": 0.5,
+     "train_maxdd": 0.378,
+     "valid_sharpe": 1.165,
+     "valid_maxdd": 0.132,
+     "beklenen_olay": 9.3
+    },
+    "p20_c90": {
+     "train_sharpe": 0.424,
+     "train_sharpe_p10": 0.105,
+     "train_maxdd": 0.457,
+     "valid_sharpe": 0.604,
+     "valid_maxdd": 0.208,
+     "beklenen_olay": 18.6
+    },
+    "p10_c99": {
+     "train_sharpe": 0.718,
+     "train_sharpe_p10": 0.45,
+     "train_maxdd": 0.381,
+     "valid_sharpe": 1.072,
+     "valid_maxdd": 0.148,
+     "beklenen_olay": 9.3
+    },
+    "p33_c90": {
+     "train_sharpe": -0.039,
+     "train_sharpe_p10": -0.283,
+     "train_maxdd": 0.616,
+     "valid_sharpe": 0.27,
+     "valid_maxdd": 0.246,
+     "beklenen_olay": 30.7
+    }
+   },
+   "3c_ay_sayisi": 93
+  },
+  "t4_vol": {
+   "4a_gross": {
+    "A2": {
+     "max": 1.0,
+     "p99": 0.8682,
+     "ort": 0.2694,
+     "gross_1_ustu_gun": 0,
+     "tek_coin_max": 0.4716
+    },
+    "Y": {
+     "max": 1.0,
+     "p99": 0.8702,
+     "ort": 0.2424,
+     "gross_1_ustu_gun": 0,
+     "tek_coin_max": 0.4716
+    },
+    "A2_altut": {
+     "max": 1.0,
+     "p99": 1.0,
+     "ort": 1.0,
+     "gross_1_ustu_gun": 0,
+     "tek_coin_max": 0.3333
+    },
+    "Y_altut": {
+     "max": 1.0,
+     "p99": 1.0,
+     "ort": 1.0,
+     "gross_1_ustu_gun": 0,
+     "tek_coin_max": 0.3333
+    }
+   },
+   "4b_cap": {
+    "A2": {
+     "1.0": {
+      "train": {
+       "sharpe": 1.57,
+       "maxdd": 0.276,
+       "cagr": 0.352,
+       "gun": 2467,
+       "gross": 0.26,
+       "ciro_yil": 13.04
+      },
+      "valid": {
+       "sharpe": 1.31,
+       "maxdd": 0.085,
+       "cagr": 0.245,
+       "gun": 363,
+       "gross": 0.317,
+       "ciro_yil": 16.96
+      }
+     },
+     "1.5": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "2.0": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     }
+    },
+    "Y": {
+     "1.0": {
+      "train": {
+       "sharpe": 1.17,
+       "maxdd": 0.273,
+       "cagr": 0.236,
+       "gun": 2467,
+       "gross": 0.23,
+       "ciro_yil": 13.01
+      },
+      "valid": {
+       "sharpe": 1.47,
+       "maxdd": 0.08,
+       "cagr": 0.28,
+       "gun": 363,
+       "gross": 0.309,
+       "ciro_yil": 15.48
+      }
+     },
+     "1.5": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "2.0": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     }
+    }
+   },
+   "4c_vol_gecikme": {
+    "A2": {
+     "vol_t": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "vol_t-1": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.268,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.52
+      },
+      "valid": {
+       "sharpe": 1.41,
+       "maxdd": 0.087,
+       "cagr": 0.274,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.21
+      }
+     }
+    },
+    "Y": {
+     "vol_t": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "vol_t-1": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.26,
+       "cagr": 0.245,
+       "gun": 2467,
+       "gross": 0.232,
+       "ciro_yil": 13.5
+      },
+      "valid": {
+       "sharpe": 1.57,
+       "maxdd": 0.086,
+       "cagr": 0.313,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.66
+      }
+     }
+    }
+   }
+  },
+  "t5_maliyet": {
+   "5a_elle_dogrulama": [
+    {
+     "t": 0,
+     "tarih": "2018-04-01",
+     "w": [
+      0.06345
+     ],
+     "w_prev": [],
+     "brut_getiri": 0.0086,
+     "ciro_sum_abs_dw": 0.063446,
+     "maliyet": 4.441e-05,
+     "net": 0.008556,
+     "sim_portfoy_g": 0.008556,
+     "fark": 0.0
+    },
+    {
+     "t": 1,
+     "tarih": "2018-04-02",
+     "w": [
+      0.06092
+     ],
+     "w_prev": [
+      0.07144
+     ],
+     "brut_getiri": 0.003284,
+     "ciro_sum_abs_dw": 0.010514,
+     "maliyet": 7.36e-06,
+     "net": 0.003277,
+     "sim_portfoy_g": 0.003277,
+     "fark": 0.0
+    },
+    {
+     "t": 200,
+     "tarih": "2018-10-18",
+     "w": [
+      0.25195
+     ],
+     "w_prev": [
+      0.15491,
+      0.25255
+     ],
+     "brut_getiri": -0.003429,
+     "ciro_sum_abs_dw": 0.155519,
+     "maliyet": 0.00010886,
+     "net": -0.003538,
+     "sim_portfoy_g": -0.003538,
+     "fark": 0.0
+    },
+    {
+     "t": 400,
+     "tarih": "2019-05-06",
+     "w": [
+      0.11996,
+      0.24832,
+      0.16426
+     ],
+     "w_prev": [
+      0.11654,
+      0.24675,
+      0.18493
+     ],
+     "brut_getiri": -0.007879,
+     "ciro_sum_abs_dw": 0.02567,
+     "maliyet": 1.797e-05,
+     "net": -0.007897,
+     "sim_portfoy_g": -0.007897,
+     "fark": 0.0
+    },
+    {
+     "t": 800,
+     "tarih": "2020-06-09",
+     "w": [
+      0.19309,
+      0.156,
+      0.14225
+     ],
+     "w_prev": [
+      0.16513,
+      0.14028,
+      0.12238
+     ],
+     "brut_getiri": 0.004517,
+     "ciro_sum_abs_dw": 0.063548,
+     "maliyet": 4.448e-05,
+     "net": 0.004473,
+     "sim_portfoy_g": 0.004473,
+     "fark": 0.0
+    }
+   ],
+   "5b_duyarlilik": {
+    "A2": {
+     "0.0007": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "0.001": {
+      "train": {
+       "sharpe": 1.57,
+       "maxdd": 0.278,
+       "cagr": 0.355,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.36,
+       "maxdd": 0.086,
+       "cagr": 0.263,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "0.002": {
+      "train": {
+       "sharpe": 1.51,
+       "maxdd": 0.288,
+       "cagr": 0.337,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.26,
+       "maxdd": 0.091,
+       "cagr": 0.241,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "0.0035": {
+      "train": {
+       "sharpe": 1.41,
+       "maxdd": 0.302,
+       "cagr": 0.309,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 1.11,
+       "maxdd": 0.098,
+       "cagr": 0.207,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     },
+     "0.005": {
+      "train": {
+       "sharpe": 1.31,
+       "maxdd": 0.316,
+       "cagr": 0.283,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "valid": {
+       "sharpe": 0.96,
+       "maxdd": 0.105,
+       "cagr": 0.174,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      }
+     }
+    },
+    "Y": {
+     "0.0007": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "0.001": {
+      "train": {
+       "sharpe": 1.17,
+       "maxdd": 0.276,
+       "cagr": 0.238,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.51,
+       "maxdd": 0.083,
+       "cagr": 0.3,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "0.002": {
+      "train": {
+       "sharpe": 1.1,
+       "maxdd": 0.286,
+       "cagr": 0.222,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.42,
+       "maxdd": 0.083,
+       "cagr": 0.278,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "0.0035": {
+      "train": {
+       "sharpe": 1.0,
+       "maxdd": 0.301,
+       "cagr": 0.197,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.28,
+       "maxdd": 0.083,
+       "cagr": 0.246,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     },
+     "0.005": {
+      "train": {
+       "sharpe": 0.9,
+       "maxdd": 0.315,
+       "cagr": 0.173,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "valid": {
+       "sharpe": 1.14,
+       "maxdd": 0.089,
+       "cagr": 0.215,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      }
+     }
+    }
+   },
+   "5c_basabas": {
+    "A2": 230.0,
+    "Y": 166.1
+   },
+   "5d_kucuk_ciro": {
+    "toplam_ciro": 108.18,
+    "kucuk_ciro": 3.73,
+    "oran": 0.0345
+   }
+  },
+  "t6_kiyas": {
+   "6a": {
+    "A2": {
+     "train": {
+      "sharpe": 1.59,
+      "maxdd": 0.275,
+      "cagr": 0.361,
+      "gun": 2467,
+      "gross": 0.261,
+      "ciro_yil": 13.34
+     },
+     "valid": {
+      "sharpe": 1.39,
+      "maxdd": 0.085,
+      "cagr": 0.27,
+      "gun": 363,
+      "gross": 0.327,
+      "ciro_yil": 18.09
+     },
+     "ilk_pozisyon_gun": "2018-04-01"
+    },
+    "A2_altut": {
+     "train": {
+      "sharpe": 1.06,
+      "maxdd": 0.772,
+      "cagr": 0.652,
+      "gun": 2467,
+      "gross": 1.0,
+      "ciro_yil": 0.15
+     },
+     "valid": {
+      "sharpe": 0.33,
+      "maxdd": 0.384,
+      "cagr": 0.037,
+      "gun": 363,
+      "gross": 1.0,
+      "ciro_yil": 0.0
+     },
+     "ilk_pozisyon_gun": "2018-04-01"
+    },
+    "Y": {
+     "train": {
+      "sharpe": 1.19,
+      "maxdd": 0.273,
+      "cagr": 0.243,
+      "gun": 2467,
+      "gross": 0.231,
+      "ciro_yil": 13.31
+     },
+     "valid": {
+      "sharpe": 1.54,
+      "maxdd": 0.083,
+      "cagr": 0.306,
+      "gun": 363,
+      "gross": 0.319,
+      "ciro_yil": 16.62
+     },
+     "ilk_pozisyon_gun": "2018-04-19"
+    },
+    "Y_altut": {
+     "train": {
+      "sharpe": 0.64,
+      "maxdd": 0.833,
+      "cagr": 0.208,
+      "gun": 2467,
+      "gross": 1.0,
+      "ciro_yil": 1.13
+     },
+     "valid": {
+      "sharpe": 0.2,
+      "maxdd": 0.484,
+      "cagr": -0.048,
+      "gun": 363,
+      "gross": 1.0,
+      "ciro_yil": 2.01
+     },
+     "ilk_pozisyon_gun": "2018-04-01"
+    }
+   },
+   "6a_ayni_baslangic_b3": true,
+   "6a2_ay_cache": {
+    "anahtar": "('aylik', N, volwin)",
+    "uyari": "cfg['ma']/ret/band'dan gelen 'tam' maskesi anahtarda yok"
+   },
+   "6b_gross_esit": {
+    "A2": {
+     "train": {
+      "strateji": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 13.34
+      },
+      "altut_ham": {
+       "sharpe": 1.06,
+       "maxdd": 0.772,
+       "cagr": 0.652,
+       "gun": 2467,
+       "gross": 1.0,
+       "ciro_yil": 0.15
+      },
+      "altut_gross_esit": {
+       "sharpe": 1.06,
+       "maxdd": 0.296,
+       "cagr": 0.201,
+       "gun": 2467,
+       "gross": 0.261,
+       "ciro_yil": 0.04
+      }
+     },
+     "valid": {
+      "strateji": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 18.09
+      },
+      "altut_ham": {
+       "sharpe": 0.33,
+       "maxdd": 0.384,
+       "cagr": 0.037,
+       "gun": 363,
+       "gross": 1.0,
+       "ciro_yil": 0.0
+      },
+      "altut_gross_esit": {
+       "sharpe": 0.32,
+       "maxdd": 0.139,
+       "cagr": 0.041,
+       "gun": 363,
+       "gross": 0.327,
+       "ciro_yil": 0.0
+      }
+     }
+    },
+    "Y": {
+     "train": {
+      "strateji": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 13.31
+      },
+      "altut_ham": {
+       "sharpe": 0.64,
+       "maxdd": 0.833,
+       "cagr": 0.208,
+       "gun": 2467,
+       "gross": 1.0,
+       "ciro_yil": 1.13
+      },
+      "altut_gross_esit": {
+       "sharpe": 0.64,
+       "maxdd": 0.317,
+       "cagr": 0.102,
+       "gun": 2467,
+       "gross": 0.231,
+       "ciro_yil": 0.26
+      }
+     },
+     "valid": {
+      "strateji": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 16.62
+      },
+      "altut_ham": {
+       "sharpe": 0.2,
+       "maxdd": 0.484,
+       "cagr": -0.048,
+       "gun": 363,
+       "gross": 1.0,
+       "ciro_yil": 2.01
+      },
+      "altut_gross_esit": {
+       "sharpe": 0.2,
+       "maxdd": 0.178,
+       "cagr": 0.02,
+       "gun": 363,
+       "gross": 0.319,
+       "ciro_yil": 0.64
+      }
+     }
+    }
+   },
+   "6c_nakit": {
+    "A2": {
+     "0%": {
+      "train": {
+       "sharpe": 1.59,
+       "maxdd": 0.275,
+       "cagr": 0.361,
+       "gun": 2467,
+       "gross": null,
+       "ciro_yil": null
+      },
+      "valid": {
+       "sharpe": 1.39,
+       "maxdd": 0.085,
+       "cagr": 0.27,
+       "gun": 363,
+       "gross": null,
+       "ciro_yil": null
+      }
+     },
+     "4%": {
+      "train": {
+       "sharpe": 1.74,
+       "maxdd": 0.247,
+       "cagr": 0.401,
+       "gun": 2467,
+       "gross": null,
+       "ciro_yil": null
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.082,
+       "cagr": 0.305,
+       "gun": 363,
+       "gross": null,
+       "ciro_yil": null
+      }
+     }
+    },
+    "Y": {
+     "0%": {
+      "train": {
+       "sharpe": 1.19,
+       "maxdd": 0.273,
+       "cagr": 0.243,
+       "gun": 2467,
+       "gross": null,
+       "ciro_yil": null
+      },
+      "valid": {
+       "sharpe": 1.54,
+       "maxdd": 0.083,
+       "cagr": 0.306,
+       "gun": 363,
+       "gross": null,
+       "ciro_yil": null
+      }
+     },
+     "4%": {
+      "train": {
+       "sharpe": 1.35,
+       "maxdd": 0.241,
+       "cagr": 0.282,
+       "gun": 2467,
+       "gross": null,
+       "ciro_yil": null
+      },
+      "valid": {
+       "sharpe": 1.69,
+       "maxdd": 0.082,
+       "cagr": 0.342,
+       "gun": 363,
+       "gross": null,
+       "ciro_yil": null
+      }
+     }
+    }
+   }
+  },
+  "t7_toplam": {
+   "A2": {
+    "onceki": {
+     "train": {
+      "sharpe": 1.59,
+      "maxdd": 0.275,
+      "cagr": 0.361,
+      "gun": 2467,
+      "gross": 0.261,
+      "ciro_yil": 13.34
+     },
+     "valid": {
+      "sharpe": 1.39,
+      "maxdd": 0.085,
+      "cagr": 0.27,
+      "gun": 363,
+      "gross": 0.327,
+      "ciro_yil": 18.09
+     }
+    },
+    "duzeltilmis": {
+     "train": {
+      "sharpe": 1.57,
+      "maxdd": 0.276,
+      "cagr": 0.352,
+      "gun": 2467,
+      "gross": 0.26,
+      "ciro_yil": 13.02
+     },
+     "valid": {
+      "sharpe": 1.31,
+      "maxdd": 0.085,
+      "cagr": 0.245,
+      "gun": 363,
+      "gross": 0.317,
+      "ciro_yil": 16.96
+     }
+    }
+   },
+   "Y": {
+    "onceki": {
+     "train": {
+      "sharpe": 1.19,
+      "maxdd": 0.273,
+      "cagr": 0.243,
+      "gun": 2467,
+      "gross": 0.231,
+      "ciro_yil": 13.31
+     },
+     "valid": {
+      "sharpe": 1.54,
+      "maxdd": 0.083,
+      "cagr": 0.306,
+      "gun": 363,
+      "gross": 0.319,
+      "ciro_yil": 16.62
+     }
+    },
+    "duzeltilmis": {
+     "train": {
+      "sharpe": 1.36,
+      "maxdd": 0.273,
+      "cagr": 0.294,
+      "gun": 2467,
+      "gross": 0.238,
+      "ciro_yil": 12.82
+     },
+     "valid": {
+      "sharpe": 1.47,
+      "maxdd": 0.08,
+      "cagr": 0.28,
+      "gun": 363,
+      "gross": 0.309,
+      "ciro_yil": 15.48
+     }
+    }
+   },
+   "A2_altut": {
+    "onceki": {
+     "train": {
+      "sharpe": 1.06,
+      "maxdd": 0.772,
+      "cagr": 0.652,
+      "gun": 2467,
+      "gross": 1.0,
+      "ciro_yil": 0.15
+     },
+     "valid": {
+      "sharpe": 0.33,
+      "maxdd": 0.384,
+      "cagr": 0.037,
+      "gun": 363,
+      "gross": 1.0,
+      "ciro_yil": 0.0
+     }
+    },
+    "duzeltilmis": {
+     "train": {
+      "sharpe": 1.07,
+      "maxdd": 0.787,
+      "cagr": 0.66,
+      "gun": 2467,
+      "gross": 1.0,
+      "ciro_yil": 0.25
+     },
+     "valid": {
+      "sharpe": 0.33,
+      "maxdd": 0.384,
+      "cagr": 0.037,
+      "gun": 363,
+      "gross": 1.0,
+      "ciro_yil": 0.0
+     }
+    }
+   },
+   "Y_altut": {
+    "onceki": {
+     "train": {
+      "sharpe": 0.64,
+      "maxdd": 0.833,
+      "cagr": 0.208,
+      "gun": 2467,
+      "gross": 1.0,
+      "ciro_yil": 1.13
+     },
+     "valid": {
+      "sharpe": 0.2,
+      "maxdd": 0.484,
+      "cagr": -0.048,
+      "gun": 363,
+      "gross": 1.0,
+      "ciro_yil": 2.01
+     }
+    },
+    "duzeltilmis": {
+     "train": {
+      "sharpe": 0.76,
+      "maxdd": 0.822,
+      "cagr": 0.324,
+      "gun": 2467,
+      "gross": 1.0,
+      "ciro_yil": 1.43
+     },
+     "valid": {
+      "sharpe": 0.2,
+      "maxdd": 0.484,
+      "cagr": -0.048,
+      "gun": 363,
+      "gross": 1.0,
+      "ciro_yil": 2.01
+     }
+    }
+   },
+   "gross_esit_altut": {
+    "A2": {
+     "train": {
+      "sharpe": 1.07,
+      "maxdd": 0.308,
+      "cagr": 0.202,
+      "gun": 2467,
+      "gross": 0.26,
+      "ciro_yil": 0.06
+     },
+     "valid": {
+      "sharpe": 0.32,
+      "maxdd": 0.135,
+      "cagr": 0.04,
+      "gun": 363,
+      "gross": 0.317,
+      "ciro_yil": 0.0
+     }
+    },
+    "Y": {
+     "train": {
+      "sharpe": 0.75,
+      "maxdd": 0.311,
+      "cagr": 0.127,
+      "gun": 2467,
+      "gross": 0.238,
+      "ciro_yil": 0.34
+     },
+     "valid": {
+      "sharpe": 0.2,
+      "maxdd": 0.173,
+      "cagr": 0.019,
+      "gun": 363,
+      "gross": 0.309,
+      "ciro_yil": 0.62
+     }
+    }
+   }
+  }
+ }
+}

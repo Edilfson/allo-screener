@@ -102,8 +102,11 @@ def gunluk_panel(syms=None, min_gun=200):
             a = veri_1d(s)
         except Exception:
             continue
+        # NEDENSEL (kirmizi takim 1E): coin ancak KENDI gecmisi min_gun gunu gecince panele girer.
+        # Onceki surum toplam uzunluga bakiyordu -> 90 gunluk coin 'ileride 200 gune ulasacak' diye
+        # panelde bulunuyordu (Y sepetinde 174 gun etkiliydi).
         if len(a) >= min_gun:
-            seri[s] = a
+            seri[s] = a[min_gun:]
     syms = sorted(seri)
     gun = sorted({int(x) for a in seri.values() for x in a[:, 0]})
     gi = {g: i for i, g in enumerate(gun)}
@@ -199,7 +202,9 @@ def sim_portfoy(O, C, W, maliyet=0.0007, funding=0.0, clip=(-0.95, 5.0)):
     n, m = C.shape
     eq = [1.0]; g = []; w_prev = np.zeros(m)
     for t in range(n - 2):
-        w = np.nan_to_num(W[t]).copy(); w[np.isnan(O[t + 1]) | np.isnan(O[t + 2])] = 0
+        # kirmizi takim 1D: O[t+2] bilgisiyle agirlik sifirlamak ileriye bakmadir; sadece O[t+1] bilinir.
+        # t+2 acilisi yoksa (delist) o gunun getirisi 0 sayilir (pozisyon bilinmeyen fiyattan kapanir).
+        w = np.nan_to_num(W[t]).copy(); w[np.isnan(O[t + 1])] = 0
         r = np.clip(np.nan_to_num((O[t + 2] - O[t + 1]) / O[t + 1]), *clip)
         x = (w * r).sum() - np.abs(w - w_prev).sum() * maliyet - np.abs(w).sum() * funding
         g.append(x); eq.append(eq[-1] * (1 + x))
