@@ -1,3 +1,4 @@
 charts/
 __pycache__/
 *.pyc
+araclar/lab/_*
