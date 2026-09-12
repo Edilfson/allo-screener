@@ -3142,5 +3142,17 @@
    "stop_ok": true,
    "tp_ok": true
   }
+ },
+ {
+  "zaman": "2026-09-12T00:34:13",
+  "sembol": "WLFIUSDT",
+  "dilim": "4h",
+  "strateji": "ict_short",
+  "yon": "SHORT",
+  "basarili": false,
+  "sonuc": {
+   "code": -2019,
+   "msg": "Margin is insufficient."
+  }
  }
 ]
