@@ -59,3 +59,15 @@ Y_yuruyen3_ma50_vt30, Y_yuruyen3_ma50. Kiyaslar: b3 al-tut, BTC al-tut, yuruyen 
 Basari olcutu: holdout'ta Sharpe VE maxDD, kendi kiyasindan iyi. Beklenti (tsmom2): Sharpe 0.7-1.0 bile basari.
 Sonradan aday EKLENMEZ. Betik: araclar/lab/holdout_degerlendir.py (LAB_HOLDOUT ile).
 Elenen aileler (lab, 2026-09-13): kesitsel momentum, intraday kirilim, ict2 (rastgele kontrol), rejim/MR/sikisma.
+
+### H4 SONUCU (holdout 2026-01-01..2026-09-12, 252 gun, 2026-09-13 tek sefer)
+| aday | getiri | maxDD | Sharpe | kendi al-tutu (getiri/maxDD/Sharpe) |
+|---|---|---|---|---|
+| A1 b3 MA50 | +11.2% | 18.6% | 0.69 | -16.0% / 45.0% / -0.27 |
+| A2 b3 MA50+vt30 | +13.5% | 14.7% | 0.94 | -16.0% / 45.0% / -0.27 |
+| Y yuruyen3 MA50+vt30 | +17.9% | 14.7% | 1.10 | +7.7% / 45.0% / 0.47 |
+| Y yuruyen3 MA50 | +33.0% | 18.6% | 1.27 | +7.7% / 45.0% / 0.47 |
+Brut-eslenmis al-tut: A2 Sharpe 0.94 vs -0.27 (DD 14.7 vs 20.0); Y 1.10 vs 0.47 (14.7 vs 18.6).
+KARAR: 4/4 aday olcutu gecti (Sharpe VE maxDD kiyastan iyi). Beklenti araligi (0.7-1.35) icinde.
+Canli: trend_portfoy.py (vt20 cap1.0) + trend_testnet.py. Bundan sonra holdout verisi KAPALI; yeni
+karar ancak canli kagit/testnet verisiyle (H3 esigi: 12 ay).

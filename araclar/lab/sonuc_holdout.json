@@ -1,0 +1,410 @@
+{
+ "A1_b3_ma50": {
+  "train": {
+   "gun": 2467,
+   "toplam": 50.76,
+   "cagr": 0.793,
+   "maxdd": 0.499,
+   "sharpe": 1.48,
+   "yillar": {
+    "2018": -0.266,
+    "2019": 1.068,
+    "2020": 2.158,
+    "2021": 4.947,
+    "2022": -0.352,
+    "2023": 0.791,
+    "2024": 0.564
+   },
+   "ciro_yil": 20.32,
+   "islem_yil": 30.3,
+   "ort_gross": 0.528
+  },
+  "valid": {
+   "gun": 365,
+   "toplam": 0.436,
+   "cagr": 0.436,
+   "maxdd": 0.145,
+   "sharpe": 1.36,
+   "yillar": {
+    "2025": 0.436
+   },
+   "ciro_yil": 22.33,
+   "islem_yil": 33.0,
+   "ort_gross": 0.475
+  },
+  "holdout": {
+   "gun": 252,
+   "toplam": 0.112,
+   "cagr": 0.166,
+   "maxdd": 0.186,
+   "sharpe": 0.69,
+   "yillar": {
+    "2026": 0.112
+   },
+   "ciro_yil": 21.73,
+   "islem_yil": 34.8,
+   "ort_gross": 0.496
+  },
+  "aciklama": "BTC/ETH/BNB MA50 long-only (sepet geriye donuk secildi)"
+ },
+ "A2_b3_ma50_vt30": {
+  "train": {
+   "gun": 2467,
+   "toplam": 6.892,
+   "cagr": 0.357,
+   "maxdd": 0.275,
+   "sharpe": 1.58,
+   "yillar": {
+    "2018": -0.137,
+    "2019": 0.528,
+    "2020": 0.877,
+    "2021": 0.752,
+    "2022": -0.19,
+    "2023": 0.549,
+    "2024": 0.45
+   },
+   "ciro_yil": 13.22,
+   "islem_yil": 30.3,
+   "ort_gross": 0.259
+  },
+  "valid": {
+   "gun": 365,
+   "toplam": 0.269,
+   "cagr": 0.269,
+   "maxdd": 0.085,
+   "sharpe": 1.39,
+   "yillar": {
+    "2025": 0.269
+   },
+   "ciro_yil": 17.99,
+   "islem_yil": 33.0,
+   "ort_gross": 0.325
+  },
+  "holdout": {
+   "gun": 252,
+   "toplam": 0.135,
+   "cagr": 0.201,
+   "maxdd": 0.147,
+   "sharpe": 0.94,
+   "yillar": {
+    "2026": 0.135
+   },
+   "ciro_yil": 22.6,
+   "islem_yil": 34.8,
+   "ort_gross": 0.4
+  },
+  "aciklama": "A1 + hedef vol %30 cap 1.5 (ana aday)",
+  "kiyas_brut_esli_train": {
+   "gun": 2467,
+   "toplam": 2.038,
+   "cagr": 0.179,
+   "maxdd": 0.32,
+   "sharpe": 0.97,
+   "yillar": {
+    "2018": -0.22,
+    "2019": 0.202,
+    "2020": 0.562,
+    "2021": 0.724,
+    "2022": -0.182,
+    "2023": 0.202,
+    "2024": 0.222
+   }
+  },
+  "kiyas_brut_esli_valid": {
+   "gun": 365,
+   "toplam": 0.043,
+   "cagr": 0.043,
+   "maxdd": 0.138,
+   "sharpe": 0.33,
+   "yillar": {
+    "2025": 0.043
+   }
+  },
+  "kiyas_brut_esli_holdout": {
+   "gun": 252,
+   "toplam": -0.049,
+   "cagr": -0.07,
+   "maxdd": 0.2,
+   "sharpe": -0.27,
+   "yillar": {
+    "2026": -0.049
+   }
+  }
+ },
+ "Y_yuruyen3_ma50_vt30": {
+  "train": {
+   "gun": 2467,
+   "toplam": 4.591,
+   "cagr": 0.29,
+   "maxdd": 0.273,
+   "sharpe": 1.35,
+   "yillar": {
+    "2018": -0.086,
+    "2019": 0.477,
+    "2020": 0.866,
+    "2021": 0.468,
+    "2022": -0.191,
+    "2023": 0.375,
+    "2024": 0.359
+   },
+   "ciro_yil": 13.12,
+   "islem_yil": 32.3,
+   "ort_gross": 0.233
+  },
+  "valid": {
+   "gun": 365,
+   "toplam": 0.304,
+   "cagr": 0.304,
+   "maxdd": 0.083,
+   "sharpe": 1.54,
+   "yillar": {
+    "2025": 0.304
+   },
+   "ciro_yil": 16.53,
+   "islem_yil": 31.0,
+   "ort_gross": 0.318
+  },
+  "holdout": {
+   "gun": 252,
+   "toplam": 0.179,
+   "cagr": 0.27,
+   "maxdd": 0.147,
+   "sharpe": 1.1,
+   "yillar": {
+    "2026": 0.179
+   },
+   "ciro_yil": 22.24,
+   "islem_yil": 37.7,
+   "ort_gross": 0.369
+  },
+  "aciklama": "aylik gecmis-hacim top-3 + MA50 + vt30 (ileriye bakma yok)",
+  "kiyas_brut_esli_train": {
+   "gun": 2467,
+   "toplam": 1.07,
+   "cagr": 0.114,
+   "maxdd": 0.284,
+   "sharpe": 0.7,
+   "yillar": {
+    "2018": -0.153,
+    "2019": 0.135,
+    "2020": 0.448,
+    "2021": 0.437,
+    "2022": -0.215,
+    "2023": 0.131,
+    "2024": 0.166
+   }
+  },
+  "kiyas_brut_esli_valid": {
+   "gun": 365,
+   "toplam": 0.021,
+   "cagr": 0.021,
+   "maxdd": 0.178,
+   "sharpe": 0.21,
+   "yillar": {
+    "2025": 0.021
+   }
+  },
+  "kiyas_brut_esli_holdout": {
+   "gun": 252,
+   "toplam": 0.053,
+   "cagr": 0.078,
+   "maxdd": 0.186,
+   "sharpe": 0.47,
+   "yillar": {
+    "2026": 0.053
+   }
+  }
+ },
+ "Y_yuruyen3_ma50": {
+  "train": {
+   "gun": 2467,
+   "toplam": 15.087,
+   "cagr": 0.508,
+   "maxdd": 0.502,
+   "sharpe": 1.1,
+   "yillar": {
+    "2018": -0.172,
+    "2019": 0.766,
+    "2020": 2.135,
+    "2021": 1.84,
+    "2022": -0.362,
+    "2023": 0.367,
+    "2024": 0.417
+   },
+   "ciro_yil": 21.55,
+   "islem_yil": 32.3,
+   "ort_gross": 0.491
+  },
+  "valid": {
+   "gun": 365,
+   "toplam": 0.526,
+   "cagr": 0.526,
+   "maxdd": 0.13,
+   "sharpe": 1.55,
+   "yillar": {
+    "2025": 0.526
+   },
+   "ciro_yil": 20.67,
+   "islem_yil": 31.0,
+   "ort_gross": 0.469
+  },
+  "holdout": {
+   "gun": 252,
+   "toplam": 0.33,
+   "cagr": 0.512,
+   "maxdd": 0.186,
+   "sharpe": 1.27,
+   "yillar": {
+    "2026": 0.33
+   },
+   "ciro_yil": 23.66,
+   "islem_yil": 37.7,
+   "ort_gross": 0.515
+  },
+  "aciklama": "yuruyen top-3 + MA50, vol hedefsiz"
+ },
+ "K_b3_altut": {
+  "train": {
+   "gun": 2467,
+   "toplam": 18.117,
+   "cagr": 0.547,
+   "maxdd": 0.802,
+   "sharpe": 0.97,
+   "yillar": {
+    "2018": -0.675,
+    "2019": 0.706,
+    "2020": 3.17,
+    "2021": 4.717,
+    "2022": -0.617,
+    "2023": 0.919,
+    "2024": 0.969
+   },
+   "ciro_yil": 0.25,
+   "islem_yil": 0.4,
+   "ort_gross": 0.991
+  },
+  "valid": {
+   "gun": 365,
+   "toplam": 0.042,
+   "cagr": 0.042,
+   "maxdd": 0.384,
+   "sharpe": 0.34,
+   "yillar": {
+    "2025": 0.042
+   },
+   "ciro_yil": 0.0,
+   "islem_yil": 0.0,
+   "ort_gross": 1.0
+  },
+  "holdout": {
+   "gun": 252,
+   "toplam": -0.16,
+   "cagr": -0.224,
+   "maxdd": 0.45,
+   "sharpe": -0.27,
+   "yillar": {
+    "2026": -0.16
+   },
+   "ciro_yil": 0.0,
+   "islem_yil": 0.0,
+   "ort_gross": 1.0
+  },
+  "aciklama": "BTC/ETH/BNB esit al-tut"
+ },
+ "K_btc_altut": {
+  "train": {
+   "gun": 2467,
+   "toplam": 9.581,
+   "cagr": 0.418,
+   "maxdd": 0.766,
+   "sharpe": 0.87,
+   "yillar": {
+    "2018": -0.575,
+    "2019": 0.897,
+    "2020": 3.073,
+    "2021": 0.627,
+    "2022": -0.652,
+    "2023": 1.659,
+    "2024": 1.141
+   },
+   "ciro_yil": 0.15,
+   "islem_yil": 0.1,
+   "ort_gross": 0.991
+  },
+  "valid": {
+   "gun": 365,
+   "toplam": -0.061,
+   "cagr": -0.061,
+   "maxdd": 0.32,
+   "sharpe": 0.06,
+   "yillar": {
+    "2025": -0.061
+   },
+   "ciro_yil": 0.0,
+   "islem_yil": 0.0,
+   "ort_gross": 1.0
+  },
+  "holdout": {
+   "gun": 252,
+   "toplam": -0.138,
+   "cagr": -0.194,
+   "maxdd": 0.395,
+   "sharpe": -0.23,
+   "yillar": {
+    "2026": -0.138
+   },
+   "ciro_yil": 0.0,
+   "islem_yil": 0.0,
+   "ort_gross": 1.0
+  },
+  "aciklama": "BTC al-tut"
+ },
+ "K_yuruyen3_altut": {
+  "train": {
+   "gun": 2467,
+   "toplam": 4.157,
+   "cagr": 0.275,
+   "maxdd": 0.822,
+   "sharpe": 0.71,
+   "yillar": {
+    "2018": -0.576,
+    "2019": 0.395,
+    "2020": 2.582,
+    "2021": 2.244,
+    "2022": -0.726,
+    "2023": 0.58,
+    "2024": 0.736
+   },
+   "ciro_yil": 1.43,
+   "islem_yil": 2.2,
+   "ort_gross": 0.963
+  },
+  "valid": {
+   "gun": 365,
+   "toplam": -0.043,
+   "cagr": -0.043,
+   "maxdd": 0.484,
+   "sharpe": 0.21,
+   "yillar": {
+    "2025": -0.043
+   },
+   "ciro_yil": 2.0,
+   "islem_yil": 3.0,
+   "ort_gross": 1.0
+  },
+  "holdout": {
+   "gun": 252,
+   "toplam": 0.077,
+   "cagr": 0.113,
+   "maxdd": 0.45,
+   "sharpe": 0.47,
+   "yillar": {
+    "2026": 0.077
+   },
+   "ciro_yil": 0.97,
+   "islem_yil": 1.4,
+   "ort_gross": 1.0
+  },
+  "aciklama": "yuruyen top-3 al-tut"
+ }
+}
