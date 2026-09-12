@@ -1,0 +1,854 @@
+{
+ "aile": "gecikme",
+ "denenen": 27,
+ "kaynak": "1h -> resample 1d",
+ "veri": "BTCUSDT/ETHUSDT/BNBUSDT 1h, 2024-09-13..2025-12-31 (475 gunluk bar; MA50 sonrasi 425 etkin gun)",
+ "bolum": "kaynak='1h': train < 2025-07-01 (290 gun) | valid 2025-07..12 (184 gun) | gelistirme = ikisi",
+ "strateji": "A2: gunluk MA50 long-only, esit agirlik, hedef vol %30 (30g, cap 1.5), gross<=1, maliyet 0.0007*|dW|",
+ "kiyas_altut": {
+  "train": {
+   "sharpe": 0.95,
+   "maxdd": 0.404,
+   "toplam": 0.325,
+   "cagr": 0.425,
+   "gun": 290,
+   "ciro_yil": 1.26
+  },
+  "valid": {
+   "sharpe": 0.65,
+   "maxdd": 0.353,
+   "toplam": 0.105,
+   "cagr": 0.219,
+   "gun": 184,
+   "ciro_yil": 0.0
+  },
+  "gelistirme": {
+   "sharpe": 0.84,
+   "maxdd": 0.404,
+   "toplam": 0.464,
+   "cagr": 0.341,
+   "gun": 474,
+   "ciro_yil": 0.77
+  }
+ },
+ "capraz_kontrol": "kendi portfoy dongum H=0 => harness.sim_portfoy ile birebir ayni (gelistirme Sharpe 1.61, toplam 0.440, maxDD 0.128)",
+ "soru1_gunluk_kontrol_gecikme": {
+  "anlik": {
+   "train": {
+    "sharpe": 1.2,
+    "maxdd": 0.128,
+    "toplam": 0.165,
+    "cagr": 0.212,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.16,
+    "maxdd": 0.083,
+    "toplam": 0.236,
+    "cagr": 0.523,
+    "gun": 184,
+    "ciro_yil": 16.97
+   },
+   "gelistirme": {
+    "sharpe": 1.61,
+    "maxdd": 0.128,
+    "toplam": 0.44,
+    "cagr": 0.324,
+    "gun": 474,
+    "ciro_yil": 15.64
+   }
+  },
+  "+0h": {
+   "train": {
+    "sharpe": 1.2,
+    "maxdd": 0.128,
+    "toplam": 0.165,
+    "cagr": 0.212,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.16,
+    "maxdd": 0.083,
+    "toplam": 0.236,
+    "cagr": 0.527,
+    "gun": 183,
+    "ciro_yil": 17.06
+   },
+   "gelistirme": {
+    "sharpe": 1.61,
+    "maxdd": 0.128,
+    "toplam": 0.44,
+    "cagr": 0.325,
+    "gun": 473,
+    "ciro_yil": 15.67
+   }
+  },
+  "+1h": {
+   "train": {
+    "sharpe": 1.21,
+    "maxdd": 0.125,
+    "toplam": 0.166,
+    "cagr": 0.213,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.18,
+    "maxdd": 0.077,
+    "toplam": 0.233,
+    "cagr": 0.519,
+    "gun": 183,
+    "ciro_yil": 17.06
+   },
+   "gelistirme": {
+    "sharpe": 1.62,
+    "maxdd": 0.125,
+    "toplam": 0.438,
+    "cagr": 0.323,
+    "gun": 473,
+    "ciro_yil": 15.67
+   },
+   "eslesmis_fark_vs_anlik": {
+    "gun": 473,
+    "yillik_surukleme_pct": -0.19,
+    "surukleme_ga95": [
+     -10.21,
+     9.52
+    ],
+    "sharpe_fark": 0.01,
+    "sharpe_fark_ga95": [
+     -0.557,
+     0.547
+    ],
+    "p_negatif": 0.507
+   },
+   "olay_bazli_yillik_etki_pct": -0.43,
+   "olay_bazli_ga95": [
+    -1.53,
+    0.66
+   ]
+  },
+  "+2h": {
+   "train": {
+    "sharpe": 1.08,
+    "maxdd": 0.134,
+    "toplam": 0.151,
+    "cagr": 0.193,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.13,
+    "maxdd": 0.077,
+    "toplam": 0.227,
+    "cagr": 0.503,
+    "gun": 183,
+    "ciro_yil": 17.06
+   },
+   "gelistirme": {
+    "sharpe": 1.51,
+    "maxdd": 0.134,
+    "toplam": 0.411,
+    "cagr": 0.305,
+    "gun": 473,
+    "ciro_yil": 15.67
+   },
+   "eslesmis_fark_vs_anlik": {
+    "gun": 473,
+    "yillik_surukleme_pct": -1.54,
+    "surukleme_ga95": [
+     -14.64,
+     11.94
+    ],
+    "sharpe_fark": -0.095,
+    "sharpe_fark_ga95": [
+     -0.796,
+     0.62
+    ],
+    "p_negatif": 0.597
+   },
+   "olay_bazli_yillik_etki_pct": -1.99,
+   "olay_bazli_ga95": [
+    -4.55,
+    0.17
+   ]
+  },
+  "+4h": {
+   "train": {
+    "sharpe": 1.19,
+    "maxdd": 0.129,
+    "toplam": 0.157,
+    "cagr": 0.201,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.14,
+    "maxdd": 0.073,
+    "toplam": 0.238,
+    "cagr": 0.531,
+    "gun": 183,
+    "ciro_yil": 17.06
+   },
+   "gelistirme": {
+    "sharpe": 1.6,
+    "maxdd": 0.129,
+    "toplam": 0.432,
+    "cagr": 0.319,
+    "gun": 473,
+    "ciro_yil": 15.67
+   },
+   "eslesmis_fark_vs_anlik": {
+    "gun": 473,
+    "yillik_surukleme_pct": -0.5,
+    "surukleme_ga95": [
+     -16.9,
+     16.74
+    ],
+    "sharpe_fark": -0.01,
+    "sharpe_fark_ga95": [
+     -0.899,
+     0.881
+    ],
+    "p_negatif": 0.507
+   },
+   "olay_bazli_yillik_etki_pct": -0.53,
+   "olay_bazli_ga95": [
+    -3.38,
+    2.1
+   ]
+  },
+  "+8h": {
+   "train": {
+    "sharpe": 1.18,
+    "maxdd": 0.124,
+    "toplam": 0.165,
+    "cagr": 0.212,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.19,
+    "maxdd": 0.075,
+    "toplam": 0.25,
+    "cagr": 0.56,
+    "gun": 183,
+    "ciro_yil": 17.06
+   },
+   "gelistirme": {
+    "sharpe": 1.61,
+    "maxdd": 0.124,
+    "toplam": 0.456,
+    "cagr": 0.336,
+    "gun": 473,
+    "ciro_yil": 15.67
+   },
+   "eslesmis_fark_vs_anlik": {
+    "gun": 473,
+    "yillik_surukleme_pct": 0.93,
+    "surukleme_ga95": [
+     -21.32,
+     23.29
+    ],
+    "sharpe_fark": 0.003,
+    "sharpe_fark_ga95": [
+     -1.196,
+     1.222
+    ],
+    "p_negatif": 0.469
+   },
+   "olay_bazli_yillik_etki_pct": -0.3,
+   "olay_bazli_ga95": [
+    -3.49,
+    2.86
+   ]
+  },
+  "+12h": {
+   "train": {
+    "sharpe": 1.25,
+    "maxdd": 0.121,
+    "toplam": 0.178,
+    "cagr": 0.229,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.36,
+    "maxdd": 0.082,
+    "toplam": 0.261,
+    "cagr": 0.588,
+    "gun": 183,
+    "ciro_yil": 17.06
+   },
+   "gelistirme": {
+    "sharpe": 1.71,
+    "maxdd": 0.121,
+    "toplam": 0.486,
+    "cagr": 0.357,
+    "gun": 473,
+    "ciro_yil": 15.67
+   },
+   "eslesmis_fark_vs_anlik": {
+    "gun": 473,
+    "yillik_surukleme_pct": 2.45,
+    "surukleme_ga95": [
+     -24.76,
+     29.7
+    ],
+    "sharpe_fark": 0.101,
+    "sharpe_fark_ga95": [
+     -1.339,
+     1.648
+    ],
+    "p_negatif": 0.428
+   },
+   "olay_bazli_yillik_etki_pct": 1.28,
+   "olay_bazli_ga95": [
+    -2.37,
+    5.05
+   ]
+  },
+  "+24h": {
+   "train": {
+    "sharpe": 1.0,
+    "maxdd": 0.12,
+    "toplam": 0.134,
+    "cagr": 0.171,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 1.83,
+    "maxdd": 0.104,
+    "toplam": 0.206,
+    "cagr": 0.455,
+    "gun": 182,
+    "ciro_yil": 17.15
+   },
+   "gelistirme": {
+    "sharpe": 1.36,
+    "maxdd": 0.12,
+    "toplam": 0.367,
+    "cagr": 0.273,
+    "gun": 472,
+    "ciro_yil": 15.71
+   },
+   "eslesmis_fark_vs_anlik": {
+    "gun": 472,
+    "yillik_surukleme_pct": -3.94,
+    "surukleme_ga95": [
+     -48.23,
+     40.62
+    ],
+    "sharpe_fark": -0.254,
+    "sharpe_fark_ga95": [
+     -2.598,
+     2.156
+    ],
+    "p_negatif": 0.57
+   },
+   "olay_bazli_yillik_etki_pct": -4.33,
+   "olay_bazli_ga95": [
+    -10.65,
+    1.62
+   ]
+  }
+ },
+ "soru2_saatlik_kontrol": {
+  "+0h": {
+   "train": {
+    "sharpe": 0.58,
+    "maxdd": 0.167,
+    "toplam": 0.071,
+    "cagr": 0.089,
+    "gun": 292,
+    "ciro_yil": 72.2
+   },
+   "valid": {
+    "sharpe": 2.25,
+    "maxdd": 0.082,
+    "toplam": 0.243,
+    "cagr": 0.539,
+    "gun": 184,
+    "ciro_yil": 45.54
+   },
+   "gelistirme": {
+    "sharpe": 1.27,
+    "maxdd": 0.167,
+    "toplam": 0.331,
+    "cagr": 0.245,
+    "gun": 476,
+    "ciro_yil": 61.89
+   }
+  },
+  "+1h": {
+   "train": {
+    "sharpe": 0.83,
+    "maxdd": 0.15,
+    "toplam": 0.109,
+    "cagr": 0.137,
+    "gun": 292,
+    "ciro_yil": 72.2
+   },
+   "valid": {
+    "sharpe": 2.13,
+    "maxdd": 0.082,
+    "toplam": 0.231,
+    "cagr": 0.51,
+    "gun": 184,
+    "ciro_yil": 45.54
+   },
+   "gelistirme": {
+    "sharpe": 1.38,
+    "maxdd": 0.15,
+    "toplam": 0.365,
+    "cagr": 0.269,
+    "gun": 476,
+    "ciro_yil": 61.89
+   }
+  },
+  "+2h": {
+   "train": {
+    "sharpe": 0.79,
+    "maxdd": 0.163,
+    "toplam": 0.104,
+    "cagr": 0.132,
+    "gun": 291,
+    "ciro_yil": 72.45
+   },
+   "valid": {
+    "sharpe": 2.2,
+    "maxdd": 0.082,
+    "toplam": 0.237,
+    "cagr": 0.525,
+    "gun": 184,
+    "ciro_yil": 45.54
+   },
+   "gelistirme": {
+    "sharpe": 1.37,
+    "maxdd": 0.163,
+    "toplam": 0.365,
+    "cagr": 0.27,
+    "gun": 475,
+    "ciro_yil": 62.02
+   }
+  },
+  "+4h": {
+   "train": {
+    "sharpe": 1.2,
+    "maxdd": 0.123,
+    "toplam": 0.167,
+    "cagr": 0.214,
+    "gun": 291,
+    "ciro_yil": 72.45
+   },
+   "valid": {
+    "sharpe": 2.11,
+    "maxdd": 0.082,
+    "toplam": 0.227,
+    "cagr": 0.501,
+    "gun": 184,
+    "ciro_yil": 45.54
+   },
+   "gelistirme": {
+    "sharpe": 1.58,
+    "maxdd": 0.123,
+    "toplam": 0.432,
+    "cagr": 0.318,
+    "gun": 475,
+    "ciro_yil": 62.02
+   }
+  },
+  "+8h": {
+   "train": {
+    "sharpe": 1.1,
+    "maxdd": 0.137,
+    "toplam": 0.152,
+    "cagr": 0.194,
+    "gun": 291,
+    "ciro_yil": 72.01
+   },
+   "valid": {
+    "sharpe": 2.03,
+    "maxdd": 0.081,
+    "toplam": 0.219,
+    "cagr": 0.482,
+    "gun": 184,
+    "ciro_yil": 46.23
+   },
+   "gelistirme": {
+    "sharpe": 1.49,
+    "maxdd": 0.137,
+    "toplam": 0.405,
+    "cagr": 0.298,
+    "gun": 475,
+    "ciro_yil": 62.02
+   }
+  },
+  "+12h": {
+   "train": {
+    "sharpe": 1.22,
+    "maxdd": 0.13,
+    "toplam": 0.169,
+    "cagr": 0.216,
+    "gun": 291,
+    "ciro_yil": 72.01
+   },
+   "valid": {
+    "sharpe": 2.17,
+    "maxdd": 0.082,
+    "toplam": 0.236,
+    "cagr": 0.522,
+    "gun": 184,
+    "ciro_yil": 46.23
+   },
+   "gelistirme": {
+    "sharpe": 1.62,
+    "maxdd": 0.13,
+    "toplam": 0.445,
+    "cagr": 0.327,
+    "gun": 475,
+    "ciro_yil": 62.02
+   }
+  },
+  "+24h": {
+   "train": {
+    "sharpe": 1.27,
+    "maxdd": 0.104,
+    "toplam": 0.173,
+    "cagr": 0.222,
+    "gun": 291,
+    "ciro_yil": 70.26
+   },
+   "valid": {
+    "sharpe": 2.09,
+    "maxdd": 0.087,
+    "toplam": 0.225,
+    "cagr": 0.496,
+    "gun": 184,
+    "ciro_yil": 49.0
+   },
+   "gelistirme": {
+    "sharpe": 1.62,
+    "maxdd": 0.104,
+    "toplam": 0.437,
+    "cagr": 0.322,
+    "gun": 475,
+    "ciro_yil": 62.02
+   }
+  },
+  "ILERIYE_BAKMA_KONTROL_-1h": {
+   "train": {
+    "sharpe": 3.39,
+    "maxdd": 0.051,
+    "toplam": 0.586,
+    "cagr": 0.779,
+    "gun": 292,
+    "ciro_yil": 72.2
+   },
+   "valid": {
+    "sharpe": 3.5,
+    "maxdd": 0.082,
+    "toplam": 0.398,
+    "cagr": 0.943,
+    "gun": 184,
+    "ciro_yil": 45.53
+   },
+   "gelistirme": {
+    "sharpe": 3.43,
+    "maxdd": 0.082,
+    "toplam": 1.216,
+    "cagr": 0.841,
+    "gun": 476,
+    "ciro_yil": 61.89
+   }
+  },
+  "+1h_saatlikvol": {
+   "train": {
+    "sharpe": 1.04,
+    "maxdd": 0.134,
+    "toplam": 0.138,
+    "cagr": 0.175,
+    "gun": 292,
+    "ciro_yil": 66.03
+   },
+   "valid": {
+    "sharpe": 1.97,
+    "maxdd": 0.088,
+    "toplam": 0.202,
+    "cagr": 0.44,
+    "gun": 184,
+    "ciro_yil": 45.2
+   },
+   "gelistirme": {
+    "sharpe": 1.43,
+    "maxdd": 0.134,
+    "toplam": 0.368,
+    "cagr": 0.271,
+    "gun": 476,
+    "ciro_yil": 57.98
+   }
+  }
+ },
+ "soru2_tani_maliyetsiz": {
+  "gunluk_+1h": {
+   "train": {
+    "sharpe": 1.27,
+    "maxdd": 0.121,
+    "toplam": 0.175,
+    "cagr": 0.226,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.24,
+    "maxdd": 0.077,
+    "toplam": 0.241,
+    "cagr": 0.537,
+    "gun": 183,
+    "ciro_yil": 17.06
+   },
+   "gelistirme": {
+    "sharpe": 1.68,
+    "maxdd": 0.121,
+    "toplam": 0.458,
+    "cagr": 0.338,
+    "gun": 473,
+    "ciro_yil": 15.67
+   }
+  },
+  "saatlik_+1h": {
+   "train": {
+    "sharpe": 1.12,
+    "maxdd": 0.13,
+    "toplam": 0.154,
+    "cagr": 0.196,
+    "gun": 292,
+    "ciro_yil": 72.2
+   },
+   "valid": {
+    "sharpe": 2.29,
+    "maxdd": 0.082,
+    "toplam": 0.251,
+    "cagr": 0.559,
+    "gun": 184,
+    "ciro_yil": 45.54
+   },
+   "gelistirme": {
+    "sharpe": 1.61,
+    "maxdd": 0.13,
+    "toplam": 0.444,
+    "cagr": 0.325,
+    "gun": 476,
+    "ciro_yil": 61.89
+   }
+  }
+ },
+ "soru3_olay": {
+  "n_giris": 37,
+  "n_cikis": 38,
+  "ort_agirlik_giris": 0.2182,
+  "ort_agirlik_cikis": 0.2181,
+  "saatler": {
+   "+1h": {
+    "giris_ort": 0.00069,
+    "giris_medyan": 0.00123,
+    "cikis_ort": 7e-05,
+    "cikis_medyan": 0.00099,
+    "isaretli_ort": -0.0003,
+    "isaretli_ga95": [
+     -0.00131,
+     0.00071
+    ],
+    "yillik_etki_pct": -0.43,
+    "yillik_etki_ga95": [
+     -1.53,
+     0.66
+    ],
+    "p_zararli": 0.779
+   },
+   "+2h": {
+    "giris_ort": 0.00127,
+    "giris_medyan": -0.00026,
+    "cikis_ort": -0.00135,
+    "cikis_medyan": 0.00063,
+    "isaretli_ort": -0.00131,
+    "isaretli_ga95": [
+     -0.00353,
+     0.00058
+    ],
+    "yillik_etki_pct": -1.99,
+    "yillik_etki_ga95": [
+     -4.55,
+     0.17
+    ],
+    "p_zararli": 0.958
+   },
+   "+4h": {
+    "giris_ort": 0.00168,
+    "giris_medyan": -0.00089,
+    "cikis_ort": 0.0004,
+    "cikis_medyan": 0.00237,
+    "isaretli_ort": -0.00063,
+    "isaretli_ga95": [
+     -0.00326,
+     0.00185
+    ],
+    "yillik_etki_pct": -0.53,
+    "yillik_etki_ga95": [
+     -3.38,
+     2.1
+    ],
+    "p_zararli": 0.625
+   },
+   "+8h": {
+    "giris_ort": 0.00098,
+    "giris_medyan": -0.00114,
+    "cikis_ort": -0.0005,
+    "cikis_medyan": 0.00118,
+    "isaretli_ort": -0.00074,
+    "isaretli_ga95": [
+     -0.00361,
+     0.00199
+    ],
+    "yillik_etki_pct": -0.3,
+    "yillik_etki_ga95": [
+     -3.49,
+     2.86
+    ],
+    "p_zararli": 0.569
+   },
+   "+12h": {
+    "giris_ort": -1e-05,
+    "giris_medyan": -0.00115,
+    "cikis_ort": 0.00102,
+    "cikis_medyan": 0.00423,
+    "isaretli_ort": 0.00052,
+    "isaretli_ga95": [
+     -0.00309,
+     0.00387
+    ],
+    "yillik_etki_pct": 1.28,
+    "yillik_etki_ga95": [
+     -2.37,
+     5.05
+    ],
+    "p_zararli": 0.232
+   },
+   "+24h": {
+    "giris_ort": 0.00133,
+    "giris_medyan": 0.00305,
+    "cikis_ort": -0.0069,
+    "cikis_medyan": -0.00115,
+    "isaretli_ort": -0.00415,
+    "isaretli_ga95": [
+     -0.01,
+     0.00161
+    ],
+    "yillik_etki_pct": -4.33,
+    "yillik_etki_ga95": [
+     -10.65,
+     1.62
+    ],
+    "p_zararli": 0.921
+   }
+  }
+ },
+ "en_iyi_3": [
+  {
+   "ad": "+1h (01:00-01:10 UTC) - ONERILEN",
+   "params": {
+    "mod": "gunluk_kontrol",
+    "gecikme_h": 1
+   },
+   "train": {
+    "sharpe": 1.21,
+    "maxdd": 0.125,
+    "toplam": 0.166,
+    "cagr": 0.213,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.18,
+    "maxdd": 0.077,
+    "toplam": 0.233,
+    "cagr": 0.519,
+    "gun": 183,
+    "ciro_yil": 17.06
+   },
+   "komsular": "anlik 1.61 / +1h 1.62 / +2h 1.51 / +4h 1.60 / +8h 1.61 / +12h 1.71 (gelistirme Sharpe). +1h ile anlik arasindaki fark olculemiyor: eslesmis surukleme -0.19%/yil GA95 [-10.2,+9.5], olay-bazli -0.43%/yil GA95 [-1.5,+0.7]."
+  },
+  {
+   "ad": "+2h..+12h - kabul edilebilir",
+   "params": {
+    "mod": "gunluk_kontrol",
+    "gecikme_h": "2..12"
+   },
+   "train": {
+    "sharpe": 1.19,
+    "maxdd": 0.129,
+    "toplam": 0.157,
+    "cagr": 0.201,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 2.14,
+    "maxdd": 0.073,
+    "toplam": 0.238,
+    "cagr": 0.531,
+    "gun": 183,
+    "ciro_yil": 17.06
+   },
+   "komsular": "Bu bandin icinde Sharpe 1.51-1.71 arasinda salsalaniyor; sirasi monoton DEGIL (+2h en dusuk, +12h en yuksek) -> fark gurultu. Olay-bazli maliyet -2.0%..+1.3%/yil."
+  },
+  {
+   "ad": "+24h (tam gun gecikme) - KACIN",
+   "params": {
+    "mod": "gunluk_kontrol",
+    "gecikme_h": 24
+   },
+   "train": {
+    "sharpe": 1.0,
+    "maxdd": 0.12,
+    "toplam": 0.134,
+    "cagr": 0.171,
+    "gun": 290,
+    "ciro_yil": 14.8
+   },
+   "valid": {
+    "sharpe": 1.83,
+    "maxdd": 0.104,
+    "toplam": 0.206,
+    "cagr": 0.455,
+    "gun": 182,
+    "ciro_yil": 17.15
+   },
+   "komsular": "Tek belirgin bozulma: gelistirme Sharpe 1.61->1.36 (-0.25), toplam 0.44->0.37, olay-bazli -4.3%/yil GA95 [-10.7,+1.6], p(zararli)=0.92. 1d kaynakli tsmom2 sonucu (-0.30 Sharpe) ile tutarli - bagimsiz veri, ayni yon."
+  }
+ ],
+ "dusenler": [
+  "SAATLIK kontrol (rolling 1200h MA): +1h gecikmede gelistirme Sharpe 1.38 vs gunluk kontrolun 1.62; toplam 0.365 vs 0.438. Ciro 62/yil vs 15.7/yil (yillik maliyet %4.3 vs %1.1).",
+  "Saatlik kontrol + saatlik vol (720h, cap 1.5): 1.43 - vol kaynagini degistirmek acigi kapatmiyor.",
+  "Saatlik kontrolde sinyali BEKLETMEK iyilestiriyor (+0h 1.27 -> +12h 1.62 -> +24h 1.62): saatlik tazelik bir deger degil, whipsaw kaynagi.",
+  "Gunluk +2h dilimi (+1h ve +4h'ten kotu, 1.51): tek basina anlamsiz, ornek gurultusu (eslesmis dSharpe -0.10, GA95 [-0.80, +0.62])."
+ ],
+ "ogrenilen": [
+  "Gunluk kapanistan sonraki ILK 12 SAAT icinde islem yapmak pratik olarak bedava: +1h/+4h/+8h/+12h gelistirme Sharpe 1.62/1.60/1.61/1.71 vs anlik 1.61. Alfa saatler icinde bozulmuyor; sadece TAM GUN gecikmede (1.36) kayboluyor. Yani kritik esik 'ilk saatler' degil, 'ayni gun icinde'.",
+  "Ayni sinyalle farkli fiyat izgaralarinin farki SADECE sinyal degisim gunlerinden gelir (aradaki gunler teleskoplanir). 75 olayin (37 giris / 38 cikis) uzerinden olculen olay-bazli maliyet, gunluk eslesmis farktan ~10 kat dar GA veriyor ve gozlenen equity farkini yeniden uretiyor (+2h: tahmin -2.6pp vs gozlenen -2.9pp; +24h: -5.6pp vs -7.3pp).",
+  "Kapanis sonrasi hareketin YONU sistematik degil: giris gunlerinde +1h ortalama hareket +%0.07 (aleyhte), cikis gunlerinde +%0.01 (lehte); isaretli ortalama -%0.03, GA95 sifiri iceriyor. MA50 kesisimi bir 'anons' olayi degil - kapanistan sonra kovalanacak bir hareket yok.",
+  "SAATLIK sinyal tazeligi ZARARLI: ayni +1h gecikmede 1.62 -> 1.38. Ayrisim (maliyetsiz TANI kosusu: gunluk 1.68, saatlik 1.61): 0.17 Sharpe fazladan CIRODAN (62 vs 15.7 islem/yil), 0.07 Sharpe zamanlama gurultusundan. Gunluk kapanis, MA50 icin bir gecikme degil bir FILTRE.",
+  "1h penceresi kisa (425 gun, 75 olay) ve rejim elverisli (valid Sharpe 2.1-2.2, 1d kaynakli 2025 valid 1.39'un uzerinde). Seviyelere degil, gecikmeler ARASINDAKI farka guven; o fark +24h disinda istatistiksel olarak sifir."
+ ],
+ "uyarilar": [
+  "Pencere KISA: 1h veri 2024-09'da basliyor, MA50 sonrasi 425 etkin gun ve sadece 75 sinyal degisim olayi. Sharpe SEVIYELERI (1.6 / valid 2.2) 1d kaynakli calismanin cok uzerinde - rejim etkisi; bu ailenin ciktisi seviye degil, gecikmeler ARASINDAKI FARK.",
+  "Gecikme egrisi MONOTON DEGIL (+2h en dusuk, +12h en yuksek). Bu, gerçek bir 'en iyi saat' degil; gun ici zamanlamanin sinyal olmadiginin kanitidir. +12h'i secmeyin - overfit olur.",
+  "Saatlik moddaki 'ILERIYE_BAKMA_KONTROL_-1h' satiri (Sharpe 3.43) bilerek eklendi: sinyal barinin kendi acilisindan islem yapmak alfayi 2 katina cikariyor. Bir bot bunu yanlislikla yaparsa backtest'i saglama alma refleksi icin referans.",
+  "Maliyet harness varsayilani 0.0007*|dW| (komisyon+kayma birlikte); degistirilmedi. Ayri bir fiyat-seviyesi kaymasi EKLENMEDI - bu maliyet zaten kaymayi iceriyor.",
+  "HOLDOUT'a dokunulmadi (LAB_HOLDOUT ayarlanmadi; veri 2025-12-31'de fiziksel kesik)."
+ ],
+ "oneri": "1) Canli botu 01:10 UTC'de birakin - dogru karar. Beklenen gecikme maliyeti: yillik -0.4% (GA95 [-1.5%, +0.7%]), Sharpe etkisi +0.01 (GA95 [-0.56, +0.55]) yani olculemiyor. 2) Operasyonel tolerans genis: bot kacsa bile ayni gun 12:00 UTC'ye kadar telafi edilirse beklenen ek maliyet < %2/yil. Kirmizi cizgi bir sonraki gunluk kapanis: tam gun kayarsa -4..-6%/yil ve -0.25 Sharpe. Bu yuzden bot icin 'kacirilan gun' alarmi + ayni gun icinde telafi kosusu (orn. 13:00 UTC yedek tetik) yeterli; saniye hassasiyeti gereksiz. 3) Saatlik yeniden degerlendirmeyi UYGULAMAYIN - gunluk kapanis kontrolunde kalin. 4) Bir sonraki ajan icin: bu ailede acik soru kalmadi; asil olculmemis uygulama riski SLIPAJ/LIKIDITE degil (b3'te ihmal), pozisyon boyutunun vol tahminine duyarliligi ve borsa kesintisi/emir reddi senaryolari. Onun disinda A2 uygulama tarafinda saglam."
+}
