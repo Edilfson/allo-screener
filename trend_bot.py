@@ -281,6 +281,27 @@ def main():
 
     yeni_state = {"durumlar": yeni_durum, "kagit": kagit,
                   "guncelleme": datetime.now(timezone.utc).isoformat()}
+    # TEK SEFERLIK LAB BILDIRIMI (2026-09-13 programi): kullanici sonucu Telegram'dan gorsun
+    try:
+        _eski = json.load(open(STATE_FILE)) if os.path.exists(STATE_FILE) else {}
+        yeni_state["lab_bildirildi"] = _eski.get("lab_bildirildi", False)
+        if not yeni_state["lab_bildirildi"]:
+            tg_send(
+                "\U0001F52C <b>LAB SONUCU (2026-09-13, 12 ajan, 1790+ test)</b>\n\n"
+                "<b>ICT/SMC</b>: 2881 islem net -0.15R; rastgele-giris kontrolu: 1h'de rastgeleden farksiz (p=0.7), "
+                "4h'de rastgeleden KOTU (p=0.006). 19 varyant + 9 yapisal varyant: hicbiri saglam degil. "
+                "Elenen diger aileler: kesitsel momentum, intraday/gunluk kirilim, mean-reversion/sikisma.\n\n"
+                "<b>Hayatta kalan</b>: buyuk likit coinlerde gunluk MA50 + vol hedefleme.\n"
+                "HOLDOUT 2026 (tek sefer, on kayitli): b3 +13.5% / maxDD %14.7 / Sharpe 0.94 vs al-tut -16% / %45 / -0.27; "
+                "yuruyen top-3: +17.9% / %14.7 / 1.10.\n"
+                "2011-2017 Bitstamp (bagimsiz): dusus azaltma p=0.000, Sharpe farki p=0.015, mutlak getiri al-tutun altinda.\n\n"
+                "<b>Dogru cerceve</b>: dusus keser, Sharpe artirir; boga yilinda al-tutun gerisinde; kotu senaryo 2-3 yil su alti. "
+                "Kar makinesi DEGIL. Gercek para: hayir.\n\n"
+                "Canli: bu bot her gun 01:10 UTC'de 3 kagit portfoy + testnet eslemesi bildirir. "
+                "Detay: araclar/lab/LAB_RAPORU.md, HIPOTEZLER.md")
+            yeni_state["lab_bildirildi"] = True
+    except Exception as e:
+        print("lab bildirimi hatasi:", e)
     # PORTFOY KATMANI (lab 2026-09-13): vol hedefli agirliklar + yuruyen sepet, kagit takip
     try:
         import trend_portfoy
