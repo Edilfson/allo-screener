@@ -30,8 +30,11 @@ import matplotlib.pyplot as plt
 
 BASE = "https://data-api.binance.vision"
 TOP_N = int(os.environ.get("TREND_TOP", "50"))     # hacme gore ilk N coin
-SYMBOL = os.environ.get("TREND_SYMBOL", "")        # dolu ise sadece o coin
+SYMBOL = os.environ.get("TREND_SYMBOL", "")        # virgulle liste: BTCUSDT,ETHUSDT (bossa TOP_N)
 MA_DAYS = int(os.environ.get("TREND_MA", "50"))
+# KAGIT TAKIP: sinyali aynen uygulayan hayali portfoy (coin basi 1.0 baslar).
+# Islem: sinyal gunu kapanisinda (bot 01:10 UTC'de kosar, kapanis 00:00) -> kucuk gecikme.
+KAGIT_MALIYET = float(os.environ.get("TREND_MALIYET", "0.001"))   # tek yon %0.1 (spot taker)
 STATE_FILE = "trend_state.json"
 LOG_FILE = "signals_log.json"     # screener ile ORTAK merkezi kayit
 
@@ -154,7 +157,26 @@ def cizim(df, ma, durum, sym):
     return path
 
 
-def tek_coin(sym, durumlar):
+def kagit_guncelle(kagit, sym, gun, fiyat, yatirimda):
+    """Hayali portfoyu bir gun ilerletir. kagit[sym] = {equity, son_gun, son_fiyat, yatirimda, islem}
+    Kural: onceki gun yatirimdaysak equity *= fiyat/son_fiyat. Durum degisince tek yon maliyet."""
+    k = kagit.setdefault(sym, {"equity": 1.0, "altut": 1.0, "son_gun": None, "son_fiyat": None,
+                               "yatirimda": False, "islem": 0, "baslangic": gun})
+    if k["son_gun"] == gun:
+        return k                                   # ayni gun iki kez kosuldu
+    if k["son_fiyat"]:
+        getiri = fiyat / k["son_fiyat"]
+        k["altut"] *= getiri
+        if k["yatirimda"]:
+            k["equity"] *= getiri
+    if k["yatirimda"] != yatirimda:
+        k["equity"] *= (1 - KAGIT_MALIYET)
+        k["islem"] += 1
+    k.update(son_gun=gun, son_fiyat=fiyat, yatirimda=bool(yatirimda))
+    return k
+
+
+def tek_coin(sym, durumlar, kagit=None):
     """Bir coin icin durum. Return: (satir, degisti, yatirimda)"""
     df = klines(sym)
     if df is None or len(df) < MA_DAYS + 5:
@@ -171,9 +193,14 @@ def tek_coin(sym, durumlar):
     onceki = durumlar.get(sym)
     degisti = (onceki is not None) and (onceki != yatirimda)
 
+    kg = ""
+    if kagit is not None:
+        k = kagit_guncelle(kagit, sym, str(df["dt"].iloc[-1].date()), fiyat, yatirimda)
+        kg = f" | kagit {(k['equity']-1)*100:+.1f}% (altut {(k['altut']-1)*100:+.1f}%)"
+
     isaret = "\U0001F7E2" if yatirimda else "\U0001F534"
     satir = (f"{isaret} {sym[:-4]:<8} {fiyat:>12,.4f} | "
-             f"MA{MA_DAYS} {ma_now:>12,.4f} ({fark:+6.1f}%)")
+             f"MA{MA_DAYS} {ma_now:>12,.4f} ({fark:+6.1f}%){kg}")
 
     if degisti:
         if yatirimda:
@@ -204,20 +231,25 @@ def tek_coin(sym, durumlar):
 
 
 def main():
-    durumlar = {}
+    durumlar, kagit = {}, {}
     if os.path.exists(STATE_FILE):
         try:
-            durumlar = json.load(open(STATE_FILE)).get("durumlar", {})
+            _st = json.load(open(STATE_FILE))
+            durumlar = _st.get("durumlar", {})
+            kagit = _st.get("kagit", {})
         except Exception:
-            durumlar = {}
+            durumlar, kagit = {}, {}
 
-    semboller = [SYMBOL] if SYMBOL else top_symbols(TOP_N)
+    # Backtest (araclar/btc_uzun.py, 2017-2026): MA50 trend takibi BTC/ETH/BNB'de
+    # al-tutu IS ve OOS'ta geciyor; altcoin sepetinde tek basina zayif -> liste sabit.
+    semboller = ([s.strip().upper() for s in SYMBOL.split(",") if s.strip()]
+                 if SYMBOL else top_symbols(TOP_N))
     print(f"{len(semboller)} coin kontrol ediliyor (MA{MA_DAYS})...")
 
     satirlar, degisim, yeni_durum = [], 0, {}
     for i, sym in enumerate(semboller, 1):
         try:
-            satir, degisti, yat = tek_coin(sym, durumlar)
+            satir, degisti, yat = tek_coin(sym, durumlar, kagit)
             if satir is None:
                 continue
             satirlar.append(satir)
@@ -238,9 +270,16 @@ def main():
             f"<code>" + chr(10).join(satirlar[:40]) + "</code>")
     if len(satirlar) > 40:
         ozet += f"\n<i>... ve {len(satirlar)-40} coin daha</i>"
+    if kagit:
+        top_eq = np.mean([k["equity"] for k in kagit.values()])
+        top_bh = np.mean([k["altut"] for k in kagit.values()])
+        ilk = min(k.get("baslangic") or "?" for k in kagit.values())
+        ozet += (f"\n\n\U0001F4DD <b>Kagit portfoy</b> ({ilk}'den beri, esit agirlik, maliyet %{KAGIT_MALIYET*100:.1f})\n"
+                 f"Trend: {(top_eq-1)*100:+.1f}% | Al-tut: {(top_bh-1)*100:+.1f}%\n"
+                 f"<i>Yilda ~6-12 islem; kanit 9 yillik backtestte (RAPOR_2026-09-12.md).</i>")
     tg_send(ozet)
 
-    json.dump({"durumlar": yeni_durum,
+    json.dump({"durumlar": yeni_durum, "kagit": kagit,
                "guncelleme": datetime.now(timezone.utc).isoformat()},
               open(STATE_FILE, "w"), indent=1)
     print(f"Bitti. {len(yat)} yatirimda, {len(nak)} nakitte, {degisim} degisim.")
