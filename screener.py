@@ -73,6 +73,27 @@ DEDUP_COOLDOWN_HOURS = 20
 POSITION_MAX_DAYS = 7   # canli: 11 gunluk takili pozisyonlar olustu
 PENDING_MAX_HOURS = 24   # limit emir bu sure icinde dolmazsa IPTAL
 
+# --- ISLEM MALIYETI (raporda "net R" icin) ---
+# Binance vadeli: maker %0.02 (limit giris), taker %0.05 (stop/TP piyasa cikisi)
+# + cikista kayma. Dar stoplarda bu maliyet R cinsinden buyur: medyan ~0.12R.
+FEE_MAKER = 0.0002
+FEE_TAKER = 0.0005
+SLIPPAGE = 0.0005
+
+
+def maliyet_r(pos):
+    """Dolmus bir islemin toplam maliyeti, R cinsinden."""
+    sd = pos.get("stop_dist_pct") or (pos["risk"] / pos["entry"])
+    return (FEE_MAKER + FEE_TAKER + SLIPPAGE) / sd if sd else 0.0
+
+
+def net_r(pos):
+    """Gerceklesen R eksi maliyet. Dolmayan (cancelled) emirde maliyet yok."""
+    r = pos.get("realized_r", 0.0)
+    if pos.get("status") in ("cancelled",) or not pos.get("entry_bar_close"):
+        return r
+    return r - maliyet_r(pos)
+
 STATE_FILE = "positions.json"
 LOG_FILE = "signals_log.json"     # TUM sinyaller + sonuclar tek yerde
 CHART_DIR = "charts"
@@ -113,8 +134,10 @@ def _vadeli_semboller():
         return None
 
 
-def get_usdt_symbols():
-    """Hacme gore ilk TOP_N USDT paritesi."""
+def get_usdt_symbols(tum=False):
+    """Hacme gore ilk TOP_N USDT paritesi.
+    tum=True: TOP_N kesmesi yapilmaz, filtreyi gecen TUM semboller doner
+    (acik pozisyon temizligi icin: hacimde 100. siradan dusen coin hala gecerlidir)."""
     try:
         r = requests.get(f"{BASE_URL}/api/v3/ticker/24hr", timeout=30)
         r.raise_for_status()
@@ -143,7 +166,7 @@ def get_usdt_symbols():
             rows = [r for r in rows if r[0] in vadeli]
             print(f"  vadeli filtresi: {oncesi} -> {len(rows)} sembol")
 
-        return [x[0] for x in rows[:TOP_N]]
+        return [x[0] for x in (rows if tum else rows[:TOP_N])]
     except Exception as e:
         print("sembol listesi hatasi:", e)
         return []
@@ -447,18 +470,32 @@ def evaluate_position(pos, df):
     # Pozisyon ancak fiyat limit seviyesine DEGINCE aktif olur.
     # (Onceki surumde bu kontrol yoktu: emir hic dolmadan TP vuruldu sayiliyordu.)
     if pos.get("status") == "pending":
-        _ebc = pos.get("signal_bar_close") or pos["opened_at"]
-        _fut = df[df["close_time"] > pd.Timestamp(_ebc)]
+        _ebc = pd.Timestamp(pos.get("signal_bar_close") or pos["opened_at"])
+        _fut = df[df["close_time"] > _ebc]
         if _fut.empty:
             return pos, events
         _e, _st = pos["entry"], pos["stop"]
+        _son_acilis = _ebc + pd.Timedelta(hours=PENDING_MAX_HOURS)
         for _, _c in _fut.iterrows():
+            # SURE SINIRI mum bazinda: 24 saatten sonra ACILAN mumdaki dolum sayilmaz
+            # (onceki surumde tum gecmis taraniyor, 25 saat sonra dolan emir +5R yaziyordu)
+            _acilis = pd.to_datetime(_c["open_time"], unit="ms", utc=True)
+            if _acilis > _son_acilis:
+                break
             _gecti = (_c["low"] <= _st) if _side == 1 else (_c["high"] >= _st)
             _doldu = (_c["low"] <= _e) if _side == 1 else (_c["high"] >= _e)
             if _doldu:
                 pos["status"] = "open"
                 pos["entry_bar_close"] = _c["close_time"].isoformat()
                 events.append(f"\u2705 LIMIT EMIR DOLDU: {_e:.6g}")
+                # DOLUM MUMUNDA STOP: ayni mum hem girise hem stopa degdiyse kotumser
+                # varsayim -> stop. (onceki surum bu mumu hic degerlendirmiyordu;
+                # 39 islemde stop atlanip sonraki mumlardan +5R yazilmisti)
+                if _gecti:
+                    pos["status"] = "stopped"
+                    pos["realized_r"] = -1.0
+                    pos["closed_at"] = _c["close_time"].isoformat()
+                    events.append("\U0001F6D1 STOP oldu (-1.0R) - dolum mumunda")
                 return pos, events
             if _gecti:
                 pos["status"] = "cancelled"
@@ -466,7 +503,7 @@ def evaluate_position(pos, df):
                 pos["realized_r"] = 0.0
                 events.append("\u274C Bolge kirildi, emir IPTAL (islem acilmadi)")
                 return pos, events
-        _yas = (datetime.now(timezone.utc) - pd.Timestamp(_ebc).to_pydatetime()).total_seconds() / 3600
+        _yas = (datetime.now(timezone.utc) - _ebc.to_pydatetime()).total_seconds() / 3600
         if _yas > PENDING_MAX_HOURS:
             pos["status"] = "cancelled"
             pos["closed_at"] = datetime.now(timezone.utc).isoformat()
@@ -569,13 +606,17 @@ def build_summary(positions):
         return f"📊 <b>OZET</b>\n\nHenuz kapanmis pozisyon yok.\nAcik pozisyon: {len(open_ps)}"
 
     total_r = sum(p.get("realized_r", 0) for p in closed)
+    net_top = sum(net_r(p) for p in closed)
     wins = [p for p in closed if p.get("realized_r", 0) > 0]
     losses = [p for p in closed if p.get("realized_r", 0) <= 0]
+    iptal = [p for p in positions if p["status"] == "cancelled"]
+    dolma = len(closed) / (len(closed) + len(iptal)) * 100 if (closed or iptal) else 0
     lines = [
         "📊 <b>GENEL OZET</b>",
-        f"Kapanan: {len(closed)} islem | Acik: {len(open_ps)}",
-        f"Toplam: <b>{total_r:+.2f}R</b> | Islem basi ort: {total_r/len(closed):+.2f}R",
-        f"Basari: %{len(wins)/len(closed)*100:.1f} ({len(wins)}K / {len(losses)}Z)",
+        f"Kapanan: {len(closed)} islem | Acik: {len(open_ps)} | Limit dolma: %{dolma:.0f}",
+        f"Brut: {total_r:+.2f}R | Islem basi: {total_r/len(closed):+.2f}R",
+        f"<b>NET (ucret+kayma): {net_top:+.2f}R | Islem basi: {net_top/len(closed):+.2f}R</b>",
+        f"Basari: %{len(wins)/len(closed)*100:.1f} ({len(wins)}K / {len(losses)}Z) | basabas %16.7",
     ]
     if wins:
         lines.append(f"Ort. kazanc: {sum(p['realized_r'] for p in wins)/len(wins):+.2f}R")
@@ -613,13 +654,26 @@ def build_summary(positions):
             lines.append(f"  {p['symbol']} {p['interval']} {p.get('strategy','?')}: "
                          f"{p.get('unrealized_r',0):+.2f}R {hits}")
 
-    lines.append("\n<i>Varsayimsal: agirlikli TP kapanislari, ilk TP sonrasi stop BE. "
-                 "Komisyon/kayma dahil degil.</i>")
+    lines.append(f"\n<i>NET satiri: maker %{FEE_MAKER*100:.2f} + taker %{FEE_TAKER*100:.2f} "
+                 f"+ kayma %{SLIPPAGE*100:.2f} dusulmus. Karar icin NET'e bak.</i>")
     return "\n".join(lines)
 
 
+def trend_uyumu(pos):
+    """Sinyal yonu coinin 1D trendiyle ayni mi? -> trend_yonunde / trende_karsi / belirsiz"""
+    t = (pos.get("context") or {}).get("coin_1d_trend")
+    s = pos.get("side", 1)
+    if (s == 1 and t == "yukselis") or (s == -1 and t == "dusus"):
+        return "trend_yonunde"
+    if t in ("yukselis", "dusus"):
+        return "trende_karsi"
+    return "belirsiz"
+
+
 def build_insights(positions):
-    closed = [p for p in positions if p["status"] != "open" and p.get("context")]
+    # sadece DOLMUS ve kapanmis islemler (iptal edilen emir 0R'lik islem degildir)
+    closed = [p for p in positions if p["status"] not in ("open", "pending", "cancelled")
+              and p.get("context")]
     if len(closed) < 5:
         return (f"🔬 <b>ICGORU RAPORU</b>\n\nHenuz yeterli veri yok "
                 f"({len(closed)} kapanmis islem, en az 5 gerekli).")
@@ -645,6 +699,15 @@ def build_insights(positions):
         s2 = bstat([p for p in closed if p["context"].get("coin_1d_trend") == tr])
         if s2:
             lines.append(f"  {tr}: {s2}")
+    # ON KAYITLI HIPOTEZ (2026-09-12, bkz HIPOTEZLER.md): 1D trendin TERSINE
+    # acilan sinyaller daha iyi gorunuyordu (+0.64R vs -0.45R, 155 islem).
+    # Ileriye donuk izleniyor; kural DEGIL.
+    lines.append("\n<b>Yon x 1D trend (on kayitli hipotez)</b>")
+    for lb, g in [("trend yonunde", [p for p in closed if trend_uyumu(p) == "trend_yonunde"]),
+                  ("trende karsi", [p for p in closed if trend_uyumu(p) == "trende_karsi"])]:
+        s3 = bstat(g)
+        if s3:
+            lines.append(f"  {lb}: {s3}")
     lines.append("\n<b>BTC rejimi</b>")
     for rg in ["boga", "ayi"]:
         s = bstat([p for p in closed if p["context"].get("btc_regime") == rg])
@@ -810,13 +873,17 @@ def main():
                 except Exception as e:
                     print(f"  [testnet iptal hatasi] {p['symbol']}: {e}")
 
-    # ARTIK TARANMAYAN COINLERDEN kalan acik pozisyonlari kapat
-    # (vadeli filtresi / doviz-emtia elemesi sonrasi listeden cikan coinler)
-    _tarananlar = set(get_usdt_symbols())
-    if _tarananlar:
+    # GECERSIZ COINLERDEN kalan acik pozisyonlari kapat
+    # (vadeli filtresi / doviz-emtia elemesi). BUG FIX: onceki surum TOP_N
+    # listesine bakiyordu; hacimde 100. siradan dusen her coin 0R ile
+    # kapatiliyordu -> 23 kayittan 16'si gercek islemdi (12 stop, 2 TP).
+    _tum_gecerli = get_usdt_symbols(tum=True)
+    _tarananlar = set(_tum_gecerli[:TOP_N])
+    if _tum_gecerli:
+        _gecerli = set(_tum_gecerli)
         for p in positions:
             if (p["status"] in ("open", "pending")
-                    and p["symbol"] not in _tarananlar):
+                    and p["symbol"] not in _gecerli):
                 p["status"] = "closed_kapali_coin"
                 p["closed_at"] = datetime.now(timezone.utc).isoformat()
                 p.setdefault("realized_r", 0.0)
@@ -866,7 +933,7 @@ def main():
                       "acilis": pos["opened_at"]})
         time.sleep(0.05)
 
-    symbols = list(_tarananlar) if _tarananlar else get_usdt_symbols()
+    symbols = _tum_gecerli[:TOP_N] if _tum_gecerli else get_usdt_symbols()
     print(f"{len(symbols)} sembol taranacak...")
     btc_regime, btc_dist = get_btc_regime()
     print(f"BTC rejimi: {btc_regime} (%{btc_dist*100:.1f})")
@@ -877,6 +944,7 @@ def main():
     diag_detect = {st: 0 for st in STRATEGY_ORDER}
     diag_plan_red = {st: 0 for st in STRATEGY_ORDER}
     diag_konum = {st: 0 for st in STRATEGY_ORDER}
+    diag_sebep = {}   # detect_ict red sebepleri (veri_yetersiz = yeni coin, sessiz eleme)
 
     for symbol in symbols:
         try:
@@ -920,6 +988,7 @@ def main():
                     plan, sebep = ict_setup.detect_ict(dfs[iv], SIDE_OF[strat])
                     if not plan:
                         diag_plan_red[strat] = diag_plan_red.get(strat, 0) + 1
+                        diag_sebep[sebep] = diag_sebep.get(sebep, 0) + 1
                         continue
                     diag_detect[strat] = diag_detect.get(strat, 0) + 1
                     trig = (iv, 0.0, plan["ob_high"], plan["ob_low"], 0.0, 0.0,
@@ -1020,7 +1089,13 @@ def main():
 
                 if testnet_trader and not sessiz:
                     try:
-                        testnet_trader.sinyali_isle(plan, symbol, iv, strat)
+                        # sonuc pozisyona yazilir: testnet'te emir ACILAMAYAN sinyaller
+                        # (marjin yetersiz, miktar siniri) analizde ayrilabilsin
+                        t_ok, t_sonuc = testnet_trader.sinyali_isle(plan, symbol, iv, strat)
+                        positions[-1]["testnet_ok"] = bool(t_ok)
+                        if not t_ok:
+                            positions[-1]["testnet_hata"] = str(
+                                (t_sonuc or {}).get("hata") or (t_sonuc or {}).get("msg") or t_sonuc)[:120]
                     except Exception as e:
                         print(f"  [testnet hata] {symbol}: {e}")
                 log_ekle({"tur": "SINYAL", "kaynak": "screener", "sembol": symbol,
@@ -1037,6 +1112,7 @@ def main():
     print(f"{new_count} yeni sinyal.")
     print(f"TANI | rally gecen (sembol/dilim): {diag_rally}")
     print(f"TANI | bolge tespiti: {diag_detect} | konum reddi: {diag_konum} | plan reddi: {diag_plan_red}")
+    print(f"TANI | red sebepleri: {dict(sorted(diag_sebep.items(), key=lambda a: -a[1]))}")
 
     # ---- TELEGRAM BILGILENDIRME: her taramada ozet durum ----
     try:

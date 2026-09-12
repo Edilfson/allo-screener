@@ -3227,7 +3227,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-18T18:09:02.556648+00:00",
-  "status": "target_done",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-18T17:59:59.999000+00:00",
   "entry": 0.33209999999999995,
@@ -3242,7 +3242,6 @@
     "hit": true
    }
   ],
-  "entry_bar_close": "2026-08-19T18:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.3313,
   "zone_high": 0.3329,
@@ -3266,9 +3265,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0104
   },
-  "realized_r": 5.0,
+  "realized_r": 0.0,
   "unrealized_r": 4.968383017163515,
-  "closed_at": "2026-08-21T22:59:59.999000+00:00"
+  "closed_at": "2026-08-21T22:59:59.999000+00:00",
+  "duzeltme": "2026-09-12 replay: target_done +5.00R -> cancelled +0.00R"
  },
  {
   "symbol": "GRAMUSDT",
@@ -4579,7 +4579,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-22T06:09:28.606278+00:00",
-  "status": "closed_kapali_dilim",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
   "entry": 2414.12,
@@ -4618,9 +4618,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2968
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.2850786075170655,
-  "closed_at": "2026-08-22T16:40:14.631874+00:00"
+  "closed_at": "2026-08-22T16:40:14.631874+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_dilim +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "GIGGLEUSDT",
@@ -4679,7 +4680,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-22T06:09:28.606278+00:00",
-  "status": "closed_kapali_dilim",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-22T05:59:59.999000+00:00",
   "entry": 0.36345,
@@ -4718,9 +4719,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1454
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-22T16:40:14.631892+00:00"
+  "closed_at": "2026-08-22T16:40:14.631892+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_dilim +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "CAKEUSDT",
@@ -4830,7 +4832,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-23T12:08:02.046583+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-23T11:59:59.999000+00:00",
   "entry": 1.1687500000000002,
@@ -4869,9 +4871,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.026
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-23T17:42:32.467717+00:00"
+  "closed_at": "2026-08-23T17:42:32.467717+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "MSTRBUSDT",
@@ -4880,7 +4883,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-23T12:08:02.046583+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-23T11:59:59.999000+00:00",
   "entry": 120.18,
@@ -4919,10 +4922,11 @@
    "coin_1d_trend": "bilinmiyor",
    "coin_1d_ema99_dist": 0.0
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.9568979863538184,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 120.18",
-  "closed_at": "2026-08-23T17:42:32.467742+00:00"
+  "closed_at": "2026-08-23T17:42:32.467742+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "ENAUSDT",
@@ -5084,7 +5088,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-24T18:10:51.023217+00:00",
-  "status": "closed_kapali_coin",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-24T17:59:59.999000+00:00",
   "entry": 0.0581,
@@ -5125,7 +5129,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-25T14:47:45.369604+00:00"
+  "closed_at": "2026-08-25T14:47:45.369604+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> cancelled +0.00R"
  },
  {
   "symbol": "AIUSDT",
@@ -5185,7 +5190,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-25T15:18:51.499189+00:00",
-  "status": "target_done",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-25T14:59:59.999000+00:00",
   "entry": 0.0688,
@@ -5224,10 +5229,11 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0429
   },
-  "realized_r": 5.0,
+  "realized_r": -1.0,
   "unrealized_r": 3.633720930232519,
   "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
-  "closed_at": "2026-08-25T17:59:59.999000+00:00"
+  "closed_at": "2026-08-25T17:59:59.999000+00:00",
+  "duzeltme": "2026-09-12 replay: target_done +5.00R -> stopped -1.00R"
  },
  {
   "symbol": "WIFUSDT",
@@ -5746,7 +5752,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-28T01:44:09.265548+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-27T23:59:59.999000+00:00",
   "entry": 0.061549999999999994,
@@ -5785,10 +5791,11 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.3248
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.6736633101687748,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06155",
-  "closed_at": "2026-08-28T16:13:29.385314+00:00"
+  "closed_at": "2026-08-28T16:13:29.385314+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "WLFIUSDT",
@@ -6052,7 +6059,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-28T20:24:46.119185+00:00",
-  "status": "closed_kapali_coin",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-28T19:59:59.999000+00:00",
   "entry": 7.640000000000001,
@@ -6093,7 +6100,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-29T16:35:05.694656+00:00"
+  "closed_at": "2026-08-29T16:35:05.694656+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> cancelled +0.00R"
  },
  {
   "symbol": "SEIUSDT",
@@ -6102,7 +6110,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-28T20:24:46.119185+00:00",
-  "status": "closed_kapali_coin",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-28T19:59:59.999000+00:00",
   "entry": 0.04671,
@@ -6143,7 +6151,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-29T02:36:58.098609+00:00"
+  "closed_at": "2026-08-29T02:36:58.098609+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> cancelled +0.00R"
  },
  {
   "symbol": "MINAUSDT",
@@ -6152,7 +6161,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-28T22:03:31.719511+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-28T11:59:59.999000+00:00",
   "entry": 0.061649999999999996,
@@ -6191,10 +6200,11 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.3248
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.9500206526228846,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06165",
-  "closed_at": "2026-08-30T00:38:00.425856+00:00"
+  "closed_at": "2026-08-30T00:38:00.425856+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "GASUSDT",
@@ -6203,7 +6213,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-29T00:31:38.297950+00:00",
-  "status": "closed_kapali_coin",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-28T23:59:59.999000+00:00",
   "entry": 1.2425,
@@ -6244,7 +6254,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-29T01:13:02.402303+00:00"
+  "closed_at": "2026-08-29T01:13:02.402303+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> cancelled +0.00R"
  },
  {
   "symbol": "TAOUSDT",
@@ -6304,7 +6315,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-29T05:11:17.999611+00:00",
-  "status": "closed_kapali_coin",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-28T23:59:59.999000+00:00",
   "entry": 0.004175,
@@ -6343,9 +6354,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.3817
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-29T05:35:11.608273+00:00"
+  "closed_at": "2026-08-29T05:35:11.608273+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> target_done +5.00R"
  },
  {
   "symbol": "TURBOUSDT",
@@ -6762,7 +6774,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-08-31T00:38:30.443479+00:00",
-  "status": "closed_kapali_coin",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-30T23:59:59.999000+00:00",
   "entry": 0.24655,
@@ -6803,7 +6815,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-31T15:36:28.298635+00:00"
+  "closed_at": "2026-08-31T15:36:28.298635+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> cancelled +0.00R"
  },
  {
   "symbol": "ETHFIUSDT",
@@ -6863,7 +6876,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-31T03:16:44.607020+00:00",
-  "status": "closed_kapali_coin",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-31T02:59:59.999000+00:00",
   "entry": 0.14105,
@@ -6904,7 +6917,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-31T20:36:07.496084+00:00"
+  "closed_at": "2026-08-31T20:36:07.496084+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> cancelled +0.00R"
  },
  {
   "symbol": "AXLUSDT",
@@ -7066,7 +7080,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-31T09:18:14.999230+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-08-31T07:59:59.999000+00:00",
   "entry": 0.009309999999999999,
@@ -7105,9 +7119,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.5099
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-31T09:40:53.158253+00:00"
+  "closed_at": "2026-08-31T09:40:53.158253+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "BNBUSDT",
@@ -7218,7 +7233,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-08-31T22:11:38.887569+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-08-31T17:59:59.999000+00:00",
   "entry": 0.20155,
@@ -7257,9 +7272,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.093
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-08-31T23:11:02.085258+00:00"
+  "closed_at": "2026-08-31T23:11:02.085258+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "FETUSDT",
@@ -7421,7 +7437,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-01T06:23:14.251329+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-01T05:59:59.999000+00:00",
   "entry": 4.101e-05,
@@ -7460,10 +7476,11 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1185
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.1811337397029379,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.101e-05",
-  "closed_at": "2026-09-02T05:12:59.803191+00:00"
+  "closed_at": "2026-09-02T05:12:59.803191+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "BCHUSDT",
@@ -7676,7 +7693,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-02T03:15:50.790271+00:00",
-  "status": "closed_kapali_coin",
+  "status": "target_done",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-02T02:59:59.999000+00:00",
   "entry": 0.005935,
@@ -7715,10 +7732,11 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.5332
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 2.106149957876979,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.005935",
-  "closed_at": "2026-09-03T09:15:03.168443+00:00"
+  "closed_at": "2026-09-03T09:15:03.168443+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> target_done +5.00R"
  },
  {
   "symbol": "ZROUSDT",
@@ -8084,7 +8102,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-04T06:21:48.979422+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-04T05:59:59.999000+00:00",
   "entry": 8.6565e-05,
@@ -8123,9 +8141,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2099
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-09-04T08:17:54.219263+00:00"
+  "closed_at": "2026-09-04T08:17:54.219263+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "DASHUSDT",
@@ -8797,7 +8816,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-06T13:10:28.442135+00:00",
-  "status": "target_done",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-06T12:59:59.999000+00:00",
   "entry": 2.0455,
@@ -8836,10 +8855,11 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.312
   },
-  "realized_r": 5.0,
+  "realized_r": -1.0,
   "unrealized_r": 4.357252167998623,
   "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
-  "closed_at": "2026-09-07T12:59:59.999000+00:00"
+  "closed_at": "2026-09-07T12:59:59.999000+00:00",
+  "duzeltme": "2026-09-12 replay: target_done +5.00R -> stopped -1.00R"
  },
  {
   "symbol": "PNUTUSDT",
@@ -8848,7 +8868,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-06T13:35:15.720086+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-06T11:59:59.999000+00:00",
   "entry": 0.05075,
@@ -8887,10 +8907,11 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0882
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.9284387944579287,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.05075",
-  "closed_at": "2026-09-06T17:09:33.579728+00:00"
+  "closed_at": "2026-09-06T17:09:33.579728+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "PENGUUSDT",
@@ -8950,7 +8971,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-06T17:09:31.723645+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-06T16:59:59.999000+00:00",
   "entry": 0.011755,
@@ -8989,9 +9010,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.0749
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-09-07T02:19:13.307122+00:00"
+  "closed_at": "2026-09-07T02:19:13.307122+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "AEROUSDT",
@@ -9255,7 +9277,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-07T06:28:33.127434+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-07T05:59:59.999000+00:00",
   "entry": 0.1673,
@@ -9294,9 +9316,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2472
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-09-07T08:45:20.136824+00:00"
+  "closed_at": "2026-09-07T08:45:20.136824+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "ETCUSDT",
@@ -9611,7 +9634,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-08T04:14:58.588309+00:00",
-  "status": "closed_kapali_coin",
+  "status": "cancelled",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-08T03:59:59.999000+00:00",
   "entry": 0.264,
@@ -9652,7 +9675,8 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0,
-  "closed_at": "2026-09-08T17:35:19.123330+00:00"
+  "closed_at": "2026-09-08T17:35:19.123330+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> cancelled +0.00R"
  },
  {
   "symbol": "1000CATUSDT",
@@ -10222,7 +10246,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-10T08:17:28.778686+00:00",
-  "status": "closed_kapali_coin",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-10T07:59:59.999000+00:00",
   "entry": 0.0256,
@@ -10261,10 +10285,11 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0574
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 1.3330794134450552,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0256",
-  "closed_at": "2026-09-10T19:09:15.503795+00:00"
+  "closed_at": "2026-09-10T19:09:15.503795+00:00",
+  "duzeltme": "2026-09-12 replay: closed_kapali_coin +0.00R -> stopped -1.00R"
  },
  {
   "symbol": "ANIMEUSDT",

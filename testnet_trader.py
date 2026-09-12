@@ -57,20 +57,39 @@ def bakiye():
 
 
 def sembol_bilgi(sym):
+    """tick, adim, miktar hassasiyeti, fiyat hassasiyeti, MAX miktar.
+    MAX miktar = min(LOT_SIZE.maxQty, MARKET_LOT_SIZE.maxQty): stop/TP piyasa
+    emri oldugu icin MARKET siniri belirleyicidir (canli: 16 sinyal -4005 ile red)."""
     try:
         r = requests.get(f"{BASE}/fapi/v1/exchangeInfo", timeout=20)
         for s in r.json().get("symbols", []):
             if s["symbol"] == sym:
                 tick = adim = None
+                maxq = []
                 for f in s["filters"]:
                     if f["filterType"] == "PRICE_FILTER":
                         tick = float(f["tickSize"])
                     if f["filterType"] == "LOT_SIZE":
                         adim = float(f["stepSize"])
-                return tick, adim, s.get("quantityPrecision", 3), s.get("pricePrecision", 2)
+                        maxq.append(float(f.get("maxQty", 0) or 0))
+                    if f["filterType"] == "MARKET_LOT_SIZE":
+                        maxq.append(float(f.get("maxQty", 0) or 0))
+                maxq = [m for m in maxq if m > 0]
+                return (tick, adim, s.get("quantityPrecision", 3),
+                        s.get("pricePrecision", 2), min(maxq) if maxq else None)
     except Exception:
         pass
-    return None, None, 3, 2
+    return None, None, 3, 2, None
+
+
+def kullanilabilir_bakiye():
+    ok, c = _imzali("/fapi/v2/balance")
+    if not ok:
+        return None
+    for x in c:
+        if x.get("asset") == "USDT":
+            return float(x.get("availableBalance", x.get("balance", 0)))
+    return None
 
 
 def _yuvarla(deger, adim, hassas):
@@ -83,7 +102,7 @@ def emir_ac(plan, sembol):
     side = plan["side"]
     yon = "BUY" if side == 1 else "SELL"
     ters = "SELL" if side == 1 else "BUY"
-    tick, adim, qp, pp = sembol_bilgi(sembol)
+    tick, adim, qp, pp, max_miktar = sembol_bilgi(sembol)
 
     giris = _yuvarla(plan["entry"], tick, pp)
     stop = _yuvarla(plan["stop"], tick, pp)
@@ -95,6 +114,21 @@ def emir_ac(plan, sembol):
     miktar = _yuvarla(RISK_USDT / risk_birim, adim, qp)
     if miktar <= 0:
         return False, {"hata": "miktar sifir"}
+
+    # MIKTAR SINIRI: borsanin max miktarini asma (asarsa stop emri reddedilir,
+    # giris iptal olur -> sinyal bosa gider). Kisilirsa risk de kisilir; kaydedilir.
+    kisildi = False
+    if max_miktar and miktar > max_miktar:
+        miktar = _yuvarla(max_miktar, adim, qp)
+        kisildi = True
+
+    # MARJIN ON KONTROLU: dar stoplarda nominal 5-8k USDT oluyor, 5x kaldiracla
+    # marjin 1-1.7k; eszamanli 8 emirde bakiye yetmiyordu (12x "Margin is insufficient")
+    gerekli_marjin = miktar * giris / LEVERAGE * 1.05
+    bakiye_k = kullanilabilir_bakiye()
+    if bakiye_k is not None and bakiye_k < gerekli_marjin:
+        return False, {"hata": "marjin yetersiz (on kontrol)",
+                       "gerekli": round(gerekli_marjin, 1), "kullanilabilir": round(bakiye_k, 1)}
 
     _imzali("/fapi/v1/leverage", {"symbol": sembol, "leverage": LEVERAGE}, "POST")
 
@@ -129,6 +163,7 @@ def emir_ac(plan, sembol):
 
     return True, {"orderId": giris_emri.get("orderId"), "miktar": miktar,
                   "giris": giris, "stop": stop, "tp": tp,
+                  "risk_usdt": round(miktar * risk_birim, 2), "miktar_kisildi": kisildi,
                   "stop_ok": ok_stop, "tp_ok": ok_tp}
 
 
@@ -145,7 +180,7 @@ def sinyali_isle(plan, sembol, dilim, strateji):
     """screener.py buradan cagirir."""
     if not KEY or not SECRET:
         print("  [testnet] anahtar yok, atlandi")
-        return
+        return None, {"hata": "anahtar yok"}
     ok, sonuc = emir_ac(plan, sembol)
     kayit = {"zaman": time.strftime("%Y-%m-%dT%H:%M:%S"), "sembol": sembol,
              "dilim": dilim, "strateji": strateji,
@@ -153,6 +188,7 @@ def sinyali_isle(plan, sembol, dilim, strateji):
              "basarili": ok, "sonuc": sonuc}
     kaydet(kayit)
     print(f"  [testnet] {sembol} {dilim}: {'emir acildi' if ok else 'HATA'} {sonuc}")
+    return ok, sonuc
 
 
 def acik_emirler(sembol=None):
