@@ -10670,7 +10670,7 @@
    "coin_1d_ema99_dist": 0.022
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3376013833422576,
+  "unrealized_r": 0.24702540244555624,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3563"
  },
  {
@@ -11075,7 +11075,7 @@
    "coin_1d_ema99_dist": -0.1342
   },
   "realized_r": 0.0,
-  "unrealized_r": 4.2128603104212505,
+  "unrealized_r": 3.991130820399092,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 225.5"
  },
  {
@@ -11125,7 +11125,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.008043369850234896,
+  "unrealized_r": -0.02413010955069911,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -11333,7 +11333,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-12T10:10:50.636600+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-12T09:59:59.999000+00:00",
   "entry": 0.014655,
@@ -11372,9 +11372,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.4395
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.21201958289965508,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.014655"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-12T12:59:59.999000+00:00"
  },
  {
   "symbol": "BNBUSDT",
