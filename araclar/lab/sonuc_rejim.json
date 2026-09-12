@@ -1,0 +1,553 @@
+{
+ "aile": "rejim",
+ "denenen": 105,
+ "defter_toplam_tum_aileler": 671,
+ "VALID_ADAY_SAYISI": 0,
+ "hukum": "AILE RED. 3 aday da VALID'de negatif. Maliyet sonrasi pozitif konfigurasyon yok.",
+ "en_iyi_3": [
+  {
+   "ad": "A_sqz4h_bw0.2_n20_k2.0_ls",
+   "params": {
+    "tf": "4h",
+    "fn": "sikisma",
+    "bw_pct": 0.2,
+    "brk_n": 20,
+    "trail_k": 2.0,
+    "max_days": 20,
+    "allow_short": true
+   },
+   "train": {
+    "n": 1097,
+    "sinyal": 1097,
+    "dolma": 1.0,
+    "ort_net": 0.1351,
+    "ort_brut": 0.1565,
+    "ga95": [
+     0.0792,
+     0.1931
+    ],
+    "ga99": [
+     0.0621,
+     0.2137
+    ],
+    "win": 0.44,
+    "toplam": 148.2,
+    "yari1": 0.1496,
+    "yari2": 0.1205,
+    "yillar": {
+     "2024": [
+      312,
+      0.158
+     ],
+     "2025": [
+      785,
+      0.126
+     ]
+    }
+   },
+   "valid": {
+    "n": 907,
+    "sinyal": 907,
+    "dolma": 1.0,
+    "ort_net": -0.0321,
+    "ort_brut": -0.0084,
+    "ga95": [
+     -0.086,
+     0.0253
+    ],
+    "ga99": [
+     -0.1074,
+     0.0437
+    ],
+    "win": 0.357,
+    "toplam": -29.1,
+    "yari1": 0.0068,
+    "yari2": -0.0693,
+    "yillar": {
+     "2025": [
+      907,
+      -0.032
+     ]
+    }
+   },
+   "train_saglam": {
+    "n": 1097,
+    "ort": 0.1351,
+    "medyan": -0.1231,
+    "wins10": 0.1344,
+    "wins3": 0.1149,
+    "top1_pay": 0.341,
+    "maxR": 10.7
+   },
+   "valid_saglam": {
+    "n": 907,
+    "ort": -0.0321,
+    "medyan": -0.2414,
+    "wins10": -0.0321,
+    "wins3": -0.0479,
+    "top1_pay": 1.383,
+    "maxR": 5.8
+   },
+   "kabul": false,
+   "komsular": "GENIS POZITIF BOLGE (train): trail_k 1.5/2.0 wins3R=0.129/0.115, k2.5=0.047, k3.0=-0.052 (k>2.5 bozuluyor); bw_pct 0.10/0.15/0.20/0.30 -> 0.104/0.115/0.115/0.088; brk_n 10/20/30/55 -> 0.120/0.115/0.132/0.153. Train'de saglam ve genis. VALID'de coktu."
+  },
+  {
+   "ad": "B_sqz4h_bw0.2_n20_k2.0_shortonly",
+   "params": {
+    "tf": "4h",
+    "fn": "sikisma_short",
+    "bw_pct": 0.2,
+    "brk_n": 20,
+    "trail_k": 2.0,
+    "max_days": 20
+   },
+   "train": {
+    "n": 530,
+    "sinyal": 530,
+    "dolma": 1.0,
+    "ort_net": 0.2466,
+    "ort_brut": 0.2657,
+    "ga95": [
+     0.1731,
+     0.3203
+    ],
+    "ga99": [
+     0.1532,
+     0.3439
+    ],
+    "win": 0.54,
+    "toplam": 130.7,
+    "yari1": 0.3177,
+    "yari2": 0.1755,
+    "yillar": {
+     "2024": [
+      165,
+      0.192
+     ],
+     "2025": [
+      365,
+      0.271
+     ]
+    }
+   },
+   "valid": {
+    "n": 446,
+    "sinyal": 446,
+    "dolma": 1.0,
+    "ort_net": -0.0837,
+    "ort_brut": -0.0629,
+    "ga95": [
+     -0.1539,
+     -0.0093
+    ],
+    "ga99": [
+     -0.1713,
+     0.0128
+    ],
+    "win": 0.352,
+    "toplam": -37.3,
+    "yari1": -0.1875,
+    "yari2": 0.0146,
+    "yillar": {
+     "2025": [
+      446,
+      -0.084
+     ]
+    }
+   },
+   "train_saglam": {
+    "n": 530,
+    "ort": 0.2466,
+    "medyan": 0.0643,
+    "wins10": 0.2466,
+    "wins3": 0.2444,
+    "top1_pay": 0.119,
+    "maxR": 4.0
+   },
+   "valid_saglam": {
+    "n": 446,
+    "ort": -0.0837,
+    "medyan": -0.2766,
+    "wins10": -0.0837,
+    "wins3": -0.0862,
+    "top1_pay": 0.344,
+    "maxR": 4.1
+   },
+   "kabul": false,
+   "komsular": "Ayni izgaranin short bacagi. 4h train edge'inin TAMAMI short'ta: long-only wins3R=+0.0003, short-only wins3R=+0.244. Bu bile VALID'de -0.086."
+  },
+  {
+   "ad": "C_brk1d_n20_k3.0_longonly",
+   "params": {
+    "tf": "1d",
+    "fn": "kirilim_saf",
+    "brk_n": 20,
+    "trail_k": 3.0,
+    "max_days": 120,
+    "allow_short": false
+   },
+   "train": {
+    "n": 4457,
+    "sinyal": 4457,
+    "dolma": 1.0,
+    "ort_net": 0.5033,
+    "ort_brut": 0.51,
+    "ga95": [
+     0.4175,
+     0.5965
+    ],
+    "ga99": [
+     0.389,
+     0.6215
+    ],
+    "win": 0.386,
+    "toplam": 2243.3,
+    "yari1": 0.6754,
+    "yari2": 0.3313,
+    "yillar": {
+     "2017": [
+      2,
+      0.268
+     ],
+     "2018": [
+      30,
+      -0.453
+     ],
+     "2019": [
+      108,
+      0.3
+     ],
+     "2020": [
+      326,
+      1.85
+     ],
+     "2021": [
+      632,
+      1.252
+     ],
+     "2022": [
+      676,
+      -0.3
+     ],
+     "2023": [
+      1190,
+      0.577
+     ],
+     "2024": [
+      1493,
+      0.232
+     ]
+    }
+   },
+   "valid": {
+    "n": 1119,
+    "sinyal": 1119,
+    "dolma": 1.0,
+    "ort_net": -0.1556,
+    "ort_brut": -0.1495,
+    "ga95": [
+     -0.2356,
+     -0.052
+    ],
+    "ga99": [
+     -0.2533,
+     -0.002
+    ],
+    "win": 0.252,
+    "toplam": -174.1,
+    "yari1": -0.1759,
+    "yari2": -0.1372,
+    "yillar": {
+     "2025": [
+      1119,
+      -0.156
+     ]
+    }
+   },
+   "train_saglam": {
+    "n": 4457,
+    "ort": 0.5033,
+    "medyan": -0.2767,
+    "wins10": 0.3816,
+    "wins3": 0.1668,
+    "top1_pay": 0.434,
+    "maxR": 90.2
+   },
+   "valid_saglam": {
+    "n": 1119,
+    "ort": -0.1556,
+    "medyan": -0.3797,
+    "wins10": -0.1895,
+    "wins3": -0.2143,
+    "top1_pay": 0.559,
+    "maxR": 45.8
+   },
+   "kabul": false,
+   "komsular": "9 komsunun 9'u train'de pozitif wins3R (brk_n 10/20/55 x trail_k 2/3/4 -> +0.076..+0.194). Sikisma filtresi EKLEMEK bunu KOTULESTIRIYOR (sqz_1d long wins3R=+0.018). VALID'de -0.156."
+  }
+ ],
+ "kontrol_grubu_plasebo": {
+  "aciklama": "Ayni stop (karsi BB bant) + ayni ATR iz suren cikis, ama sinyal filtresi YOK: barlarin %2'sinde RASTGELE giris. Sinyalin bilgi tasiyip tasimadigini olcer.",
+  "K_plasebo4h_k2.0_ls": {
+   "train": {
+    "n": 1665,
+    "sinyal": 1665,
+    "dolma": 1.0,
+    "ort_net": 0.6984,
+    "ort_brut": 0.7479,
+    "ga95": [
+     0.4707,
+     0.957
+    ],
+    "ga99": [
+     0.3917,
+     1.0306
+    ],
+    "win": 0.378,
+    "toplam": 1162.8,
+    "yari1": 0.3045,
+    "yari2": 1.0574,
+    "yillar": {
+     "2024": [
+      686,
+      -0.18
+     ],
+     "2025": [
+      979,
+      1.314
+     ]
+    }
+   },
+   "valid": {
+    "n": 1490,
+    "sinyal": 1490,
+    "dolma": 1.0,
+    "ort_net": -0.2207,
+    "ort_brut": -0.1249,
+    "ga95": [
+     -0.293,
+     -0.1424
+    ],
+    "ga99": [
+     -0.3185,
+     -0.1213
+    ],
+    "win": 0.274,
+    "toplam": -328.9,
+    "yari1": -0.4474,
+    "yari2": -0.0231,
+    "yillar": {
+     "2025": [
+      1490,
+      -0.221
+     ]
+    }
+   },
+   "train_saglam": {
+    "n": 1665,
+    "ort": 0.6984,
+    "medyan": -0.2321,
+    "wins10": 0.322,
+    "wins3": 0.0596,
+    "top1_pay": 0.575,
+    "maxR": 113.1
+   },
+   "valid_saglam": {
+    "n": 1490,
+    "ort": -0.2207,
+    "medyan": -0.3888,
+    "wins10": -0.2002,
+    "wins3": -0.2689,
+    "top1_pay": 0.353,
+    "maxR": 20.0
+   }
+  },
+  "K_plasebo1d_k3.0_l": {
+   "train": {
+    "n": 4838,
+    "sinyal": 4838,
+    "dolma": 1.0,
+    "ort_net": 0.3081,
+    "ort_brut": 0.3394,
+    "ga95": [
+     0.2028,
+     0.4219
+    ],
+    "ga99": [
+     0.1654,
+     0.4721
+    ],
+    "win": 0.278,
+    "toplam": 1490.7,
+    "yari1": 0.432,
+    "yari2": 0.1845,
+    "yillar": {
+     "2017": [
+      2,
+      0.134
+     ],
+     "2018": [
+      86,
+      -0.351
+     ],
+     "2019": [
+      177,
+      -0.2
+     ],
+     "2020": [
+      329,
+      1.828
+     ],
+     "2021": [
+      612,
+      1.015
+     ],
+     "2022": [
+      932,
+      -0.232
+     ],
+     "2023": [
+      1087,
+      0.417
+     ],
+     "2024": [
+      1613,
+      0.06
+     ]
+    }
+   },
+   "valid": {
+    "n": 1825,
+    "sinyal": 1825,
+    "dolma": 1.0,
+    "ort_net": -0.3942,
+    "ort_brut": -0.3671,
+    "ga95": [
+     -0.484,
+     -0.2892
+    ],
+    "ga99": [
+     -0.5065,
+     -0.2559
+    ],
+    "win": 0.164,
+    "toplam": -719.5,
+    "yari1": -0.4626,
+    "yari2": -0.3266,
+    "yillar": {
+     "2025": [
+      1825,
+      -0.394
+     ]
+    }
+   },
+   "train_saglam": {
+    "n": 4838,
+    "ort": 0.3081,
+    "medyan": -0.6676,
+    "wins10": 0.0908,
+    "wins3": -0.1695,
+    "top1_pay": 0.971,
+    "maxR": 126.7
+   },
+   "valid_saglam": {
+    "n": 1825,
+    "ort": -0.3942,
+    "medyan": -1.0096,
+    "wins10": -0.4446,
+    "wins3": -0.5292,
+    "top1_pay": 0.356,
+    "maxR": 58.3
+   }
+  },
+  "not": "Aday degil; 3 aday kotasinin disinda tutulmali."
+ },
+ "kontrol_ailesi_mean_reversion": {
+  "hukum": "BEKLENDIGI GIBI NEGATIF -> harness'te ileriye bakma belirtisi YOK.",
+  "sonuclar": {
+   "kontrol_rsi2_1h_ls": "n=23985 ort_net=-0.0796R ga99=[-0.092,-0.066] win=0.55",
+   "kontrol_rsi2_1h_l": "n=21452 ort_net=-0.0920R ga99=[-0.105,-0.079] win=0.52",
+   "kontrol_bb_1h_ls": "n=15981 ort_net=-0.0713R ga99=[-0.091,-0.049] win=0.53",
+   "kontrol_bb_1h_l": "n=9668 ort_net=-0.0891R ga99=[-0.116,-0.058] win=0.53",
+   "kontrol_rsi2_4h_ls": "n=14621 ort_net=-0.0940R ga99=[-0.110,-0.078] win=0.55",
+   "kontrol_rsi2_4h_l": "n=11756 ort_net=-0.0767R ga99=[-0.091,-0.061] win=0.54",
+   "kontrol_bb_4h_ls": "n=5973 ort_net=-0.1434R ga99=[-0.176,-0.113] win=0.49",
+   "kontrol_bb_4h_l": "n=2991 ort_net=-0.2269R ga99=[-0.270,-0.180] win=0.45"
+  },
+  "not": "8/8 negatif, GA99 UST siniri hepsinde sifirin altinda. MR kriptoda calismiyor; harness yansiz."
+ },
+ "soru3_vol_rejimi_overlay": {
+  "islem_bazli_UYARI": "MA50 kesisim trend islemi 1d: ort_net=+0.63R gorunuyor ama medyan=-0.26R, 3R-winsorize ort=-0.012R, en iyi %1 islem toplam karin %75'i, maxR=343. Islem bazli 'edge' tamamen kuyruk artefakti.",
+  "portfoy_bazli_CEVAP_train": {
+   "kiyas_btc_altut": {
+    "sharpe": 0.95,
+    "maxdd": 0.832,
+    "cagr": 0.521
+   },
+   "kiyas_esit_altut": {
+    "sharpe": 0.71,
+    "maxdd": 0.85,
+    "cagr": 0.259
+   },
+   "ma50_long_hepsi": {
+    "sharpe": 0.71,
+    "maxdd": 0.918,
+    "cagr": 0.274
+   },
+   "btcvol_dusuk": {
+    "sharpe": -0.08,
+    "maxdd": 0.927
+   },
+   "btcvol_orta": {
+    "sharpe": 0.74,
+    "maxdd": 0.527
+   },
+   "btcvol_yuksek": {
+    "sharpe": 0.62,
+    "maxdd": 0.631
+   },
+   "yuksek_haric": {
+    "sharpe": 0.47,
+    "maxdd": 0.912
+   }
+  },
+  "hukum": "Trend DUSUK vol rejiminde CALISMIYOR (Sharpe -0.08); ORTA (0.74) ve YUKSEK (0.62) volde calisiyor. Islem-bazli olcum bunun TERSINI soyluyordu -> kuyruk artefakti. Ama orta-vol bile BTC al-tut Sharpe'ini (0.95) gecemiyor -> PROTOKOL kural 5 portfoy sarti SAGLANMIYOR. Sadece maxDD'de ustun (0.53 vs 0.83)."
+ },
+ "soru4_saat_haftagunu": {
+  "yontem": "98 coin esit agirlikli 1h piyasa getirisi (kesitsel korelasyon icin tek seri), TRAIN=6986 saat. Iki yonlu %5, Bonferroni.",
+  "saat_24test": {
+   "kritik_t": 3.21,
+   "en_buyuk_t": 1.67,
+   "gecen": 0
+  },
+  "gun_7test": {
+   "kritik_t": 2.69,
+   "en_buyuk_t": 1.39,
+   "gecen": 0
+  },
+  "saatxgun_168test": {
+   "kritik_t": 3.83,
+   "en_buyuk_t": 2.55,
+   "gecen": 0
+  },
+  "hukum": "HICBIRI GECMIYOR. Duzeltmesiz bile hicbir saat p<0.05'e ulasmiyor. 1h TRAIN ~10 ay oldugu icin guc dusuk - kesin yokluk kaniti degil, ama kullanilabilir sinyal yok."
+ },
+ "dusenler": [
+  "KONTROL mean-reversion (RSI2 ve Bollinger, 1h+4h, long ve long/short): 8/8 net negatif - beklenen.",
+  "Sikisma kirilimi 1d (15 varyant): ham ort_net +0.13..+0.33R ama 3R-winsorize ~0 (sqz_1d long +0.018); ustelik sikisma filtresi filtresiz kirilimdan (+0.167) DAHA KOTU.",
+  "Sikisma kirilimi 4h: train'de gercek (wins3R=+0.115, genis parametre bolgesi) ama VALID 2025H2 -0.032.",
+  "4h short-only: train +0.246R, valid -0.084R.",
+  "1d kirilim long-only: train wins3R +0.167 (9/9 komsu pozitif), valid -0.156R.",
+  "Vol rejimi overlay portfoy: hicbir rejim dilimi BTC al-tut Sharpe'ini gecmiyor.",
+  "Saat / hafta gunu / saatxgun mevsimselligi: Bonferroni sonrasi sifir bulgu."
+ ],
+ "ogrenilen": [
+  "HARNESS TEMIZ: kasitli negatif KONTROL ailesi 8/8 net negatif, GA99 UST siniri bile sifirin altinda. Ileriye bakma belirtisi yok.",
+  "KRITIK METRIK UYARISI: gunluk altcoin evreninde 'ort_net>0 ve GA99 alt siniri>0' kriteri RASTGELE GIRISLE de saglaniyor. Plasebo (rastgele bar, ayni stop=karsi BB bant, ayni ATR iz suren cikis, long-only): train ort_net=+0.308R ga99=[+0.165,+0.472]. Sebep: dar/degisken stop paydasi + acik uclu iz suren cikis => asiri sag-carpik R dagilimi. PROTOKOL kural 5 tek basina yetersiz.",
+  "3R-winsorize ortalama iyi ayirt edici: sahte edge'lerde ~0/negatif (plasebo 1d -0.170, trend_ma50 -0.012, sqz_1d long +0.018); gercek train edge'inde ham ortalamayla ayni kaliyor (sqz_4h ort=0.135 / wins3R=0.115).",
+  "Vol rejimi cevabi (portfoy bazli): kripto trendi DUSUK volatilite rejiminde calismiyor (Sharpe -0.08), ORTA (0.74) ve YUKSEK (0.62) volde calisiyor. 'Dusuk volde trend al' sezgisi kriptoda YANLIS.",
+  "TRAIN->VALID cokusu 3 adayin ucunde ve 2 plasebonun ikisinde ayni yonde: 2025 (ozellikle H2) kirilim/momentum icin sistematik olarak kotu. Yine de sinyaller VALID'de kendi plasebolarini yeniyor (4h: -0.032 vs -0.221; 1d: -0.156 vs -0.394) -> filtreler bilgi tasiyor ama maliyeti yenmiyor.",
+  "Gun-ici/haftalik mevsimsellik: 199 testlik taramada Bonferroni'yi gecen tek hucre yok."
+ ],
+ "oneri": "1) Bir sonraki ajan HERHANGI bir 'ortalama R' sonucu raporlamadan once eslesmis PLASEBO (ayni stop+cikis, rastgele giris) ve 3R-winsorize ortalama uretmeli; rejim.py icindeki sig_plasebo() ve saglam() dogrudan import edilebilir. 2) Ana ajan PROTOKOL kural 5'i guncellemeli: aday sarti 'ort_net>0 ve GA99>0' degil, 'winsorize(3R) ort > eslesmis plasebonun winsorize ort' olmali. 3) data1d_all evreninde hayatta-kalma yanliligi long-only sonuclari sisiriyor: rastgele long girisin train'de +0.31R vermesi kanit. Long-only gunluk sonuclara tek basina guvenilmemeli. 4) Vol rejimi bir OVERLAY olarak degerli olabilir: dusuk-vol rejiminde trendden uzak dur (train Sharpe -0.08). Baska bir ailenin (tsmom/kirilim) hayatta kalan adayina bu filtreyi eklemek maxDD'yi 0.92 -> 0.53 dusuruyor. Tek basina strateji degil, filtre olarak dene. 5) 4h sikisma+kirilim SHORT bacagi train'in en guclu tekil bulgusuydu (+0.246R, wins3R +0.244) ama 2025H2'de coktu; 1h verisi 2024-09'da basliyor (train ~10 ay). Daha uzun 4h verisi bulunursa tekrar bakilabilir. Simdilik RED."
+}

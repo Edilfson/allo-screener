@@ -25,6 +25,15 @@ gorunen" degil, **yeni veride de calisan**. Uydurma sonuc uretmek basarisizlikti
    dusenler (kisa), ogrenilen (3-5 madde), oneri (bir sonraki ajan icin).
 7. Ajan kodunu `araclar/lab/<aile>.py` olarak birakir; tekrar calistirilabilir olmali.
 
+## KURAL 5 GUNCELLEMESI (rejim ajanindan, 2026-09-13): plasebo + winsorize ZORUNLU
+Gunluk long-only islem testlerinde RASTGELE giris bile train'de +0.31R veriyor (data1d_all
+hayatta-kalma yanliligi + iz suren cikisin sag-carpik kuyrugu: karin %97'si en iyi %1 islemden).
+Bu yuzden islem bazli aday sarti:
+  (a) ayni stop/cikis mekanigiyle ESLESMIS PLASEBO (rastgele giris, ayni bar orani) kos;
+  (b) 3R-winsorize ortalama net R > plasebonun winsorize ortalamasi, train VE valid'de;
+  (c) karin en iyi %1 islemden gelen payi < %50.
+`rejim.py` icindeki `sig_plasebo()` ve `saglam()` dogrudan import edilebilir.
+
 ## Zorunlu ilk adim: rastgele-giris kontrolu (ict2 ajanindan, 2026-09-13)
 Islem bazli her yeni aile once KONTROL kosar: ayni stop/TP/giris mekanigi, ayni barlar, RASTGELE yon
 (veya rastgele bar). Sinyal kumesi kontrolden bootstrap ile anlamli farkli degilse (p>0.05) aile kapanir.

@@ -1,0 +1,315 @@
+{
+ "aile": "tsmom",
+ "denenen": 108,
+ "kaynak": "1d",
+ "bolum": "train<2025 | valid 2025",
+ "analiz_baslangici": "2018-04-01 (MA200 + 90g hacim isinmasi sonrasi, tum konfigler ayni pencere)",
+ "kiyaslar": {
+  "btc_altut": {
+   "train": {
+    "gun": 2467,
+    "toplam": 12.875,
+    "cagr": 0.476,
+    "maxdd": 0.766,
+    "sharpe": 0.93,
+    "yillar": {
+     "2018": -0.443,
+     "2019": 0.897,
+     "2020": 3.073,
+     "2021": 0.627,
+     "2022": -0.652,
+     "2023": 1.659,
+     "2024": 1.141
+    }
+   },
+   "valid": {
+    "gun": 363,
+    "toplam": -0.065,
+    "cagr": -0.065,
+    "maxdd": 0.32,
+    "sharpe": 0.05,
+    "yillar": {
+     "2025": -0.065
+    }
+   }
+  },
+  "b3_esit_altut": {
+   "train": {
+    "gun": 2467,
+    "toplam": 28.789,
+    "cagr": 0.652,
+    "maxdd": 0.772,
+    "sharpe": 1.06,
+    "yillar": {
+     "2018": -0.494,
+     "2019": 0.706,
+     "2020": 3.17,
+     "2021": 4.717,
+     "2022": -0.617,
+     "2023": 0.919,
+     "2024": 0.969
+    }
+   },
+   "valid": {
+    "gun": 363,
+    "toplam": 0.036,
+    "cagr": 0.037,
+    "maxdd": 0.384,
+    "sharpe": 0.33,
+    "yillar": {
+     "2025": 0.036
+    }
+   }
+  },
+  "b5_esit_altut": {
+   "train": {
+    "gun": 2467,
+    "toplam": 23.637,
+    "cagr": 0.607,
+    "maxdd": 0.772,
+    "sharpe": 1.01,
+    "yillar": {
+     "2018": -0.495,
+     "2019": 0.204,
+     "2020": 2.733,
+     "2021": 5.611,
+     "2022": -0.654,
+     "2023": 1.11,
+     "2024": 1.249
+    }
+   },
+   "valid": {
+    "gun": 363,
+    "toplam": -0.153,
+    "cagr": -0.154,
+    "maxdd": 0.41,
+    "sharpe": 0.06,
+    "yillar": {
+     "2025": -0.153
+    }
+   }
+  },
+  "top10_esit_altut": {
+   "train": {
+    "gun": 2467,
+    "toplam": 0.627,
+    "cagr": 0.075,
+    "maxdd": 0.864,
+    "sharpe": 0.51,
+    "yillar": {
+     "2018": -0.699,
+     "2019": 0.013,
+     "2020": 1.714,
+     "2021": 1.524,
+     "2022": -0.763,
+     "2023": 1.355,
+     "2024": 0.397
+    }
+   },
+   "valid": {
+    "gun": 363,
+    "toplam": -0.088,
+    "cagr": -0.089,
+    "maxdd": 0.451,
+    "sharpe": 0.17,
+    "yillar": {
+     "2025": -0.088
+    }
+   }
+  }
+ },
+ "en_iyi_3": [
+  {
+   "ad": "A1_b3_ma50",
+   "params": {
+    "evren": "sabit3",
+    "top": 0,
+    "ma": [
+     50
+    ],
+    "ret": [],
+    "band": 0.0,
+    "esik": null,
+    "taban": "esit",
+    "hedef": null,
+    "ls": false,
+    "mind": 0.0,
+    "funding": 0.0,
+    "volwin": 30,
+    "cap": 1.5,
+    "liste": null
+   },
+   "train": {
+    "gun": 2467,
+    "toplam": 54.167,
+    "cagr": 0.81,
+    "maxdd": 0.499,
+    "sharpe": 1.49,
+    "yillar": {
+     "2018": -0.217,
+     "2019": 1.068,
+     "2020": 2.158,
+     "2021": 4.947,
+     "2022": -0.352,
+     "2023": 0.791,
+     "2024": 0.564
+    },
+    "ciro": 0.0574,
+    "ort_gross": 0.528
+   },
+   "valid": {
+    "gun": 363,
+    "toplam": 0.436,
+    "cagr": 0.439,
+    "maxdd": 0.145,
+    "sharpe": 1.37,
+    "yillar": {
+     "2025": 0.436
+    },
+    "ciro": 0.0574,
+    "ort_gross": 0.528
+   },
+   "komsular": "MA neighbors (train Sharpe): MA20 1.36 / MA50 1.49 / MA100 1.28 / MA200 1.20; evren komsulari: BTC tek 1.27, BTC+ETH 1.21, ETH+BNB 1.41, b5 1.43, b6 1.29. Genis bolge pozitif ama tepe b3'te -> b3 secimi kismen gecmise bakarak yapilmis (BNB katkisi buyuk)."
+  },
+  {
+   "ad": "A2_b3_ma50_vt30",
+   "params": {
+    "evren": "sabit3",
+    "top": 0,
+    "ma": [
+     50
+    ],
+    "ret": [],
+    "band": 0.0,
+    "esik": null,
+    "taban": "esit",
+    "hedef": 0.3,
+    "ls": false,
+    "mind": 0.0,
+    "funding": 0.0,
+    "volwin": 30,
+    "cap": 1.5,
+    "liste": null
+   },
+   "train": {
+    "gun": 2467,
+    "toplam": 7.017,
+    "cagr": 0.361,
+    "maxdd": 0.275,
+    "sharpe": 1.59,
+    "yillar": {
+     "2018": -0.123,
+     "2019": 0.528,
+     "2020": 0.877,
+     "2021": 0.752,
+     "2022": -0.19,
+     "2023": 0.549,
+     "2024": 0.45
+    },
+    "ciro": 0.0382,
+    "ort_gross": 0.269
+   },
+   "valid": {
+    "gun": 363,
+    "toplam": 0.269,
+    "cagr": 0.27,
+    "maxdd": 0.085,
+    "sharpe": 1.39,
+    "yillar": {
+     "2025": 0.269
+    },
+    "ciro": 0.0382,
+    "ort_gross": 0.269
+   },
+   "komsular": "hedef_vol 20/30/40 = 1.59/1.59/1.56; MA 30/40/50/60/70/80 @vt30 = 1.46/1.57/1.59/1.48/1.41/1.39; vol penceresi 14/20/30/45/60/90 = 1.60/1.57/1.59/1.55/1.56/1.53; cap 1.0/1.5/2.0/3.0 farksiz; ciro bandi (mind 0.05) 1.58. Komsu bolge tamamen 1.39-1.60 -> saglam plato."
+  },
+  {
+   "ad": "A3_b5_ma50_vt30",
+   "params": {
+    "evren": "sabit3",
+    "top": 0,
+    "ma": [
+     50
+    ],
+    "ret": [],
+    "band": 0.0,
+    "esik": null,
+    "taban": "esit",
+    "hedef": 0.3,
+    "ls": false,
+    "mind": 0.0,
+    "funding": 0.0,
+    "volwin": 30,
+    "cap": 1.5,
+    "liste": [
+     "BTCUSDT",
+     "ETHUSDT",
+     "BNBUSDT",
+     "XRPUSDT",
+     "ADAUSDT"
+    ]
+   },
+   "train": {
+    "gun": 2467,
+    "toplam": 5.047,
+    "cagr": 0.305,
+    "maxdd": 0.26,
+    "sharpe": 1.54,
+    "yillar": {
+     "2018": -0.105,
+     "2019": 0.311,
+     "2020": 0.844,
+     "2021": 0.72,
+     "2022": -0.192,
+     "2023": 0.421,
+     "2024": 0.415
+    },
+    "ciro": 0.0358,
+    "ort_gross": 0.226
+   },
+   "valid": {
+    "gun": 363,
+    "toplam": 0.143,
+    "cagr": 0.144,
+    "maxdd": 0.083,
+    "sharpe": 0.93,
+    "yillar": {
+     "2025": 0.143
+    },
+    "ciro": 0.0358,
+    "ort_gross": 0.226
+   },
+   "komsular": "hedef_vol 20/30/40 = 1.53/1.54/1.52; MA40/50/60 = 1.52/1.54/1.37. Train'de saglam, VALID'de b3'un belirgin altinda (0.93 vs 1.39) -> evreni genisletmek bedelli."
+  }
+ ],
+ "hipotez_sonuclari": {
+  "H1_coklu_MA_oylamasi": "RED. MA20/50/100/200 (+getiri 30/60/90) oy orani agirligi train Sharpe 1.41-1.48; tek MA50 = 1.49. Oy esigi 0.75/1.0 DD'yi dusuruyor (0.41/0.29) ama Sharpe artmiyor. Oylama tek MA'ya gore bir sey eklemiyor.",
+  "H2_volatilite_hedefleme": "KISMEN. hedef %20-40 + cap1.5: Sharpe 1.49->1.56-1.59, maxDD 0.50->0.19-0.36. ANCAK ort. gross 0.53 -> 0.18-0.35 dusuyor; ayni gross'a olceklendiginde (hedef %60-80) Sharpe 1.46-1.47 yani temelin ALTINDA. Yani DD kazanci buyuk olcude pozisyon kucultmeden geliyor; gercek sinyal kalitesi kazanci ~+0.10 Sharpe ve gurultu icinde. Yine de VALID'de birim gross basina getiri A2>A1 (1.00 vs 0.83) ve DD yarisi.",
+  "H3_evren_genisletme": "RED, net. 90g dolar hacmine gore ilk 5/10/20 evren: train Sharpe 0.76-0.95 (vt30 ile 0.95-1.22), sabit 3 = 1.49. VALID'de b5 0.93 vs b3 1.39. Vol-agirlik (invvol) top-N'i biraz duzeltiyor ama sabit buyuk-cap sepetine yaklasmiyor. NOT: data1d_all bugun listede olan coinler -> top-N sonucu survivorship lehine yanli, yani gercekte daha da kotu.",
+  "H4_long_short": "RED. Ayi rejiminde short: funding 0.0003/gun ile train Sharpe 0.77-0.78, funding=0 ile bile 0.91-0.95; nakit (long-only) 1.43-1.49. Short bacagi 2020 ve 2023'te agir kaybediyor; ciro 2x. Funding olmasa bile kotu.",
+  "H5_cikis_histerezisi": "RED (notr). Band %2/%3/%5: Sharpe 1.48/1.46/1.29 (temel 1.49); ciroyu 0.057->0.037/0.033/0.027 yani ~%40-50 dusuruyor. Maliyet cok daha yuksek olsaydi ise yarardi; mevcut 7bp'de kazanc yok."
+ },
+ "dusenler": [
+  "coklu-MA/getiri oylamasi (8 varyant): tek MA50'yi gecemedi",
+  "oy esigi 0.5/0.75/1.0: DD iyilesiyor, Sharpe iyilesmiyor",
+  "evren top5/top10/top20 (hacim siralamasi, esit ve invvol): hepsi sabit-3'un cok altinda",
+  "long/short (funding'li ve funding'siz, 6 varyant): long-only'nin cok altinda",
+  "cikis histerezisi %2/%3/%5: Sharpe notr-negatif, sadece ciro dusuruyor",
+  "vol hedeflemeyi ayni riske olceklemek (hedef %50-80): Sharpe 1.46-1.51, temelden iyi degil",
+  "MA30/MA70/MA80, vol penceresi 90: kenarlarda bozulma basliyor ama hala pozitif"
+ ],
+ "ogrenilen": [
+  "Bu ailede tek gercek surucu 'buyuk-cap sabit sepet + tek trend filtresi'. Karmasiklik (oylama, histerezis, short, genis evren) her seferinde ya notr ya zararli.",
+  "Evreni genisletmek tek yonlu kotu: top5->top10->top20 Sharpe 0.95->0.76->0.88 (train), b3->b5->b6 1.49->1.43->1.29. Altcoin trend takibi maliyet sonrasi ayakta kalmiyor.",
+  "Vol hedefleme bir ALFA degil, bir RISK AYARI: ayni ortalama gross'a getirildiginde Sharpe artmiyor. Ama DD'yi yarilyor ve VALID'de birim risk basina getiriyi koruyor -> uygulanabilir bir kaldirac politikasi.",
+  "Short bacagi bu evrende yapisal olarak zararli: kripto buyuk-cap'te ayi rejimi getirisi negatif degil, sadece volatil; funding sifir olsa bile Sharpe long-only'nin altinda.",
+  "VALID 2025 kiyaslari cok zayif (BTC al-tut Sharpe 0.05, b5 al-tut 0.06, top10 0.17). Adaylarin 2025'te 1.37/1.39/0.93 Sharpe uretmesi anlamli; ama tek yil ve n_gun=363, tek gozlem gibi davranilmali.",
+  "Defterde bu ailede 108 konfigurasyon var; coklu-test riski yuksek, 0.05-0.10 Sharpe farklari gurultudur."
+ ],
+ "oneri": "A1 (b3 MA50 esit agirlik) ve A2 (ayni sinyal + hedef vol %30, cap 1.5) HOLDOUT 2026'ya goturulmeye deger; ikisi de train+valid'de her iki kiyasi hem Sharpe hem maxDD'de geciyor ve komsu parametre bolgesi genis pozitif. A2'yi tercih et: ayni Sharpe, yari maxDD, %33 daha az ciro. Bir sonraki ajan icin: (a) evren genisletme yonunu BIRAK - bes ayri sekilde denendi, hepsi kotu; (b) bunun yerine sinyalin uygulanmasina bak: haftalik/2-gunluk rebalans (ciro 7bp'de dusuk ama gunluk gurultu var), kismi cikis, veya BTC rejimini (harness.rejim_at) tum sepete kapi olarak uygulamak; (c) hedef vol'u zaman-degisken degil sabit tutmanin maliyeti test edilmeli; (d) b3 sepetinin kendisi gecmise bakarak secilmis - 2018'de bilinebilir bir kural (orn. o gunun ilk-3 piyasa degeri) ile ayni sepetin cikip cikmadigi dogrulanmali.",
+ "notlar": [
+  "sim_portfoy funding'i gross'a uygular; long/short varyantinda short-only funding ayristirilamadigi icin funding hem long hem short bacaga yazildi (kotumser). Kontrol icin funding=0 varyanti da kosuldu, sonuc degismedi.",
+  "Tum konfigler ayni pencerede (2018-04-01 sonrasi) kosuldu; maliyet harness varsayilani 0.0007/birim ciro.",
+  "top-N evreni bugunku vadeli listesinden turedigi icin survivorship lehine yanli; gercek performans daha kotu."
+ ]
+}
