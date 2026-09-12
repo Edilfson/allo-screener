@@ -1,0 +1,78 @@
+{
+  "aile": "kirilim_gunluk",
+  "kaynak": "harness.veri_1d (data1d_all, 434 sembol; >=200 gun sarti sonrasi ~308 coin islem uretti), tf=1d, rapor(kaynak='1d'): TRAIN < 2025-01-01, VALID 2025",
+  "evren": "sinyal aninda son 30 gun ort USDT hacmi (kolon 5) >= 5,000,000 (kolon 5 dogrulandi: BTC son gun 1.02e9 = quote/USDT hacmi)",
+  "denenen": 146,
+  "defter_kaydi": 237,
+  "sonuc": "NEGATIF. Aileden kabul edilen strateji YOK. Gunluk dilim maliyet problemini COZDU (islem basi maliyet 0.0065 R, 1h/4h'te 0.031-0.091 R idi) ve TRAIN'de genis, tutarli bir pozitif bolge cikardi; ancak (a) eslesmis plaseboya karsi kenar TRAIN'de bile kucuk, (b) VALID 2025'te hem mutlak hem plaseboya gore NEGATIF, (c) portfoy seviyesinde BTC al-tut'u yenemedi.",
+
+  "en_iyi_3": [
+    {
+      "ad": "d_N40_M20_k3.0_long_tp5R",
+      "params": {"tip": "donchian_kapanis_kirilimi", "tf": "1d", "N": 40, "M": 20, "k": 3.0, "stop": "giris_ref - 3*ATR14", "tp": "5R", "yon": "long", "cikis": "M=20 gun dusuk kapanis (cikis_i)", "giris": "piyasa, t+1 acilis", "overlay": null, "hacim": ">=5M USDT 30g ort"},
+      "train": {"n": 2816, "ort_brut": 0.3319, "ort_net": 0.3254, "ga99": [0.2272, 0.4253], "win": 0.332, "yari1": 0.4618, "yari2": 0.1892,
+                "yillar": {"2017": [4, 2.348], "2018": [18, -0.588], "2019": [50, 0.166], "2020": [161, 1.103], "2021": [709, 0.829], "2022": [385, -0.51], "2023": [590, 0.352], "2024": [899, 0.148]},
+                "yil_pozitif": "6/8", "wins3": 0.0572, "medyan": -0.500, "top1_pay": 0.154, "alt_donem_2022_2024": "n=1874, ort_net +0.077 (+-0.078 %95)"},
+      "plasebo_train": {"tanim": "ayni stop/TP/cikis/hacim filtresi, sembol basina AYNI sayida giris, RASTGELE bar, 5 tohum", "n": 6228, "ort_net": 0.0910, "wins3": -0.0215, "medyan": -0.228, "top1_pay": 0.549},
+      "plasebo_farki_train_wins3": 0.0787,
+      "valid": {"n": 435, "ort_brut": -0.2780, "ort_net": -0.2847, "ga99": [-0.4390, -0.1016], "win": 0.177, "yari1": -0.1516, "yari2": -0.4056, "wins3": -0.3892, "medyan": -0.749, "top1_pay": 0.161, "coin": 223},
+      "plasebo_valid": {"n": 1441, "ort_net": -0.1982, "wins3": -0.2280, "medyan": -0.272, "top1_pay": 0.239},
+      "plasebo_farki_valid_wins3": -0.1612,
+      "portfoy": {"kural": "esit risk (1% risk/islem, w=0.01/sp, poz basi cap %15, toplam kaldirac<=1), max 20 pozisyon, sim_portfoy varsayilan maliyet",
+                  "train": {"cagr": 0.320, "maxdd": 0.590, "sharpe": 0.92, "yillar": {"2017": 0.052, "2018": -0.071, "2019": 0.078, "2020": 1.402, "2021": 2.886, "2022": -0.463, "2023": 0.633, "2024": -0.101}},
+                  "valid": {"cagr": -0.489, "maxdd": 0.494, "sharpe": -1.43},
+                  "kiyas_btc_altut": {"train": {"cagr": 0.521, "maxdd": 0.832, "sharpe": 0.95}, "valid": {"cagr": -0.065, "maxdd": 0.320, "sharpe": 0.05}},
+                  "kiyas_evren_altut": {"train": {"cagr": 0.136, "maxdd": 0.920, "sharpe": 0.61}, "valid": {"cagr": -0.819, "maxdd": 0.842, "sharpe": -1.55}},
+                  "esit_agirlik_1/20_varyanti": {"train": {"cagr": 0.328, "maxdd": 0.780, "sharpe": 0.82}, "valid": {"cagr": -0.674, "maxdd": 0.682, "sharpe": -1.81}}},
+      "komsular": "TRAIN'de komsularin TAMAMI pozitif ve GA99 alt siniri>0: N=30/40/55/70 -> 0.299/0.325/0.327/0.346; k=1.5/2.0/2.5/3.0/4.0 -> 0.234/0.284/0.330/0.325/0.310; M=10/20/30/40 -> 0.270/0.327/0.327/0.304; TP=3/4/5/8R -> 0.245/0.287/0.325/0.398; limit giris (%2, 72h) 0.339, (%3, 120h) 0.327; ATR iz suren (ktrail=3/5) 0.358/0.327. Yil pozitifligi her komsuda 5-6/8. Komsu kontrolu GECTI ama plasebo+VALID dusurdu.",
+      "karar": "RED (valid ort_net<0 ve GA99'un tamami sifirin altinda; valid wins3 plasebodan 0.16 R KOTU; portfoy BTC al-tut'tan hem train hem valid'de dusuk)"
+    },
+    {
+      "ad": "d_N40_M20_k3.0_long_tp5R_btc100_ma100",
+      "params": {"tip": "donchian_kapanis_kirilimi", "tf": "1d", "N": 40, "M": 20, "k": 3.0, "tp": "5R", "yon": "long", "cikis": "M=20 gun dusuk kapanis", "giris": "piyasa t+1 acilis", "overlay": "BTC gunluk MA100 rejimi (harness.rejim_at semantigi) = +1 VE coinin kendi kapanisi > kendi MA100'u"},
+      "train": {"n": 2295, "ort_brut": 0.3716, "ort_net": 0.3651, "ga99": [0.2611, 0.4718], "win": 0.339, "yari1": 0.4348, "yari2": 0.2962,
+                "yillar": {"2017": [4, 1.99], "2018": [8, -0.89], "2019": [27, 0.639], "2020": [142, 1.094], "2021": [622, 0.732], "2022": [145, -0.752], "2023": [534, 0.289], "2024": [813, 0.201]},
+                "yil_pozitif": "6/8", "wins3": 0.0791, "medyan": -0.484, "top1_pay": 0.132, "alt_donem_2022_2024": "n=1492, ort_net +0.140 (+-0.091 %95) - tum konfiglerin en iyisi"},
+      "plasebo_train": {"tanim": "AYNI overlay korunur (BTC MA100 + coin MA100 gecen barlar havuzu), Donchian tetigi rastgelelestirilir, ayni giris sayisi, 5 tohum", "n": 3276, "ort_net": 0.2437, "wins3": 0.0638, "medyan": -0.255, "top1_pay": 0.203},
+      "plasebo_farki_train_wins3": 0.0153,
+      "valid": {"n": 346, "ort_brut": -0.3205, "ort_net": -0.3278, "ga99": [-0.4940, -0.1464], "win": 0.165, "yari1": -0.3339, "yari2": -0.3223, "wins3": -0.4246, "medyan": -0.749, "top1_pay": 0.132, "coin": 191},
+      "plasebo_valid": {"n": 607, "ort_net": -0.3305, "wins3": -0.3701, "medyan": -0.449, "top1_pay": 0.139},
+      "plasebo_farki_valid_wins3": -0.0545,
+      "portfoy": {"kural": "esit risk %1/islem, max 20 pozisyon",
+                  "train": {"cagr": 0.353, "maxdd": 0.592, "sharpe": 1.04, "yillar": {"2017": 0.035, "2018": -0.049, "2019": 0.182, "2020": 1.109, "2021": 2.081, "2022": -0.306, "2023": 0.696, "2024": 0.049}},
+                  "valid": {"cagr": -0.307, "maxdd": 0.347, "sharpe": -0.77},
+                  "not": "TRAIN'de BTC al-tut'u Sharpe (1.04 vs 0.95) ve maxDD (0.59 vs 0.83) ile YENIYOR (CAGR dusuk: 0.35 vs 0.52). VALID'de her ikisinde de kaybediyor (Sharpe -0.77 vs +0.05, maxDD 0.35 vs 0.32). Evren al-tut'u (valid -82%) iki bolumde de yeniyor.",
+                  "esit_agirlik_1/20_varyanti": {"train": {"cagr": 0.369, "maxdd": 0.750, "sharpe": 0.92}, "valid": {"cagr": -0.405, "maxdd": 0.461, "sharpe": -0.87}}},
+      "komsular": "Overlay ailesi TRAIN'de tamamen pozitif: btc50 0.376, btc100 0.380, ma100 0.312, btc100+ma100 0.365, N55+btc100 0.388; hepsinde 6/8 yil pozitif ve GA99 alt siniri 0.21-0.27. Overlay'siz tabana gore 2022-2024 alt doneminde belirgin iyilesme (+0.077 -> +0.140).",
+      "karar": "RED (valid ort_net<0; ayrica TRAIN'de bile plaseboya kenar sadece +0.015 R wins3 -> kazancin neredeyse TAMAMI 'BTC yukselirken kendi MA100'unun ustundeki coinde long ol' overlay'inden, Donchian kirilim tetiginden DEGIL)"
+    },
+    {
+      "ad": "PORTFOY_riskparite0.01_d_N40_M20_k3.0_long_tp5R_btc100_ma100",
+      "params": {"aciklama": "2. adayin portfoy hali - sim_portfoy, esit risk %1/islem, max 20 es zamanli pozisyon, agirlik t kapanista bilinir t+1 acilista uygulanir", "risk": 0.01, "poz_cap": 0.15, "max_poz": 20, "ort_es_zamanli_poz": 7.0},
+      "train": {"cagr": 0.353, "maxdd": 0.592, "sharpe": 1.04, "toplam": 8.327},
+      "valid": {"cagr": -0.307, "maxdd": 0.347, "sharpe": -0.77, "toplam": -0.307},
+      "komsular": "risk=%2 -> train sharpe 1.10 / maxdd 0.73; esit agirlik 1/20 -> train sharpe 0.92 / maxdd 0.75. Sizing degistikce TRAIN Sharpe 0.82-1.10 araliginda; sonuc sizing'e degil donem etkisine bagli.",
+      "karar": "RED (protokol kural 5 portfoy sarti: train VE valid'de Sharpe ve maxDD kiyaslardan iyi olmali. TRAIN'de BTC'yi yeniyor, VALID'de yenilmiyor.)"
+    }
+  ],
+
+  "dusenler": [
+    "TP'siz (saf trend takibi) tum long konfigurasyonlari: ort_net cok yuksek gorunuyor (N40 k2 long +0.62 R) ama medyan -1.0 R, karin %62'si en iyi %1 islemden, 3R-winsorize ortalama NEGATIF (-0.011). Protokol kural 5(c) ihlali -> aday olamaz. TP=5R ile top1_pay 0.15'e duser.",
+    "SHORT taraf (tum N/k/TP): net +0.04..+0.13 R ama sadece 3-4/7 yil pozitif; 2019/2020/2023/2024 negatif. Gunluk dilimde short kirilim edge'i yok. (1h'te short daha iyi gorunuyordu - ters isaret, ikisi de gurultu.)",
+    "N=100 short: GA99 alt siniri negatif (-0.03). N=20 long: GA99 pozitif ama top1_pay 0.65-0.71 (TP'siz), TP'li versiyonu N40/N55'ten zayif.",
+    "Kirilim sonrasi geri cekilmeye LIMIT giris (H2): %2/%3 alt, 3-5 gun pending. Dolma orani %92-97 (gunluk barda geri cekilme neredeyse her zaman oluyor), maker ucret avantaji 0.0003/sp ~ 0.002 R -> ihmal edilebilir. TRAIN net piyasa girisiyle ayni (0.339 vs 0.325). Gunluk dilimde maliyet zaten baglayici olmadigindan limit girisin katkisi YOK.",
+    "ATR iz suren cikis (ktrail=3/5) vs M-gun kanal cikisi: fark yok (0.358/0.327 vs 0.325). Cikis mekanigi bu ailede belirleyici degil.",
+    "BTC MA50/MA100 rejim overlay'i ve kendi MA100 sarti: TRAIN'de net'i %10-17 artiriyor ve 2022'de islem sayisini yariya indiriyor, ama eslesmis plasebo testi bunun overlay'in kendi katkisi oldugunu, kirilim tetiginin katkisinin ~0 oldugunu gosteriyor.",
+    "Esit agirlik (1/20 notional) portfoy: TRAIN Sharpe 0.82-0.92 < BTC al-tut 0.95 -> zaten TRAIN'de eleniyordu; risk-parite sizing gerekti."
+  ],
+
+  "ogrenilen": [
+    "MALIYET HIPOTEZI DOGRULANDI AMA YETMEDI: gunluk dilimde stop mesafesi (3*ATR14) %10-20'ye cikiyor, islem basi maliyet 0.0065 R (1h/4h'te 0.031-0.091 R idi). Yani onceki ajanin 'sp'yi buyut' onerisi maliyet problemini tamamen cozdu - VALID 2025'te brut ortalama da (-0.278 R) negatif. Bu ailede 2025'te kaybeden sey maliyet degil, SINYALIN KENDISI.",
+    "ESLESMIS PLASEBO belirleyici: TRAIN'de d_N40_M20_k3.0_long_tp5R wins3=+0.057 iken ayni mekanikle rastgele giris wins3=-0.022 (kenar +0.079 R). Overlay'li versiyonda ise strateji +0.079 vs overlay-esli plasebo +0.064 -> kenar sadece +0.015 R. Yani 'BTC MA100 uzerindeyken kendi MA100'unun ustundeki likit altcoinde long ol' kuralinin tamami overlay'den geliyor; 40-gun Donchian kirilimi neredeyse hicbir sey eklemiyor. VALID'de her iki konfig de plasebodan KOTU (-0.161 ve -0.055 R wins3).",
+    "TRAIN'in genis pozitif bolgesi (146 konfigurasyonun ~%95'i pozitif, komsularin TAMAMI pozitif) bir DONEM ETKISI: portfoy yillik getirileri 2021 +208%..+782%, buna karsilik 2018 -5..-7%, 2022 -31..-59%, 2024 -10..+5%. Islem bazli yillik ortalamalar da 2020 (+1.10 R) ve 2021 (+0.83 R) disinda 0'a yakin (2023 +0.35, 2024 +0.15). 2022-2024 alt doneminde en iyi konfig +0.140 R (+-0.091) - guven araliginin alt ucu neredeyse sifir. Komsu tutarliligi bu ailede 'saglamlik' degil, 'ayni boga piyasasini farkli parametrelerle yeniden olcmek' anlamina geliyor.",
+    "PORTFOY seviyesi islem bazli metrikten daha aci gercegi soyluyor: en iyi kural TRAIN'de BTC al-tut'a karsi Sharpe 1.04 vs 0.95 ve maxDD 0.59 vs 0.83 (marjinal ustunluk, sadece dusuk kaldiractan), CAGR ise 0.35 vs 0.52 (BTC daha iyi). VALID 2025'te -31% (BTC -6.5%). Tek gercek basari: evren al-tut'u (2025 -82%) her iki bolumde de acik farkla yeniyor - yani kural 'altcoin tutmaktan iyi' ama 'BTC tutmaktan kotu'. Altcoin trend takibi 2022 sonrasi BTC dominansi rejiminde yapisal olarak kaybediyor.",
+    "TP=5R kuyruk riskini degil, ol'cum guvenilirligini duzeltti: TP'siz versiyonlarda ort_net'in %50-100'u en iyi %1 islemden geliyor (bir kac coin: BNB/FTM/SOL 2021), TP=5R ile bu oran %13-16'ya iniyor ve karsilastirmalar anlamli hale geliyor. Hayatta-kalma yanliligi olan bir evrende (data1d_all = bugun vadeli listesinde olan coinler) TP'siz long trend takibi olcumu neredeyse tamamen gecersiz."
+  ],
+
+  "oneri": "Donchian/kirilim ailesini (1h, 4h ve simdi 1d) KAPAT: uc dilimde de VALID negatif, ve gunlukte artik maliyet bahanesi de yok. Sonraki ajan icin somut uc yon: (1) Bu calismadaki tek gercek bulgu OVERLAY'in kendisi - 'BTC gunluk MA100 ustunde + coin kendi MA100 ustunde' filtresi rastgele girisle bile TRAIN'de wins3 +0.064 veriyor. Bunu bir KIRILIM stratejisi olarak degil, dogrudan bir POZISYON KURALI olarak test et (sim_portfoy, gunluk yeniden dengeleme, MA100 ustundeki likit coinlerin esit-risk sepeti, BTC rejimi kapali iken nakit) ve mutlaka BTC al-tut ile kiyasla; ama 2025 verisinde bu overlay'in de plasebosu -0.37 R oldugunu unutma, yani 2025'te hicbir long kurali calismamis olabilir. (2) Bu aileden ogrenilen olcum disiplinini uygula: gunluk long testlerinde TP/winsorize olmadan hicbir sonuca bakma; eslesmis plaseboyu ayni kodla ve ayni evrenle kos (kirilim_gunluk.py icindeki cfg['plasebo'] anahtari bunu yapiyor). (3) Yon-notr / kesitsel (cross-sectional) kurgu dene: mutlak long yerine ayni gun icinde en guclu N coini al / en zayif N coini sat - boylece 2022-2025 boyunca altcoin sinifinin kendi negatif surukelnmesi (evren al-tut 2025 -82%) sonuctan cikar. Islem bazli R metrigi bu kurgu icin uygun degil, dogrudan sim_portfoy kullan."
+}
