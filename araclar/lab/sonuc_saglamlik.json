@@ -1,0 +1,1641 @@
+{
+ "aile": "saglamlik",
+ "denenen": 72,
+ "kaynak": "1d",
+ "bolum": "SADECE gelistirme (train+valid, <2026). HOLDOUT'a dokunulmadi.",
+ "en_iyi_3": [
+  {
+   "ad": "A2__vt30_cap15_temel",
+   "params": {
+    "sepet": "s3_orij_bnb",
+    "kural": "MA50 long-only",
+    "hedef": 0.3,
+    "cap": 1.5
+   },
+   "gelistirme": {
+    "gun": 2830,
+    "toplam": 9.172,
+    "cagr": 0.349,
+    "maxdd": 0.275,
+    "sharpe": 1.57,
+    "yillar": {
+     "2018": -0.123,
+     "2019": 0.528,
+     "2020": 0.877,
+     "2021": 0.752,
+     "2022": -0.19,
+     "2023": 0.549,
+     "2024": 0.45,
+     "2025": 0.269
+    },
+    "ciro_yil": 13.95,
+    "islem_yil": 31.5,
+    "ort_gross": 0.27,
+    "su_alti_gun": 730,
+    "maks_gross": 1.0
+   },
+   "altut_gelistirme": {
+    "gun": 2830,
+    "toplam": 29.874,
+    "cagr": 0.556,
+    "maxdd": 0.772,
+    "sharpe": 0.99,
+    "su_alti_gun": 855
+   },
+   "train_valid": "bkz. sonuc_tsmom.json / sonuc_tsmom2.json (bu ailede yeniden secim yapilmadi)",
+   "komsular": "MA 20..200 taramasi: sabit MA50 tum-donem Sharpe 1.57, mukemmel yillik secim 1.83, walk-forward 1.05 -> komsu bolge duz, tepe gurultu.",
+   "saglamlik": {
+    "bootstrap_sharpe_fark_ga95": [
+     0.064,
+     1.19
+    ],
+    "bootstrap_sharpe_fark_ga99": [
+     -0.122,
+     1.327
+    ],
+    "bootstrap_maxdd_fark_ga99": [
+     -0.759,
+     -0.269
+    ],
+    "deflated_sharpe_train": 0.9902,
+    "mc_maxdd_p95": 0.341,
+    "mc_su_alti_p95": 857
+   }
+  },
+  {
+   "ad": "Y__vt30_cap15_temel",
+   "params": {
+    "sepet": "yuruyen_top3",
+    "kural": "MA50 long-only",
+    "hedef": 0.3,
+    "cap": 1.5
+   },
+   "gelistirme": {
+    "gun": 2830,
+    "toplam": 4.69,
+    "cagr": 0.251,
+    "maxdd": 0.273,
+    "sharpe": 1.23,
+    "yillar": {
+     "2018": -0.121,
+     "2019": 0.477,
+     "2020": 0.702,
+     "2021": 0.306,
+     "2022": -0.191,
+     "2023": 0.375,
+     "2024": 0.359,
+     "2025": 0.304
+    },
+    "ciro_yil": 13.74,
+    "islem_yil": 33.5,
+    "ort_gross": 0.243,
+    "su_alti_gun": 819,
+    "maks_gross": 1.0
+   },
+   "altut_gelistirme": {
+    "gun": 2830,
+    "toplam": 2.408,
+    "cagr": 0.171,
+    "maxdd": 0.833,
+    "sharpe": 0.59,
+    "su_alti_gun": 1694
+   },
+   "train_valid": "bkz. sonuc_tsmom.json / sonuc_tsmom2.json (bu ailede yeniden secim yapilmadi)",
+   "komsular": "MA 20..200 taramasi: sabit MA50 tum-donem Sharpe 1.23, mukemmel yillik secim 1.59, walk-forward 0.66 -> komsu bolge duz, tepe gurultu.",
+   "saglamlik": {
+    "bootstrap_sharpe_fark_ga95": [
+     0.116,
+     1.211
+    ],
+    "bootstrap_sharpe_fark_ga99": [
+     -0.03,
+     1.384
+    ],
+    "bootstrap_maxdd_fark_ga99": [
+     -0.78,
+     -0.347
+    ],
+    "deflated_sharpe_train": 0.9038,
+    "mc_maxdd_p95": 0.347,
+    "mc_su_alti_p95": 1056
+   }
+  },
+  {
+   "ad": "A2__vt20_cap10_spot",
+   "params": {
+    "sepet": "s3_orij_bnb",
+    "kural": "MA50 long-only",
+    "hedef": 0.2,
+    "cap": 1.0
+   },
+   "gelistirme": {
+    "gun": 2830,
+    "toplam": 3.864,
+    "cagr": 0.226,
+    "maxdd": 0.19,
+    "sharpe": 1.56,
+    "yillar": {
+     "2018": -0.083,
+     "2019": 0.333,
+     "2020": 0.532,
+     "2021": 0.462,
+     "2022": -0.129,
+     "2023": 0.346,
+     "2024": 0.288,
+     "2025": 0.176
+    },
+    "ciro_yil": 9.31,
+    "islem_yil": 31.5,
+    "ort_gross": 0.18,
+    "su_alti_gun": 727,
+    "maks_gross": 0.824
+   },
+   "altut_gelistirme": {
+    "gun": 2830,
+    "toplam": 29.874,
+    "cagr": 0.556,
+    "maxdd": 0.772,
+    "sharpe": 0.99,
+    "su_alti_gun": 855
+   },
+   "train_valid": "bkz. sonuc_tsmom.json / sonuc_tsmom2.json (bu ailede yeniden secim yapilmadi)",
+   "komsular": "MA 20..200 taramasi: sabit MA50 tum-donem Sharpe 1.57, mukemmel yillik secim 1.83, walk-forward 1.05 -> komsu bolge duz, tepe gurultu.",
+   "saglamlik": {
+    "bootstrap_sharpe_fark_ga95": [
+     0.064,
+     1.19
+    ],
+    "bootstrap_sharpe_fark_ga99": [
+     -0.122,
+     1.327
+    ],
+    "bootstrap_maxdd_fark_ga99": [
+     -0.759,
+     -0.269
+    ],
+    "deflated_sharpe_train": 0.9902,
+    "mc_maxdd_p95": 0.341,
+    "mc_su_alti_p95": 857
+   }
+  }
+ ],
+ "analiz_baslangici": "2018-04-01 (tsmom/tsmom2 ile ayni pencere)",
+ "adaylar": {
+  "A2": {
+   "sepet": "s3_orij_bnb",
+   "kural": "MA50 long-only, hedef vol %30, cap 1.5, gunluk rebalans, 7bp"
+  },
+  "Y": {
+   "sepet": "yuruyen_top3",
+   "kural": "MA50 long-only, hedef vol %30, cap 1.5, gunluk rebalans, 7bp"
+  }
+ },
+ "amac": "A2 ve Y'nin sonuclari sanstan ayirt edilebilir mi? Yeni parametre aramasi YOK; tsmom2.kos2/sepet_cfg import edilerek ayni kural test edildi.",
+ "t1_blok_bootstrap": {
+  "A2": {
+   "sepet": "s3_orij_bnb",
+   "B": 2000,
+   "blok_gun": 30,
+   "n_gun": 2830,
+   "gozlenen": {
+    "sharpe_strateji": 1.57,
+    "sharpe_altut": 0.99,
+    "sharpe_fark": 0.579,
+    "maxdd_strateji": 0.275,
+    "maxdd_altut": 0.772,
+    "maxdd_fark": -0.497
+   },
+   "sharpe_fark": {
+    "ort": 0.599,
+    "ga95": [
+     0.064,
+     1.19
+    ],
+    "ga99": [
+     -0.122,
+     1.327
+    ],
+    "p_fark_sifir_veya_alti": 0.018,
+    "sifiri_disliyor_95": true,
+    "sifiri_disliyor_99": false
+   },
+   "maxdd_fark": {
+    "ort": -0.529,
+    "ga95": [
+     -0.713,
+     -0.323
+    ],
+    "ga99": [
+     -0.759,
+     -0.269
+    ],
+    "p_fark_sifir_veya_ustu": 0.0,
+    "sifiri_disliyor_95": true,
+    "sifiri_disliyor_99": true
+   }
+  },
+  "Y": {
+   "sepet": "yuruyen_top3",
+   "B": 2000,
+   "blok_gun": 30,
+   "n_gun": 2830,
+   "gozlenen": {
+    "sharpe_strateji": 1.23,
+    "sharpe_altut": 0.59,
+    "sharpe_fark": 0.64,
+    "maxdd_strateji": 0.273,
+    "maxdd_altut": 0.833,
+    "maxdd_fark": -0.56
+   },
+   "sharpe_fark": {
+    "ort": 0.662,
+    "ga95": [
+     0.116,
+     1.211
+    ],
+    "ga99": [
+     -0.03,
+     1.384
+    ],
+    "p_fark_sifir_veya_alti": 0.009,
+    "sifiri_disliyor_95": true,
+    "sifiri_disliyor_99": false
+   },
+   "maxdd_fark": {
+    "ort": -0.602,
+    "ga95": [
+     -0.75,
+     -0.396
+    ],
+    "ga99": [
+     -0.78,
+     -0.347
+    ],
+    "p_fark_sifir_veya_ustu": 0.0,
+    "sifiri_disliyor_95": true,
+    "sifiri_disliyor_99": true
+   }
+  }
+ },
+ "t2_yil_ma_kararliligi": {
+  "A2": {
+   "sepet": "s3_orij_bnb",
+   "yil_x_ma_sharpe": {
+    "2018": {
+     "20": -0.9,
+     "30": -1.54,
+     "40": -1.7,
+     "50": -1.71,
+     "60": -1.82,
+     "70": -1.23,
+     "80": -0.76,
+     "90": -1.25,
+     "100": -0.8,
+     "110": -0.9,
+     "120": -0.7,
+     "130": -0.47,
+     "140": -0.37,
+     "150": -0.57,
+     "160": -0.98,
+     "170": -1.46,
+     "180": -1.33,
+     "190": -1.12,
+     "200": -1.0
+    },
+    "2019": {
+     "20": 1.97,
+     "30": 2.05,
+     "40": 2.06,
+     "50": 2.09,
+     "60": 2.17,
+     "70": 2.02,
+     "80": 2.27,
+     "90": 2.38,
+     "100": 2.26,
+     "110": 2.28,
+     "120": 2.19,
+     "130": 2.08,
+     "140": 2.2,
+     "150": 1.92,
+     "160": 1.73,
+     "170": 1.78,
+     "180": 1.59,
+     "190": 1.48,
+     "200": 1.41
+    },
+    "2020": {
+     "20": 2.75,
+     "30": 3.09,
+     "40": 3.07,
+     "50": 2.64,
+     "60": 2.45,
+     "70": 2.41,
+     "80": 2.18,
+     "90": 2.08,
+     "100": 2.16,
+     "110": 2.29,
+     "120": 2.32,
+     "130": 2.36,
+     "140": 2.29,
+     "150": 2.33,
+     "160": 2.31,
+     "170": 2.24,
+     "180": 2.12,
+     "190": 2.2,
+     "200": 2.15
+    },
+    "2021": {
+     "20": 2.32,
+     "30": 2.41,
+     "40": 2.79,
+     "50": 2.63,
+     "60": 2.34,
+     "70": 2.22,
+     "80": 2.05,
+     "90": 2.05,
+     "100": 1.98,
+     "110": 2.1,
+     "120": 2.15,
+     "130": 2.11,
+     "140": 1.91,
+     "150": 1.68,
+     "160": 1.85,
+     "170": 1.86,
+     "180": 1.64,
+     "190": 1.8,
+     "200": 1.77
+    },
+    "2022": {
+     "20": -0.8,
+     "30": -0.82,
+     "40": -1.19,
+     "50": -1.23,
+     "60": -1.29,
+     "70": -1.57,
+     "80": -1.73,
+     "90": -1.95,
+     "100": -1.99,
+     "110": -2.23,
+     "120": -2.11,
+     "130": -1.56,
+     "140": -1.24,
+     "150": -1.09,
+     "160": -1.24,
+     "170": -1.27,
+     "180": -1.42,
+     "190": -1.45,
+     "200": -1.45
+    },
+    "2023": {
+     "20": 1.04,
+     "30": 1.4,
+     "40": 1.69,
+     "50": 2.08,
+     "60": 2.06,
+     "70": 1.81,
+     "80": 1.67,
+     "90": 1.56,
+     "100": 1.57,
+     "110": 1.52,
+     "120": 1.62,
+     "130": 1.52,
+     "140": 1.48,
+     "150": 1.46,
+     "160": 1.29,
+     "170": 1.22,
+     "180": 1.18,
+     "190": 0.97,
+     "200": 0.89
+    },
+    "2024": {
+     "20": 1.94,
+     "30": 1.55,
+     "40": 1.78,
+     "50": 1.82,
+     "60": 1.6,
+     "70": 1.62,
+     "80": 1.71,
+     "90": 1.72,
+     "100": 1.81,
+     "110": 2.03,
+     "120": 1.98,
+     "130": 2.02,
+     "140": 1.9,
+     "150": 1.88,
+     "160": 1.62,
+     "170": 1.7,
+     "180": 1.6,
+     "190": 1.69,
+     "200": 1.72
+    },
+    "2025": {
+     "20": 0.61,
+     "30": 0.79,
+     "40": 1.23,
+     "50": 1.39,
+     "60": 1.35,
+     "70": 1.16,
+     "80": 1.05,
+     "90": 0.88,
+     "100": 0.92,
+     "110": 0.83,
+     "120": 0.75,
+     "130": 0.61,
+     "140": 0.45,
+     "150": 0.44,
+     "160": 0.35,
+     "170": 0.34,
+     "180": 0.21,
+     "190": 0.26,
+     "200": 0.1
+    }
+   },
+   "yilin_en_iyi_ma": {
+    "2018": 140,
+    "2019": 90,
+    "2020": 30,
+    "2021": 40,
+    "2022": 20,
+    "2023": 50,
+    "2024": 110,
+    "2025": 50
+   },
+   "en_iyi_ma_std": 39.7,
+   "en_iyi_ma_araligi": [
+    20,
+    140
+   ],
+   "iyi_bolge_min_max_adet": {
+    "2018": [
+     130,
+     150,
+     3
+    ],
+    "2019": [
+     80,
+     140,
+     6
+    ],
+    "2020": [
+     30,
+     40,
+     2
+    ],
+    "2021": [
+     40,
+     50,
+     2
+    ],
+    "2022": [
+     20,
+     30,
+     2
+    ],
+    "2023": [
+     50,
+     60,
+     2
+    ],
+    "2024": [
+     20,
+     150,
+     6
+    ],
+    "2025": [
+     40,
+     60,
+     3
+    ]
+   },
+   "politikalar": {
+    "2021_2025": {
+     "oracle_yil": {
+      "sharpe": 1.59,
+      "maxdd": 0.24,
+      "cagr": 0.359,
+      "secimler": {
+       "2021": 40,
+       "2022": 20,
+       "2023": 50,
+       "2024": 110,
+       "2025": 50
+      }
+     },
+     "sabit_ma50": {
+      "sharpe": 1.48,
+      "maxdd": 0.275,
+      "cagr": 0.323,
+      "secimler": {
+       "2021": 50,
+       "2022": 50,
+       "2023": 50,
+       "2024": 50,
+       "2025": 50
+      }
+     },
+     "walk_forward": {
+      "sharpe": 1.05,
+      "maxdd": 0.28,
+      "cagr": 0.226,
+      "secimler": {
+       "2021": 140,
+       "2022": 40,
+       "2023": 40,
+       "2024": 50,
+       "2025": 150
+      }
+     },
+     "altut": {
+      "sharpe": 0.98,
+      "maxdd": 0.736
+     }
+    },
+    "tum_2018_2025": {
+     "oracle_yil": {
+      "sharpe": 1.83,
+      "maxdd": 0.24,
+      "cagr": 0.417,
+      "secimler": {
+       "2018": 140,
+       "2019": 90,
+       "2020": 30,
+       "2021": 40,
+       "2022": 20,
+       "2023": 50,
+       "2024": 110,
+       "2025": 50
+      }
+     },
+     "sabit_ma50": {
+      "sharpe": 1.57,
+      "maxdd": 0.275,
+      "cagr": 0.349,
+      "secimler": {
+       "2018": 50,
+       "2019": 50,
+       "2020": 50,
+       "2021": 50,
+       "2022": 50,
+       "2023": 50,
+       "2024": 50,
+       "2025": 50
+      }
+     },
+     "altut": {
+      "sharpe": 0.99,
+      "maxdd": 0.772
+     }
+    }
+   },
+   "walk_forward_secimleri": {
+    "2021": 140,
+    "2022": 40,
+    "2023": 40,
+    "2024": 50,
+    "2025": 150
+   }
+  },
+  "Y": {
+   "sepet": "yuruyen_top3",
+   "yil_x_ma_sharpe": {
+    "2018": {
+     "20": -0.62,
+     "30": -1.29,
+     "40": -2.03,
+     "50": -1.92,
+     "60": -2.21,
+     "70": -1.91,
+     "80": -1.64,
+     "90": -2.15,
+     "100": -1.75,
+     "110": -1.99,
+     "120": -1.48,
+     "130": -1.34,
+     "140": -1.54,
+     "150": -1.28,
+     "160": -2.06,
+     "170": -2.3,
+     "180": -1.42,
+     "190": -1.49,
+     "200": -0.38
+    },
+    "2019": {
+     "20": 1.85,
+     "30": 1.7,
+     "40": 1.64,
+     "50": 1.75,
+     "60": 1.86,
+     "70": 1.79,
+     "80": 2.02,
+     "90": 2.15,
+     "100": 2.02,
+     "110": 1.85,
+     "120": 1.86,
+     "130": 1.76,
+     "140": 1.68,
+     "150": 1.45,
+     "160": 1.42,
+     "170": 1.39,
+     "180": 1.31,
+     "190": 1.25,
+     "200": 1.17
+    },
+    "2020": {
+     "20": 2.63,
+     "30": 2.98,
+     "40": 2.96,
+     "50": 2.42,
+     "60": 2.28,
+     "70": 1.95,
+     "80": 1.81,
+     "90": 1.74,
+     "100": 1.94,
+     "110": 2.0,
+     "120": 2.12,
+     "130": 2.2,
+     "140": 2.39,
+     "150": 2.47,
+     "160": 2.47,
+     "170": 2.36,
+     "180": 2.29,
+     "190": 2.28,
+     "200": 2.23
+    },
+    "2021": {
+     "20": 1.52,
+     "30": 1.48,
+     "40": 1.71,
+     "50": 1.4,
+     "60": 1.47,
+     "70": 1.36,
+     "80": 1.23,
+     "90": 1.21,
+     "100": 1.23,
+     "110": 1.44,
+     "120": 1.37,
+     "130": 1.54,
+     "140": 1.4,
+     "150": 1.23,
+     "160": 1.11,
+     "170": 1.16,
+     "180": 1.13,
+     "190": 1.14,
+     "200": 1.1
+    },
+    "2022": {
+     "20": -1.09,
+     "30": -0.88,
+     "40": -1.36,
+     "50": -1.49,
+     "60": -1.3,
+     "70": -1.48,
+     "80": -1.72,
+     "90": -2.03,
+     "100": -2.09,
+     "110": -2.4,
+     "120": -2.3,
+     "130": -2.67,
+     "140": -2.88,
+     "150": -2.36,
+     "160": -2.03,
+     "170": -2.1,
+     "180": -2.6,
+     "190": -2.49,
+     "200": -2.47
+    },
+    "2023": {
+     "20": 0.79,
+     "30": 1.03,
+     "40": 1.29,
+     "50": 1.58,
+     "60": 1.59,
+     "70": 1.37,
+     "80": 1.29,
+     "90": 1.1,
+     "100": 1.13,
+     "110": 1.09,
+     "120": 1.15,
+     "130": 1.12,
+     "140": 1.03,
+     "150": 1.02,
+     "160": 0.84,
+     "170": 0.9,
+     "180": 0.87,
+     "190": 0.69,
+     "200": 0.56
+    },
+    "2024": {
+     "20": 2.13,
+     "30": 1.51,
+     "40": 1.69,
+     "50": 1.57,
+     "60": 1.28,
+     "70": 1.17,
+     "80": 1.22,
+     "90": 1.07,
+     "100": 1.23,
+     "110": 1.53,
+     "120": 1.5,
+     "130": 1.51,
+     "140": 1.58,
+     "150": 1.6,
+     "160": 1.36,
+     "170": 1.44,
+     "180": 1.36,
+     "190": 1.44,
+     "200": 1.43
+    },
+    "2025": {
+     "20": 0.64,
+     "30": 1.05,
+     "40": 1.58,
+     "50": 1.54,
+     "60": 1.51,
+     "70": 1.3,
+     "80": 1.12,
+     "90": 0.94,
+     "100": 0.95,
+     "110": 0.88,
+     "120": 0.83,
+     "130": 0.79,
+     "140": 0.6,
+     "150": 0.46,
+     "160": 0.39,
+     "170": 0.38,
+     "180": 0.22,
+     "190": 0.37,
+     "200": 0.27
+    }
+   },
+   "yilin_en_iyi_ma": {
+    "2018": 200,
+    "2019": 90,
+    "2020": 30,
+    "2021": 40,
+    "2022": 30,
+    "2023": 60,
+    "2024": 20,
+    "2025": 40
+   },
+   "en_iyi_ma_std": 55.4,
+   "en_iyi_ma_araligi": [
+    20,
+    200
+   ],
+   "iyi_bolge_min_max_adet": {
+    "2018": [
+     200,
+     200,
+     1
+    ],
+    "2019": [
+     80,
+     100,
+     3
+    ],
+    "2020": [
+     30,
+     40,
+     2
+    ],
+    "2021": [
+     20,
+     130,
+     3
+    ],
+    "2022": [
+     30,
+     30,
+     1
+    ],
+    "2023": [
+     50,
+     60,
+     2
+    ],
+    "2024": [
+     20,
+     20,
+     1
+    ],
+    "2025": [
+     40,
+     60,
+     3
+    ]
+   },
+   "politikalar": {
+    "2021_2025": {
+     "oracle_yil": {
+      "sharpe": 1.29,
+      "maxdd": 0.223,
+      "cagr": 0.261,
+      "secimler": {
+       "2021": 40,
+       "2022": 30,
+       "2023": 60,
+       "2024": 20,
+       "2025": 40
+      }
+     },
+     "sabit_ma50": {
+      "sharpe": 1.08,
+      "maxdd": 0.273,
+      "cagr": 0.208,
+      "secimler": {
+       "2021": 50,
+       "2022": 50,
+       "2023": 50,
+       "2024": 50,
+       "2025": 50
+      }
+     },
+     "walk_forward": {
+      "sharpe": 0.66,
+      "maxdd": 0.328,
+      "cagr": 0.12,
+      "secimler": {
+       "2021": 140,
+       "2022": 40,
+       "2023": 30,
+       "2024": 60,
+       "2025": 150
+      }
+     },
+     "altut": {
+      "sharpe": 0.55,
+      "maxdd": 0.822
+     }
+    },
+    "tum_2018_2025": {
+     "oracle_yil": {
+      "sharpe": 1.59,
+      "maxdd": 0.223,
+      "cagr": 0.339,
+      "secimler": {
+       "2018": 200,
+       "2019": 90,
+       "2020": 30,
+       "2021": 40,
+       "2022": 30,
+       "2023": 60,
+       "2024": 20,
+       "2025": 40
+      }
+     },
+     "sabit_ma50": {
+      "sharpe": 1.23,
+      "maxdd": 0.273,
+      "cagr": 0.251,
+      "secimler": {
+       "2018": 50,
+       "2019": 50,
+       "2020": 50,
+       "2021": 50,
+       "2022": 50,
+       "2023": 50,
+       "2024": 50,
+       "2025": 50
+      }
+     },
+     "altut": {
+      "sharpe": 0.59,
+      "maxdd": 0.833
+     }
+    }
+   },
+   "walk_forward_secimleri": {
+    "2021": 140,
+    "2022": 40,
+    "2023": 30,
+    "2024": 60,
+    "2025": 150
+   }
+  }
+ },
+ "t3_monte_carlo": {
+  "A2": {
+   "sepet": "s3_orij_bnb",
+   "B": 10000,
+   "ay_blok_sayisi": 93,
+   "gozlenen": {
+    "maxdd": 0.275,
+    "su_alti_gun": 730
+   },
+   "maxdd_dagilim": {
+    "medyan": 0.241,
+    "p75": 0.276,
+    "p90": 0.315,
+    "p95": 0.341,
+    "p99": 0.393,
+    "en_kotu": 0.532,
+    "gozlenenin_yuzdeligi": 0.749
+   },
+   "su_alti_dagilim": {
+    "medyan": 454,
+    "p90": 745,
+    "p95": 857,
+    "p99": 1103,
+    "en_kotu": 1559,
+    "gozlenenin_yuzdeligi": 0.892
+   }
+  },
+  "Y": {
+   "sepet": "yuruyen_top3",
+   "B": 10000,
+   "ay_blok_sayisi": 93,
+   "gozlenen": {
+    "maxdd": 0.273,
+    "su_alti_gun": 819
+   },
+   "maxdd_dagilim": {
+    "medyan": 0.242,
+    "p75": 0.278,
+    "p90": 0.319,
+    "p95": 0.347,
+    "p99": 0.393,
+    "en_kotu": 0.515,
+    "gozlenenin_yuzdeligi": 0.721
+   },
+   "su_alti_dagilim": {
+    "medyan": 552,
+    "p90": 910,
+    "p95": 1056,
+    "p99": 1317,
+    "en_kotu": 1862,
+    "gozlenenin_yuzdeligi": 0.846
+   }
+  }
+ },
+ "t4_deflated_sharpe": {
+  "defter": {
+   "N": 167,
+   "kiyas": 21,
+   "sharpe_ort": 1.269,
+   "sharpe_std": 0.261,
+   "sharpe_max": 1.6,
+   "sharpe_min": 0.35
+  },
+  "hesaplar": {
+   "A2_train_N167": {
+    "etiket": "A2_train_N167",
+    "gun": 2467,
+    "sharpe_yillik": 1.592,
+    "sharpe_gunluk": 0.08334,
+    "carpiklik": 0.596,
+    "basiklik": 13.4,
+    "N_test": 167,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.706,
+    "SR0_gunluk": 0.03697,
+    "z": 2.336,
+    "deflated_sharpe": 0.9902,
+    "psr_vs_sifir": 1.0,
+    "dsr95_icin_gereken_yillik_sharpe": 1.33
+   },
+   "A2_train_N50": {
+    "etiket": "A2_train_N50",
+    "gun": 2467,
+    "sharpe_yillik": 1.592,
+    "sharpe_gunluk": 0.08334,
+    "carpiklik": 0.596,
+    "basiklik": 13.4,
+    "N_test": 50,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.594,
+    "SR0_gunluk": 0.0311,
+    "z": 2.631,
+    "deflated_sharpe": 0.9957,
+    "psr_vs_sifir": 1.0,
+    "dsr95_icin_gereken_yillik_sharpe": 1.218
+   },
+   "A2_train_N400": {
+    "etiket": "A2_train_N400",
+    "gun": 2467,
+    "sharpe_yillik": 1.592,
+    "sharpe_gunluk": 0.08334,
+    "carpiklik": 0.596,
+    "basiklik": 13.4,
+    "N_test": 400,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.779,
+    "SR0_gunluk": 0.04078,
+    "z": 2.144,
+    "deflated_sharpe": 0.984,
+    "psr_vs_sifir": 1.0,
+    "dsr95_icin_gereken_yillik_sharpe": 1.403
+   },
+   "A2_gelistirme_N167": {
+    "etiket": "A2_gelistirme_N167",
+    "gun": 2830,
+    "sharpe_yillik": 1.567,
+    "sharpe_gunluk": 0.08205,
+    "carpiklik": 0.593,
+    "basiklik": 13.14,
+    "N_test": 167,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.706,
+    "SR0_gunluk": 0.03697,
+    "z": 2.432,
+    "deflated_sharpe": 0.9925,
+    "psr_vs_sifir": 1.0,
+    "dsr95_icin_gereken_yillik_sharpe": 1.289
+   },
+   "A2_gelistirme_N50": {
+    "etiket": "A2_gelistirme_N50",
+    "gun": 2830,
+    "sharpe_yillik": 1.567,
+    "sharpe_gunluk": 0.08205,
+    "carpiklik": 0.593,
+    "basiklik": 13.14,
+    "N_test": 50,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.594,
+    "SR0_gunluk": 0.0311,
+    "z": 2.749,
+    "deflated_sharpe": 0.997,
+    "psr_vs_sifir": 1.0,
+    "dsr95_icin_gereken_yillik_sharpe": 1.177
+   },
+   "A2_gelistirme_N400": {
+    "etiket": "A2_gelistirme_N400",
+    "gun": 2830,
+    "sharpe_yillik": 1.567,
+    "sharpe_gunluk": 0.08205,
+    "carpiklik": 0.593,
+    "basiklik": 13.14,
+    "N_test": 400,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.779,
+    "SR0_gunluk": 0.04078,
+    "z": 2.227,
+    "deflated_sharpe": 0.987,
+    "psr_vs_sifir": 1.0,
+    "dsr95_icin_gereken_yillik_sharpe": 1.361
+   },
+   "Y_train_N167": {
+    "etiket": "Y_train_N167",
+    "gun": 2467,
+    "sharpe_yillik": 1.192,
+    "sharpe_gunluk": 0.06241,
+    "carpiklik": 1.312,
+    "basiklik": 22.49,
+    "N_test": 167,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.706,
+    "SR0_gunluk": 0.03697,
+    "z": 1.304,
+    "deflated_sharpe": 0.9038,
+    "psr_vs_sifir": 0.9993,
+    "dsr95_icin_gereken_yillik_sharpe": 1.32
+   },
+   "Y_train_N50": {
+    "etiket": "Y_train_N50",
+    "gun": 2467,
+    "sharpe_yillik": 1.192,
+    "sharpe_gunluk": 0.06241,
+    "carpiklik": 1.312,
+    "basiklik": 22.49,
+    "N_test": 50,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.594,
+    "SR0_gunluk": 0.0311,
+    "z": 1.605,
+    "deflated_sharpe": 0.9457,
+    "psr_vs_sifir": 0.9993,
+    "dsr95_icin_gereken_yillik_sharpe": 1.207
+   },
+   "Y_train_N400": {
+    "etiket": "Y_train_N400",
+    "gun": 2467,
+    "sharpe_yillik": 1.192,
+    "sharpe_gunluk": 0.06241,
+    "carpiklik": 1.312,
+    "basiklik": 22.49,
+    "N_test": 400,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.779,
+    "SR0_gunluk": 0.04078,
+    "z": 1.109,
+    "deflated_sharpe": 0.8662,
+    "psr_vs_sifir": 0.9993,
+    "dsr95_icin_gereken_yillik_sharpe": 1.392
+   },
+   "Y_gelistirme_N167": {
+    "etiket": "Y_gelistirme_N167",
+    "gun": 2830,
+    "sharpe_yillik": 1.234,
+    "sharpe_gunluk": 0.06457,
+    "carpiklik": 1.229,
+    "basiklik": 21.27,
+    "N_test": 167,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.706,
+    "SR0_gunluk": 0.03697,
+    "z": 1.513,
+    "deflated_sharpe": 0.9348,
+    "psr_vs_sifir": 0.9998,
+    "dsr95_icin_gereken_yillik_sharpe": 1.28
+   },
+   "Y_gelistirme_N50": {
+    "etiket": "Y_gelistirme_N50",
+    "gun": 2830,
+    "sharpe_yillik": 1.234,
+    "sharpe_gunluk": 0.06457,
+    "carpiklik": 1.229,
+    "basiklik": 21.27,
+    "N_test": 50,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.594,
+    "SR0_gunluk": 0.0311,
+    "z": 1.835,
+    "deflated_sharpe": 0.9667,
+    "psr_vs_sifir": 0.9998,
+    "dsr95_icin_gereken_yillik_sharpe": 1.167
+   },
+   "Y_gelistirme_N400": {
+    "etiket": "Y_gelistirme_N400",
+    "gun": 2830,
+    "sharpe_yillik": 1.234,
+    "sharpe_gunluk": 0.06457,
+    "carpiklik": 1.229,
+    "basiklik": 21.27,
+    "N_test": 400,
+    "denemeler_sharpe_std_yillik": 0.261,
+    "SR0_yillik": 0.779,
+    "SR0_gunluk": 0.04078,
+    "z": 1.304,
+    "deflated_sharpe": 0.9039,
+    "psr_vs_sifir": 0.9998,
+    "dsr95_icin_gereken_yillik_sharpe": 1.352
+   }
+  }
+ },
+ "t5_alt_donemler": {
+  "A2": {
+   "sepet": "s3_orij_bnb",
+   "donemler": {
+    "2018_2020": {
+     "vt30": {
+      "gun": 1006,
+      "toplam": 1.515,
+      "cagr": 0.397,
+      "maxdd": 0.217,
+      "sharpe": 1.73,
+      "su_alti_gun": 331
+     },
+     "ma50": {
+      "gun": 1006,
+      "toplam": 4.11,
+      "cagr": 0.807,
+      "maxdd": 0.485,
+      "sharpe": 1.49,
+      "su_alti_gun": 348
+     },
+     "altut": {
+      "gun": 1006,
+      "toplam": 2.6,
+      "cagr": 0.592,
+      "maxdd": 0.772,
+      "sharpe": 1.01,
+      "su_alti_gun": 473
+     },
+     "sharpe_fark": 0.72,
+     "maxdd_fark": -0.555
+    },
+    "2021_2022": {
+     "vt30": {
+      "gun": 730,
+      "toplam": 0.419,
+      "cagr": 0.191,
+      "maxdd": 0.274,
+      "sharpe": 0.99,
+      "su_alti_gun": 419
+     },
+     "ma50": {
+      "gun": 730,
+      "toplam": 2.855,
+      "cagr": 0.963,
+      "maxdd": 0.498,
+      "sharpe": 1.47,
+      "su_alti_gun": 419
+     },
+     "altut": {
+      "gun": 730,
+      "toplam": 1.19,
+      "cagr": 0.48,
+      "maxdd": 0.736,
+      "sharpe": 0.89,
+      "su_alti_gun": 419
+     },
+     "sharpe_fark": 0.1,
+     "maxdd_fark": -0.462
+    },
+    "2023_2025": {
+     "vt30": {
+      "gun": 1094,
+      "toplam": 1.851,
+      "cagr": 0.418,
+      "maxdd": 0.153,
+      "sharpe": 1.78,
+      "su_alti_gun": 254
+     },
+     "ma50": {
+      "gun": 1094,
+      "toplam": 3.021,
+      "cagr": 0.591,
+      "maxdd": 0.289,
+      "sharpe": 1.54,
+      "su_alti_gun": 265
+     },
+     "altut": {
+      "gun": 1094,
+      "toplam": 2.916,
+      "cagr": 0.577,
+      "maxdd": 0.404,
+      "sharpe": 1.19,
+      "su_alti_gun": 231
+     },
+     "sharpe_fark": 0.59,
+     "maxdd_fark": -0.251
+    }
+   },
+   "kac_donemde_sharpe_ustun": 3,
+   "kac_donemde_dd_dusuk": 3
+  },
+  "Y": {
+   "sepet": "yuruyen_top3",
+   "donemler": {
+    "2018_2020": {
+     "vt30": {
+      "gun": 1006,
+      "toplam": 1.209,
+      "cagr": 0.333,
+      "maxdd": 0.204,
+      "sharpe": 1.5,
+      "su_alti_gun": 331
+     },
+     "ma50": {
+      "gun": 1006,
+      "toplam": 2.434,
+      "cagr": 0.565,
+      "maxdd": 0.478,
+      "sharpe": 1.16,
+      "su_alti_gun": 372
+     },
+     "altut": {
+      "gun": 1006,
+      "toplam": 0.714,
+      "cagr": 0.216,
+      "maxdd": 0.833,
+      "sharpe": 0.67,
+      "su_alti_gun": 969
+     },
+     "sharpe_fark": 0.83,
+     "maxdd_fark": -0.629
+    },
+    "2021_2022": {
+     "vt30": {
+      "gun": 730,
+      "toplam": 0.057,
+      "cagr": 0.028,
+      "maxdd": 0.271,
+      "sharpe": 0.25,
+      "su_alti_gun": 482
+     },
+     "ma50": {
+      "gun": 730,
+      "toplam": 0.173,
+      "cagr": 0.083,
+      "maxdd": 0.501,
+      "sharpe": 0.42,
+      "su_alti_gun": 600
+     },
+     "altut": {
+      "gun": 730,
+      "toplam": -0.238,
+      "cagr": -0.127,
+      "maxdd": 0.822,
+      "sharpe": 0.31,
+      "su_alti_gun": 600
+     },
+     "sharpe_fark": -0.06,
+     "maxdd_fark": -0.551
+    },
+    "2023_2025": {
+     "vt30": {
+      "gun": 1094,
+      "toplam": 1.438,
+      "cagr": 0.346,
+      "maxdd": 0.163,
+      "sharpe": 1.56,
+      "su_alti_gun": 253
+     },
+     "ma50": {
+      "gun": 1094,
+      "toplam": 1.956,
+      "cagr": 0.436,
+      "maxdd": 0.304,
+      "sharpe": 1.23,
+      "su_alti_gun": 267
+     },
+     "altut": {
+      "gun": 1094,
+      "toplam": 1.61,
+      "cagr": 0.377,
+      "maxdd": 0.523,
+      "sharpe": 0.88,
+      "su_alti_gun": 246
+     },
+     "sharpe_fark": 0.68,
+     "maxdd_fark": -0.36
+    }
+   },
+   "kac_donemde_sharpe_ustun": 2,
+   "kac_donemde_dd_dusuk": 3
+  }
+ },
+ "t6_kaldirac": {
+  "A2": {
+   "sepet": "s3_orij_bnb",
+   "varyantlar": {
+    "vt30_cap15_temel": {
+     "gun": 2830,
+     "toplam": 9.172,
+     "cagr": 0.349,
+     "maxdd": 0.275,
+     "sharpe": 1.57,
+     "yillar": {
+      "2018": -0.123,
+      "2019": 0.528,
+      "2020": 0.877,
+      "2021": 0.752,
+      "2022": -0.19,
+      "2023": 0.549,
+      "2024": 0.45,
+      "2025": 0.269
+     },
+     "ciro_yil": 13.95,
+     "islem_yil": 31.5,
+     "ort_gross": 0.27,
+     "su_alti_gun": 730,
+     "maks_gross": 1.0
+    },
+    "vt30_cap10_spot": {
+     "gun": 2830,
+     "toplam": 8.548,
+     "cagr": 0.338,
+     "maxdd": 0.276,
+     "sharpe": 1.54,
+     "yillar": {
+      "2018": -0.123,
+      "2019": 0.502,
+      "2020": 0.854,
+      "2021": 0.752,
+      "2022": -0.191,
+      "2023": 0.529,
+      "2024": 0.45,
+      "2025": 0.243
+     },
+     "ciro_yil": 13.55,
+     "islem_yil": 31.5,
+     "ort_gross": 0.267,
+     "su_alti_gun": 730,
+     "maks_gross": 1.0
+    },
+    "vt20_cap15": {
+     "gun": 2830,
+     "toplam": 3.864,
+     "cagr": 0.226,
+     "maxdd": 0.19,
+     "sharpe": 1.56,
+     "yillar": {
+      "2018": -0.083,
+      "2019": 0.333,
+      "2020": 0.532,
+      "2021": 0.462,
+      "2022": -0.129,
+      "2023": 0.346,
+      "2024": 0.288,
+      "2025": 0.176
+     },
+     "ciro_yil": 9.31,
+     "islem_yil": 31.5,
+     "ort_gross": 0.18,
+     "su_alti_gun": 727,
+     "maks_gross": 0.824
+    },
+    "vt20_cap10_spot": {
+     "gun": 2830,
+     "toplam": 3.864,
+     "cagr": 0.226,
+     "maxdd": 0.19,
+     "sharpe": 1.56,
+     "yillar": {
+      "2018": -0.083,
+      "2019": 0.333,
+      "2020": 0.532,
+      "2021": 0.462,
+      "2022": -0.129,
+      "2023": 0.346,
+      "2024": 0.288,
+      "2025": 0.176
+     },
+     "ciro_yil": 9.31,
+     "islem_yil": 31.5,
+     "ort_gross": 0.18,
+     "su_alti_gun": 727,
+     "maks_gross": 0.824
+    },
+    "ma50_vt_yok": {
+     "gun": 2830,
+     "toplam": 78.215,
+     "cagr": 0.758,
+     "maxdd": 0.499,
+     "sharpe": 1.47,
+     "yillar": {
+      "2018": -0.217,
+      "2019": 1.068,
+      "2020": 2.158,
+      "2021": 4.947,
+      "2022": -0.352,
+      "2023": 0.791,
+      "2024": 0.564,
+      "2025": 0.436
+     },
+     "ciro_yil": 20.98,
+     "islem_yil": 31.5,
+     "ort_gross": 0.528,
+     "su_alti_gun": 828,
+     "maks_gross": 1.0
+    }
+   },
+   "altut": {
+    "gun": 2830,
+    "toplam": 29.874,
+    "cagr": 0.556,
+    "maxdd": 0.772,
+    "sharpe": 0.99,
+    "su_alti_gun": 855
+   }
+  },
+  "Y": {
+   "sepet": "yuruyen_top3",
+   "varyantlar": {
+    "vt30_cap15_temel": {
+     "gun": 2830,
+     "toplam": 4.69,
+     "cagr": 0.251,
+     "maxdd": 0.273,
+     "sharpe": 1.23,
+     "yillar": {
+      "2018": -0.121,
+      "2019": 0.477,
+      "2020": 0.702,
+      "2021": 0.306,
+      "2022": -0.191,
+      "2023": 0.375,
+      "2024": 0.359,
+      "2025": 0.304
+     },
+     "ciro_yil": 13.74,
+     "islem_yil": 33.5,
+     "ort_gross": 0.243,
+     "su_alti_gun": 819,
+     "maks_gross": 1.0
+    },
+    "vt30_cap10_spot": {
+     "gun": 2830,
+     "toplam": 4.34,
+     "cagr": 0.241,
+     "maxdd": 0.273,
+     "sharpe": 1.21,
+     "yillar": {
+      "2018": -0.121,
+      "2019": 0.453,
+      "2020": 0.681,
+      "2021": 0.306,
+      "2022": -0.192,
+      "2023": 0.357,
+      "2024": 0.358,
+      "2025": 0.278
+     },
+     "ciro_yil": 13.33,
+     "islem_yil": 33.5,
+     "ort_gross": 0.24,
+     "su_alti_gun": 853,
+     "maks_gross": 1.0
+    },
+    "vt20_cap15": {
+     "gun": 2830,
+     "toplam": 2.294,
+     "cagr": 0.166,
+     "maxdd": 0.189,
+     "sharpe": 1.23,
+     "yillar": {
+      "2018": -0.082,
+      "2019": 0.305,
+      "2020": 0.434,
+      "2021": 0.201,
+      "2022": -0.13,
+      "2023": 0.243,
+      "2024": 0.233,
+      "2025": 0.198
+     },
+     "ciro_yil": 9.17,
+     "islem_yil": 33.5,
+     "ort_gross": 0.162,
+     "su_alti_gun": 818,
+     "maks_gross": 0.824
+    },
+    "vt20_cap10_spot": {
+     "gun": 2830,
+     "toplam": 2.294,
+     "cagr": 0.166,
+     "maxdd": 0.189,
+     "sharpe": 1.23,
+     "yillar": {
+      "2018": -0.082,
+      "2019": 0.305,
+      "2020": 0.434,
+      "2021": 0.201,
+      "2022": -0.13,
+      "2023": 0.243,
+      "2024": 0.233,
+      "2025": 0.198
+     },
+     "ciro_yil": 9.17,
+     "islem_yil": 33.5,
+     "ort_gross": 0.162,
+     "su_alti_gun": 818,
+     "maks_gross": 0.824
+    },
+    "ma50_vt_yok": {
+     "gun": 2830,
+     "toplam": 10.909,
+     "cagr": 0.376,
+     "maxdd": 0.502,
+     "sharpe": 0.93,
+     "yillar": {
+      "2018": -0.261,
+      "2019": 0.766,
+      "2020": 1.631,
+      "2021": 0.84,
+      "2022": -0.362,
+      "2023": 0.367,
+      "2024": 0.417,
+      "2025": 0.526
+     },
+     "ciro_yil": 22.36,
+     "islem_yil": 33.5,
+     "ort_gross": 0.489,
+     "su_alti_gun": 1033,
+     "maks_gross": 1.0
+    }
+   },
+   "altut": {
+    "gun": 2830,
+    "toplam": 2.408,
+    "cagr": 0.171,
+    "maxdd": 0.833,
+    "sharpe": 0.59,
+    "su_alti_gun": 1694
+   }
+  }
+ },
+ "cevaplar": {
+  "S1_blok_bootstrap": "AYRIM MAXDD'DE NET, SHARPE'TA SINIRDA. Eslesmis hareketli blok bootstrap (blok=30 gun, 2000 tekrar, n=2830 gun; ayni blok indeksleri hem stratejiye hem KENDI sepetinin al-tutuna uygulandi). A2: Sharpe farki +0.58, GA95 [+0.06, +1.19] -> sifiri DISLIYOR; GA99 [-0.12, +1.33] -> sifiri DISLAMIYOR; p(fark<=0)=0.018. Y: +0.64, GA95 [+0.12, +1.21] disliyor, GA99 [-0.03, +1.38] dislamiyor, p=0.009. maxDD farki A2 -0.497 GA95 [-0.713,-0.323] GA99 [-0.759,-0.269]; Y -0.560 GA95 [-0.750,-0.396] GA99 [-0.780,-0.347]; her ikisinde de 2000 tekrarin 2000'unde fark negatif (p=0.000). YORUM: 'bu kural al-tuttan daha DUSUK dususle calisiyor' iddiasi %99'da ayakta; 'daha yuksek risk-ayarli GETIRI uretiyor' iddiasi %95'te ayakta, %99'da degil. GA'lar cok genis (Sharpe farki icin ~1.3 birim) - 8 yil bu soruyu kesin cevaplamak icin KISA.",
+  "S2_yil_bazinda_parametre": "YILIN EN IYI MA'SI ZIPLIYOR AMA BU GURULTU; SABIT MA50 DOGRU SECIM. A2 yilin en iyisi: 2018:140, 2019:90, 2020:30, 2021:40, 2022:20, 2023:50, 2024:110, 2025:50 (std 40 gun, aralik 20-140). Y: 200/90/30/40/30/60/20/40 (std 55). Kararli bir bolge YOK: boga yillarinda kisa (20-50), 2018 ve 2024 gibi yatay/testere yillarinda uzun (110-200) MA kazaniyor. AMA bu ziplama ise yaramiyor: 2021-2025 penceresinde Sharpe - oracle (her yil o yilin en iyisi, ILERIYE BAKAR) A2 1.59 / Y 1.29; sabit MA50 A2 1.48 / Y 1.08; walk-forward (onceki 3 yilin en iyisi) A2 1.05 / Y 0.66; al-tut A2 0.98 / Y 0.55. Uc sonuc: (a) MUKEMMEL ongoruyle bile kazanc sadece +0.11/+0.21 Sharpe -> MA50 optimumun cok yakininda, parametre secimi bu ailede buyuk bir serbestlik derecesi DEGIL; (b) walk-forward sabit MA50'nin 0.43/0.42 ALTINDA -> yilin en iyi MA'sinin bir sonraki yila TASINMA gucu SIFIR, hatta negatif (secim tam tersi rejime uyum sagliyor); (c) tum 2018-2025'te oracle 1.83 vs sabit 1.57 = +0.26 -> 8 serbest secimin urettigi asiri-uydurma primi ~0.26 Sharpe; bu, bir parametre basina beklenen sisme buyuklugu icin somut bir olcek.",
+  "S3_monte_carlo": "GOZLENEN DUSUS SANSLI DEGIL; %95 KOTU SENARYO ~%35 VE ~2.5-3 YIL SU ALTI. Gunluk getiriler 93 takvim-ayi blogu halinde 10000 kez karistirildi (blok ici sira korundu, bloklar arasi permutasyon). A2: gozlenen maxDD %27.5 dagilimin %75'lik diliminde (medyan %24.1, p90 %31.5, p95 %34.1, p99 %39.3, en kotu %53.2). Y: gozlenen %27.3, %72'lik dilim (medyan %24.2, p95 %34.7, p99 %39.3). Yani tarihsel maxDD sansli bir siralamadan gelmiyor - ortalamanin biraz ustunde, tipik. SU ALTI SURESI daha vahim: A2 gozlenen 730 gun dagilimin %89'unda (medyan 454, p90 745, p95 857, p99 1103, en kotu 1559 gun); Y gozlenen 819 gun %85'lik dilim (medyan 552, p95 1056, p99 1317). PLANLAMA RAKAMI: %95 kotu senaryo A2 icin maxDD %34 + 857 gun (2.3 yil) su alti, Y icin %35 + 1056 gun (2.9 yil). Bu, canli kullanimda stratejiyi birakma riskinin asil kaynagi.",
+  "S4_deflated_sharpe": "HESAP: defterde tsmom+tsmom2 ailelerinde TRAIN raporu olan BENZERSIZ (aile, ad, params) uclusu 188; bunun 21'i kiyas/al-tut -> N_test=167 strateji konfigurasyonu. Bu 167 denemenin yillik train Sharpe'lari: ort 1.269, std 0.261, min 0.35, maks 1.60. Bailey & Lopez de Prado (2014): tum hesap GUNLUK frekansta. SR0 = sigma_SR * [(1-gamma)*z(1-1/N) + gamma*z(1-1/(N*e))], gamma=0.5772 (Euler), sigma_SR = 0.261/sqrt(365) = 0.01366 gunluk -> SR0 = 0.0370 gunluk = 0.706 YILLIK. Yani 167 tamamen degersiz deneme arasinda EN IYISININ, sirf sansla, yillik 0.71 Sharpe uretmesi beklenir - gozlenen 1.59 bunun iki kati. DSR = Phi[ (SR - SR0)*sqrt(n-1) / sqrt(1 - carpiklik*SR + (basiklik-1)/4*SR^2) ]. A2 train: n=2467 gun, SR=1.592 yillik (0.0833 gunluk), carpiklik +0.596, basiklik 13.40 -> z=2.33, DSR=0.9902. Yani 'sans' aciklamasinin olasiligi ~%1. Y train: SR=1.192, carpiklik +1.31, basiklik 22.5 -> DSR=0.9038 (~%10 sans olasiligi). gelistirme (n=2830) ile A2 0.9925 / Y 0.9348. N duyarliligi: N=50 -> SR0 0.594, DSR A2 0.996 / Y 0.946; N=400 -> SR0 0.779, DSR A2 0.984 / Y 0.866. DSR>=0.95 icin gerekli yillik Sharpe (N=167, train) = 1.33. VARSAYIMLAR VE ZAYIFLIKLARI (onemli): (1) 167 denemenin BAGIMSIZ oldugu varsayilir - degiller (ayni 3 coin, ust uste binen MA'lar, ayni 2830 gun); etkin N muhtemelen 20-40, bu DSR'yi yukari ceker; ama ayni korelasyon sigma_SR'yi de kucultur ve bu DSR'yi asiri iyimser yapar - iki etki zit yonlu, net isaret bilinmiyor. (2) DSR yalniz COKLU TEST'i duzeltir; SEPET SECIM yanliligini (tsmom2: BNB'yi geriye donuk secmek 0.2-0.6 Sharpe) ve data1d_all'un HAYATTA-KALMA yanliligini duzeltmez. A2'ye 0.4 Sharpe haircut uygulanirsa (durust tahmin 1.19) DSR 0.99 -> ~0.90'a duser, yani Y ile ayni yere gelir. (3) Defter yalniz BU repodaki testleri sayar; onceki kesifleri (kirilim, kesitsel, rejim, ict = 640 kayit daha) ve insan sezgisiyle elenen fikirleri saymaz -> gercek N daha buyuk. (4) IID gunluk getiri varsayimi; otokorelasyon icin duzeltme yapilmadi (blok bootstrap bu acigi ayri kapatiyor). SONUC: A2'nin train Sharpe'i SADECE coklu testle aciklanamaz (p~%1), ama sepet secimi + coklu test BIRLIKTE ele alinirsa sinirdadir (p~%10).",
+  "S5_alt_donemler": "A2 UC DONEMDE DE ONDE, Y BIRINDE GERIDE. (Sharpe / maxDD, strateji vt30 - MA50 duz - al-tut) A2 2018-2020: 1.73/%21.7 - 1.49/%48.5 - 1.01/%77.2 | 2021-2022: 0.99/%27.4 - 1.47/%49.8 - 0.89/%73.6 | 2023-2025: 1.78/%15.3 - 1.54/%28.9 - 1.19/%40.4. Sharpe'ta 3/3, maxDD'de 3/3 ustun. Y 2018-2020: 1.50/%20.4 - 1.16/%47.8 - 0.67/%83.3 | 2021-2022: 0.25/%27.1 - 0.42/%50.1 - 0.31/%82.2 | 2023-2025: 1.56/%16.3 - 1.23/%30.4 - 0.88/%52.3. Sharpe'ta 2/3 (2021-2022'de al-tutun ALTINDA), maxDD'de 3/3. ONEMLI AYRINTI: en zor donem 2021-2022 ve orada vol hedefleme ZARARLI - A2 icin duz MA50 1.47 vs vt30 0.99, Y icin 0.42 vs 0.25. vt30'un ustunlugu 2018-2020 ve 2023-2025'ten geliyor. Yani 'vt30 > ma50' sonucu donem-dayanikli DEGIL; 'MA50 > al-tut' sonucu 3/3 donemde ve iki sepette de dayanikli. Bu, edge'in TREND FILTRESINDE oldugunu, vol hedeflemenin ise bir risk politikasi (ve kismen donem-sansi) oldugunu tsmom'un H2 bulgusuyla tutarli sekilde dogruluyor.",
+  "S6_kaldirac_uygulanabilirlik": "SPOT UYGULANABILIR - CUNKU ZATEN KALDIRACSIZ. agirliklar2 brut pozisyonu 1.0'a normalize ettigi icin A2/Y hicbir gun %100'un ustune cikmiyor (maks gross 1.00, ortalama 0.27/0.24). cap 1.5 -> 1.0 (vol carpani tavani): A2 Sharpe 1.57->1.54, CAGR %34.9->%33.8, maxDD %27.5->%27.6; Y 1.23->1.21, CAGR %25.1->%24.1. Yani tavanin pratik etkisi yok. HEDEF VOL %20 (cap 1.5 veya 1.0 fark etmiyor, maks gross 0.82): A2 Sharpe 1.56, CAGR %22.6, maxDD %19.0, ciro/yil 13.9->9.3; Y Sharpe 1.23, CAGR %16.6, maxDD %18.9, ciro/yil 9.2. Vol hedefi saf bir OLCEK dugmesi: %30->%20 Sharpe'i degistirmiyor (1.57/1.56 ve 1.23/1.23), getiriyi ve dususu ~%35 kisiyor, ciroyu (dolayisiyla maliyet ve slippage riskini) %33 azaltiyor. KIYAS: vol hedeflemesiz duz MA50 A2 Sharpe 1.47 / CAGR %75.8 / maxDD %49.9, Y 0.93 / %37.6 / %50.2. SPOT ONERISI: hedef vol %20, cap 1.0 - kaldiracsiz, maks %82 yatirimli, beklenen maxDD ~%19 (MC %95 kotu senaryosu bu olcekte ~%24), CAGR ~%23 (A2) / ~%17 (Y)."
+ },
+ "karar": "KISMEN AYIRT EDILEBILIR - ama iddianin hangi yarisi oldugu onemli. (1) RISK yarisi (al-tuta gore daha dusuk maxDD): SANSTAN NET AYIRT EDILEBILIR. Blok bootstrap farki A2 -0.50, Y -0.56; GA99 sifiri disliyor, 2000 tekrarin hicbirinde fark pozitif degil. (2) GETIRI yarisi (daha yuksek Sharpe): SINIRDA. GA95 sifiri disliyor (A2 p=0.018, Y p=0.009), GA99 DISLAMIYOR. Deflated Sharpe (N=167 deneme, sigma_SR=0.261) A2 train 0.990 / Y 0.904 - yani coklu test tek basina A2'yi aciklayamiyor (~%1), Y icin ~%10. (3) AMA DSR sepet secim yanliligini duzeltmiyor; tsmom2'nin olctugu 0.2-0.6 Sharpe haircut'i uygulanirsa A2 da ~0.90'a duser. Sepeti gecmise bakmadan secen Y'nin 0.904'u bu yuzden DAHA DURUST bir sayidir ve o da klasik %95 esigini gecmiyor. (4) Parametre kirilganligi YOK (mukemmel yillik ongoru bile sadece +0.11..+0.26 Sharpe ekliyor, walk-forward sabit MA50'nin altinda kaliyor) - yani sonuc 'bir parametreye asiri uydurulmus' degil. Zayiflik parametre secimi degil, ORNEKLEM: 2830 gun / 8 yil ve ozunde 2 ayi + 2 boga rejimi = efektif 4-6 bagimsiz gozlem. OZET: 'MA50 trend filtresi al-tutun dususunu yariya indirir' sonucu saglam (%99). 'Bunu yaparken Sharpe'i da 0.5-0.6 arttirir' sonucu %95'te var, %99'da yok, ve coklu test + sepet secimi duzeltmelerinden sonra sinirda kaliyor. A2 ile Y'nin farki (1.57 vs 1.23) istatistiksel olarak anlamsiz; A2'nin ustunlugu buyuk olcude sepet secim yanliligidir. HOLDOUT 2026 bu soruyu tek basina cozmez (1 yil ~ 0.5 bagimsiz gozlem) ama IKISI BIRDEN kosulursa aralarindaki farkin devam edip etmedigi bilgi verir.",
+ "karar_ozet_sayilar": "A2: Sharpe farki +0.58 (GA95 [0.064, 1.19], GA99 [-0.122, 1.327], p=0.018), maxDD farki -0.497 (GA95 [-0.713, -0.323]); DSR(N=167, train)=0.9902 | Y: Sharpe farki +0.64 (GA95 [0.116, 1.211], GA99 [-0.03, 1.384], p=0.009), maxDD farki -0.560 (GA95 [-0.75, -0.396]); DSR(N=167, train)=0.9038",
+ "dusenler": [
+  "walk-forward MA secimi (onceki 3 yilin en iyisi): 2021-2025 Sharpe A2 1.05 / Y 0.66 - sabit MA50'nin (1.48 / 1.08) belirgin ALTINDA. Adaptif parametre bu ailede zarar veriyor.",
+  "yillik 'en iyi MA' fikri: seciler 20-200 arasi zipliyor (std 40-55 gun), ardisik yillar arasi tasinabilirlik yok.",
+  "Y (yuruyen_top3) 2021-2022 alt doneminde al-tutun altinda (Sharpe 0.25 vs 0.31) - uc alt donemde 2/3.",
+  "vol hedeflemenin (vt30) duz MA50'ye ustunlugu donem-dayanikli DEGIL: 2021-2022'de A2 0.99 vs 1.47, Y 0.25 vs 0.42 ile GERIDE.",
+  "Sharpe farkinin GA99'u her iki adayda da sifiri iceriyor - %99 guvenle 'al-tuttan iyi getiri' denemiyor."
+ ],
+ "ogrenilen": [
+  "Iki farkli iddia var ve istatistiksel gucleri cok farkli: DUSUS AZALTMA iddiasi (maxDD farki) 2000 bootstrap tekrarinin 2000'inde ayni yonde, GA99 sifiri disliyor; GETIRI iddiasi (Sharpe farki) sadece GA95'te ayakta. Bir trend filtresinin yaptigi is ozunde bir RISK donusumudur; 'alfa' kismi 8 yillik veride olculemeyecek kadar kucuk/gurultulu.",
+  "Parametre asiri-uydurma primi olculdu: her yil o yilin en iyi MA'sini SECEBILSEYDIK 2018-2025 Sharpe 1.57 -> 1.83 (+0.26, 8 secim). Bu, 'bir serbestlik derecesi ~+0.03 Sharpe sisirir' anlamina gelir ve defterdeki 167 denemenin urettigi SR0=0.71'lik sans esigiyle ayni buyukluk mertebesinde.",
+  "Yilin en iyi MA'si zipliyor ama bu KIRILGANLIK degil DUZLUK isareti: MA20-MA200 bandinin tamami cogu yilda al-tutu geciyor, tepe noktasi gurultuyle yer degistiriyor. Kirilganlik testi 'komsu parametre kotu mu' diye sorar - cevap hayir; 'tepe yil yila ayni mi' diye sorarsa cevap hayir ama bunun uygulamaya maliyeti yok (sabit MA50 zaten optimumun 0.11-0.21 altinda).",
+  "Asil risk DERINLIK degil SURE: maxDD %27.5 (MC %95 kotu senaryo %34) yonetilebilir gorunuyor, ama gozlenen 730 gun su alti kalma suresi MC dagiliminin %89'unda ve %95 kotu senaryo 857-1056 gun (2.3-2.9 yil). Canli kullanimda stratejinin terk edilme olasiligi, kayip olasiligindan yuksek.",
+  "Deflated Sharpe coklu testi duzeltir, SECIM YANLILIGINI duzeltmez. A2 DSR 0.99 gorunuyor cunku SR=1.59 kullaniliyor; oysa bu 1.59'un 0.2-0.6'si BNB'yi geriye donuk secmekten geliyor (tsmom2). Yanlilik duzeltilmis A2 ile hic yanliligi olmayan Y ayni yere (DSR ~0.90) dusuyor - iki adayin GERCEK beklentisi ayni; aralarindaki 0.34 Sharpe farki bir bulgu degil, bir olcum artefakti.",
+  "Uygulanabilirlik engeli yok: strateji zaten kaldiracsiz (maks gross 1.00), hedef vol %20 + cap 1.0 ile maks %82 yatirimli, spot hesapta birebir kosulabilir; Sharpe degismiyor (1.56/1.23), ciro %33 azaliyor."
+ ],
+ "oneri": "1) HOLDOUT 2026'ya A2 ve Y'yi BIRLIKTE goturun ve ONCEDEN su beklentiyi yazin: yanlilik duzeltmesi sonrasi durust tahmin ikisi icin de yillik Sharpe ~1.0-1.2, maxDD %20-35. A2'nin Y'den belirgin iyi cikmasini BEKLEMEYIN - bu iki adayin farki istatistiksel olarak yok. 2) HOLDOUT olcutunu simdiden sabitleyin: tek yilin Sharpe'i ~+-0.9 standart hatayla gelir, bu yuzden 'Sharpe > al-tut ve maxDD < al-tutun yarisi' ikili sartini kullanin, ciplak Sharpe siralamasini degil. 3) UYGULAMA icin hedef vol %20 + cap 1.0 varyantini secin (spot, kaldiracsiz, maks %82 yatirimli, Sharpe ayni, ciro %33 dusuk, maxDD %19). Kaldiracli/vadeli gerekmiyor - bu, funding ve tasfiye riskini tamamen ortadan kaldirir. 4) Parametre arastirmasini KAPATIN: bu ailede 167 konfigurasyon denendi, SR0=0.71 ve her yeni deneme esigi yukseltiyor. Yillik adaptif MA secimi acikca zararli (walk-forward 1.05 vs sabit 1.48). 5) Kalan tek anlamli istatistiksel is ORNEKLEM BUYUTMEK: (a) ayni MA50 kuralini kripto disi varliklara (hisse endeksi, emtia, FX gunluk) uygulayip ayni yonu bulup bulmadigina bakmak - bu, 8 yil / 4-6 bagimsiz rejim kisitini asmanin tek durust yolu; (b) 2017-2018 oncesi BTC/ETH verisi ekleyerek pencereyi uzatmak. Kripto ici yeni varyant uretmek bilgi eklemez. 6) Canli kullanim notu: %95 kotu senaryo 2.3-2.9 YIL su alti. Stratejiyi kullanacak kisiye bu sure onceden yazili verilmelidir; aksi halde terk etme, DD'nin kendisinden buyuk risk.",
+ "notlar": [
+  "Bu ailede HICBIR yeni parametre aranmadi ve hicbir secim yapilmadi. tsmom2.kos2 / tsmom2.sepet_cfg import edilerek A2 ve Y'nin AYNI kurali istatistiksel testlerden gecirildi. Yil-bazinda MA taramasi (20..200) bir SECIM degil, kararlilik OLCUMUdur; secilen kural her yerde sabit MA50'dir.",
+  "Tum testler SADECE 'gelistirme' bolumunde (2018-04-01 .. 2025-12-31, 2830 gun). HOLDOUT'a dokunulmadi; LAB_HOLDOUT ayarlanmadi, ham .npy okunmadi. Maliyet harness varsayilani (7bp/birim ciro).",
+  "Blok bootstrap ESLESMIS: her tekrarda ayni blok indeksleri hem stratejiye hem KENDI sepetinin al-tutuna uygulanir, boylece piyasa rejimi ortak tutulur ve fark istatistigi izole edilir. GA'lar yuzdelik (percentile) GA'lardir; bias duzeltmesi (BCa) yapilmadi.",
+  "Monte Carlo TAKVIM AYI bloklariyla permutasyondur (93 blok, yerine koymadan): blok icindeki gun sirasi ve tum getiri kumesi korunur, sadece aylarin sirasi degisir. Bu, vol kumelenmesini kismen korur ama aylar-arasi otokorelasyonu ve trend surekliligini kirar - trend stratejisi icin bu KOTUMSER bir null'dur.",
+  "Deflated Sharpe'ta N_test defterden sayildi (tsmom+tsmom2, TRAIN raporu olan benzersiz (aile,ad,params) = 188, kiyas/al-tut 21 cikarildi -> 167). sigma_SR bu 167 denemenin train Sharpe std'sidir (0.261, yillik). Denemeler bagimsiz DEGIL; DSR bu nedenle kesin bir olasilik degil, buyukluk mertebesi gostergesidir. Ayrica DSR sepet secim yanliligini ve survivorship'i duzeltmez.",
+  "DETERMINIZM: tsmom2._AY onbellegi yuruyen sepetin aylik secimini ILK cagrilan konfigurasyonun MA isinma maskesiyle donduruyor (mevcut tsmom2 davranisi). Fazlar arasi tutarlilik icin saglamlik.py her kosuda onbellegi once referans kuralla (MA50+vt30) isitir (_isit); bu yuzden MA taramasindaki tum MA'lar AYNI aylik evren uzerinde karsilastirilir. Bu secim olmadan Y'nin yillik Sharpe'lari ~0.02 oynuyor (ornek: 2020 icin MA30 2.98 vs MA40 2.96).",
+  "Ay-blok Monte Carlo ve blok bootstrap ayni veriyi iki kez kullanir; birbirinin bagimsiz teyidi degildirler. Ikisinin ortak mesaji 'ornek kisa' - GA genislikleri (Sharpe farki icin ~1.3 birim) bunu dogrudan gosteriyor."
+ ]
+}
