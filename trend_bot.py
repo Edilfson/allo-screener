@@ -279,9 +279,18 @@ def main():
                  f"<i>Yilda ~6-12 islem; kanit 9 yillik backtestte (RAPOR_2026-09-12.md).</i>")
     tg_send(ozet)
 
-    json.dump({"durumlar": yeni_durum, "kagit": kagit,
-               "guncelleme": datetime.now(timezone.utc).isoformat()},
-              open(STATE_FILE, "w"), indent=1)
+    yeni_state = {"durumlar": yeni_durum, "kagit": kagit,
+                  "guncelleme": datetime.now(timezone.utc).isoformat()}
+    # PORTFOY KATMANI (lab 2026-09-13): vol hedefli agirliklar + yuruyen sepet, kagit takip
+    try:
+        import trend_portfoy
+        eski = json.load(open(STATE_FILE)) if os.path.exists(STATE_FILE) else {}
+        yeni_state["portfoy"] = eski.get("portfoy", {})
+        yeni_state, pmsg = trend_portfoy.calistir(yeni_state)
+        tg_send(pmsg)
+    except Exception as e:
+        print("portfoy katmani hatasi:", e)
+    json.dump(yeni_state, open(STATE_FILE, "w"), indent=1)
     print(f"Bitti. {len(yat)} yatirimda, {len(nak)} nakitte, {degisim} degisim.")
 
 
