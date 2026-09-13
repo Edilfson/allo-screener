@@ -79,3 +79,16 @@ tavan neredeyse bedava (-0.02 Sharpe). Ters kanit: 2024-25'te genislik zarar ett
 **Canli test:** trend_portfoy.py 3. kagit portfoy `yuruyen5_tavan` (MA50 + vt20 + tavan 0.20).
 **Karar esigi (12 ay):** H5 maxDD < Y maxDD VE Sharpe farki > -0.20 ise kalici; gercek -%40+ gecelik gap
 yasanirsa o olaydaki darbe farki tek basina belirleyici. Beklenen: Sharpe ~ayni, maxDD 0.27 -> 0.24.
+
+## 2026-09-13 ek tur: kullanici istegiyle 3 yeni aile (hepsi RED)
+Protokol ayni: TRAIN <2025 (4h icin <2025-07) / VALID 2025 tek sefer / holdout kapali; trend-ici veya rastgele plasebo zorunlu.
+- **ema_geri** (yukselis sonrasi EMA20-50 bandina geri cekilme + donus tetigi, 4h ve 1d, 76 konfig): 0 aday. Trend icinde
+  rastgele mumdan anlamli iyi degil (en iyi fark GA95 alt siniri -0.12R); 4h'de ikinci yari 27/27 negatif. Kazanc trendde
+  olmaktan geliyor, kurulum bir sey eklemiyor.
+- **tersine** (kesitsel kisa vadeli tersine donus, gunluk, 144 konfig): 0 aday. L/S 64/64 negatif Sharpe; maliyetsiz bile ~0
+  (uclar donmuyor); long-only pozitifligi BTC betasi, rastgele secimden kotu. Momentum (onceki tur) + tersine = altcoin
+  kesit sinyalleri iki yonde de maliyet sonrasi olu.
+- **funding** (spot long + perp short carry; funding yuzdeligi sinyali): carry TRAIN'de 22/23 gecti ama VALID 2025'te
+  3 adayin 3'u olcutu gecemedi (hep acik -%1.2, esikli +%0.2, top10 -%1.0); getiri 2021 %20 -> 2023-25 nakit faizinin
+  altinda (rejim bitmis). Funding sinyali 12 testte Bonferroni sonrasi anlamsiz; trend overlay'i plasebodan farksiz.
+Karar: hicbiri kagit/testnete eklenmez. Canli sistem degismez (trend cekirdegi + ICT gozlem).

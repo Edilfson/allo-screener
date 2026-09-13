@@ -427,3 +427,18 @@ kagit takip etkilenmez, testnet hatasi bot akisini bozmaz.
 ---
 *Kaynaklar: araclar/lab/{PROTOKOL.md, AJAN_SABLON.md, sonuc_{kesitsel,kirilim,ict2,rejim,kirilim_gunluk,tsmom,tsmom2,gecikme,saglamlik,kirmizi}.json,
 defter.jsonl, holdout_degerlendir.py}, HIPOTEZLER.md, RAPOR_2026-09-12.md, trend_{bot,portfoy,testnet}.py, trend_state.json.*
+
+## 8. EK TUR (2026-09-13): EMA GERI CEKILME, TERSINE DONUS, FUNDING
+
+Kullanici istegiyle ayni protokolde uc yeni aile (holdout kapali; sadece TRAIN/VALID). Hepsi RED.
+
+| aile | konfig | TRAIN | VALID | neden dustu |
+|---|---|---|---|---|
+| ema_geri (4h/1d) | 76 | 0 aday | - | trend-ici rastgele plaseboyu anlamli gecemedi; 4h ikinci yari 27/27 negatif; filtre plaseboyu da yukseltiyor |
+| tersine (1d kesit) | 144 | 0 aday | - | L/S maliyetsiz bile ~0; ciro 150-440x/yil; long-only = beta; hayatta-kalma yanliligi lehine olmasina ragmen negatif |
+| funding carry | 23 (+12 sinyal testi) | 22/23 olcutu gecti | 0/3 | 2025'te getiri ~0 / negatif (yeni altcoinlerin negatif funding'i); 2023-25 nakit faizinin altinda |
+
+Ogrenilen: (1) "trendde olmak" disinda giris zamanlamasi eklenen hicbir kurulum plaseboyu gecmedi (ema_geri, gunluk
+kirilim, ict2); (2) altcoin kesit siralamasi iki yonde de maliyet sonrasi olu (kesitsel, tersine); (3) funding carry
+gercek bir primdi ama 2021 sonrasi erimis bir rejim; kagitta dusuk oncelikli izlenebilir, getiri stratejisi degil.
+Kaynak: sonuc_ema_geri.json, sonuc_tersine.json, sonuc_funding.json.
