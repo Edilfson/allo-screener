@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9571610121776569,
+  "unrealized_r": 1.0858549297813762,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -11614,7 +11614,7 @@
    "coin_1d_ema99_dist": 0.0895
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8279106557418796,
+  "unrealized_r": 0.6458511211937501,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 77135.9"
  },
  {
@@ -11882,7 +11882,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-13T20:11:53.908988+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-13T19:59:59.999000+00:00",
@@ -11898,7 +11898,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-13T19:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-13T23:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.1015,
   "zone_high": 0.1093,
@@ -11923,7 +11923,8 @@
    "coin_1d_ema99_dist": 0.1256
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1054"
  },
  {
   "symbol": "APTUSDT",
