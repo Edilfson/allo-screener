@@ -7,10 +7,10 @@ Kripto strateji arastirma ve kagit/testnet takip sistemi. GitHub Actions ile cal
 
 | Bilesen | Ne yapar | Zamanlama | Durum |
 |---|---|---|---|
-| `screener.py` + `ict_setup.py` | ICT/SMC kurulumlari (1h..1d), limit emir takibi, Telegram sinyal/sonuc/ozet, Binance Futures **testnet** emirleri | her 30 dk | calisiyor (kullanici istegiyle); lab kaniti aleyhine, bkz. asagida |
+| `screener.py` + `ict_setup.py` | ICT/SMC kurulumlari (1h..1d) **arka planda kagit** takip (positions.json); testnete yeni emir ve anlik Telegram YOK (ICT_TESTNET/ICT_TELEGRAM=0), gunde bir ozet | her 30 dk | arka plan, bilgi amacli (lab: rastgele girişten farksiz, filtreyle kurtarilamiyor) |
 | `trend_bot.py` | BTC/ETH/BNB gunluk MA50 sinyali + coin bazli kagit takip | 01:10 UTC | canli |
 | `trend_portfoy.py` | Vol hedefli (%20, kaldiracsiz) uc kagit portfoy: b3, yuruyen top-3, H5 yuruyen top-5 + tavan %20 | 01:10 UTC | canli |
-| `trend_testnet.py` | b3 hedef agirliklarini futures testnette 1x esler (1000 USDT taban); kendi pozisyon defteriyle, ICT pozisyonlarina dokunmaz | 01:10 UTC | canli |
+| `trend_testnet.py` | **DEMO HESABIN ANA SISTEMI**: b3 hedef agirliklarini futures testnette 1x esler (1000 USDT taban); kendi pozisyon defteriyle, ICT pozisyonlarina dokunmaz | 01:10 UTC | canli |
 | `testnet_denetim.py` | Testnet hesabinda sahipsiz pozisyon (kapat) ve bayat emir (iptal) temizligi; 6 saatten yeni islemlere dokunmaz; Telegram raporu | 13:40 UTC + elle (Actions -> Testnet Denetim) | canli |
 | `araclar/` | Yeniden oynatma, backtester (canli detect_ict ile esdeger), trend testleri | elle | - |
 | `araclar/lab/` | Arastirma laboratuvari: harness, protokol, 12 ajanlik program, defter (1790+ test) | elle | - |

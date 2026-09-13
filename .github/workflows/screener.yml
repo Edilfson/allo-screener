@@ -34,6 +34,11 @@ jobs:
           TESTNET_API_SECRET: ${{ secrets.TESTNET_API_SECRET }}
           TESTNET_RISK_USDT: "50"
           TESTNET_LEVERAGE: "5"
+          # 2026-09-13 KULLANICI KARARI: demo hesapta sadece trend islem yapar. ICT arka planda
+          # hesaplanir (positions.json), testnete yeni emir ve anlik Telegram mesaji gondermez.
+          # Mevcut acik ICT testnet islemleri kapanana kadar eslenmeye devam eder.
+          ICT_TESTNET: "0"
+          ICT_TELEGRAM: "0"
         run: python screener.py
 
       - name: State dosyasini geri commit'le
@@ -42,7 +47,7 @@ jobs:
           git config user.name "allo-screener-bot"
           git config user.email "actions@github.com"
           date -u +"son calisma: %Y-%m-%d" > last_run.txt
-          git add positions.json testnet_orders.json last_run.txt
+          git add positions.json testnet_orders.json last_run.txt ozet_state.json 2>/dev/null || git add positions.json testnet_orders.json last_run.txt
           git diff --quiet --cached || git commit -m "state guncelle [skip ci]"
           for i in 1 2 3; do
             if git pull --rebase --autostash origin main && git push origin HEAD:main; then

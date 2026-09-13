@@ -105,6 +105,27 @@ TOPIC_SIGNALS = os.environ.get("TOPIC_SIGNALS")
 TOPIC_RESULTS = os.environ.get("TOPIC_RESULTS")
 TOPIC_SUMMARY = os.environ.get("TOPIC_SUMMARY")
 SUMMARY_EVERY_RUN = os.environ.get("SUMMARY_EVERY_RUN", "0") == "1"
+# 2026-09-13 KULLANICI KARARI: demo hesapta sadece trend islem yapar; ICT arka planda kagit uzerinde
+# hesaplanir (lab: rastgele giristen farksiz, 30 ozellikli filtre madenciligi dahil kurtarilamadi).
+ICT_TESTNET = os.environ.get("ICT_TESTNET", "0") == "1"     # yeni ICT sinyalleri testnete emir gondersin mi
+ICT_TELEGRAM = os.environ.get("ICT_TELEGRAM", "0") == "1"   # anlik sinyal / sonuc / tarama mesajlari
+OZET_STATE = "ozet_state.json"
+OZET_SAAT_UTC = 6                                           # gunluk ozet bu saatten sonraki ilk kosuda
+
+
+def gunluk_ozet_zamani(now):
+    """Gunde bir kez (OZET_SAAT_UTC sonrasi ilk kosu). Onceki surum 00-04 UTC arasi HER kosuda gonderiyordu."""
+    if now.hour < OZET_SAAT_UTC:
+        return False
+    try:
+        son = json.load(open(OZET_STATE)).get("son_ozet") if os.path.exists(OZET_STATE) else None
+    except Exception:
+        son = None
+    return son != now.strftime("%Y-%m-%d")
+
+
+def ozet_isaretle(now):
+    json.dump({"son_ozet": now.strftime("%Y-%m-%d")}, open(OZET_STATE, "w"))
 
 
 def bars_per_day(iv):
@@ -924,7 +945,7 @@ def main():
             
             head = (f"\U0001F4CC <b>{pos['symbol']}</b> {pos['interval']} [{pos.get('strategy','?')}]\n"
                     f"Giris: {pos['entry']:.6g} | Acilis: {pos['opened_at'][:10]}")
-            if pos.get("sinyal_gonderildi", True):
+            if ICT_TELEGRAM and pos.get("sinyal_gonderildi", True):
                 tg_send(head + "\n" + "\n".join(events), TOPIC_RESULTS)
             log_ekle({"tur": "SONUC", "kaynak": "screener", "sembol": pos["symbol"],
                       "strateji": pos.get("strategy"), "dilim": pos["interval"],
@@ -1032,12 +1053,15 @@ def main():
                        f"\U0001F4CB <b>Islem Plani</b>\n" + format_plan(plan, TP_STYLE[strat])
                        + ctx_line)
 
-                sessiz = iv not in SIGNAL_INTERVALS   # arka plan dilimi mi?
-                sent = True if sessiz else False
-                if sessiz:
-                    print(f"  [sessiz kayit] {symbol} {iv} {strat}")
+                sessiz = iv not in SIGNAL_INTERVALS   # plan disi (arka plan) dilim mi?
+                # ICT arka plan karari: kayit her durumda; Telegram ve testnet ayri bayraklara bagli
+                tg_kapali = sessiz or not ICT_TELEGRAM
+                testnet_gonder = bool(testnet_trader) and not sessiz and ICT_TESTNET
+                sent = True if tg_kapali else False
+                if tg_kapali:
+                    print(f"  [arka plan kayit] {symbol} {iv} {strat}")
                 try:
-                    if sessiz:
+                    if tg_kapali:
                         raise StopIteration
                     _d = dfs[iv]
                     rally_ln = (_d["close_time"].iloc[lo_idx], float(lo),
@@ -1050,15 +1074,15 @@ def main():
                     pass
                 except Exception as e:
                     print(f"{symbol} grafik hatasi: {e}")
-                if not sent and not sessiz:
+                if not sent and not tg_kapali:
                     sent = tg_send(msg, TOPIC_SIGNALS)
-                if not sent and not sessiz:
+                if not sent and not tg_kapali:
                     # YEDEK 1: konu belirtmeden (grubun General konusu)
                     sent = tg_send("\u26A0\uFE0F [Sinyaller konusuna gonderilemedi]\n\n" + msg, None)
-                if not sent and not sessiz:
+                if not sent and not tg_kapali:
                     # YEDEK 2: calisan Sonuclar konusuna
                     sent = tg_send("\u26A0\uFE0F [SINYAL - yedek kanal]\n\n" + msg, TOPIC_RESULTS)
-                if not sent and not sessiz:
+                if not sent and not tg_kapali:
                     print("SINYAL HIC GONDERILEMEDI:", globals().get("_SON_TG_HATA"))
 
                 positions.append({
@@ -1066,7 +1090,8 @@ def main():
                     "side": SIDE_OF[strat],
                     "ema_period": strat,
                     "opened_at": now.isoformat(), "status": "pending",
-                    "sinyal_gonderildi": not sessiz,
+                    "sinyal_gonderildi": testnet_gonder,   # = testnete emir gonderildi mi
+                    "plan_dilimi": not sessiz,             # 1h/4h (eski "gonderilen" dilimler)
                     "signal_bar_close": dfs[iv].iloc[-1]["close_time"].isoformat(),
                     "entry": plan["entry"], "stop": plan["stop"], "current_stop": plan["stop"],
                     "risk": plan["risk"], "tps": plan["tps"],
@@ -1087,7 +1112,7 @@ def main():
                 })
                 new_count += 1
 
-                if testnet_trader and not sessiz:
+                if testnet_gonder:
                     try:
                         # sonuc pozisyona yazilir: testnet'te emir ACILAMAYAN sinyaller
                         # (marjin yetersiz, miktar siniri) analizde ayrilabilsin
@@ -1135,14 +1160,19 @@ def main():
         if new_count == 0 and det_top == 0:
             satirlar.append("")
             satirlar.append("<i>Kurulum sarti saglayan coin yok - normal.</i>")
-        tg_send("\n".join(satirlar), TOPIC_SUMMARY)
+        if ICT_TELEGRAM:
+            tg_send("\n".join(satirlar), TOPIC_SUMMARY)
     except Exception as e:
         print("tarama raporu hatasi:", e)
 
-    if SUMMARY_EVERY_RUN or now.hour < 4:
-        tg_send(build_summary(positions), TOPIC_SUMMARY)
+    if SUMMARY_EVERY_RUN or gunluk_ozet_zamani(now):
+        _bas = ("\U0001F9EA <b>ICT ARKA PLAN</b> (bilgi amacli; testnet emri ve anlik mesaj yok)\n\n"
+                if not ICT_TELEGRAM else "")
+        tg_send(_bas + build_summary(positions), TOPIC_SUMMARY)
         if SUMMARY_EVERY_RUN or now.weekday() == 0:
-            tg_send(build_insights(positions), TOPIC_SUMMARY)
+            tg_send(_bas + build_insights(positions), TOPIC_SUMMARY)
+        if not SUMMARY_EVERY_RUN:
+            ozet_isaretle(now)
 
     # TANI: sinyal gonderimi sorunluysa calisan konuya bildir
     if new_count > 0 and globals().get("_SON_TG_HATA"):
