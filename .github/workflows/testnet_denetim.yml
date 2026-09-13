@@ -1,0 +1,46 @@
+name: Testnet Denetim
+
+on:
+  schedule:
+    - cron: "40 13 * * *"   # trend kosusundan (01:10) uzak; yas kurali yine de yeni islemleri korur
+  workflow_dispatch:
+    inputs:
+      kapat:
+        description: "evet = sahipsiz pozisyonlari kapat / bayat emirleri iptal et | hayir = sadece rapor"
+        type: choice
+        options: ["evet", "hayir"]
+        default: "evet"
+
+permissions:
+  contents: write
+
+jobs:
+  denetim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Denetim
+        env:
+          TESTNET_API_KEY: ${{ secrets.TESTNET_API_KEY }}
+          TESTNET_API_SECRET: ${{ secrets.TESTNET_API_SECRET }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TOPIC_SUMMARY: ${{ secrets.TOPIC_SUMMARY }}
+          KAPAT: ${{ github.event.inputs.kapat || 'evet' }}
+        run: |
+          if [ "$KAPAT" = "evet" ]; then python testnet_denetim.py --kapat; else python testnet_denetim.py; fi
+      - name: Kayitlari kaydet
+        continue-on-error: true
+        run: |
+          git config user.name "allo-screener-bot"
+          git config user.email "actions@github.com"
+          git add testnet_orders.json || true
+          git diff --quiet --cached || git commit -m "testnet denetim [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done

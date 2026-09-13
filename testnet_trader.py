@@ -232,22 +232,128 @@ def pozisyon_var_mi(sembol):
     return None
 
 
+TREND_STATE = "trend_state.json"   # trend portfoyunun testnet defteri burada
+MIN_KAPAT_USDT = 5.0               # bunun altindaki kalinti kapatilmaz (toz)
+
+
+def pozisyon_miktari(sembol):
+    """Net positionAmt (hedge modda bacaklar toplanir). Pozisyon yoksa 0.0, OKUNAMAZSA None.
+    (pozisyon_var_mi hata ile 'yok'u ayirt edemiyordu -> iptal_et stop emrini de siliyordu)"""
+    ok, c = _imzali("/fapi/v2/positionRisk", {"symbol": sembol})
+    if not ok or not isinstance(c, list):
+        return None
+    toplam = 0.0
+    for x in c:
+        if x.get("symbol") == sembol:
+            try:
+                toplam += float(x.get("positionAmt", 0) or 0)
+            except Exception:
+                pass
+    return toplam
+
+
+def _fiyat(sembol):
+    try:
+        r = requests.get(f"{BASE}/fapi/v1/ticker/price", params={"symbol": sembol}, timeout=20)
+        return float(r.json()["price"])
+    except Exception:
+        return None
+
+
+def trend_payi(sembol):
+    """Trend portfoyunun bu sembolde tuttugu miktar (trend_state.json portfoy.testnet_defter;
+    yoksa TREND kayitlarindan kurulur). Okunamazsa 0."""
+    try:
+        st = json.load(open(TREND_STATE)) if os.path.exists(TREND_STATE) else {}
+        d = (st.get("portfoy") or {}).get("testnet_defter")
+        if d is None:
+            import trend_testnet          # gec import: dongusel importu onler
+            d = trend_testnet.defter_kur()
+        return float((d or {}).get(sembol, 0.0) or 0.0)
+    except Exception:
+        return 0.0
+
+
+def ict_giris_miktari(sembol):
+    """Son BASARILI ICT giris kaydinin net miktari (+long/-short); kayit yoksa None."""
+    try:
+        L = json.load(open(STATE)) if os.path.exists(STATE) else []
+    except Exception:
+        return None
+    for r in reversed(L):
+        if (isinstance(r, dict) and r.get("sembol") == sembol and r.get("strateji")
+                and r.get("basarili") and not r.get("tur")):
+            try:
+                m = float((r.get("sonuc") or {}).get("miktar") or 0)
+            except Exception:
+                return None
+            return m if r.get("yon") == "LONG" else -m
+    return None
+
+
+def piyasa_kapat(sembol, net):
+    """net (+long/-short) kadar pozisyonu MARKET reduceOnly ile kapatir; max miktar sinirinda boler."""
+    _t, adim, qp, _pp, maxq = sembol_bilgi(sembol)
+    kalan = _yuvarla(abs(net), adim, qp)
+    yanitlar, hepsi_ok = [], True
+    for _ in range(10):
+        if kalan <= 0:
+            break
+        q = min(kalan, maxq) if maxq else kalan
+        q = _yuvarla(q, adim, qp)
+        ok, c = _imzali("/fapi/v1/order", {"symbol": sembol, "side": "SELL" if net > 0 else "BUY",
+                                           "type": "MARKET", "quantity": q, "reduceOnly": "true"}, "POST")
+        yanitlar.append(c); hepsi_ok = hepsi_ok and ok
+        if not ok:
+            break
+        kalan = _yuvarla(kalan - q, adim, qp)
+    return hepsi_ok, yanitlar
+
+
+def ict_payini_kapat(sembol, poz, ict_net=None, trend=None, kuru=False):
+    """Hesaptaki trend DISI payi kapatir. ict_net verilirse (ICT giris miktari) en fazla o kadar.
+    Return None (kapatilacak bir sey yok) veya {kapat, trend_payi, ok, yanit}."""
+    trend = trend_payi(sembol) if trend is None else trend
+    hedef = poz - trend
+    if ict_net is not None:
+        hedef = (1 if hedef > 0 else -1) * min(abs(hedef), abs(ict_net)) if hedef * ict_net > 0 else 0.0
+    if hedef * poz <= 0:
+        return None
+    q = (1 if poz > 0 else -1) * min(abs(hedef), abs(poz))
+    p = _fiyat(sembol)
+    if p is not None and abs(q) * p < MIN_KAPAT_USDT:
+        return None
+    if kuru:
+        return {"kapat": q, "trend_payi": trend, "kuru": True}
+    ok, c = piyasa_kapat(sembol, q)
+    return {"kapat": q, "trend_payi": trend, "ok": ok, "yanit": c}
+
+
 def iptal_et(sembol, sebep=""):
-    """screener.py bir pozisyonu iptal/zaman asimi ile kapattiginda cagirir.
-    Testnet'te pozisyon ACIKSA dokunmaz (stop/TP calissin);
-    sadece DOLMAMIS bekleyen emirleri temizler."""
+    """screener.py bir ICT pozisyonunu kapattiginda (stop/TP/iptal/zaman asimi/temizlik) cagirir.
+    Testneti teorik kayitla esler:
+      1) pozisyon OKUNAMAZSA hicbir seye dokunmaz (onceki surum API hatasini 'pozisyon yok' sanip
+         stop dahil tum emirleri siliyordu -> 30 Agustos BNB: 2 hafta stopsuz 4.19 BNB kaldi)
+      2) bekleyen emirleri (giris limiti + stop/TP) iptal eder
+      3) hesapta ICT payi kaldiysa MARKET reduceOnly ile kapatir; miktar = min(ICT giris miktari,
+         hesap - trend payi) -> trend portfoyunun payina dokunulmaz"""
     if not KEY or not SECRET:
         return
-    poz = pozisyon_var_mi(sembol)
-    if poz:
-        print(f"  [testnet] {sembol}: pozisyon acik (miktar {poz['miktar']}), "
-              f"emirlere dokunulmadi")
+    zaman = time.strftime("%Y-%m-%dT%H:%M:%S")
+    poz = pozisyon_miktari(sembol)
+    if poz is None:
+        kaydet({"zaman": zaman, "sembol": sembol, "tur": "IPTAL", "sebep": sebep, "basarili": False,
+                "sonuc": {"hata": "pozisyon okunamadi, hicbir emre dokunulmadi"}})
+        print(f"  [testnet] {sembol}: pozisyon OKUNAMADI, emirlere dokunulmadi ({sebep})")
         return
     ok, c = emirleri_iptal(sembol)
-    kaydet({"zaman": time.strftime("%Y-%m-%dT%H:%M:%S"), "sembol": sembol,
-            "tur": "IPTAL", "sebep": sebep, "basarili": ok, "sonuc": c})
-    print(f"  [testnet] {sembol}: bekleyen emirler iptal edildi ({sebep})"
-          if ok else f"  [testnet] {sembol}: iptal HATASI {c}")
+    kapanis = ict_payini_kapat(sembol, poz, ict_net=ict_giris_miktari(sembol)) if poz else None
+    basarili = bool(ok) and (kapanis is None or bool(kapanis.get("ok")))
+    kaydet({"zaman": zaman, "sembol": sembol, "tur": "IPTAL", "sebep": sebep, "basarili": basarili,
+            "sonuc": c, "pozisyon": poz, "kapanis": kapanis})
+    ek = f", ICT payi {kapanis['kapat']} kapatildi" if kapanis else ""
+    print(f"  [testnet] {sembol}: emirler iptal edildi{ek} ({sebep})"
+          if basarili else f"  [testnet] {sembol}: iptal/kapanis HATASI {c} {kapanis}")
 
 
 if __name__ == "__main__":
