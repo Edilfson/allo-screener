@@ -1,0 +1,811 @@
+{
+ "aile": "tersine",
+ "denenen": 144,
+ "denenen_detay": "128 ana grid (LS 32, LSVOL 32, LONG 32, FARK 32) + 16 EK post-hoc RANKW; her biri 3 maliyet (0.0007/0.0015/0.003) ve 50 plasebo seed; 3 kiyas; 16 TANI (maliyetsiz brut). Hepsi deftere.",
+ "defter_kayit_sayisi_tersine": 466,
+ "bolum": "TRAIN < 2025 (kaynak=1d). VALID 2025 KOSULMADI (olcutu gecen aday yok). HOLDOUT 2026 kapali, dokunulmadi.",
+ "karar": "RED - aile kapanir. 144 konfigurasyonun hicbiri aday olcutunu gecmedi (0/144). Hicbir L/S (LS, LSVOL, FARK, RANKW; 112 hucre) train'de pozitif Sharpe vermedi (en iyi -0.12). Tek pozitif bolge long-only (32 hucrenin 28'i pozitif, en iyi 0.44), ama rastgele long secimi daha iyi (plasebo ort 0.47-0.53) ve BTC al-tut (0.83) ile evren al-tut (0.55-0.60) altinda. VALID'e aday goturulmedi; 2025 verisine bu aile icin bakilmadi. HOLDOUT'a hicbir sey gitmez.",
+ "aday_olcutu": "TRAIN Sharpe>1.0, plasebo yuzdeligi>%99, maliyet 0.0015'te Sharpe>0.5, komsu L/N ayni yon, 2019-2024 en az 4/6 pozitif yil",
+ "aday_gecen": [],
+ "olcut_ozeti": {
+  "sharpe_gt1": 0,
+  "plasebo_gt99": [
+   "LS_L3_N10_U50_rb1",
+   "RANKW_L3_Nall_U50_rb1"
+  ],
+  "maliyet15_gt05": 0,
+  "yil_4_6": 13
+ },
+ "kiyaslar_train": {
+  "KIYAS_btc": {
+   "sharpe": 0.83,
+   "cagr": 0.391,
+   "maxdd": 0.766,
+   "yillar": {
+    "2017": 0.0,
+    "2018": -0.588,
+    "2019": 0.897,
+    "2020": 3.073,
+    "2021": 0.627,
+    "2022": -0.652,
+    "2023": 1.659,
+    "2024": 1.141
+   }
+  },
+  "KIYAS_ew30": {
+   "sharpe": 0.55,
+   "cagr": 0.117,
+   "maxdd": 0.924,
+   "yillar": {
+    "2017": 0.0,
+    "2018": 0.0,
+    "2019": -0.211,
+    "2020": 1.618,
+    "2021": 2.96,
+    "2022": -0.861,
+    "2023": 0.822,
+    "2024": 0.056
+   }
+  },
+  "KIYAS_ew50": {
+   "sharpe": 0.6,
+   "cagr": 0.171,
+   "maxdd": 0.904,
+   "yillar": {
+    "2017": 0.0,
+    "2018": 0.0,
+    "2019": 0.0,
+    "2020": 0.917,
+    "2021": 4.143,
+    "2022": -0.854,
+    "2023": 0.96,
+    "2024": 0.078
+   }
+  }
+ },
+ "aile_ozeti_train": {
+  "LS": {
+   "U30_rb1": {
+    "n": 8,
+    "sharpe_min": -1.57,
+    "sharpe_med": -1.23,
+    "sharpe_max": -0.84,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 90.0,
+    "plasebo_yuzdelik_max": 94.0
+   },
+   "U30_rb7": {
+    "n": 8,
+    "sharpe_min": -0.74,
+    "sharpe_med": -0.49,
+    "sharpe_max": -0.35,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 47.0,
+    "plasebo_yuzdelik_max": 72.0
+   },
+   "U50_rb1": {
+    "n": 8,
+    "sharpe_min": -1.64,
+    "sharpe_med": -1.08,
+    "sharpe_max": -0.74,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 91.0,
+    "plasebo_yuzdelik_max": 100.0
+   },
+   "U50_rb7": {
+    "n": 8,
+    "sharpe_min": -0.8,
+    "sharpe_med": -0.55,
+    "sharpe_max": -0.35,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 45.0,
+    "plasebo_yuzdelik_max": 60.0
+   }
+  },
+  "LSVOL": {
+   "U30_rb1": {
+    "n": 8,
+    "sharpe_min": -2.34,
+    "sharpe_med": -2.06,
+    "sharpe_max": -1.74,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 10.0,
+    "plasebo_yuzdelik_max": 24.0
+   },
+   "U30_rb7": {
+    "n": 8,
+    "sharpe_min": -1.07,
+    "sharpe_med": -0.75,
+    "sharpe_max": -0.12,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 20.0,
+    "plasebo_yuzdelik_max": 76.0
+   },
+   "U50_rb1": {
+    "n": 8,
+    "sharpe_min": -2.12,
+    "sharpe_med": -1.88,
+    "sharpe_max": -1.53,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 20.0,
+    "plasebo_yuzdelik_max": 54.0
+   },
+   "U50_rb7": {
+    "n": 8,
+    "sharpe_min": -1.12,
+    "sharpe_med": -0.73,
+    "sharpe_max": -0.49,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 25.0,
+    "plasebo_yuzdelik_max": 46.0
+   }
+  },
+  "LONG": {
+   "U30_rb1": {
+    "n": 8,
+    "sharpe_min": -0.26,
+    "sharpe_med": 0.1,
+    "sharpe_max": 0.24,
+    "pozitif": 6,
+    "plasebo_yuzdelik_med": 24.0,
+    "plasebo_yuzdelik_max": 70.0
+   },
+   "U30_rb7": {
+    "n": 8,
+    "sharpe_min": 0.17,
+    "sharpe_med": 0.27,
+    "sharpe_max": 0.44,
+    "pozitif": 8,
+    "plasebo_yuzdelik_med": 7.0,
+    "plasebo_yuzdelik_max": 40.0
+   },
+   "U50_rb1": {
+    "n": 8,
+    "sharpe_min": -0.4,
+    "sharpe_med": 0.1,
+    "sharpe_max": 0.38,
+    "pozitif": 6,
+    "plasebo_yuzdelik_med": 30.0,
+    "plasebo_yuzdelik_max": 94.0
+   },
+   "U50_rb7": {
+    "n": 8,
+    "sharpe_min": 0.15,
+    "sharpe_med": 0.26,
+    "sharpe_max": 0.41,
+    "pozitif": 8,
+    "plasebo_yuzdelik_med": 5.0,
+    "plasebo_yuzdelik_max": 12.0
+   }
+  },
+  "FARK": {
+   "U30_rb1": {
+    "n": 8,
+    "sharpe_min": -1.92,
+    "sharpe_med": -1.46,
+    "sharpe_max": -0.78,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 67.0,
+    "plasebo_yuzdelik_max": 92.0
+   },
+   "U30_rb7": {
+    "n": 8,
+    "sharpe_min": -1.09,
+    "sharpe_med": -0.93,
+    "sharpe_max": -0.52,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 21.0,
+    "plasebo_yuzdelik_max": 60.0
+   },
+   "U50_rb1": {
+    "n": 8,
+    "sharpe_min": -2.04,
+    "sharpe_med": -1.19,
+    "sharpe_max": -0.61,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 45.0,
+    "plasebo_yuzdelik_max": 98.0
+   },
+   "U50_rb7": {
+    "n": 8,
+    "sharpe_min": -1.09,
+    "sharpe_med": -0.92,
+    "sharpe_max": -0.72,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 15.0,
+    "plasebo_yuzdelik_max": 34.0
+   }
+  },
+  "RANKW": {
+   "U30_rb1": {
+    "n": 4,
+    "sharpe_min": -1.53,
+    "sharpe_med": -1.23,
+    "sharpe_max": -1.2,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 92.0,
+    "plasebo_yuzdelik_max": 94.0
+   },
+   "U30_rb7": {
+    "n": 4,
+    "sharpe_min": -0.66,
+    "sharpe_med": -0.62,
+    "sharpe_max": -0.52,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 40.0,
+    "plasebo_yuzdelik_max": 56.0
+   },
+   "U50_rb1": {
+    "n": 4,
+    "sharpe_min": -1.5,
+    "sharpe_med": -1.25,
+    "sharpe_max": -0.97,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 95.0,
+    "plasebo_yuzdelik_max": 100.0
+   },
+   "U50_rb7": {
+    "n": 4,
+    "sharpe_min": -0.82,
+    "sharpe_med": -0.67,
+    "sharpe_max": -0.49,
+    "pozitif": 0,
+    "plasebo_yuzdelik_med": 50.0,
+    "plasebo_yuzdelik_max": 58.0
+   }
+  }
+ },
+ "rejim_ayrimi_train_medyan": {
+  "LS_rb1": {
+   "n": 16,
+   "ust_sharpe_med": -2.0,
+   "alt_sharpe_med": 0.1,
+   "ust_bps_med": -19.4,
+   "alt_bps_med": 0.7,
+   "alt_pozitif": 10
+  },
+  "LS_rb7": {
+   "n": 16,
+   "ust_sharpe_med": -0.92,
+   "alt_sharpe_med": -0.02,
+   "ust_bps_med": -8.4,
+   "alt_bps_med": -0.1,
+   "alt_pozitif": 8
+  },
+  "LSVOL_rb1": {
+   "n": 16,
+   "ust_sharpe_med": -2.83,
+   "alt_sharpe_med": -0.62,
+   "ust_bps_med": -27.4,
+   "alt_bps_med": -4.4,
+   "alt_pozitif": 0
+  },
+  "LSVOL_rb7": {
+   "n": 16,
+   "ust_sharpe_med": -1.15,
+   "alt_sharpe_med": -0.17,
+   "ust_bps_med": -10.2,
+   "alt_bps_med": -1.0,
+   "alt_pozitif": 3
+  },
+  "LONG_rb1": {
+   "n": 16,
+   "ust_sharpe_med": 0.46,
+   "alt_sharpe_med": -0.3,
+   "ust_bps_med": 10.5,
+   "alt_bps_med": -7.9,
+   "alt_pozitif": 0
+  },
+  "LONG_rb7": {
+   "n": 16,
+   "ust_sharpe_med": 0.73,
+   "alt_sharpe_med": -0.21,
+   "ust_bps_med": 16.4,
+   "alt_bps_med": -5.5,
+   "alt_pozitif": 0
+  },
+  "FARK_rb1": {
+   "n": 16,
+   "ust_sharpe_med": -1.92,
+   "alt_sharpe_med": -0.37,
+   "ust_bps_med": -10.9,
+   "alt_bps_med": -1.1,
+   "alt_pozitif": 2
+  },
+  "FARK_rb7": {
+   "n": 16,
+   "ust_sharpe_med": -1.51,
+   "alt_sharpe_med": -0.21,
+   "ust_bps_med": -7.4,
+   "alt_bps_med": -0.7,
+   "alt_pozitif": 2
+  },
+  "RANKW_rb1": {
+   "n": 8,
+   "ust_sharpe_med": -2.11,
+   "alt_sharpe_med": -0.04,
+   "ust_bps_med": -16.1,
+   "alt_bps_med": -0.2,
+   "alt_pozitif": 3
+  },
+  "RANKW_rb7": {
+   "n": 8,
+   "ust_sharpe_med": -1.0,
+   "alt_sharpe_med": -0.04,
+   "ust_bps_med": -6.4,
+   "alt_bps_med": -0.2,
+   "alt_pozitif": 4
+  }
+ },
+ "ciro_ve_maliyet_yuku": {
+  "LS_rb1": {
+   "ciro_yil_med": 223.2,
+   "maliyet_yuku_yil_0007": 0.156,
+   "maliyet_yuku_yil_0015": 0.335,
+   "maliyet_yuku_yil_003": 0.67
+  },
+  "LS_rb7": {
+   "ciro_yil_med": 71.5,
+   "maliyet_yuku_yil_0007": 0.05,
+   "maliyet_yuku_yil_0015": 0.107,
+   "maliyet_yuku_yil_003": 0.214
+  },
+  "LONG_rb1": {
+   "ciro_yil_med": 240.4,
+   "maliyet_yuku_yil_0007": 0.168,
+   "maliyet_yuku_yil_0015": 0.361,
+   "maliyet_yuku_yil_003": 0.721
+  },
+  "LONG_rb7": {
+   "ciro_yil_med": 66.7,
+   "maliyet_yuku_yil_0007": 0.047,
+   "maliyet_yuku_yil_0015": 0.1,
+   "maliyet_yuku_yil_003": 0.2
+  },
+  "FARK_rb1": {
+   "ciro_yil_med": 128.0,
+   "maliyet_yuku_yil_0007": 0.09,
+   "maliyet_yuku_yil_0015": 0.192,
+   "maliyet_yuku_yil_003": 0.384
+  },
+  "FARK_rb7": {
+   "ciro_yil_med": 40.1,
+   "maliyet_yuku_yil_0007": 0.028,
+   "maliyet_yuku_yil_0015": 0.06,
+   "maliyet_yuku_yil_003": 0.12
+  },
+  "RANKW_rb1": {
+   "ciro_yil_med": 181.3,
+   "maliyet_yuku_yil_0007": 0.127,
+   "maliyet_yuku_yil_0015": 0.272,
+   "maliyet_yuku_yil_003": 0.544
+  },
+  "RANKW_rb7": {
+   "ciro_yil_med": 61.5,
+   "maliyet_yuku_yil_0007": 0.043,
+   "maliyet_yuku_yil_0015": 0.092,
+   "maliyet_yuku_yil_003": 0.184
+  }
+ },
+ "tani_rank_ic_ve_brut": {
+  "U30_L1": {
+   "ic_ort": 0.0334,
+   "gun": 1951,
+   "t_kaba": 5.71,
+   "yillar": {
+    "2019": 0.067,
+    "2020": 0.0434,
+    "2021": 0.0277,
+    "2022": 0.0262,
+    "2023": 0.0289,
+    "2024": 0.0293
+   },
+   "brut_N5": {
+    "yillik_ort": -0.069,
+    "sharpe": -0.19
+   },
+   "brut_N10": {
+    "yillik_ort": 0.006,
+    "sharpe": 0.03
+   }
+  },
+  "U30_L3": {
+   "ic_ort": 0.0324,
+   "gun": 1951,
+   "t_kaba": 3.15,
+   "yillar": {
+    "2019": 0.0434,
+    "2020": 0.0255,
+    "2021": 0.0425,
+    "2022": 0.023,
+    "2023": 0.0306,
+    "2024": 0.0369
+   },
+   "brut_N5": {
+    "yillik_ort": -0.107,
+    "sharpe": -0.26
+   },
+   "brut_N10": {
+    "yillik_ort": -0.144,
+    "sharpe": -0.57
+   }
+  },
+  "U30_L5": {
+   "ic_ort": 0.0338,
+   "gun": 1951,
+   "t_kaba": 2.48,
+   "yillar": {
+    "2019": 0.0505,
+    "2020": 0.0224,
+    "2021": 0.0258,
+    "2022": 0.028,
+    "2023": 0.0476,
+    "2024": 0.0395
+   },
+   "brut_N5": {
+    "yillik_ort": -0.193,
+    "sharpe": -0.46
+   },
+   "brut_N10": {
+    "yillik_ort": -0.162,
+    "sharpe": -0.62
+   }
+  },
+  "U30_L7": {
+   "ic_ort": 0.0273,
+   "gun": 1951,
+   "t_kaba": 1.7,
+   "yillar": {
+    "2019": 0.0284,
+    "2020": 0.0091,
+    "2021": 0.0325,
+    "2022": 0.007,
+    "2023": 0.0467,
+    "2024": 0.0411
+   },
+   "brut_N5": {
+    "yillik_ort": -0.414,
+    "sharpe": -1.09
+   },
+   "brut_N10": {
+    "yillik_ort": -0.238,
+    "sharpe": -0.98
+   }
+  },
+  "U50_L1": {
+   "ic_ort": 0.0324,
+   "gun": 1776,
+   "t_kaba": 6.32,
+   "yillar": {
+    "2020": 0.0547,
+    "2021": 0.0247,
+    "2022": 0.0257,
+    "2023": 0.0316,
+    "2024": 0.0284
+   },
+   "brut_N5": {
+    "yillik_ort": -0.007,
+    "sharpe": -0.02
+   },
+   "brut_N10": {
+    "yillik_ort": 0.019,
+    "sharpe": 0.07
+   }
+  },
+  "U50_L3": {
+   "ic_ort": 0.0414,
+   "gun": 1776,
+   "t_kaba": 4.58,
+   "yillar": {
+    "2020": 0.0464,
+    "2021": 0.0538,
+    "2022": 0.0272,
+    "2023": 0.0367,
+    "2024": 0.0436
+   },
+   "brut_N5": {
+    "yillik_ort": -0.093,
+    "sharpe": -0.21
+   },
+   "brut_N10": {
+    "yillik_ort": -0.02,
+    "sharpe": -0.07
+   }
+  },
+  "U50_L5": {
+   "ic_ort": 0.0434,
+   "gun": 1776,
+   "t_kaba": 3.62,
+   "yillar": {
+    "2020": 0.0437,
+    "2021": 0.0518,
+    "2022": 0.0318,
+    "2023": 0.046,
+    "2024": 0.0437
+   },
+   "brut_N5": {
+    "yillik_ort": -0.277,
+    "sharpe": -0.64
+   },
+   "brut_N10": {
+    "yillik_ort": -0.152,
+    "sharpe": -0.53
+   }
+  },
+  "U50_L7": {
+   "ic_ort": 0.0432,
+   "gun": 1776,
+   "t_kaba": 3.06,
+   "yillar": {
+    "2020": 0.0415,
+    "2021": 0.0533,
+    "2022": 0.0212,
+    "2023": 0.057,
+    "2024": 0.043
+   },
+   "brut_N5": {
+    "yillik_ort": -0.341,
+    "sharpe": -0.79
+   },
+   "brut_N10": {
+    "yillik_ort": -0.306,
+    "sharpe": -1.1
+   }
+  }
+ },
+ "hayatta_kalma": {
+  "not_": "data1d_all bugunun vadeli listesi; panelde yine de verisi panel sonundan >30 gun once biten 41 coin var (cogu 2024-06..2025-11 delist). 2024 oncesi delist olan coinler hic yok -> train donemi long (dusen) bacagi lehine yanli.",
+  "olcum": "en cok dusen %10 dilim ('alt') ve en cok yukselen %10 ('ust') icinde, sonraki 30 gunde verisi biten coin sayisi; sadece TRAIN dengeleme gunleri",
+  "olcum_train_dengeleme_gunleri": {
+   "LS_L1_N5_U30_rb1": {
+    "alt_dilim": 5853,
+    "alt_biten": 8,
+    "ust_dilim": 5853,
+    "ust_biten": 3,
+    "alt_oran_binde": 1.37,
+    "ust_oran_binde": 0.51
+   },
+   "LS_L3_N5_U30_rb1": {
+    "alt_dilim": 5853,
+    "alt_biten": 11,
+    "ust_dilim": 5853,
+    "ust_biten": 3,
+    "alt_oran_binde": 1.88,
+    "ust_oran_binde": 0.51
+   },
+   "LS_L7_N10_U50_rb1": {
+    "alt_dilim": 8880,
+    "alt_biten": 20,
+    "ust_dilim": 8880,
+    "ust_biten": 4,
+    "alt_oran_binde": 2.25,
+    "ust_oran_binde": 0.45
+   },
+   "LS_L3_N10_U30_rb7": {
+    "alt_dilim": 837,
+    "alt_biten": 1,
+    "ust_dilim": 837,
+    "ust_biten": 1,
+    "alt_oran_binde": 1.19,
+    "ust_oran_binde": 1.19
+   }
+  },
+  "yorum": "Gunluk dengelemede dusen dilimde veri bitisi yukselen dilimin 2.7-5 kati (orn. L7/N10/U50: 20 vs 4 / 8880; binde 2.25 vs 0.45), mutlak oran binde 1.4-2.3 (haftalikta orneklem kucuk: 1 vs 1 / 837). Train'de (2019-2024) delist olup veri setinden tamamen dusen coinler olculemez: data1d_all'da erken biten 41 coinin neredeyse hepsi 2024-06 sonrasi. Gercek yanlilik olculenin USTUNDE; yon: long (dusen) bacagi ve long-only sonuclari lehine. Bu yanliliga ragmen L/S negatif -> duzeltilmis sonuc daha da kotu olur."
+ },
+ "funding_yontemi": "sim_portfoy(maliyet=c, funding=0) kosuldu; sonra g_net[t] = g[t] - 0.0003 * S[t], S[t] = sim_portfoy'un o gun kullandigi w'deki (W[t], O[t+1] nan olanlar 0) negatif agirliklarin mutlak toplami. Yani funding sadece short notional'a (L/S'te ~0.38-0.5, FARK'ta 0.5, LONG'da 0). Hedef agirlik kullanildi (gun ici surukleme ihmal).",
+ "haftalik_not": "rb=7'de W haftada bir guncellenir, arada ayni hedef tutulur; sim_portfoy her gun hedefe geri dengeler (surukleme islemi) -> ciro rb=7'de ~60-77x/yil'in bir kismi bu surukleme.",
+ "en_iyi_3": [
+  {
+   "ad": "LONG_L3_N10_U30_rb7",
+   "params": {
+    "L": 3,
+    "N": 10,
+    "U": 30,
+    "rb": 7,
+    "mod": "long",
+    "sig": "ret"
+   },
+   "train": {
+    "sharpe": 0.44,
+    "cagr": -0.005,
+    "maxdd": 0.966,
+    "ciro_yil": 61.3,
+    "sharpe_m15": 0.38,
+    "sharpe_m30": 0.27,
+    "yillar": {
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": -0.183,
+     "2020": 0.887,
+     "2021": 1.316,
+     "2022": -0.894,
+     "2023": 0.977,
+     "2024": 0.289
+    },
+    "btc_ust": {
+     "gun": 1322,
+     "ort_gun_bps": 26.43,
+     "yillik_basit": 0.965,
+     "sharpe": 1.22
+    },
+    "btc_alt": {
+     "gun": 1252,
+     "ort_gun_bps": -6.85,
+     "yillik_basit": -0.25,
+     "sharpe": -0.27
+    },
+    "plasebo": {
+     "n": 50,
+     "ort": 0.472,
+     "std": 0.112,
+     "p95": 0.664,
+     "p99": 0.739,
+     "maks": 0.78,
+     "yuzdelik": 40.0
+    },
+    "short_notional_ort": 0.0
+   },
+   "valid": null,
+   "olcut": {
+    "sharpe_gt1": false,
+    "plasebo_gt99": false,
+    "maliyet15_gt05": false,
+    "komsu_ayni_yon": true,
+    "yil_poz_2019_24": 4,
+    "yil_4_6": true,
+    "hepsi": false
+   },
+   "komsular": "train Sharpe: LONG_L1_N10_U30_rb7=0.32, LONG_L5_N10_U30_rb7=0.34, LONG_L3_N5_U30_rb7=0.22",
+   "karar": "VALID'e GOTURULMEDI - aday olcutu gecmedi"
+  },
+  {
+   "ad": "LONG_L7_N10_U30_rb7",
+   "params": {
+    "L": 7,
+    "N": 10,
+    "U": 30,
+    "rb": 7,
+    "mod": "long",
+    "sig": "ret"
+   },
+   "train": {
+    "sharpe": 0.43,
+    "cagr": 0.004,
+    "maxdd": 0.943,
+    "ciro_yil": 62.2,
+    "sharpe_m15": 0.37,
+    "sharpe_m30": 0.25,
+    "yillar": {
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": -0.244,
+     "2020": 0.779,
+     "2021": 2.654,
+     "2022": -0.893,
+     "2023": 0.682,
+     "2024": 0.167
+    },
+    "btc_ust": {
+     "gun": 1322,
+     "ort_gun_bps": 23.9,
+     "yillik_basit": 0.872,
+     "sharpe": 1.19
+    },
+    "btc_alt": {
+     "gun": 1252,
+     "ort_gun_bps": -5.41,
+     "yillik_basit": -0.197,
+     "sharpe": -0.22
+    },
+    "plasebo": {
+     "n": 50,
+     "ort": 0.472,
+     "std": 0.112,
+     "p95": 0.664,
+     "p99": 0.739,
+     "maks": 0.78,
+     "yuzdelik": 38.0
+    },
+    "short_notional_ort": 0.0
+   },
+   "valid": null,
+   "olcut": {
+    "sharpe_gt1": false,
+    "plasebo_gt99": false,
+    "maliyet15_gt05": false,
+    "komsu_ayni_yon": true,
+    "yil_poz_2019_24": 4,
+    "yil_4_6": true,
+    "hepsi": false
+   },
+   "komsular": "train Sharpe: LONG_L5_N10_U30_rb7=0.34, LONG_L7_N5_U30_rb7=0.18",
+   "karar": "VALID'e GOTURULMEDI - aday olcutu gecmedi"
+  },
+  {
+   "ad": "LONG_L3_N10_U50_rb7",
+   "params": {
+    "L": 3,
+    "N": 10,
+    "U": 50,
+    "rb": 7,
+    "mod": "long",
+    "sig": "ret"
+   },
+   "train": {
+    "sharpe": 0.41,
+    "cagr": -0.025,
+    "maxdd": 0.955,
+    "ciro_yil": 63.7,
+    "sharpe_m15": 0.35,
+    "sharpe_m30": 0.23,
+    "yillar": {
+     "2017": 0.0,
+     "2018": 0.0,
+     "2019": 0.0,
+     "2020": 0.745,
+     "2021": 1.207,
+     "2022": -0.916,
+     "2023": 1.179,
+     "2024": 0.187
+    },
+    "btc_ust": {
+     "gun": 1322,
+     "ort_gun_bps": 22.13,
+     "yillik_basit": 0.808,
+     "sharpe": 1.07
+    },
+    "btc_alt": {
+     "gun": 1252,
+     "ort_gun_bps": -4.12,
+     "yillik_basit": -0.151,
+     "sharpe": -0.16
+    },
+    "plasebo": {
+     "n": 50,
+     "ort": 0.529,
+     "std": 0.114,
+     "p95": 0.676,
+     "p99": 0.766,
+     "maks": 0.78,
+     "yuzdelik": 12.0
+    },
+    "short_notional_ort": 0.0
+   },
+   "valid": null,
+   "olcut": {
+    "sharpe_gt1": false,
+    "plasebo_gt99": false,
+    "maliyet15_gt05": false,
+    "komsu_ayni_yon": true,
+    "yil_poz_2019_24": 4,
+    "yil_4_6": true,
+    "hepsi": false
+   },
+   "komsular": "train Sharpe: LONG_L1_N10_U50_rb7=0.28, LONG_L5_N10_U50_rb7=0.34, LONG_L3_N5_U50_rb7=0.21",
+   "karar": "VALID'e GOTURULMEDI - aday olcutu gecmedi"
+  }
+ ],
+ "dusenler": [
+  "H1 L/S (en kotu N long / en iyi N short): 32/32 hucre train'de negatif. Gunluk: Sharpe -1.64..-0.74, CAGR -23%..-48%, ciro 149-439x/yil. Haftalik: -0.80..-0.35. Maliyet 0.0015'te -2.4..-0.5.",
+  "Plasebo: gunluk L/S hucreleri plasebonun medyan %90 yuzdeliginde (aralik %36-100; LS_L3_N10_U50_rb1 ve RANKW_L3_Nall_U50_rb1 %100, Sharpe -0.78 / -0.97) -> rastgele secimden iyi, ama plasebo ortalamasi -1.4..-1.7 (ciro+funding yuku) oldugu icin 'plasebodan iyi' = 'daha az kaybediyor'. Mutlak Sharpe hep negatif.",
+  "H3 vol-olcekli siralama (LSVOL): ham getiriden KOTU, 32/32 negatif (gunluk medyan Sharpe -1.9..-2.1). Getiri/vol ile siralama dusuk-vol coinleri uca itiyor; tersine donus yuksek-vol coinlerde.",
+  "H2 FARK (en kotu N +0.5, evren EW -0.5): 32/32 negatif (-2.04..-0.52). Long bacagin evrene gore alfasi yok / negatif; long-only'nin pozitif Sharpe'i tamamen evren betasi.",
+  "H2 LONG-only: 28/32 pozitif ama tavan 0.44; rb=7 hucrelerinin plasebo yuzdeligi %2-40 (rastgele N coin long daha iyi, ort 0.47-0.53). Gunluk long-only maliyet 0.0015'te 16 hucrenin 13'unde negatife donuyor. 2022: -88..-97%, maxDD 0.94-0.999.",
+  "EK RANKW (post-hoc, tum evren rank agirlikli L/S): 16/16 negatif (-1.53..-0.49). Rank IC pozitif olmasina ragmen maliyet sonrasi kurtarmiyor.",
+  "Komsu/yil olcutu: 2019-2024'te 4/6 pozitif yili olan tek L/S hucresi yok; long-only'lerin 4/6'si evren betasi (2020/2021/2023/2024 boga yillari)."
+ ],
+ "ogrenilen": [
+  "Kesitsel kisa vadeli tersine donus kriptoda ISTATISTIKSEL olarak var ama ekonomik olarak YOK: sonraki gun getirisiyle rank IC train'de her yil pozitif, 0.03-0.04 (t~2-6, L=1-7, U30/U50). Buna karsin uc N=5/10 L/S portfoyunun MALIYETSIZ brut getirisi ~0 veya negatif (brut Sharpe -1.1..+0.07). Kenar siralamanin ortasinda; ucta en cok yukselen coinler yukselmeye, en cok dusenler dusmeye devam ediyor (kuyruk momentum/haber/delist).",
+  "Maliyet belirleyici: gunluk dengeleme cirosu 150-440x/yil -> 0.0007 tek yonde yillik %10-31, 0.0015'te %22-66 maliyet yuku; ustune short funding ~%4-5.5/yil. IC 0.03-0.04'luk bir sinyal bunu tasiyamaz. Haftalik ciro ~60-77x (%4-5/yil) ama sinyal 1-7 gunluk oldugu icin haftalik tutmada kenar da kayboluyor.",
+  "Rejim bagimliligi guclu: L/S tersine BTC MA50 USTUNDE belirgin kaybettiriyor (aile x dengeleme medyan Sharpe -0.9..-2.8; gunluk LS -2.0, gunluk ~-19 bps/gun; boga piyasasinda kazananlar kosmaya devam ediyor), ALTINDA ~0 (gunluk LS medyan +0.1, 16 hucrenin 10'u pozitif, en iyi +0.68; haftalik -0.02). Long-only tam tersi: ustte medyan +0.46 (gunluk) / +0.73 (haftalik), en iyi ~1.2; altta 32/32 negatif -> long-only sonucu rejim/beta, tersine alfasi degil.",
+  "Hayatta-kalma yanliligi olculdu (dusen dilimde 30g icinde veri bitisi yukselen dilimin 3-5 kati) ama train donemi icin alt sinir; yon long bacak lehine. Yanlilik lehe olmasina ragmen L/S negatif -> sonuc saglam negatif.",
+  "Plasebo sart: 'plasebo yuzdeligi yuksek' tek basina yaniltici; gunluk ciro plaseboyu da derin negatife cektigi icin %90-100 yuzdelik mutlak kazanc anlamina gelmiyor. Long-only'de ise rastgele secim stratejiyi yeniyor."
+ ],
+ "testnet_uygulanabilirlik": {
+  "teknik": "Mumkun: Binance USDT-M vadeli testnet API ile gunde bir kez (00:00 UTC acilis) ~10-20 coinde market emir, esit notional long/short; rate limit ve emir sayisi (gunde ~20-40 emir) sorun degil. Kisitlar: testnet sembol listesi ana agdan dar ve degisken (ilk 30-50 hacimli coinin bir kismi eksik olabilir), testnet likiditesi/emir defteri yapay -> kayma ve dolum gercekci degil, funding testnette gercek piyasayi yansitmiyor.",
+  "ciro_maliyeti": "Gunluk L/S: ciro 150-440x/yil (medyan 223) -> maliyet yuku %10-31/yil (0.0007), %22-66/yil (0.0015), %45-130/yil (0.003); + short funding ~%4-5.5/yil. Haftalik L/S: ~65-77x/yil -> %4.5-5.4/yil (0.0007). Train'de maliyetsiz brut kenar ~0 oldugu icin her iki durumda beklenen net getiri negatif.",
+  "oneri": "Testnete KONMAMALI: train'de bile negatif bir stratejinin testnet kosusu bilgi uretmez (testnet kayma/funding gercekci degil, yani pozitif sonuc da guvenilmez olur). Testnet ancak ileride VALID'i gecen bir aday icin emir-yurutme altyapisi testi olarak anlamli."
+ },
+ "kullaniciya_durust_not": "'Cok kazandiran strateji' bu ailede YOK. Kripto kesitinde kisa vadeli tersine donus maliyetten once bile uc portfoyde kazandirmiyor; maliyetle 2019-2024 train'de yillik -10%..-55% kaybettiriyor. Ayni donemde BTC al-tut CAGR %39 (Sharpe 0.83).",
+ "oneri": "Tersine ailesini kapat; bu grid VALID'e/HOLDOUT'a gitmesin. Eger kesitsel sinyal hattina devam edilecekse tek makul yol: (1) rank IC'nin yasadigi yeri ciroyu patlatmadan yakalamak -> sinyali mevcut bir long pozisyonun (orn. BTC/ETH MA50 rejim portfoyu) giris ZAMANLAMASINA ek kucuk bir egim olarak kullanmak (ayri L/S portfoyu degil), ciro <20x/yil; (2) sadece BTC MA50 ALTI gunlerde tersine L/S'i ONCEDEN kayit altina alinmis tek hipotez olarak test etmek (burada bulunan +0.1..+0.7 alt-rejim Sharpe'i post-hoc ve maliyet 0.0015'e dayanikli degil; coklu test riski yuksek). Daha verimli oneri: PROTOKOL'de saglam bulunan BTC/ETH/BNB MA50 trend cekirdegine yatirim yap; altcoin kesit sinyalleri (momentum ve tersine) iki ajanda da maliyet sonrasi olu."
+}
