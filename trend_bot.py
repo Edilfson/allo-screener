@@ -316,11 +316,24 @@ def main():
                 import trend_testnet
                 _pf = yeni_state["portfoy"]
                 # kendi pozisyon defterimiz state'te tutulur (ilk kosuda TREND kayitlarindan kurulur)
-                oz = trend_testnet.esle(_pf["b3"]["w"], defter=_pf.get("testnet_defter"))
+                oz = trend_testnet.esle(_pf["b3"]["w"], defter=_pf.get("testnet_defter"),
+                                        maliyet=_pf.get("testnet_maliyet"))
                 if not oz["kuru"]:
                     _pf["testnet_defter"] = oz["defter"]
+                    _pf["testnet_maliyet"] = oz["maliyet"]
                 pmsg += (f"\n\U0001F9EA Testnet esleme{' (kuru)' if oz['kuru'] else ''}: "
                          f"{oz['emir']} emir, {oz['atlanan']} atlandi, {oz['hata']} hata")
+                # DEMO HESAP K/Z: trend payinin gercek testnet degeri (mark fiyat), kagit b3 ile yan yana
+                rap = None if oz["kuru"] else trend_testnet.pnl_raporu(oz["defter"], oz["maliyet"])
+                if rap:
+                    _kg = (_pf.get("b3") or {}).get("equity", 1.0)
+                    _hb = rap.get("hesap_bakiye")
+                    pmsg += (f"\n\U0001F4B0 <b>Demo hesap - trend payi</b>\n"
+                             f"Deger {rap['deger']:,.0f} USDT (taban {trend_testnet.TABAN:,.0f}) | "
+                             f"K/Z {rap['toplam_kz']:+.2f} USDT ({rap['getiri']*100:+.2f}%)\n"
+                             f"Kagit b3: {(_kg-1)*100:+.2f}%"
+                             + (f" | hesap bakiyesi {_hb:,.0f} USDT" if _hb is not None else "")
+                             + "".join("\n  " + x for x in rap["satirlar"]))
             except Exception as e:
                 print("testnet esleme hatasi:", e)
                 pmsg += f"\n\U0001F9EA Testnet esleme HATASI: {e}"

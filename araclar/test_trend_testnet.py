@@ -68,7 +68,8 @@ class SahteAPI:
         self.cagrilar.append((method, yol, p))
         if yol == "/fapi/v2/positionRisk":
             return SahteYanit([{"symbol": p.get("symbol"), "positionAmt": str(self.poz),
-                                "entryPrice": "100.0", "unRealizedProfit": "0"}])
+                                "entryPrice": "100.0", "unRealizedProfit": "0",
+                                "markPrice": str(self.son_fiyat)}])
         if yol == "/fapi/v1/leverage":
             return SahteYanit({"symbol": p.get("symbol"), "leverage": int(p.get("leverage", 0))})
         if yol == "/fapi/v1/order":
@@ -275,6 +276,62 @@ class TrendTestnetTest(unittest.TestCase):
         d = {"BTCUSDT": 0.0}
         tn.esle({"BTCUSDT": 0.14}, kuru=True, defter=d)
         self.assertEqual(d, {"BTCUSDT": 0.0})
+
+    # ---------------- 7) maliyet defteri ve demo K/Z raporu ----------------
+    def test_maliyet_alimda_ortalama(self):
+        self._api(poz=0.0, son_fiyat=100.0)
+        ozet = tn.esle({"BTCUSDT": 0.14}, defter={}, maliyet={})
+        self.assertAlmostEqual(ozet["maliyet"]["BTCUSDT"]["ort"], 100.0, places=6)
+        self.assertAlmostEqual(ozet["maliyet"]["BTCUSDT"]["gerceklesen"], 0.0, places=6)
+
+    def test_maliyet_ekleme_ortalamayi_gunceller(self):
+        self._api(poz=1.0, son_fiyat=100.0)                   # 1.0 @ 80 elde, 0.4 @ 100 ekle
+        ozet = tn.esle({"BTCUSDT": 0.14}, defter={"BTCUSDT": 1.0},
+                       maliyet={"BTCUSDT": {"ort": 80.0, "gerceklesen": 0.0}})
+        self.assertAlmostEqual(ozet["maliyet"]["BTCUSDT"]["ort"], (80 * 1.0 + 100 * 0.4) / 1.4, places=6)
+
+    def test_maliyet_satista_gerceklesen(self):
+        self._api(poz=1.4, son_fiyat=100.0)                   # 1.4 @ 80 -> 0.5, 0.9 satilir
+        ozet = tn.esle({"BTCUSDT": 0.05}, defter={"BTCUSDT": 1.4},
+                       maliyet={"BTCUSDT": {"ort": 80.0, "gerceklesen": 0.0}})
+        m = ozet["maliyet"]["BTCUSDT"]
+        self.assertAlmostEqual(m["gerceklesen"], 18.0, places=6)     # (100-80) x 0.9
+        self.assertAlmostEqual(m["ort"], 80.0, places=6)
+
+    def test_maliyet_kur_trend_kayitlarindan(self):
+        """Canli 2026-09-13: BNB 0.2 @ 729.13 (ICT kalintisindan devralindi), sonra 0.1'e indi @ 800."""
+        json.dump([{"zaman": "2026-09-13T01:36:19", "tur": "TREND", "sembol": "BNBUSDT", "basarili": True,
+                    "sonuc": {"hedef_miktar": 0.2, "fiyat": 729.13}},
+                   {"zaman": "2026-09-14T01:36:19", "tur": "TREND", "sembol": "BNBUSDT", "basarili": True,
+                    "sonuc": {"hedef_miktar": 0.1, "fiyat": 800.0}},
+                   {"zaman": "2026-09-14T01:36:20", "tur": "TREND", "sembol": "ETHUSDT", "basarili": None,
+                    "sonuc": {"atlandi": "min notional"}}], open(self.kayit_dosya, "w"))
+        m = tn.maliyet_kur()
+        self.assertAlmostEqual(m["BNBUSDT"]["ort"], 729.13, places=6)
+        self.assertAlmostEqual(m["BNBUSDT"]["gerceklesen"], (800.0 - 729.13) * 0.1, places=6)
+        self.assertNotIn("ETHUSDT", m)
+
+    def test_kuru_mod_maliyeti_degistirmez(self):
+        self._api(poz=0.0)
+        m = {}
+        tn.esle({"BTCUSDT": 0.14}, kuru=True, defter={}, maliyet=m)
+        self.assertEqual(m, {})
+
+    def test_pnl_raporu(self):
+        self._api(poz=1.4, son_fiyat=100.0)
+        rap = tn.pnl_raporu({"BTCUSDT": 1.4}, {"BTCUSDT": {"ort": 80.0, "gerceklesen": 5.0}})
+        self.assertAlmostEqual(rap["deger"], 140.0, places=6)
+        self.assertAlmostEqual(rap["acik_kz"], 28.0, places=6)       # (100-80) x 1.4
+        self.assertAlmostEqual(rap["toplam_kz"], 33.0, places=6)
+        self.assertAlmostEqual(rap["getiri"], 0.033, places=6)       # 33 / 1000
+        self.assertEqual(len(rap["satirlar"]), 1)
+        self.assertNotIn("<", rap["satirlar"][0])                    # Telegram HTML guvenligi
+        self.assertNotIn(">", rap["satirlar"][0])
+
+    def test_pnl_raporu_anahtarsiz_none(self):
+        self._api(poz=0.0)
+        tn.KEY = tn.SECRET = ""
+        self.assertIsNone(tn.pnl_raporu({"BTCUSDT": 1.0}, {}))
 
 
 if __name__ == "__main__":

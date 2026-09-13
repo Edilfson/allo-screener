@@ -124,6 +124,81 @@ def defter_kur():
     return d
 
 
+def _maliyet_guncelle(maliyet, sembol, q_eski, q_yeni, fiyat_):
+    """Ortalama maliyet ve gerceklesen K/Z: pozisyon buyurken ortalama guncellenir,
+    kuculurken (fiyat - ortalama) x azalan miktar gerceklesir. Yon donerse eski tamamen kapanir."""
+    m = maliyet.setdefault(sembol, {"ort": 0.0, "gerceklesen": 0.0})
+    ort, ger = float(m.get("ort", 0) or 0), float(m.get("gerceklesen", 0) or 0)
+    if q_eski and q_yeni * q_eski < 0:                       # yon degisti
+        ger += (fiyat_ - ort) * q_eski
+        q_eski, ort = 0.0, 0.0
+    if abs(q_yeni) > abs(q_eski):                            # buyuyor
+        ort = (ort * abs(q_eski) + fiyat_ * (abs(q_yeni) - abs(q_eski))) / abs(q_yeni)
+    elif abs(q_yeni) < abs(q_eski):                          # kuculuyor
+        ger += (fiyat_ - ort) * (abs(q_eski) - abs(q_yeni)) * (1 if q_eski > 0 else -1)
+        if q_yeni == 0:
+            ort = 0.0
+    m["ort"], m["gerceklesen"] = round(ort, 8), round(ger, 6)
+    return m
+
+
+def maliyet_kur():
+    """Maliyet defterini BASARILI TREND kayitlarini kronolojik yeniden oynatarak kurar
+    (her kaydin hedef_miktar'i emir sonrasi miktar, fiyat'i yaklasik dolum fiyati)."""
+    try:
+        L = json.load(open(tt.STATE)) if os.path.exists(tt.STATE) else []
+    except Exception:
+        return {}
+    q, m = {}, {}
+    for r in sorted((r for r in L if isinstance(r, dict) and r.get("tur") == "TREND"
+                     and r.get("basarili") is True), key=lambda r: str(r.get("zaman", ""))):
+        s = r.get("sonuc") or {}
+        try:
+            yeni, f = float(s["hedef_miktar"]), float(s["fiyat"])
+        except Exception:
+            continue
+        sym = r["sembol"]
+        _maliyet_guncelle(m, sym, q.get(sym, 0.0), yeni, f)
+        q[sym] = yeni
+    return m
+
+
+def pnl_raporu(defter, maliyet):
+    """Testnetteki TREND payinin mark fiyatla degeri ve K/Z'si. Anahtar yoksa None.
+    Hesaptaki ICT pozisyonlari dahil DEGIL (sadece trend defteri)."""
+    if not (KEY and SECRET):
+        return None
+    ok, c = tt._imzali("/fapi/v2/positionRisk")
+    mark = {}
+    if ok and isinstance(c, list):
+        for x in c:
+            try:
+                v = float(x.get("markPrice") or 0)
+            except Exception:
+                v = 0.0
+            if v:
+                mark[x.get("symbol")] = v
+    satirlar, deger, maliyet_top, acik, gercek = [], 0.0, 0.0, 0.0, 0.0
+    for s in sorted(set(defter or {}) | set(maliyet or {})):
+        q = float((defter or {}).get(s, 0) or 0)
+        m = (maliyet or {}).get(s, {})
+        ort, ger = float(m.get("ort", 0) or 0), float(m.get("gerceklesen", 0) or 0)
+        if not q and not ger:
+            continue
+        p = mark.get(s) or fiyat(s)
+        if not p:
+            satirlar.append(f"{s[:-4]}: fiyat okunamadi")
+            continue
+        a = (p - ort) * q if q else 0.0
+        deger += q * p; maliyet_top += q * ort; acik += a; gercek += ger
+        satirlar.append(f"{s[:-4]:<4} {q:g} adet | maliyet {ort:,.2f} → {p:,.2f} | "
+                        f"acik {a:+.2f} | gerceklesen {ger:+.2f} USDT")
+    toplam = acik + gercek
+    return {"deger": deger, "maliyet": maliyet_top, "acik_kz": acik, "gerceklesen_kz": gercek,
+            "toplam_kz": toplam, "getiri": toplam / TABAN if TABAN else 0.0,
+            "hesap_bakiye": tt.bakiye(), "satirlar": satirlar}
+
+
 def _kayit(kuru, sembol, w, hedef_notional, mevcut, delta, basarili, sonuc):
     """Tek satirlik kayit. basarili: True/False = emir gonderildi/hata,
     None = emir gonderilmedi (atlandi). Kuru modda dosyaya YAZILMAZ."""
@@ -135,7 +210,7 @@ def _kayit(kuru, sembol, w, hedef_notional, mevcut, delta, basarili, sonuc):
     return k
 
 
-def esle(agirliklar, kuru=False, defter=None):
+def esle(agirliklar, kuru=False, defter=None, maliyet=None):
     """Hedef agirliklari testnet pozisyonlariyla eslestirir.
     agirliklar: {"BTCUSDT": 0.14, ...}   Return: ozet dict."""
     anahtar_var = bool(KEY and SECRET)
@@ -145,8 +220,10 @@ def esle(agirliklar, kuru=False, defter=None):
     # (2026-09-13: ilk canli kosuda hesaptaki 4.19 BNB ICT kalintisi trend'inmis gibi 0.2'ye indirildi)
     if defter is None:
         defter = defter_kur()
+    if maliyet is None:
+        maliyet = maliyet_kur()
     ozet = {"kuru": kuru, "taban": TABAN, "emir": 0, "atlanan": 0, "hata": 0,
-            "satirlar": [], "kayitlar": [], "defter": defter}
+            "satirlar": [], "kayitlar": [], "defter": defter, "maliyet": maliyet}
     if not agirliklar:
         ozet["satirlar"].append("agirlik yok, yapilacak islem yok")
         print("  [trend-testnet] agirlik yok")
@@ -221,6 +298,7 @@ def esle(agirliklar, kuru=False, defter=None):
         if ok:
             ozet["emir"] += 1
             defter[sembol] = round(bizim + (miktar if yon == "BUY" else -miktar), 12)
+            _maliyet_guncelle(maliyet, sembol, bizim, defter[sembol], p)   # yaklasik dolum = anlik fiyat
         else:
             ozet["hata"] += 1
         sonuc = {"yon": yon, "miktar": miktar, "fiyat": p, "reduceOnly": azaltma,
