@@ -1,0 +1,2955 @@
+{
+ "aile": "ema_geri",
+ "denenen": 76,
+ "denenen_aciklama": "TRAIN'de 76 benzersiz konfig: asama1 54 (2 TF x EMA 3 x Y 3 x P 3, f0+tp3) + asama2 22 (her TF'nin en iyi bolge merkezinde 4 cikis x 3 filtre; merkez = komsu-ortalamali fark en yuksek, n>=100). Asama3 (komsu) gerekmedi. VALID: 0 kosu (aday yok). HOLDOUT'a dokunulmadi.",
+ "yontem": {
+  "kurallar": "Gorevdeki 1-6 harfiyen, sadece LONG. Sinyal i kapanisi, giris i+1 acilisi (sim_islem entry=None). Zirve = argmax high[i-20..i-1], dokunus mumu zirveden sonra, i-zirve>=3; stop penceresi [i-P, i-1]. TP fiyati sinyal kapanisindan R ile. 4h: 1h->4h resample, 99 sembol (1h klasoru), kaynak=1h; f2 icin coin gunlugu 1h'den resample, son KAPANMIS gun. 1d: data1d_all, 30g ort hacim >= 5M. Nedensellik kontrolu: veriyi sinyal barinda kesince ayni sinyal ve stop uretiliyor.",
+  "plasebo": "Eslesmis: ayni coin ve ayni bolum; TREND kurali + ayni ust dilim filtresi (+1d likidite) saglanan barlardan, stratejinin o coin/bolumdeki ham sinyal sayisi kadar rastgele bar; stop = close*(1 - o coin/bolumdeki strateji medyan stop %'si); ayni cikis varyanti ve max_days; 20 seed ortalamasi. Tohum kurgusu kirilim_gunluk cfg['plasebo'] ile ayni. rejim.sig_plasebo() dogrudan kullanilmadi: onun stop'u Bollinger bandi, cikisi chandelier -> bu testin mekanigiyle eslesmez; kurgu olarak yeniden kullanildi.",
+  "winsorize_top1": "rejim.saglam() dogrudan import: wins3 = clip(net, -1.5, 3) ortalamasi; top1_pay = en iyi %1 islemin toplam kara orani (toplam ~0 iken >1 olabilir).",
+  "guven_araliklari": "fark_ga95 (ADAY KURALINDA KULLANILAN): strateji islemleri ve rastgele secilen TEK plasebo seed'inin islemleri bagimsiz iid bootstrap (2000). fark_ga95_ayblok: ESLESMIS takvim ayi blok bootstrap (strateji ve plasebo ayni aylarla). fark_ga95_havuz (asama2'de hesaplandi, bilgi amacli, daha liberal: plasebo ortalamasi 20 seed havuzundan); asama1 icin yaklasik esdegeri = fark - strateji GA95 yari genisligi. Uc araligin HICBIRINDE hicbir konfigde alt sinir > 0 degil.",
+  "maliyet": "harness varsayilani, degistirilmedi."
+ },
+ "defter_notu": "defter.jsonl'de ema_geri icin 107 kayit: 4 duman testi (10 coin), 27 IPTAL EDILEN ilk asama1 kosusu (not_='asama1 tarama f0+tp3'), 54 asama1 TEKRAR, 22 asama2, 0 valid. Iptal edilen kosunun ay-blok GA'si hataliydi (strateji ve plasebo aylari bagimsiz orneklenmis -> +-1R yapay genislik). IPTAL EDILEN KOSUDAN KALAN KAYITLARIN YERINI AYNI KONFIGLERIN 'TEKRAR' KAYITLARI ALDI (n, net, w3, plasebo, fark ve iid GA birebir ayni; yalniz fark_ga95_ayblok duzeltildi). Not: iptal aninda 19 kayit sayilmisti; TaskStop ust python surecini hemen durdurmadigi icin 4h grubu 27 kayda tamamlandi, 1d kismina gecerken havuz coktu (BrokenProcessPool) -> eski kayit sayisi 19 degil 27. Coklu-test sayiminda bu 27 + 4 duman kaydi tekrar/deneme olarak dusulmelidir (benzersiz test = 76).",
+ "ozet_tf": {
+  "4h_asama1": {
+   "konfig": 27,
+   "fark_pozitif": 23,
+   "fark_ort": 0.06,
+   "fark_min_max": [
+    -0.098,
+    0.185
+   ],
+   "strateji_w3_pozitif": 9,
+   "strateji_w3_ort": -0.026,
+   "plasebo_w3_ort": -0.086,
+   "ga95_alt_max": -0.1692,
+   "liberal_alt_max": -0.0438,
+   "yari1_pozitif": 27,
+   "yari2_pozitif": 0
+  },
+  "4h_asama2": {
+   "konfig": 11,
+   "fark_pozitif": 8,
+   "fark_ort": 0.074,
+   "fark_min_max": [
+    -0.048,
+    0.253
+   ],
+   "strateji_w3_pozitif": 5,
+   "strateji_w3_ort": 0.036,
+   "plasebo_w3_ort": -0.037,
+   "ga95_alt_max": -0.2034,
+   "liberal_alt_max": -0.0509,
+   "yari1_pozitif": 11,
+   "yari2_pozitif": 0
+  },
+  "1d_asama1": {
+   "konfig": 27,
+   "fark_pozitif": 15,
+   "fark_ort": -0.019,
+   "fark_min_max": [
+    -0.43,
+    0.175
+   ],
+   "strateji_w3_pozitif": 13,
+   "strateji_w3_ort": -0.031,
+   "plasebo_w3_ort": -0.012,
+   "ga95_alt_max": -0.1648,
+   "liberal_alt_max": -0.0501,
+   "yari1_pozitif": 0,
+   "yari2_pozitif": 24
+  },
+  "1d_asama2": {
+   "konfig": 11,
+   "fark_pozitif": 11,
+   "fark_ort": 0.054,
+   "fark_min_max": [
+    0.005,
+    0.094
+   ],
+   "strateji_w3_pozitif": 5,
+   "strateji_w3_ort": -0.063,
+   "plasebo_w3_ort": -0.117,
+   "ga95_alt_max": -0.119,
+   "liberal_alt_max": -0.0222,
+   "yari1_pozitif": 3,
+   "yari2_pozitif": 11
+  }
+ },
+ "adaylar": [],
+ "valid_kosuldu_mu": false,
+ "valid_neden_kosulmadi": "Aday kurali gecen 0 konfig. Protokol: VALID yalniz adaylar icin; aday olmayan konfigi valid'de gormek coklu testi artirir. Valid 2025 / 2025-H2 bu aile icin temiz kaldi.",
+ "en_iyi_3_secimi": "ADAY YOK. en_iyi_3 = aday kuralina en yakin 3 konfig (n>=100, top1<%50, w3>0; fark GA95 alt sinirina gore siralandi). valid=null.",
+ "en_iyi_3": [
+  {
+   "ad": "1d_e25-60_Y0.15_P7_tp3_f0",
+   "params": {
+    "tf": "1d",
+    "ema": [
+     25,
+     60
+    ],
+    "Y": 0.15,
+    "P": 7,
+    "R": 20,
+    "cikis": "tp3",
+    "filtre": "f0"
+   },
+   "train": {
+    "n": 459,
+    "sinyal": 459,
+    "dolma": 1.0,
+    "ort_net": 0.1365,
+    "ort_brut": 0.149,
+    "ga95": [
+     -0.0201,
+     0.3053
+    ],
+    "ga99": [
+     -0.0661,
+     0.3494
+    ],
+    "win": 0.298,
+    "toplam": 62.7,
+    "yari1": -0.1022,
+    "yari2": 0.3743,
+    "yillar": {
+     "2018": [
+      5,
+      -0.212
+     ],
+     "2019": [
+      20,
+      0.307
+     ],
+     "2020": [
+      45,
+      0.528
+     ],
+     "2021": [
+      83,
+      -0.002
+     ],
+     "2022": [
+      21,
+      -0.443
+     ],
+     "2023": [
+      163,
+      -0.004
+     ],
+     "2024": [
+      122,
+      0.36
+     ]
+    },
+    "sinyal_ham": 627,
+    "medyan_stop_pct": 0.1286,
+    "wins3": 0.1361,
+    "medyan": -1.0107,
+    "top1_pay": 0.194,
+    "maxR": 3.0,
+    "yillar_w3": {
+     "2018": -0.212,
+     "2019": 0.304,
+     "2020": 0.528,
+     "2021": -0.003,
+     "2022": -0.443,
+     "2023": -0.005,
+     "2024": 0.36
+    },
+    "plasebo": {
+     "n_ort": 562.9,
+     "ort_net": 0.03,
+     "ort_brut": 0.0419,
+     "win": 0.2702,
+     "wins3": 0.0296,
+     "wins3_seed_min_max": [
+      -0.1147,
+      0.2067
+     ],
+     "top1_pay": 1.274,
+     "yillar_w3": {
+      "2017": -0.725,
+      "2018": -0.73,
+      "2019": 0.118,
+      "2020": 0.261,
+      "2021": 0.264,
+      "2022": -0.613,
+      "2023": 0.075,
+      "2024": -0.104
+     }
+    },
+    "fark_w3": 0.1065,
+    "fark_ga95": [
+     -0.1648,
+     0.3646
+    ],
+    "fark_ga95_ayblok": [
+     -0.3606,
+     0.5309
+    ],
+    "fark_net": 0.1065
+   },
+   "valid": null,
+   "komsular": "3/3 komsu ayni yonde (w3>0 ve fark>0). 1d_e20-50_Y0.15_P7_tp3_f0: w3=+0.128 fark=+0.098 n=536; 1d_e25-60_Y0.25_P7_tp3_f0: w3=+0.037 fark=+0.043 n=204; 1d_e25-60_Y0.15_P10_tp3_f0: w3=+0.127 fark=+0.091 n=379",
+   "aday_kurali": {
+    "w3_poz": true,
+    "plasebo_ustu_ga": false,
+    "top1_ok": true,
+    "komsu": "3/3",
+    "komsu_ok": true,
+    "n_ok": true,
+    "aday": false
+   },
+   "aday_degil_cunku": [
+    "fark GA95 alt siniri <= 0"
+   ],
+   "plasebo_karsilastirma": {
+    "satirlar": [
+     {
+      "kol": "strateji",
+      "n": 459,
+      "ort_net": 0.1365,
+      "ort_brut": 0.149,
+      "wins3": 0.1361,
+      "win": 0.298,
+      "top1_pay": 0.194,
+      "yari1": -0.1022,
+      "yari2": 0.3743,
+      "yillar": {
+       "2018": [
+        5,
+        -0.212
+       ],
+       "2019": [
+        20,
+        0.307
+       ],
+       "2020": [
+        45,
+        0.528
+       ],
+       "2021": [
+        83,
+        -0.002
+       ],
+       "2022": [
+        21,
+        -0.443
+       ],
+       "2023": [
+        163,
+        -0.004
+       ],
+       "2024": [
+        122,
+        0.36
+       ]
+      },
+      "yillar_w3": {
+       "2018": -0.212,
+       "2019": 0.304,
+       "2020": 0.528,
+       "2021": -0.003,
+       "2022": -0.443,
+       "2023": -0.005,
+       "2024": 0.36
+      }
+     },
+     {
+      "kol": "plasebo(20 seed ort)",
+      "n": 562.9,
+      "ort_net": 0.03,
+      "ort_brut": 0.0419,
+      "wins3": 0.0296,
+      "win": 0.2702,
+      "top1_pay": 1.274,
+      "yillar_w3": {
+       "2017": -0.725,
+       "2018": -0.73,
+       "2019": 0.118,
+       "2020": 0.261,
+       "2021": 0.264,
+       "2022": -0.613,
+       "2023": 0.075,
+       "2024": -0.104
+      },
+      "wins3_seed_min_max": [
+       -0.1147,
+       0.2067
+      ]
+     }
+    ],
+    "fark_w3": 0.1065,
+    "fark_net": 0.1065,
+    "fark_ga95_iid_tekseed(aday kurali)": [
+     -0.1648,
+     0.3646
+    ],
+    "fark_ga95_eslesmis_ayblok": [
+     -0.3606,
+     0.5309
+    ],
+    "fark_ga95_havuz_liberal": "asama1 konfigi: yaklasik alt sinir -0.0501"
+   }
+  },
+  {
+   "ad": "1d_e20-50_Y0.15_P7_tp3_f0",
+   "params": {
+    "tf": "1d",
+    "ema": [
+     20,
+     50
+    ],
+    "Y": 0.15,
+    "P": 7,
+    "R": 20,
+    "cikis": "tp3",
+    "filtre": "f0"
+   },
+   "train": {
+    "n": 536,
+    "sinyal": 536,
+    "dolma": 1.0,
+    "ort_net": 0.1288,
+    "ort_brut": 0.1414,
+    "ga95": [
+     -0.0268,
+     0.2807
+    ],
+    "ga99": [
+     -0.0594,
+     0.327
+    ],
+    "win": 0.295,
+    "toplam": 69.1,
+    "yari1": -0.0379,
+    "yari2": 0.2944,
+    "yillar": {
+     "2018": [
+      4,
+      -0.012
+     ],
+     "2019": [
+      27,
+      0.259
+     ],
+     "2020": [
+      55,
+      0.828
+     ],
+     "2021": [
+      94,
+      0.007
+     ],
+     "2022": [
+      35,
+      -0.67
+     ],
+     "2023": [
+      182,
+      -0.04
+     ],
+     "2024": [
+      139,
+      0.336
+     ]
+    },
+    "sinyal_ham": 760,
+    "medyan_stop_pct": 0.1276,
+    "wins3": 0.1284,
+    "medyan": -1.0108,
+    "top1_pay": 0.219,
+    "maxR": 3.0,
+    "yillar_w3": {
+     "2018": -0.013,
+     "2019": 0.256,
+     "2020": 0.828,
+     "2021": 0.006,
+     "2022": -0.67,
+     "2023": -0.04,
+     "2024": 0.335
+    },
+    "plasebo": {
+     "n_ort": 669.3,
+     "ort_net": 0.031,
+     "ort_brut": 0.043,
+     "win": 0.2699,
+     "wins3": 0.0306,
+     "wins3_seed_min_max": [
+      -0.1586,
+      0.1965
+     ],
+     "top1_pay": 1.144,
+     "yillar_w3": {
+      "2017": 0.516,
+      "2018": -0.415,
+      "2019": 0.194,
+      "2020": 0.273,
+      "2021": 0.261,
+      "2022": -0.665,
+      "2023": 0.097,
+      "2024": -0.099
+     }
+    },
+    "fark_w3": 0.0978,
+    "fark_ga95": [
+     -0.1758,
+     0.3697
+    ],
+    "fark_ga95_ayblok": [
+     -0.3332,
+     0.4721
+    ],
+    "fark_net": 0.0978
+   },
+   "valid": null,
+   "komsular": "4/4 komsu ayni yonde (w3>0 ve fark>0). 1d_e15-40_Y0.15_P7_tp3_f0: w3=+0.080 fark=+0.019 n=645; 1d_e25-60_Y0.15_P7_tp3_f0: w3=+0.136 fark=+0.106 n=459; 1d_e20-50_Y0.25_P7_tp3_f0: w3=+0.042 fark=+0.029 n=252; 1d_e20-50_Y0.15_P10_tp3_f0: w3=+0.112 fark=+0.037 n=418",
+   "aday_kurali": {
+    "w3_poz": true,
+    "plasebo_ustu_ga": false,
+    "top1_ok": true,
+    "komsu": "4/4",
+    "komsu_ok": true,
+    "n_ok": true,
+    "aday": false
+   },
+   "aday_degil_cunku": [
+    "fark GA95 alt siniri <= 0"
+   ],
+   "plasebo_karsilastirma": {
+    "satirlar": [
+     {
+      "kol": "strateji",
+      "n": 536,
+      "ort_net": 0.1288,
+      "ort_brut": 0.1414,
+      "wins3": 0.1284,
+      "win": 0.295,
+      "top1_pay": 0.219,
+      "yari1": -0.0379,
+      "yari2": 0.2944,
+      "yillar": {
+       "2018": [
+        4,
+        -0.012
+       ],
+       "2019": [
+        27,
+        0.259
+       ],
+       "2020": [
+        55,
+        0.828
+       ],
+       "2021": [
+        94,
+        0.007
+       ],
+       "2022": [
+        35,
+        -0.67
+       ],
+       "2023": [
+        182,
+        -0.04
+       ],
+       "2024": [
+        139,
+        0.336
+       ]
+      },
+      "yillar_w3": {
+       "2018": -0.013,
+       "2019": 0.256,
+       "2020": 0.828,
+       "2021": 0.006,
+       "2022": -0.67,
+       "2023": -0.04,
+       "2024": 0.335
+      }
+     },
+     {
+      "kol": "plasebo(20 seed ort)",
+      "n": 669.3,
+      "ort_net": 0.031,
+      "ort_brut": 0.043,
+      "wins3": 0.0306,
+      "win": 0.2699,
+      "top1_pay": 1.144,
+      "yillar_w3": {
+       "2017": 0.516,
+       "2018": -0.415,
+       "2019": 0.194,
+       "2020": 0.273,
+       "2021": 0.261,
+       "2022": -0.665,
+       "2023": 0.097,
+       "2024": -0.099
+      },
+      "wins3_seed_min_max": [
+       -0.1586,
+       0.1965
+      ]
+     }
+    ],
+    "fark_w3": 0.0978,
+    "fark_net": 0.0978,
+    "fark_ga95_iid_tekseed(aday kurali)": [
+     -0.1758,
+     0.3697
+    ],
+    "fark_ga95_eslesmis_ayblok": [
+     -0.3332,
+     0.4721
+    ],
+    "fark_ga95_havuz_liberal": "asama1 konfigi: yaklasik alt sinir -0.0578"
+   }
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_tp2_f0",
+   "params": {
+    "tf": "1d",
+    "ema": [
+     25,
+     60
+    ],
+    "Y": 0.15,
+    "P": 7,
+    "R": 20,
+    "cikis": "tp2",
+    "filtre": "f0"
+   },
+   "train": {
+    "n": 475,
+    "sinyal": 475,
+    "dolma": 1.0,
+    "ort_net": 0.0451,
+    "ort_brut": 0.0575,
+    "ga95": [
+     -0.0793,
+     0.1721
+    ],
+    "ga99": [
+     -0.1105,
+     0.2094
+    ],
+    "win": 0.354,
+    "toplam": 21.4,
+    "yari1": -0.1703,
+    "yari2": 0.2542,
+    "yillar": {
+     "2018": [
+      5,
+      0.184
+     ],
+     "2019": [
+      22,
+      0.078
+     ],
+     "2020": [
+      47,
+      0.167
+     ],
+     "2021": [
+      83,
+      -0.074
+     ],
+     "2022": [
+      21,
+      -0.443
+     ],
+     "2023": [
+      173,
+      -0.001
+     ],
+     "2024": [
+      124,
+      0.214
+     ]
+    },
+    "sinyal_ham": 627,
+    "medyan_stop_pct": 0.1286,
+    "wins3": 0.0451,
+    "medyan": -1.0105,
+    "top1_pay": 0.377,
+    "maxR": 2.0,
+    "yillar_w3": {
+     "2018": 0.184,
+     "2019": 0.078,
+     "2020": 0.167,
+     "2021": -0.074,
+     "2022": -0.443,
+     "2023": -0.001,
+     "2024": 0.214
+    },
+    "plasebo": {
+     "n_ort": 578.1,
+     "ort_net": -0.0006,
+     "ort_brut": 0.0113,
+     "win": 0.3412,
+     "wins3": -0.0006,
+     "wins3_seed_min_max": [
+      -0.1179,
+      0.1495
+     ],
+     "top1_pay": 0.603,
+     "yillar_w3": {
+      "2017": -0.794,
+      "2018": -0.386,
+      "2019": 0.121,
+      "2020": 0.137,
+      "2021": 0.157,
+      "2022": -0.487,
+      "2023": 0.058,
+      "2024": -0.104
+     }
+    },
+    "fark_w3": 0.0457,
+    "fark_ga95": [
+     -0.1778,
+     0.261
+    ],
+    "fark_ga95_ayblok": [
+     -0.3005,
+     0.341
+    ],
+    "fark_ga95_havuz": [
+     -0.0865,
+     0.1811
+    ],
+    "fark_net": 0.0457
+   },
+   "valid": null,
+   "komsular": "0/0 komsu ayni yonde (w3>0 ve fark>0). komsu yok (asama2: yalniz merkezde cikis/filtre)",
+   "aday_kurali": {
+    "w3_poz": true,
+    "plasebo_ustu_ga": false,
+    "top1_ok": true,
+    "komsu": "0/0",
+    "komsu_ok": false,
+    "n_ok": true,
+    "aday": false
+   },
+   "aday_degil_cunku": [
+    "fark GA95 alt siniri <= 0",
+    "komsu cogunlugu yok"
+   ],
+   "plasebo_karsilastirma": {
+    "satirlar": [
+     {
+      "kol": "strateji",
+      "n": 475,
+      "ort_net": 0.0451,
+      "ort_brut": 0.0575,
+      "wins3": 0.0451,
+      "win": 0.354,
+      "top1_pay": 0.377,
+      "yari1": -0.1703,
+      "yari2": 0.2542,
+      "yillar": {
+       "2018": [
+        5,
+        0.184
+       ],
+       "2019": [
+        22,
+        0.078
+       ],
+       "2020": [
+        47,
+        0.167
+       ],
+       "2021": [
+        83,
+        -0.074
+       ],
+       "2022": [
+        21,
+        -0.443
+       ],
+       "2023": [
+        173,
+        -0.001
+       ],
+       "2024": [
+        124,
+        0.214
+       ]
+      },
+      "yillar_w3": {
+       "2018": 0.184,
+       "2019": 0.078,
+       "2020": 0.167,
+       "2021": -0.074,
+       "2022": -0.443,
+       "2023": -0.001,
+       "2024": 0.214
+      }
+     },
+     {
+      "kol": "plasebo(20 seed ort)",
+      "n": 578.1,
+      "ort_net": -0.0006,
+      "ort_brut": 0.0113,
+      "wins3": -0.0006,
+      "win": 0.3412,
+      "top1_pay": 0.603,
+      "yillar_w3": {
+       "2017": -0.794,
+       "2018": -0.386,
+       "2019": 0.121,
+       "2020": 0.137,
+       "2021": 0.157,
+       "2022": -0.487,
+       "2023": 0.058,
+       "2024": -0.104
+      },
+      "wins3_seed_min_max": [
+       -0.1179,
+       0.1495
+      ]
+     }
+    ],
+    "fark_w3": 0.0457,
+    "fark_net": 0.0457,
+    "fark_ga95_iid_tekseed(aday kurali)": [
+     -0.1778,
+     0.261
+    ],
+    "fark_ga95_eslesmis_ayblok": [
+     -0.3005,
+     0.341
+    ],
+    "fark_ga95_havuz_liberal": [
+     -0.0865,
+     0.1811
+    ]
+   }
+  }
+ ],
+ "dusenler": [
+  "4h asama1 (27): strateji w3 plasebodan 23/27 konfigde yuksek (ort fark +0.060R) ama fark GA95 alt siniri en iyi -0.169. Strateji w3 ort -0.026R, plasebo -0.086R. Yari1 pozitif 27/27, yari2 pozitif 0/27 -> getiri tamamen 2024-sonu donemine bagli.",
+  "1d asama1 (27): fark pozitif 15/27 (ort -0.019R, aralik [-0.43, 0.175]); plasebo w3 ort -0.012R. Y=0.25/0.35 ile P=15 bolgesi plasebodan kotu (en kotu -0.43R, n<100).",
+  "Filtreler (f1 BTC MA50, f2 +coin MA50) hem stratejiyi hem plaseboyu yukseltir: 4h e15-40 Y0.2 P10 tp3_f2 strateji w3 +0.328 vs plasebo +0.074 (fark +0.253, GA95 [-0.6788, 1.0875], n=127, yari2 -0.564). 1d'de filtre farki buyutmez: tp3 f0/f1/f2 fark +0.106/+0.061/+0.059, ema50 +0.087/+0.086/+0.094. Yukselis filtreden ve rejimden gelir, geri cekilme tetiginden degil.",
+  "TP'siz EMA cikislari: ham ort_net yuksek gorunur (1d e25-60 Y0.15 P7 ema50_f0 +0.334R) ama w3 -0.212, top1 payi 0.927, plasebo ham net +0.343R -> saf sag-kuyruk; fark +0.09R ama GA95 [-0.1352, 0.2929].",
+  "4h ema20 cikisi plasebodan kotu (fark -0.03..-0.05R); 1d tp2 stratejinin plaseboya ustunlugunu neredeyse sifirlar (+0.005..+0.046R).",
+  "Asama2 konfiglerinin parametre komsusu yok (yalniz merkezde kosuldu); ilk 3 kriteri gecen olmadigi icin komsu kosusu (asama3) gereksizdi ve yapilmadi.",
+  "1d en yakin konfiglerde yil bagimliligi guclu (yil: [n, ort_net]): e25-60 Y0.15 P7 tp3 {'2018': [5, -0.212], '2019': [20, 0.307], '2020': [45, 0.528], '2021': [83, -0.002], '2022': [21, -0.443], '2023': [163, -0.004], '2024': [122, 0.36]} ; e20-50 Y0.15 P7 tp3 {'2018': [4, -0.012], '2019': [27, 0.259], '2020': [55, 0.828], '2021': [94, 0.007], '2022': [35, -0.67], '2023': [182, -0.04], '2024': [139, 0.336]} -> 2020 ve 2024 tasiyor, 2022 zarar, 2023 sifir."
+ ],
+ "ogrenilen": [
+  "Asil soru (geri cekilme + tetik, trend icinde rastgele mumdan iyi mi?): ISTATISTIKSEL olarak HAYIR. 76 TRAIN konfiginin hicbirinde strateji-plasebo fark araliginin alt siniri sifirin ustunde degil (tek-seed iid, eslesmis ay-blok, havuz). Yon olarak: 4h'te cogunlukla evet (23/27 pozitif, ort +0.060R; asama2 8/11), 1d'de KARISIK (15/27 pozitif, ort -0.019R; yalniz Y=0.15 bolgesi tutarli pozitif, asama2 11/11 ort +0.054R).",
+  "Kenar gurultunun altinda: 4h'te n~130-200 islemde TP3R dagilimi (win ~%33-36) +-0.3R belirsizlik uretir; +0.1-0.2R farki kanitlamak icin kabaca 4-10 kat islem gerekir. 4h train yalniz ~10 ay.",
+  "Sonucu rejim belirliyor: 4h'te 27/27 konfig yari1 +, yari2 - (2024-Q4 yukselis, 2025-H1 dusus); 1d'de tipik olarak yari1 -, yari2 +. Plasebo da ayni yone gidiyor -> ortak etken trend/rejim, kurulum degil.",
+  "1d altcoin evreninde Y=0.15 bolgesinde trend-ici RASTGELE alim bile train'de w3 +0.03..+0.08R (hayatta kalma + trend; tum 1d asama1 plasebo ort -0.012R); strateji bunun ustune kucuk (+0.02..+0.14R) ve anlamsiz fark ekliyor. Ham ort_net'e bakilsaydi (1d ema50 +0.33R) yanlis pozitif cikardi.",
+  "Kural genis stop uretir (medyan stop %: 4h 9.1%-12.2%, 1d 12.8%-13.7%); maliyet R cinsinden kucuk (brut-net 0.012-0.019R). Sorun maliyet degil, brut kenar yoklugu."
+ ],
+ "karar": {
+  "kagit_sinyale_eklenmeli_mi": "HAYIR",
+  "gerekce": "Aday kurali (train w3>0 VE plasebo ustu fark GA95 alt>0 VE top1<%50 VE komsu cogunlugu) 76 konfigin hicbirinde saglanmadi; her yerde eksik kriter ayni: plasebodan anlamli fark yok. En iyi ornekler: 4h_e15-40_Y0.2_P10_tp3_f0 fark +0.185R, GA95 [-0.3677, 0.7155], n=182; 1d_e20-50_Y0.15_P7_tp3_f0 fark +0.098R, GA95 [-0.1758, 0.3697], n=536. Trend icinde rastgele bir mumda almaktan ayirt edilemiyor; 4h sonucu tek bir rejim yarisina bagli. Kagit sinyale eklenirse gorulecek getiri kurulumdan degil trend/rejim filtresinden gelir (BTC gunluk MA50 zaten ayrica dogrulanmis). VALID butcesi harcanmadi.",
+  "ek_deger": "En fazla bilgi etiketi ('trendde EMA bandina geri cekilme') olarak gosterilebilir; giris tetigi veya puan agirligi olarak KULLANILMAMALI."
+ },
+ "oneri": "Aileyi kapat. Yeniden denenecekse: (1) 4h verisi en az 2-3 yil olunca; (2) tek konfig secmek yerine onceden kayitli TEK hipotez olarak 27 konfigin fark ortalamasini test et; (3) plaseboyu yine 'trend + ayni filtre' kosulunda tut - filtre etkisini kurulum etkisinden ayirmanin tek yolu. Rejim/trend filtresi zaten kagit sinyalde; oraya yatirim daha verimli.",
+ "tum_train_tablosu": [
+  {
+   "ad": "1d_e15-40_Y0.15_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 452,
+   "ort_net": 0.0449,
+   "ort_brut": 0.0573,
+   "w3": 0.0447,
+   "pl_w3": 0.069,
+   "pl_net": 0.0693,
+   "fark_w3": -0.0243,
+   "ga95": [
+    -0.3614,
+    0.2984
+   ],
+   "ga95_ayblok": [
+    -0.5174,
+    0.3106
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1816,
+   "top1": 0.596,
+   "win": 0.279,
+   "yari1": -0.1497,
+   "yari2": 0.2396,
+   "medyan_stop": 0.1295,
+   "komsu": "3/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e15-40_Y0.15_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 195,
+   "ort_net": 0.1241,
+   "ort_brut": 0.1363,
+   "w3": 0.124,
+   "pl_w3": 0.063,
+   "pl_net": 0.0634,
+   "fark_w3": 0.061,
+   "ga95": [
+    -0.402,
+    0.5039
+   ],
+   "ga95_ayblok": [
+    -0.5612,
+    0.6085
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1819,
+   "top1": 0.125,
+   "win": 0.303,
+   "yari1": -0.1973,
+   "yari2": 0.4294,
+   "medyan_stop": 0.1315,
+   "komsu": "1/3",
+   "aday": false
+  },
+  {
+   "ad": "1d_e15-40_Y0.15_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 645,
+   "ort_net": 0.0802,
+   "ort_brut": 0.0927,
+   "w3": 0.0798,
+   "pl_w3": 0.061,
+   "pl_net": 0.0613,
+   "fark_w3": 0.0188,
+   "ga95": [
+    -0.2262,
+    0.2779
+   ],
+   "ga95_ayblok": [
+    -0.3137,
+    0.3788
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1109,
+   "top1": 0.351,
+   "win": 0.287,
+   "yari1": -0.0155,
+   "yari2": 0.1744,
+   "medyan_stop": 0.1285,
+   "komsu": "1/3",
+   "aday": false
+  },
+  {
+   "ad": "1d_e15-40_Y0.25_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 214,
+   "ort_net": -0.1044,
+   "ort_brut": -0.0924,
+   "w3": -0.1047,
+   "pl_w3": -0.036,
+   "pl_net": -0.0357,
+   "fark_w3": -0.0687,
+   "ga95": [
+    -0.4782,
+    0.4979
+   ],
+   "ga95_ayblok": [
+    -0.5733,
+    0.3723
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.2846,
+   "top1": 0.271,
+   "win": 0.234,
+   "yari1": -0.3573,
+   "yari2": 0.1485,
+   "medyan_stop": 0.134,
+   "komsu": "0/5",
+   "aday": false
+  },
+  {
+   "ad": "1d_e15-40_Y0.25_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 67,
+   "ort_net": -0.4789,
+   "ort_brut": -0.4669,
+   "w3": -0.4789,
+   "pl_w3": -0.0491,
+   "pl_net": -0.0488,
+   "fark_w3": -0.4298,
+   "ga95": [
+    -1.2242,
+    0.301
+   ],
+   "ga95_ayblok": [
+    -1.6453,
+    0.3069
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.7257,
+   "top1": 0.093,
+   "win": 0.149,
+   "yari1": -0.9404,
+   "yari2": -0.031,
+   "medyan_stop": 0.1317,
+   "komsu": "1/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e15-40_Y0.25_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 345,
+   "ort_net": -0.0271,
+   "ort_brut": -0.015,
+   "w3": -0.0274,
+   "pl_w3": 0.0161,
+   "pl_net": 0.0166,
+   "fark_w3": -0.0435,
+   "ga95": [
+    -0.3995,
+    0.3465
+   ],
+   "ga95_ayblok": [
+    -0.5152,
+    0.2734
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.2207,
+   "top1": 0.973,
+   "win": 0.258,
+   "yari1": -0.1774,
+   "yari2": 0.1224,
+   "medyan_stop": 0.1324,
+   "komsu": "2/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e15-40_Y0.35_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 100,
+   "ort_net": -0.1059,
+   "ort_brut": -0.0941,
+   "w3": -0.106,
+   "pl_w3": -0.1078,
+   "pl_net": -0.1073,
+   "fark_w3": 0.0018,
+   "ga95": [
+    -0.7157,
+    0.6917
+   ],
+   "ga95_ayblok": [
+    -0.8962,
+    0.6396
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.3236,
+   "top1": 0.285,
+   "win": 0.23,
+   "yari1": -0.3616,
+   "yari2": 0.1398,
+   "medyan_stop": 0.1361,
+   "komsu": "0/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e15-40_Y0.35_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 26,
+   "ort_net": -0.3987,
+   "ort_brut": -0.3867,
+   "w3": -0.3987,
+   "pl_w3": -0.1373,
+   "pl_net": -0.1365,
+   "fark_w3": -0.2614,
+   "ga95": [
+    -1.4507,
+    0.7732
+   ],
+   "ga95_ayblok": [
+    -2.106,
+    1.0735
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.7217,
+   "top1": 0.288,
+   "win": 0.154,
+   "yari1": -1.012,
+   "yari2": 0.2146,
+   "medyan_stop": 0.13,
+   "komsu": "0/3",
+   "aday": false
+  },
+  {
+   "ad": "1d_e15-40_Y0.35_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 158,
+   "ort_net": -0.1357,
+   "ort_brut": -0.1239,
+   "w3": -0.136,
+   "pl_w3": -0.1023,
+   "pl_net": -0.1019,
+   "fark_w3": -0.0337,
+   "ga95": [
+    -0.6162,
+    0.5447
+   ],
+   "ga95_ayblok": [
+    -0.658,
+    0.4474
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.2794,
+   "top1": 0.141,
+   "win": 0.222,
+   "yari1": -0.2358,
+   "yari2": -0.0405,
+   "medyan_stop": 0.1351,
+   "komsu": "0/3",
+   "aday": false
+  },
+  {
+   "ad": "1d_e20-50_Y0.15_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 418,
+   "ort_net": 0.1125,
+   "ort_brut": 0.125,
+   "w3": 0.1122,
+   "pl_w3": 0.0751,
+   "pl_net": 0.0755,
+   "fark_w3": 0.0371,
+   "ga95": [
+    -0.3059,
+    0.352
+   ],
+   "ga95_ayblok": [
+    -0.4571,
+    0.4938
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1258,
+   "top1": 0.257,
+   "win": 0.292,
+   "yari1": -0.0924,
+   "yari2": 0.3155,
+   "medyan_stop": 0.1286,
+   "komsu": "3/5",
+   "aday": false
+  },
+  {
+   "ad": "1d_e20-50_Y0.15_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 207,
+   "ort_net": 0.1831,
+   "ort_brut": 0.1954,
+   "w3": 0.183,
+   "pl_w3": 0.0806,
+   "pl_net": 0.0809,
+   "fark_w3": 0.1024,
+   "ga95": [
+    -0.3659,
+    0.5688
+   ],
+   "ga95_ayblok": [
+    -0.5184,
+    0.6785
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1352,
+   "top1": 0.159,
+   "win": 0.314,
+   "yari1": -0.2046,
+   "yari2": 0.5671,
+   "medyan_stop": 0.1313,
+   "komsu": "3/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e20-50_Y0.15_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 536,
+   "ort_net": 0.1288,
+   "ort_brut": 0.1414,
+   "w3": 0.1284,
+   "pl_w3": 0.0306,
+   "pl_net": 0.031,
+   "fark_w3": 0.0978,
+   "ga95": [
+    -0.1758,
+    0.3697
+   ],
+   "ga95_ayblok": [
+    -0.3332,
+    0.4721
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0578,
+   "top1": 0.219,
+   "win": 0.295,
+   "yari1": -0.0379,
+   "yari2": 0.2944,
+   "medyan_stop": 0.1276,
+   "komsu": "4/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e20-50_Y0.25_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 178,
+   "ort_net": -0.0623,
+   "ort_brut": -0.0503,
+   "w3": -0.0627,
+   "pl_w3": 0.0344,
+   "pl_net": 0.0347,
+   "fark_w3": -0.0971,
+   "ga95": [
+    -0.5812,
+    0.4818
+   ],
+   "ga95_ayblok": [
+    -0.7243,
+    0.3964
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.3341,
+   "top1": 0.275,
+   "win": 0.247,
+   "yari1": -0.4032,
+   "yari2": 0.2786,
+   "medyan_stop": 0.1311,
+   "komsu": "2/6",
+   "aday": false
+  },
+  {
+   "ad": "1d_e20-50_Y0.25_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 69,
+   "ort_net": -0.3429,
+   "ort_brut": -0.3309,
+   "w3": -0.3429,
+   "pl_w3": 0.0575,
+   "pl_net": 0.058,
+   "fark_w3": -0.4004,
+   "ga95": [
+    -1.2159,
+    0.3978
+   ],
+   "ga95_ayblok": [
+    -1.2742,
+    0.6128
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.7234,
+   "top1": 0.126,
+   "win": 0.174,
+   "yari1": -0.9424,
+   "yari2": 0.2395,
+   "medyan_stop": 0.1313,
+   "komsu": "1/5",
+   "aday": false
+  },
+  {
+   "ad": "1d_e20-50_Y0.25_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 252,
+   "ort_net": 0.0429,
+   "ort_brut": 0.0548,
+   "w3": 0.0423,
+   "pl_w3": 0.0132,
+   "pl_net": 0.0136,
+   "fark_w3": 0.0291,
+   "ga95": [
+    -0.4036,
+    0.5842
+   ],
+   "ga95_ayblok": [
+    -0.6301,
+    0.4285
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1829,
+   "top1": 0.562,
+   "win": 0.274,
+   "yari1": -0.2333,
+   "yari2": 0.319,
+   "medyan_stop": 0.1315,
+   "komsu": "2/5",
+   "aday": false
+  },
+  {
+   "ad": "1d_e20-50_Y0.35_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 78,
+   "ort_net": -0.1002,
+   "ort_brut": -0.0884,
+   "w3": -0.1005,
+   "pl_w3": -0.0967,
+   "pl_net": -0.0963,
+   "fark_w3": -0.0038,
+   "ga95": [
+    -0.7988,
+    0.752
+   ],
+   "ga95_ayblok": [
+    -1.0938,
+    0.6589
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.3534,
+   "top1": 0.385,
+   "win": 0.244,
+   "yari1": -0.2769,
+   "yari2": 0.0677,
+   "medyan_stop": 0.1351,
+   "komsu": "1/5",
+   "aday": false
+  },
+  {
+   "ad": "1d_e20-50_Y0.35_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 27,
+   "ort_net": -0.2738,
+   "ort_brut": -0.2618,
+   "w3": -0.2738,
+   "pl_w3": -0.0323,
+   "pl_net": -0.0318,
+   "fark_w3": -0.2415,
+   "ga95": [
+    -1.5408,
+    0.8861
+   ],
+   "ga95_ayblok": [
+    -3.1847,
+    1.1018
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.8318,
+   "top1": 0.403,
+   "win": 0.185,
+   "yari1": -1.0125,
+   "yari2": 0.4122,
+   "medyan_stop": 0.1312,
+   "komsu": "1/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e20-50_Y0.35_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 108,
+   "ort_net": -0.0573,
+   "ort_brut": -0.0456,
+   "w3": -0.0578,
+   "pl_w3": -0.1045,
+   "pl_net": -0.1041,
+   "fark_w3": 0.0467,
+   "ga95": [
+    -0.6542,
+    0.7627
+   ],
+   "ga95_ayblok": [
+    -0.8332,
+    0.6308
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.2484,
+   "top1": 0.488,
+   "win": 0.25,
+   "yari1": -0.108,
+   "yari2": -0.0084,
+   "medyan_stop": 0.1366,
+   "komsu": "1/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 379,
+   "ort_net": 0.1272,
+   "ort_brut": 0.1396,
+   "w3": 0.1269,
+   "pl_w3": 0.0354,
+   "pl_net": 0.0357,
+   "fark_w3": 0.0915,
+   "ga95": [
+    -0.2312,
+    0.4105
+   ],
+   "ga95_ayblok": [
+    -0.4131,
+    0.5525
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0776,
+   "top1": 0.189,
+   "win": 0.296,
+   "yari1": -0.1851,
+   "yari2": 0.4345,
+   "medyan_stop": 0.1288,
+   "komsu": "3/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 211,
+   "ort_net": 0.2003,
+   "ort_brut": 0.2124,
+   "w3": 0.2002,
+   "pl_w3": 0.0601,
+   "pl_net": 0.0604,
+   "fark_w3": 0.1401,
+   "ga95": [
+    -0.3007,
+    0.6562
+   ],
+   "ga95_ayblok": [
+    -0.5349,
+    0.7403
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0897,
+   "top1": 0.142,
+   "win": 0.313,
+   "yari1": -0.2609,
+   "yari2": 0.6485,
+   "medyan_stop": 0.1309,
+   "komsu": "2/3",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_ema20_f0",
+   "asama": "asama2",
+   "n": 514,
+   "ort_net": 0.0427,
+   "ort_brut": 0.0552,
+   "w3": -0.1245,
+   "pl_w3": -0.1531,
+   "pl_net": 0.2115,
+   "fark_w3": 0.0286,
+   "ga95": [
+    -0.1419,
+    0.1906
+   ],
+   "ga95_ayblok": [
+    -0.2509,
+    0.2608
+   ],
+   "ga95_havuz": [
+    -0.0568,
+    0.1198
+   ],
+   "liberal_alt": -0.0568,
+   "top1": 3.226,
+   "win": 0.222,
+   "yari1": -0.0667,
+   "yari2": 0.1505,
+   "medyan_stop": 0.1286,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_ema20_f1",
+   "asama": "asama2",
+   "n": 474,
+   "ort_net": 0.0251,
+   "ort_brut": 0.0375,
+   "w3": -0.1198,
+   "pl_w3": -0.1722,
+   "pl_net": 0.2543,
+   "fark_w3": 0.0524,
+   "ga95": [
+    -0.119,
+    0.2271
+   ],
+   "ga95_ayblok": [
+    -0.2274,
+    0.3163
+   ],
+   "ga95_havuz": [
+    -0.0398,
+    0.1496
+   ],
+   "liberal_alt": -0.0398,
+   "top1": 4.248,
+   "win": 0.226,
+   "yari1": -0.1438,
+   "yari2": 0.1912,
+   "medyan_stop": 0.1289,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_ema20_f2",
+   "asama": "asama2",
+   "n": 462,
+   "ort_net": 0.0268,
+   "ort_brut": 0.0392,
+   "w3": -0.1218,
+   "pl_w3": -0.1788,
+   "pl_net": 0.2832,
+   "fark_w3": 0.057,
+   "ga95": [
+    -0.1244,
+    0.2327
+   ],
+   "ga95_ayblok": [
+    -0.2377,
+    0.3092
+   ],
+   "ga95_havuz": [
+    -0.0389,
+    0.148
+   ],
+   "liberal_alt": -0.0389,
+   "top1": 4.085,
+   "win": 0.229,
+   "yari1": -0.1516,
+   "yari2": 0.1976,
+   "medyan_stop": 0.1288,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_ema50_f0",
+   "asama": "asama2",
+   "n": 463,
+   "ort_net": 0.334,
+   "ort_brut": 0.3464,
+   "w3": -0.2121,
+   "pl_w3": -0.2994,
+   "pl_net": 0.3434,
+   "fark_w3": 0.0873,
+   "ga95": [
+    -0.1352,
+    0.2929
+   ],
+   "ga95_ayblok": [
+    -0.1984,
+    0.3609
+   ],
+   "ga95_havuz": [
+    -0.0222,
+    0.196
+   ],
+   "liberal_alt": -0.0222,
+   "top1": 0.927,
+   "win": 0.24,
+   "yari1": 0.4263,
+   "yari2": 0.2436,
+   "medyan_stop": 0.1286,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_ema50_f1",
+   "asama": "asama2",
+   "n": 426,
+   "ort_net": 0.3011,
+   "ort_brut": 0.3134,
+   "w3": -0.2196,
+   "pl_w3": -0.3059,
+   "pl_net": 0.4013,
+   "fark_w3": 0.0863,
+   "ga95": [
+    -0.1731,
+    0.3001
+   ],
+   "ga95_ayblok": [
+    -0.2392,
+    0.3711
+   ],
+   "ga95_havuz": [
+    -0.0262,
+    0.2017
+   ],
+   "liberal_alt": -0.0262,
+   "top1": 1.104,
+   "win": 0.242,
+   "yari1": 0.3707,
+   "yari2": 0.2333,
+   "medyan_stop": 0.1289,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_ema50_f2",
+   "asama": "asama2",
+   "n": 414,
+   "ort_net": 0.2152,
+   "ort_brut": 0.2275,
+   "w3": -0.2257,
+   "pl_w3": -0.3198,
+   "pl_net": 0.4356,
+   "fark_w3": 0.0941,
+   "ga95": [
+    -0.1595,
+    0.334
+   ],
+   "ga95_ayblok": [
+    -0.2424,
+    0.4138
+   ],
+   "ga95_havuz": [
+    -0.0253,
+    0.2112
+   ],
+   "liberal_alt": -0.0253,
+   "top1": 1.303,
+   "win": 0.244,
+   "yari1": 0.1587,
+   "yari2": 0.2717,
+   "medyan_stop": 0.1288,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_tp2_f0",
+   "asama": "asama2",
+   "n": 475,
+   "ort_net": 0.0451,
+   "ort_brut": 0.0575,
+   "w3": 0.0451,
+   "pl_w3": -0.0006,
+   "pl_net": -0.0006,
+   "fark_w3": 0.0457,
+   "ga95": [
+    -0.1778,
+    0.261
+   ],
+   "ga95_ayblok": [
+    -0.3005,
+    0.341
+   ],
+   "ga95_havuz": [
+    -0.0865,
+    0.1811
+   ],
+   "liberal_alt": -0.0865,
+   "top1": 0.377,
+   "win": 0.354,
+   "yari1": -0.1703,
+   "yari2": 0.2542,
+   "medyan_stop": 0.1286,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_tp2_f1",
+   "asama": "asama2",
+   "n": 437,
+   "ort_net": 0.0261,
+   "ort_brut": 0.0384,
+   "w3": 0.0261,
+   "pl_w3": 0.0073,
+   "pl_net": 0.0073,
+   "fark_w3": 0.0188,
+   "ga95": [
+    -0.2397,
+    0.2538
+   ],
+   "ga95_ayblok": [
+    -0.3726,
+    0.3816
+   ],
+   "ga95_havuz": [
+    -0.1149,
+    0.1618
+   ],
+   "liberal_alt": -0.1149,
+   "top1": 0.71,
+   "win": 0.348,
+   "yari1": -0.2069,
+   "yari2": 0.2516,
+   "medyan_stop": 0.1289,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_tp2_f2",
+   "asama": "asama2",
+   "n": 426,
+   "ort_net": 0.0249,
+   "ort_brut": 0.0372,
+   "w3": 0.0249,
+   "pl_w3": 0.0197,
+   "pl_net": 0.0197,
+   "fark_w3": 0.0052,
+   "ga95": [
+    -0.2533,
+    0.2531
+   ],
+   "ga95_ayblok": [
+    -0.3675,
+    0.3569
+   ],
+   "ga95_havuz": [
+    -0.135,
+    0.1436
+   ],
+   "liberal_alt": -0.135,
+   "top1": 0.762,
+   "win": 0.347,
+   "yari1": -0.2377,
+   "yari2": 0.2851,
+   "medyan_stop": 0.1288,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 459,
+   "ort_net": 0.1365,
+   "ort_brut": 0.149,
+   "w3": 0.1361,
+   "pl_w3": 0.0296,
+   "pl_net": 0.03,
+   "fark_w3": 0.1065,
+   "ga95": [
+    -0.1648,
+    0.3646
+   ],
+   "ga95_ayblok": [
+    -0.3606,
+    0.5309
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0501,
+   "top1": 0.194,
+   "win": 0.298,
+   "yari1": -0.1022,
+   "yari2": 0.3743,
+   "medyan_stop": 0.1286,
+   "komsu": "3/3",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_tp3_f1",
+   "asama": "asama2",
+   "n": 423,
+   "ort_net": 0.1184,
+   "ort_brut": 0.1308,
+   "w3": 0.1179,
+   "pl_w3": 0.0564,
+   "pl_net": 0.0568,
+   "fark_w3": 0.0615,
+   "ga95": [
+    -0.2692,
+    0.3702
+   ],
+   "ga95_ayblok": [
+    -0.4441,
+    0.5037
+   ],
+   "ga95_havuz": [
+    -0.1054,
+    0.2375
+   ],
+   "liberal_alt": -0.1054,
+   "top1": 0.242,
+   "win": 0.293,
+   "yari1": -0.1188,
+   "yari2": 0.3546,
+   "medyan_stop": 0.1289,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.15_P7_tp3_f2",
+   "asama": "asama2",
+   "n": 412,
+   "ort_net": 0.1198,
+   "ort_brut": 0.1321,
+   "w3": 0.1192,
+   "pl_w3": 0.0602,
+   "pl_net": 0.0606,
+   "fark_w3": 0.059,
+   "ga95": [
+    -0.2707,
+    0.3689
+   ],
+   "ga95_ayblok": [
+    -0.4361,
+    0.5323
+   ],
+   "ga95_havuz": [
+    -0.1165,
+    0.2236
+   ],
+   "liberal_alt": -0.1165,
+   "top1": 0.246,
+   "win": 0.294,
+   "yari1": -0.1228,
+   "yari2": 0.3553,
+   "medyan_stop": 0.1288,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.25_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 156,
+   "ort_net": -0.0046,
+   "ort_brut": 0.0073,
+   "w3": -0.005,
+   "pl_w3": 0.017,
+   "pl_net": 0.0175,
+   "fark_w3": -0.022,
+   "ga95": [
+    -0.4932,
+    0.6154
+   ],
+   "ga95_ayblok": [
+    -0.6002,
+    0.5651
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.2809,
+   "top1": 4.283,
+   "win": 0.263,
+   "yari1": -0.5718,
+   "yari2": 0.5627,
+   "medyan_stop": 0.1303,
+   "komsu": "3/5",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.25_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 74,
+   "ort_net": -0.1095,
+   "ort_brut": -0.0978,
+   "w3": -0.1096,
+   "pl_w3": -0.0327,
+   "pl_net": -0.0323,
+   "fark_w3": -0.0769,
+   "ga95": [
+    -0.8986,
+    0.7567
+   ],
+   "ga95_ayblok": [
+    -0.9377,
+    0.8769
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.4361,
+   "top1": 0.371,
+   "win": 0.23,
+   "yari1": -0.8394,
+   "yari2": 0.6203,
+   "medyan_stop": 0.1333,
+   "komsu": "2/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.25_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 204,
+   "ort_net": 0.0378,
+   "ort_brut": 0.0496,
+   "w3": 0.0372,
+   "pl_w3": -0.0061,
+   "pl_net": -0.0057,
+   "fark_w3": 0.0433,
+   "ga95": [
+    -0.393,
+    0.615
+   ],
+   "ga95_ayblok": [
+    -0.605,
+    0.5687
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1857,
+   "top1": 0.787,
+   "win": 0.275,
+   "yari1": -0.3617,
+   "yari2": 0.4373,
+   "medyan_stop": 0.132,
+   "komsu": "2/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.35_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 66,
+   "ort_net": 0.0061,
+   "ort_brut": 0.0179,
+   "w3": 0.0058,
+   "pl_w3": -0.1173,
+   "pl_net": -0.1168,
+   "fark_w3": 0.1231,
+   "ga95": [
+    -0.6183,
+    0.86
+   ],
+   "ga95_ayblok": [
+    -0.8876,
+    0.806
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.2816,
+   "top1": 7.523,
+   "win": 0.273,
+   "yari1": -0.4957,
+   "yari2": 0.4505,
+   "medyan_stop": 0.1324,
+   "komsu": "1/4",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.35_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 31,
+   "ort_net": 0.1676,
+   "ort_brut": 0.1793,
+   "w3": 0.1675,
+   "pl_w3": -0.0078,
+   "pl_net": -0.0071,
+   "fark_w3": 0.1753,
+   "ga95": [
+    -1.0224,
+    1.2517
+   ],
+   "ga95_ayblok": [
+    -1.559,
+    1.587
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.4484,
+   "top1": 0.578,
+   "win": 0.29,
+   "yari1": -0.7443,
+   "yari2": 1.0226,
+   "medyan_stop": 0.1347,
+   "komsu": "1/3",
+   "aday": false
+  },
+  {
+   "ad": "1d_e25-60_Y0.35_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 84,
+   "ort_net": -0.0211,
+   "ort_brut": -0.0094,
+   "w3": -0.0217,
+   "pl_w3": -0.1294,
+   "pl_net": -0.1289,
+   "fark_w3": 0.1077,
+   "ga95": [
+    -0.6254,
+    0.8259
+   ],
+   "ga95_ayblok": [
+    -0.8124,
+    0.7606
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.2397,
+   "top1": 1.708,
+   "win": 0.262,
+   "yari1": -0.4398,
+   "yari2": 0.3977,
+   "medyan_stop": 0.1366,
+   "komsu": "2/3",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.15_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 356,
+   "ort_net": -0.0102,
+   "ort_brut": 0.0059,
+   "w3": -0.0102,
+   "pl_w3": -0.0707,
+   "pl_net": -0.0706,
+   "fark_w3": 0.0605,
+   "ga95": [
+    -0.3364,
+    0.4414
+   ],
+   "ga95_ayblok": [
+    -0.3236,
+    0.484
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0918,
+   "top1": 2.488,
+   "win": 0.32,
+   "yari1": 0.4683,
+   "yari2": -0.4886,
+   "medyan_stop": 0.1066,
+   "komsu": "1/5",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.15_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 235,
+   "ort_net": -0.0104,
+   "ort_brut": 0.0037,
+   "w3": -0.0104,
+   "pl_w3": -0.0708,
+   "pl_net": -0.0707,
+   "fark_w3": 0.0604,
+   "ga95": [
+    -0.3553,
+    0.5298
+   ],
+   "ga95_ayblok": [
+    -0.3717,
+    0.6574
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1219,
+   "top1": 2.462,
+   "win": 0.336,
+   "yari1": 0.5225,
+   "yari2": -0.5387,
+   "medyan_stop": 0.1181,
+   "komsu": "3/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.15_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 378,
+   "ort_net": -0.0133,
+   "ort_brut": 0.0038,
+   "w3": -0.0134,
+   "pl_w3": -0.0456,
+   "pl_net": -0.0454,
+   "fark_w3": 0.0322,
+   "ga95": [
+    -0.3569,
+    0.3978
+   ],
+   "ga95_ayblok": [
+    -0.3726,
+    0.405
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1247,
+   "top1": 1.791,
+   "win": 0.304,
+   "yari1": 0.4834,
+   "yari2": -0.51,
+   "medyan_stop": 0.1014,
+   "komsu": "2/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.1_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 636,
+   "ort_net": -0.0381,
+   "ort_brut": -0.0199,
+   "w3": -0.0383,
+   "pl_w3": -0.0871,
+   "pl_net": -0.087,
+   "fark_w3": 0.0488,
+   "ga95": [
+    -0.1692,
+    0.2764
+   ],
+   "ga95_ayblok": [
+    -0.1621,
+    0.2466
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.068,
+   "top1": 0.747,
+   "win": 0.311,
+   "yari1": 0.3791,
+   "yari2": -0.4527,
+   "medyan_stop": 0.0954,
+   "komsu": "1/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.1_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 478,
+   "ort_net": 0.0157,
+   "ort_brut": 0.0316,
+   "w3": 0.0157,
+   "pl_w3": -0.063,
+   "pl_net": -0.0629,
+   "fark_w3": 0.0787,
+   "ga95": [
+    -0.1911,
+    0.3718
+   ],
+   "ga95_ayblok": [
+    -0.2299,
+    0.4425
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0584,
+   "top1": 1.597,
+   "win": 0.343,
+   "yari1": 0.5148,
+   "yari2": -0.4629,
+   "medyan_stop": 0.1082,
+   "komsu": "0/3",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.1_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 682,
+   "ort_net": -0.0673,
+   "ort_brut": -0.0481,
+   "w3": -0.0676,
+   "pl_w3": -0.0858,
+   "pl_net": -0.0857,
+   "fark_w3": 0.0182,
+   "ga95": [
+    -0.1946,
+    0.2192
+   ],
+   "ga95_ayblok": [
+    -0.1776,
+    0.2239
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0949,
+   "top1": 0.396,
+   "win": 0.295,
+   "yari1": 0.3579,
+   "yari2": -0.4925,
+   "medyan_stop": 0.0906,
+   "komsu": "0/3",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_ema20_f0",
+   "asama": "asama2",
+   "n": 194,
+   "ort_net": 0.0543,
+   "ort_brut": 0.0696,
+   "w3": -0.1227,
+   "pl_w3": -0.0952,
+   "pl_net": -0.0317,
+   "fark_w3": -0.0275,
+   "ga95": [
+    -0.2034,
+    0.1424
+   ],
+   "ga95_ayblok": [
+    -0.242,
+    0.12
+   ],
+   "ga95_havuz": [
+    -0.1276,
+    0.0729
+   ],
+   "liberal_alt": -0.1276,
+   "top1": 2.285,
+   "win": 0.196,
+   "yari1": 0.2783,
+   "yari2": -0.1696,
+   "medyan_stop": 0.1139,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_ema20_f1",
+   "asama": "asama2",
+   "n": 162,
+   "ort_net": 0.1011,
+   "ort_brut": 0.1162,
+   "w3": -0.1109,
+   "pl_w3": -0.0642,
+   "pl_net": 0.018,
+   "fark_w3": -0.0467,
+   "ga95": [
+    -0.289,
+    0.1622
+   ],
+   "ga95_ayblok": [
+    -0.3473,
+    0.1474
+   ],
+   "ga95_havuz": [
+    -0.1559,
+    0.0789
+   ],
+   "liberal_alt": -0.1559,
+   "top1": 1.47,
+   "win": 0.21,
+   "yari1": 0.3494,
+   "yari2": -0.1472,
+   "medyan_stop": 0.1152,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_ema20_f2",
+   "asama": "asama2",
+   "n": 138,
+   "ort_net": 0.1384,
+   "ort_brut": 0.1532,
+   "w3": -0.1104,
+   "pl_w3": -0.0626,
+   "pl_net": 0.0217,
+   "fark_w3": -0.0478,
+   "ga95": [
+    -0.3137,
+    0.1929
+   ],
+   "ga95_ayblok": [
+    -0.376,
+    0.1792
+   ],
+   "ga95_havuz": [
+    -0.1714,
+    0.0953
+   ],
+   "liberal_alt": -0.1714,
+   "top1": 1.26,
+   "win": 0.203,
+   "yari1": 0.4686,
+   "yari2": -0.1731,
+   "medyan_stop": 0.1162,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_ema50_f0",
+   "asama": "asama2",
+   "n": 179,
+   "ort_net": 0.1484,
+   "ort_brut": 0.1638,
+   "w3": -0.1057,
+   "pl_w3": -0.1447,
+   "pl_net": -0.0009,
+   "fark_w3": 0.039,
+   "ga95": [
+    -0.2949,
+    0.3348
+   ],
+   "ga95_ayblok": [
+    -0.271,
+    0.3502
+   ],
+   "ga95_havuz": [
+    -0.1161,
+    0.2137
+   ],
+   "liberal_alt": -0.1161,
+   "top1": 0.907,
+   "win": 0.251,
+   "yari1": 0.7212,
+   "yari2": -0.3934,
+   "medyan_stop": 0.1139,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_ema50_f1",
+   "asama": "asama2",
+   "n": 148,
+   "ort_net": 0.2399,
+   "ort_brut": 0.2553,
+   "w3": -0.0617,
+   "pl_w3": -0.0789,
+   "pl_net": 0.1101,
+   "fark_w3": 0.0172,
+   "ga95": [
+    -0.4323,
+    0.4586
+   ],
+   "ga95_ayblok": [
+    -0.3535,
+    0.457
+   ],
+   "ga95_havuz": [
+    -0.1677,
+    0.2101
+   ],
+   "liberal_alt": -0.1677,
+   "top1": 0.678,
+   "win": 0.277,
+   "yari1": 0.8715,
+   "yari2": -0.3585,
+   "medyan_stop": 0.1152,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_ema50_f2",
+   "asama": "asama2",
+   "n": 125,
+   "ort_net": 0.3527,
+   "ort_brut": 0.3677,
+   "w3": -0.0044,
+   "pl_w3": -0.0373,
+   "pl_net": 0.174,
+   "fark_w3": 0.0329,
+   "ga95": [
+    -0.5188,
+    0.5597
+   ],
+   "ga95_ayblok": [
+    -0.4259,
+    0.5911
+   ],
+   "ga95_havuz": [
+    -0.1719,
+    0.2567
+   ],
+   "liberal_alt": -0.1719,
+   "top1": 0.546,
+   "win": 0.296,
+   "yari1": 1.1559,
+   "yari2": -0.3654,
+   "medyan_stop": 0.1162,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_tp2_f0",
+   "asama": "asama2",
+   "n": 188,
+   "ort_net": 0.0247,
+   "ort_brut": 0.0401,
+   "w3": 0.0247,
+   "pl_w3": -0.0651,
+   "pl_net": -0.0651,
+   "fark_w3": 0.0898,
+   "ga95": [
+    -0.3506,
+    0.5204
+   ],
+   "ga95_ayblok": [
+    -0.4245,
+    0.6255
+   ],
+   "ga95_havuz": [
+    -0.1037,
+    0.275
+   ],
+   "liberal_alt": -0.1037,
+   "top1": 0.433,
+   "win": 0.383,
+   "yari1": 0.5554,
+   "yari2": -0.506,
+   "medyan_stop": 0.1139,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_tp2_f1",
+   "asama": "asama2",
+   "n": 156,
+   "ort_net": 0.1284,
+   "ort_brut": 0.1437,
+   "w3": 0.1284,
+   "pl_w3": 0.0033,
+   "pl_net": 0.0033,
+   "fark_w3": 0.1251,
+   "ga95": [
+    -0.4437,
+    0.706
+   ],
+   "ga95_ayblok": [
+    -0.4546,
+    0.7353
+   ],
+   "ga95_havuz": [
+    -0.1071,
+    0.332
+   ],
+   "liberal_alt": -0.1071,
+   "top1": 0.1,
+   "win": 0.417,
+   "yari1": 0.7118,
+   "yari2": -0.4258,
+   "medyan_stop": 0.1152,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_tp2_f2",
+   "asama": "asama2",
+   "n": 133,
+   "ort_net": 0.2321,
+   "ort_brut": 0.2471,
+   "w3": 0.2321,
+   "pl_w3": 0.0556,
+   "pl_net": 0.0556,
+   "fark_w3": 0.1765,
+   "ga95": [
+    -0.4741,
+    0.853
+   ],
+   "ga95_ayblok": [
+    -0.4926,
+    0.882
+   ],
+   "ga95_havuz": [
+    -0.0757,
+    0.4026
+   ],
+   "liberal_alt": -0.0757,
+   "top1": 0.065,
+   "win": 0.459,
+   "yari1": 0.9742,
+   "yari2": -0.4358,
+   "medyan_stop": 0.1162,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 182,
+   "ort_net": 0.1056,
+   "ort_brut": 0.121,
+   "w3": 0.1055,
+   "pl_w3": -0.0796,
+   "pl_net": -0.0794,
+   "fark_w3": 0.1851,
+   "ga95": [
+    -0.3677,
+    0.7155
+   ],
+   "ga95_ayblok": [
+    -0.419,
+    0.7812
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0438,
+   "top1": 0.157,
+   "win": 0.357,
+   "yari1": 0.7107,
+   "yari2": -0.4735,
+   "medyan_stop": 0.1139,
+   "komsu": "3/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_tp3_f1",
+   "asama": "asama2",
+   "n": 150,
+   "ort_net": 0.2043,
+   "ort_brut": 0.2196,
+   "w3": 0.2041,
+   "pl_w3": 0.0036,
+   "pl_net": 0.0037,
+   "fark_w3": 0.2005,
+   "ga95": [
+    -0.524,
+    0.8774
+   ],
+   "ga95_ayblok": [
+    -0.4704,
+    0.8646
+   ],
+   "ga95_havuz": [
+    -0.0574,
+    0.4614
+   ],
+   "liberal_alt": -0.0574,
+   "top1": 0.099,
+   "win": 0.387,
+   "yari1": 0.9593,
+   "yari2": -0.5115,
+   "medyan_stop": 0.1152,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P10_tp3_f2",
+   "asama": "asama2",
+   "n": 127,
+   "ort_net": 0.3279,
+   "ort_brut": 0.3429,
+   "w3": 0.3278,
+   "pl_w3": 0.0744,
+   "pl_net": 0.0746,
+   "fark_w3": 0.2534,
+   "ga95": [
+    -0.6788,
+    1.0875
+   ],
+   "ga95_ayblok": [
+    -0.5632,
+    1.2176
+   ],
+   "ga95_havuz": [
+    -0.0509,
+    0.5429
+   ],
+   "liberal_alt": -0.0509,
+   "top1": 0.072,
+   "win": 0.425,
+   "yari1": 1.3243,
+   "yari2": -0.5644,
+   "medyan_stop": 0.1162,
+   "komsu": "0/0",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 98,
+   "ort_net": 0.0256,
+   "ort_brut": 0.039,
+   "w3": 0.0256,
+   "pl_w3": -0.1364,
+   "pl_net": -0.1363,
+   "fark_w3": 0.162,
+   "ga95": [
+    -0.558,
+    0.8231
+   ],
+   "ga95_ayblok": [
+    -0.5154,
+    1.0079
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1306,
+   "top1": 1.195,
+   "win": 0.337,
+   "yari1": 0.6162,
+   "yari2": -0.565,
+   "medyan_stop": 0.12,
+   "komsu": "2/3",
+   "aday": false
+  },
+  {
+   "ad": "4h_e15-40_Y0.2_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 206,
+   "ort_net": 0.0405,
+   "ort_brut": 0.0564,
+   "w3": 0.0403,
+   "pl_w3": -0.092,
+   "pl_net": -0.0919,
+   "fark_w3": 0.1323,
+   "ga95": [
+    -0.3639,
+    0.6243
+   ],
+   "ga95_ayblok": [
+    -0.4209,
+    0.6817
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0706,
+   "top1": 0.721,
+   "win": 0.33,
+   "yari1": 0.5528,
+   "yari2": -0.462,
+   "medyan_stop": 0.1071,
+   "komsu": "2/3",
+   "aday": false
+  },
+  {
+   "ad": "4h_e20-50_Y0.15_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 259,
+   "ort_net": -0.0092,
+   "ort_brut": 0.0066,
+   "w3": -0.0097,
+   "pl_w3": -0.0995,
+   "pl_net": -0.0993,
+   "fark_w3": 0.0898,
+   "ga95": [
+    -0.329,
+    0.5458
+   ],
+   "ga95_ayblok": [
+    -0.3752,
+    0.5871
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0867,
+   "top1": 2.58,
+   "win": 0.309,
+   "yari1": 0.6323,
+   "yari2": -0.5804,
+   "medyan_stop": 0.111,
+   "komsu": "3/6",
+   "aday": false
+  },
+  {
+   "ad": "4h_e20-50_Y0.15_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 183,
+   "ort_net": 0.0455,
+   "ort_brut": 0.0595,
+   "w3": 0.0452,
+   "pl_w3": -0.0803,
+   "pl_net": -0.0802,
+   "fark_w3": 0.1255,
+   "ga95": [
+    -0.4021,
+    0.6171
+   ],
+   "ga95_ayblok": [
+    -0.4227,
+    0.7725
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0935,
+   "top1": 0.366,
+   "win": 0.344,
+   "yari1": 0.6859,
+   "yari2": -0.5743,
+   "medyan_stop": 0.1188,
+   "komsu": "1/5",
+   "aday": false
+  },
+  {
+   "ad": "4h_e20-50_Y0.15_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 272,
+   "ort_net": 0.0305,
+   "ort_brut": 0.0467,
+   "w3": 0.03,
+   "pl_w3": -0.0764,
+   "pl_net": -0.0763,
+   "fark_w3": 0.1064,
+   "ga95": [
+    -0.3211,
+    0.5434
+   ],
+   "ga95_ayblok": [
+    -0.3802,
+    0.5951
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0777,
+   "top1": 0.741,
+   "win": 0.316,
+   "yari1": 0.6306,
+   "yari2": -0.5354,
+   "medyan_stop": 0.1058,
+   "komsu": "1/5",
+   "aday": false
+  },
+  {
+   "ad": "4h_e20-50_Y0.1_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 497,
+   "ort_net": -0.0769,
+   "ort_brut": -0.0587,
+   "w3": -0.0773,
+   "pl_w3": -0.0629,
+   "pl_net": -0.0628,
+   "fark_w3": -0.0144,
+   "ga95": [
+    -0.3204,
+    0.2822
+   ],
+   "ga95_ayblok": [
+    -0.3081,
+    0.3124
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1447,
+   "top1": 0.32,
+   "win": 0.284,
+   "yari1": 0.3777,
+   "yari2": -0.5261,
+   "medyan_stop": 0.0974,
+   "komsu": "0/5",
+   "aday": false
+  },
+  {
+   "ad": "4h_e20-50_Y0.1_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 393,
+   "ort_net": -0.0183,
+   "ort_brut": -0.002,
+   "w3": -0.0184,
+   "pl_w3": -0.0697,
+   "pl_net": -0.0696,
+   "fark_w3": 0.0513,
+   "ga95": [
+    -0.3085,
+    0.4008
+   ],
+   "ga95_ayblok": [
+    -0.2892,
+    0.5078
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0966,
+   "top1": 1.258,
+   "win": 0.318,
+   "yari1": 0.472,
+   "yari2": -0.4915,
+   "medyan_stop": 0.1077,
+   "komsu": "2/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e20-50_Y0.1_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 524,
+   "ort_net": -0.0766,
+   "ort_brut": -0.058,
+   "w3": -0.0771,
+   "pl_w3": -0.0558,
+   "pl_net": -0.0556,
+   "fark_w3": -0.0213,
+   "ga95": [
+    -0.3344,
+    0.2686
+   ],
+   "ga95_ayblok": [
+    -0.3141,
+    0.2654
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1536,
+   "top1": 0.379,
+   "win": 0.282,
+   "yari1": 0.3731,
+   "yari2": -0.5129,
+   "medyan_stop": 0.0953,
+   "komsu": "1/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e20-50_Y0.2_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 137,
+   "ort_net": 0.0745,
+   "ort_brut": 0.0892,
+   "w3": 0.0744,
+   "pl_w3": -0.1003,
+   "pl_net": -0.1001,
+   "fark_w3": 0.1747,
+   "ga95": [
+    -0.4835,
+    0.7563
+   ],
+   "ga95_ayblok": [
+    -0.4328,
+    0.8406
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.0822,
+   "top1": 0.296,
+   "win": 0.343,
+   "yari1": 0.6138,
+   "yari2": -0.4417,
+   "medyan_stop": 0.1165,
+   "komsu": "3/5",
+   "aday": false
+  },
+  {
+   "ad": "4h_e20-50_Y0.2_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 83,
+   "ort_net": 0.0628,
+   "ort_brut": 0.0761,
+   "w3": 0.0628,
+   "pl_w3": -0.0891,
+   "pl_net": -0.089,
+   "fark_w3": 0.1519,
+   "ga95": [
+    -0.6622,
+    0.8385
+   ],
+   "ga95_ayblok": [
+    -0.5602,
+    0.9584
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1622,
+   "top1": 0.574,
+   "win": 0.349,
+   "yari1": 0.64,
+   "yari2": -0.5007,
+   "medyan_stop": 0.1217,
+   "komsu": "3/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e20-50_Y0.2_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 148,
+   "ort_net": 0.0619,
+   "ort_brut": 0.0771,
+   "w3": 0.0618,
+   "pl_w3": -0.0913,
+   "pl_net": -0.0912,
+   "fark_w3": 0.1531,
+   "ga95": [
+    -0.4432,
+    0.7031
+   ],
+   "ga95_ayblok": [
+    -0.3871,
+    0.7957
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1012,
+   "top1": 0.33,
+   "win": 0.331,
+   "yari1": 0.5346,
+   "yari2": -0.4107,
+   "medyan_stop": 0.1121,
+   "komsu": "3/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e25-60_Y0.15_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 203,
+   "ort_net": -0.11,
+   "ort_brut": -0.0942,
+   "w3": -0.1107,
+   "pl_w3": -0.1202,
+   "pl_net": -0.1201,
+   "fark_w3": 0.0095,
+   "ga95": [
+    -0.4866,
+    0.5028
+   ],
+   "ga95_ayblok": [
+    -0.5202,
+    0.6947
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1832,
+   "top1": 0.274,
+   "win": 0.291,
+   "yari1": 0.5985,
+   "yari2": -0.7846,
+   "medyan_stop": 0.1101,
+   "komsu": "0/5",
+   "aday": false
+  },
+  {
+   "ad": "4h_e25-60_Y0.15_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 151,
+   "ort_net": -0.056,
+   "ort_brut": -0.0417,
+   "w3": -0.0563,
+   "pl_w3": -0.1053,
+   "pl_net": -0.1052,
+   "fark_w3": 0.049,
+   "ga95": [
+    -0.4937,
+    0.5638
+   ],
+   "ga95_ayblok": [
+    -0.5509,
+    0.7119
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1766,
+   "top1": 0.36,
+   "win": 0.318,
+   "yari1": 0.6608,
+   "yari2": -0.7268,
+   "medyan_stop": 0.1181,
+   "komsu": "1/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e25-60_Y0.15_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 212,
+   "ort_net": -0.0824,
+   "ort_brut": -0.0665,
+   "w3": -0.0831,
+   "pl_w3": -0.1109,
+   "pl_net": -0.1108,
+   "fark_w3": 0.0278,
+   "ga95": [
+    -0.4576,
+    0.5273
+   ],
+   "ga95_ayblok": [
+    -0.519,
+    0.6842
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.179,
+   "top1": 0.351,
+   "win": 0.297,
+   "yari1": 0.6375,
+   "yari2": -0.7889,
+   "medyan_stop": 0.1061,
+   "komsu": "1/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e25-60_Y0.1_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 385,
+   "ort_net": -0.0809,
+   "ort_brut": -0.0629,
+   "w3": -0.0814,
+   "pl_w3": -0.0877,
+   "pl_net": -0.0875,
+   "fark_w3": 0.0063,
+   "ga95": [
+    -0.3593,
+    0.3565
+   ],
+   "ga95_ayblok": [
+    -0.3161,
+    0.4014
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1397,
+   "top1": 0.295,
+   "win": 0.291,
+   "yari1": 0.4525,
+   "yari2": -0.6115,
+   "medyan_stop": 0.0978,
+   "komsu": "0/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e25-60_Y0.1_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 321,
+   "ort_net": -0.0403,
+   "ort_brut": -0.0239,
+   "w3": -0.0405,
+   "pl_w3": -0.0697,
+   "pl_net": -0.0696,
+   "fark_w3": 0.0292,
+   "ga95": [
+    -0.3474,
+    0.3867
+   ],
+   "ga95_ayblok": [
+    -0.3157,
+    0.4532
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1417,
+   "top1": 0.698,
+   "win": 0.308,
+   "yari1": 0.4738,
+   "yari2": -0.5513,
+   "medyan_stop": 0.1067,
+   "komsu": "0/3",
+   "aday": false
+  },
+  {
+   "ad": "4h_e25-60_Y0.1_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 401,
+   "ort_net": -0.0676,
+   "ort_brut": -0.0494,
+   "w3": -0.0682,
+   "pl_w3": -0.0857,
+   "pl_net": -0.0855,
+   "fark_w3": 0.0175,
+   "ga95": [
+    -0.3251,
+    0.339
+   ],
+   "ga95_ayblok": [
+    -0.2958,
+    0.3581
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.1331,
+   "top1": 0.451,
+   "win": 0.294,
+   "yari1": 0.4714,
+   "yari2": -0.5987,
+   "medyan_stop": 0.0963,
+   "komsu": "0/3",
+   "aday": false
+  },
+  {
+   "ad": "4h_e25-60_Y0.2_P10_tp3_f0",
+   "asama": "asama1",
+   "n": 99,
+   "ort_net": -0.0933,
+   "ort_brut": -0.0785,
+   "w3": -0.0935,
+   "pl_w3": -0.0969,
+   "pl_net": -0.0967,
+   "fark_w3": 0.0034,
+   "ga95": [
+    -0.7123,
+    0.6378
+   ],
+   "ga95_ayblok": [
+    -0.6343,
+    0.7558
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.2777,
+   "top1": 0.327,
+   "win": 0.303,
+   "yari1": 0.6188,
+   "yari2": -0.737,
+   "medyan_stop": 0.1171,
+   "komsu": "1/4",
+   "aday": false
+  },
+  {
+   "ad": "4h_e25-60_Y0.2_P15_tp3_f0",
+   "asama": "asama1",
+   "n": 64,
+   "ort_net": -0.1797,
+   "ort_brut": -0.1657,
+   "w3": -0.1797,
+   "pl_w3": -0.0813,
+   "pl_net": -0.0811,
+   "fark_w3": -0.0984,
+   "ga95": [
+    -0.9154,
+    0.6206
+   ],
+   "ga95_ayblok": [
+    -0.8548,
+    0.6671
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.4087,
+   "top1": 0.259,
+   "win": 0.266,
+   "yari1": 0.2812,
+   "yari2": -0.6406,
+   "medyan_stop": 0.1215,
+   "komsu": "1/3",
+   "aday": false
+  },
+  {
+   "ad": "4h_e25-60_Y0.2_P7_tp3_f0",
+   "asama": "asama1",
+   "n": 105,
+   "ort_net": -0.12,
+   "ort_brut": -0.105,
+   "w3": -0.1203,
+   "pl_w3": -0.0973,
+   "pl_net": -0.0971,
+   "fark_w3": -0.023,
+   "ga95": [
+    -0.7181,
+    0.5847
+   ],
+   "ga95_ayblok": [
+    -0.6199,
+    0.7714
+   ],
+   "ga95_havuz": null,
+   "liberal_alt": -0.2782,
+   "top1": 0.24,
+   "win": 0.295,
+   "yari1": 0.5643,
+   "yari2": -0.7421,
+   "medyan_stop": 0.1114,
+   "komsu": "1/3",
+   "aday": false
+  }
+ ],
+ "dosyalar": {
+  "kod": "araclar/lab/ema_geri.py",
+  "ham": "araclar/lab/_ema_geri_ham.json",
+  "defter": "araclar/lab/defter.jsonl (aile=ema_geri)"
+ }
+}
