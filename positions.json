@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.3862587069478534,
+  "unrealized_r": 2.2923604073162425,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -11571,7 +11571,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-13T10:17:49.863491+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-13T09:59:59.999000+00:00",
@@ -11587,7 +11587,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-13T09:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-13T14:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 77091.88,
   "zone_high": 77180.0,
@@ -11612,7 +11612,8 @@
    "coin_1d_ema99_dist": 0.0895
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 77135.9"
  },
  {
   "symbol": "TRUMPUSDT",
