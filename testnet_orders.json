@@ -3517,5 +3517,72 @@
   },
   "pozisyon": 0.0,
   "kapanis": null
+ },
+ {
+  "zaman": "2026-09-13T13:42:59",
+  "sembol": "DASHUSDT",
+  "tur": "DENETIM",
+  "sebep": "sahipsiz pozisyon",
+  "basarili": true,
+  "pozisyon": 8.93,
+  "trend_payi": 0.0,
+  "iptal": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  },
+  "kapanis": {
+   "kapat": 8.93,
+   "trend_payi": 0.0,
+   "ok": true,
+   "yanit": [
+    {
+     "orderId": 1304896159,
+     "symbol": "DASHUSDT",
+     "status": "NEW",
+     "clientOrderId": "9S49kTtW6nSpL7rzJvhB2n",
+     "price": "0.00",
+     "origQty": "8.930",
+     "executedQty": "0.000",
+     "cumQty": "0.000",
+     "timeInForce": "GTC",
+     "type": "MARKET",
+     "reduceOnly": true,
+     "closePosition": false,
+     "side": "SELL",
+     "positionSide": "BOTH",
+     "stopPrice": "0.00",
+     "workingType": "CONTRACT_PRICE",
+     "priceProtect": false,
+     "origType": "MARKET",
+     "priceMatch": "NONE",
+     "selfTradePreventionMode": "EXPIRE_MAKER",
+     "goodTillDate": 0,
+     "updateTime": 1789306979324
+    }
+   ]
+  }
+ },
+ {
+  "zaman": "2026-09-13T13:42:59",
+  "sembol": "UNIUSDT",
+  "tur": "DENETIM",
+  "sebep": "bayat emir",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  }
  }
 ]
