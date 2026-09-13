@@ -92,3 +92,13 @@ Protokol ayni: TRAIN <2025 (4h icin <2025-07) / VALID 2025 tek sefer / holdout k
   3 adayin 3'u olcutu gecemedi (hep acik -%1.2, esikli +%0.2, top10 -%1.0); getiri 2021 %20 -> 2023-25 nakit faizinin
   altinda (rejim bitmis). Funding sinyali 12 testte Bonferroni sonrasi anlamsiz; trend overlay'i plasebodan farksiz.
 Karar: hicbiri kagit/testnete eklenmez. Canli sistem degismez (trend cekirdegi + ICT gozlem).
+
+## 2026-09-13 ICT kazanan islem ozellik madenciligi -> RED (ict_ozellik)
+Soru: kazanan ICT islemlerinin giris oncesi ozellikleri kaybedenlerden ayrilip filtreyle duzeltilebilir mi?
+TRAIN (2024-09..2025-06, 98 coin, 5 dilim): ICT 1010 islem, winsorize net -0.465R; ayni barlarda rastgele yon -0.32R.
+30 ozellik, lojistik + agac + basit kurallar, 4 zaman kati, 20+20 plasebo seed, 100 permutasyon: 0/10 filtre aday.
+En iyi filtre kazanci +0.023R (plasebo %95: +0.063 / +0.150; permutasyon p=0.38). Tum TRAIN'e geriye bakinca her
+ozellikte "iyi dilim" cikiyor, kat disinda hicbiri 4 katin 2'sinde bile pozitif degil. Kazananlarin "ortak ozellikleri"
+(d <= 0.25) plasebo kazananlarinda da ayni buyuklukte. KARAR: ICT ailesi kapali; demo hesap sadece trend,
+ICT arka planda bilgi amacli.
+
