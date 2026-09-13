@@ -85,15 +85,16 @@ class TrendTestnetTest(unittest.TestCase):
         self.tmp = tempfile.mkdtemp()
         self.kayit_dosya = os.path.join(self.tmp, "testnet_orders.json")
         self._eski = (tn.requests, tt.requests, tt.KEY, tt.SECRET, tn.KEY, tn.SECRET,
-                      tt.STATE, tn.TABAN)
+                      tt.STATE, tn.TABAN, tn.POZ_DOSYA)
         tt.KEY = tn.KEY = "sahte_anahtar"
         tt.SECRET = tn.SECRET = "sahte_gizli"
         tt.STATE = self.kayit_dosya
         tn.TABAN = 1000.0
+        tn.POZ_DOSYA = os.path.join(self.tmp, "positions.json")
 
     def tearDown(self):
         (tn.requests, tt.requests, tt.KEY, tt.SECRET, tn.KEY, tn.SECRET,
-         tt.STATE, tn.TABAN) = self._eski
+         tt.STATE, tn.TABAN, tn.POZ_DOSYA) = self._eski
 
     def _api(self, poz=0.0, son_fiyat=100.0):
         api = SahteAPI(poz=poz, son_fiyat=son_fiyat)
@@ -129,11 +130,12 @@ class TrendTestnetTest(unittest.TestCase):
         self.assertAlmostEqual(k["hedef_notional"], 140.0, places=2)
         self.assertAlmostEqual(k["mevcut_miktar"], 0.0, places=6)
         self.assertAlmostEqual(k["delta"], 1.4, places=6)
+        self.assertAlmostEqual(ozet["defter"]["BTCUSDT"], 1.4, places=6)   # defter guncellendi
 
     # ---------------- 2) kismi azaltma ----------------
     def test_kismi_azaltma_reduce_only(self):
         api = self._api(poz=1.4)
-        ozet = tn.esle({"BTCUSDT": 0.05})       # hedef 50 USDT -> 0.5 adet
+        ozet = tn.esle({"BTCUSDT": 0.05}, defter={"BTCUSDT": 1.4})   # hedef 50 USDT -> 0.5 adet
         emirler = api.emirler()
         self.assertEqual(len(emirler), 1, emirler)
         e = emirler[0]
@@ -149,7 +151,7 @@ class TrendTestnetTest(unittest.TestCase):
     # ---------------- 3) degisiklik yok ----------------
     def test_degisiklik_yok_atla(self):
         api = self._api(poz=1.4)
-        ozet = tn.esle({"BTCUSDT": 0.14})       # hedef 1.4 = mevcut 1.4
+        ozet = tn.esle({"BTCUSDT": 0.14}, defter={"BTCUSDT": 1.4})   # hedef 1.4 = bizim 1.4
         self.assertEqual(api.emirler(), [])
         self.assertEqual(ozet["emir"], 0)
         self.assertEqual(ozet["atlanan"], 1)
@@ -160,7 +162,7 @@ class TrendTestnetTest(unittest.TestCase):
     def test_kucuk_delta_atla(self):
         """0.1 adet = 10 USDT < 25 USDT -> emir gonderilmez."""
         api = self._api(poz=1.3)
-        ozet = tn.esle({"BTCUSDT": 0.14})
+        ozet = tn.esle({"BTCUSDT": 0.14}, defter={"BTCUSDT": 1.3})
         self.assertEqual(api.emirler(), [])
         self.assertEqual(ozet["atlanan"], 1)
 
@@ -218,6 +220,61 @@ class TrendTestnetTest(unittest.TestCase):
         self.assertEqual(ozet["emir"], 1)
         self.assertEqual(ozet["atlanan"], 1)
         self.assertEqual(len(api.emirler()), 1)
+
+    # ---------------- 6) sahiplik: ICT / sahipsiz pozisyona dokunma ----------------
+    def test_hesaptaki_ict_pozisyonuna_dokunmaz(self):
+        """Canli olay 2026-09-13: hesapta 4.19 adet ICT kalintisi varken trend hedefi 0.2.
+        Eski kod SATIYORDU; defterle trend sadece kendi payini ALMALI (test: hedef 0.5 > min notional)."""
+        api = self._api(poz=4.19)
+        ozet = tn.esle({"BTCUSDT": 0.05}, defter={})          # 1000*0.05/100 = 0.5 (50 USDT)
+        e = api.emirler()
+        self.assertEqual(len(e), 1, e)
+        self.assertEqual(e[0]["side"], "BUY")
+        self.assertAlmostEqual(float(e[0]["quantity"]), 0.5, places=6)
+        self.assertNotIn("reduceOnly", e[0])
+        self.assertAlmostEqual(ozet["defter"]["BTCUSDT"], 0.5, places=6)
+
+    def test_screener_acik_pozisyonu_varsa_atla(self):
+        api = self._api(poz=0.0)
+        json.dump([{"symbol": "BTCUSDT", "status": "open", "sinyal_gonderildi": True}],
+                  open(tn.POZ_DOSYA, "w"))
+        ozet = tn.esle({"BTCUSDT": 0.14}, defter={})
+        self.assertEqual(api.emirler(), [])
+        self.assertEqual(ozet["atlanan"], 1)
+        self.assertEqual(self._kayitlar()[-1]["sonuc"]["atlandi"], "screener acik pozisyonu var")
+
+    def test_sessiz_screener_pozisyonu_engellemez(self):
+        """Testnete gonderilmemis (sessiz dilim) pozisyon hesapta yok -> trend calisir."""
+        api = self._api(poz=0.0)
+        json.dump([{"symbol": "BTCUSDT", "status": "pending", "sinyal_gonderildi": False}],
+                  open(tn.POZ_DOSYA, "w"))
+        tn.esle({"BTCUSDT": 0.14}, defter={})
+        self.assertEqual(len(api.emirler()), 1)
+
+    def test_defter_trend_kayitlarindan_kurulur(self):
+        """defter verilmezse son basarili TREND kaydinin hedef_miktar'i kullanilir."""
+        api = self._api(poz=5.6)                              # hesapta 4.2 ICT + 1.4 trend
+        json.dump([{"zaman": "2026-09-13T01:36:20", "tur": "TREND", "sembol": "BTCUSDT",
+                    "basarili": True, "sonuc": {"hedef_miktar": 1.4}}],
+                  open(self.kayit_dosya, "w"))
+        ozet = tn.esle({"BTCUSDT": 0.14})                     # hedef 1.4 = defter 1.4
+        self.assertEqual(api.emirler(), [])
+        self.assertAlmostEqual(ozet["defter"]["BTCUSDT"], 1.4, places=6)
+
+    def test_reduce_only_hesap_yetersizse_konmaz(self):
+        """Defter 1.4 ama hesapta sadece 0.5 (dis mudahale): 0.9 satis reduceOnly ile reddedilirdi."""
+        api = self._api(poz=0.5)
+        tn.esle({"BTCUSDT": 0.05}, defter={"BTCUSDT": 1.4})
+        e = api.emirler()
+        self.assertEqual(len(e), 1, e)
+        self.assertEqual(e[0]["side"], "SELL")
+        self.assertNotIn("reduceOnly", e[0])
+
+    def test_kuru_mod_defteri_degistirmez(self):
+        self._api(poz=0.0)
+        d = {"BTCUSDT": 0.0}
+        tn.esle({"BTCUSDT": 0.14}, kuru=True, defter=d)
+        self.assertEqual(d, {"BTCUSDT": 0.0})
 
 
 if __name__ == "__main__":

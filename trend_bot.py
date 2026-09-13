@@ -314,7 +314,11 @@ def main():
         if os.environ.get("TREND_TESTNET") == "1":
             try:
                 import trend_testnet
-                oz = trend_testnet.esle(yeni_state["portfoy"]["b3"]["w"])
+                _pf = yeni_state["portfoy"]
+                # kendi pozisyon defterimiz state'te tutulur (ilk kosuda TREND kayitlarindan kurulur)
+                oz = trend_testnet.esle(_pf["b3"]["w"], defter=_pf.get("testnet_defter"))
+                if not oz["kuru"]:
+                    _pf["testnet_defter"] = oz["defter"]
                 pmsg += (f"\n\U0001F9EA Testnet esleme{' (kuru)' if oz['kuru'] else ''}: "
                          f"{oz['emir']} emir, {oz['atlanan']} atlandi, {oz['hata']} hata")
             except Exception as e:

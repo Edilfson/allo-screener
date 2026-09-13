@@ -44,6 +44,7 @@ TABAN = float(os.environ.get("TREND_TESTNET_USDT", "1000"))   # eslenecek toplam
 KALDIRAC = 1                       # trend portfoyu kaldiracsizdir
 MIN_NOTIONAL = 25.0                # bu tutarin altindaki delta islenmez
 ICT_PENCERE = 24 * 3600            # ICT emri "taze" sayilan sure (saniye)
+POZ_DOSYA = "positions.json"       # screener pozisyonlari (ayni repo checkout'u)
 
 
 def fiyat(sembol):
@@ -95,6 +96,34 @@ def ict_emri_var_mi(sembol, pencere=ICT_PENCERE):
     return False
 
 
+def screener_pozisyonu_var(sembol):
+    """positions.json'da o sembolde testnete GONDERILMIS acik/bekleyen ICT pozisyonu var mi?
+    (24 saatlik emir penceresinden bagimsiz: ICT pozisyonu gunlerce acik kalabilir)"""
+    try:
+        P = json.load(open(POZ_DOSYA)) if os.path.exists(POZ_DOSYA) else []
+    except Exception:
+        return False
+    return any(isinstance(x, dict) and x.get("symbol") == sembol
+               and x.get("status") in ("open", "pending") and x.get("sinyal_gonderildi")
+               for x in P)
+
+
+def defter_kur():
+    """KENDI pozisyon defterimizi testnet_orders.json'daki BASARILI TREND kayitlarindan kurar.
+    Her kaydin sonuc.hedef_miktar'i = o emirden sonra trend'in tuttugu miktar (MARKET emir tam dolar)."""
+    try:
+        L = json.load(open(tt.STATE)) if os.path.exists(tt.STATE) else []
+    except Exception:
+        return {}
+    d = {}
+    for r in L:
+        if isinstance(r, dict) and r.get("tur") == "TREND" and r.get("basarili") is True:
+            s = r.get("sonuc") or {}
+            if "hedef_miktar" in s:
+                d[r["sembol"]] = float(s["hedef_miktar"])
+    return d
+
+
 def _kayit(kuru, sembol, w, hedef_notional, mevcut, delta, basarili, sonuc):
     """Tek satirlik kayit. basarili: True/False = emir gonderildi/hata,
     None = emir gonderilmedi (atlandi). Kuru modda dosyaya YAZILMAZ."""
@@ -106,13 +135,18 @@ def _kayit(kuru, sembol, w, hedef_notional, mevcut, delta, basarili, sonuc):
     return k
 
 
-def esle(agirliklar, kuru=False):
+def esle(agirliklar, kuru=False, defter=None):
     """Hedef agirliklari testnet pozisyonlariyla eslestirir.
     agirliklar: {"BTCUSDT": 0.14, ...}   Return: ozet dict."""
     anahtar_var = bool(KEY and SECRET)
     kuru = bool(kuru) or not anahtar_var
+    # DEFTER: trend'in KENDI tuttugu miktar (sembol -> adet). Delta hesap toplamina degil buna gore
+    # hesaplanir; boylece ayni hesaptaki ICT pozisyonlari (veya sahipsiz kalintilar) degistirilmez.
+    # (2026-09-13: ilk canli kosuda hesaptaki 4.19 BNB ICT kalintisi trend'inmis gibi 0.2'ye indirildi)
+    if defter is None:
+        defter = defter_kur()
     ozet = {"kuru": kuru, "taban": TABAN, "emir": 0, "atlanan": 0, "hata": 0,
-            "satirlar": [], "kayitlar": []}
+            "satirlar": [], "kayitlar": [], "defter": defter}
     if not agirliklar:
         ozet["satirlar"].append("agirlik yok, yapilacak islem yok")
         print("  [trend-testnet] agirlik yok")
@@ -140,16 +174,19 @@ def esle(agirliklar, kuru=False):
             ozet["satirlar"].append(f"{sembol}: pozisyon okunamadi")
             continue
 
-        # ICT screener ayni sembolde calismis olabilir -> karismamak icin atla
-        if ict_emri_var_mi(sembol):
+        # ICT screener ayni sembolde aktifse -> karismamak icin atla
+        neden = ("son 24s ICT emri var" if ict_emri_var_mi(sembol)
+                 else "screener acik pozisyonu var" if screener_pozisyonu_var(sembol) else None)
+        if neden:
             ozet["atlanan"] += 1
             ozet["kayitlar"].append(_kayit(kuru, sembol, w, hedef_notional, mevcut, None,
-                                           None, {"atlandi": "son 24s ICT emri var"}))
-            ozet["satirlar"].append(f"{sembol}: ICT emri var, atlandi")
-            print(f"  [trend-testnet] {sembol}: son 24 saatte ICT emri var, atlandi")
+                                           None, {"atlandi": neden}))
+            ozet["satirlar"].append(f"{sembol}: {neden}, atlandi")
+            print(f"  [trend-testnet] {sembol}: {neden}, atlandi")
             continue
 
-        delta = round(hedef_miktar - mevcut, 12)
+        bizim = float(defter.get(sembol, 0.0) or 0.0)
+        delta = round(hedef_miktar - bizim, 12)
         miktar = tt._yuvarla(abs(delta), adim, qp)
         if abs(delta) * p < MIN_NOTIONAL or miktar <= 0:
             ozet["atlanan"] += 1
@@ -157,16 +194,18 @@ def esle(agirliklar, kuru=False):
                                            None, {"atlandi": "min notional",
                                                   "delta_usdt": round(abs(delta) * p, 2)}))
             ozet["satirlar"].append(
-                f"{sembol}: hedef {hedef_miktar} / mevcut {mevcut} -> "
+                f"{sembol}: hedef {hedef_miktar} / bizim {bizim} (hesap {mevcut}) -> "
                 f"delta {delta} (~{abs(delta)*p:.1f} USDT) < {MIN_NOTIONAL:.0f}, atlandi")
             continue
 
         yon = "BUY" if delta > 0 else "SELL"
         # azaltma = mutlak pozisyon kuculuyor ve yon degismiyor -> reduceOnly guvenli
-        azaltma = (mevcut != 0 and abs(hedef_miktar) < abs(mevcut)
-                   and hedef_miktar * mevcut >= 0)
+        # reduceOnly SADECE: kendi payimiz kuculuyor, yon degismiyor VE hesapta en az o kadar
+        # ayni yonlu pozisyon var (yoksa borsa reddeder; o durumda duz MARKET ile ters islem)
+        azaltma = (bizim != 0 and abs(hedef_miktar) < abs(bizim) and hedef_miktar * bizim >= 0
+                   and mevcut * bizim > 0 and abs(mevcut) >= miktar)
         satir = (f"{sembol}: w=%{w*100:.1f} hedef {hedef_miktar} ({hedef_notional:.0f} USDT) "
-                 f"| mevcut {mevcut} | {yon} {miktar}" + (" reduceOnly" if azaltma else ""))
+                 f"| bizim {bizim} (hesap {mevcut}) | {yon} {miktar}" + (" reduceOnly" if azaltma else ""))
 
         if kuru:
             ozet["emir"] += 1
@@ -181,10 +220,11 @@ def esle(agirliklar, kuru=False):
         ok, c = tt._imzali("/fapi/v1/order", params, "POST")
         if ok:
             ozet["emir"] += 1
+            defter[sembol] = round(bizim + (miktar if yon == "BUY" else -miktar), 12)
         else:
             ozet["hata"] += 1
         sonuc = {"yon": yon, "miktar": miktar, "fiyat": p, "reduceOnly": azaltma,
-                 "hedef_miktar": hedef_miktar, "yanit": c}
+                 "hedef_miktar": hedef_miktar, "bizim_miktar": bizim, "yanit": c}
         ozet["kayitlar"].append(_kayit(kuru, sembol, w, hedef_notional, mevcut, delta,
                                        bool(ok), sonuc))
         ozet["satirlar"].append(satir + (" -> OK" if ok else f" -> HATA {c}"))
