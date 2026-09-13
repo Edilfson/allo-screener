@@ -11,6 +11,7 @@ Kripto strateji arastirma ve kagit/testnet takip sistemi. GitHub Actions ile cal
 | `trend_bot.py` | BTC/ETH/BNB gunluk MA50 sinyali + coin bazli kagit takip | 01:10 UTC | canli |
 | `trend_portfoy.py` | Vol hedefli (%20, kaldiracsiz) uc kagit portfoy: b3, yuruyen top-3, H5 yuruyen top-5 + tavan %20 | 01:10 UTC | canli |
 | `trend_testnet.py` | **DEMO HESABIN ANA SISTEMI**: b3 hedef agirliklarini futures testnette 1x esler (1000 USDT taban); kendi pozisyon defteriyle, ICT pozisyonlarina dokunmaz | 01:10 UTC | canli |
+| `arkaplan.py` | Lab'da elenen stratejilerin (EMA geri cekilme, gunluk kirilim, haftalik momentum, haftalik tersine donus, funding carry) canli KAGIT takibi + ICT ve trend okuyuculari; emir yok; haftalik karsilastirma Telegram'a (pazartesi) | 02:20 UTC | arka plan, ileriye donuk kanit icin |
 | `testnet_denetim.py` | Testnet hesabinda sahipsiz pozisyon (kapat) ve bayat emir (iptal) temizligi; 6 saatten yeni islemlere dokunmaz; Telegram raporu | 13:40 UTC + elle (Actions -> Testnet Denetim) | canli |
 | `araclar/` | Yeniden oynatma, backtester (canli detect_ict ile esdeger), trend testleri | elle | - |
 | `araclar/lab/` | Arastirma laboratuvari: harness, protokol, 12 ajanlik program, defter (1790+ test) | elle | - |

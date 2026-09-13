@@ -1,0 +1,39 @@
+name: Arka Plan Stratejileri
+
+# Lab'da elenen stratejilerin ileriye donuk KAGIT takibi (bilgi amacli, emir YOK).
+# Trend (01:10 UTC) sonrasi kosar; Telegram raporu haftada bir (pazartesi), ARKAPLAN_HER_GUN=1 ise her kosuda.
+on:
+  schedule:
+    - cron: "20 2 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  arkaplan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: pip install requests numpy
+      - name: Arka plan kagit takip
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TOPIC_SUMMARY: ${{ secrets.TOPIC_SUMMARY }}
+        run: python arkaplan.py
+      - name: Durumu kaydet
+        continue-on-error: true
+        run: |
+          git config user.name "allo-screener-bot"
+          git config user.email "actions@github.com"
+          git add arkaplan_state.json
+          git diff --quiet --cached || git commit -m "arkaplan durum [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
