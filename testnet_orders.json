@@ -3430,5 +3430,54 @@
     "msg": "The operation of cancel all open order is done."
    }
   }
+ },
+ {
+  "zaman": "2026-09-13T07:12:36",
+  "sembol": "BCHUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  },
+  "pozisyon": 37.037,
+  "kapanis": {
+   "kapat": 37.037,
+   "trend_payi": 0.0,
+   "ok": true,
+   "yanit": [
+    {
+     "orderId": 2577538307,
+     "symbol": "BCHUSDT",
+     "status": "NEW",
+     "clientOrderId": "g0j7ptJxvEG4HWXU7TCHAq",
+     "price": "0.00",
+     "origQty": "37.037",
+     "executedQty": "0.000",
+     "cumQty": "0.000",
+     "timeInForce": "GTC",
+     "type": "MARKET",
+     "reduceOnly": true,
+     "closePosition": false,
+     "side": "SELL",
+     "positionSide": "BOTH",
+     "stopPrice": "0.00",
+     "workingType": "CONTRACT_PRICE",
+     "priceProtect": false,
+     "origType": "MARKET",
+     "priceMatch": "NONE",
+     "selfTradePreventionMode": "EXPIRE_MAKER",
+     "goodTillDate": 0,
+     "updateTime": 1789283557174
+    }
+   ]
+  }
  }
 ]

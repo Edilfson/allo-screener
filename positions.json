@@ -10695,7 +10695,7 @@
    "coin_1d_ema99_dist": 0.022
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.4034748239943974,
+  "unrealized_r": -0.49405080489109876,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3563"
  },
  {
@@ -11062,7 +11062,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-11T19:10:08.908535+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": true,
   "signal_bar_close": "2026-09-11T18:59:59.999000+00:00",
   "entry": 225.5,
@@ -11101,9 +11101,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1342
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.44345898004433887,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 225.5"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-13T06:59:59.999000+00:00"
  },
  {
   "symbol": "BLURUSDT",
@@ -11152,7 +11153,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9410742724771928,
+  "unrealized_r": 0.7962936151730092,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
