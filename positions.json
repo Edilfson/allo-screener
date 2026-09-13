@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6836864372697542,
+  "unrealized_r": 1.5684571207953248,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -11419,7 +11419,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-12T12:16:33.768102+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "signal_bar_close": "2026-09-12T11:59:59.999000+00:00",
   "entry": 749.2,
@@ -11459,7 +11459,9 @@
    "coin_1d_ema99_dist": 0.1296
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-13T12:17:06.788854+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "CHZUSDT",
