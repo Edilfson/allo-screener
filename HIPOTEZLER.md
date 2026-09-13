@@ -102,3 +102,12 @@ ozellikte "iyi dilim" cikiyor, kat disinda hicbiri 4 katin 2'sinde bile pozitif 
 (d <= 0.25) plasebo kazananlarinda da ayni buyuklukte. KARAR: ICT ailesi kapali; demo hesap sadece trend,
 ICT arka planda bilgi amacli.
 
+## 2026-09-13 Coklu zaman dilimi yapisal uyum + yapisal stop/TP -> RED (mtf_yapi)
+Kural: gunluk trend yonu + 4h ICT bolgesi + 1h supurme/BOS tetigi; stop 4h bolge ve 1h dip altina ATR tamponlu; TP girisin
+ustundeki gercek likidite (4h/1d swing, onceki gun tepesi, ters bolge) RR>=2; kismi cikis ve sabit 3R kontrolu. 12 varyant.
+TRAIN: varyant basina n 23-33 (huni: 539 dokunus -> 33 sinyal; tetiklerin %48-57'si stop %8 ustu). 12'nin 8'i negatif; tek
+pozitif blok (SHORT F1, 28 islem) tamamen 2025 ilk yarisi, ikinci yari -0.25..-0.30R. 24 plasebo farkinin 24'unde GA95 alt
+siniri < 0. Yapisal TP sabit 3R'den farksiz (-0.02..+0.02R); kismi cikis LONG'da anlamli kotu (-0.12R). TP isabeti rastgele
+yuruyus beklentisinin (1/(1+RR)) ALTINDA 12/12. BTC filtresi 6/6 kotulestiriyor. KARAR: ICT hatti uc bagimsiz testle kapali
+(ict2, ict_ozellik, mtf_yapi).
+
