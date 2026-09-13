@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.1154062706111305,
+  "unrealized_r": 2.260186927915314,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -11671,7 +11671,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-13T10:17:49.863491+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-13T09:59:59.999000+00:00",
@@ -11687,7 +11687,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-13T09:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-13T12:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.09598,
   "zone_high": 0.09641,
@@ -11712,7 +11712,8 @@
    "coin_1d_ema99_dist": 0.0986
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.096195"
  },
  {
   "symbol": "XPLUSDT",
@@ -11760,6 +11761,56 @@
    "btc_ema99_dist": 0.0783,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0937
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SEIUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-09-13T13:11:03.973476+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-13T12:59:59.999000+00:00",
+  "entry": 0.04485,
+  "stop": 0.0451191,
+  "current_stop": 0.0451191,
+  "risk": 0.0002691000000000013,
+  "tps": [
+   {
+    "p": 0.043504499999999995,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-13T12:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.04474,
+  "zone_high": 0.04496,
+  "zone_width_pct": 0.0049,
+  "quality_ok": false,
+  "swing_high": 0.04496,
+  "swing_low": 0.04474,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 53.6,
+   "vol_ratio": 0.92,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0802,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0882
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
