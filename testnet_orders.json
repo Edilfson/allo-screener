@@ -3479,5 +3479,24 @@
     }
    ]
   }
+ },
+ {
+  "zaman": "2026-09-13T08:17:59",
+  "sembol": "ILVUSDT",
+  "dilim": "1h",
+  "strateji": "ict_long",
+  "yon": "LONG",
+  "basarili": true,
+  "sonuc": {
+   "orderId": 194680814,
+   "miktar": 200.0,
+   "giris": 3.695,
+   "stop": 3.626,
+   "tp": 4.038,
+   "risk_usdt": 13.8,
+   "miktar_kisildi": true,
+   "stop_ok": true,
+   "tp_ok": true
+  }
  }
 ]
