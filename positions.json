@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9571610121776569,
+  "unrealized_r": 0.7641201357720808,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -11614,7 +11614,7 @@
    "coin_1d_ema99_dist": 0.0895
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.767886755080271,
+  "unrealized_r": 0.518413768385198,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 77135.9"
  },
  {
@@ -11882,20 +11882,20 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-13T20:11:53.908988+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-13T19:59:59.999000+00:00",
   "entry": 0.1054,
   "stop": 0.1013985,
-  "current_stop": 0.1013985,
+  "current_stop": 0.1054,
   "risk": 0.004001499999999991,
   "tps": [
    {
     "p": 0.12540749999999995,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-09-13T23:59:59.999000+00:00",
@@ -11922,9 +11922,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1256
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 4.148444333374995,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1054"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-09-14T03:59:59.999000+00:00"
  },
  {
   "symbol": "APTUSDT",
@@ -12076,6 +12077,106 @@
    "btc_ema99_dist": 0.0803,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0266
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "TRXUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-09-14T01:28:23.657627+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-14T00:59:59.999000+00:00",
+  "entry": 0.34140000000000004,
+  "stop": 0.34344840000000004,
+  "current_stop": 0.34344840000000004,
+  "risk": 0.0020484000000000058,
+  "tps": [
+   {
+    "p": 0.331158,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-14T00:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.3412,
+  "zone_high": 0.3416,
+  "zone_width_pct": 0.0012,
+  "quality_ok": true,
+  "swing_high": 0.3416,
+  "swing_low": 0.3412,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 36.1,
+   "vol_ratio": 2.51,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0806,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0203
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "PENDLEUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-09-14T01:28:23.657627+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-14T00:59:59.999000+00:00",
+  "entry": 2.1390000000000002,
+  "stop": 2.15215,
+  "current_stop": 2.15215,
+  "risk": 0.013149999999999551,
+  "tps": [
+   {
+    "p": 2.0732500000000025,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-14T00:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 2.128,
+  "zone_high": 2.15,
+  "zone_width_pct": 0.0103,
+  "quality_ok": true,
+  "swing_high": 2.15,
+  "swing_low": 2.128,
+  "stop_dist_pct": 0.0061,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 47.7,
+   "vol_ratio": 1.26,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0806,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.288
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
