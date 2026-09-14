@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4236764634911414,
+  "unrealized_r": 1.0375947106799837,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -11874,7 +11874,7 @@
    "coin_1d_ema99_dist": 0.1281
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.41875182128361327,
+  "unrealized_r": 0.4508752486697495,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 726.365"
  },
  {
@@ -12233,7 +12233,7 @@
    "coin_1d_ema99_dist": 0.0237
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.38197097020626986,
+  "unrealized_r": 0.2546473134708539,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.01309"
  },
  {
@@ -12336,7 +12336,7 @@
    "coin_1d_ema99_dist": -0.139
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.7817371937639128,
+  "unrealized_r": 1.6332590942835745,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 224.5"
  },
  {
@@ -12437,6 +12437,56 @@
    "btc_ema99_dist": 0.0929,
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.1152
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "CAKEUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-14T08:20:28.051523+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-14T07:59:59.999000+00:00",
+  "entry": 2.257,
+  "stop": 2.218779,
+  "current_stop": 2.218779,
+  "risk": 0.03822100000000006,
+  "tps": [
+   {
+    "p": 2.4481050000000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-14T07:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 2.221,
+  "zone_high": 2.293,
+  "zone_width_pct": 0.0324,
+  "quality_ok": true,
+  "swing_high": 2.293,
+  "swing_low": 2.221,
+  "stop_dist_pct": 0.0169,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 60.4,
+   "vol_ratio": 0.77,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0925,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.3542
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
