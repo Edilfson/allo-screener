@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5549925196660349,
+  "unrealized_r": 0.5871659990669689,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -11833,7 +11833,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-13T17:09:40.981592+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-13T16:59:59.999000+00:00",
@@ -11873,9 +11873,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1281
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.5541291224108962,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 726.365"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-14T20:59:59.999000+00:00"
  },
  {
   "symbol": "PUNDIXUSDT",
@@ -12131,7 +12132,7 @@
    "coin_1d_ema99_dist": 0.0203
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.39054872095294896,
+  "unrealized_r": 0.29291154071472525,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3414"
  },
  {
