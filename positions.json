@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.2976046844586019,
+  "unrealized_r": 0.41021186236185136,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -11874,7 +11874,7 @@
    "coin_1d_ema99_dist": 0.1281
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6321431603486706,
+  "unrealized_r": 0.41875182128361327,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 726.365"
  },
  {
@@ -12090,7 +12090,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-14T01:28:23.657627+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-14T00:59:59.999000+00:00",
@@ -12106,7 +12106,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-14T00:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-14T16:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.3412,
   "zone_high": 0.3416,
@@ -12131,7 +12131,8 @@
    "coin_1d_ema99_dist": 0.0203
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3414"
  },
  {
   "symbol": "PENDLEUSDT",
@@ -12296,7 +12297,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-14T02:23:20.999708+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-14T01:59:59.999000+00:00",
@@ -12336,9 +12337,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.139
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.22271714922049704,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 224.5"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-14T16:59:59.999000+00:00"
  },
  {
   "symbol": "ETHFIUSDT",
