@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.5389057799655762,
+  "unrealized_r": -0.5710792593665047,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -12134,7 +12134,7 @@
    "coin_1d_ema99_dist": 0.0203
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.0991993751220535,
+  "unrealized_r": 2.3432923257176395,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3414"
  },
  {
@@ -12560,7 +12560,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-14T15:13:52.205150+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-14T14:59:59.999000+00:00",
@@ -12601,7 +12601,9 @@
    "coin_1d_ema99_dist": 0.0876
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-15T15:12:23.724603+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "AAVEUSDT",
@@ -12610,7 +12612,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-15T00:35:44.424328+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-14T23:59:59.999000+00:00",
@@ -12650,9 +12652,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2121
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.6965996329640576,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 126.685"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-15T15:59:59.999000+00:00"
  },
  {
   "symbol": "POLYXUSDT",
@@ -12765,7 +12768,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-15T08:18:11.039836+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-15T07:59:59.999000+00:00",
@@ -12781,7 +12784,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-15T07:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-15T15:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 2.221,
   "zone_high": 2.293,
@@ -12806,7 +12809,8 @@
    "coin_1d_ema99_dist": 0.4174
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.257"
  },
  {
   "symbol": "OPUSDT",
@@ -12865,7 +12869,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-15T12:19:03.570960+00:00",
-  "status": "pending",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-15T11:59:59.999000+00:00",
@@ -12881,7 +12885,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-15T11:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-15T15:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.0444,
   "zone_high": 0.0453,
@@ -12905,7 +12909,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0302
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-15T15:59:59.999000+00:00",
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.04485|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
  }
 ]
