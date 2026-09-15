@@ -3687,5 +3687,24 @@
    "atlandi": "min notional",
    "delta_usdt": 0.0
   }
+ },
+ {
+  "zaman": "2026-09-15T19:10:30",
+  "sembol": "BLURUSDT",
+  "tur": "IPTAL",
+  "sebep": "stopped",
+  "basarili": true,
+  "sonuc": {
+   "normal": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   },
+   "algo": {
+    "code": 200,
+    "msg": "The operation of cancel all open order is done."
+   }
+  },
+  "pozisyon": 0.0,
+  "kapanis": null
  }
 ]
