@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.36195164326045876,
+  "unrealized_r": 0.18499750655534683,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -12404,7 +12404,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-14T03:17:09.386185+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-14T02:59:59.999000+00:00",
@@ -12445,7 +12445,9 @@
    "coin_1d_ema99_dist": -0.1152
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-15T03:16:12.622560+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "CAKEUSDT",
@@ -12643,6 +12645,56 @@
    "btc_ema99_dist": 0.0945,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2121
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "POLYXUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-15T03:16:07.947559+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-15T02:59:59.999000+00:00",
+  "entry": 0.0398,
+  "stop": 0.0394605,
+  "current_stop": 0.0394605,
+  "risk": 0.0003394999999999995,
+  "tps": [
+   {
+    "p": 0.0414975,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-15T02:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0395,
+  "zone_high": 0.0401,
+  "zone_width_pct": 0.0152,
+  "quality_ok": true,
+  "swing_high": 0.0401,
+  "swing_low": 0.0395,
+  "stop_dist_pct": 0.0085,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 48.1,
+   "vol_ratio": 0.66,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0897,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0786
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
