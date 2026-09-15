@@ -11154,7 +11154,7 @@
    "coin_1d_ema99_dist": -0.04
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.34586490355999455,
+  "unrealized_r": 0.23325772565673947,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.017235"
  },
  {
@@ -12134,7 +12134,7 @@
    "coin_1d_ema99_dist": 0.0203
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.7574692442882431,
+  "unrealized_r": 1.855106424526467,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3414"
  },
  {
@@ -12506,7 +12506,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-14T12:20:10.540964+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-14T11:59:59.999000+00:00",
@@ -12522,7 +12522,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-14T11:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-15T05:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.263,
   "zone_high": 0.2746,
@@ -12547,7 +12547,8 @@
    "coin_1d_ema99_dist": 0.1598
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.2688"
  },
  {
   "symbol": "ZAMAUSDT",
@@ -12697,7 +12698,7 @@
    "coin_1d_ema99_dist": 0.0786
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": -0.2945508100147364,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0398"
  }
 ]
