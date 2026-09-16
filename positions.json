@@ -12135,7 +12135,7 @@
    "coin_1d_ema99_dist": 0.0203
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.222026947861761,
+  "unrealized_r": 3.1243897676235104,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3414"
  },
  {
@@ -13029,7 +13029,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-16T00:34:07.549697+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-15T23:59:59.999000+00:00",
@@ -13069,9 +13069,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0392
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.029712089849356537,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.8062"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-16T23:59:59.999000+00:00"
  },
  {
   "symbol": "POLUSDT",
