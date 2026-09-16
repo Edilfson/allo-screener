@@ -12135,7 +12135,7 @@
    "coin_1d_ema99_dist": 0.0203
   },
   "realized_r": 0.0,
-  "unrealized_r": 4.100761570005856,
+  "unrealized_r": 3.9054872095294084,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3414"
  },
  {
@@ -13016,6 +13016,56 @@
    "btc_ema99_dist": 0.0651,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1277
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "FILUSDT",
+  "interval": "12h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-16T00:34:07.549697+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-09-15T23:59:59.999000+00:00",
+  "entry": 0.8062,
+  "stop": 0.7961031000000001,
+  "current_stop": 0.7961031000000001,
+  "risk": 0.010096899999999964,
+  "tps": [
+   {
+    "p": 0.8566844999999998,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-15T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.7969,
+  "zone_high": 0.8155,
+  "zone_width_pct": 0.0233,
+  "quality_ok": true,
+  "swing_high": 0.8155,
+  "swing_low": 0.7969,
+  "stop_dist_pct": 0.0125,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 48.8,
+   "vol_ratio": 1.36,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0626,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0392
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
