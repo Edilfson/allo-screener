@@ -3706,5 +3706,47 @@
   },
   "pozisyon": 0.0,
   "kapanis": null
+ },
+ {
+  "zaman": "2026-09-16T01:32:59",
+  "tur": "TREND",
+  "sembol": "BNBUSDT",
+  "hedef_w": 0.1437,
+  "hedef_notional": 143.7,
+  "mevcut_miktar": 0.2,
+  "delta": 0.0,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 0.0
+  }
+ },
+ {
+  "zaman": "2026-09-16T01:33:00",
+  "tur": "TREND",
+  "sembol": "BTCUSDT",
+  "hedef_w": 0.1344,
+  "hedef_notional": 134.4,
+  "mevcut_miktar": 0.0018,
+  "delta": 0.0,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 0.0
+  }
+ },
+ {
+  "zaman": "2026-09-16T01:33:00",
+  "tur": "TREND",
+  "sembol": "ETHUSDT",
+  "hedef_w": 0.087,
+  "hedef_notional": 87.0,
+  "mevcut_miktar": 0.036,
+  "delta": 0.0,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 0.0
+  }
  }
 ]
