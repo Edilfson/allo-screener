@@ -12135,7 +12135,7 @@
    "coin_1d_ema99_dist": 0.0203
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.7826596367897003,
+  "unrealized_r": 2.587385276313226,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3414"
  },
  {
@@ -13131,7 +13131,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-16T20:37:29.965438+00:00",
-  "status": "pending",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-15T23:59:59.999000+00:00",
@@ -13147,7 +13147,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-15T23:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-16T23:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.777,
   "zone_high": 0.8239,
@@ -13171,7 +13171,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0392
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-16T23:59:59.999000+00:00",
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.80045|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
  }
 ]
