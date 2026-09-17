@@ -12135,7 +12135,7 @@
    "coin_1d_ema99_dist": 0.0203
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.0267525873852867,
+  "unrealized_r": 2.6850224565514766,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3414"
  },
  {
@@ -13081,7 +13081,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-16T12:19:49.986278+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-16T11:59:59.999000+00:00",
@@ -13097,7 +13097,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-16T11:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-17T05:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.09561,
   "zone_high": 0.09839,
@@ -13122,7 +13122,8 @@
    "coin_1d_ema99_dist": 0.0508
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.097"
  },
  {
   "symbol": "FILUSDT",
@@ -13175,5 +13176,55 @@
   "unrealized_r": 0.0,
   "closed_at": "2026-09-16T23:59:59.999000+00:00",
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.80045|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
+ },
+ {
+  "symbol": "OPUSDT",
+  "interval": "6h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-09-17T00:33:55.035268+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-09-16T23:59:59.999000+00:00",
+  "entry": 0.0993,
+  "stop": 0.10220209999999999,
+  "current_stop": 0.10220209999999999,
+  "risk": 0.002902099999999991,
+  "tps": [
+   {
+    "p": 0.08478950000000005,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-16T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0965,
+  "zone_high": 0.1021,
+  "zone_width_pct": 0.058,
+  "quality_ok": false,
+  "swing_high": 0.1021,
+  "swing_low": 0.0965,
+  "stop_dist_pct": 0.0292,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 47.2,
+   "vol_ratio": 1.32,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0697,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0629
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
