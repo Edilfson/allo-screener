@@ -6,34 +6,34 @@
  },
  "kagit": {
   "BTCUSDT": {
-   "equity": 0.9785451672176488,
-   "altut": 0.9795246919095586,
-   "son_gun": "2026-09-15",
-   "son_fiyat": 75644.48,
+   "equity": 0.9858091799750599,
+   "altut": 0.9867959759510111,
+   "son_gun": "2026-09-16",
+   "son_fiyat": 76206.01,
    "yatirimda": true,
    "islem": 1,
    "baslangic": "2026-09-11"
   },
   "ETHUSDT": {
-   "equity": 0.9520875764475865,
-   "altut": 0.9530406170646513,
-   "son_gun": "2026-09-15",
-   "son_fiyat": 2398.26,
+   "equity": 0.9600273959537917,
+   "altut": 0.96098838433813,
+   "son_gun": "2026-09-16",
+   "son_fiyat": 2418.26,
    "yatirimda": true,
    "islem": 1,
    "baslangic": "2026-09-11"
   },
   "BNBUSDT": {
-   "equity": 0.9788069349845199,
-   "altut": 0.9797867217062263,
-   "son_gun": "2026-09-15",
-   "son_fiyat": 712.06,
+   "equity": 0.9978590712074302,
+   "altut": 0.9988579291365669,
+   "son_gun": "2026-09-16",
+   "son_fiyat": 725.92,
    "yatirimda": true,
    "islem": 1,
    "baslangic": "2026-09-11"
   }
  },
- "guncelleme": "2026-09-16T01:32:56.156284+00:00",
+ "guncelleme": "2026-09-17T01:33:41.263852+00:00",
  "lab_bildirildi": true,
  "portfoy": {
   "yuruyen_sepet": {
@@ -46,42 +46,42 @@
    "secim_gunu": "2026-09-12"
   },
   "b3": {
-   "equity": 0.9896347478079937,
-   "altut": 0.9708398017937027,
+   "equity": 0.9941076818932225,
+   "altut": 0.9822398264153435,
    "w": {
-    "BTCUSDT": 0.1344,
-    "ETHUSDT": 0.087,
+    "BTCUSDT": 0.1347,
+    "ETHUSDT": 0.0872,
     "BNBUSDT": 0.1437
    },
    "son_fiyat": {
-    "BTCUSDT": 75644.48,
-    "ETHUSDT": 2398.26,
-    "BNBUSDT": 712.06
+    "BTCUSDT": 76206.01,
+    "ETHUSDT": 2418.26,
+    "BNBUSDT": 725.92
    },
    "islem": 1,
-   "son_gun": "2026-09-15",
+   "son_gun": "2026-09-16",
    "baslangic": "2026-09-11",
    "zirve": 1.000228568627921,
-   "dusus": 0.0106
+   "dusus": 0.0061
   },
   "yuruyen3": {
-   "equity": 0.9872268032141411,
-   "altut": 0.9593698499403999,
+   "equity": 0.9906358666766437,
+   "altut": 0.9702861685188727,
    "w": {
-    "BTCUSDT": 0.1344,
-    "ETHUSDT": 0.087,
-    "SOLUSDT": 0.0942
+    "BTCUSDT": 0.1347,
+    "ETHUSDT": 0.0872,
+    "SOLUSDT": 0.0945
    },
    "son_fiyat": {
-    "BTCUSDT": 75644.48,
-    "ETHUSDT": 2398.26,
-    "SOLUSDT": 96.88
+    "BTCUSDT": 76206.01,
+    "ETHUSDT": 2418.26,
+    "SOLUSDT": 98.66
    },
    "islem": 1,
-   "son_gun": "2026-09-15",
+   "son_gun": "2026-09-16",
    "baslangic": "2026-09-11",
    "zirve": 1.0014723950062197,
-   "dusus": 0.0142
+   "dusus": 0.0108
   },
   "yuruyen_sepet5": {
    "ay": "2026-09",
@@ -95,27 +95,27 @@
    "secim_gunu": "2026-09-13"
   },
   "yuruyen5_tavan": {
-   "equity": 0.9898481519131974,
-   "altut": 0.9622880275691388,
+   "equity": 0.997363774445181,
+   "altut": 1.0107102020975158,
    "w": {
-    "BTCUSDT": 0.0807,
-    "ETHUSDT": 0.0522,
-    "SOLUSDT": 0.0565,
-    "XRPUSDT": 0.0399,
-    "ZECUSDT": 0.0245
+    "BTCUSDT": 0.0808,
+    "ETHUSDT": 0.0523,
+    "SOLUSDT": 0.0567,
+    "XRPUSDT": 0.04,
+    "ZECUSDT": 0.023
    },
    "son_fiyat": {
-    "BTCUSDT": 75644.48,
-    "ETHUSDT": 2398.26,
-    "SOLUSDT": 96.88,
-    "XRPUSDT": 1.2833,
-    "ZECUSDT": 1110.43
+    "BTCUSDT": 76206.01,
+    "ETHUSDT": 2418.26,
+    "SOLUSDT": 98.66,
+    "XRPUSDT": 1.2995,
+    "ZECUSDT": 1337.89
    },
    "islem": 1,
-   "son_gun": "2026-09-15",
+   "son_gun": "2026-09-16",
    "baslangic": "2026-09-12",
    "zirve": 1.0038028249629887,
-   "dusus": 0.0139
+   "dusus": 0.0064
   },
   "testnet_defter": {
    "BNBUSDT": 0.2,
