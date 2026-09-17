@@ -13081,7 +13081,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-16T12:19:49.986278+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-16T11:59:59.999000+00:00",
@@ -13121,9 +13121,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0508
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.8868643299135365,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.097"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-17T17:59:59.999000+00:00"
  },
  {
   "symbol": "FILUSDT",
@@ -13276,7 +13277,7 @@
    "coin_1d_ema99_dist": 0.1677
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2463388795413373,
+  "unrealized_r": 1.8383498473234585,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3123"
  }
 ]
