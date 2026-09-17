@@ -12135,7 +12135,7 @@
    "coin_1d_ema99_dist": 0.0203
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.319664128099985,
+  "unrealized_r": 3.270845537980873,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3414"
  },
  {
@@ -13122,7 +13122,7 @@
    "coin_1d_ema99_dist": 0.0508
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.29562144330450907,
+  "unrealized_r": -0.8868643299135365,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.097"
  },
  {
@@ -13184,7 +13184,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-17T00:33:55.035268+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-16T23:59:59.999000+00:00",
@@ -13200,7 +13200,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-16T23:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-17T17:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.0965,
   "zone_high": 0.1021,
@@ -13225,7 +13225,8 @@
    "coin_1d_ema99_dist": -0.0629
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0993"
  },
  {
   "symbol": "CRVUSDT",
@@ -13275,7 +13276,7 @@
    "coin_1d_ema99_dist": 0.1677
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.6231694397706686,
+  "unrealized_r": 1.2463388795413373,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3123"
  }
 ]
