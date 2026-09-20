@@ -3874,5 +3874,75 @@
    "atlandi": "min notional",
    "delta_usdt": 10.44
   }
+ },
+ {
+  "zaman": "2026-09-20T01:36:32",
+  "tur": "TREND",
+  "sembol": "BNBUSDT",
+  "hedef_w": 0.1453,
+  "hedef_notional": 145.3,
+  "mevcut_miktar": 0.0,
+  "delta": -0.01,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 7.61
+  }
+ },
+ {
+  "zaman": "2026-09-20T01:36:33",
+  "tur": "TREND",
+  "sembol": "BTCUSDT",
+  "hedef_w": 0.1415,
+  "hedef_notional": 141.5,
+  "mevcut_miktar": 0.0018,
+  "delta": -0.0001,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 8.1
+  }
+ },
+ {
+  "zaman": "2026-09-20T01:36:34",
+  "tur": "TREND",
+  "sembol": "ETHUSDT",
+  "hedef_w": 0.1247,
+  "hedef_notional": 124.7,
+  "mevcut_miktar": 0.036,
+  "delta": 0.012,
+  "basarili": true,
+  "sonuc": {
+   "yon": "BUY",
+   "miktar": 0.012,
+   "fiyat": 2617.23,
+   "reduceOnly": false,
+   "hedef_miktar": 0.048,
+   "bizim_miktar": 0.036,
+   "yanit": {
+    "orderId": 16799130059,
+    "symbol": "ETHUSDT",
+    "status": "NEW",
+    "clientOrderId": "5potp2EGZ91GM9lv2OpCH8",
+    "price": "0.00",
+    "origQty": "0.012",
+    "executedQty": "0.000",
+    "cumQty": "0.000",
+    "timeInForce": "GTC",
+    "type": "MARKET",
+    "reduceOnly": false,
+    "closePosition": false,
+    "side": "BUY",
+    "positionSide": "BOTH",
+    "stopPrice": "0.00",
+    "workingType": "CONTRACT_PRICE",
+    "priceProtect": false,
+    "origType": "MARKET",
+    "priceMatch": "NONE",
+    "selfTradePreventionMode": "EXPIRE_MAKER",
+    "goodTillDate": 0,
+    "updateTime": 1789868194630
+   }
+  }
  }
 ]
