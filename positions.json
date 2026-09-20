@@ -13550,7 +13550,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-19T00:33:50.058152+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-18T23:59:59.999000+00:00",
@@ -13591,7 +13591,9 @@
    "coin_1d_ema99_dist": 0.0061
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-20T00:38:31.481830+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "ZROUSDT",
