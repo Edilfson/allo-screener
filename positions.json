@@ -14062,5 +14062,55 @@
   "realized_r": 0.0,
   "unrealized_r": 0.0,
   "closed_at": "2026-09-20T17:35:20.993812+00:00"
+ },
+ {
+  "symbol": "TRXUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-22T12:18:58.942284+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-22T11:59:59.999000+00:00",
+  "entry": 0.3446,
+  "stop": 0.3425324,
+  "current_stop": 0.3425324,
+  "risk": 0.0020676000000000028,
+  "tps": [
+   {
+    "p": 0.35493800000000003,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-22T11:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.3437,
+  "zone_high": 0.3455,
+  "zone_width_pct": 0.0052,
+  "quality_ok": true,
+  "swing_high": 0.3455,
+  "swing_low": 0.3437,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 63.2,
+   "vol_ratio": 1.66,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1813,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0358
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
