@@ -14113,5 +14113,55 @@
   "realized_r": 0.0,
   "unrealized_r": 0.0,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3446"
+ },
+ {
+  "symbol": "TUTUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-22T15:13:03.780840+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-22T14:59:59.999000+00:00",
+  "entry": 0.023254999999999998,
+  "stop": 0.022977,
+  "current_stop": 0.022977,
+  "risk": 0.000277999999999997,
+  "tps": [
+   {
+    "p": 0.024644999999999983,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-22T14:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.023,
+  "zone_high": 0.02351,
+  "zone_width_pct": 0.0222,
+  "quality_ok": true,
+  "swing_high": 0.02351,
+  "swing_low": 0.023,
+  "stop_dist_pct": 0.012,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 59.4,
+   "vol_ratio": 1.52,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1873,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.1459
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
