@@ -14215,7 +14215,7 @@
    "coin_1d_ema99_dist": 0.4507
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.4816358943815664,
+  "unrealized_r": 2.4154589371980655,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.5185"
  },
  {
@@ -14327,7 +14327,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-23T16:14:54.628742+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-23T15:59:59.999000+00:00",
@@ -14343,7 +14343,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-23T15:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-23T23:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.3415,
   "zone_high": 0.342,
@@ -14368,7 +14368,8 @@
    "coin_1d_ema99_dist": 0.0273
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.34175"
  },
  {
   "symbol": "ETCUSDT",
@@ -14418,7 +14419,7 @@
    "coin_1d_ema99_dist": 0.2546
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.35601969975672176,
+  "unrealized_r": 0.17800984987836613,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 8.69"
  },
  {
