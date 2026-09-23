@@ -14215,7 +14215,7 @@
    "coin_1d_ema99_dist": 0.4507
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.150751108464032,
+  "unrealized_r": 1.9522202369134996,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.5185"
  },
  {
@@ -14225,7 +14225,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-23T16:14:54.628742+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-23T15:59:59.999000+00:00",
@@ -14241,7 +14241,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-23T15:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-23T19:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 1512.37,
   "zone_high": 1563.9,
@@ -14266,7 +14266,8 @@
    "coin_1d_ema99_dist": 1.059
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1538.13"
  },
  {
   "symbol": "UNIUSDT",
@@ -14375,7 +14376,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-23T16:14:54.628742+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-23T15:59:59.999000+00:00",
@@ -14391,7 +14392,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-23T15:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-23T19:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 8.53,
   "zone_high": 8.85,
@@ -14416,6 +14417,7 @@
    "coin_1d_ema99_dist": 0.2546
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 8.69"
  }
 ]
