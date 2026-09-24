@@ -14278,7 +14278,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-23T16:14:54.628742+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-23T15:59:59.999000+00:00",
@@ -14294,7 +14294,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-23T15:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-24T11:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 8.678,
   "zone_high": 9.064,
@@ -14319,7 +14319,8 @@
    "coin_1d_ema99_dist": 1.0567
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 8.871"
  },
  {
   "symbol": "TRXUSDT",
@@ -14525,7 +14526,7 @@
    "coin_1d_ema99_dist": 0.2884
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.146788990825689,
+  "unrealized_r": -0.054608999563126655,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 6.645"
  },
  {
@@ -14740,7 +14741,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-24T04:15:01.936587+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-24T03:59:59.999000+00:00",
@@ -14756,7 +14757,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-24T03:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-24T08:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.2317,
   "zone_high": 0.236,
@@ -14781,6 +14782,7 @@
    "coin_1d_ema99_dist": 0.2733
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.23385"
  }
 ]
