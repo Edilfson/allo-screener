@@ -14319,7 +14319,7 @@
    "coin_1d_ema99_dist": 1.0567
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.1321115838118243,
+  "unrealized_r": 2.151945179940304,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 8.871"
  },
  {
@@ -14681,7 +14681,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.25800608683748094,
+  "unrealized_r": 0.2685369475247238,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.70995"
  },
  {
@@ -14991,5 +14991,55 @@
   "unrealized_r": 0.0,
   "closed_at": "2026-09-24T18:59:59.999000+00:00",
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 8.1365|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
+ },
+ {
+  "symbol": "AAVEUSDT",
+  "interval": "4h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-09-24T20:13:54.831120+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-24T19:59:59.999000+00:00",
+  "entry": 150.735,
+  "stop": 155.15499999999997,
+  "current_stop": 155.15499999999997,
+  "risk": 4.419999999999959,
+  "tps": [
+   {
+    "p": 128.63500000000022,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-24T19:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 146.47,
+  "zone_high": 155.0,
+  "zone_width_pct": 0.0582,
+  "quality_ok": true,
+  "swing_high": 155.0,
+  "swing_low": 146.47,
+  "stop_dist_pct": 0.0293,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 58.3,
+   "vol_ratio": 0.59,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1536,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.2537
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
