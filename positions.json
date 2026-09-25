@@ -14319,7 +14319,7 @@
    "coin_1d_ema99_dist": 1.0567
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2743085512549732,
+  "unrealized_r": 1.2544749551264933,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 8.871"
  },
  {
@@ -14681,7 +14681,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3949072757716536,
+  "unrealized_r": 0.4721335874781089,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.70995"
  },
  {
@@ -15194,7 +15194,7 @@
    "coin_1d_ema99_dist": 0.2819
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.8933333333333592,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.0065"
  },
  {
@@ -15248,5 +15248,55 @@
   "unrealized_r": 0.0,
   "closed_at": "2026-09-25T03:59:59.999000+00:00",
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.04253|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
+ },
+ {
+  "symbol": "ENAUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-25T04:15:51.713832+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-25T03:59:59.999000+00:00",
+  "entry": 0.22255,
+  "stop": 0.2200797,
+  "current_stop": 0.2200797,
+  "risk": 0.0024703000000000086,
+  "tps": [
+   {
+    "p": 0.23490150000000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-25T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.2203,
+  "zone_high": 0.2248,
+  "zone_width_pct": 0.0204,
+  "quality_ok": true,
+  "swing_high": 0.2248,
+  "swing_low": 0.2203,
+  "stop_dist_pct": 0.0111,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 55.5,
+   "vol_ratio": 1.03,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1471,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.7323
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
