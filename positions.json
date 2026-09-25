@@ -14319,7 +14319,7 @@
    "coin_1d_ema99_dist": 1.0567
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.383393329961626,
+  "unrealized_r": 1.264391753190729,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 8.871"
  },
  {
@@ -14681,7 +14681,7 @@
    "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5563804729760595,
+  "unrealized_r": 0.3949072757716536,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.70995"
  },
  {
@@ -14847,7 +14847,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-24T10:38:52.126991+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-23T23:59:59.999000+00:00",
@@ -14888,7 +14888,9 @@
    "coin_1d_ema99_dist": 0.1698
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-25T00:35:00.403118+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "JSTUSDT",
@@ -15038,6 +15040,106 @@
    "btc_ema99_dist": 0.1536,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2537
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "XLMUSDT",
+  "interval": "4h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-09-25T00:34:57.121060+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-24T23:59:59.999000+00:00",
+  "entry": 0.2188,
+  "stop": 0.2224222,
+  "current_stop": 0.2224222,
+  "risk": 0.003622199999999992,
+  "tps": [
+   {
+    "p": 0.20068900000000003,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-24T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.2154,
+  "zone_high": 0.2222,
+  "zone_width_pct": 0.0316,
+  "quality_ok": true,
+  "swing_high": 0.2222,
+  "swing_low": 0.2154,
+  "stop_dist_pct": 0.0166,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 62.3,
+   "vol_ratio": 0.82,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1536,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1866
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "TRBUSDT",
+  "interval": "6h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-25T00:34:57.121060+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-09-24T23:59:59.999000+00:00",
+  "entry": 19.165,
+  "stop": 18.32166,
+  "current_stop": 18.32166,
+  "risk": 0.8433399999999978,
+  "tps": [
+   {
+    "p": 23.381699999999988,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-24T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 18.34,
+  "zone_high": 19.99,
+  "zone_width_pct": 0.09,
+  "quality_ok": true,
+  "swing_high": 19.99,
+  "swing_low": 18.34,
+  "stop_dist_pct": 0.044,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 60.2,
+   "vol_ratio": 1.2,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1536,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.2407
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
