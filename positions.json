@@ -14278,20 +14278,20 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-23T16:14:54.628742+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-23T15:59:59.999000+00:00",
   "entry": 8.871,
   "stop": 8.669322000000001,
-  "current_stop": 8.669322000000001,
+  "current_stop": 8.871,
   "risk": 0.20167799999999936,
   "tps": [
    {
     "p": 9.879389999999997,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-09-24T11:59:59.999000+00:00",
@@ -14318,9 +14318,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 1.0567
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 4.670811888257536,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 8.871"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-09-25T11:59:59.999000+00:00"
  },
  {
   "symbol": "TRXUSDT",
@@ -15302,5 +15303,105 @@
   "unrealized_r": 0.0,
   "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
   "closed_at": "2026-09-25T05:59:59.999000+00:00"
+ },
+ {
+  "symbol": "TRUMPUSDT",
+  "interval": "12h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-09-25T12:19:48.671336+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-09-25T11:59:59.999000+00:00",
+  "entry": 2.1950000000000003,
+  "stop": 2.259257,
+  "current_stop": 2.259257,
+  "risk": 0.06425699999999956,
+  "tps": [
+   {
+    "p": 1.8737150000000025,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-25T11:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 2.133,
+  "zone_high": 2.257,
+  "zone_width_pct": 0.0581,
+  "quality_ok": true,
+  "swing_high": 2.257,
+  "swing_low": 2.133,
+  "stop_dist_pct": 0.0293,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 51.7,
+   "vol_ratio": 0.72,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1453,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0357
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "WLFIUSDT",
+  "interval": "12h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-09-25T12:19:48.671336+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-09-25T11:59:59.999000+00:00",
+  "entry": 0.057800000000000004,
+  "stop": 0.05865859999999999,
+  "current_stop": 0.05865859999999999,
+  "risk": 0.0008585999999999872,
+  "tps": [
+   {
+    "p": 0.05350700000000007,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-25T11:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.057,
+  "zone_high": 0.0586,
+  "zone_width_pct": 0.0281,
+  "quality_ok": true,
+  "swing_high": 0.0586,
+  "swing_low": 0.057,
+  "stop_dist_pct": 0.0149,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 48.5,
+   "vol_ratio": 1.09,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1453,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0558
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
