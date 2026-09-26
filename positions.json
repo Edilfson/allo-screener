@@ -15317,7 +15317,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-25T12:19:48.671336+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-25T11:59:59.999000+00:00",
@@ -15358,7 +15358,9 @@
    "coin_1d_ema99_dist": 0.0357
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-26T12:17:06.090650+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "WLFIUSDT",
@@ -15367,7 +15369,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-25T12:19:48.671336+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-25T11:59:59.999000+00:00",
@@ -15407,9 +15409,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0558
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0578"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-26T23:59:59.999000+00:00"
  },
  {
   "symbol": "ARBUSDT",
@@ -15511,7 +15514,7 @@
    "coin_1d_ema99_dist": 0.484
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.640596952929182,
+  "unrealized_r": 2.492248809506176,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.009467"
  }
 ]
