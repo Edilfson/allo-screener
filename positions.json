@@ -15569,5 +15569,55 @@
   "unrealized_r": 1.4009962640099636,
   "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
   "closed_at": "2026-09-27T06:59:59.999000+00:00"
+ },
+ {
+  "symbol": "ARBUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-27T09:13:17.943818+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-27T08:59:59.999000+00:00",
+  "entry": 0.22785,
+  "stop": 0.2253744,
+  "current_stop": 0.2253744,
+  "risk": 0.0024755999999999945,
+  "tps": [
+   {
+    "p": 0.24022799999999997,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-27T08:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.2256,
+  "zone_high": 0.2301,
+  "zone_width_pct": 0.0199,
+  "quality_ok": true,
+  "swing_high": 0.2301,
+  "swing_low": 0.2256,
+  "stop_dist_pct": 0.0109,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.2,
+   "vol_ratio": 1.91,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1481,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.7558
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
