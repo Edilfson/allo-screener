@@ -15621,5 +15621,55 @@
   "unrealized_r": -0.4241396025206001,
   "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
   "closed_at": "2026-09-27T12:59:59.999000+00:00"
+ },
+ {
+  "symbol": "ETHUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-09-27T16:13:12.458352+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-27T15:59:59.999000+00:00",
+  "entry": 2706.955,
+  "stop": 2723.19673,
+  "current_stop": 2723.19673,
+  "risk": 16.24173000000019,
+  "tps": [
+   {
+    "p": 2625.746349999999,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-27T15:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 2698.21,
+  "zone_high": 2715.7,
+  "zone_width_pct": 0.0065,
+  "quality_ok": true,
+  "swing_high": 2715.7,
+  "swing_low": 2698.21,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 43.2,
+   "vol_ratio": 1.47,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1469,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1992
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
