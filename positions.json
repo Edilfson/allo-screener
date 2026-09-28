@@ -15887,7 +15887,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-28T03:19:41.084286+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-28T02:59:59.999000+00:00",
@@ -15927,9 +15927,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.366
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 1.803113450554394,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 71.075"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-28T10:59:59.999000+00:00"
  },
  {
   "symbol": "HBARUSDT",
@@ -16042,20 +16043,20 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-28T04:17:24.507830+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-28T03:59:59.999000+00:00",
   "entry": 0.051500000000000004,
   "stop": 0.051191,
-  "current_stop": 0.051191,
+  "current_stop": 0.051500000000000004,
   "risk": 0.0003090000000000037,
   "tps": [
    {
     "p": 0.05304500000000002,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-09-28T07:59:59.999000+00:00",
@@ -16082,9 +16083,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1534
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 2.5889967637539986,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0515"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-09-28T11:59:59.999000+00:00"
  },
  {
   "symbol": "SUIUSDT",
