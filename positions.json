@@ -15928,7 +15928,7 @@
    "coin_1d_ema99_dist": 0.366
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.27998656064508987,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 71.075"
  },
  {
@@ -15979,7 +15979,107 @@
    "coin_1d_ema99_dist": 0.2199
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 1.6028170724303221,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.09428"
+ },
+ {
+  "symbol": "WLDUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-28T04:17:24.507830+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-28T03:59:59.999000+00:00",
+  "entry": 0.5246,
+  "stop": 0.514485,
+  "current_stop": 0.514485,
+  "risk": 0.010114999999999985,
+  "tps": [
+   {
+    "p": 0.5751749999999999,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-28T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.515,
+  "zone_high": 0.5342,
+  "zone_width_pct": 0.0373,
+  "quality_ok": true,
+  "swing_high": 0.5342,
+  "swing_low": 0.515,
+  "stop_dist_pct": 0.0193,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 57.4,
+   "vol_ratio": 1.16,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1287,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.3756
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "MAGICUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-28T04:17:24.507830+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-28T03:59:59.999000+00:00",
+  "entry": 0.051500000000000004,
+  "stop": 0.051191,
+  "current_stop": 0.051191,
+  "risk": 0.0003090000000000037,
+  "tps": [
+   {
+    "p": 0.05304500000000002,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-28T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0513,
+  "zone_high": 0.0517,
+  "zone_width_pct": 0.0078,
+  "quality_ok": true,
+  "swing_high": 0.0517,
+  "swing_low": 0.0513,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 52.0,
+   "vol_ratio": 0.94,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1287,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1534
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
