@@ -16199,7 +16199,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-28T13:15:57.040258+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-28T12:59:59.999000+00:00",
@@ -16239,9 +16239,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.3173
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.19935068633595995,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.04083"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-28T17:59:59.999000+00:00"
  },
  {
   "symbol": "ADAUSDT",
@@ -16291,7 +16292,7 @@
    "coin_1d_ema99_dist": 0.2284
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4715286509789931,
+  "unrealized_r": 0.20208370756242652,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.2494"
  },
  {
@@ -16442,7 +16443,7 @@
    "coin_1d_ema99_dist": 0.2996
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8249010118785763,
+  "unrealized_r": 0.5224373075230937,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.2334"
  },
  {
@@ -16452,7 +16453,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-28T17:12:19.923920+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-28T16:59:59.999000+00:00",
@@ -16468,7 +16469,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-28T16:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-28T17:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 147.63,
   "zone_high": 150.83,
@@ -16493,6 +16494,7 @@
    "coin_1d_ema99_dist": 0.3555
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 149.23"
  }
 ]
