@@ -4280,5 +4280,47 @@
    "atlandi": "min notional",
    "delta_usdt": 18.66
   }
+ },
+ {
+  "zaman": "2026-09-29T01:39:12",
+  "tur": "TREND",
+  "sembol": "BNBUSDT",
+  "hedef_w": 0.1552,
+  "hedef_notional": 155.2,
+  "mevcut_miktar": 0.0,
+  "delta": 0.01,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 7.57
+  }
+ },
+ {
+  "zaman": "2026-09-29T01:39:12",
+  "tur": "TREND",
+  "sembol": "BTCUSDT",
+  "hedef_w": 0.1607,
+  "hedef_notional": 160.7,
+  "mevcut_miktar": 0.0018,
+  "delta": 0.0001,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 8.28
+  }
+ },
+ {
+  "zaman": "2026-09-29T01:39:13",
+  "tur": "TREND",
+  "sembol": "ETHUSDT",
+  "hedef_w": 0.1506,
+  "hedef_notional": 150.6,
+  "mevcut_miktar": 0.048,
+  "delta": 0.009,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 23.93
+  }
  }
 ]
