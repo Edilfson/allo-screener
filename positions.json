@@ -17425,7 +17425,57 @@
    "coin_1d_ema99_dist": -0.1088
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2886597938144435,
+  "unrealized_r": 0.03143072667838883,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.024215"
+ },
+ {
+  "symbol": "KITEUSDT",
+  "interval": "1d",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-30T21:12:59.990847+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-09-29T23:59:59.999000+00:00",
+  "entry": 0.1314,
+  "stop": 0.12827159999999999,
+  "current_stop": 0.12827159999999999,
+  "risk": 0.0031284000000000034,
+  "tps": [
+   {
+    "p": 0.147042,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-29T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.1284,
+  "zone_high": 0.1344,
+  "zone_width_pct": 0.0467,
+  "quality_ok": true,
+  "swing_high": 0.1344,
+  "swing_low": 0.1284,
+  "stop_dist_pct": 0.0238,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 55.9,
+   "vol_ratio": 0.87,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1275,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0657
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
