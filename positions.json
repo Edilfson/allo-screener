@@ -17178,7 +17178,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-30T15:15:10.543848+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-30T14:59:59.999000+00:00",
@@ -17194,7 +17194,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-30T14:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-30T15:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 1.1469,
   "zone_high": 1.1599,
@@ -17219,7 +17219,8 @@
    "coin_1d_ema99_dist": 0.3907
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.1534"
  },
  {
   "symbol": "VIRTUALUSDT",
@@ -17228,7 +17229,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-30T15:15:10.543848+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-30T14:59:59.999000+00:00",
@@ -17244,7 +17245,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-30T14:59:59.999000+00:00",
+  "entry_bar_close": "2026-09-30T15:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.7856,
   "zone_high": 0.7946,
@@ -17269,6 +17270,7 @@
    "coin_1d_ema99_dist": 0.1662
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.7901"
  }
 ]
