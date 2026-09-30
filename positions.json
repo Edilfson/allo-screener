@@ -16617,7 +16617,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-29T06:56:40.495742+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-29T06:59:59.999000+00:00",
@@ -16658,7 +16658,9 @@
    "coin_1d_ema99_dist": 0.8682
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-09-30T07:27:28.224369+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "MINAUSDT",
@@ -16810,7 +16812,7 @@
    "coin_1d_ema99_dist": 0.9511
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4069317347202123,
+  "unrealized_r": 0.7245369910872048,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.85"
  },
  {
@@ -16861,7 +16863,7 @@
    "coin_1d_ema99_dist": 0.3471
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.3417984183762894,
+  "unrealized_r": 2.865260376766675,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.09935"
  },
  {
