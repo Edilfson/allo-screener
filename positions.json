@@ -17276,5 +17276,55 @@
   "unrealized_r": 4.635235356440035,
   "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
   "closed_at": "2026-09-30T16:59:59.999000+00:00"
+ },
+ {
+  "symbol": "TRXUSDT",
+  "interval": "6h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-30T18:16:49.368745+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-09-30T17:59:59.999000+00:00",
+  "entry": 0.33494999999999997,
+  "stop": 0.33294029999999997,
+  "current_stop": 0.33294029999999997,
+  "risk": 0.002009700000000003,
+  "tps": [
+   {
+    "p": 0.3449985,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-30T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.3344,
+  "zone_high": 0.3355,
+  "zone_width_pct": 0.0033,
+  "quality_ok": true,
+  "swing_high": 0.3355,
+  "swing_low": 0.3344,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 52.8,
+   "vol_ratio": 2.39,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1303,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": 0.0031
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
