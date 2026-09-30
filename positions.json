@@ -16771,20 +16771,20 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-29T20:14:40.861350+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-09-29T19:59:59.999000+00:00",
   "entry": 4.85,
   "stop": 4.749245999999999,
-  "current_stop": 4.749245999999999,
+  "current_stop": 4.85,
   "risk": 0.10075400000000023,
   "tps": [
    {
     "p": 5.353770000000001,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-09-29T23:59:59.999000+00:00",
@@ -16811,9 +16811,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.9511
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 4.277745796692926,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.85"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-09-30T12:59:59.999000+00:00"
  },
  {
   "symbol": "INITUSDT",
