@@ -16812,7 +16812,7 @@
    "coin_1d_ema99_dist": 0.9511
   },
   "realized_r": 0.0,
-  "unrealized_r": 4.218194811124121,
+  "unrealized_r": 4.277745796692926,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 4.85"
  },
  {
@@ -16974,7 +16974,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-09-30T06:23:30.811973+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-30T05:59:59.999000+00:00",
@@ -17014,9 +17014,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.6206
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 6.3025"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-09-30T17:59:59.999000+00:00"
  },
  {
   "symbol": "TRBUSDT",
@@ -17064,6 +17065,106 @@
    "btc_ema99_dist": 0.119,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2581
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "AVAXUSDT",
+  "interval": "12h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-30T12:24:01.032054+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-09-30T11:59:59.999000+00:00",
+  "entry": 10.658000000000001,
+  "stop": 10.324665000000001,
+  "current_stop": 10.324665000000001,
+  "risk": 0.33333499999999994,
+  "tps": [
+   {
+    "p": 12.324675000000001,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-30T11:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 10.335,
+  "zone_high": 10.981,
+  "zone_width_pct": 0.0625,
+  "quality_ok": true,
+  "swing_high": 10.981,
+  "swing_low": 10.335,
+  "stop_dist_pct": 0.0313,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 60.3,
+   "vol_ratio": 0.74,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1283,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.4266
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "LINKUSDT",
+  "interval": "12h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-09-30T12:24:01.032054+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-09-30T11:59:59.999000+00:00",
+  "entry": 14.1385,
+  "stop": 13.891095,
+  "current_stop": 13.891095,
+  "risk": 0.24740500000000054,
+  "tps": [
+   {
+    "p": 15.375525000000003,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-30T11:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 13.905,
+  "zone_high": 14.372,
+  "zone_width_pct": 0.0336,
+  "quality_ok": true,
+  "swing_high": 14.372,
+  "swing_low": 13.905,
+  "stop_dist_pct": 0.0175,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 60.2,
+   "vol_ratio": 0.71,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1283,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.3649
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
