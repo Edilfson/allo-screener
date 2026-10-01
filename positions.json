@@ -17176,7 +17176,7 @@
    "coin_1d_ema99_dist": 0.3649
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4951395485135646,
+  "unrealized_r": 0.507265415007775,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 14.1385"
  },
  {
@@ -17290,7 +17290,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-30T18:16:49.368745+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-30T17:59:59.999000+00:00",
@@ -17306,7 +17306,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-09-30T17:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-01T11:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.3344,
   "zone_high": 0.3355,
@@ -17331,7 +17331,8 @@
    "coin_1d_ema99_dist": 0.0031
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33495"
  },
  {
   "symbol": "ACEUSDT",
@@ -17537,7 +17538,7 @@
    "coin_1d_ema99_dist": 0.3563
   },
   "realized_r": 0.0,
-  "unrealized_r": 4.3880123237793205,
+  "unrealized_r": 3.454392680422017,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.000701"
  },
  {
