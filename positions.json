@@ -16877,7 +16877,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-30T00:38:32.637866+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-29T23:59:59.999000+00:00",
@@ -16918,7 +16918,9 @@
    "coin_1d_ema99_dist": 0.1881
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-01T00:43:35.903925+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "CELOUSDT",
@@ -16927,7 +16929,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-30T00:38:32.637866+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-29T23:59:59.999000+00:00",
@@ -16968,7 +16970,9 @@
    "coin_1d_ema99_dist": 0.2996
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-01T00:43:36.446110+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "PROMUSDT",
@@ -17170,7 +17174,7 @@
    "coin_1d_ema99_dist": 0.3649
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 1.0852650512317816,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 14.1385"
  },
  {
@@ -17425,7 +17429,7 @@
    "coin_1d_ema99_dist": -0.1088
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.225798340457644,
+  "unrealized_r": 0.9114910736736249,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.024215"
  },
  {
@@ -17435,7 +17439,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-09-30T21:12:59.990847+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-09-29T23:59:59.999000+00:00",
@@ -17474,6 +17478,58 @@
    "btc_ema99_dist": 0.1275,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0657
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-01T00:43:40.163281+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
+ },
+ {
+  "symbol": "VTHOUSDT",
+  "interval": "4h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-01T00:43:33.895940+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-09-30T23:59:59.999000+00:00",
+  "entry": 0.000701,
+  "stop": 0.000711711,
+  "current_stop": 0.000711711,
+  "risk": 1.0710999999999945e-05,
+  "tps": [
+   {
+    "p": 0.0006474450000000003,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-09-30T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.000691,
+  "zone_high": 0.000711,
+  "zone_width_pct": 0.0289,
+  "quality_ok": false,
+  "swing_high": 0.000711,
+  "swing_low": 0.000691,
+  "stop_dist_pct": 0.0153,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 41.5,
+   "vol_ratio": 0.27,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1215,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.3563
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
