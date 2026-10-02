@@ -17178,7 +17178,7 @@
    "coin_1d_ema99_dist": 0.3649
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2590691376487868,
+  "unrealized_r": 0.9599644307916105,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 14.1385"
  },
  {
@@ -17603,7 +17603,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-01T12:21:27.402319+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-01T11:59:59.999000+00:00",
@@ -17644,7 +17644,9 @@
    "coin_1d_ema99_dist": 0.3551
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-02T12:21:03.333607+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "SUIUSDT",
@@ -17848,7 +17850,7 @@
    "coin_1d_ema99_dist": 1.2593
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.7957722390714232,
+  "unrealized_r": 0.5301803753448909,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.062875"
  }
 ]
