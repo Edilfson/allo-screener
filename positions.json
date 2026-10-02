@@ -17178,7 +17178,7 @@
    "coin_1d_ema99_dist": 0.3649
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.10711182069884835,
+  "unrealized_r": -0.03031466623552583,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 14.1385"
  },
  {
@@ -17541,7 +17541,7 @@
    "coin_1d_ema99_dist": 0.3563
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.120343572028758,
+  "unrealized_r": 1.4937914293716876,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.000701"
  },
  {
@@ -17655,7 +17655,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-01T19:11:48.280186+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-01T18:59:59.999000+00:00",
@@ -17671,7 +17671,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-01T18:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-02T17:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 1.145,
   "zone_high": 1.1689,
@@ -17696,7 +17696,8 @@
    "coin_1d_ema99_dist": 0.3945
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.15695"
  },
  {
   "symbol": "WIFUSDT",
