@@ -17906,7 +17906,7 @@
    "coin_1d_ema99_dist": 0.0039
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.37319002836245574,
+  "unrealized_r": 0.9702940737423517,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33495"
  },
  {
@@ -17957,7 +17957,7 @@
    "coin_1d_ema99_dist": 0.0505
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.071575375982813,
+  "unrealized_r": 1.7127197990409064,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1245"
  },
  {
@@ -18058,7 +18058,7 @@
    "coin_1d_ema99_dist": 0.2509
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.753526905058108,
+  "unrealized_r": 1.621185251846173,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 59.925"
  },
  {
@@ -18370,7 +18370,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-03T04:23:45.737405+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-03T03:59:59.999000+00:00",
@@ -18410,8 +18410,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1583
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.12595092951786097,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.13305"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-03T15:59:59.999000+00:00"
  }
 ]
