@@ -17542,7 +17542,7 @@
    "coin_1d_ema99_dist": 0.3563
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.9212025021006682,
+  "unrealized_r": 4.201288395107856,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.000701"
  },
  {
@@ -17905,7 +17905,7 @@
    "coin_1d_ema99_dist": 0.0039
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.02487933522416003,
+  "unrealized_r": 0.32343135791413563,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33495"
  },
  {
@@ -17956,7 +17956,7 @@
    "coin_1d_ema99_dist": 0.0505
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2233712850292167,
+  "unrealized_r": 1.5496036277036813,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1245"
  },
  {
@@ -18057,7 +18057,7 @@
    "coin_1d_ema99_dist": 0.2509
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4623752679918567,
+  "unrealized_r": 1.5020777639554381,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 59.925"
  },
  {
@@ -18158,7 +18158,7 @@
    "coin_1d_ema99_dist": 0.2414
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.6414250632262046,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.37595"
  },
  {
