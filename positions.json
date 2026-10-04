@@ -17906,7 +17906,7 @@
    "coin_1d_ema99_dist": 0.0039
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.2239140170174679,
+  "unrealized_r": 0.32343135791413563,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33495"
  },
  {
@@ -17957,7 +17957,7 @@
    "coin_1d_ema99_dist": 0.0505
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.6914168270642858,
+  "unrealized_r": 2.919779466936395,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1245"
  },
  {
@@ -18060,7 +18060,7 @@
    "coin_1d_ema99_dist": 0.2509
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1976919615679866,
+  "unrealized_r": 1.3829702760646938,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 59.925"
  },
  {
@@ -18174,7 +18174,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-03T03:56:27.160094+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-03T03:59:59.999000+00:00",
@@ -18215,7 +18215,9 @@
    "coin_1d_ema99_dist": 0.0513
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-04T04:15:53.643577+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "GIGGLEUSDT",
@@ -18265,7 +18267,7 @@
    "coin_1d_ema99_dist": 0.0661
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0266289813559157,
+  "unrealized_r": 0.9886056857501399,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 38.24"
  },
  {
@@ -18275,7 +18277,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-03T04:23:45.737405+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-03T03:59:59.999000+00:00",
@@ -18316,7 +18318,9 @@
    "coin_1d_ema99_dist": 0.4192
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-04T04:15:55.028677+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "ADAUSDT",
@@ -18325,7 +18329,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-03T04:23:45.737405+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-03T03:59:59.999000+00:00",
@@ -18366,7 +18370,9 @@
    "coin_1d_ema99_dist": 0.1564
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-04T04:15:55.937481+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "OPUSDT",
