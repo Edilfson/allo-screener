@@ -17906,7 +17906,7 @@
    "coin_1d_ema99_dist": 0.0039
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.2239140170174679,
+  "unrealized_r": 0.37319002836245574,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33495"
  },
  {
@@ -17957,7 +17957,7 @@
    "coin_1d_ema99_dist": 0.0505
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.593547124261945,
+  "unrealized_r": 2.6261703585293867,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1245"
  },
  {
@@ -17967,7 +17967,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-03T00:34:42.077780+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-02T23:59:59.999000+00:00",
@@ -18008,7 +18008,9 @@
    "coin_1d_ema99_dist": 0.316
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-04T00:17:47.257627+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "DASHUSDT",
@@ -18058,7 +18060,7 @@
    "coin_1d_ema99_dist": 0.2509
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7874328366110004,
+  "unrealized_r": 0.40364204229639555,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 59.925"
  },
  {
@@ -18068,7 +18070,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-03T00:34:42.077780+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-02T23:59:59.999000+00:00",
@@ -18109,7 +18111,9 @@
    "coin_1d_ema99_dist": 0.1298
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-04T00:17:48.667384+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "CRVUSDT",
@@ -18261,7 +18265,7 @@
    "coin_1d_ema99_dist": 0.0661
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9379079582757748,
+  "unrealized_r": 0.8491869351956338,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 38.24"
  },
  {
