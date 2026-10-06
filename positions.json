@@ -17957,7 +17957,7 @@
    "coin_1d_ema99_dist": 0.0505
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.202068313052596,
+  "unrealized_r": 2.43043095292472,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1245"
  },
  {
@@ -19094,7 +19094,7 @@
    "coin_1d_ema99_dist": 0.1487
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6057402145421718,
+  "unrealized_r": 0.7489151743430558,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.5133"
  },
  {
@@ -19145,7 +19145,7 @@
    "coin_1d_ema99_dist": 0.1034
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2854989804663264,
+  "unrealized_r": 2.438015307780954,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.023705"
  },
  {
@@ -19199,5 +19199,55 @@
   "unrealized_r": 0.0,
   "closed_at": "2026-10-05T20:59:59.999000+00:00",
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 7.1045|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
+ },
+ {
+  "symbol": "AXSUSDT",
+  "interval": "1d",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-06T00:37:49.452418+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-10-05T23:59:59.999000+00:00",
+  "entry": 1.2505000000000002,
+  "stop": 1.191807,
+  "current_stop": 1.191807,
+  "risk": 0.058693000000000106,
+  "tps": [
+   {
+    "p": 1.5439650000000007,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-05T23:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 1.193,
+  "zone_high": 1.308,
+  "zone_width_pct": 0.0964,
+  "quality_ok": true,
+  "swing_high": 1.308,
+  "swing_low": 1.193,
+  "stop_dist_pct": 0.0469,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 64.9,
+   "vol_ratio": 1.53,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1357,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.2582
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
