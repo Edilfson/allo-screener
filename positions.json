@@ -17906,7 +17906,7 @@
    "coin_1d_ema99_dist": 0.0039
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5722247101557636,
+  "unrealized_r": 0.5224660397074435,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33495"
  },
  {
@@ -17957,7 +17957,7 @@
    "coin_1d_ema99_dist": 0.0505
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.865853260692332,
+  "unrealized_r": 3.5069976837504253,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1245"
  },
  {
@@ -19150,7 +19150,7 @@
    "coin_1d_ema99_dist": 0.1034
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.758326191672321,
+  "unrealized_r": 1.5219125860693186,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.023705"
  },
  {
@@ -19212,7 +19212,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-06T00:37:49.452418+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-05T23:59:59.999000+00:00",
@@ -19228,7 +19228,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-05T23:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-06T23:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 1.193,
   "zone_high": 1.308,
@@ -19253,7 +19253,8 @@
    "coin_1d_ema99_dist": 0.2582
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.2505"
  },
  {
   "symbol": "LPTUSDT",
@@ -19303,7 +19304,7 @@
    "coin_1d_ema99_dist": 0.1321
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6804123711340222,
+  "unrealized_r": 1.4639175257732064,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.7725"
  }
 ]
