@@ -17906,7 +17906,7 @@
    "coin_1d_ema99_dist": 0.0039
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8707767328457116,
+  "unrealized_r": 0.7712593919490714,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33495"
  },
  {
@@ -18840,7 +18840,7 @@
    "coin_1d_ema99_dist": 0.4797
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9461505190311684,
+  "unrealized_r": 0.405493079584795,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.20125"
  },
  {
@@ -19095,7 +19095,7 @@
    "coin_1d_ema99_dist": 0.1487
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9581708848212597,
+  "unrealized_r": 0.6718209652194915,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.5133"
  },
  {
@@ -19146,7 +19146,7 @@
    "coin_1d_ema99_dist": 0.1034
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4332574839681964,
+  "unrealized_r": 1.9356363958745755,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.023705"
  },
  {
@@ -19247,6 +19247,56 @@
    "btc_ema99_dist": 0.1357,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2582
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "LPTUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-06T09:15:12.916353+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-06T08:59:59.999000+00:00",
+  "entry": 1.7725,
+  "stop": 1.74825,
+  "current_stop": 1.74825,
+  "risk": 0.024249999999999883,
+  "tps": [
+   {
+    "p": 1.8937499999999994,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-06T08:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 1.75,
+  "zone_high": 1.795,
+  "zone_width_pct": 0.0257,
+  "quality_ok": true,
+  "swing_high": 1.795,
+  "swing_low": 1.75,
+  "stop_dist_pct": 0.0137,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 55.8,
+   "vol_ratio": 3.41,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1376,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1321
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
