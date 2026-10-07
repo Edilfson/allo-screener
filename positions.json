@@ -19467,5 +19467,55 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ARPAUSDT",
+  "interval": "6h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-07T09:43:23.674579+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-10-07T05:59:59.999000+00:00",
+  "entry": 0.011525,
+  "stop": 0.01131867,
+  "current_stop": 0.01131867,
+  "risk": 0.0002063300000000011,
+  "tps": [
+   {
+    "p": 0.012556650000000006,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-07T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.01133,
+  "zone_high": 0.01172,
+  "zone_width_pct": 0.0344,
+  "quality_ok": true,
+  "swing_high": 0.01172,
+  "swing_low": 0.01133,
+  "stop_dist_pct": 0.0179,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 52.7,
+   "vol_ratio": 1.3,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1076,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.2254
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
