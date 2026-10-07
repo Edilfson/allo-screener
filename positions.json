@@ -17906,7 +17906,7 @@
    "coin_1d_ema99_dist": 0.0039
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.32343135791413563,
+  "unrealized_r": 0.2239140170174679,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33495"
  },
  {
@@ -17957,7 +17957,7 @@
    "coin_1d_ema99_dist": 0.0505
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.6374906208202082,
+  "unrealized_r": 3.898476494959774,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1245"
  },
  {
@@ -19152,7 +19152,7 @@
    "coin_1d_ema99_dist": 0.1034
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.2063595259907096,
+  "unrealized_r": 2.5266704098820765,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.023705"
  },
  {
@@ -19255,7 +19255,7 @@
    "coin_1d_ema99_dist": 0.2582
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": -0.025556710340245925,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.2505"
  },
  {
@@ -19265,20 +19265,20 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-06T09:15:12.916353+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-06T08:59:59.999000+00:00",
   "entry": 1.7725,
   "stop": 1.74825,
-  "current_stop": 1.74825,
+  "current_stop": 1.7725,
   "risk": 0.024249999999999883,
   "tps": [
    {
     "p": 1.8937499999999994,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-10-06T09:59:59.999000+00:00",
@@ -19305,9 +19305,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1321
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 1.1752577319587674,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.7725"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-10-07T00:59:59.999000+00:00"
  },
  {
   "symbol": "WLFIUSDT",
