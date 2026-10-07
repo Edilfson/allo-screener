@@ -19527,7 +19527,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-07T12:21:32.547580+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-07T11:59:59.999000+00:00",
@@ -19543,7 +19543,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-07T11:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-07T17:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 19.8,
   "zone_high": 20.53,
@@ -19568,7 +19568,8 @@
    "coin_1d_ema99_dist": 0.3266
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 20.165"
  },
  {
   "symbol": "MAGICUSDT",
