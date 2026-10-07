@@ -19365,5 +19365,55 @@
   "unrealized_r": 0.0,
   "closed_at": "2026-10-07T03:59:59.999000+00:00",
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.05515|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
+ },
+ {
+  "symbol": "PARTIUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-07T06:22:40.450491+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-07T05:59:59.999000+00:00",
+  "entry": 0.03415,
+  "stop": 0.034634599999999995,
+  "current_stop": 0.034634599999999995,
+  "risk": 0.00048459999999999476,
+  "tps": [
+   {
+    "p": 0.031727000000000026,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-07T05:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0337,
+  "zone_high": 0.0346,
+  "zone_width_pct": 0.0267,
+  "quality_ok": true,
+  "swing_high": 0.0346,
+  "swing_low": 0.0337,
+  "stop_dist_pct": 0.0142,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 58.6,
+   "vol_ratio": 0.79,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.1127,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0651
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
