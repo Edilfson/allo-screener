@@ -19466,7 +19466,7 @@
    "coin_1d_ema99_dist": 0.0056
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.314679763853735,
+  "unrealized_r": 1.364290320980286,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33595"
  },
  {
@@ -19829,7 +19829,7 @@
    "coin_1d_ema99_dist": 0.1484
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.3409090909090984,
+  "unrealized_r": 2.068181818181827,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1914"
  },
  {
@@ -19984,7 +19984,7 @@
    "coin_1d_ema99_dist": -0.0586
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.09276868129319206,
+  "unrealized_r": 0.09276868129319608,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0058"
  },
  {
@@ -20035,7 +20035,7 @@
    "coin_1d_ema99_dist": 0.0739
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3629289820567913,
+  "unrealized_r": 0.21775738923407414,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.817"
  },
  {
@@ -20138,7 +20138,7 @@
    "coin_1d_ema99_dist": -0.1397
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 0.24752475247524847,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.06095"
  },
  {
@@ -20148,20 +20148,20 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-08T16:16:32.450548+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-08T15:59:59.999000+00:00",
   "entry": 0.02487,
   "stop": 0.02465532,
-  "current_stop": 0.02465532,
+  "current_stop": 0.02487,
   "risk": 0.00021467999999999834,
   "tps": [
    {
     "p": 0.02594339999999999,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-10-08T19:59:59.999000+00:00",
@@ -20188,9 +20188,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1108
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.02487"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-10-08T23:59:59.999000+00:00"
  },
  {
   "symbol": "BOMEUSDT",
@@ -20238,6 +20239,106 @@
    "btc_ema99_dist": 0.0763,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2718
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ASTERUSDT",
+  "interval": "4h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-08T20:14:12.011776+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-08T19:59:59.999000+00:00",
+  "entry": 0.7053,
+  "stop": 0.7183175999999999,
+  "current_stop": 0.7183175999999999,
+  "risk": 0.013017599999999852,
+  "tps": [
+   {
+    "p": 0.6402120000000008,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-08T19:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.693,
+  "zone_high": 0.7176,
+  "zone_width_pct": 0.0355,
+  "quality_ok": false,
+  "swing_high": 0.7176,
+  "swing_low": 0.693,
+  "stop_dist_pct": 0.0185,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 39.9,
+   "vol_ratio": 1.91,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0808,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0335
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ETHFIUSDT",
+  "interval": "4h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-08T20:14:12.011776+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-08T19:59:59.999000+00:00",
+  "entry": 0.71965,
+  "stop": 0.7388380999999999,
+  "current_stop": 0.7388380999999999,
+  "risk": 0.01918809999999993,
+  "tps": [
+   {
+    "p": 0.6237095000000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-08T19:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.7012,
+  "zone_high": 0.7381,
+  "zone_width_pct": 0.0526,
+  "quality_ok": true,
+  "swing_high": 0.7381,
+  "swing_low": 0.7012,
+  "stop_dist_pct": 0.0267,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 41.3,
+   "vol_ratio": 3.14,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0808,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.2644
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
