@@ -19466,7 +19466,7 @@
    "coin_1d_ema99_dist": 0.0056
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7689636354616207,
+  "unrealized_r": 1.4139008781068367,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33595"
  },
  {
@@ -19736,7 +19736,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-08T06:24:39.550489+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-08T05:59:59.999000+00:00",
@@ -19776,9 +19776,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.607
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.7950655455821803,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.07265"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-08T17:59:59.999000+00:00"
  },
  {
   "symbol": "ACEUSDT",
@@ -19828,7 +19829,7 @@
    "coin_1d_ema99_dist": 0.1484
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9431818181818211,
+  "unrealized_r": 1.4090909090909156,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1914"
  },
  {
@@ -19890,7 +19891,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-08T11:12:57.023912+00:00",
-  "status": "pending",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-08T10:59:59.999000+00:00",
@@ -19906,7 +19907,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-08T10:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-08T15:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.764,
   "zone_high": 0.7749,
@@ -19930,8 +19931,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1026
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-08T15:59:59.999000+00:00",
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.76945|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
  },
  {
   "symbol": "HEMIUSDT",
@@ -19940,7 +19943,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-08T12:20:55.153721+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-08T11:59:59.999000+00:00",
@@ -19956,7 +19959,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-08T11:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-08T15:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.00559,
   "zone_high": 0.00601,
@@ -19981,7 +19984,8 @@
    "coin_1d_ema99_dist": -0.0586
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0058"
  },
  {
   "symbol": "LPTUSDT",
@@ -20041,7 +20045,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-08T13:18:18.703001+00:00",
-  "status": "pending",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-08T12:59:59.999000+00:00",
@@ -20057,7 +20061,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-08T12:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-08T15:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.06763,
   "zone_high": 0.06857,
@@ -20081,7 +20085,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2633
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-08T15:59:59.999000+00:00",
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0681|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
  }
 ]
