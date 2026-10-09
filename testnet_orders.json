@@ -4870,5 +4870,46 @@
     "updateTime": 1791510408738
    }
   }
+ },
+ {
+  "zaman": "2026-10-09T13:50:10",
+  "sembol": "BNBUSDT",
+  "tur": "DENETIM",
+  "sebep": "sahipsiz pozisyon",
+  "basarili": true,
+  "pozisyon": -0.2,
+  "trend_payi": 0.0,
+  "iptal": null,
+  "kapanis": {
+   "kapat": -0.2,
+   "trend_payi": 0.0,
+   "ok": true,
+   "yanit": [
+    {
+     "orderId": 2658708696,
+     "symbol": "BNBUSDT",
+     "status": "NEW",
+     "clientOrderId": "b3uComZZrwpCi4hoHkp3eg",
+     "price": "0.000",
+     "origQty": "0.20",
+     "executedQty": "0.00",
+     "cumQty": "0.00",
+     "timeInForce": "GTC",
+     "type": "MARKET",
+     "reduceOnly": true,
+     "closePosition": false,
+     "side": "BUY",
+     "positionSide": "BOTH",
+     "stopPrice": "0.000",
+     "workingType": "CONTRACT_PRICE",
+     "priceProtect": false,
+     "origType": "MARKET",
+     "priceMatch": "NONE",
+     "selfTradePreventionMode": "EXPIRE_MAKER",
+     "goodTillDate": 0,
+     "updateTime": 1791553810563
+    }
+   ]
+  }
  }
 ]
