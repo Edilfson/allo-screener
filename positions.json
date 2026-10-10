@@ -19466,7 +19466,7 @@
    "coin_1d_ema99_dist": 0.0056
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.0092275636255295,
+  "unrealized_r": 2.4557225777645146,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33595"
  },
  {
@@ -19829,7 +19829,7 @@
    "coin_1d_ema99_dist": 0.1484
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.045454545454546885,
+  "unrealized_r": 0.28409090909091017,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1914"
  },
  {
@@ -19984,7 +19984,7 @@
    "coin_1d_ema99_dist": -0.0586
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.18553736258639217,
+  "unrealized_r": 0.0,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0058"
  },
  {
@@ -20035,7 +20035,7 @@
    "coin_1d_ema99_dist": 0.0739
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.058068637129086866,
+  "unrealized_r": 0.13065443354044384,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.817"
  },
  {
@@ -20201,7 +20201,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-08T19:12:01.097283+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-08T18:59:59.999000+00:00",
@@ -20241,9 +20241,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2718
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.40228167598756376,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00107195"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-10T00:59:59.999000+00:00"
  },
  {
   "symbol": "ASTERUSDT",
@@ -20252,7 +20253,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-08T20:14:12.011776+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-08T19:59:59.999000+00:00",
@@ -20292,9 +20293,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0335
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.14595624385447659,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.7053"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-10T03:59:59.999000+00:00"
  },
  {
   "symbol": "ETHFIUSDT",
@@ -20344,7 +20346,7 @@
    "coin_1d_ema99_dist": 0.2644
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.207097107061155,
+  "unrealized_r": 1.8891917386296786,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.71965"
  },
  {
@@ -20701,7 +20703,7 @@
    "coin_1d_ema99_dist": 0.0183
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.4521817770743766,
+  "unrealized_r": -0.11304544426859416,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 8.38"
  },
  {
@@ -21006,7 +21008,7 @@
    "coin_1d_ema99_dist": 0.0789
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.00842788665161206,
+  "unrealized_r": 0.16713458091490285,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 82563.2"
  },
  {
