@@ -19466,7 +19466,7 @@
    "coin_1d_ema99_dist": 0.0056
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.6045542491441944,
+  "unrealized_r": 2.554943692017644,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33595"
  },
  {
@@ -19829,7 +19829,7 @@
    "coin_1d_ema99_dist": 0.1484
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4204545454545477,
+  "unrealized_r": 0.48863636363636803,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1914"
  },
  {
@@ -21023,7 +21023,7 @@
    "coin_1d_ema99_dist": 0.0789
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.298229176867148,
+  "unrealized_r": 2.767183032683822,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 82563.2"
  },
  {
@@ -21449,7 +21449,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-11T11:11:35.422607+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-11T10:59:59.999000+00:00",
@@ -21465,7 +21465,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-11T10:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-12T01:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.0095,
   "zone_high": 0.0098,
@@ -21490,7 +21490,8 @@
    "coin_1d_ema99_dist": -0.2405
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00965"
  },
  {
   "symbol": "ASTERUSDT",
@@ -21540,7 +21541,7 @@
    "coin_1d_ema99_dist": 0.0362
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.28101728256287256,
+  "unrealized_r": 1.1709053440119905,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.7117"
  },
  {
