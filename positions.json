@@ -19466,7 +19466,7 @@
    "coin_1d_ema99_dist": 0.0056
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.6463759488018725,
+  "unrealized_r": 3.4479337202956417,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33595"
  },
  {
@@ -21972,7 +21972,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-12T19:10:38.141631+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-12T18:59:59.999000+00:00",
@@ -22013,7 +22013,9 @@
    "coin_1d_ema99_dist": 0.2456
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-13T19:10:17.210317+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "ALGOUSDT",
@@ -22265,7 +22267,7 @@
    "coin_1d_ema99_dist": 0.0519
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4514079325797418,
+  "unrealized_r": 1.1259001627538616,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 747.55"
  },
  {
@@ -22316,7 +22318,7 @@
    "coin_1d_ema99_dist": -0.0423
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1969233184208046,
+  "unrealized_r": 0.09810846872300828,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.08494"
  },
  {
