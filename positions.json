@@ -19466,7 +19466,7 @@
    "coin_1d_ema99_dist": 0.0056
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.951828149030078,
+  "unrealized_r": 2.9022175919035273,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33595"
  },
  {
@@ -19829,7 +19829,7 @@
    "coin_1d_ema99_dist": 0.1484
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9772727272727328,
+  "unrealized_r": 0.7045454545454578,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1914"
  },
  {
@@ -21659,7 +21659,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-12T05:20:28.986097+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-12T04:59:59.999000+00:00",
@@ -21700,7 +21700,9 @@
    "coin_1d_ema99_dist": 0.003
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-13T05:16:04.913688+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "DOGEUSDT",
@@ -22271,7 +22273,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-13T04:20:19.580744+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-13T03:59:59.999000+00:00",
@@ -22287,7 +22289,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-13T03:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-13T05:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.0846,
   "zone_high": 0.08528,
@@ -22312,7 +22314,8 @@
    "coin_1d_ema99_dist": -0.0423
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.08494"
  },
  {
   "symbol": "TIAUSDT",
