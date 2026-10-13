@@ -19466,7 +19466,7 @@
    "coin_1d_ema99_dist": 0.0056
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.051049263283207,
+  "unrealized_r": 3.19988093466286,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33595"
  },
  {
@@ -19829,7 +19829,7 @@
    "coin_1d_ema99_dist": 0.1484
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9204545454545509,
+  "unrealized_r": 1.3636363636363689,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1914"
  },
  {
@@ -22210,6 +22210,56 @@
    "btc_ema99_dist": 0.0668,
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.0739
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "BNBUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-13T03:20:44.792344+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-13T02:59:59.999000+00:00",
+  "entry": 747.55,
+  "stop": 752.0353,
+  "current_stop": 752.0353,
+  "risk": 4.485300000000052,
+  "tps": [
+   {
+    "p": 725.1234999999997,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-13T02:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 746.7,
+  "zone_high": 748.4,
+  "zone_width_pct": 0.0023,
+  "quality_ok": false,
+  "swing_high": 748.4,
+  "swing_low": 746.7,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 46.1,
+   "vol_ratio": 0.96,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0836,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0519
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
