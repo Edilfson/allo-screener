@@ -19466,7 +19466,7 @@
    "coin_1d_ema99_dist": 0.0056
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.9022175919035273,
+  "unrealized_r": 2.8526070347769763,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33595"
  },
  {
@@ -19829,7 +19829,7 @@
    "coin_1d_ema99_dist": 0.1484
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7045454545454578,
+  "unrealized_r": 0.47727272727272974,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1914"
  },
  {
@@ -22223,7 +22223,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-13T03:20:44.792344+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-13T02:59:59.999000+00:00",
@@ -22239,7 +22239,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-13T02:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-13T05:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 746.7,
   "zone_high": 748.4,
@@ -22264,7 +22264,8 @@
    "coin_1d_ema99_dist": 0.0519
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 747.55"
  },
  {
   "symbol": "DOGEUSDT",
