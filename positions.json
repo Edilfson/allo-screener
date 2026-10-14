@@ -22274,7 +22274,7 @@
    "coin_1d_ema99_dist": 0.0519
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.0823579247764497,
+  "unrealized_r": 2.102423472231476,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 747.55"
  },
  {
@@ -22637,7 +22637,7 @@
    "coin_1d_ema99_dist": 0.3414
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.2203168012996946,
+  "unrealized_r": 2.969448079786986,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.07804"
  },
  {
@@ -22787,6 +22787,56 @@
    "btc_ema99_dist": 0.0937,
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.0067
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "AXLUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-14T13:11:31.852588+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-14T12:59:59.999000+00:00",
+  "entry": 0.05945,
+  "stop": 0.0580419,
+  "current_stop": 0.0580419,
+  "risk": 0.0014081000000000024,
+  "tps": [
+   {
+    "p": 0.06649050000000001,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-14T12:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0581,
+  "zone_high": 0.0608,
+  "zone_width_pct": 0.0465,
+  "quality_ok": true,
+  "swing_high": 0.0608,
+  "swing_low": 0.0581,
+  "stop_dist_pct": 0.0237,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.2,
+   "vol_ratio": 2.76,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0812,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1535
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
