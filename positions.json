@@ -22274,7 +22274,7 @@
    "coin_1d_ema99_dist": 0.0519
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.95291284863882,
+  "unrealized_r": 4.044322564822816,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 747.55"
  },
  {
@@ -22637,7 +22637,7 @@
    "coin_1d_ema99_dist": 0.3414
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.9965251139491795,
+  "unrealized_r": 3.628322577733644,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.07804"
  },
  {
@@ -22893,7 +22893,7 @@
    "coin_1d_ema99_dist": 0.3865
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.1245910577971718,
+  "unrealized_r": 0.7156488549618375,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1372"
  },
  {
@@ -22903,7 +22903,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-14T17:11:02.101048+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-14T16:59:59.999000+00:00",
@@ -22919,7 +22919,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-14T16:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-14T20:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.007731,
   "zone_high": 0.007814,
@@ -22944,7 +22944,8 @@
    "coin_1d_ema99_dist": -0.0195
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0077725"
  },
  {
   "symbol": "JSTUSDT",
