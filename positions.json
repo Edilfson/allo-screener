@@ -19425,7 +19425,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-07T08:19:29.540890+00:00",
-  "status": "open",
+  "status": "timeout",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-07T07:59:59.999000+00:00",
@@ -19465,9 +19465,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.0056
   },
-  "realized_r": 0.0,
-  "unrealized_r": 1.8107853351192986,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33595"
+  "realized_r": 1.513121992359966,
+  "unrealized_r": 1.513121992359966,
+  "son_bildirim": "\u23f3 7 gun doldu, kapatildi (+1.51R)",
+  "closed_at": "2026-10-14T08:44:22.100577+00:00"
  },
  {
   "symbol": "ARPAUSDT",
@@ -22273,7 +22274,7 @@
    "coin_1d_ema99_dist": 0.0519
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5529173076494048,
+  "unrealized_r": 1.2975720687579133,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 747.55"
  },
  {
@@ -22584,7 +22585,7 @@
    "coin_1d_ema99_dist": 0.1395
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2042953199745825,
+  "unrealized_r": 1.1708426721975054,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1921"
  },
  {
