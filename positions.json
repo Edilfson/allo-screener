@@ -22274,7 +22274,7 @@
    "coin_1d_ema99_dist": 0.0519
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.591732994448468,
+  "unrealized_r": 3.4579626780816914,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 747.55"
  },
  {
@@ -22637,7 +22637,7 @@
    "coin_1d_ema99_dist": 0.3414
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8800036102712222,
+  "unrealized_r": 1.7329301863802449,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.07804"
  },
  {
@@ -22891,6 +22891,56 @@
    "btc_ema99_dist": 0.0673,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.3865
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "PENGUUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-14T17:11:02.101048+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-14T16:59:59.999000+00:00",
+  "entry": 0.0077725,
+  "stop": 0.007821813999999998,
+  "current_stop": 0.007821813999999998,
+  "risk": 4.931399999999822e-05,
+  "tps": [
+   {
+    "p": 0.007525930000000009,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-14T16:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.007731,
+  "zone_high": 0.007814,
+  "zone_width_pct": 0.0107,
+  "quality_ok": false,
+  "swing_high": 0.007814,
+  "swing_low": 0.007731,
+  "stop_dist_pct": 0.0063,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 47.7,
+   "vol_ratio": 1.05,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0723,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0195
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
