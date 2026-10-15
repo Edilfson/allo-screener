@@ -23106,7 +23106,7 @@
    "coin_1d_ema99_dist": -0.0021
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0753579502637443,
+  "unrealized_r": 0.12559658377290717,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33175"
  },
  {
@@ -23262,5 +23262,55 @@
   "unrealized_r": 0.0,
   "closed_at": "2026-10-15T19:59:59.999000+00:00",
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00292|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
+ },
+ {
+  "symbol": "ETCUSDT",
+  "interval": "6h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-15T18:15:56.028180+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-10-15T17:59:59.999000+00:00",
+  "entry": 8.15,
+  "stop": 8.23823,
+  "current_stop": 8.23823,
+  "risk": 0.08822999999999936,
+  "tps": [
+   {
+    "p": 7.7088500000000035,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-15T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 8.07,
+  "zone_high": 8.23,
+  "zone_width_pct": 0.0198,
+  "quality_ok": false,
+  "swing_high": 8.23,
+  "swing_low": 8.07,
+  "stop_dist_pct": 0.0108,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 45.7,
+   "vol_ratio": 2.79,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0726,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": 0.0069
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
