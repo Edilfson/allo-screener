@@ -22274,7 +22274,7 @@
    "coin_1d_ema99_dist": 0.0519
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.95291284863882,
+  "unrealized_r": 4.6997971150201066,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 747.55"
  },
  {
@@ -22637,7 +22637,7 @@
    "coin_1d_ema99_dist": 0.3414
   },
   "realized_r": 0.0,
-  "unrealized_r": 4.034478090166513,
+  "unrealized_r": 3.677963807030994,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.07804"
  },
  {
@@ -22894,7 +22894,7 @@
    "coin_1d_ema99_dist": 0.3865
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.397219193020725,
+  "unrealized_r": 0.7156488549618375,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1372"
  },
  {
@@ -22904,20 +22904,20 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-14T17:11:02.101048+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-14T16:59:59.999000+00:00",
   "entry": 0.0077725,
   "stop": 0.007821813999999998,
-  "current_stop": 0.007821813999999998,
+  "current_stop": 0.0077725,
   "risk": 4.931399999999822e-05,
   "tps": [
    {
     "p": 0.007525930000000009,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-10-14T20:59:59.999000+00:00",
@@ -22944,9 +22944,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0195
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 3.8427221478688893,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0077725"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-10-15T01:59:59.999000+00:00"
  },
  {
   "symbol": "JSTUSDT",
@@ -22955,7 +22956,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-14T18:16:06.335832+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-14T17:59:59.999000+00:00",
@@ -22995,9 +22996,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2328
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.139955"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-15T02:59:59.999000+00:00"
  },
  {
   "symbol": "AEROUSDT",
