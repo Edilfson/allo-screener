@@ -23106,7 +23106,7 @@
    "coin_1d_ema99_dist": -0.0021
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.4270283848279401,
+  "unrealized_r": -0.47726701833710294,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33175"
  },
  {
@@ -23116,7 +23116,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-15T16:13:46.419043+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-15T15:59:59.999000+00:00",
@@ -23132,7 +23132,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-15T15:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-15T23:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 1.865,
   "zone_high": 1.915,
@@ -23157,7 +23157,8 @@
    "coin_1d_ema99_dist": -0.0555
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.89"
  },
  {
   "symbol": "NXPCUSDT",
@@ -23359,6 +23360,56 @@
    "btc_ema99_dist": 0.0758,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.4407
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "AEROUSDT",
+  "interval": "6h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-15T20:39:07.383963+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-10-15T17:59:59.999000+00:00",
+  "entry": 0.8886000000000001,
+  "stop": 0.9126116999999998,
+  "current_stop": 0.9126116999999998,
+  "risk": 0.024011699999999747,
+  "tps": [
+   {
+    "p": 0.7685415000000013,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-15T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.8655,
+  "zone_high": 0.9117,
+  "zone_width_pct": 0.0534,
+  "quality_ok": true,
+  "swing_high": 0.9117,
+  "swing_low": 0.8655,
+  "stop_dist_pct": 0.027,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 51.3,
+   "vol_ratio": 1.36,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0758,
+   "coin_1d_trend": "bilinmiyor",
+   "coin_1d_ema99_dist": 0.0
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
