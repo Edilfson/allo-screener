@@ -5269,5 +5269,55 @@
    "atlandi": "min notional",
    "delta_usdt": 0.0
   }
+ },
+ {
+  "zaman": "2026-10-17T01:28:14",
+  "tur": "TREND",
+  "sembol": "BNBUSDT",
+  "hedef_w": 0.0,
+  "hedef_notional": 0.0,
+  "mevcut_miktar": 0.0,
+  "delta": 0.0,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 0.0
+  }
+ },
+ {
+  "zaman": "2026-10-17T01:28:15",
+  "tur": "TREND",
+  "sembol": "BTCUSDT",
+  "hedef_w": 0.1771,
+  "hedef_notional": 177.1,
+  "mevcut_miktar": 0.0018,
+  "delta": 0.0004,
+  "basarili": false,
+  "sonuc": {
+   "yon": "BUY",
+   "miktar": 0.0004,
+   "fiyat": 81545.3,
+   "reduceOnly": false,
+   "hedef_miktar": 0.0022,
+   "bizim_miktar": 0.0018,
+   "yanit": {
+    "code": -4164,
+    "msg": "Order's notional must be no smaller than 50 (unless you choose reduce only)."
+   }
+  }
+ },
+ {
+  "zaman": "2026-10-17T01:28:15",
+  "tur": "TREND",
+  "sembol": "ETHUSDT",
+  "hedef_w": 0.0,
+  "hedef_notional": 0.0,
+  "mevcut_miktar": 0.0,
+  "delta": 0.0,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 0.0
+  }
  }
 ]
