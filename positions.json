@@ -23885,7 +23885,7 @@
    "coin_1d_ema99_dist": -0.0504
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.7674204440806311,
+  "unrealized_r": -0.6650977182032134,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.002825"
  },
  {
@@ -23945,7 +23945,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-17T19:08:53.406786+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-17T18:59:59.999000+00:00",
@@ -23985,8 +23985,59 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.026
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.7085"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-17T21:59:59.999000+00:00"
+ },
+ {
+  "symbol": "AAVEUSDT",
+  "interval": "1h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-17T21:09:47.319026+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-17T20:59:59.999000+00:00",
+  "entry": 154.41500000000002,
+  "stop": 155.34149000000002,
+  "current_stop": 155.34149000000002,
+  "risk": 0.9264900000000011,
+  "tps": [
+   {
+    "p": 149.78255000000001,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-17T20:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 154.0,
+  "zone_high": 154.83,
+  "zone_width_pct": 0.0054,
+  "quality_ok": false,
+  "swing_high": 154.83,
+  "swing_low": 154.0,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 43.4,
+   "vol_ratio": 0.63,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0627,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1879
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
