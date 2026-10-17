@@ -23158,7 +23158,7 @@
    "coin_1d_ema99_dist": -0.0555
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.860858257477271,
+  "unrealized_r": 3.04662827419657,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.89"
  },
  {
@@ -23480,7 +23480,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-16T08:17:09.069735+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-16T07:59:59.999000+00:00",
@@ -23521,7 +23521,9 @@
    "coin_1d_ema99_dist": -0.0018
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-17T08:14:33.989380+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "WUSDT",
@@ -23836,7 +23838,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-17T00:32:26.865124+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-16T23:59:59.999000+00:00",
@@ -23852,7 +23854,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-16T23:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-17T11:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.00273,
   "zone_high": 0.00292,
@@ -23877,6 +23879,7 @@
    "coin_1d_ema99_dist": -0.0504
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.002825"
  }
 ]
