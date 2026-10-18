@@ -24001,20 +24001,20 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-17T21:09:47.319026+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-17T20:59:59.999000+00:00",
   "entry": 154.41500000000002,
   "stop": 155.34149000000002,
-  "current_stop": 155.34149000000002,
+  "current_stop": 154.41500000000002,
   "risk": 0.9264900000000011,
   "tps": [
    {
     "p": 149.78255000000001,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-10-18T09:59:59.999000+00:00",
@@ -24041,9 +24041,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.1879
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 3.5996071193429002,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 154.415"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-10-18T14:59:59.999000+00:00"
  },
  {
   "symbol": "BTCUSDT",
@@ -24405,7 +24406,7 @@
    "coin_1d_ema99_dist": 0.2226
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3120368203448009,
+  "unrealized_r": 0.23402761525860405,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00831"
  },
  {
@@ -24456,7 +24457,7 @@
    "coin_1d_ema99_dist": 0.5002
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.1454362247040164,
+  "unrealized_r": 1.7927617768074628,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.124835"
  }
 ]
