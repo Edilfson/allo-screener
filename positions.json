@@ -23834,7 +23834,7 @@
    "coin_1d_ema99_dist": 0.5315
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.20471366332476063,
+  "unrealized_r": 0.068237887774919,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.12389"
  },
  {
@@ -23937,7 +23937,7 @@
    "coin_1d_ema99_dist": 0.1355
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8830857539344619,
+  "unrealized_r": 0.6150061500615032,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.2475"
  },
  {
@@ -24090,7 +24090,7 @@
    "coin_1d_ema99_dist": 0.0638
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.6681715380200367,
+  "unrealized_r": -0.5663072812383171,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 81628.2"
  },
  {
@@ -24100,7 +24100,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T00:36:04.478944+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-17T23:59:59.999000+00:00",
@@ -24140,9 +24140,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.0403
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.31206490950116467,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 104.145"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-18T03:59:59.999000+00:00"
  },
  {
   "symbol": "\u725b\u6765USDT",
@@ -24244,7 +24245,107 @@
    "coin_1d_ema99_dist": 0.3504
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.8767217630854274,
+  "unrealized_r": 2.7720385674931496,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.35145"
+ },
+ {
+  "symbol": "NMRUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-18T04:13:51.989253+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-18T03:59:59.999000+00:00",
+  "entry": 11.675,
+  "stop": 11.56842,
+  "current_stop": 11.56842,
+  "risk": 0.10658000000000101,
+  "tps": [
+   {
+    "p": 12.207900000000006,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-18T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 11.58,
+  "zone_high": 11.77,
+  "zone_width_pct": 0.0164,
+  "quality_ok": false,
+  "swing_high": 11.77,
+  "swing_low": 11.58,
+  "stop_dist_pct": 0.0091,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 41.8,
+   "vol_ratio": 0.91,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.065,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1886
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "USTCUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-18T04:13:51.989253+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-18T03:59:59.999000+00:00",
+  "entry": 0.005005,
+  "stop": 0.00495504,
+  "current_stop": 0.00495504,
+  "risk": 4.9959999999999935e-05,
+  "tps": [
+   {
+    "p": 0.0052548,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-18T03:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.00496,
+  "zone_high": 0.00505,
+  "zone_width_pct": 0.0181,
+  "quality_ok": false,
+  "swing_high": 0.00505,
+  "swing_low": 0.00496,
+  "stop_dist_pct": 0.01,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 46.5,
+   "vol_ratio": 1.4,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.065,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0426
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
