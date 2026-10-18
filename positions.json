@@ -23834,7 +23834,7 @@
    "coin_1d_ema99_dist": 0.5315
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.0026245341451882117,
+  "unrealized_r": -0.47504068027925206,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.12389"
  },
  {
@@ -23937,7 +23937,7 @@
    "coin_1d_ema99_dist": 0.1355
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.03153877692623172,
+  "unrealized_r": -0.48885104235657634,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.2475"
  },
  {
@@ -24090,7 +24090,7 @@
    "coin_1d_ema99_dist": 0.0638
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.3151687046868706,
+  "unrealized_r": -0.20820000529231664,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 81628.2"
  },
  {
@@ -24204,20 +24204,20 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T00:36:04.478944+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-17T23:59:59.999000+00:00",
   "entry": 0.35145,
   "stop": 0.35435399999999995,
-  "current_stop": 0.35435399999999995,
+  "current_stop": 0.35145,
   "risk": 0.002903999999999962,
   "tps": [
    {
     "p": 0.3369300000000002,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-10-18T01:59:59.999000+00:00",
@@ -24244,9 +24244,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.3504
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 4.252754820936685,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.35145"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-10-18T05:59:59.999000+00:00"
  },
  {
   "symbol": "NMRUSDT",
@@ -24255,7 +24256,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-18T04:13:51.989253+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T03:59:59.999000+00:00",
@@ -24271,7 +24272,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-18T03:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-18T07:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 11.58,
   "zone_high": 11.77,
@@ -24296,7 +24297,8 @@
    "coin_1d_ema99_dist": 0.1886
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 11.675"
  },
  {
   "symbol": "USTCUSDT",
