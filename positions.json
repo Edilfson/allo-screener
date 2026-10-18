@@ -24406,7 +24406,7 @@
    "coin_1d_ema99_dist": 0.2226
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.7303221780169977,
+  "unrealized_r": 3.9004602543100044,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00831"
  },
  {
@@ -24468,7 +24468,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T21:09:37.257835+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T20:59:59.999000+00:00",
@@ -24508,9 +24508,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.0265
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 712.66"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-18T22:59:59.999000+00:00"
  },
  {
   "symbol": "SOLUSDT",
@@ -24519,7 +24520,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T22:10:45.393908+00:00",
-  "status": "pending",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T21:59:59.999000+00:00",
@@ -24535,7 +24536,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-18T21:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-18T22:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 102.02,
   "zone_high": 102.47,
@@ -24559,8 +24560,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.0403
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-18T22:59:59.999000+00:00",
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 102.245|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
  },
  {
   "symbol": "ZECUSDT",
@@ -24569,7 +24572,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T22:10:45.393908+00:00",
-  "status": "pending",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T21:59:59.999000+00:00",
@@ -24585,7 +24588,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-18T21:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-18T22:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 1084.0,
   "zone_high": 1099.51,
@@ -24609,8 +24612,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.128
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-18T22:59:59.999000+00:00",
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1091.76|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
  },
  {
   "symbol": "LINKUSDT",
@@ -24619,7 +24624,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T22:10:45.393908+00:00",
-  "status": "pending",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T21:59:59.999000+00:00",
@@ -24635,7 +24640,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-18T21:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-18T22:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 11.747,
   "zone_high": 11.8,
@@ -24659,8 +24664,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.0478
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-18T22:59:59.999000+00:00",
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 11.7735|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
  },
  {
   "symbol": "CAKEUSDT",
@@ -24669,7 +24676,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T22:10:45.393908+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T21:59:59.999000+00:00",
@@ -24685,7 +24692,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-18T21:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-18T22:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 2.146,
   "zone_high": 2.157,
@@ -24710,7 +24717,8 @@
    "coin_1d_ema99_dist": 0.082
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 2.1515"
  },
  {
   "symbol": "LDOUSDT",
@@ -24719,7 +24727,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T22:10:45.393908+00:00",
-  "status": "pending",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T21:59:59.999000+00:00",
@@ -24735,7 +24743,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-18T21:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-18T22:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.3726,
   "zone_high": 0.3768,
@@ -24759,7 +24767,9 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.0159
   },
-  "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "realized_r": -1.0,
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-18T22:59:59.999000+00:00",
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3747|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
  }
 ]
