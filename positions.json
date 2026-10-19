@@ -24365,20 +24365,20 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-18T06:19:20.472521+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-18T05:59:59.999000+00:00",
   "entry": 0.00831,
   "stop": 0.00818181,
-  "current_stop": 0.00818181,
+  "current_stop": 0.00831,
   "risk": 0.00012819000000000025,
   "tps": [
    {
     "p": 0.008950950000000001,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-10-18T11:59:59.999000+00:00",
@@ -24405,9 +24405,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.2226
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 3.43240502379281,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00831"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-10-19T05:59:59.999000+00:00"
  },
  {
   "symbol": "INITUSDT",
@@ -24780,7 +24781,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T23:09:51.749567+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T22:59:59.999000+00:00",
@@ -24796,7 +24797,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-18T22:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-19T00:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.1778,
   "zone_high": 0.1787,
@@ -24821,7 +24822,8 @@
    "coin_1d_ema99_dist": -0.0709
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.17825"
  },
  {
   "symbol": "MEGAUSDT",
@@ -24830,7 +24832,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T23:09:51.749567+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T22:59:59.999000+00:00",
@@ -24870,9 +24872,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": -0.0533
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.04361"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-19T00:59:59.999000+00:00"
  },
  {
   "symbol": "CFXUSDT",
@@ -24881,7 +24884,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-18T23:09:51.749567+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-18T22:59:59.999000+00:00",
@@ -24921,8 +24924,9 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0655
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 0.0,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.052575"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-19T00:59:59.999000+00:00"
  }
 ]
