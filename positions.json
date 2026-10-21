@@ -25085,5 +25085,55 @@
   "unrealized_r": -0.12817226352217037,
   "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
   "closed_at": "2026-10-21T01:59:59.999000+00:00"
+ },
+ {
+  "symbol": "IDUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-21T05:12:33.234975+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-21T04:59:59.999000+00:00",
+  "entry": 0.0325,
+  "stop": 0.0322677,
+  "current_stop": 0.0322677,
+  "risk": 0.00023229999999999779,
+  "tps": [
+   {
+    "p": 0.03366149999999999,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-21T04:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0323,
+  "zone_high": 0.0327,
+  "zone_width_pct": 0.0124,
+  "quality_ok": true,
+  "swing_high": 0.0327,
+  "swing_low": 0.0323,
+  "stop_dist_pct": 0.0071,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 53.5,
+   "vol_ratio": 0.56,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0733,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0448
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
