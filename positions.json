@@ -25548,5 +25548,55 @@
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
+ },
+ {
+  "symbol": "MASKUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-22T10:40:21.493409+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-22T07:59:59.999000+00:00",
+  "entry": 0.4265,
+  "stop": 0.423576,
+  "current_stop": 0.423576,
+  "risk": 0.002923999999999982,
+  "tps": [
+   {
+    "p": 0.4411199999999999,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-22T07:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.424,
+  "zone_high": 0.429,
+  "zone_width_pct": 0.0118,
+  "quality_ok": false,
+  "swing_high": 0.429,
+  "swing_low": 0.424,
+  "stop_dist_pct": 0.0069,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 53.4,
+   "vol_ratio": 0.57,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0617,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": 0.0153
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
