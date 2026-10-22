@@ -25238,7 +25238,7 @@
    "coin_1d_ema99_dist": -0.0054
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.05033725963957955,
+  "unrealized_r": -0.2516862981979257,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.3311"
  },
  {
@@ -25506,7 +25506,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-22T06:21:29.140175+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-22T05:59:59.999000+00:00",
@@ -25522,7 +25522,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-22T05:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-22T17:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.07365,
   "zone_high": 0.07623,
@@ -25547,7 +25547,8 @@
    "coin_1d_ema99_dist": 0.3093
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.07494"
  },
  {
   "symbol": "MASKUSDT",
