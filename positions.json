@@ -25353,7 +25353,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-21T23:10:41.802063+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-21T22:59:59.999000+00:00",
@@ -25394,7 +25394,9 @@
    "coin_1d_ema99_dist": 0.2194
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-22T23:11:18.734037+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "STRKUSDT",
