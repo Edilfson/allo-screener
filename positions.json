@@ -25613,7 +25613,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-22T11:12:14.400510+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-22T10:59:59.999000+00:00",
@@ -25654,7 +25654,9 @@
    "coin_1d_ema99_dist": 0.2943
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-23T11:12:16.681241+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "TRXUSDT",
@@ -25663,7 +25665,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-23T00:33:51.311644+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-22T23:59:59.999000+00:00",
@@ -25679,7 +25681,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-22T23:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-23T11:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.3301,
   "zone_high": 0.3314,
@@ -25704,6 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  }
 ]
