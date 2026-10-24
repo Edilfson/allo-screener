@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7306626354245436,
+  "unrealized_r": 0.5794910556815239,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -26368,7 +26368,7 @@
    "coin_1d_ema99_dist": -0.0971
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.48536620880454484,
+  "unrealized_r": 0.19414648352182334,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0623"
  },
  {
@@ -26378,7 +26378,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-24T19:08:38.534694+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-24T18:59:59.999000+00:00",
@@ -26394,7 +26394,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-24T18:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-24T20:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.07719,
   "zone_high": 0.07761,
@@ -26417,6 +26417,57 @@
    "btc_ema99_dist": 0.0391,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0732
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0774"
+ },
+ {
+  "symbol": "EPICUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-24T20:10:59.673776+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-24T19:59:59.999000+00:00",
+  "entry": 0.14300000000000002,
+  "stop": 0.135864,
+  "current_stop": 0.135864,
+  "risk": 0.0071360000000000035,
+  "tps": [
+   {
+    "p": 0.17868000000000003,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-24T19:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.136,
+  "zone_high": 0.15,
+  "zone_width_pct": 0.1029,
+  "quality_ok": true,
+  "swing_high": 0.15,
+  "swing_low": 0.136,
+  "stop_dist_pct": 0.0499,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.6,
+   "vol_ratio": 1.35,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0395,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.7252
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
