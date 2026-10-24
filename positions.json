@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.3779289493575071,
+  "unrealized_r": 0.27714789619551267,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -25716,7 +25716,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-23T20:12:50.602496+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-23T19:59:59.999000+00:00",
@@ -25756,9 +25756,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0191
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.7436116994907364,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.7095"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-24T03:59:59.999000+00:00"
  },
  {
   "symbol": "ETHUSDT",
