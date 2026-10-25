@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6802721088435184,
+  "unrealized_r": 0.7810531620055408,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -25768,7 +25768,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-24T00:32:11.497647+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-23T23:59:59.999000+00:00",
@@ -25809,7 +25809,9 @@
    "coin_1d_ema99_dist": 0.0115
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-25T00:37:21.237600+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "SOLUSDT",
@@ -25818,7 +25820,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-24T00:32:11.497647+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-23T23:59:59.999000+00:00",
@@ -25859,7 +25861,9 @@
    "coin_1d_ema99_dist": 0.0273
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-25T00:37:22.030643+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "TAOUSDT",
@@ -25868,7 +25872,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-24T00:32:11.497647+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-23T23:59:59.999000+00:00",
@@ -25909,7 +25913,9 @@
    "coin_1d_ema99_dist": -0.0009
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-25T00:37:22.815036+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "BCHUSDT",
@@ -25918,7 +25924,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-24T00:32:11.497647+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-23T23:59:59.999000+00:00",
@@ -25959,7 +25965,9 @@
    "coin_1d_ema99_dist": 0.032
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-25T00:37:23.415242+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "IOSTUSDT",
@@ -26009,7 +26017,7 @@
    "coin_1d_ema99_dist": -0.069
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0,
+  "unrealized_r": 1.4764194718636647,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.000729"
  },
  {
@@ -26123,7 +26131,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-24T00:32:11.497647+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-23T23:59:59.999000+00:00",
@@ -26164,7 +26172,9 @@
    "coin_1d_ema99_dist": -0.0131
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-25T00:37:24.658845+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "EIGENUSDT",
@@ -26327,7 +26337,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-24T12:16:19.204771+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-24T11:59:59.999000+00:00",
@@ -26367,9 +26377,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0971
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": 3.3679046274364163e-15,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0623"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-25T00:59:59.999000+00:00"
  },
  {
   "symbol": "DOGEUSDT",
@@ -26419,7 +26430,7 @@
    "coin_1d_ema99_dist": -0.0732
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.7105943152454658,
+  "unrealized_r": -0.8397932816537432,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0774"
  },
  {
@@ -26470,7 +26481,7 @@
    "coin_1d_ema99_dist": -0.7252
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5554932735425961,
+  "unrealized_r": -3.889514520127368e-15,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.143"
  }
 ]
