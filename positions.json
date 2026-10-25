@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7810531620055408,
+  "unrealized_r": 0.9322247417485324,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -26703,7 +26703,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-25T12:16:40.860876+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-25T11:59:59.999000+00:00",
@@ -26719,7 +26719,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-25T11:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-25T15:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.04801,
   "zone_high": 0.0499,
@@ -26742,6 +26742,107 @@
    "btc_ema99_dist": 0.0376,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0394
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.048955"
+ },
+ {
+  "symbol": "BABYUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-25T14:11:15.711260+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-25T13:59:59.999000+00:00",
+  "entry": 0.013345,
+  "stop": 0.01311687,
+  "current_stop": 0.01311687,
+  "risk": 0.00022813,
+  "tps": [
+   {
+    "p": 0.01448565,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-25T13:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.01313,
+  "zone_high": 0.01356,
+  "zone_width_pct": 0.0327,
+  "quality_ok": true,
+  "swing_high": 0.01356,
+  "swing_low": 0.01313,
+  "stop_dist_pct": 0.0171,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 51.9,
+   "vol_ratio": 6.04,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0359,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.0561
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "MEGAUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-25T14:11:15.711260+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-25T13:59:59.999000+00:00",
+  "entry": 0.04504,
+  "stop": 0.04450545,
+  "current_stop": 0.04450545,
+  "risk": 0.0005345499999999948,
+  "tps": [
+   {
+    "p": 0.04771274999999997,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-25T13:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.04455,
+  "zone_high": 0.04553,
+  "zone_width_pct": 0.022,
+  "quality_ok": true,
+  "swing_high": 0.04553,
+  "swing_low": 0.04455,
+  "stop_dist_pct": 0.0119,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 51.4,
+   "vol_ratio": 3.09,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0359,
+   "coin_1d_trend": "kararsiz",
+   "coin_1d_ema99_dist": -0.0311
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
