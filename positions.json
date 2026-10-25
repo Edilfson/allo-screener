@@ -26017,7 +26017,7 @@
    "coin_1d_ema99_dist": -0.069
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5607862988273,
+  "unrealized_r": 1.3498692314182046,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.000729"
  },
  {
@@ -26183,7 +26183,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-24T02:16:31.026221+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-24T01:59:59.999000+00:00",
@@ -26224,7 +26224,9 @@
    "coin_1d_ema99_dist": -0.0703
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-25T02:18:16.449503+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "POLUSDT",
@@ -26482,7 +26484,7 @@
    "coin_1d_ema99_dist": -0.7252
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3172645739910296,
+  "unrealized_r": 0.6306053811659157,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.143"
  }
 ]
