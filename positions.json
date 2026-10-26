@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.17636684303349026,
+  "unrealized_r": -0.0755857898715238,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -26601,7 +26601,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-25T05:11:45.784941+00:00",
-  "status": "pending",
+  "status": "cancelled",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-24T23:59:59.999000+00:00",
@@ -26642,7 +26642,9 @@
    "coin_1d_ema99_dist": -0.0711
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-26T00:34:38.535814+00:00",
+  "son_bildirim": "\u23f3 24 saat doldu, emir IPTAL (dolmadi)"
  },
  {
   "symbol": "TREEUSDT",
@@ -26703,20 +26705,20 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-25T12:16:40.860876+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-25T11:59:59.999000+00:00",
   "entry": 0.048955,
   "stop": 0.047961989999999996,
-  "current_stop": 0.047961989999999996,
+  "current_stop": 0.048955,
   "risk": 0.0009930100000000025,
   "tps": [
    {
     "p": 0.05392005000000001,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-10-25T15:59:59.999000+00:00",
@@ -26743,9 +26745,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.0394
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 2.099676740415503,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.048955"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-10-26T03:59:59.999000+00:00"
  },
  {
   "symbol": "BABYUSDT",
@@ -26847,7 +26850,7 @@
    "coin_1d_ema99_dist": -0.0311
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8231222523618131,
+  "unrealized_r": 2.0578056309045265,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.04504"
  }
 ]
