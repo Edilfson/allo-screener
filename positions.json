@@ -26954,7 +26954,7 @@
    "coin_1d_ema99_dist": -0.031
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.7839916398609206,
+  "unrealized_r": 2.1961693581307613,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0066885"
  },
  {
@@ -27005,7 +27005,7 @@
    "coin_1d_ema99_dist": -0.0813
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.662786830728316,
+  "unrealized_r": 1.995344196873977,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.01049"
  },
  {
@@ -27158,7 +27158,7 @@
    "coin_1d_ema99_dist": 0.0478
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4698708024311361,
+  "unrealized_r": 0.8281895438534618,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 739.565"
  },
  {
@@ -27428,7 +27428,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-26T17:11:52.240822+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-26T16:59:59.999000+00:00",
@@ -27444,7 +27444,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-26T16:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-26T21:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 1.927,
   "zone_high": 1.96,
@@ -27469,7 +27469,8 @@
    "coin_1d_ema99_dist": -0.0087
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.9435"
  },
  {
   "symbol": "LDOUSDT",
@@ -27519,7 +27520,7 @@
    "coin_1d_ema99_dist": -0.049
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.5116716450934815,
+  "unrealized_r": 0.12446067042814456,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.36885"
  },
  {
