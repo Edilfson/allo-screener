@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.4787100025195295,
+  "unrealized_r": 0.5291005291005267,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -26954,7 +26954,7 @@
    "coin_1d_ema99_dist": -0.031
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.245154548274934,
+  "unrealized_r": 2.8819620201492806,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0066885"
  },
  {
@@ -27005,7 +27005,7 @@
    "coin_1d_ema99_dist": -0.0813
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.5962753574991861,
+  "unrealized_r": 1.130695044895254,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.01049"
  },
  {
@@ -27159,7 +27159,7 @@
    "coin_1d_ema99_dist": 0.0478
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0490400888810585,
+  "unrealized_r": 0.5126887652426204,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 739.565"
  },
  {
@@ -27470,7 +27470,7 @@
    "coin_1d_ema99_dist": -0.0087
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.027134096705917713,
+  "unrealized_r": -0.3527432571769664,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.9435"
  },
  {
@@ -27521,7 +27521,7 @@
    "coin_1d_ema99_dist": -0.049
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.17977652395175753,
+  "unrealized_r": -0.5669874986170944,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.36885"
  },
  {
@@ -27620,6 +27620,56 @@
    "btc_ema99_dist": 0.0315,
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.1177
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "XRPUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-27T02:23:56.578280+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-27T01:59:59.999000+00:00",
+  "entry": 1.29305,
+  "stop": 1.2852917,
+  "current_stop": 1.2852917,
+  "risk": 0.007758300000000107,
+  "tps": [
+   {
+    "p": 1.3318415000000006,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-27T01:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 1.2893,
+  "zone_high": 1.2968,
+  "zone_width_pct": 0.0058,
+  "quality_ok": true,
+  "swing_high": 1.2968,
+  "swing_low": 1.2893,
+  "stop_dist_pct": 0.006,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 53.9,
+   "vol_ratio": 1.8,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0303,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.0165
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
