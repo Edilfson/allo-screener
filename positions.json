@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9826152683295576,
+  "unrealized_r": 1.083396321491552,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -26913,20 +26913,20 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-26T09:21:42.018998+00:00",
-  "status": "open",
+  "status": "target_done",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-26T08:59:59.999000+00:00",
   "entry": 0.0066885,
   "stop": 0.006749742999999999,
-  "current_stop": 0.006749742999999999,
+  "current_stop": 0.0066885,
   "risk": 6.124299999999902e-05,
   "tps": [
    {
     "p": 0.006382285000000005,
     "w": 1.0,
     "r": 5.0,
-    "hit": false
+    "hit": true
    }
   ],
   "entry_bar_close": "2026-10-26T15:59:59.999000+00:00",
@@ -26953,9 +26953,10 @@
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.031
   },
-  "realized_r": 0.0,
+  "realized_r": 5.0,
   "unrealized_r": 4.269875740901062,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0066885"
+  "son_bildirim": "\u2705 TP1 vuruldu (5.0R, %100 pozisyon)|\ud83d\udd01 Stop girise (BE) cekildi|\ud83c\udfc1 Tum hedefler tamamlandi (+5.00R)",
+  "closed_at": "2026-10-27T06:59:59.999000+00:00"
  },
  {
   "symbol": "USUALUSDT",
@@ -27005,7 +27006,7 @@
    "coin_1d_ema99_dist": -0.0813
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.128367143332248,
+  "unrealized_r": 1.662786830728316,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.01049"
  },
  {
@@ -27118,7 +27119,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-26T16:16:27.313687+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-26T15:59:59.999000+00:00",
@@ -27158,9 +27159,10 @@
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0478
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.7200178483297646,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 739.565"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-27T06:59:59.999000+00:00"
  },
  {
   "symbol": "LINKUSDT",
