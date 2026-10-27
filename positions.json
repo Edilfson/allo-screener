@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5794910556815239,
+  "unrealized_r": 0.6298815822625212,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -26954,7 +26954,7 @@
    "coin_1d_ema99_dist": -0.031
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.473752102281112,
+  "unrealized_r": 1.8369446304067658,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0066885"
  },
  {
@@ -27005,7 +27005,7 @@
    "coin_1d_ema99_dist": -0.0813
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.128367143332248,
+  "unrealized_r": 1.995344196873977,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.01049"
  },
  {
@@ -27067,7 +27067,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-26T13:41:38.012647+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-26T11:59:59.999000+00:00",
@@ -27083,7 +27083,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-26T11:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-27T11:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.0046,
   "zone_high": 0.00474,
@@ -27108,7 +27108,8 @@
    "coin_1d_ema99_dist": 0.1763
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00467"
  },
  {
   "symbol": "BNBUSDT",
@@ -27158,7 +27159,7 @@
    "coin_1d_ema99_dist": 0.0478
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.681707039498431,
+  "unrealized_r": 1.182001131295611,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 739.565"
  },
  {
@@ -27469,7 +27470,7 @@
    "coin_1d_ema99_dist": -0.0087
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.298475063765131,
+  "unrealized_r": 1.1124979649427467,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.9435"
  },
  {
@@ -27520,7 +27521,7 @@
    "coin_1d_ema99_dist": -0.049
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8159088394733836,
+  "unrealized_r": 0.8435667662351901,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.36885"
  },
  {
