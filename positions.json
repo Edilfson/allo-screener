@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.4361300075585606,
+  "unrealized_r": 1.58730158730158,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -27006,7 +27006,7 @@
    "coin_1d_ema99_dist": -0.0813
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.3302294645826551,
+  "unrealized_r": 0.7316262055204632,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.01049"
  },
  {
@@ -27635,7 +27635,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-27T02:23:56.578280+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-27T01:59:59.999000+00:00",
@@ -27651,7 +27651,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-27T01:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-27T09:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 1.2893,
   "zone_high": 1.2968,
@@ -27676,7 +27676,8 @@
    "coin_1d_ema99_dist": -0.0165
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.29305"
  },
  {
   "symbol": "QNTUSDT",
