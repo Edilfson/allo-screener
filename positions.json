@@ -25706,7 +25706,7 @@
    "coin_1d_ema99_dist": -0.0135
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.7810531620055408,
+  "unrealized_r": -0.4787100025195295,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.33075"
  },
  {
@@ -27006,7 +27006,7 @@
    "coin_1d_ema99_dist": -0.0813
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.194878616561378,
+  "unrealized_r": 1.5962753574991861,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.01049"
  },
  {
@@ -27109,7 +27109,7 @@
    "coin_1d_ema99_dist": 0.1763
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.0723860589812093,
+  "unrealized_r": 0.9383378016085625,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00467"
  },
  {
@@ -27936,6 +27936,56 @@
    "btc_ema99_dist": 0.0419,
    "coin_1d_trend": "yukselis",
    "coin_1d_ema99_dist": 0.0481
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "BANKUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-28T12:14:35.484190+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-28T11:59:59.999000+00:00",
+  "entry": 0.02745,
+  "stop": 0.026573399999999997,
+  "current_stop": 0.026573399999999997,
+  "risk": 0.0008766000000000017,
+  "tps": [
+   {
+    "p": 0.03183300000000001,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-28T11:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.0266,
+  "zone_high": 0.0283,
+  "zone_width_pct": 0.0639,
+  "quality_ok": true,
+  "swing_high": 0.0283,
+  "swing_low": 0.0266,
+  "stop_dist_pct": 0.0319,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.7,
+   "vol_ratio": 0.86,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.0412,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.2102
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
