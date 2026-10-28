@@ -27006,7 +27006,7 @@
    "coin_1d_ema99_dist": -0.0813
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.396740937811785,
+  "unrealized_r": 1.928832723644847,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.01049"
  },
  {
@@ -27109,7 +27109,7 @@
    "coin_1d_ema99_dist": 0.1763
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.7426273458444665,
+  "unrealized_r": 1.3404825737265145,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00467"
  },
  {
@@ -27990,7 +27990,7 @@
    "coin_1d_ema99_dist": -0.2102
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.05703855806525363,
+  "unrealized_r": 0.3992699064567636,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.02745"
  },
  {
@@ -28041,7 +28041,7 @@
    "coin_1d_ema99_dist": 0.0416
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.5739807636645113,
+  "unrealized_r": 0.26706106257483697,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 81454.5"
  },
  {
@@ -28199,5 +28199,55 @@
   "unrealized_r": 0.0,
   "closed_at": "2026-10-28T20:59:59.999000+00:00",
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.2074|\ud83d\uded1 STOP oldu (-1.0R) - dolum mumunda"
+ },
+ {
+  "symbol": "RVNUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-28T21:08:36.830725+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-28T20:59:59.999000+00:00",
+  "entry": 0.0014765,
+  "stop": 0.0014595390000000001,
+  "current_stop": 0.0014595390000000001,
+  "risk": 1.69609999999998e-05,
+  "tps": [
+   {
+    "p": 0.001561304999999999,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-28T20:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.001461,
+  "zone_high": 0.001492,
+  "zone_width_pct": 0.0212,
+  "quality_ok": true,
+  "swing_high": 0.001492,
+  "swing_low": 0.001461,
+  "stop_dist_pct": 0.0115,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 58.0,
+   "vol_ratio": 2.66,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "duzgun 55ust99",
+   "btc_regime": "boga",
+   "btc_ema99_dist": 0.046,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.4405
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
  }
 ]
