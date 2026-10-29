@@ -5845,5 +5845,75 @@
    "atlandi": "min notional",
    "delta_usdt": 0.0
   }
+ },
+ {
+  "zaman": "2026-10-29T01:20:57",
+  "tur": "TREND",
+  "sembol": "BNBUSDT",
+  "hedef_w": 0.2325,
+  "hedef_notional": 232.5,
+  "mevcut_miktar": 0.0,
+  "delta": 0.31,
+  "basarili": true,
+  "sonuc": {
+   "yon": "BUY",
+   "miktar": 0.31,
+   "fiyat": 754.61,
+   "reduceOnly": false,
+   "hedef_miktar": 0.31,
+   "bizim_miktar": 0.0,
+   "yanit": {
+    "orderId": 2671946935,
+    "symbol": "BNBUSDT",
+    "status": "NEW",
+    "clientOrderId": "s1t76ZAUhixMhS7IjWujN2",
+    "price": "0.000",
+    "origQty": "0.31",
+    "executedQty": "0.00",
+    "cumQty": "0.00",
+    "timeInForce": "GTC",
+    "type": "MARKET",
+    "reduceOnly": false,
+    "closePosition": false,
+    "side": "BUY",
+    "positionSide": "BOTH",
+    "stopPrice": "0.000",
+    "workingType": "CONTRACT_PRICE",
+    "priceProtect": false,
+    "origType": "MARKET",
+    "priceMatch": "NONE",
+    "selfTradePreventionMode": "EXPIRE_MAKER",
+    "goodTillDate": 0,
+    "updateTime": 1793236857359
+   }
+  }
+ },
+ {
+  "zaman": "2026-10-29T01:20:58",
+  "tur": "TREND",
+  "sembol": "BTCUSDT",
+  "hedef_w": 0.0,
+  "hedef_notional": 0.0,
+  "mevcut_miktar": 0.0,
+  "delta": 0.0,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 0.0
+  }
+ },
+ {
+  "zaman": "2026-10-29T01:20:58",
+  "tur": "TREND",
+  "sembol": "ETHUSDT",
+  "hedef_w": 0.0,
+  "hedef_notional": 0.0,
+  "mevcut_miktar": 0.0,
+  "delta": 0.0,
+  "basarili": null,
+  "sonuc": {
+   "atlandi": "min notional",
+   "delta_usdt": 0.0
+  }
  }
 ]
