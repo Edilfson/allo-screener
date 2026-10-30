@@ -27943,7 +27943,7 @@
    "coin_1d_ema99_dist": 0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.880481179666283,
+  "unrealized_r": 3.9580908032596107,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0795"
  },
  {
@@ -29446,7 +29446,7 @@
    "coin_1d_ema99_dist": 0.041
   },
   "realized_r": 0.0,
-  "unrealized_r": -0.31812725090036087,
+  "unrealized_r": -0.1260504201680671,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.7185"
  },
  {
@@ -29812,7 +29812,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-30T16:09:55.607267+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-30T15:59:59.999000+00:00",
@@ -29828,7 +29828,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-30T15:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-30T19:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.1095,
   "zone_high": 0.1141,
@@ -29851,6 +29851,157 @@
    "btc_ema99_dist": -0.0023,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1236
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.1118"
+ },
+ {
+  "symbol": "XLMUSDT",
+  "interval": "1h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-30T18:10:09.649666+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-30T17:59:59.999000+00:00",
+  "entry": 0.16645,
+  "stop": 0.1654344,
+  "current_stop": 0.1654344,
+  "risk": 0.0010155999999999776,
+  "tps": [
+   {
+    "p": 0.17152799999999988,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-30T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.1656,
+  "zone_high": 0.1673,
+  "zone_width_pct": 0.0103,
+  "quality_ok": false,
+  "swing_high": 0.1673,
+  "swing_low": 0.1656,
+  "stop_dist_pct": 0.0061,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 51.3,
+   "vol_ratio": 0.78,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0077,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.1315
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "FILUSDT",
+  "interval": "6h",
+  "strategy": "ict_short",
+  "side": -1,
+  "ema_period": "ict_short",
+  "opened_at": "2026-10-30T18:10:09.649666+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-10-30T17:59:59.999000+00:00",
+  "entry": 0.8877999999999999,
+  "stop": 0.9115105999999998,
+  "current_stop": 0.9115105999999998,
+  "risk": 0.023710599999999915,
+  "tps": [
+   {
+    "p": 0.7692470000000003,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-30T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.865,
+  "zone_high": 0.9106,
+  "zone_width_pct": 0.0527,
+  "quality_ok": false,
+  "swing_high": 0.9106,
+  "swing_low": 0.865,
+  "stop_dist_pct": 0.0267,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 40.5,
+   "vol_ratio": 0.86,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0077,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.1059
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "ALPINEUSDT",
+  "interval": "6h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-30T18:10:09.649666+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": false,
+  "signal_bar_close": "2026-10-30T17:59:59.999000+00:00",
+  "entry": 0.2925,
+  "stop": 0.27972,
+  "current_stop": 0.27972,
+  "risk": 0.012779999999999958,
+  "tps": [
+   {
+    "p": 0.3563999999999998,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-30T17:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.28,
+  "zone_high": 0.305,
+  "zone_width_pct": 0.0893,
+  "quality_ok": false,
+  "swing_high": 0.305,
+  "swing_low": 0.28,
+  "stop_dist_pct": 0.0437,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 48.6,
+   "vol_ratio": 5.96,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0077,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.1705
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
