@@ -27943,7 +27943,7 @@
    "coin_1d_ema99_dist": 0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.23282887077997835,
+  "unrealized_r": 0.4656577415599513,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0795"
  },
  {
@@ -29238,7 +29238,7 @@
    "coin_1d_ema99_dist": 0.0712
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.868031854379972,
+  "unrealized_r": 3.8111490329920312,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.597"
  }
 ]
