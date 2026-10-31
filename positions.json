@@ -27943,7 +27943,7 @@
    "coin_1d_ema99_dist": 0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": 2.0954598370197943,
+  "unrealized_r": 1.7462165308498296,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0795"
  },
  {
@@ -29970,7 +29970,7 @@
    "coin_1d_ema99_dist": -0.1059
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.6241933987330551,
+  "unrealized_r": 0.7001088120924822,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.8878"
  },
  {
@@ -30174,7 +30174,7 @@
    "coin_1d_ema99_dist": 0.0067
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.9817715178033092,
+  "unrealized_r": 1.0745373305091364,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.4233"
  },
  {
@@ -30225,7 +30225,7 @@
    "coin_1d_ema99_dist": -0.0839
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.8044554455445727,
+  "unrealized_r": 0.8457095709571216,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.17175"
  },
  {
@@ -30528,7 +30528,7 @@
    "coin_1d_ema99_dist": -0.5745
   },
   "realized_r": 0.0,
-  "unrealized_r": 1.2958403524685849,
+  "unrealized_r": 1.036672281974868,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.00724"
  },
  {
@@ -30639,7 +30639,7 @@
   "side": 1,
   "ema_period": "ict_long",
   "opened_at": "2026-10-31T17:06:39.589094+00:00",
-  "status": "open",
+  "status": "stopped",
   "sinyal_gonderildi": false,
   "plan_dilimi": true,
   "signal_bar_close": "2026-10-31T16:59:59.999000+00:00",
@@ -30679,9 +30679,10 @@
    "coin_1d_trend": "kararsiz",
    "coin_1d_ema99_dist": 0.0444
   },
-  "realized_r": 0.0,
+  "realized_r": -1.0,
   "unrealized_r": -0.27864855451063025,
-  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.4785"
+  "son_bildirim": "\ud83d\uded1 STOP oldu (-1.0R)",
+  "closed_at": "2026-10-31T19:59:59.999000+00:00"
  },
  {
   "symbol": "SOPHUSDT",
@@ -30829,6 +30830,106 @@
    "btc_ema99_dist": -0.0007,
    "coin_1d_trend": "dusus",
    "coin_1d_ema99_dist": -0.1049
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "RUNEUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-31T20:07:43.516992+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-31T19:59:59.999000+00:00",
+  "entry": 0.6685000000000001,
+  "stop": 0.655344,
+  "current_stop": 0.655344,
+  "risk": 0.013156000000000057,
+  "tps": [
+   {
+    "p": 0.7342800000000004,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-31T19:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.656,
+  "zone_high": 0.681,
+  "zone_width_pct": 0.0381,
+  "quality_ok": true,
+  "swing_high": 0.681,
+  "swing_low": 0.656,
+  "stop_dist_pct": 0.0197,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 56.0,
+   "vol_ratio": 0.56,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0011,
+   "coin_1d_trend": "yukselis",
+   "coin_1d_ema99_dist": 0.1221
+  },
+  "realized_r": 0.0,
+  "unrealized_r": 0.0
+ },
+ {
+  "symbol": "SPKUSDT",
+  "interval": "4h",
+  "strategy": "ict_long",
+  "side": 1,
+  "ema_period": "ict_long",
+  "opened_at": "2026-10-31T20:07:43.516992+00:00",
+  "status": "pending",
+  "sinyal_gonderildi": false,
+  "plan_dilimi": true,
+  "signal_bar_close": "2026-10-31T19:59:59.999000+00:00",
+  "entry": 0.01722,
+  "stop": 0.017035947,
+  "current_stop": 0.017035947,
+  "risk": 0.000184053,
+  "tps": [
+   {
+    "p": 0.018140265,
+    "w": 1.0,
+    "r": 5.0,
+    "hit": false
+   }
+  ],
+  "entry_bar_close": "2026-10-31T19:59:59.999000+00:00",
+  "tp_style": "tek_hedef",
+  "zone_low": 0.017053,
+  "zone_high": 0.017387,
+  "zone_width_pct": 0.0196,
+  "quality_ok": false,
+  "swing_high": 0.017387,
+  "swing_low": 0.017053,
+  "stop_dist_pct": 0.0107,
+  "nearest_tp_r": 5.0,
+  "scan_version": "v6",
+  "rally_pct": 0.0,
+  "rally_days": 0.0,
+  "context": {
+   "rsi14": 43.9,
+   "vol_ratio": 0.8,
+   "fib_depth": 0.5,
+   "fib_zone": "orta(0.5-0.618)",
+   "ema_align": "ters 55alt99",
+   "btc_regime": "ayi",
+   "btc_ema99_dist": -0.0011,
+   "coin_1d_trend": "dusus",
+   "coin_1d_ema99_dist": -0.057
   },
   "realized_r": 0.0,
   "unrealized_r": 0.0
