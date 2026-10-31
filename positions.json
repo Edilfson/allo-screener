@@ -27943,7 +27943,7 @@
    "coin_1d_ema99_dist": 0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.3760186263096674,
+  "unrealized_r": 2.9491656965463746,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0795"
  },
  {
@@ -29448,7 +29448,7 @@
    "coin_1d_ema99_dist": 0.041
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.22208883553421666,
+  "unrealized_r": 0.34213685474190025,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 1.7185"
  },
  {
@@ -30320,7 +30320,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-31T04:09:25.888033+00:00",
-  "status": "pending",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-30T23:59:59.999000+00:00",
@@ -30361,7 +30361,8 @@
    "coin_1d_ema99_dist": -0.0721
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-31T04:34:45.906167+00:00"
  },
  {
   "symbol": "TURTLEUSDT",
@@ -30370,7 +30371,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-31T04:09:25.888033+00:00",
-  "status": "pending",
+  "status": "closed_kapali_coin",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-30T23:59:59.999000+00:00",
@@ -30411,6 +30412,7 @@
    "coin_1d_ema99_dist": -0.1306
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "closed_at": "2026-10-31T04:34:45.906190+00:00"
  }
 ]
