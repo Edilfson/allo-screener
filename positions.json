@@ -27943,7 +27943,7 @@
    "coin_1d_ema99_dist": 0.0481
   },
   "realized_r": 0.0,
-  "unrealized_r": 3.0267753201397025,
+  "unrealized_r": 3.8028715560729602,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.0795"
  },
  {
@@ -29929,7 +29929,7 @@
   "side": -1,
   "ema_period": "ict_short",
   "opened_at": "2026-10-30T18:10:09.649666+00:00",
-  "status": "pending",
+  "status": "open",
   "sinyal_gonderildi": false,
   "plan_dilimi": false,
   "signal_bar_close": "2026-10-30T17:59:59.999000+00:00",
@@ -29945,7 +29945,7 @@
     "hit": false
    }
   ],
-  "entry_bar_close": "2026-10-30T17:59:59.999000+00:00",
+  "entry_bar_close": "2026-10-31T17:59:59.999000+00:00",
   "tp_style": "tek_hedef",
   "zone_low": 0.865,
   "zone_high": 0.9106,
@@ -29970,7 +29970,8 @@
    "coin_1d_ema99_dist": -0.1059
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.0
+  "unrealized_r": 0.0,
+  "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.8878"
  },
  {
   "symbol": "ALPINEUSDT",
@@ -30170,7 +30171,7 @@
    "coin_1d_ema99_dist": 0.0067
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.7343960172544451,
+  "unrealized_r": 0.6957435952936849,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.4233"
  },
  {
@@ -30221,7 +30222,7 @@
    "coin_1d_ema99_dist": -0.0839
   },
   "realized_r": 0.0,
-  "unrealized_r": 0.18564356435644164,
+  "unrealized_r": 0.5569306930693249,
   "son_bildirim": "\u2705 LIMIT EMIR DOLDU: 0.17175"
  },
  {
